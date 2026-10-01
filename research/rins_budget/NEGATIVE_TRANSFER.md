@@ -58,3 +58,94 @@ This diagnostic must not be compared with the old v1 control as a formal new pai
 The machine-readable [pipeline record](recorded_results/uc-network-pipeline-negative.json) retains exact stage limits, per-child `wait4` resources, checks, points and certificate provenance. Bounds are solver-reported and adjusted conservatively for twelve-significant-digit log rounding; feasibility/objective checking is independent and floating-point, not an exact rational certificate. Killed or invalid-status runs cannot supply a bound. Soft-limit overshoot and missing reported fields are retained rather than hidden.
 
 The source exporter/checker, solver patches and source commit remain the pinned versions already identified in this package. These compact records publish the negative findings and measured specialized driver identities. Portable packaging of the newer orchestration harnesses is not included in this checkpoint; do not mistake these records for a complete executable replay bundle for every protocol. The unchanged original model remains the checker authority for subsequent formulation experiments.
+
+## Joint startup/shutdown capacity cuts: negative paired pilot
+
+A subsequent narrow formulation experiment appended valid inequalities to the
+same February full-network model. It changed neither the solver engine nor the
+original rows, columns, costs, bounds or slack policies. For a generator with
+minimum uptime at least two hours, let a=Pmax−min(startup_limit,Pmax) and
+b=Pmax−min(shutdown_limit,Pmax). For t before the last period, and only when both
+a and b are positive, the added row is:
+
+    p_t + sum(reserve_t) <= Pmax*u_t - a*y_t - b*z_(t+1)
+
+The original minimum-up row at t+1 forbids simultaneous startup at t and shutdown
+at t+1 for integer-feasible schedules. The new inequality therefore equals an
+existing capacity inequality in each admitted integer case. It can strengthen
+the fractional relaxation. It must not be applied with these coefficients to
+one-hour-minimum-up units, and no post-horizon transition is assumed.
+
+There are 170 eligible units and 35 applicable periods, adding exactly 5,950 rows
+and 29,750 nonzeros, zero columns. An append audit recovered the entire original
+MPS byte stream exactly and checked the source-derived antecedent rows and
+binary domains. The solver-free suite passed 28 tests, including 144,342 selected
+capacity comparisons over 7,230 valid schedules and an explicit fractional
+witness. A separate 16-solve tiny smoke passed all eight original/cuts optimum
+comparisons with presolve on/off and all 24 original-primal checks.
+
+The cold seed-0 pair used the same two-thread/parallel-off configuration and
+600-second request per arm as above, with fresh generation in both arms:
+
+| Metric | Original | Original plus cuts |
+|---|---:|---:|
+| Reported solver seconds | 506.96 | 521.31 |
+| Solver-process seconds | 509.777 | 524.071 |
+| Full E2E seconds | 542.522 | 564.704 |
+| Final gap using checked primal | 0.4794% | 0.5427% |
+| Checked original upper | 19,051,753.242198 | 19,063,880.505653 |
+| Adjusted solver lower | 18,960,413.053060 | 18,960,413.053060 |
+| Presolved rows/columns/nonzeros | 242,511 / 158,424 / 929,996 | 248,017 / 158,270 / 958,478 |
+
+Both arms reached 1%, but cuts were **2.80% slower in solver-process wall** and
+**4.09% slower E2E** in this fixed-order pilot. The cut transformation/audit cost
+8.481 seconds is included. The initial root bound improved only 15.92 objective
+units; the final lower bound was identical. All six distinct incumbent checks
+passed against the unchanged source and every original MPS row/bound/objective.
+Both best points have numerical-zero shedding and zero overflow. No dropped
+coefficients, watchdog kill, or solver-wall budget overshoot was observed.
+This is a negative acceleration result, not a general slowdown estimate.
+
+One provenance limitation is explicit: the main binary/library and source were
+pre-pinned, but the loaded HIPO-off `libhighs_extras.so` stub was hashed only after
+the run. Its post-run hash is retained; it is not presented as a historical pin.
+Future protocols pin both libraries before execution. See the full
+[joint-cut record](recorded_results/joint-capacity-cuts-negative.json), including
+per-PID resources, hashes and all timing differences. As with the other newer
+specialized protocols, this results checkpoint is not a complete portable
+orchestration-code release.
+
+## Sparse-angle substitution: stopped after the presolve gate
+
+A separate application-layer candidate eliminated explicit line-flow variables
+by substituting the original `f=w*(theta_source-theta_target)` equations into
+nodal balances and normal-rating rows. It retained the original reference,
+parallel-line ratings, every overflow variable/cost and all ordinary UC records.
+No capacity cuts or other modifications were combined with it.
+
+Eight tiny algebraic fixture groups passed. Three existing vector files, containing
+two distinct incumbents, passed projection/reconstruction and the original source
+and full-MPS checks; retained values stayed bitwise unchanged and original
+linear objectives were unchanged. The maximum reconstructed original-row
+residual was 9.87e-8, within the unchanged 1e-5 check tolerance.
+
+A bounded **public presolve-only** inspection then gave:
+
+| Model | Loaded rows/columns/nonzeros | Presolved rows/columns/nonzeros |
+|---|---|---|
+| Original | 381,268 / 313,776 / 1,232,543 | 242,511 / 158,424 / 929,996 |
+| Sparse angles | 309,592 / 242,100 / 1,149,131 | 243,698 / 158,162 / 958,632 |
+
+Despite the smaller raw input, the candidate had 0.49% more presolved rows,
+0.17% fewer columns and 3.08% more nonzeros. No conditioning benefit was measured.
+It was stopped here: **no full LP/MIP solve and no time-to-1% result**. The 4.935 s
+presolve observation is not a fresh timing pair against the historical original;
+no presolve speed ratio is claimed. Both libraries were pre-pinned and their
+actual load paths verified, with no coefficient-dropping warnings.
+
+The experiment also records a certification limit: serializing aggregated
+coefficients changes some equalities by rounding (maximum reader-space
+substitution error 1.819e-12, 0.59375 ULP). Successful original-primal checking
+does not supply an unconditional original-model lower bound. No such bound or
+original-MPS gap claim is made. Details and resource caveats are in the
+[presolve-gate record](recorded_results/sparse-angle-presolve-gate.json).

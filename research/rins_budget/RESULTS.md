@@ -93,3 +93,12 @@ The August soft-model points include 312.105451 MWh of load shedding. A separate
 UC-relaxation/network-repair pipeline missed the 1% target, and extending UC to
 480 seconds produced no new incumbent. See [NEGATIVE_TRANSFER.md](NEGATIVE_TRANSFER.md)
 for complete scopes, unchanged objectives, stage budgets and retained failures.
+
+A later 5,950-row joint startup/shutdown capacity strengthening was also negative:
+both arms met 1%, but the candidate added 2.80% solver wall and 4.09% E2E time.
+Its final bound was unchanged. The proof, tests, original-model checks and
+post-run extras-library provenance caveat are retained in NEGATIVE_TRANSFER.md.
+
+Sparse-angle flow elimination was stopped at its presolve-only gate: it produced
+3.08% more presolved nonzeros and no demonstrated conditioning benefit. No full
+solve or original-model lower-bound transfer was claimed.

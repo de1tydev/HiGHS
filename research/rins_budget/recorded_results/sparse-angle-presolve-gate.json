@@ -1,0 +1,70 @@
+{
+  "status": "completed; negative performance gate; no full solve",
+  "loaded": {
+    "rows": 309592,
+    "columns": 242100,
+    "nonzeros": 1149131
+  },
+  "presolved": {
+    "rows": 243698,
+    "columns": 158162,
+    "nonzeros": 958632
+  },
+  "baseline_presolved": {
+    "rows": 242511,
+    "columns": 158424,
+    "nonzeros": 929996
+  },
+  "presolve_seconds": 4.935366039004293,
+  "inspection_resources": {
+    "returncode": 0,
+    "hard_watchdog_killed": false,
+    "process_wall_seconds": 7.523424511993653,
+    "peak_rss_KiB": 1275324,
+    "user_cpu_seconds": 7.276332,
+    "system_cpu_seconds": 0.200837,
+    "resource_accounting": "os.wait4 rusage of this presolve-only inspection child; Linux RSS KiB"
+  },
+  "rss_caveat": "Child-process high-water RSS may include inherited pre-exec parent memory; not isolated solver/factorization working set",
+  "warning_drop_lines": [],
+  "rounding": {
+    "coefficients": 378072,
+    "nonexact_decimal_coefficients": 42588,
+    "max_decimal_abs_error": "2.08E-12",
+    "max_binary_abs_error": "1.7959618437290191650390625E-12",
+    "max_binary_substitution_abs_error": "1.818989403545856475830078125E-12",
+    "max_binary_substitution_error_ulps": 0.59375,
+    "max_decimal_error_ulps": 0.844424930131968,
+    "max_binary_error_ulps": 0.499902511644672,
+    "exact_rational_mps_equivalence": false,
+    "lower_bound_transfer": "No unconditional original-model lower-bound transfer: rounded nodal equalities differ and no uniform global objective correction was established. Theta columns have no explicit finite bounds; this does not mean feasible angles are unbounded, since fixed reference, connected positive-weight network and bounded injections imply finite bounds. An original-model validated dual certificate or separate rigorous correction is required.",
+    "post_record_wording_clarification": "Clarifies the raw report phrase theta is unbounded as absence of explicit column bounds; no numerical result or gate decision changes."
+  },
+  "no_demonstrated_conditioning_benefit": true,
+  "full_solve_run": false,
+  "candidate_mps_sha256": "e6b5592991357931415b1d9c08873d53a3b74dd3be2891527bc77b8bb0628889",
+  "candidate_presolved_mps_sha256": "8a0fbba07dd31ccb5304f552d7cbb09d06cf7617aed1464823fc70d2d778e0d3",
+  "raw_result_sha256": "0584d4722aee692436b5c8ba36a052d924badf2ee7b78daffd5f7178191e09fb",
+  "original_mps_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+  "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5",
+  "main_library_pre_run_sha256": "90b3810a1750ef05fcdb531612541f56645f0a04e00ac9a2ab962feeb300f22b",
+  "extras_library_pre_run_sha256": "c2b7d0cc4453ad61b8e61edc645fca8e2f0c4855cb280a42d4c42a9cb3d361c9",
+  "scope": "February custom base-network UC; only substitution validation and public Highs_presolve, no optimization solve",
+  "readback_tests": {
+    "tiny_fixture_groups": 8,
+    "existing_vector_files": 3,
+    "distinct_incumbents": 2,
+    "all_original_checks_pass": true,
+    "retained_values_bitwise_unchanged": true,
+    "original_checked_objectives_exactly_unchanged": true,
+    "max_reconstructed_original_row_residual": 9.8693154e-08
+  },
+  "limits": {
+    "threads": 2,
+    "parallel": "off",
+    "presolve_option_seconds": 30,
+    "whole_inspection_watchdog_seconds": 60,
+    "address_space_bytes": 7516192768
+  },
+  "baseline_timing_caveat": "Historical original presolve7.0367s is not a fresh timing pair; historical original RSS unavailable; no speed ratio claimed"
+}

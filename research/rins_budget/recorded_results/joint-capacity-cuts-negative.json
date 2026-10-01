@@ -1,0 +1,298 @@
+{
+  "scope": "Single fixed-order February seed 0 paired pilot, not statistical/generalization evidence",
+  "pair_sha256": "3cbb2805c467cc18712c176684ea3acba0a4dcf9d4fd79a2cc865711198e5fcd",
+  "pair_end_to_end_wall_seconds": 1107.5116543780023,
+  "arms": {
+    "control": {
+      "status": "finished",
+      "target_complete": true,
+      "summary_sha256": "f5611e07c67b8dc40590302e2541a122b161c1d747515fa29ffa052e69934361",
+      "original_dimensions": {
+        "rows": 381268,
+        "columns": 313776,
+        "nonzeros": 1232543
+      },
+      "candidate_dimensions": {
+        "rows": 381268,
+        "columns": 313776,
+        "nonzeros": 1232543
+      },
+      "presolved_dimensions": {
+        "rows": 242511,
+        "columns": 158424,
+        "nonzeros": 929996
+      },
+      "certificate": {
+        "valid": true,
+        "reason": "floating-point source/matrix primal and status-valid bound",
+        "upper": 19051753.242197722,
+        "lower": 18960413.053060398,
+        "lower_provenance": {
+          "scope": "original_full_mip",
+          "status": "Optimal",
+          "printed_primal": 19051753.2422,
+          "printed_lower": 18960413.0533,
+          "lower_rounding_allowance": 0.000239604130533,
+          "global_lower": 18960413.053060398,
+          "bound_status_valid": true,
+          "negative_lower": false,
+          "restricted_bound_ignored": false,
+          "reported_seconds": 506.96,
+          "matrix_drop_warnings": [],
+          "loaded_library_identity_valid": true,
+          "expected_model": "original",
+          "parent_report_identity_valid": true,
+          "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+          "log_sha256": "b803afca3ca495db65298703810896e8d93a0ee5ce7a274c7795fc0411c24fda",
+          "formulation": "control"
+        },
+        "gap": 0.0047943193456345705,
+        "target_met": true,
+        "negative_objective_case": false
+      },
+      "solver_requested_seconds": 600.0,
+      "solver_reported_seconds": 506.96,
+      "solver_process_wall_seconds": 509.776973177999,
+      "solver_cpu_seconds": 654.196744,
+      "solver_peak_rss_KiB": 2121332,
+      "solver_wall_overshoot_seconds": 0.0,
+      "fresh_generation_process_wall_seconds": 15.801436066998576,
+      "transform_process_wall_seconds": 0.0,
+      "checks_process_wall_seconds": 13.156612247999874,
+      "candidate_extraction_wall_seconds": 3.1120075430008,
+      "arm_end_to_end_wall_seconds": 542.5217473130033,
+      "distinct_original_checks": 3,
+      "all_original_checks_pass": true,
+      "best_original_point": {
+        "upper": 19051753.242197722,
+        "solution_sha256": "1482a70288d8da03904c69b62f61824902e24c6234053d5fb0258b7b1ed895a8",
+        "source_linear_cost": 19051753.24219772,
+        "matrix_linear_cost": 19051753.242197722,
+        "true_source_cost": 19051753.242197517,
+        "objective_overpayment": 2.0116567611694336e-07,
+        "total_shed_MWh": -1e-13,
+        "max_overflow_MW": 0.0
+      },
+      "presolve_mip_seconds": 7.9,
+      "nodes": 1.0,
+      "lp_iterations": 121194.0,
+      "separation_lp_iterations": 11965.0,
+      "heuristic_lp_iterations": 33418.0,
+      "primal_dual_integral": 19.0128219685,
+      "reported_root_progress_rows": [
+        {
+          "origin": "R",
+          "printed_lower": 18860630.49924,
+          "printed_incumbent": 21688735.17012,
+          "printed_gap": "13.04%",
+          "cuts": 0,
+          "in_lp": 0,
+          "conflicts": 0,
+          "lp_iterations_counter": 75811,
+          "printed_seconds": 259.9
+        },
+        {
+          "origin": "C",
+          "printed_lower": 18960413.0533,
+          "printed_incumbent": 19294051.23033,
+          "printed_gap": "1.73%",
+          "cuts": 1376,
+          "in_lp": 463,
+          "conflicts": 0,
+          "lp_iterations_counter": 86974,
+          "printed_seconds": 394.0
+        },
+        {
+          "origin": "L",
+          "printed_lower": 18960413.0533,
+          "printed_incumbent": 19051753.2422,
+          "printed_gap": "0.48%",
+          "cuts": 1812,
+          "in_lp": 553,
+          "conflicts": 0,
+          "lp_iterations_counter": 87776,
+          "printed_seconds": 506.9
+        }
+      ],
+      "first_lp_timing_lines": [
+        "MIP-Timing:          17 - start first LP solve (without basis)",
+        "MIP-Timing:     2.4e+02 - finish first LP solve"
+      ],
+      "log_sha256": "b803afca3ca495db65298703810896e8d93a0ee5ce7a274c7795fc0411c24fda"
+    },
+    "cuts": {
+      "status": "finished",
+      "target_complete": true,
+      "summary_sha256": "4266ea5c24543cf182eb352e91743445eeabde16e99303c028f8f77b5a62c62f",
+      "original_dimensions": {
+        "rows": 381268,
+        "columns": 313776,
+        "nonzeros": 1232543
+      },
+      "candidate_dimensions": {
+        "rows": 387218,
+        "columns": 313776,
+        "nonzeros": 1262293
+      },
+      "presolved_dimensions": {
+        "rows": 248017,
+        "columns": 158270,
+        "nonzeros": 958478
+      },
+      "certificate": {
+        "valid": true,
+        "reason": "floating-point source/matrix primal and status-valid bound",
+        "upper": 19063880.50565313,
+        "lower": 18960413.053060398,
+        "lower_provenance": {
+          "scope": "original_full_mip",
+          "status": "Optimal",
+          "printed_primal": 19063880.5057,
+          "printed_lower": 18960413.0533,
+          "lower_rounding_allowance": 0.000239604130533,
+          "global_lower": 18960413.053060398,
+          "bound_status_valid": true,
+          "negative_lower": false,
+          "restricted_bound_ignored": false,
+          "reported_seconds": 521.31,
+          "matrix_drop_warnings": [],
+          "loaded_library_identity_valid": true,
+          "expected_model": "joint_capacity",
+          "parent_report_identity_valid": true,
+          "model_sha256": "d5a76b7b72c89cf1a260b09b7e220f5d658fd3da287abbe1d69eb973fe1bc787",
+          "log_sha256": "327f6d9528d52aad0a8ef23a9a3ffa09d462a45252fc936f30f225448da7deaf",
+          "formulation": "cuts"
+        },
+        "gap": 0.00542740773905147,
+        "target_met": true,
+        "negative_objective_case": false
+      },
+      "solver_requested_seconds": 600.0,
+      "solver_reported_seconds": 521.31,
+      "solver_process_wall_seconds": 524.0707694579978,
+      "solver_cpu_seconds": 667.329936,
+      "solver_peak_rss_KiB": 2076352,
+      "solver_wall_overshoot_seconds": 0.0,
+      "fresh_generation_process_wall_seconds": 15.149393651001446,
+      "transform_process_wall_seconds": 8.480921683003544,
+      "checks_process_wall_seconds": 13.148756288006552,
+      "candidate_extraction_wall_seconds": 3.0339925499938545,
+      "arm_end_to_end_wall_seconds": 564.7043669880004,
+      "distinct_original_checks": 3,
+      "all_original_checks_pass": true,
+      "best_original_point": {
+        "upper": 19063880.50565313,
+        "solution_sha256": "1f98996d154860c2d45200dc9602ebf2e7cd2abf1ead1506b1302b022046b2c5",
+        "source_linear_cost": 19063880.505653128,
+        "matrix_linear_cost": 19063880.50565313,
+        "true_source_cost": 19063880.505652938,
+        "objective_overpayment": 1.8998980522155762e-07,
+        "total_shed_MWh": -1e-13,
+        "max_overflow_MW": 0.0
+      },
+      "presolve_mip_seconds": 10.71,
+      "nodes": 1.0,
+      "lp_iterations": 126057.0,
+      "separation_lp_iterations": 9605.0,
+      "heuristic_lp_iterations": 31656.0,
+      "primal_dual_integral": 29.5270291469,
+      "reported_root_progress_rows": [
+        {
+          "origin": "R",
+          "printed_lower": 18860646.41859,
+          "printed_incumbent": 25709011.71314,
+          "printed_gap": "26.64%",
+          "cuts": 0,
+          "in_lp": 0,
+          "conflicts": 0,
+          "lp_iterations_counter": 84796,
+          "printed_seconds": 298.5
+        },
+        {
+          "origin": "C",
+          "printed_lower": 18960410.23736,
+          "printed_incumbent": 19294051.23033,
+          "printed_gap": "1.73%",
+          "cuts": 1408,
+          "in_lp": 454,
+          "conflicts": 0,
+          "lp_iterations_counter": 93347,
+          "printed_seconds": 402.7
+        },
+        {
+          "origin": "L",
+          "printed_lower": 18960413.0533,
+          "printed_incumbent": 19063880.50565,
+          "printed_gap": "0.54%",
+          "cuts": 1969,
+          "in_lp": 600,
+          "conflicts": 0,
+          "lp_iterations_counter": 94401,
+          "printed_seconds": 521.3
+        }
+      ],
+      "first_lp_timing_lines": [
+        "MIP-Timing:          19 - start first LP solve (without basis)",
+        "MIP-Timing:     2.8e+02 - finish first LP solve"
+      ],
+      "log_sha256": "327f6d9528d52aad0a8ef23a9a3ffa09d462a45252fc936f30f225448da7deaf"
+    }
+  },
+  "cuts_minus_control": {
+    "solver_process_wall_seconds": {
+      "absolute": 14.293796279998787,
+      "relative_percent": 2.8039313331259086
+    },
+    "arm_end_to_end_wall_seconds": {
+      "absolute": 22.182619674997113,
+      "relative_percent": 4.088798243547465
+    },
+    "solver_cpu_seconds": {
+      "absolute": 13.133192000000008,
+      "relative_percent": 2.0075294046403958
+    },
+    "solver_peak_rss_KiB": {
+      "absolute": -44980,
+      "relative_percent": -2.1203658833223615
+    },
+    "lp_iterations": {
+      "absolute": 4863.0,
+      "relative_percent": 4.012574879944553
+    },
+    "checked_upper": 12127.263455409557,
+    "adjusted_lower": 0.0,
+    "initial_logged_root_bound": 15.919350001960993
+  },
+  "conclusion": "Both met the checked original 1% target without solver-wall overshoot. Joint cuts were slower in this pilot and returned a slightly worse incumbent; retain as a negative acceleration result, do not promote as default.",
+  "provenance_caveat": {
+    "extras_library_post_run_sha256": "c2b7d0cc4453ad61b8e61edc645fca8e2f0c4855cb280a42d4c42a9cb3d361c9",
+    "status": "Extras stub was observed loaded in both logs but was not pre-run binary-pinned. HIPO=OFF in pinned build config and pinned source leaves external solver bindings empty. Post-run hash does not establish historical pinning; add explicit extras pin for any future protocol revision."
+  },
+  "raw_pilot_result_sha256": "bb69790beda491916f83aabb827685bb07a7ac9f9852c579d45b35a765d4e2c7",
+  "artifact_identity": {
+    "highs_source_commit": "73cac48c5340d775a477087198611862559be250",
+    "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5",
+    "original_mps_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+    "candidate_mps_sha256": "d5a76b7b72c89cf1a260b09b7e220f5d658fd3da287abbe1d69eb973fe1bc787",
+    "binary_sha256": "fd624534b26f5367eb2456cc6a5c2e5c3db1440a0838df67091b02b823dfd1c6",
+    "main_library_sha256": "90b3810a1750ef05fcdb531612541f56645f0a04e00ac9a2ab962feeb300f22b",
+    "review_manifest_sha256": "4c337d82eab35a658060dbe877dcc2e4991b3337fa751545c524361819c00e34",
+    "implementation_patch_sha256": "f0c3fa61ff785eecbbeab1b609c808ec52e245329fbd6c8796d2d740ec5067f4"
+  },
+  "settings": {
+    "threads": 2,
+    "parallel": "off",
+    "seed": 0,
+    "mip_rel_gap": 0.01,
+    "mip_lp_solver": "choose",
+    "mip_ipm_solver": "choose",
+    "mip_heuristic_outer_gap": true,
+    "mip_heuristic_outer_gap_log": true,
+    "mip_initial_root_ipx": false,
+    "solver_requested_seconds_per_arm": 600,
+    "solver_process_watchdog_seconds": 660,
+    "memory_limit_bytes": 7516192768,
+    "no_inherited_primal_or_basis": true,
+    "all_distinct_incumbents_checked_against_original": true
+  }
+}
