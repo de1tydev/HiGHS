@@ -84,3 +84,12 @@ and both meet the requested 1% gap. The control had a brief low-CPU monitor
 overlap; repeatability is unestablished. Frozen-policy held-out-date validation
 has completed: both August and November fail to reach 1% in either arm, so no
 stable acceleration is established. See [INITIAL_ROOT_IPX.md](INITIAL_ROOT_IPX.md).
+
+## Transfer and application-layer negative results
+
+Initial-root IPX also regressed on the PEGASE89 February/August seed-0 transfer
+checks (+37.8% and +15.7% whole-loop time), with all 192 listed outages checked.
+The August soft-model points include 312.105451 MWh of load shedding. A separate
+UC-relaxation/network-repair pipeline missed the 1% target, and extending UC to
+480 seconds produced no new incumbent. See [NEGATIVE_TRANSFER.md](NEGATIVE_TRANSFER.md)
+for complete scopes, unchanged objectives, stage budgets and retained failures.

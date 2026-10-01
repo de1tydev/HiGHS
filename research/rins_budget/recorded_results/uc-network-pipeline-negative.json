@@ -1,0 +1,663 @@
+{
+  "scope": "Custom public-source formulations; numerical primal/objective checks, solver-reported global bounds; no stable speedup claim",
+  "highs_base_commit": "73cac48c5340d775a477087198611862559be250",
+  "source_version": "1.15.1",
+  "binary_sha256": "fd624534b26f5367eb2456cc6a5c2e5c3db1440a0838df67091b02b823dfd1c6",
+  "loaded_library_sha256": "90b3810a1750ef05fcdb531612541f56645f0a04e00ac9a2ab962feeb300f22b",
+  "outer_gap_patch_sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae",
+  "initial_root_ipx_patch_sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24",
+  "common_settings": {
+    "threads": 2,
+    "parallel": "off",
+    "mip_lp_solver": "choose",
+    "mip_ipm_solver": "choose",
+    "mip_heuristic_outer_gap": true,
+    "mip_heuristic_outer_gap_log": true,
+    "mip_rel_gap": 0.01,
+    "random_seed": 0,
+    "OPENBLAS_NUM_THREADS": 1,
+    "OMP_NUM_THREADS": 1,
+    "MKL_NUM_THREADS": 1,
+    "mip_initial_root_ipx": false
+  },
+  "experiment": "UC relaxation, full-network lift and restricted repair: two negative exploratory protocols",
+  "case_date": "2017-02-01",
+  "model_scope": "36-hour PEGASE1354 custom soft base-network UC, not N-1 or UC.jl formulation parity",
+  "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5",
+  "original_mps_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+  "uc_mps_sha256": "6b8dccd625cad04948565024d074bcb99232ff6a15c60f8d54aaf73644dd0545",
+  "v1_raw_summary_sha256": "5e19be063610ec6eb3b44a5e258d64a584362e7152dae65c2b1aafcb99ec5b06",
+  "v2_raw_diagnostic_sha256": "a53a58ed2427bcca4e19d54a4f0d734b5da8571f761a5f5369703875ea8b3577",
+  "v1": {
+    "conclusion": "Negative pilot: control reaches 1%; pipeline does not. Elapsed-run ratio is not a target-time speedup ratio.",
+    "arms": [
+      {
+        "arm": "control",
+        "complete": true,
+        "certificate": {
+          "valid": true,
+          "reason": "floating-point source/matrix primal and status-valid bound",
+          "upper": 19051753.242197722,
+          "lower": 18960413.053060398,
+          "lower_provenance": {
+            "scope": "original_full_mip",
+            "status": "Optimal",
+            "printed_primal": 19051753.2422,
+            "printed_lower": 18960413.0533,
+            "lower_rounding_allowance": 0.000239604130533,
+            "global_lower": 18960413.053060398,
+            "bound_status_valid": true,
+            "negative_lower": false,
+            "restricted_bound_ignored": false,
+            "reported_seconds": 520.9,
+            "matrix_drop_warnings": [],
+            "loaded_library_identity_valid": true,
+            "expected_model": "full",
+            "parent_report_identity_valid": true,
+            "stage": "control",
+            "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+            "log_sha256": "a9d534a7fb61d8a69ad7de4f188e9dd20a9a1784329fcc5ea9c28cc91d3a399b",
+            "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5"
+          },
+          "gap": 0.0047943193456345705,
+          "target_met": true,
+          "negative_objective_case": false
+        },
+        "solver_process_wall_seconds": 523.606360581005,
+        "auxiliary_process_wall_seconds": 24.184825816999364,
+        "total_end_to_end_wall_seconds": 549.5651300320023,
+        "best": {
+          "solution_sha256": "1482a70288d8da03904c69b62f61824902e24c6234053d5fb0258b7b1ed895a8",
+          "upper": 19051753.242197722,
+          "origin": "cold full MIP",
+          "source_linear_cost": 19051753.24219772,
+          "matrix_linear_cost": 19051753.242197722,
+          "true_source_cost": 19051753.242197517,
+          "objective_overpayment": 2.0116567611694336e-07,
+          "total_shed_MWh": -1e-13,
+          "max_overflow_MW": 0.0
+        },
+        "stages": [
+          {
+            "stage": "control",
+            "scope": "original_full_mip",
+            "requested_seconds": 600.0,
+            "process_seconds": 523.606360581005,
+            "report": {
+              "scope": "original_full_mip",
+              "status": "Optimal",
+              "printed_primal": 19051753.2422,
+              "printed_lower": 18960413.0533,
+              "lower_rounding_allowance": 0.000239604130533,
+              "global_lower": 18960413.053060398,
+              "bound_status_valid": true,
+              "negative_lower": false,
+              "restricted_bound_ignored": false,
+              "reported_seconds": 520.9,
+              "matrix_drop_warnings": [],
+              "loaded_library_identity_valid": true,
+              "expected_model": "full",
+              "parent_report_identity_valid": true
+            },
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 523.606360581005,
+              "peak_rss_KiB": 2083264,
+              "user_cpu_seconds": 674.959156,
+              "system_cpu_seconds": 2.601394,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          }
+        ],
+        "auxiliary_measurements": [
+          {
+            "stage": "build_network",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 16.056462521999492,
+              "peak_rss_KiB": 236932,
+              "user_cpu_seconds": 15.813542,
+              "system_cpu_seconds": 0.23074399999999998,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "control_check_0",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.117198667998309,
+              "peak_rss_KiB": 259200,
+              "user_cpu_seconds": 3.912937,
+              "system_cpu_seconds": 0.18645699999999998,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "control_check_1",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.011164627001563,
+              "peak_rss_KiB": 259208,
+              "user_cpu_seconds": 3.814423,
+              "system_cpu_seconds": 0.15298399999999998,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          }
+        ]
+      },
+      {
+        "arm": "pipeline",
+        "complete": false,
+        "certificate": {
+          "valid": true,
+          "reason": "floating-point source/matrix primal and status-valid bound",
+          "upper": 19214862.09442548,
+          "lower": 18960413.053060398,
+          "lower_provenance": {
+            "scope": "original_full_mip",
+            "status": "Time limit reached",
+            "printed_primal": 19214862.0944,
+            "printed_lower": 18960413.0533,
+            "lower_rounding_allowance": 0.000239604130533,
+            "global_lower": 18960413.053060398,
+            "bound_status_valid": true,
+            "negative_lower": false,
+            "restricted_bound_ignored": false,
+            "reported_seconds": 427.21,
+            "matrix_drop_warnings": [],
+            "loaded_library_identity_valid": true,
+            "expected_model": "full",
+            "parent_report_identity_valid": true,
+            "stage": "fallback",
+            "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+            "log_sha256": "f61b857845ce19b0c0b2b7c2c964e0ebb5921ae24a12eeb06baf0e4fbe4a730e",
+            "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5"
+          },
+          "gap": 0.013242303801852566,
+          "target_met": false,
+          "negative_objective_case": false
+        },
+        "solver_process_wall_seconds": 560.3732256009971,
+        "auxiliary_process_wall_seconds": 40.998070581008506,
+        "total_end_to_end_wall_seconds": 604.9958291660005,
+        "best": {
+          "solution_sha256": "f989cf21df496b6e88fef9ca36aca7a237a6b4a449474d01a7bf3a0d1418dda9",
+          "upper": 19214862.09442548,
+          "origin": "fixed exact u/y/z network LP primal only",
+          "source_linear_cost": 19214862.094425477,
+          "matrix_linear_cost": 19214862.09442548,
+          "true_source_cost": 19214862.094425302,
+          "objective_overpayment": 1.7508864402770996e-07,
+          "total_shed_MWh": 0.0,
+          "max_overflow_MW": 0.0
+        },
+        "stages": [
+          {
+            "stage": "uc",
+            "scope": "uc_relaxation",
+            "requested_seconds": 120.0,
+            "process_seconds": 121.0969075489993,
+            "report": {
+              "scope": "uc_relaxation",
+              "status": "Time limit reached",
+              "printed_primal": 19214862.0944,
+              "printed_lower": 18863770.0043,
+              "lower_rounding_allowance": 0.00023863770004299998,
+              "global_lower": 18863770.00406136,
+              "bound_status_valid": true,
+              "negative_lower": false,
+              "restricted_bound_ignored": false,
+              "reported_seconds": 120.11,
+              "matrix_drop_warnings": [],
+              "loaded_library_identity_valid": true,
+              "expected_model": "uc",
+              "parent_report_identity_valid": true
+            },
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 121.0969075489993,
+              "peak_rss_KiB": 1593240,
+              "user_cpu_seconds": 146.217669,
+              "system_cpu_seconds": 0.9065449999999999,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "repair",
+            "scope": "fixed_commitment_repair",
+            "requested_seconds": 60.0,
+            "process_seconds": 8.779492246998416,
+            "report": {
+              "scope": "fixed_commitment_repair",
+              "status": null,
+              "printed_primal": null,
+              "printed_lower": null,
+              "lower_rounding_allowance": null,
+              "global_lower": null,
+              "bound_status_valid": false,
+              "negative_lower": false,
+              "restricted_bound_ignored": true,
+              "reported_seconds": null,
+              "matrix_drop_warnings": [],
+              "loaded_library_identity_valid": true,
+              "expected_model": "repair",
+              "parent_report_identity_valid": false
+            },
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 8.779492246998416,
+              "peak_rss_KiB": 552980,
+              "user_cpu_seconds": 8.542142,
+              "system_cpu_seconds": 0.2236,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "fallback",
+            "scope": "original_full_mip",
+            "requested_seconds": 420.0,
+            "process_seconds": 430.4968258049994,
+            "report": {
+              "scope": "original_full_mip",
+              "status": "Time limit reached",
+              "printed_primal": 19214862.0944,
+              "printed_lower": 18960413.0533,
+              "lower_rounding_allowance": 0.000239604130533,
+              "global_lower": 18960413.053060398,
+              "bound_status_valid": true,
+              "negative_lower": false,
+              "restricted_bound_ignored": false,
+              "reported_seconds": 427.21,
+              "matrix_drop_warnings": [],
+              "loaded_library_identity_valid": true,
+              "expected_model": "full",
+              "parent_report_identity_valid": true
+            },
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 430.4968258049994,
+              "peak_rss_KiB": 1981948,
+              "user_cpu_seconds": 536.670745,
+              "system_cpu_seconds": 0.697657,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          }
+        ],
+        "auxiliary_measurements": [
+          {
+            "stage": "build_network",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 15.296473052003421,
+              "peak_rss_KiB": 236952,
+              "user_cpu_seconds": 15.122826,
+              "system_cpu_seconds": 0.160053,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "build_uc",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 1.7063698010024382,
+              "peak_rss_KiB": 145100,
+              "user_cpu_seconds": 1.587254,
+              "system_cpu_seconds": 0.09432,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "lift_record_0",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 0.754191077001451,
+              "peak_rss_KiB": 148384,
+              "user_cpu_seconds": 0.679395,
+              "system_cpu_seconds": 0.07339,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "lift_check_0",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.114502374999574,
+              "peak_rss_KiB": 259200,
+              "user_cpu_seconds": 3.916083,
+              "system_cpu_seconds": 0.148025,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "lift_record_1",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 0.8045863610022934,
+              "peak_rss_KiB": 148592,
+              "user_cpu_seconds": 0.703876,
+              "system_cpu_seconds": 0.09096399999999999,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "lift_check_1",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.3149532659954275,
+              "peak_rss_KiB": 259204,
+              "user_cpu_seconds": 4.156193,
+              "system_cpu_seconds": 0.129049,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "repair_build",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 1.2598417760018492,
+              "peak_rss_KiB": 95220,
+              "user_cpu_seconds": 1.074966,
+              "system_cpu_seconds": 0.1604,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "repair_check_0",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.2150646619993495,
+              "peak_rss_KiB": 259196,
+              "user_cpu_seconds": 4.020339,
+              "system_cpu_seconds": 0.16350199999999998,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "warm_start_write",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 0.35265667000203393,
+              "peak_rss_KiB": 94932,
+              "user_cpu_seconds": 0.299068,
+              "system_cpu_seconds": 0.036039999999999996,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "fallback_check_0",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.114696611999534,
+              "peak_rss_KiB": 259208,
+              "user_cpu_seconds": 3.935214,
+              "system_cpu_seconds": 0.15626199999999998,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          },
+          {
+            "stage": "fallback_check_1",
+            "measurement": {
+              "returncode": 0,
+              "hard_watchdog_killed": false,
+              "process_wall_seconds": 4.064734929001133,
+              "peak_rss_KiB": 259204,
+              "user_cpu_seconds": 3.858917,
+              "system_cpu_seconds": 0.156144,
+              "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+            }
+          }
+        ]
+      }
+    ],
+    "scope": "Application-layer source-identical base-networkUC; all setup/check costs retained.",
+    "next_predeclared_design": "UC up to480s at1%, direct lift/check all retained incumbent candidates, optional fixed-commitment repair up to120s, no cold full-MIP fallback; source review pending."
+  },
+  "v2": {
+    "allocation": {
+      "total": 600,
+      "uc": 480,
+      "repair": 120,
+      "uc_gap": 0.01,
+      "target_gap": 0.01,
+      "full_mip_fallback": false
+    },
+    "complete": false,
+    "status": "finished",
+    "certificate": {
+      "valid": true,
+      "reason": "floating-point source/matrix primal and status-valid bound",
+      "upper": 19214862.09442548,
+      "lower": 18887471.91316113,
+      "lower_provenance": {
+        "scope": "uc_relaxation",
+        "status": "Time limit reached",
+        "printed_primal": 19214862.0944,
+        "printed_lower": 18887471.9134,
+        "lower_rounding_allowance": 0.000238874719134,
+        "global_lower": 18887471.91316113,
+        "bound_status_valid": true,
+        "negative_lower": false,
+        "restricted_bound_ignored": false,
+        "reported_seconds": 480.03,
+        "matrix_drop_warnings": [],
+        "loaded_library_identity_valid": true,
+        "expected_model": "uc",
+        "parent_report_identity_valid": true,
+        "stage": "uc",
+        "model_sha256": "6b8dccd625cad04948565024d074bcb99232ff6a15c60f8d54aaf73644dd0545",
+        "log_sha256": "76713edec98ff2b3784838602d28b51cc620af00047881b10cfbcbdcf9cd7fa7",
+        "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5"
+      },
+      "gap": 0.01703838308365132,
+      "target_met": false,
+      "negative_objective_case": false
+    },
+    "solver_requested_seconds": 598.7975409329956,
+    "solver_process_wall_seconds": 489.68232658500347,
+    "auxiliary_process_wall_seconds": 37.68896790299914,
+    "within_actual_solver_wall_budget": true,
+    "within_requested_solver_budget": true,
+    "best": {
+      "solution_sha256": "f989cf21df496b6e88fef9ca36aca7a237a6b4a449474d01a7bf3a0d1418dda9",
+      "upper": 19214862.09442548,
+      "origin": "fixed exact u/y/z network LP primal only",
+      "source_linear_cost": 19214862.094425477,
+      "matrix_linear_cost": 19214862.09442548,
+      "true_source_cost": 19214862.094425302,
+      "objective_overpayment": 1.7508864402770996e-07,
+      "total_shed_MWh": 0.0,
+      "max_overflow_MW": 0.0
+    },
+    "total_end_to_end_wall_seconds": 530.7293998150053,
+    "uc_checkpoint_bytes_identical_to_v1": true,
+    "fresh_matched_control": "Not run: preregistered target-success gate failed",
+    "all_incumbent_validation_outcomes": [
+      {
+        "solution_sha256": "cf4b4ee943a3b00a5b405c4ca4c7cd7f09b04b721ad2166ed0fb9dee88aec335",
+        "upper": 20243468.74025403,
+        "origin": "UC incumbent plus deterministic DC lift",
+        "source_linear_cost": 20243468.74025403,
+        "matrix_linear_cost": 20243468.74025395,
+        "true_source_cost": 20243468.740253724,
+        "objective_overpayment": 3.0547380447387695e-07,
+        "total_shed_MWh": 838.8130773763519,
+        "max_overflow_MW": 0.0,
+        "source_pass": true,
+        "matrix_pass": true,
+        "objective_consistent": true,
+        "matrix_rows_checked": 381268,
+        "matrix_columns_checked": 313776,
+        "matrix_max_violations": {
+          "lower_bound": 0.0,
+          "upper_bound": 4.547473508864641e-13,
+          "integrality": 0.0,
+          "row_E": 4.931735020363703e-10,
+          "row_L": 4.831690603168681e-13,
+          "row_G": 2.2737367544323206e-13
+        }
+      },
+      {
+        "solution_sha256": "be7b103152b2a31022602cd4fffd617e614a89df6710aff31e39efa76833b195",
+        "upper": 19299881.030332055,
+        "origin": "UC incumbent plus deterministic DC lift",
+        "source_linear_cost": 19299881.03033205,
+        "matrix_linear_cost": 19299881.030332055,
+        "true_source_cost": 19299881.030331876,
+        "objective_overpayment": 1.7508864402770996e-07,
+        "total_shed_MWh": 0.0,
+        "max_overflow_MW": 0.0,
+        "source_pass": true,
+        "matrix_pass": true,
+        "objective_consistent": true,
+        "matrix_rows_checked": 381268,
+        "matrix_columns_checked": 313776,
+        "matrix_max_violations": {
+          "lower_bound": 0.0,
+          "upper_bound": 4.547473508864641e-13,
+          "integrality": 0.0,
+          "row_E": 4.446008006198099e-10,
+          "row_L": 5.115907697472721e-13,
+          "row_G": 1.1368683772161603e-13
+        }
+      },
+      {
+        "solution_sha256": "1f5438e3828fde02aaf39479c52edfffb42533a4800bac4b9955cc70340b6333",
+        "upper": 19214862.09442553,
+        "origin": "UC incumbent plus deterministic DC lift",
+        "source_linear_cost": 19214862.094425526,
+        "matrix_linear_cost": 19214862.09442553,
+        "true_source_cost": 19214862.09442535,
+        "objective_overpayment": 1.7508864402770996e-07,
+        "total_shed_MWh": 0.0,
+        "max_overflow_MW": 0.0,
+        "source_pass": true,
+        "matrix_pass": true,
+        "objective_consistent": true,
+        "matrix_rows_checked": 381268,
+        "matrix_columns_checked": 313776,
+        "matrix_max_violations": {
+          "lower_bound": 2.85e-11,
+          "upper_bound": 3.2514435588382185e-11,
+          "integrality": 0.0,
+          "row_E": 3.495301825751085e-10,
+          "row_L": 3.2514435588382185e-11,
+          "row_G": 2.85e-11
+        }
+      },
+      {
+        "solution_sha256": "f989cf21df496b6e88fef9ca36aca7a237a6b4a449474d01a7bf3a0d1418dda9",
+        "upper": 19214862.09442548,
+        "origin": "fixed exact u/y/z network LP primal only",
+        "source_linear_cost": 19214862.094425477,
+        "matrix_linear_cost": 19214862.09442548,
+        "true_source_cost": 19214862.094425302,
+        "objective_overpayment": 1.7508864402770996e-07,
+        "total_shed_MWh": 0.0,
+        "max_overflow_MW": 0.0,
+        "source_pass": true,
+        "matrix_pass": true,
+        "objective_consistent": true,
+        "matrix_rows_checked": 381268,
+        "matrix_columns_checked": 313776,
+        "matrix_max_violations": {
+          "lower_bound": 0.0,
+          "upper_bound": 4.547473508864641e-13,
+          "integrality": 0.0,
+          "row_E": 8.75076011652709e-10,
+          "row_L": 4.547473508864641e-13,
+          "row_G": 1.1368683772161603e-13
+        }
+      }
+    ],
+    "supplemental_reported_solver_times": {
+      "method": "read-only extraction from retained raw logs; does not modify approved runtime parser or certificate",
+      "uc_seconds": 480.03,
+      "repair_seconds": 5.76,
+      "sum_seconds": 485.78999999999996,
+      "repair_raw_text": "HiGHS run time      :          5.76",
+      "repair_log_sha256": "99ede5a9f4eef59d3440e968f2e1910ef5e71d5804cd096161d9efa8fe259bb4"
+    },
+    "stages": [
+      {
+        "stage": "uc",
+        "scope": "uc_relaxation",
+        "requested_seconds": 480.0,
+        "measurement": {
+          "returncode": 0,
+          "hard_watchdog_killed": false,
+          "process_wall_seconds": 481.2024590670044,
+          "peak_rss_KiB": 1556516,
+          "user_cpu_seconds": 505.066428,
+          "system_cpu_seconds": 1.503261,
+          "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+        },
+        "report": {
+          "scope": "uc_relaxation",
+          "status": "Time limit reached",
+          "printed_primal": 19214862.0944,
+          "printed_lower": 18887471.9134,
+          "lower_rounding_allowance": 0.000238874719134,
+          "global_lower": 18887471.91316113,
+          "bound_status_valid": true,
+          "negative_lower": false,
+          "restricted_bound_ignored": false,
+          "reported_seconds": 480.03,
+          "matrix_drop_warnings": [],
+          "loaded_library_identity_valid": true,
+          "expected_model": "uc",
+          "parent_report_identity_valid": true
+        }
+      },
+      {
+        "stage": "repair",
+        "scope": "fixed_commitment_repair",
+        "requested_seconds": 118.79754093299562,
+        "measurement": {
+          "returncode": 0,
+          "hard_watchdog_killed": false,
+          "process_wall_seconds": 8.479867517999082,
+          "peak_rss_KiB": 556532,
+          "user_cpu_seconds": 8.218844,
+          "system_cpu_seconds": 0.23724099999999998,
+          "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+        },
+        "report": {
+          "scope": "fixed_commitment_repair",
+          "status": null,
+          "printed_primal": null,
+          "printed_lower": null,
+          "lower_rounding_allowance": null,
+          "global_lower": null,
+          "bound_status_valid": false,
+          "negative_lower": false,
+          "restricted_bound_ignored": true,
+          "reported_seconds": null,
+          "matrix_drop_warnings": [],
+          "loaded_library_identity_valid": true,
+          "expected_model": "repair",
+          "parent_report_identity_valid": false
+        }
+      }
+    ]
+  },
+  "generator_sha256": "840375b6719f4a9ab1070c2cb5f0fcc07eb2e6b5029abfb5d7264d1550d2c489",
+  "source_checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+  "process_measure_sha256": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1"
+}
