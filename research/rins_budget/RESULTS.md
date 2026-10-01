@@ -68,3 +68,10 @@ returned the same independently checked primal and 0.4794% gap using the solver
 dual bound. The direct-child candidate-to-parent delay fell from 19.21 to 0.12
 seconds. This verifies a mechanism, not substantial or stable acceleration;
 see [OUTER_GAP.md](OUTER_GAP.md) for scope, tests, overshoot, and replay.
+
+## Matched two-thread HiPO screen
+
+A later same-build choose/HiPO pair with outer-gap enabled in both was negative:
+choose reached the target at 542.36 s; HiPO stopped at 604.15 s with 1.716% gap.
+Both final primals passed. See [HIPO_RESULTS.md](HIPO_RESULTS.md), including the
+actual OpenBLAS configuration and corrected resource-accounting limitation.

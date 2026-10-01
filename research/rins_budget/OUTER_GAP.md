@@ -47,7 +47,7 @@ Both extracted incumbent files have SHA-256
 `73cac48c5340d775a477087198611862559be250`; do not stack it with the RINS ablations.
 Its SHA-256 is `e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae`.
 The repository's production source/defaults are not changed by storing this
-artifact. When applied, two advanced options are added, both false by default:
+artifact. When applied, two experimental options are added, both false by default:
 
 - `mip_heuristic_outer_gap`: enable the return goal
 - `mip_heuristic_outer_gap_log`: observe and log the same goal
@@ -98,6 +98,7 @@ proof or broad performance validation.
 First prepare the pinned checkout and the PEGASE1354 MPS following
 [`scuc/README.md`](scuc/README.md). Set PACKAGE to this package, WORK to a new
 working directory, MODEL to that generated MPS, and INPUT to its source JSON.gz.
+The shell recipe also requires GNU time at `/usr/bin/time` and GNU timeout.
 The model must match the published SHA-256; do not silently change penalties,
 slack policy, ratings, or formulation between arms.
 

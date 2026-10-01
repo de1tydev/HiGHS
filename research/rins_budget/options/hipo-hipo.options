@@ -1,0 +1,13 @@
+threads = 2
+parallel = off
+mip_rel_gap = 0.01
+write_solution_to_file = true
+write_solution_style = 0
+mip_improving_solution_save = false
+mip_improving_solution_report_sparse = false
+mip_lp_solver = hipo
+mip_ipm_solver = choose
+mip_heuristic_outer_gap = true
+mip_heuristic_outer_gap_log = true
+log_dev_level = 1
+highs_analysis_level = 128

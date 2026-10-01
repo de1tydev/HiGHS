@@ -35,6 +35,9 @@ never run under that stopping target. A useful local incumbent update also does
 not establish net global benefit. Retain negative and incomplete outcomes, and
 use harder representative tuning/holdout cases before proposing a policy change.
 
+A separate same-build optional HiPO/OpenBLAS comparison is documented in
+[`HIPO_RESULTS.md`](HIPO_RESULTS.md), including its negative outcome.
+
 The completed exploratory measurements and their limits are in
 [`RESULTS.md`](RESULTS.md). Compact, sanitized supporting records are in
 [`recorded_results/`](recorded_results/), with zero-gap fixtures and 1%-gap SCUC

@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-10-01T14:48:39.748237+00:00",
+  "source_commit": "73cac48c5340d775a477087198611862559be250",
+  "source_patch_sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae",
+  "build_type": "Release",
+  "HIPO": true,
+  "BUILD_OPENBLAS": true,
+  "openblas_source": "https://github.com/OpenMathLib/OpenBLAS.git",
+  "openblas_tag": "v0.3.30",
+  "openblas_commit": "993fad6aebbce34a97d3f8c34d6d79d35b64cc48",
+  "configure_command": "cmake -S HiGHS-outer-gap -B build-outer-gap-hipo -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DALL_TESTS=ON -DBUILD_EXAMPLES=OFF -DHIPO=ON -DBUILD_OPENBLAS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+  "build_jobs": 4,
+  "ctest_passed": 182,
+  "ctest_total": 182,
+  "ctest_wall_seconds": 46.23,
+  "full_unit_assertions": 1259919,
+  "full_unit_cases": 339,
+  "runtime_blas": {
+    "config": "OpenBLAS 0.3.30 NO_LAPACKE NO_AFFINITY COOPERLAKE SINGLE_THREADED",
+    "core": "COOPERLAKE",
+    "threads": 1,
+    "parallel_backend": 0
+  },
+  "warnings": "OpenBLAS experimental CMake configuration; LTO interface-type warnings in its CBLAS tests. Build and all expanded tests completed successfully.",
+  "sha256": {
+    "build-outer-gap-hipo/bin/highs": "d0e220f9a8f216ed08f4932e5cc92e91d26891489b1ae65f756d226d25deb34d",
+    "build-outer-gap-hipo/lib/libhighs.so.1.15.1": "0f40708306845fcdd1a25b8a744807d01fe4da16bf2b333d7b92fdcdbbbbc575",
+    "build-outer-gap-hipo/lib/libhighs_extras.so": "c15c8415151fc8a093b9e35a8474d1e0b766871e0bfe17e57273b45b81cf238f",
+    "build-outer-gap-hipo/_deps/openblas-build/lib/libopenblas.so": "c7f949f6a432e3611b88faa96c063508e33a380218e64884e17821acd113dbd5",
+    "build-outer-gap-hipo/CMakeCache.txt": "460c76e3d3ce62a7c892cfa84fe1de0293e9c5e022ae7e01ae06e15b76a18cd1",
+    "build-outer-gap-hipo/compile_commands.json": "951622d4c4798852e1625f012b8cff7c30853f0246a26a5d767f25466e7e9598",
+    "run_pg1354_hipo_arm.py": "9b14db42d8150b42b5fd51092823793f0beced7977ac82637b3deacb622335cf"
+  },
+  "protocol": "Same binary, threads=2 parallel=off, gap=0.01, outer-gap=true/log=true, mip_ipm_solver=choose, seed0, choose before hipo, 600 solver seconds, 660 process watchdog, 7GiB RLIMIT_AS, BLAS/OMP/MKL 1, no warm start, independent source checker. Fixed-order single-seed exploratory pair; not stable-speedup validation.",
+  "actual_openblas_dynamic_arch": false,
+  "actual_openblas_build_note": "Configure prints Enabling DYNAMIC_ARCH, but CMakeCache says OFF and runtime config reports fixed COOPERLAKE SINGLE_THREADED. Actual cache/runtime are authoritative."
+}
