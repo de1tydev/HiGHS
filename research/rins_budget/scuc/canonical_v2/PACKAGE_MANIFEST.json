@@ -1,0 +1,54 @@
+{
+  "package": "scuc-canonical-mps-v2",
+  "frozen_v2_manifest_sha256": "98f7010ead6a3b2af8ceb654fcbddc929f274872e185ca700d34c2155a597876",
+  "byte_identical_frozen_modules": [
+    "export_v2.py",
+    "readback.py"
+  ],
+  "frozen_test_sha256": "5e4704da3e81c8cae269938ae3eab6fa3734435e51e2ce156319d97f575d38f5",
+  "public_test_adaptation": [
+    "Relative public generator paths",
+    "Required caller-supplied --library",
+    "Bundled source fixture replaces external smoke-directory dependency",
+    "Legacy MPS checked against complete fixed expected SHA-256",
+    "Preservation hashes cover bundled fixtures instead of external smoke tree; corresponding report key renamed"
+  ],
+  "tests_retained": [
+    "test_01_mixed_bounds_both_frozen_model_classes",
+    "test_02_source_residual_status_must_run_and_network",
+    "test_03_old_bug_reproduction_and_preserved_original_smoke",
+    "test_04_fixed_zero_and_one_bug",
+    "test_05_duplicate_and_unsupported_bounds_rejected",
+    "test_06_unsupported_source_values_rejected",
+    "test_07_every_comparison_field_is_enforced",
+    "test_08_dropped_matrix_warning_fails_closed",
+    "test_09_no_fixed_binary_is_byte_identical",
+    "test_10_cli_portable_export_and_no_overwrite",
+    "test_11_fixed_continuous_lp_expected_dictionary"
+  ],
+  "generator_pins": {
+    "../generate.py": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+    "../large_cases/generate_network_only.py": "840375b6719f4a9ab1070c2cb5f0fcc07eb2e6b5029abfb5d7264d1550d2c489"
+  },
+  "baseline": {
+    "source_commit": "73cac48c5340d775a477087198611862559be250",
+    "library_sha256": "d93351005887232f8cbe3a4057690eddba492108f087a3edb22b00d2f1e9dda8",
+    "highs_int_bytes": 4
+  },
+  "files": {
+    "PROOF.md": "1fe2ac53d9e97dc5cbf389e002d1f8bb7dfd2b81b028b7d2d1b1faa325080296",
+    "README.md": "7ef9793e4df22ebca14ec20d0aeef6961a45e1ce9ee70a2950dfb2ec3619d9e0",
+    "RESULTS.md": "377cf36f6912c9ac3a6b408ea4723a80f719f1e0dcb84c62ec35d4cbc02523cf",
+    "export_v2.py": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+    "fixtures/on_negative.json": "c3894b5526ddec02ee1d5bc2db409f4862e121564ca8b1db30d8648c285bcdd7",
+    "loader_audit_results.json": "235b09af609045d834b3032fac2f98907ab76d3ffe2e35eeea1792b471d29ee6",
+    "readback.py": "4400ec93e891719348dc3c574c4a5f4e1b3b2c26b00825ae4ecef3c977d52755",
+    "test_export.py": "b79025b8162a856b390b136f841c88bb84e73cbaff029f2f8fcdd67e314f7c0f",
+    "validation_results.json": "518b3b5ac530f1b8e347cfed4f98d2e6008ff98965b118865a874f65979f8610"
+  },
+  "related_files": {
+    "../LOADER_FIDELITY.md": "44eaa1ea9a2f6a36ad75c2b068e4c865c95fc285a274fcf2fff9a0a344a213a6"
+  },
+  "models_logs_binaries_bundled": false,
+  "public_packaging_optimization_or_presolve_called": false
+}

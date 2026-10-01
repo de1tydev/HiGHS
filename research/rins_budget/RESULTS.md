@@ -102,3 +102,14 @@ post-run extras-library provenance caveat are retained in NEGATIVE_TRANSFER.md.
 Sparse-angle flow elimination was stopped at its presolve-only gate: it produced
 3.08% more presolved nonzeros and no demonstrated conditioning benefit. No full
 solve or original-model lower-bound transfer was claimed.
+
+## Input serialization validation
+
+A tiny correctness smoke exposed ambiguous fixed-binary bounds in the frozen
+SCUC writer. The additive [canonical v2 exporter](scuc/canonical_v2/README.md)
+fixes that serialization and checks every loaded model field through the actual
+HiGHS API. A retrospective audit found exact identity for eight historical
+matrices, including all PEGASE1354 and screened PEGASE89 inputs; the ninth was
+the already-disclosed full-static smoke with tiny dropped coefficients and no
+incumbent. See [LOADER_FIDELITY.md](scuc/LOADER_FIDELITY.md). This is a correctness
+repair and input-validation result, with no new performance claim.

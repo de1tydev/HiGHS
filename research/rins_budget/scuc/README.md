@@ -2,6 +2,8 @@
 
 Prepared 2026-10-01 from public primary sources. This is a **custom MILP formulation using unchanged public input data**, not an export of the official UnitCommitment.jl JuMP formulation and not an operational grid model. No synthetic ratings, loads or unit multipliers were added.
 
+**For new inputs, use [canonical export v2](canonical_v2/README.md).** The frozen v1 writers below can lose fixed-binary restrictions because they emit both `BV` and `FX`. V2 writes unambiguous bounds and requires exact actual-library readback before accepting an export. The [retrospective loader audit](LOADER_FIDELITY.md) confirms that the historical successful benchmark inputs have no changed bounds; the old files remain unchanged for replay. Synthetic regression fixtures in the v2 directory are separate from the public benchmark datasets.
+
 ## Cases and honest labels
 
 | Official v0.3 dataset, 2017-02-01 | Hours | Buses | Units | Lines | Explicit finite ratings | Listed line outages | Appropriate use |
@@ -16,7 +18,7 @@ The February and August 1 files for case118 and case89pegase are archived. `data
 
 PEGASE89 has 192 LISTED outages, not every possible non-islanding outage. The 18 excluded lines include 16 graph bridges and two additional non-islanding lines, `l65` and `l69`. A passing check covers exactly the supplied 192 line contingencies. There are no listed generator outages. UC.jl describes non-islanding line outages in general, but the actual JSON is authoritative here.
 
-## Reproduce
+## Historical reproduction with frozen v1 files
 
 Python 3 with NumPy and SciPy is required. HiGHS must be built separately from its official source. The measured executable is HiGHS 1.15.1, git `73cac48`, from an unchanged Release build. All timings use one solver thread, parallel search off, seed 0 unless explicitly stated.
 

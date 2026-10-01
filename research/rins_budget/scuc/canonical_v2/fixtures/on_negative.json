@@ -1,0 +1,232 @@
+{
+  "Parameters": {
+    "Version": "0.3",
+    "Time horizon (h)": 3,
+    "Time step (min)": 60,
+    "Power balance penalty ($/MW)": 1000
+  },
+  "Generators": {
+    "g0": {
+      "Bus": "b1",
+      "Production cost curve (MW)": [
+        0.0,
+        2.0
+      ],
+      "Production cost curve ($)": [
+        100.0,
+        102.0
+      ],
+      "Startup costs ($)": [
+        0.0
+      ],
+      "Startup delays (h)": [
+        1
+      ],
+      "Minimum uptime (h)": 1,
+      "Minimum downtime (h)": 1,
+      "Initial status (h)": 8,
+      "Initial power (MW)": 0.0,
+      "Startup limit (MW)": 2.0,
+      "Shutdown limit (MW)": 2.0,
+      "Ramp up limit (MW)": 2.0,
+      "Ramp down limit (MW)": 2.0,
+      "Reserve eligibility": [
+        "r0",
+        "r1"
+      ]
+    },
+    "g1": {
+      "Bus": "b1",
+      "Production cost curve (MW)": [
+        0.0,
+        2.0
+      ],
+      "Production cost curve ($)": [
+        100.0,
+        102.0
+      ],
+      "Startup costs ($)": [
+        0.0
+      ],
+      "Startup delays (h)": [
+        1
+      ],
+      "Minimum uptime (h)": 1,
+      "Minimum downtime (h)": 1,
+      "Initial status (h)": 8,
+      "Initial power (MW)": 0.0,
+      "Startup limit (MW)": 2.0,
+      "Shutdown limit (MW)": 2.0,
+      "Ramp up limit (MW)": 2.0,
+      "Ramp down limit (MW)": 2.0,
+      "Reserve eligibility": [
+        "r1",
+        "r2"
+      ]
+    },
+    "g2": {
+      "Bus": "b1",
+      "Production cost curve (MW)": [
+        0.0,
+        2.0
+      ],
+      "Production cost curve ($)": [
+        100.0,
+        102.0
+      ],
+      "Startup costs ($)": [
+        0.0
+      ],
+      "Startup delays (h)": [
+        1
+      ],
+      "Minimum uptime (h)": 1,
+      "Minimum downtime (h)": 1,
+      "Initial status (h)": 8,
+      "Initial power (MW)": 0.0,
+      "Startup limit (MW)": 2.0,
+      "Shutdown limit (MW)": 2.0,
+      "Ramp up limit (MW)": 2.0,
+      "Ramp down limit (MW)": 2.0,
+      "Reserve eligibility": [
+        "r2",
+        "r3"
+      ]
+    },
+    "g3": {
+      "Bus": "b1",
+      "Production cost curve (MW)": [
+        0.0,
+        2.0
+      ],
+      "Production cost curve ($)": [
+        100.0,
+        102.0
+      ],
+      "Startup costs ($)": [
+        0.0
+      ],
+      "Startup delays (h)": [
+        1
+      ],
+      "Minimum uptime (h)": 1,
+      "Minimum downtime (h)": 1,
+      "Initial status (h)": 8,
+      "Initial power (MW)": 0.0,
+      "Startup limit (MW)": 2.0,
+      "Shutdown limit (MW)": 2.0,
+      "Ramp up limit (MW)": 2.0,
+      "Ramp down limit (MW)": 2.0,
+      "Reserve eligibility": [
+        "r3",
+        "r4"
+      ]
+    },
+    "g4": {
+      "Bus": "b1",
+      "Production cost curve (MW)": [
+        0.0,
+        2.0
+      ],
+      "Production cost curve ($)": [
+        100.0,
+        102.0
+      ],
+      "Startup costs ($)": [
+        0.0
+      ],
+      "Startup delays (h)": [
+        1
+      ],
+      "Minimum uptime (h)": 1,
+      "Minimum downtime (h)": 1,
+      "Initial status (h)": 8,
+      "Initial power (MW)": 0.0,
+      "Startup limit (MW)": 2.0,
+      "Shutdown limit (MW)": 2.0,
+      "Ramp up limit (MW)": 2.0,
+      "Ramp down limit (MW)": 2.0,
+      "Reserve eligibility": [
+        "r4",
+        "r0"
+      ]
+    },
+    "offset": {
+      "Bus": "b1",
+      "Production cost curve (MW)": [
+        0.0
+      ],
+      "Production cost curve ($)": [
+        -600.0
+      ],
+      "Startup costs ($)": [
+        0.0
+      ],
+      "Startup delays (h)": [
+        1
+      ],
+      "Minimum uptime (h)": 1,
+      "Minimum downtime (h)": 1,
+      "Initial status (h)": 8,
+      "Initial power (MW)": 0.0,
+      "Must run?": true,
+      "Startup limit (MW)": 0.0,
+      "Shutdown limit (MW)": 0.0,
+      "Ramp up limit (MW)": 0.0,
+      "Ramp down limit (MW)": 0.0,
+      "Reserve eligibility": []
+    }
+  },
+  "Buses": {
+    "b1": {
+      "Load (MW)": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "b2": {
+      "Load (MW)": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "Transmission lines": {
+    "l": {
+      "Source bus": "b1",
+      "Target bus": "b2",
+      "Susceptance (S)": 1.0,
+      "Normal flow limit (MW)": 200.0
+    }
+  },
+  "Reserves": {
+    "r0": {
+      "Type": "spinning",
+      "Amount (MW)": 1.0,
+      "Shortfall penalty ($/MW)": 500.0
+    },
+    "r1": {
+      "Type": "spinning",
+      "Amount (MW)": 1.0,
+      "Shortfall penalty ($/MW)": 500.0
+    },
+    "r2": {
+      "Type": "spinning",
+      "Amount (MW)": 1.0,
+      "Shortfall penalty ($/MW)": 500.0
+    },
+    "r3": {
+      "Type": "spinning",
+      "Amount (MW)": 1.0,
+      "Shortfall penalty ($/MW)": 500.0
+    },
+    "r4": {
+      "Type": "spinning",
+      "Amount (MW)": 1.0,
+      "Shortfall penalty ($/MW)": 500.0
+    }
+  },
+  "Contingencies": {}
+}
