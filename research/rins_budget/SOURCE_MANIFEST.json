@@ -6,7 +6,9 @@
     "nested-rins-off.patch": "c669de9492b7033aa586ed155ef2f01280298e4c0c3652fa0d9c73f6bb88a361",
     "scuc/generate.py": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
     "scuc/check_solution.py": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
-    "scuc/screen_and_solve.py": "079aca6d9e0cbe4fe31d9f47fc9729d9731edcd7852017f72455397919418b4a"
+    "scuc/screen_and_solve.py": "079aca6d9e0cbe4fe31d9f47fc9729d9731edcd7852017f72455397919418b4a",
+    "scuc/large_cases/generate_network_only.py": "840375b6719f4a9ab1070c2cb5f0fcc07eb2e6b5029abfb5d7264d1550d2c489",
+    "scuc/large_cases/test_fixed_output.py": "cbe94991c26f8b2d2bcb7006972f1416e028375e171988e7da167b1932494976"
   },
   "historical_measured_driver_sha256": "c1659d111fbf0d2a24613b02e5de333c9ec70de0398d5f2e92086401b794fc29",
   "publication_guard_note": "Publication driver rejects reused output directories and solver-reported dropped matrix coefficients. Historical six-arm results used fresh directories and had no such warnings; their original driver hash is preserved separately."

@@ -10,7 +10,7 @@ Prepared 2026-10-01 from public primary sources. This is a **custom MILP formula
 | matpower/case118 | 36 | 118 | 54 | 186 | 0 | 177 | Larger UC control |
 | matpower/case300 | 36 | 300 | 69 | 411 | 0 | 320 | UC control only; not pursued |
 | matpower/case89pegase | 36 | 89 | 12 | 210 | 77 | 192 | Network UC and preventive DC security test |
-| matpower/case1354pegase | 36 | 1354 | 260 | 1991 | 1432 | 1288 | Next larger finite-network input, prep only |
+| matpower/case1354pegase | 36 | 1354 | 260 | 1991 | 1432 | 1288 | Base-network UC only; see separate results |
 
 The February and August 1 files for case118 and case89pegase are archived. `data_manifest.json` has source URLs, hashes of compressed and decompressed bytes, sizes/parameters and source attribution. Hosted data may change, so byte hashes are the reproducibility identity. UC.jl v0.3.0 reference code revision is `6573bb7ea2d5da5eff4a190744edc5a392e90c98`; **do not imply the separately hosted data are pinned by that code commit**.
 
@@ -117,3 +117,22 @@ The source PEGASE data are fictitious research networks, not operational Europea
 ## Publication-time replay guards
 
 The published screening driver requires a new output directory and refuses to certify an original-model bound when HiGHS reports ignored/dropped matrix coefficients. These guards were added after the recorded six-arm experiment. All recorded arms already used fresh directories and had no such warnings, so the observations are unaffected. `SOURCE_MANIFEST.json` at the research-package root retains both the historical measured driver hash and the current published driver hash. Solver-free guard tests are in `scuc/test_driver_hygiene.py`.
+
+## Reproduce the separately scoped PEGASE1354 network model
+
+PEGASE1354 has four generators with single-point production-cost curves. The frozen small-case exporter intentionally requires at least two points; use the separately tested extension `large_cases/generate_network_only.py` for this case. It interprets a single point as fixed production/cost whenever the unit is on, creates no incremental segment for that unit, and skips the unused dense LODF computation for a base-network model. It does not change the input data, penalties, or the frozen small-case exporter. Its CLI deliberately permits only `--mode network`.
+
+From this `scuc` directory:
+
+```sh
+python3 download_data.py --case case1354pegase_2017-02-01
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 large_cases/test_fixed_output.py
+mkdir -p models
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 large_cases/generate_network_only.py \
+  data/case1354pegase_2017-02-01.json.gz --mode network \
+  --output models/case1354_36h_network.mps
+```
+
+The expected generated MPS SHA-256 is `b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060`; exporter SHA-256 is `840375b6719f4a9ab1070c2cb5f0fcc07eb2e6b5029abfb5d7264d1550d2c489`. Run the matched cold-LP option files described in `../RESULTS.md` against those same model bytes. Independently verify the saved final/checkpoint point with the existing `check_solution.py --mode network`. Do not interpret this as a security-contingency solve. The fixed-output test is a small solver-free construction/row/objective test; the separate full case results are recorded under `../recorded_results/`.
+
+Run these validation/export scripts with ordinary Python, without `-O` or `PYTHONOPTIMIZE`; their supported schema and CLI-scope checks use assertions.
