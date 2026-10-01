@@ -1,0 +1,5 @@
+threads = 1
+parallel = off
+mip_rel_gap = 0.0001
+write_solution_to_file = true
+write_solution_style = 0

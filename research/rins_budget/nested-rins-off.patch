@@ -1,0 +1,14 @@
+diff --git a/highs/mip/HighsMipSolver.cpp b/highs/mip/HighsMipSolver.cpp
+index 01630b6..d816d02 100644
+--- a/highs/mip/HighsMipSolver.cpp
++++ b/highs/mip/HighsMipSolver.cpp
+@@ -783,7 +783,8 @@ restart:
+           profiling_->stop(kMipClockDiveRens);
+       }
+     } else {
+-      if (options_mip_->mip_heuristic_run_rins) {
++      // Experimental ablation: preserve main-problem RINS, skip nested RINS.
++      if (options_mip_->mip_heuristic_run_rins && !submip) {
+         if (!mipdata_->parallelLockActive())
+           profiling_->start(kMipClockDiveRins);
+         mipdata_->heuristics.RINS(

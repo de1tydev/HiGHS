@@ -1,0 +1,43 @@
+{
+  "pass_primal": true,
+  "tolerance": 1e-05,
+  "mode": "uc",
+  "hours": 36,
+  "max_violation_by_category": {
+    "shed_bounds": 0,
+    "binary": 0,
+    "transition": 0,
+    "exclusive_transition": 0,
+    "reserve_nonnegative": 3e-13,
+    "dispatch_bounds": 1.8e-12,
+    "startup_power": 1.8e-12,
+    "ramp_up": 1.4e-12,
+    "ramp_down": 2.9999999999999993e-13,
+    "shutdown_power": 1.7e-12,
+    "dispatch_nonnegative": 0,
+    "startup_cost_nonnegative": 0,
+    "minimum_time": 0,
+    "startup_cost_epigraph": 1.3096723705530167e-10,
+    "reserve_shortfall_bound": 0,
+    "reserve_requirement": 0,
+    "system_balance": 1.4495071809506044e-12,
+    "segment_bounds": 7.815970093361102e-13,
+    "segment_dispatch": 1.8474111129762605e-13
+  },
+  "violations_by_category": {},
+  "true_source_cost": 5767414.999062144,
+  "linear_model_cost": 5767414.999062084,
+  "objective_overpayment": -6.05359673500061e-08,
+  "total_shed_MWh": 0.0,
+  "max_overflow_MW": 0.0,
+  "base_unrelaxed_overload_MW": 0,
+  "security": {
+    "violated_pairs": [],
+    "outages_checked": 0,
+    "max_violation_after_shared_slack_MW": 0,
+    "max_unrelaxed_overload_MW": 0,
+    "violated_line_hours": 0
+  },
+  "source_sha256": "b1ac053bec47eae1bbcd8d56afdc212b3ceef7351bc25e33a7d51dff6097b2eb",
+  "solution_sha256": "6e7d72b7a12dd9aadda951af4cedd162bcdcd3a1ffdfeb6cfb92b18fd109b4ee"
+}

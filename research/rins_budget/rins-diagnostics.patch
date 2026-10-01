@@ -1,0 +1,58 @@
+diff --git a/highs/mip/HighsPrimalHeuristics.cpp b/highs/mip/HighsPrimalHeuristics.cpp
+index cb6efd3..b352a3f 100644
+--- a/highs/mip/HighsPrimalHeuristics.cpp
++++ b/highs/mip/HighsPrimalHeuristics.cpp
+@@ -8,6 +8,9 @@
+ #include "mip/HighsPrimalHeuristics.h"
+ 
+ #include <numeric>
++#include <chrono>
++#include <cstdio>
++#include <cstdlib>
+ #include <unordered_set>
+ 
+ #include "../extern/pdqsort/pdqsort.h"
+@@ -660,6 +663,43 @@ retry:
+ 
+ void HighsPrimalHeuristics::RINS(HighsMipWorker& worker,
+                                  const std::vector<double>& relaxationsol) {
++  // Diagnostic-only local fork. No search decisions or solver state changes.
++  // Enabled only for serial runs; clocks are inclusive of nested RINS calls.
++  struct RinsDiagnostic {
++    const HighsMipSolver& solver;
++    HighsMipWorker& worker;
++    bool enabled;
++    std::chrono::steady_clock::time_point start;
++    double upper_before, lower_before;
++    int64_t nodes_before, iterations_before;
++    RinsDiagnostic(const HighsMipSolver& solver_, HighsMipWorker& worker_)
++        : solver(solver_), worker(worker_),
++          enabled(std::getenv("HIGHS_RINS_DIAGNOSTICS") != nullptr &&
++                  !solver.mipdata_->parallelLockActive()),
++          start(std::chrono::steady_clock::now()),
++          upper_before(enabled ? solver.mipdata_->upper_bound : 0),
++          lower_before(enabled ? solver.mipdata_->lower_bound : 0),
++          nodes_before(enabled ? solver.mipdata_->num_nodes : 0),
++          iterations_before(enabled ? worker.getHeurLpIterations() : 0) {}
++    ~RinsDiagnostic() {
++      if (!enabled) return;
++      const auto end = std::chrono::steady_clock::now();
++      const double seconds = std::chrono::duration<double>(end - start).count();
++      const auto start_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(
++          start.time_since_epoch()).count();
++      const auto end_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(
++          end.time_since_epoch()).count();
++      std::fprintf(stderr,
++          "RINS_DIAG,%d,%d,%.17g,%.17g,%.17g,%.17g,%.17g,%lld,%lld,%lld,%lld,%lld,%lld\n",
++          int(solver.submip_level), int(solver.submip), seconds,
++          upper_before, solver.mipdata_->upper_bound,
++          lower_before, solver.mipdata_->lower_bound,
++          (long long)nodes_before, (long long)solver.mipdata_->num_nodes,
++          (long long)iterations_before, (long long)worker.getHeurLpIterations(),
++          (long long)start_ns, (long long)end_ns);
++    }
++  } diagnostic(mipsolver, worker);
++
+   // return if domain is infeasible
+   if (worker.getGlobalDomain().infeasible()) return;
+ 

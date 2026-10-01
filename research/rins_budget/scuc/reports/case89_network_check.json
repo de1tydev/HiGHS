@@ -1,0 +1,96 @@
+{
+  "pass_primal": true,
+  "tolerance": 1e-05,
+  "mode": "network",
+  "hours": 36,
+  "max_violation_by_category": {
+    "shed_bounds": 0,
+    "binary": 0,
+    "transition": 0,
+    "exclusive_transition": 0,
+    "reserve_nonnegative": 3.9e-12,
+    "dispatch_bounds": 1.6e-12,
+    "startup_power": 1.6e-12,
+    "ramp_up": 1.6e-12,
+    "ramp_down": 0,
+    "shutdown_power": 1.6e-12,
+    "dispatch_nonnegative": 0,
+    "startup_cost_nonnegative": 0,
+    "minimum_time": 0,
+    "startup_cost_epigraph": 0,
+    "reserve_shortfall_bound": 0,
+    "reserve_requirement": 2.3021584638627246e-12,
+    "system_balance": 3.710738383233547e-10,
+    "overflow_nonnegative": 0,
+    "direct_base_flow": 3.1525360100204125e-10,
+    "phase_angle_flow": 7.61957608119701e-10,
+    "normal_line_limit": 4.092726157978177e-12,
+    "segment_bounds": 1.0516032489249483e-12,
+    "segment_dispatch": 5.24664756085258e-11
+  },
+  "violations_by_category": {},
+  "true_source_cost": 3203022.0651254323,
+  "linear_model_cost": 3203022.065125441,
+  "objective_overpayment": 8.847564458847046e-09,
+  "total_shed_MWh": 0.0,
+  "max_overflow_MW": 0.0,
+  "base_unrelaxed_overload_MW": 4.092726157978177e-12,
+  "security": {
+    "violated_pairs": [
+      [
+        65,
+        7
+      ],
+      [
+        65,
+        67
+      ],
+      [
+        65,
+        159
+      ],
+      [
+        65,
+        179
+      ],
+      [
+        65,
+        208
+      ],
+      [
+        96,
+        179
+      ],
+      [
+        159,
+        65
+      ],
+      [
+        159,
+        66
+      ],
+      [
+        179,
+        66
+      ],
+      [
+        179,
+        96
+      ],
+      [
+        203,
+        83
+      ],
+      [
+        208,
+        66
+      ]
+    ],
+    "outages_checked": 192,
+    "max_violation_after_shared_slack_MW": 1204.2861437876568,
+    "max_unrelaxed_overload_MW": 1204.2861437876568,
+    "violated_line_hours": 314
+  },
+  "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+  "solution_sha256": "4ad943778b8d86e27907782eca1d606447b993518910a36b56d138daa53d2fe0"
+}

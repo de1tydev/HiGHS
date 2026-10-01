@@ -1,0 +1,6 @@
+# User's requested 1% target; smoke.options is deliberately stricter at 0.01%.
+threads = 1
+parallel = off
+mip_rel_gap = 0.01
+write_solution_to_file = true
+write_solution_style = 0

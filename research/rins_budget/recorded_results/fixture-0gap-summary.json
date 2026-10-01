@@ -1,0 +1,222 @@
+[
+  {
+    "model": "small_mip",
+    "default": {
+      "median_seconds": 0.00044929981231689453,
+      "min_seconds": 0.00037097930908203125,
+      "max_seconds": 0.0004906654357910156,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 0.0,
+      "median_simplex_iterations": 0.0
+    },
+    "no-rins": {
+      "median_seconds": 0.00044524669647216797,
+      "min_seconds": 0.00034236907958984375,
+      "max_seconds": 0.0005638599395751953,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 0.0,
+      "median_simplex_iterations": 0.0
+    },
+    "no_rins_over_default": 0.9909790395330327
+  },
+  {
+    "model": "flugpl",
+    "default": {
+      "median_seconds": 0.10178256034851074,
+      "min_seconds": 0.09645581245422363,
+      "max_seconds": 0.11002039909362793,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 89.0,
+      "median_simplex_iterations": 866.0
+    },
+    "no-rins": {
+      "median_seconds": 0.10242974758148193,
+      "min_seconds": 0.09919500350952148,
+      "max_seconds": 0.10688161849975586,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 89.0,
+      "median_simplex_iterations": 866.0
+    },
+    "no_rins_over_default": 1.006358527735549
+  },
+  {
+    "model": "lseu",
+    "default": {
+      "median_seconds": 0.23156392574310303,
+      "min_seconds": 0.20737481117248535,
+      "max_seconds": 0.29070162773132324,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 9.0,
+      "median_simplex_iterations": 2176.0
+    },
+    "no-rins": {
+      "median_seconds": 0.2430039644241333,
+      "min_seconds": 0.16350078582763672,
+      "max_seconds": 0.2633020877838135,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 9.0,
+      "median_simplex_iterations": 2048.0
+    },
+    "no_rins_over_default": 1.0494033716362274
+  },
+  {
+    "model": "egout",
+    "default": {
+      "median_seconds": 0.015929341316223145,
+      "min_seconds": 0.014340877532958984,
+      "max_seconds": 0.01735210418701172,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 39.0
+    },
+    "no-rins": {
+      "median_seconds": 0.015608072280883789,
+      "min_seconds": 0.014104127883911133,
+      "max_seconds": 0.017103910446166992,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 39.0
+    },
+    "no_rins_over_default": 0.9798316183348924
+  },
+  {
+    "model": "gt2",
+    "default": {
+      "median_seconds": 0.044379234313964844,
+      "min_seconds": 0.03870749473571777,
+      "max_seconds": 0.04764914512634277,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 222.0
+    },
+    "no-rins": {
+      "median_seconds": 0.045250892639160156,
+      "min_seconds": 0.04120063781738281,
+      "max_seconds": 0.05008959770202637,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 222.0
+    },
+    "no_rins_over_default": 1.019641130332008
+  },
+  {
+    "model": "rgn",
+    "default": {
+      "median_seconds": 0.20856070518493652,
+      "min_seconds": 0.16972613334655762,
+      "max_seconds": 0.27396273612976074,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 1574.0
+    },
+    "no-rins": {
+      "median_seconds": 0.22695708274841309,
+      "min_seconds": 0.18907904624938965,
+      "max_seconds": 0.26471781730651855,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 1564.0
+    },
+    "no_rins_over_default": 1.088206345232502
+  },
+  {
+    "model": "bell5",
+    "default": {
+      "median_seconds": 0.5683838129043579,
+      "min_seconds": 0.3748440742492676,
+      "max_seconds": 0.6142163276672363,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 628.0,
+      "median_simplex_iterations": 2597.0
+    },
+    "no-rins": {
+      "median_seconds": 0.3715496063232422,
+      "min_seconds": 0.36185574531555176,
+      "max_seconds": 0.4986233711242676,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 409.0,
+      "median_simplex_iterations": 2265.0
+    },
+    "no_rins_over_default": 0.6536949115856734
+  },
+  {
+    "model": "sp150x300d",
+    "default": {
+      "median_seconds": 0.10064876079559326,
+      "min_seconds": 0.06482720375061035,
+      "max_seconds": 0.1414027214050293,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 673.0
+    },
+    "no-rins": {
+      "median_seconds": 0.09783685207366943,
+      "min_seconds": 0.0678255558013916,
+      "max_seconds": 0.12012076377868652,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 1.0,
+      "median_simplex_iterations": 515.0
+    },
+    "no_rins_over_default": 0.9720621625174848
+  },
+  {
+    "model": "p0548",
+    "default": {
+      "median_seconds": 0.07623159885406494,
+      "min_seconds": 0.06361222267150879,
+      "max_seconds": 0.08562636375427246,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 0.0,
+      "median_simplex_iterations": 332.0
+    },
+    "no-rins": {
+      "median_seconds": 0.07989168167114258,
+      "min_seconds": 0.061284780502319336,
+      "max_seconds": 0.08564400672912598,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 0.0,
+      "median_simplex_iterations": 332.0
+    },
+    "no_rins_over_default": 1.0480126728560997
+  },
+  {
+    "model": "dcmulti",
+    "default": {
+      "median_seconds": 1.5501865148544312,
+      "min_seconds": 1.2686834335327148,
+      "max_seconds": 2.9352331161499023,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 11.0,
+      "median_simplex_iterations": 9754.0
+    },
+    "no-rins": {
+      "median_seconds": 0.7635453939437866,
+      "min_seconds": 0.7438101768493652,
+      "max_seconds": 1.3588733673095703,
+      "optimal": 6,
+      "runs": 6,
+      "median_nodes": 11.0,
+      "median_simplex_iterations": 6154.0
+    },
+    "no_rins_over_default": 0.4925506618895383
+  }
+]
