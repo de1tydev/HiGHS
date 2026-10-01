@@ -1,0 +1,1669 @@
+{
+  "scope": "2017-02-01 PEGASE89, 36 hours, custom preventive DC soft UC; 192 source-listed outages; not all 210 or UC.jl default formulation parity",
+  "source_base_commit": "73cac48c5340d775a477087198611862559be250",
+  "reviewed_manifest_sha256": "67a5ea2aad2387b6cde826ec72df3e17fed46a21a6e7e79b43cc1cc06f500695",
+  "case_date": "2017-02-01",
+  "seed": 0,
+  "cold_start_definition": "Every arm starts with an empty pair cache and no incumbent or basis; no learned 12- or 23-pair input; not a hardware or page-cache flush",
+  "comparison": {
+    "valid_comparison": true,
+    "metrics": {
+      "standalone_equivalent_e2e_seconds": {
+        "baseline": 46.31704870000249,
+        "candidate": 39.75256132100185,
+        "reduction_fraction": 0.14172939691211983
+      },
+      "solver_process_wall_seconds": {
+        "baseline": 36.9159149069892,
+        "candidate": 26.858685208004317,
+        "reduction_fraction": 0.27243614913308767
+      }
+    },
+    "development_gate_pass": false,
+    "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm"
+  },
+  "common_setup_seconds": 0.35115507899899967,
+  "actual_pair_e2e_including_archival_seconds": 85.72642193699721,
+  "policy": {
+    "gap": 0.01,
+    "threads": 2,
+    "parallel": "off",
+    "presolve": "on",
+    "mip_initial_root_ipx": false,
+    "mip_heuristic_outer_gap": true,
+    "lp_calls_max": 3,
+    "lp_process_seconds_max_per_call": 10.0,
+    "lp_total_process_seconds_max": 30.0,
+    "arm_aggregate_solver_process_budget_seconds": 600.0,
+    "memory_limit_bytes": 7516192768,
+    "LP_bound_or_point_carry": false,
+    "warm_starts": false,
+    "pilot_gate": "At least 20% reduction on both summed solver process and standalone-equivalent E2E; failed, stopped without held-out runs"
+  },
+  "arms": {
+    "cold_integer": {
+      "receipt": {
+        "end_to_end_seconds": 45.96589362100349,
+        "summary_sha256": "f5428cea734ef963c14ecb14b1732c80a9aea68b8c0975302f63b34c69ca88d7",
+        "common_setup_seconds": 0.35115507899899967,
+        "standalone_equivalent_e2e_seconds": 46.31704870000249,
+        "timing": "starts before source/runtime verification; stops after all checks and durable summary; this timing receipt is pair archival",
+        "complete": true,
+        "solver_process_wall_seconds": 36.9159149069892
+      },
+      "certificate": {
+        "valid": true,
+        "complete": true,
+        "reason": "checked source/matrix integer primal and original-master numerical bound",
+        "upper": 3534678.7624266683,
+        "lower": 3499824.9019100014,
+        "gap": 0.009860545429802687,
+        "target_met": true,
+        "budget_valid": true,
+        "lp_policy_valid": true
+      },
+      "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+      "initial_pairs": [],
+      "final_pairs": [
+        [
+          65,
+          7
+        ],
+        [
+          65,
+          67
+        ],
+        [
+          65,
+          159
+        ],
+        [
+          65,
+          179
+        ],
+        [
+          65,
+          208
+        ],
+        [
+          96,
+          179
+        ],
+        [
+          159,
+          65
+        ],
+        [
+          159,
+          66
+        ],
+        [
+          179,
+          66
+        ],
+        [
+          179,
+          96
+        ],
+        [
+          203,
+          83
+        ],
+        [
+          208,
+          66
+        ]
+      ],
+      "lp_seed_pairs": [],
+      "checked_outage_ids": [
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c36",
+        "c37",
+        "c38",
+        "c39",
+        "c40",
+        "c41",
+        "c42",
+        "c43",
+        "c44",
+        "c45",
+        "c46",
+        "c47",
+        "c48",
+        "c50",
+        "c52",
+        "c53",
+        "c54",
+        "c55",
+        "c56",
+        "c57",
+        "c58",
+        "c59",
+        "c60",
+        "c61",
+        "c62",
+        "c63",
+        "c64",
+        "c66",
+        "c67",
+        "c68",
+        "c70",
+        "c71",
+        "c72",
+        "c73",
+        "c74",
+        "c75",
+        "c76",
+        "c77",
+        "c78",
+        "c79",
+        "c80",
+        "c81",
+        "c84",
+        "c85",
+        "c87",
+        "c88",
+        "c89",
+        "c90",
+        "c91",
+        "c92",
+        "c93",
+        "c94",
+        "c96",
+        "c97",
+        "c99",
+        "c100",
+        "c101",
+        "c102",
+        "c103",
+        "c104",
+        "c105",
+        "c106",
+        "c107",
+        "c108",
+        "c109",
+        "c110",
+        "c111",
+        "c112",
+        "c113",
+        "c114",
+        "c115",
+        "c116",
+        "c117",
+        "c118",
+        "c119",
+        "c120",
+        "c121",
+        "c122",
+        "c123",
+        "c124",
+        "c125",
+        "c126",
+        "c127",
+        "c128",
+        "c130",
+        "c131",
+        "c132",
+        "c133",
+        "c134",
+        "c135",
+        "c136",
+        "c138",
+        "c139",
+        "c140",
+        "c141",
+        "c142",
+        "c143",
+        "c144",
+        "c145",
+        "c146",
+        "c147",
+        "c148",
+        "c149",
+        "c150",
+        "c151",
+        "c152",
+        "c154",
+        "c156",
+        "c157",
+        "c158",
+        "c159",
+        "c160",
+        "c161",
+        "c162",
+        "c163",
+        "c164",
+        "c165",
+        "c166",
+        "c167",
+        "c168",
+        "c169",
+        "c170",
+        "c171",
+        "c172",
+        "c173",
+        "c174",
+        "c175",
+        "c176",
+        "c177",
+        "c178",
+        "c179",
+        "c180",
+        "c181",
+        "c182",
+        "c183",
+        "c184",
+        "c185",
+        "c186",
+        "c187",
+        "c188",
+        "c189",
+        "c190",
+        "c191",
+        "c192",
+        "c193",
+        "c194",
+        "c195",
+        "c196",
+        "c197",
+        "c198",
+        "c199",
+        "c200",
+        "c201",
+        "c202",
+        "c204",
+        "c207",
+        "c208",
+        "c209"
+      ],
+      "eligible_pair_count": 14721,
+      "budget": {
+        "total": 600.0,
+        "solver_process_wall_seconds": 36.9159149069892,
+        "lp_process_wall_seconds": 0.0,
+        "lp_calls": 0,
+        "remaining": 563.0840850930108,
+        "lp_policy_valid": true,
+        "in_budget": true,
+        "calls": [
+          {
+            "kind": "mip",
+            "allocation": 600.0,
+            "actual": 11.636904896993656,
+            "overrun": 0.0
+          },
+          {
+            "kind": "mip",
+            "allocation": 588.3630951030063,
+            "actual": 25.279010009995545,
+            "overrun": 0.0
+          }
+        ]
+      },
+      "stage_wall_seconds": {
+        "generation_readback": 2.8141942899819696,
+        "lp_separation": 0,
+        "integer_checks": 4.668429527999251,
+        "lp_solving": 0.0,
+        "integer_solving": 36.9159149069892
+      },
+      "resource_accounting": {
+        "child_user_cpu_seconds": 52.072829,
+        "child_system_cpu_seconds": 0.8986839999999999,
+        "child_peak_rss_KiB": 355732,
+        "child_resource_accounting_complete": true,
+        "parent_cpu_seconds": 1.452402416,
+        "parent_process_cumulative_peak_rss_KiB": 71748,
+        "parent_rss_scope": "cumulative lifetime peak of shared pair Python parent; second arm may inherit an earlier peak"
+      },
+      "stages": [
+        {
+          "kind": "mip",
+          "active_pairs": [],
+          "allocation_seconds": 600.0,
+          "solver": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 11.636904896993656,
+            "peak_rss_KiB": 146500,
+            "user_cpu_seconds": 13.480744,
+            "system_cpu_seconds": 0.11436099999999999,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "generate_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.3567063519876683,
+            "peak_rss_KiB": 103172,
+            "user_cpu_seconds": 1.221442,
+            "system_cpu_seconds": 0.10102,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 2.2591123720048927,
+            "peak_rss_KiB": 76700,
+            "user_cpu_seconds": 2.179916,
+            "system_cpu_seconds": 0.060342,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model": {
+            "input_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+            "exporter_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+            "expected_sha256": "76a01a307cc37105ef6062241aaf2f6ffb30e1b314e26de586c870c698c3d500",
+            "rows": 23676,
+            "columns": 21096,
+            "binaries": 1296,
+            "nonzeros": 80103,
+            "fixed_binaries": 0,
+            "mps_bytes": 3896887,
+            "mps_sha256": "c66078c82109259dec1e61fce5842f5e3d174baa3d5ad0a4887e8c092ad2f49b",
+            "api_fidelity_verified": true,
+            "readback_sha256": "39a15c9653d8836d692a47502de8e456ac33932f7f92fa25d26b7f62c8b45095",
+            "lp_only_integrality_changed": false,
+            "integer_source_restored": true,
+            "integrality_scope": "original_integer"
+          },
+          "report": {
+            "scope": "original_security_master_mip",
+            "status": "Optimal",
+            "usable_status": true,
+            "bound_status_valid": true,
+            "certificate_bound_eligible": true,
+            "printed_lower": 3171488.92055,
+            "raw_lower_token": "3171488.92055",
+            "lower_rounding_allowance": 3.67148892055e-05,
+            "global_lower": 3171488.920513285,
+            "clean_return": true,
+            "loaded_library_identity_valid": true,
+            "identities_valid": true,
+            "parent_report_identity_valid": true,
+            "model_definition_diagnostics": []
+          },
+          "matrix_check": {
+            "passed": true,
+            "exact_column_names": true,
+            "integrality_scope": "original_integer",
+            "linear_objective": 3203022.065125434,
+            "point_sha256": "4dc65d8d46db58ba283c6ae519cb99aba16af9afbc0a66f3f04219d60170e5fe",
+            "tolerance": 1e-05,
+            "violations_by_category": {},
+            "max_violation_by_category": {
+              "row": 7.668177204323001e-10,
+              "lower_bound": 3.9e-12,
+              "upper_bound": 1.0516032489249483e-12,
+              "integrality": 0.0
+            },
+            "model_sha256": "c66078c82109259dec1e61fce5842f5e3d174baa3d5ad0a4887e8c092ad2f49b",
+            "expected_sha256": "76a01a307cc37105ef6062241aaf2f6ffb30e1b314e26de586c870c698c3d500",
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "4ad943778b8d86e27907782eca1d606447b993518910a36b56d138daa53d2fe0",
+            "pair_manifest_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+          },
+          "new_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "source_check": {
+            "pass_primal": false,
+            "tolerance": 1e-05,
+            "mode": "n1",
+            "hours": 36,
+            "max_violation_by_category": {
+              "shed_bounds": 0.0,
+              "binary": 0.0,
+              "transition": 0.0,
+              "exclusive_transition": 0.0,
+              "reserve_nonnegative": 3.9e-12,
+              "dispatch_bounds": 1.6e-12,
+              "startup_power": 1.6e-12,
+              "ramp_up": 1.6e-12,
+              "ramp_down": 0.0,
+              "shutdown_power": 1.6e-12,
+              "dispatch_nonnegative": 0.0,
+              "startup_cost_nonnegative": 0.0,
+              "minimum_time": 0.0,
+              "startup_cost_epigraph": 0.0,
+              "reserve_shortfall_bound": 0.0,
+              "reserve_requirement": 2.3021584638627246e-12,
+              "system_balance": 3.710738383233547e-10,
+              "reference_angle": 0.0,
+              "overflow_nonnegative": 0.0,
+              "direct_base_flow": 3.1525360100204125e-10,
+              "phase_angle_flow": 7.61957608119701e-10,
+              "normal_line_limit": 4.092726157978177e-12,
+              "emergency_line_limit": 1204.2861437876568,
+              "segment_bounds": 1.0516032489249483e-12,
+              "segment_dispatch": 5.24664756085258e-11
+            },
+            "violations_by_category": {
+              "emergency_line_limit": 314
+            },
+            "true_source_cost": 3203022.0651254323,
+            "linear_model_cost": 3203022.065125441,
+            "objective_overpayment": 8.847564458847046e-09,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "base_unrelaxed_overload_MW": 4.092726157978177e-12,
+            "security": {
+              "violated_pairs": [
+                [
+                  65,
+                  7
+                ],
+                [
+                  65,
+                  67
+                ],
+                [
+                  65,
+                  159
+                ],
+                [
+                  65,
+                  179
+                ],
+                [
+                  65,
+                  208
+                ],
+                [
+                  96,
+                  179
+                ],
+                [
+                  159,
+                  65
+                ],
+                [
+                  159,
+                  66
+                ],
+                [
+                  179,
+                  66
+                ],
+                [
+                  179,
+                  96
+                ],
+                [
+                  203,
+                  83
+                ],
+                [
+                  208,
+                  66
+                ]
+              ],
+              "outages_checked": 192,
+              "max_violation_after_shared_slack_MW": 1204.2861437876568,
+              "max_unrelaxed_overload_MW": 1204.2861437876568,
+              "violated_line_hours": 314
+            },
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "4ad943778b8d86e27907782eca1d606447b993518910a36b56d138daa53d2fe0"
+          },
+          "checked_upper": null,
+          "full_source_primal_pass": false,
+          "solution_sha256": "4ad943778b8d86e27907782eca1d606447b993518910a36b56d138daa53d2fe0",
+          "raw_stage_hashes": {
+            "record.json": "bfc93f4e2b2a7569d3a7dd00f95834b344409bfaa06d7d88f9f471064acfce19",
+            "solver.log": "2052def708a0a58b7e0249ec92c24cff151380026e7ce715dde98a4bdc52029c",
+            "check.json": "718dda80df2e7c8483a1ab6703d4897cb1fb10488e005613407620ce4a8136a9",
+            "master.mps.readback.json": "39a15c9653d8836d692a47502de8e456ac33932f7f92fa25d26b7f62c8b45095"
+          }
+        },
+        {
+          "kind": "mip",
+          "active_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "allocation_seconds": 588.3630951030063,
+          "solver": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 25.279010009995545,
+            "peak_rss_KiB": 355732,
+            "user_cpu_seconds": 31.578378,
+            "system_cpu_seconds": 0.43868399999999996,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "generate_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.4574879379943013,
+            "peak_rss_KiB": 105164,
+            "user_cpu_seconds": 1.311932,
+            "system_cpu_seconds": 0.098581,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 2.4093171559943585,
+            "peak_rss_KiB": 77148,
+            "user_cpu_seconds": 2.300417,
+            "system_cpu_seconds": 0.085696,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model": {
+            "input_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+            "exporter_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+            "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+            "rows": 24540,
+            "columns": 21096,
+            "binaries": 1296,
+            "nonzeros": 82695,
+            "fixed_binaries": 0,
+            "mps_bytes": 4018423,
+            "mps_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+            "api_fidelity_verified": true,
+            "readback_sha256": "6a07958a14739bd51f1921ea9c5832e7ea7f6a6b963ae36c6b14ab8e66b2a4a6",
+            "lp_only_integrality_changed": false,
+            "integer_source_restored": true,
+            "integrality_scope": "original_integer"
+          },
+          "report": {
+            "scope": "original_security_master_mip",
+            "status": "Optimal",
+            "usable_status": true,
+            "bound_status_valid": true,
+            "certificate_bound_eligible": true,
+            "printed_lower": 3499824.90195,
+            "raw_lower_token": "3499824.90195",
+            "lower_rounding_allowance": 3.999824901949999e-05,
+            "global_lower": 3499824.9019100014,
+            "clean_return": true,
+            "loaded_library_identity_valid": true,
+            "identities_valid": true,
+            "parent_report_identity_valid": true,
+            "model_definition_diagnostics": []
+          },
+          "matrix_check": {
+            "passed": true,
+            "exact_column_names": true,
+            "integrality_scope": "original_integer",
+            "linear_objective": 3534678.762426666,
+            "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+            "tolerance": 1e-05,
+            "violations_by_category": {},
+            "max_violation_by_category": {
+              "row": 7.401865786960116e-10,
+              "lower_bound": 0.0,
+              "upper_bound": 5.684341886080802e-14,
+              "integrality": 0.0
+            },
+            "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+            "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+            "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e"
+          },
+          "new_pairs": [],
+          "source_check": {
+            "pass_primal": true,
+            "tolerance": 1e-05,
+            "mode": "n1",
+            "hours": 36,
+            "max_violation_by_category": {
+              "shed_bounds": 0.0,
+              "binary": 0.0,
+              "transition": 0.0,
+              "exclusive_transition": 0.0,
+              "reserve_nonnegative": 0.0,
+              "dispatch_bounds": 0.0,
+              "startup_power": 0.0,
+              "ramp_up": 0.0,
+              "ramp_down": 0.0,
+              "shutdown_power": 0.0,
+              "dispatch_nonnegative": 0.0,
+              "startup_cost_nonnegative": 0.0,
+              "minimum_time": 0.0,
+              "startup_cost_epigraph": 0.0,
+              "reserve_shortfall_bound": 0.0,
+              "reserve_requirement": 0.0,
+              "system_balance": 2.1373125491663814e-11,
+              "reference_angle": 0.0,
+              "overflow_nonnegative": 0.0,
+              "direct_base_flow": 2.3987922759260982e-11,
+              "phase_angle_flow": 7.450466910086107e-10,
+              "normal_line_limit": 0.0,
+              "emergency_line_limit": 2.262368070660159e-11,
+              "segment_bounds": 5.684341886080802e-14,
+              "segment_dispatch": 4.547473508864641e-13
+            },
+            "violations_by_category": {},
+            "true_source_cost": 3534678.7624266716,
+            "linear_model_cost": 3534678.7624266683,
+            "objective_overpayment": -3.259629011154175e-09,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "base_unrelaxed_overload_MW": 0.0,
+            "security": {
+              "violated_pairs": [],
+              "outages_checked": 192,
+              "max_violation_after_shared_slack_MW": 2.262368070660159e-11,
+              "max_unrelaxed_overload_MW": 2.262368070660159e-11,
+              "violated_line_hours": 0
+            },
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad"
+          },
+          "checked_upper": 3534678.7624266683,
+          "full_source_primal_pass": true,
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+          "raw_stage_hashes": {
+            "record.json": "962d606da2a62e3732db5ddf2c9b2e97a7283641549c3f636257694057b0225d",
+            "solver.log": "142521f2c987107d9b6c3d062f3838e9463b853dc462477e4b88715b26739b79",
+            "check.json": "09f75d864cffb99c14e282a88d390f8e2a94cf39ac7ed278d9642cf6e8a49677",
+            "master.mps.readback.json": "6a07958a14739bd51f1921ea9c5832e7ea7f6a6b963ae36c6b14ab8e66b2a4a6"
+          }
+        }
+      ]
+    },
+    "lp_discovery": {
+      "receipt": {
+        "end_to_end_seconds": 39.40140624200285,
+        "summary_sha256": "c3d3d024cb3bfb21ba58f13d6e326807f317621790e66e2032314f5dfbd63f67",
+        "common_setup_seconds": 0.35115507899899967,
+        "standalone_equivalent_e2e_seconds": 39.75256132100185,
+        "timing": "starts before source/runtime verification; stops after all checks and durable summary; this timing receipt is pair archival",
+        "complete": true,
+        "solver_process_wall_seconds": 26.858685208004317
+      },
+      "certificate": {
+        "valid": true,
+        "complete": true,
+        "reason": "checked source/matrix integer primal and original-master numerical bound",
+        "upper": 3534678.7624266683,
+        "lower": 3499824.9019100014,
+        "gap": 0.009860545429802687,
+        "target_met": true,
+        "budget_valid": true,
+        "lp_policy_valid": true
+      },
+      "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+      "initial_pairs": [],
+      "final_pairs": [
+        [
+          65,
+          7
+        ],
+        [
+          65,
+          67
+        ],
+        [
+          65,
+          159
+        ],
+        [
+          65,
+          179
+        ],
+        [
+          65,
+          208
+        ],
+        [
+          96,
+          179
+        ],
+        [
+          159,
+          65
+        ],
+        [
+          159,
+          66
+        ],
+        [
+          179,
+          66
+        ],
+        [
+          179,
+          96
+        ],
+        [
+          203,
+          83
+        ],
+        [
+          208,
+          66
+        ]
+      ],
+      "lp_seed_pairs": [
+        [
+          65,
+          7
+        ],
+        [
+          65,
+          67
+        ],
+        [
+          65,
+          159
+        ],
+        [
+          65,
+          179
+        ],
+        [
+          65,
+          208
+        ],
+        [
+          96,
+          179
+        ],
+        [
+          159,
+          65
+        ],
+        [
+          159,
+          66
+        ],
+        [
+          179,
+          66
+        ],
+        [
+          179,
+          96
+        ],
+        [
+          203,
+          83
+        ],
+        [
+          208,
+          66
+        ]
+      ],
+      "checked_outage_ids": [
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32",
+        "c33",
+        "c34",
+        "c35",
+        "c36",
+        "c37",
+        "c38",
+        "c39",
+        "c40",
+        "c41",
+        "c42",
+        "c43",
+        "c44",
+        "c45",
+        "c46",
+        "c47",
+        "c48",
+        "c50",
+        "c52",
+        "c53",
+        "c54",
+        "c55",
+        "c56",
+        "c57",
+        "c58",
+        "c59",
+        "c60",
+        "c61",
+        "c62",
+        "c63",
+        "c64",
+        "c66",
+        "c67",
+        "c68",
+        "c70",
+        "c71",
+        "c72",
+        "c73",
+        "c74",
+        "c75",
+        "c76",
+        "c77",
+        "c78",
+        "c79",
+        "c80",
+        "c81",
+        "c84",
+        "c85",
+        "c87",
+        "c88",
+        "c89",
+        "c90",
+        "c91",
+        "c92",
+        "c93",
+        "c94",
+        "c96",
+        "c97",
+        "c99",
+        "c100",
+        "c101",
+        "c102",
+        "c103",
+        "c104",
+        "c105",
+        "c106",
+        "c107",
+        "c108",
+        "c109",
+        "c110",
+        "c111",
+        "c112",
+        "c113",
+        "c114",
+        "c115",
+        "c116",
+        "c117",
+        "c118",
+        "c119",
+        "c120",
+        "c121",
+        "c122",
+        "c123",
+        "c124",
+        "c125",
+        "c126",
+        "c127",
+        "c128",
+        "c130",
+        "c131",
+        "c132",
+        "c133",
+        "c134",
+        "c135",
+        "c136",
+        "c138",
+        "c139",
+        "c140",
+        "c141",
+        "c142",
+        "c143",
+        "c144",
+        "c145",
+        "c146",
+        "c147",
+        "c148",
+        "c149",
+        "c150",
+        "c151",
+        "c152",
+        "c154",
+        "c156",
+        "c157",
+        "c158",
+        "c159",
+        "c160",
+        "c161",
+        "c162",
+        "c163",
+        "c164",
+        "c165",
+        "c166",
+        "c167",
+        "c168",
+        "c169",
+        "c170",
+        "c171",
+        "c172",
+        "c173",
+        "c174",
+        "c175",
+        "c176",
+        "c177",
+        "c178",
+        "c179",
+        "c180",
+        "c181",
+        "c182",
+        "c183",
+        "c184",
+        "c185",
+        "c186",
+        "c187",
+        "c188",
+        "c189",
+        "c190",
+        "c191",
+        "c192",
+        "c193",
+        "c194",
+        "c195",
+        "c196",
+        "c197",
+        "c198",
+        "c199",
+        "c200",
+        "c201",
+        "c202",
+        "c204",
+        "c207",
+        "c208",
+        "c209"
+      ],
+      "eligible_pair_count": 14721,
+      "budget": {
+        "total": 600.0,
+        "solver_process_wall_seconds": 26.858685208004317,
+        "lp_process_wall_seconds": 1.2114354789955541,
+        "lp_calls": 2,
+        "remaining": 573.1413147919957,
+        "lp_policy_valid": true,
+        "in_budget": true,
+        "calls": [
+          {
+            "kind": "lp",
+            "allocation": 10.0,
+            "actual": 0.6547384279983817,
+            "overrun": 0.0
+          },
+          {
+            "kind": "lp",
+            "allocation": 10.0,
+            "actual": 0.5566970509971725,
+            "overrun": 0.0
+          },
+          {
+            "kind": "mip",
+            "allocation": 598.7885645210044,
+            "actual": 25.647249729008763,
+            "overrun": 0.0
+          }
+        ]
+      },
+      "stage_wall_seconds": {
+        "generation_readback": 4.2771400610072305,
+        "lp_separation": 3.4683310670079663,
+        "integer_checks": 2.4631040439999197,
+        "lp_solving": 1.2114354789955541,
+        "integer_solving": 25.647249729008763
+      },
+      "resource_accounting": {
+        "child_user_cpu_seconds": 42.749494999999996,
+        "child_system_cpu_seconds": 1.076579,
+        "child_peak_rss_KiB": 355716,
+        "child_resource_accounting_complete": true,
+        "parent_cpu_seconds": 2.1849311950000003,
+        "parent_process_cumulative_peak_rss_KiB": 81876,
+        "parent_rss_scope": "cumulative lifetime peak of shared pair Python parent; second arm may inherit an earlier peak"
+      },
+      "stages": [
+        {
+          "kind": "lp",
+          "active_pairs": [],
+          "allocation_seconds": 10.0,
+          "solver": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 0.6547384279983817,
+            "peak_rss_KiB": 50512,
+            "user_cpu_seconds": 0.591013,
+            "system_cpu_seconds": 0.041273,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "generate_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.3574461030075327,
+            "peak_rss_KiB": 103184,
+            "user_cpu_seconds": 1.2167919999999999,
+            "system_cpu_seconds": 0.09539399999999999,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.7581100190000143,
+            "peak_rss_KiB": 74916,
+            "user_cpu_seconds": 1.643929,
+            "system_cpu_seconds": 0.098923,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model": {
+            "input_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+            "exporter_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+            "expected_sha256": "48f750ecb087947da53044b6c493bf3d1caaf4aa1e36d658fccd5257b9974fe0",
+            "rows": 23676,
+            "columns": 21096,
+            "binaries": 0,
+            "nonzeros": 80103,
+            "fixed_binaries": 0,
+            "mps_bytes": 3873237,
+            "mps_sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+            "api_fidelity_verified": true,
+            "readback_sha256": "d9cc6e806eddcad182b232bc77613a3acee56c7566ae172d16b0e477d504b296",
+            "lp_only_integrality_changed": true,
+            "integer_source_restored": false,
+            "integrality_scope": "continuous"
+          },
+          "report": {
+            "scope": "continuous_security_discovery_only",
+            "status": "Optimal",
+            "usable_status": true,
+            "bound_status_valid": false,
+            "certificate_bound_eligible": false,
+            "printed_lower": null,
+            "global_lower": null,
+            "clean_return": true,
+            "loaded_library_identity_valid": true,
+            "identities_valid": true,
+            "parent_report_identity_valid": true,
+            "model_definition_diagnostics": []
+          },
+          "matrix_check": {
+            "passed": true,
+            "exact_column_names": true,
+            "integrality_scope": "continuous",
+            "linear_objective": 3101682.8822089187,
+            "point_sha256": "6d14c679b1ff3b5625a615a431fc6985edce4222257080502ae0853fd84111dc",
+            "tolerance": 1e-05,
+            "violations_by_category": {},
+            "max_violation_by_category": {
+              "row": 1.8044374883174896e-09,
+              "lower_bound": 3.6e-12,
+              "upper_bound": 2.8421709430404007e-13,
+              "integrality": 0.0
+            },
+            "model_sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+            "expected_sha256": "48f750ecb087947da53044b6c493bf3d1caaf4aa1e36d658fccd5257b9974fe0",
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "fad752047cae87e717b66a06eb62c10432b8162bed55857744cd108acbf6b9e2",
+            "pair_manifest_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+          },
+          "new_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "source_check": null,
+          "checked_upper": null,
+          "full_source_primal_pass": false,
+          "solution_sha256": "fad752047cae87e717b66a06eb62c10432b8162bed55857744cd108acbf6b9e2",
+          "raw_stage_hashes": {
+            "record.json": "cf7e3860cd00cf993d87e27ab5aac7f46066550613b03ffcdf7e111d640c98e6",
+            "solver.log": "32dbf99313140b25890646370163ed9be090b83dbb6303f6910deb5063940a52",
+            "check.json": "84c7c95f84ac3232cb6ddbf050bb5c10f86885dffaae18549a50ac8a5f55e802",
+            "master.mps.readback.json": "d9cc6e806eddcad182b232bc77613a3acee56c7566ae172d16b0e477d504b296"
+          }
+        },
+        {
+          "kind": "lp",
+          "active_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "allocation_seconds": 10.0,
+          "solver": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 0.5566970509971725,
+            "peak_rss_KiB": 50020,
+            "user_cpu_seconds": 0.5136149999999999,
+            "system_cpu_seconds": 0.027798999999999997,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "generate_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.4599024149938487,
+            "peak_rss_KiB": 104500,
+            "user_cpu_seconds": 1.335994,
+            "system_cpu_seconds": 0.097633,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.710221048007952,
+            "peak_rss_KiB": 75484,
+            "user_cpu_seconds": 1.595234,
+            "system_cpu_seconds": 0.085754,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model": {
+            "input_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+            "exporter_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+            "expected_sha256": "dfe13e11c9cc57756d9285194f7fd71048ef91c1e5397c5fc684a1a9d5ade7e3",
+            "rows": 24540,
+            "columns": 21096,
+            "binaries": 0,
+            "nonzeros": 82695,
+            "fixed_binaries": 0,
+            "mps_bytes": 3994773,
+            "mps_sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+            "api_fidelity_verified": true,
+            "readback_sha256": "1426559fb8fc630cc73a29327e0919777479b57aac92b1907531a02220b045db",
+            "lp_only_integrality_changed": true,
+            "integer_source_restored": false,
+            "integrality_scope": "continuous"
+          },
+          "report": {
+            "scope": "continuous_security_discovery_only",
+            "status": "Optimal",
+            "usable_status": true,
+            "bound_status_valid": false,
+            "certificate_bound_eligible": false,
+            "printed_lower": null,
+            "global_lower": null,
+            "clean_return": true,
+            "loaded_library_identity_valid": true,
+            "identities_valid": true,
+            "parent_report_identity_valid": true,
+            "model_definition_diagnostics": []
+          },
+          "matrix_check": {
+            "passed": true,
+            "exact_column_names": true,
+            "integrality_scope": "continuous",
+            "linear_objective": 3405442.688316547,
+            "point_sha256": "ca52dd033f4c1c012ea4758ea01a3c64b86d21ab4e00e031d235bae61ab3ffff",
+            "tolerance": 1e-05,
+            "violations_by_category": {},
+            "max_violation_by_category": {
+              "row": 6.19002094026655e-09,
+              "lower_bound": 3.6e-12,
+              "upper_bound": 8.526512829121202e-14,
+              "integrality": 0.0
+            },
+            "model_sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+            "expected_sha256": "dfe13e11c9cc57756d9285194f7fd71048ef91c1e5397c5fc684a1a9d5ade7e3",
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "bb08aa677e4d9ebcfc40df8d40093b0e7ce157120414080d41a8bf97948829c7",
+            "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e"
+          },
+          "new_pairs": [],
+          "source_check": null,
+          "checked_upper": null,
+          "full_source_primal_pass": false,
+          "solution_sha256": "bb08aa677e4d9ebcfc40df8d40093b0e7ce157120414080d41a8bf97948829c7",
+          "raw_stage_hashes": {
+            "record.json": "dddeab5b48ea08c7b7243a71a366ac6723fa128ba6318518258f6519a1ad7ba8",
+            "solver.log": "a7bc72b898505869cb385a39a3b2b7f717df01d1908a47c2fe3f799b68ad7f3b",
+            "check.json": "66c9d80bcce8adc025a8e2fb87ce65e2eb654790fa08a3f3f45a937d37ca0b0d",
+            "master.mps.readback.json": "1426559fb8fc630cc73a29327e0919777479b57aac92b1907531a02220b045db"
+          }
+        },
+        {
+          "kind": "mip",
+          "active_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "allocation_seconds": 598.7885645210044,
+          "solver": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 25.647249729008763,
+            "peak_rss_KiB": 355716,
+            "user_cpu_seconds": 32.220904,
+            "system_cpu_seconds": 0.411136,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "generate_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 1.4597915430058492,
+            "peak_rss_KiB": 105160,
+            "user_cpu_seconds": 1.335026,
+            "system_cpu_seconds": 0.100132,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 2.4631040439999197,
+            "peak_rss_KiB": 77144,
+            "user_cpu_seconds": 2.296988,
+            "system_cpu_seconds": 0.118535,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model": {
+            "input_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+            "exporter_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+            "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+            "rows": 24540,
+            "columns": 21096,
+            "binaries": 1296,
+            "nonzeros": 82695,
+            "fixed_binaries": 0,
+            "mps_bytes": 4018423,
+            "mps_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+            "api_fidelity_verified": true,
+            "readback_sha256": "b0d5af88ca3445d9f8cef5e7e4d6297eb70c94291e9cd131fda25c1647122db6",
+            "lp_only_integrality_changed": false,
+            "integer_source_restored": true,
+            "integrality_scope": "original_integer"
+          },
+          "report": {
+            "scope": "original_security_master_mip",
+            "status": "Optimal",
+            "usable_status": true,
+            "bound_status_valid": true,
+            "certificate_bound_eligible": true,
+            "printed_lower": 3499824.90195,
+            "raw_lower_token": "3499824.90195",
+            "lower_rounding_allowance": 3.999824901949999e-05,
+            "global_lower": 3499824.9019100014,
+            "clean_return": true,
+            "loaded_library_identity_valid": true,
+            "identities_valid": true,
+            "parent_report_identity_valid": true,
+            "model_definition_diagnostics": []
+          },
+          "matrix_check": {
+            "passed": true,
+            "exact_column_names": true,
+            "integrality_scope": "original_integer",
+            "linear_objective": 3534678.762426666,
+            "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+            "tolerance": 1e-05,
+            "violations_by_category": {},
+            "max_violation_by_category": {
+              "row": 7.401865786960116e-10,
+              "lower_bound": 0.0,
+              "upper_bound": 5.684341886080802e-14,
+              "integrality": 0.0
+            },
+            "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+            "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+            "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e"
+          },
+          "new_pairs": [],
+          "source_check": {
+            "pass_primal": true,
+            "tolerance": 1e-05,
+            "mode": "n1",
+            "hours": 36,
+            "max_violation_by_category": {
+              "shed_bounds": 0.0,
+              "binary": 0.0,
+              "transition": 0.0,
+              "exclusive_transition": 0.0,
+              "reserve_nonnegative": 0.0,
+              "dispatch_bounds": 0.0,
+              "startup_power": 0.0,
+              "ramp_up": 0.0,
+              "ramp_down": 0.0,
+              "shutdown_power": 0.0,
+              "dispatch_nonnegative": 0.0,
+              "startup_cost_nonnegative": 0.0,
+              "minimum_time": 0.0,
+              "startup_cost_epigraph": 0.0,
+              "reserve_shortfall_bound": 0.0,
+              "reserve_requirement": 0.0,
+              "system_balance": 2.1373125491663814e-11,
+              "reference_angle": 0.0,
+              "overflow_nonnegative": 0.0,
+              "direct_base_flow": 2.3987922759260982e-11,
+              "phase_angle_flow": 7.450466910086107e-10,
+              "normal_line_limit": 0.0,
+              "emergency_line_limit": 2.262368070660159e-11,
+              "segment_bounds": 5.684341886080802e-14,
+              "segment_dispatch": 4.547473508864641e-13
+            },
+            "violations_by_category": {},
+            "true_source_cost": 3534678.7624266716,
+            "linear_model_cost": 3534678.7624266683,
+            "objective_overpayment": -3.259629011154175e-09,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "base_unrelaxed_overload_MW": 0.0,
+            "security": {
+              "violated_pairs": [],
+              "outages_checked": 192,
+              "max_violation_after_shared_slack_MW": 2.262368070660159e-11,
+              "max_unrelaxed_overload_MW": 2.262368070660159e-11,
+              "violated_line_hours": 0
+            },
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad"
+          },
+          "checked_upper": 3534678.7624266683,
+          "full_source_primal_pass": true,
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+          "raw_stage_hashes": {
+            "record.json": "5322619a00840e8540b53851f4d5401972e74bfdb11ee6553d5be97813afc6ae",
+            "solver.log": "6ccd06cda30fd4ca6ace445ea99ae5ff51d541b508503406558195b4ae549f90",
+            "check.json": "09f75d864cffb99c14e282a88d390f8e2a94cf39ac7ed278d9642cf6e8a49677",
+            "master.mps.readback.json": "b0d5af88ca3445d9f8cef5e7e4d6297eb70c94291e9cd131fda25c1647122db6"
+          }
+        }
+      ]
+    }
+  },
+  "raw_artifact_sha256": {
+    "pair.json": "dd94ff6da7b91567c0aa00acd85ee95351dbcf4fae9093bc8170bdab1412650c",
+    "verification.json": "10966c5bc4438234db69bf9025f1e2386eb19624666671b202be02d79d8795c3"
+  },
+  "historical_failed_v1": {
+    "comparison_valid": false,
+    "cause": "Trusted checker returned finite numpy.float64 base_unrelaxed_overload_MW=4.092726157978177e-12, rejected by builtin-only scalar guard",
+    "fix_scope": "Normalize real scalar measurements only at the trusted checker-return boundary; models, tolerances, options, seeds and budgets unchanged; external guards remain strict",
+    "fresh_v2_both_arms_rerun": true,
+    "v1_pair_sha256": "6afbd9669ed3cf206d634d07e67ffaf51c4ca8b0220347839877288853c68426",
+    "retained_diagnostic_sha256": "a6e0d2c68bbfad34d33c1fd63945da39caed2c4eebd1ba98d0d922883da945b0"
+  },
+  "publication_scope": "Outcome records only; this checkpoint does not claim a portable replay harness or stable multi-instance speedup",
+  "runtime": {
+    "highs_version": "1.15.1",
+    "binary_sha256": "fd624534b26f5367eb2456cc6a5c2e5c3db1440a0838df67091b02b823dfd1c6",
+    "main_library_sha256": "90b3810a1750ef05fcdb531612541f56645f0a04e00ac9a2ab962feeb300f22b",
+    "extras_library_sha256": "c2b7d0cc4453ad61b8e61edc645fca8e2f0c4855cb280a42d4c42a9cb3d361c9",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy_version": "2.3.5",
+    "scipy_version": "1.17.0",
+    "CPU_reported": "AMD EPYC 9V74",
+    "visible_logical_CPUs": 9,
+    "visible_memory_approx_GiB": 9.7,
+    "dedicated_host_or_quota_claim": false
+  }
+}

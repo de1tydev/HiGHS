@@ -122,3 +122,13 @@ logical completion all failed their declared gates. The final hint passed
 square rank-zero checks but dual simplex rejected excessive computed primal
 values. No numerical safeguard was loosened, no global lower bound was exported,
 and no speed ratio is claimed. See [BASIS_RESULTS.md](BASIS_RESULTS.md).
+
+## Cold security screening: measured benefit below advancement gate
+
+A fresh empty-cache February PEGASE89 pair measured 36.916 versus 26.859
+solver-process seconds with short LP cut discovery (27.24% reduction). Full
+standalone-equivalent elapsed time improved only 14.17%, from 46.317 to 39.753
+seconds. Both final source/192-outage certificates are identical at 0.98605%.
+The predeclared 20%-on-both gate failed, so no held-out campaign followed.
+See [LP_SECURITY_RESULTS.md](LP_SECURITY_RESULTS.md) for all preparation costs,
+validation and the retained earlier wrapper failure.
