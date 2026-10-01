@@ -75,3 +75,11 @@ A later same-build choose/HiPO pair with outer-gap enabled in both was negative:
 choose reached the target at 542.36 s; HiPO stopped at 604.15 s with 1.716% gap.
 Both final primals passed. See [HIPO_RESULTS.md](HIPO_RESULTS.md), including the
 actual OpenBLAS configuration and corrected resource-accounting limitation.
+
+## Initial-main-root-only IPX pilot
+
+The same-binary February seed-0 pilot took 564.48 s control versus 465.27 s
+initial-root-only IPX, a preliminary 17.6% reduction. Both final primals pass
+and both meet the requested 1% gap. The control had a brief low-CPU monitor
+overlap; repeatability is unestablished. Frozen-policy held-out-date validation
+is underway, before further tuning. See [INITIAL_ROOT_IPX.md](INITIAL_ROOT_IPX.md).

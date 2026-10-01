@@ -112,6 +112,40 @@
       "finite_normal_limits": 1432,
       "finite_emergency_limits": 1432,
       "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n"
+    },
+    {
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-08-01.json.gz",
+      "sha256": "31e740aeb467a632536261ea81287174baa03ac36a1a67bde29d7657d18aea29",
+      "decompressed_sha256": "779598745fe6f29992268f1c0e7b175df842a248709ef32d2d09e61fdeb41336",
+      "format_version": "0.3",
+      "hours": 36,
+      "buses": 1354,
+      "generators": 260,
+      "lines": 1991,
+      "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n",
+      "file": "data/case1354pegase_2017-08-01.json.gz",
+      "download_date_utc": "2026-10-01",
+      "contingencies": 1288,
+      "finite_normal_limits": 1432,
+      "finite_emergency_limits": 1432,
+      "selection": "Date preselected and source downloaded before any solve on these held-out dates; held-out-date validation after February pilot"
+    },
+    {
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-11-01.json.gz",
+      "sha256": "1ba6eca7102ed6409c2c37c0a83f88dff6c3051e3df8534dc73264f4ad601194",
+      "decompressed_sha256": "00b2f935d76ab6d18a8cb5827e8bb88bdc36d75d234929d51c4c0b18f40a235a",
+      "format_version": "0.3",
+      "hours": 36,
+      "buses": 1354,
+      "generators": 260,
+      "lines": 1991,
+      "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n",
+      "file": "data/case1354pegase_2017-11-01.json.gz",
+      "download_date_utc": "2026-10-01",
+      "contingencies": 1288,
+      "finite_normal_limits": 1432,
+      "finite_emergency_limits": 1432,
+      "selection": "Date preselected and source downloaded before any solve on these held-out dates; held-out-date validation after February pilot"
     }
   ]
 }

@@ -1,0 +1,45 @@
+{
+  "created_utc": "2026-10-01T15:19:26.027217+00:00",
+  "base_commit": "73cac48c5340d775a477087198611862559be250",
+  "source": "HiGHS-root-ipx",
+  "build": "build-root-ipx",
+  "build_type": "Release",
+  "HIPO": false,
+  "max_build_jobs": 4,
+  "option": {
+    "name": "mip_initial_root_ipx",
+    "default": false,
+    "advanced": true
+  },
+  "focused": {
+    "cases": 9,
+    "assertions": 326,
+    "pass": true
+  },
+  "mip_options_ipx": {
+    "cases": 60,
+    "assertions": 1349,
+    "pass": true
+  },
+  "ctest": {
+    "passed": 166,
+    "total": 166,
+    "seconds": 49.04,
+    "unit_cases": 342,
+    "unit_assertions": 1259678
+  },
+  "sha256": {
+    "initial-root-ipx.patch": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24",
+    "outer-gap-heuristic.patch": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae",
+    "outer-gap-root-ipx-combined.patch": "63f05cc7383eccd0d85bdaaa3bc331c6ab6c8febc52ba1a4bc09479a5dd74693",
+    "build-root-ipx/bin/highs": "fd624534b26f5367eb2456cc6a5c2e5c3db1440a0838df67091b02b823dfd1c6",
+    "build-root-ipx/lib/libhighs.so.1.15.1": "90b3810a1750ef05fcdb531612541f56645f0a04e00ac9a2ab962feeb300f22b",
+    "build-root-ipx/bin/unit_tests": "7543584495aaec11415b9c1016ad29e73e160ad154d24c790d1c0a546ee644e3",
+    "build-root-ipx/CMakeCache.txt": "c8e67dc4666246f880668c936ec9692e34acf4210df820022ce7b60f10cf6a66",
+    "build-root-ipx/compile_commands.json": "bfda29d48a2feb7f934400e0b262d09cba72765b0c1619f549ae8ba451d21da1",
+    "logs/test-root-ipx-focused.log": "b3bbf9185b7df2ee09bf3ba9730727a50924241e18459bc3861244685b5747c1",
+    "logs/test-root-ipx-mip-options.log": "9953d98900c35ce52c6381325dbcb64db5cb73403edc7baf1078ccb3a7b547fa",
+    "logs/test-root-ipx-ctest.log": "0fccb8731e572d082ebcbe7e5827c915b8d18d964cd302227f7147bcd05f5272"
+  },
+  "scope": "Same combined outer-gap/root-IPX HIPO=OFF binary used for the exploratory February pair and subsequent held-out-date protocol."
+}

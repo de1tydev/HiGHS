@@ -1,0 +1,59 @@
+{
+  "scope": "Preselected August/November 36h base-network models, same published generator; not N-1",
+  "models": [
+    {
+      "input_sha256": "31e740aeb467a632536261ea81287174baa03ac36a1a67bde29d7657d18aea29",
+      "generator_sha256": "840375b6719f4a9ab1070c2cb5f0fcc07eb2e6b5029abfb5d7264d1550d2c489",
+      "source_horizon": 36,
+      "hours": 36,
+      "mode": "network",
+      "security_scope": "none",
+      "formulation": "custom-three-binary-convex-segments-startup-epigraph-dc-v1",
+      "buses": 1354,
+      "generators": 260,
+      "lines": 1991,
+      "network": {
+        "finite_rated_lines": 1432,
+        "eligible_outages": 1288,
+        "security_pairs": 0,
+        "all_security_pairs": 1843338,
+        "lodf_cutoff": 0,
+        "minimum_outage_denominator": null
+      },
+      "rows": 381052,
+      "columns": 313776,
+      "binaries": 28080,
+      "nonzeros": 1230857,
+      "mps_bytes": 63987661,
+      "mps_sha256": "b411c661945d897f5b11139ed0c72d36071292bf59eff184e5104d6ec577380c",
+      "generation_seconds": 19.205485690996284
+    },
+    {
+      "input_sha256": "1ba6eca7102ed6409c2c37c0a83f88dff6c3051e3df8534dc73264f4ad601194",
+      "generator_sha256": "840375b6719f4a9ab1070c2cb5f0fcc07eb2e6b5029abfb5d7264d1550d2c489",
+      "source_horizon": 36,
+      "hours": 36,
+      "mode": "network",
+      "security_scope": "none",
+      "formulation": "custom-three-binary-convex-segments-startup-epigraph-dc-v1",
+      "buses": 1354,
+      "generators": 260,
+      "lines": 1991,
+      "network": {
+        "finite_rated_lines": 1432,
+        "eligible_outages": 1288,
+        "security_pairs": 0,
+        "all_security_pairs": 1843338,
+        "lodf_cutoff": 0,
+        "minimum_outage_denominator": null
+      },
+      "rows": 381052,
+      "columns": 313776,
+      "binaries": 28080,
+      "nonzeros": 1230390,
+      "mps_bytes": 63936669,
+      "mps_sha256": "385aa2a2662a1ff05892c6c7eb935aea0ba87a0125acb022e4630aff153ec456",
+      "generation_seconds": 19.02711424800509
+    }
+  ]
+}

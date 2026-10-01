@@ -21,6 +21,9 @@ The patches are separate artifacts, not an enabled solver optimization.
 - `outer-gap-heuristic.patch`: a separately tested, default-off serial heuristic
   early-return experiment. See [`OUTER_GAP.md`](OUTER_GAP.md) for its guards,
   replay commands, and modest one-seed result
+- `initial-root-ipx.patch`: a default-off initial-main-root-only engine
+  experiment. See [`INITIAL_ROOT_IPX.md`](INITIAL_ROOT_IPX.md) for its guarded
+  scope, preliminary result and validation limits
 - `milp_probe.cpp`: a standalone public C++ API driver, read-only incumbent
   callback, optional built-in profile, and independent final-primal arithmetic
   checks against a snapshot of the original linear model
