@@ -1,0 +1,40 @@
+{
+  "preregistered_utc": "2026-10-01T15:37:00.005690+00:00",
+  "order": [
+    {
+      "date": "2017-08-01",
+      "arms": [
+        "choose",
+        "root-ipx"
+      ]
+    },
+    {
+      "date": "2017-11-01",
+      "arms": [
+        "root-ipx",
+        "choose"
+      ]
+    }
+  ],
+  "seed": 0,
+  "solver_seconds_per_arm": 600,
+  "process_watchdog_seconds": 660,
+  "AS_limit_bytes": 7516192768,
+  "threads": 2,
+  "parallel": "off",
+  "relative_gap": 0.01,
+  "outer_gap_stop_and_log": true,
+  "initial_incumbent": false,
+  "scope": "Same frozen custom 36h base-network UC with source penalties; no N-1 claim. Dates selected and downloaded before any solve.",
+  "publication_policy": "Retain failures, timeouts, nonzero slack, all residuals, and protocol deviations. Do not change source/model/policy after seeing either holdout arm.",
+  "claim_gate": "Exploratory held-out instance checks only; multi-seed and different family validation still required for stable broad claim.",
+  "sha256": {
+    "initial-root-ipx.patch": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24",
+    "outer-gap-heuristic.patch": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae",
+    "run_pg1354_root_ipx_arm.py": "d06a3f80c3f474b130db9a981564cd14ae4fa61cc91e2d785981a4abb39e776e",
+    "process_measure.py": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1",
+    "build-root-ipx/bin/highs": "fd624534b26f5367eb2456cc6a5c2e5c3db1440a0838df67091b02b823dfd1c6",
+    "build-root-ipx/lib/libhighs.so.1.15.1": "90b3810a1750ef05fcdb531612541f56645f0a04e00ac9a2ab962feeb300f22b"
+  },
+  "state": "Completed all four preregistered arms without policy changes"
+}

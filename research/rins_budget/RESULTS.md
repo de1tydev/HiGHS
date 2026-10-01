@@ -82,4 +82,5 @@ The same-binary February seed-0 pilot took 564.48 s control versus 465.27 s
 initial-root-only IPX, a preliminary 17.6% reduction. Both final primals pass
 and both meet the requested 1% gap. The control had a brief low-CPU monitor
 overlap; repeatability is unestablished. Frozen-policy held-out-date validation
-is underway, before further tuning. See [INITIAL_ROOT_IPX.md](INITIAL_ROOT_IPX.md).
+has completed: both August and November fail to reach 1% in either arm, so no
+stable acceleration is established. See [INITIAL_ROOT_IPX.md](INITIAL_ROOT_IPX.md).

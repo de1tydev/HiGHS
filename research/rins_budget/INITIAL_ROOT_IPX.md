@@ -7,9 +7,9 @@ unchanged engine selection and 465.27 seconds with initial-root-only IPX, a
 17.6% reduction in this matched pair. Both met the requested 1% gap and passed
 the independent source-data primal/objective checker with numerical-zero load
 shedding and zero line overflow. This is a promising exploratory result, **not
-an established substantial or stable acceleration claim**. Preselected August
-and November dates are being evaluated with the same frozen policy, before any
-further tuning; their results are not included in this preliminary table.
+an established substantial or stable acceleration claim**. The frozen policy subsequently failed to reach the target on both preselected
+held-out dates in either arm; see the complete hold-out results below. The
+February-only improvement must not be presented as stable acceleration.
 
 | Same binary, 2 threads, seed 0 | Control | Initial root IPX |
 |---|---:|---:|
@@ -43,6 +43,38 @@ work and valid completion, not just an option label or a faster root phase.
 Exact records and test/build hashes are in
 [the paired record](recorded_results/pg1354-initial-root-ipx-600.json) and
 [build metadata](recorded_results/root-ipx-build.json).
+
+## Completed held-out-date check
+
+The same binary, flags, seed 0, source/model hashes and 600-second request were
+retained. August ran control then candidate; November ran candidate then control.
+No policy was retuned between these arms.
+
+| Held-out date | Control | Initial root IPX |
+|---|---|---|
+| August 1 | 600.05 s, 6.83% final gap | 608.03 s, 4.58% final gap |
+| November 1 | 600.05 s, no incumbent | 630.13 s, no incumbent |
+
+All four ended with status "Time limit reached". Neither date reached 1% in either
+arm, so their
+unknown target times are censored and **no target-time speedup ratio is defined**.
+August's two available primals pass independent source checks with numerical-zero
+shedding and zero overflow. November produced no primal: validation was
+unavailable, not a failed check of a claimed feasible solution, and this does
+not establish infeasibility. The larger candidate overshoot, 30.13 seconds, is
+retained; none of the processes was killed by the 660-second watchdog.
+
+IPX materially shortened each initial LP and improved some bounds, but that did
+not establish the requested end-to-end result. Root cut/basis work and incumbent
+availability remained bottlenecks. Including February, each arm reached the
+requested target on only one of three dates at this seed. More seeds were not
+used to turn this failed hold-out check into a favorable aggregate. Defaults
+remain unchanged; the research now tests a different, explicitly application-
+layer UC-relaxation/network-repair route rather than promoting this option.
+
+Full records and predeclared order/hashes:
+[held-out outcomes](recorded_results/pg1354-initial-root-ipx-heldouts.json),
+[held-out plan](recorded_results/root-ipx-heldout-plan.json).
 
 ## Source behavior
 
