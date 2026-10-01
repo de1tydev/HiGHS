@@ -18,6 +18,9 @@ The patches are separate artifacts, not an enabled solver optimization.
 - `options/no-rins.options`: the existing public option
   `mip_heuristic_run_rins = false`. Unlike the nested ablation, this disables
   both main-level and inherited nested RINS through that option
+- `outer-gap-heuristic.patch`: a separately tested, default-off serial heuristic
+  early-return experiment. See [`OUTER_GAP.md`](OUTER_GAP.md) for its guards,
+  replay commands, and modest one-seed result
 - `milp_probe.cpp`: a standalone public C++ API driver, read-only incumbent
   callback, optional built-in profile, and independent final-primal arithmetic
   checks against a snapshot of the original linear model

@@ -58,4 +58,13 @@ IPX reduced the first cold LP stage from roughly 210 seconds to roughly 150 seco
 
 The matched configurations are `options/cold-lp-default.options` and `options/cold-lp-ipx.options`. Use the same pinned executable, model bytes, seed 0, requested `--time_limit 600`, unique `--solution_file` paths, and an identical per-run `mip_improving_solution_file` setting pointing at a unique checkpoint destination. The recorded protocol used a 7 GiB virtual-address cap and a 660-second emergency process watchdog, which did not fire in either arm. All observed solver overshoot is retained. Independent checking follows the solve and is not charged to its 600-second request. See `recorded_results/pg1354-cold-lp-600.json` for hashes, source checks, CPU time and exact measurements.
 
-Further work will inspect outer-gap-aware heuristic termination and matched thread budgets. No benefit from either unmeasured change is asserted here.
+The subsequently measured outer-gap-aware heuristic return is reported below. Matched thread-budget and additional LP-engine experiments remain separate research questions.
+
+## Default-off outer-gap return experiment
+
+A later same-binary, seed-0 observation/enabled pair on the 600-second PEGASE1354
+base-network model measured 602.55 versus 585.58 solver seconds (2.8%). Both
+returned the same independently checked primal and 0.4794% gap using the solver
+dual bound. The direct-child candidate-to-parent delay fell from 19.21 to 0.12
+seconds. This verifies a mechanism, not substantial or stable acceleration;
+see [OUTER_GAP.md](OUTER_GAP.md) for scope, tests, overshoot, and replay.
