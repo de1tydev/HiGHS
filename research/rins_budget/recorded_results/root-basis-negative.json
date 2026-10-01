@@ -1,0 +1,500 @@
+{
+  "negative_mechanism": {
+    "scope": "February2017 PEGASE1354 custom soft base-networkUC; no N-1 or UC.jl formulation parity",
+    "user_goal": "Stable substantial multiseed/multicase acceleration remains unestablished",
+    "experiment": "Fresh candidate-only mechanism gates; no matched control or time-to-target ratio",
+    "source_base_commit": "73cac48c5340d775a477087198611862559be250",
+    "root_basis_only_patch_sha256": "5bb458b9c428a12c584c83ff2d90e77cd643c3e732a3a0754a519e71c480ee4e",
+    "combined_patch_sha256": "5dce33183fbbab63b0c09af1ef8e729553a55bdd8094ec67c3eafd8d5d949e21",
+    "binary_sha256": "34d7fa9278554975f0b18d5f8d3decfdaf552f7b526ab13e124088db7b1937d1",
+    "main_library_sha256": "9fa2dac6b90fd80f3ac926c460b293bd46a1b85f0c1c67a8a5a565ba833178a5",
+    "options": {
+      "threads": 2,
+      "parallel": "off",
+      "random_seed": 0,
+      "mip_rel_gap": 0.01,
+      "acquisition_presolve": "choose",
+      "solver_process_total_budget": 600,
+      "acquisition_gate": 30,
+      "acquisition_plus_first_root_gate": 90
+    },
+    "runs": [
+      {
+        "label": "presolve_choose",
+        "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+        "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5",
+        "driver_manifest_sha256": "fce80bf69818fb9260b6ce3038cc43b8c65d70e30c39fccaf64247b482911919",
+        "status": "failed",
+        "target_complete": false,
+        "failure": "ValueError: Solver failed/killed: process_or_event_failure",
+        "solver_process_seconds": 21.196192494011484,
+        "end_to_end_seconds_including_preflight": 111.40130887900887,
+        "checked_upper": 24022827.279373836,
+        "incumbent_sha256": "95c42a4842b15c5bc8042a5c8745505adaf97769cc94cc570815cb630c1cd7b5",
+        "total_shed_MWh": 0.0,
+        "max_overflow_MW": 0.0,
+        "global_lower": null,
+        "all_actual_api_checks_pass": true,
+        "all_complete_primal_checks_pass": true,
+        "stages": [
+          {
+            "name": "acquisition",
+            "scope": "restricted_fixed_commitment_lp_NO_GLOBAL_BOUND",
+            "measurement": {
+              "returncode": 0,
+              "process_wall_seconds": 10.060504346009111,
+              "user_cpu_seconds": 9.856819999999999,
+              "system_cpu_seconds": 0.20266399999999998,
+              "peak_rss_KiB": 560132,
+              "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+              "kill_reason": null,
+              "hard_watchdog_killed": false,
+              "gate_killed": false,
+              "interrupted": false,
+              "error": null,
+              "accepted_event_process_seconds": null,
+              "gate_seconds": 30.0,
+              "gate_overshoot_seconds": 0.0,
+              "watchdog_seconds": 90.0,
+              "watchdog_overshoot_seconds": 0.0,
+              "log_bytes_read": 19203,
+              "overlong_lines_ignored": 0,
+              "unterminated_tail_bytes": 0
+            },
+            "lp_model_status": "Optimal",
+            "event_rejections": []
+          },
+          {
+            "name": "mip",
+            "scope": "original_full_mip",
+            "measurement": {
+              "returncode": -9,
+              "process_wall_seconds": 11.135688148002373,
+              "user_cpu_seconds": 10.608985,
+              "system_cpu_seconds": 0.530659,
+              "peak_rss_KiB": 690924,
+              "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+              "kill_reason": "process_or_event_failure",
+              "hard_watchdog_killed": false,
+              "gate_killed": false,
+              "interrupted": false,
+              "error": "ValueError: Main basis reuse rejected: unrepresentable_mapping/basic_count fallback=cold",
+              "accepted_event_process_seconds": null,
+              "gate_seconds": 79.93949565399089,
+              "gate_overshoot_seconds": 0.0,
+              "watchdog_seconds": 649.9394956539909,
+              "watchdog_overshoot_seconds": 0.0,
+              "log_bytes_read": 12116,
+              "overlong_lines_ignored": 0,
+              "unterminated_tail_bytes": 0
+            },
+            "lp_model_status": null,
+            "event_rejections": [
+              {
+                "raw": "InitialRootBasis rejection: event_version=1 scope=main root=initial restart=0 stage=mapping reason=basic_count category=unrepresentable_mapping fallback=cold",
+                "observed_process_seconds": 11.113750677002827,
+                "event_version": "1",
+                "scope": "main",
+                "root": "initial",
+                "restart": "0",
+                "stage": "mapping",
+                "reason": "basic_count",
+                "category": "unrepresentable_mapping",
+                "fallback": "cold"
+              }
+            ]
+          }
+        ],
+        "raw_artifact_sha256": {
+          "pair.json": "352b1739ab01018e07983a2cf613e3dcdd373d0a8b9506d9ce763887fc09e5a4",
+          "candidate/summary.json": "769ec7879625d280abb4ac2ded20a0b1249b83eba79918d612e2c18899d15042",
+          "candidate/acquisition/solver.log": "a0b2c4530c357c45fc4fe13714d00bb1e9fbebe43039a1bd28d4dd38994bfcb4",
+          "candidate/mip/solver.log": "3a4fe8403046d46f89a7b05ab9d7a699eb72a494bf53a5888949cd0ebcec6a26"
+        }
+      },
+      {
+        "label": "main_presolve_off",
+        "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+        "source_sha256": "2f803d52e34534a3c4dde8a62c8501ad53ea09bc1aee48f263d5a323bc349bc5",
+        "driver_manifest_sha256": "f8e0c42526b0ef05a09a12ea2aceb23d528d819473d345e8f3de62b32adb9830",
+        "status": "failed",
+        "target_complete": false,
+        "failure": "ValueError: Solver failed/killed: first_root_gate",
+        "solver_process_seconds": 90.05098497700237,
+        "end_to_end_seconds_including_preflight": 186.41754868598946,
+        "checked_upper": 24022827.279373836,
+        "incumbent_sha256": "95c42a4842b15c5bc8042a5c8745505adaf97769cc94cc570815cb630c1cd7b5",
+        "total_shed_MWh": 0.0,
+        "max_overflow_MW": 0.0,
+        "global_lower": null,
+        "all_actual_api_checks_pass": true,
+        "all_complete_primal_checks_pass": true,
+        "stages": [
+          {
+            "name": "acquisition",
+            "scope": "restricted_fixed_commitment_lp_NO_GLOBAL_BOUND",
+            "measurement": {
+              "returncode": 0,
+              "process_wall_seconds": 9.419677187994239,
+              "user_cpu_seconds": 9.180126,
+              "system_cpu_seconds": 0.23354699999999998,
+              "peak_rss_KiB": 560132,
+              "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+              "kill_reason": null,
+              "hard_watchdog_killed": false,
+              "gate_killed": false,
+              "interrupted": false,
+              "error": null,
+              "accepted_event_process_seconds": null,
+              "gate_seconds": 30.0,
+              "gate_overshoot_seconds": 0.0,
+              "watchdog_seconds": 90.0,
+              "watchdog_overshoot_seconds": 0.0,
+              "log_bytes_read": 19221,
+              "overlong_lines_ignored": 0,
+              "unterminated_tail_bytes": 0
+            },
+            "lp_model_status": "Optimal",
+            "event_rejections": []
+          },
+          {
+            "name": "mip",
+            "scope": "original_full_mip",
+            "measurement": {
+              "returncode": -9,
+              "process_wall_seconds": 80.63130778900813,
+              "user_cpu_seconds": 149.723583,
+              "system_cpu_seconds": 2.738996,
+              "peak_rss_KiB": 1791464,
+              "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+              "kill_reason": "first_root_gate",
+              "hard_watchdog_killed": false,
+              "gate_killed": true,
+              "interrupted": false,
+              "error": null,
+              "accepted_event_process_seconds": null,
+              "gate_seconds": 80.58032281200576,
+              "gate_overshoot_seconds": 0.050984977002372034,
+              "watchdog_seconds": 650.5803228120058,
+              "watchdog_overshoot_seconds": 0.0,
+              "log_bytes_read": 12905,
+              "overlong_lines_ignored": 0,
+              "unterminated_tail_bytes": 0
+            },
+            "lp_model_status": null,
+            "event_rejections": []
+          }
+        ],
+        "raw_artifact_sha256": {
+          "pair.json": "cfa671df5ecc93b153383470f751ec953927fa5a50b6091d18e459211c3ca110",
+          "candidate/summary.json": "9c3dbbc8f8a40d5f22c7acca0df7a80ed473013fe9cbb70584c0bcdb8cb47834",
+          "candidate/acquisition/solver.log": "cdd729c50e8b4a76498dff202e5a7bf4434784aedb45e3227a696a08076640b7",
+          "candidate/mip/solver.log": "f2a6e03fca4eda7a49eb7bcaacd64a6195557478a1ba29c8151be102b4b41c1a"
+        }
+      }
+    ],
+    "mapping_choose": {
+      "original_rows": 381268,
+      "reduced_rows": 242511,
+      "original_basics": 381268,
+      "mapped_basics": 245169,
+      "excess": 2658,
+      "original_structural": 140284,
+      "original_logical": 240984,
+      "mapped_structural": 38655,
+      "mapped_logical": 206514
+    },
+    "mainoff_install": {
+      "rows": 381268,
+      "columns": 313776,
+      "basics": 381268,
+      "accepted": 1,
+      "rank_deficiency": 0,
+      "completed_logicals": 0,
+      "rank_seconds": 1.242500791,
+      "setter_seconds": 0.001991904,
+      "first_root_completion_observed": false
+    },
+    "interpretation": "Both declared mechanism gates failed. No claim of no eventual benefit, numerical conditioning, or stable speedup. Killed main solves export no lower bound; restricted LP bounds never global. Existing numerical source/matrix checks validate retained incumbent only."
+  },
+  "subset_repair_negative": {
+    "label": "presolve_choose_independent_subset_repair",
+    "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+    "driver_manifest_sha256": "e25ecd98a3b2218dc4c3488ab01c1f64aeac2e41882b0c3a09c4f544fcb7a915",
+    "incremental_patch_sha256": "b3b300b29ac1a50d3076bd8bd860457f4388fe5e24c66b8329af3be1cb014c8a",
+    "combined_patch_sha256": "d337a37a1ae503a5eb62598e98ab4555612879ce5bf93733dd440201105cc9eb",
+    "binary_sha256": "e2e7fb12b77237626ed040b41c808a5f5be54ef5f2e7418fcb13205f147090f2",
+    "main_library_sha256": "58246299dd5a54344fb162e842045ae9d4655632b06ba2938e2cd30fb56ec640",
+    "status": "failed",
+    "failure": "ValueError: Solver failed/killed: process_or_event_failure",
+    "solver_process_seconds": 25.431705880982918,
+    "end_to_end_seconds_including_preflight": 116.58132597901567,
+    "checked_upper": 24022827.279373836,
+    "incumbent_sha256": "95c42a4842b15c5bc8042a5c8745505adaf97769cc94cc570815cb630c1cd7b5",
+    "total_shed_MWh": 0.0,
+    "max_overflow_MW": 0.0,
+    "global_lower": null,
+    "all_complete_primal_checks_pass": true,
+    "rank_observation": {
+      "candidates": 245169,
+      "rows": 242511,
+      "excess": 2658,
+      "reported_deficiency": 2659,
+      "additional_real_missing_pivots": 1,
+      "rank_seconds": 0.055110248,
+      "selected": 0,
+      "accepted": false
+    },
+    "stages": [
+      {
+        "name": "acquisition",
+        "measurement": {
+          "returncode": 0,
+          "process_wall_seconds": 9.519743383993045,
+          "user_cpu_seconds": 9.244085,
+          "system_cpu_seconds": 0.27882599999999996,
+          "peak_rss_KiB": 547584,
+          "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+          "kill_reason": null,
+          "hard_watchdog_killed": false,
+          "gate_killed": false,
+          "interrupted": false,
+          "error": null,
+          "accepted_event_process_seconds": null,
+          "gate_seconds": 30.0,
+          "gate_overshoot_seconds": 0.0,
+          "watchdog_seconds": 90.0,
+          "watchdog_overshoot_seconds": 0.0,
+          "log_bytes_read": 19545,
+          "overlong_lines_ignored": 0,
+          "unterminated_tail_bytes": 0
+        }
+      },
+      {
+        "name": "mip",
+        "measurement": {
+          "returncode": -9,
+          "process_wall_seconds": 15.911962496989872,
+          "user_cpu_seconds": 15.734996,
+          "system_cpu_seconds": 0.282446,
+          "peak_rss_KiB": 743264,
+          "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+          "kill_reason": "process_or_event_failure",
+          "hard_watchdog_killed": false,
+          "gate_killed": false,
+          "interrupted": false,
+          "error": "ValueError: Main basis reuse rejected: unrepresentable_mapping/dependent_basics fallback=cold",
+          "accepted_event_process_seconds": null,
+          "gate_seconds": 80.48025661600695,
+          "gate_overshoot_seconds": 0.0,
+          "watchdog_seconds": 650.480256616007,
+          "watchdog_overshoot_seconds": 0.0,
+          "log_bytes_read": 14088,
+          "overlong_lines_ignored": 0,
+          "unterminated_tail_bytes": 0
+        }
+      }
+    ],
+    "termination": "Supervisor stopped on observed explicit rank-loss rejection; a cold LP start was logged, but no completed root or global bound was exported",
+    "raw_artifact_sha256": {
+      "pair.json": "1fa70404656e7c5434e5b22fb33d31143e85e7526cc80cfdd837492f3769dd23",
+      "candidate/summary.json": "27b95ce0fb3850f1b4c209a6bd902bf0492c4dbd6b315326b092dc2111394603",
+      "candidate/acquisition/solver.log": "81be47d3a9afdcd3190876639c379b171de2d230dfa3b48cff1541b707070879",
+      "candidate/mip/solver.log": "2dfb050286e7d32aa222c4c06760729ae435fcfd6c7f524fdc29623af85d2e3c"
+    }
+  },
+  "completion_negative": {
+    "label": "presolve_choose_official_logical_completion",
+    "model_sha256": "b0c7cacfc0219693039e30721541aecadc881b1b6f628add1a993483a1b3b060",
+    "driver_manifest_sha256": "f2dcd3b839dfa330f5b6ae79dfa0207ad112bbf52e1b2d6551ee47ab9ea31efd",
+    "incremental_patch_sha256": "b66cc921f496b0263cec52ff4494ec1499b21baffeec433957361bd638250716",
+    "combined_patch_sha256": "f2c81f067b281653d878b5e3d0ea6e25114382192a3faa5e49b38302ad208596",
+    "binary_sha256": "459732183d45b9cd17c2af5fb7b591056f9c5d8c55b997cac574c2d4f30fb088",
+    "main_library_sha256": "ca8946dbb926c0efb22bfcf5b106674c0f133f2f2b813ef07b98814162d450f2",
+    "status": "failed",
+    "failure": "ValueError: Solver failed/killed: process_or_event_failure",
+    "solver_process_seconds": 26.146252631006064,
+    "end_to_end_seconds_including_preflight": 116.58251203599502,
+    "checked_upper": 24022827.279373836,
+    "incumbent_sha256": "95c42a4842b15c5bc8042a5c8745505adaf97769cc94cc570815cb630c1cd7b5",
+    "total_shed_MWh": 0.0,
+    "max_overflow_MW": 0.0,
+    "global_lower": null,
+    "all_complete_primal_checks_pass": true,
+    "rank_observation": {
+      "candidates": 245169,
+      "rows": 242511,
+      "excess": 2658,
+      "reported_deficiency": 2659,
+      "retained_original": 242510,
+      "discarded_original": 2659,
+      "added_logicals": 1,
+      "selected": 242511,
+      "verification_rank": 0,
+      "rank_seconds": 0.123678415,
+      "setter_seconds": 0.00078937,
+      "installed": true
+    },
+    "stages": [
+      {
+        "name": "acquisition",
+        "measurement": {
+          "returncode": 0,
+          "process_wall_seconds": 9.415074625998386,
+          "user_cpu_seconds": 9.182168,
+          "system_cpu_seconds": 0.23036299999999998,
+          "peak_rss_KiB": 551700,
+          "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+          "kill_reason": null,
+          "hard_watchdog_killed": false,
+          "gate_killed": false,
+          "interrupted": false,
+          "error": null,
+          "accepted_event_process_seconds": null,
+          "gate_seconds": 30.0,
+          "gate_overshoot_seconds": 0.0,
+          "watchdog_seconds": 90.0,
+          "watchdog_overshoot_seconds": 0.0,
+          "log_bytes_read": 19689,
+          "overlong_lines_ignored": 0,
+          "unterminated_tail_bytes": 0
+        }
+      },
+      {
+        "name": "mip",
+        "measurement": {
+          "returncode": -9,
+          "process_wall_seconds": 16.731178005007678,
+          "user_cpu_seconds": 17.178819,
+          "system_cpu_seconds": 0.560336,
+          "peak_rss_KiB": 1150332,
+          "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+          "kill_reason": "process_or_event_failure",
+          "hard_watchdog_killed": false,
+          "gate_killed": false,
+          "interrupted": false,
+          "error": "ValueError: Main basis reuse rejected: numerical/root_lp_error fallback=cold",
+          "accepted_event_process_seconds": null,
+          "gate_seconds": 80.58492537400161,
+          "gate_overshoot_seconds": 0.0,
+          "watchdog_seconds": 650.5849253740016,
+          "watchdog_overshoot_seconds": 0.0,
+          "log_bytes_read": 14320,
+          "overlong_lines_ignored": 0,
+          "unterminated_tail_bytes": 0
+        }
+      }
+    ],
+    "termination": "Supervisor killed the isolated solver process group after explicit first-root root_lp_error rejection; no accepted root or global bound exported",
+    "interpretation": "optimizeLp returned HighsStatus::kError. The event numerical category is hard-coded; suppressed inner-LP output does not establish the underlying cause. Rank-zero verification and accepted setBasis are not proof the warm LP will solve successfully.",
+    "raw_artifact_sha256": {
+      "pair.json": "13d495660d915d8bd8b9e4369742f7a1b152840e96583e5c3c44294e9c90f9ba",
+      "candidate/summary.json": "1416c9790821b2d1678245f0928f2f2506279ceeea7254e2df010f9cba7f12e0",
+      "candidate/acquisition/solver.log": "9fc50f1795649e4b1caef8126340f506e52dd9ead5dfff405b28bc3ad6551cd2",
+      "candidate/mip/solver.log": "ed556277b1fc25f9d7d4f4e8c4915d916797d9223559ce01ca5a2435493cd4ca"
+    },
+    "arm_summary_elapsed_before_final_write": 116.485017746003
+  },
+  "telemetry_failure": {
+    "scope": "Logging-only first-root failure classification; no performance ratio",
+    "status": "observation stopped after backend error",
+    "solver_process_seconds": 26.4208038450015,
+    "arm_elapsed_before_summary_write_seconds": 115.35743309999816,
+    "elapsed_scope": "Includes fresh generation, model API gates, acquisition and main process, all original-primal checks; excludes outer wrapper approval and final bookkeeping",
+    "status_observation": [
+      {
+        "raw": "InitialRootBasis diagnostic: call_status=-1 model_status=0 model_status_text=Not Set basis_valid=0 simplex_iterations=-1 num_invert=1",
+        "observed_process_seconds": 16.88021696000942,
+        "call_status": -1,
+        "model_status": 0,
+        "model_status_text": "Not Set",
+        "basis_valid": 0,
+        "simplex_iterations": -1,
+        "num_invert": 1
+      }
+    ],
+    "error_message": "Dual simplex detected excessive primal values: consider scaling down the LP bounds",
+    "phase_I_iteration_zero": {
+      "objective_approximately": -1.8561614661e+27,
+      "primal_infeasibility_count": 99394,
+      "primal_infeasibility_sum_approximately": 3.45994e+27,
+      "dual_infeasibility_count": 5583,
+      "dual_infeasibility_sum_approximately": 1.85669e+24
+    },
+    "checked_upper": 24022827.279373836,
+    "total_shed_MWh": 0.0,
+    "max_overflow_MW": 0.0,
+    "global_lower": null,
+    "no_global_bound": true,
+    "root_optimal": false,
+    "stages": [
+      {
+        "name": "acquisition",
+        "measurement": {
+          "returncode": 0,
+          "process_wall_seconds": 9.489378539001336,
+          "user_cpu_seconds": 9.248751,
+          "system_cpu_seconds": 0.242144,
+          "peak_rss_KiB": 547880,
+          "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+          "kill_reason": null,
+          "hard_watchdog_killed": false,
+          "gate_killed": false,
+          "interrupted": false,
+          "error": null,
+          "accepted_event_process_seconds": null,
+          "gate_seconds": 30.0,
+          "gate_overshoot_seconds": 0.0,
+          "watchdog_seconds": 90.0,
+          "watchdog_overshoot_seconds": 0.0,
+          "log_bytes_read": 19756,
+          "overlong_lines_ignored": 0,
+          "unterminated_tail_bytes": 0
+        }
+      },
+      {
+        "name": "mip",
+        "measurement": {
+          "returncode": -9,
+          "process_wall_seconds": 16.931425306000165,
+          "user_cpu_seconds": 17.364759,
+          "system_cpu_seconds": 0.6639999999999999,
+          "peak_rss_KiB": 1150356,
+          "resource_accounting": "exact-child os.wait4; Linux RSS KiB; OS child-accounting semantics; excludes unrelated driver children",
+          "kill_reason": "process_or_event_failure",
+          "hard_watchdog_killed": false,
+          "gate_killed": false,
+          "interrupted": false,
+          "error": "ValueError: Observation-only status captured; terminate without a global bound",
+          "accepted_event_process_seconds": null,
+          "gate_seconds": 80.51062146099866,
+          "gate_overshoot_seconds": 0.0,
+          "watchdog_seconds": 650.5106214609987,
+          "watchdog_overshoot_seconds": 0.0,
+          "log_bytes_read": 17047,
+          "overlong_lines_ignored": 0,
+          "unterminated_tail_bytes": 0
+        }
+      }
+    ],
+    "wrapper_sha256": "9c93ee605eb26d61db55d3af101665d489aed6e95887f6304ade382129d6cd01",
+    "telemetry_patch_sha256": "2a3e6809f0c71751d665307c08cfacd24d6fd43e39fb315e222599c8ab20f95c",
+    "main_library_sha256": "f14b7d689073194ea451c7c0ae9f0efa586f4d9e4ef710d0a0931da08a4e0f66",
+    "tiny_smoke_sha256": "7593b8c0d6dd9f7a11eacb08bfee4c7b0cf2055ba769d069db6f3003f8e40cfd",
+    "raw_artifact_sha256": {
+      "diagnostic.json": "ebe861aa2b81694d359dda3b2bb34e4a4cd560d942656dad704d0f3c2a54b1b1",
+      "candidate/summary.json": "d27fc68ba30e8e6ea4da58ab3412afd534601a33870de8ebcd26735e37826fd4",
+      "candidate/acquisition/solver.log": "8d93f8639f1b1d327f46a3391da1508a0b15e53719ce897fd3a012f7ac6a5b02",
+      "candidate/mip/solver.log": "4d952f1f4dc3322a7d060a9d20d5e9bac5ccd193b8e3e12bd3211ef2b27e1774"
+    },
+    "interpretation": "Actual dual-simplex path rejected computed excessive primal values after ordinary scaling and factorization; rank-zero verification was insufficient. No measured condition number, exact singularity proof or deterministic mapping bug is established. Route closed without loosening guards.",
+    "cancelled_preceding_attempt": "Generation-only attempt T2229 externally cancelled for fail-closed wrapper hardening; zero optimizer records, old incomplete summary retained"
+  },
+  "record_sha256": {
+    "negative_mechanism.json": "05fc4f72ec5ab789003ec53a5024e413f00dd1738bbcc19535cb4575e91c22c1",
+    "subset_repair_negative.json": "24951fca661b43c425e6852b5c1f17d4f1d6b3d0b2a06a20787bad51abf2901b",
+    "completion_negative.json": "01e843701c74a405b35fb15ec18b9efe05e89f985a5d9f99dd47220108d718b1",
+    "telemetry_failure.json": "2dedfbf5086a79c68bcf0b8f93b154bf881128cf69d06daf5378eeb24de82243"
+  },
+  "publication_scope": "Outcome records only; no supported root-basis implementation or full replay harness is supplied by this checkpoint. All source changes stayed experimental and default off."
+}

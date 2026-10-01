@@ -113,3 +113,12 @@ matrices, including all PEGASE1354 and screened PEGASE89 inputs; the ninth was
 the already-disclosed full-static smoke with tiny dropped coefficients and no
 incumbent. See [LOADER_FIDELITY.md](scuc/LOADER_FIDELITY.md). This is a correctness
 repair and input-validation result, with no new performance claim.
+
+## Initial-root basis reuse: closed after failed gates
+
+Fresh fixed-commitment LP basis acquisition did not produce a usable large-case
+warm root. Surviving-index mapping, main-presolve-off, subset repair and official
+logical completion all failed their declared gates. The final hint passed
+square rank-zero checks but dual simplex rejected excessive computed primal
+values. No numerical safeguard was loosened, no global lower bound was exported,
+and no speed ratio is claimed. See [BASIS_RESULTS.md](BASIS_RESULTS.md).
