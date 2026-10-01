@@ -1,0 +1,12 @@
+# Cold-LP experiment: solver budget supplied separately via --time_limit 600
+# Give each run unique solution/checkpoint destinations. No primal start.
+threads = 1
+parallel = off
+mip_rel_gap = 0.01
+mip_lp_solver = choose
+log_dev_level = 1
+highs_analysis_level = 128
+write_solution_to_file = true
+write_solution_style = 0
+mip_improving_solution_save = false
+mip_improving_solution_report_sparse = false

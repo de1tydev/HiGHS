@@ -42,3 +42,20 @@ Separate scope instrumentation observed recursive RINS through depth 3 on dcmult
 ## Publication-time replay guards
 
 The published screening driver requires a new output directory and refuses to certify an original-model bound when HiGHS reports ignored/dropped matrix coefficients. These guards were added after the recorded six-arm experiment. All recorded arms already used fresh directories and had no such warnings, so the observations are unaffected. `SOURCE_MANIFEST.json` at the research-package root retains both the historical measured driver hash and the current published driver hash. Solver-free guard tests are in `scuc/test_driver_hygiene.py`.
+
+## Larger cold-LP experiment: negative end-to-end result
+
+A separate one-seed experiment used public PEGASE1354 (2017-02-01, 36 hours), a custom **base-network UC model, not N-1**: 381,268 rows, 313,776 columns, 28,080 binary variables and 1,232,543 nonzeros. The source allows penalized shedding/overflow; neither penalties nor feasibility semantics changed between arms. These runs have a requested **600-second solver budget**; setup/read/check costs are separate, unlike the earlier 300-second end-to-end PEGASE89 protocol.
+
+| Cold LP engine | Reported solve s | Status | Final gap using checked incumbent | First visible <1% report s | Peak RSS GiB |
+|---|---:|---|---:|---:|---:|
+| default/choose | 600.42 | Time limit reached | 0.4794% | 600.4 | 1.84 |
+| IPX | 637.02 | Time limit reached | 0.4644% | 637.0 | 1.71 |
+
+Neither arm reported the target strictly within 600 seconds. A sub-1% final certificate does not change the returned time-limit status or erase the overshoot. Both final points passed the independent source-data base-network primal/objective check; the dual bounds are reported by HiGHS and are not independently verified dual certificates. Both had shedding at numerical zero (raw sum −1e−13 MWh) and zero overflow. This is not an N-1/AC certificate.
+
+IPX reduced the first cold LP stage from roughly 210 seconds to roughly 150 seconds, and produced a better early incumbent. That did **not** improve total solving: later sub-MIP time increased from about 68 to 191 seconds. The experiment is rejected as an end-to-end speedup, and defaults remain unchanged. IPM work is not counted in the simplex LP-iteration total, so a lower iteration count is not evidence of less work. The public option applies to every no-basis LP, including nested subproblems; it is not an isolated root-only switch.
+
+The matched configurations are `options/cold-lp-default.options` and `options/cold-lp-ipx.options`. Use the same pinned executable, model bytes, seed 0, requested `--time_limit 600`, unique `--solution_file` paths, and an identical per-run `mip_improving_solution_file` setting pointing at a unique checkpoint destination. The recorded protocol used a 7 GiB virtual-address cap and a 660-second emergency process watchdog, which did not fire in either arm. All observed solver overshoot is retained. Independent checking follows the solve and is not charged to its 600-second request. See `recorded_results/pg1354-cold-lp-600.json` for hashes, source checks, CPU time and exact measurements.
+
+Further work will inspect outer-gap-aware heuristic termination and matched thread budgets. No benefit from either unmeasured change is asserted here.
