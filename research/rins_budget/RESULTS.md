@@ -161,3 +161,13 @@ Every final point passed the unchanged original-source, matrix, objective and li
 The familiar February seed-0 development pair (37.0039% solver, 23.5818% E2E) remains separate. Prior February seed-1/2 exposure prompted a disclosed amendment to confirmation seeds 3/4/5 before combined outcomes. August seeds 1/2/3 are a familiar-date transfer check; November seeds 1/2/3 use a new date selected before acquisition. Three seeds per date are a small descriptive consistency check, not broad MILP or production zero-shed evidence.
 
 See [the complete combined result](combined_results/COMBINED_SCUC_RESULTS.md) for every timing, the fixed gate, precise timing boundaries, source/runtime hashes and resource/tail information. The [portable Linux replay](portable_combined_replay/README.md) passed a separate tiny correctness/equality check and has not been performance-measured on production cases. Earlier individual failed gates remain failed; no additional production solve or retuning was used to rescue this campaign.
+
+## Larger May PEGASE1354 transfer
+
+The combined method did not complete the 1% full-security target on the 36-hour
+May1354 transfer. Seed-0 A and B exhausted their aggregate 600-second solver
+budgets and returned the same point, which still violated two monitored-line/
+outage pairs among the 1,288 listed outages. The LP probe supplied no cuts and root-credit applied no cap.
+Seeds 1/2 remained unrun under the prespecified stop rule. No speedup ratio is
+valid. See [the complete negative result](may1354_transfer/RESULTS.md) for the
+checked scope, all overshoot, full process costs and immutable provenance.

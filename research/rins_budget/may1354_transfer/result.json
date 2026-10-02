@@ -1,0 +1,283 @@
+{
+  "schema": "fixed-May1354-transfer-terminal-v1",
+  "outcome": "failed_to_complete_original_source_1percent_certificates; no valid speedup comparison",
+  "source": {
+    "official_url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-05-01.json.gz",
+    "compressed_sha256": "42d2acf8a9adf569686977e38547f3ee4c6c2b16c036ec54c39492c30baee4a4",
+    "hours": 36,
+    "buses": 1354,
+    "generators": 260,
+    "lines": 1991,
+    "listed_outages": 1288
+  },
+  "revision": {
+    "compatibility": "fixed-output-v1",
+    "adapter": "v2",
+    "common_helper_seconds": 600,
+    "helper_cap_prospective_before_May_optimization": true,
+    "W1": "excluded",
+    "constructive_seed": false
+  },
+  "completed_schedule_entries": [
+    {
+      "seed": 0,
+      "order": [
+        "A",
+        "B"
+      ],
+      "valid_comparison": false
+    }
+  ],
+  "unrun_schedule_entries": [
+    {
+      "seed": 1,
+      "order": [
+        "B",
+        "A"
+      ],
+      "reason": "stopped after incomplete seed0 comparison"
+    },
+    {
+      "seed": 2,
+      "order": [
+        "A",
+        "B"
+      ],
+      "reason": "stopped after incomplete seed0 comparison"
+    }
+  ],
+  "arms": {
+    "A": {
+      "complete": false,
+      "incomplete_reason": "solver process budget exhausted",
+      "solver_process_wall_seconds": 603.3547940640128,
+      "complete_process_standalone_equivalent_e2e_seconds": 787.3495315630134,
+      "standalone_equivalent_e2e_seconds": 787.3264902400115,
+      "end_to_end_seconds": 786.7024654669949,
+      "containing_process_wall_seconds": 787.041517264006,
+      "common_setup_seconds": 0.3080142990074819,
+      "process_startup_seconds": 0.3160104740090901,
+      "remaining_arm_overhead_seconds": 2.2878291239758255,
+      "stage_wall_seconds": {
+        "generation_readback": 24.92706150400045,
+        "lp_separation": 0,
+        "integer_checks": 155.4279531909997,
+        "scope_preparation": 0.7048275840061251,
+        "lp_solving": 0.0,
+        "integer_solving": 603.3547940640128
+      },
+      "solver_calls": [
+        {
+          "kind": "mip",
+          "allocation": 600.0,
+          "actual": 603.3547940640128,
+          "overrun": 3.3547940640128218
+        }
+      ],
+      "solver_budget_valid": false,
+      "LP_policy_valid": true,
+      "LP_calls": 0,
+      "LP_accepted_pairs": 0,
+      "master_status": "Time limit reached",
+      "master_primal_objective": 14409325.059157701,
+      "master_global_lower": 13816961.37521183,
+      "master_gap_fraction_from_checked_cost_and_adjusted_bound": 0.04110974535683759,
+      "master_printed_lower": 13816961.3754,
+      "lower_rounding_allowance": 0.00018816961375399998,
+      "full_source_upper_bound": null,
+      "full_source_gap": null,
+      "full_source_primal_pass": false,
+      "matrix_check_pass": true,
+      "nonsecurity_source_checks_pass": true,
+      "source_violations": {
+        "emergency_line_limit": 21
+      },
+      "outages_checked": 1288,
+      "finite_pair_hours_checked": 66360168,
+      "violated_pair_count": 2,
+      "worst_pair_witnesses": [
+        {
+          "flow_MW": 2254.0168640726065,
+          "hour": 20,
+          "monitored_line_id": "l1202",
+          "outage_id": "c831",
+          "outage_line_id": "l831",
+          "pair": [
+            1201,
+            830
+          ],
+          "rating_MW": 1806.2,
+          "shared_overflow_MW": 0.0,
+          "unrelaxed_overload_MW": 447.81686407260645,
+          "worst_excess_MW": 447.81686407260645
+        },
+        {
+          "flow_MW": -2068.8895087069727,
+          "hour": 5,
+          "monitored_line_id": "l1379",
+          "outage_id": "c275",
+          "outage_line_id": "l275",
+          "pair": [
+            1378,
+            274
+          ],
+          "rating_MW": 1987.7,
+          "shared_overflow_MW": 0.0,
+          "unrelaxed_overload_MW": 81.18950870697267,
+          "worst_excess_MW": 81.18950870697267
+        }
+      ],
+      "total_shed_MWh": 0.0,
+      "max_overflow_MW": 0.0,
+      "base_unrelaxed_overload_MW": 0.0,
+      "reserve_shortfall_value_count": 36,
+      "sum_reserve_shortfall_MW_over_hours": 0.0,
+      "linear_cost_components": {
+        "production_linear": 13272849.399157653,
+        "startup_epigraph": 1136475.6600000001,
+        "shedding": 0.0,
+        "shared_overflow": 0.0,
+        "reserve_shortfall": 0.0
+      },
+      "child_peak_rss_KiB": 1981420,
+      "point_sha256": "222880873618865653cd40c58669a6231313728cce24c6557101127ae144525f",
+      "root_credit": {
+        "call_count": 1,
+        "applied_caps": 0,
+        "applied_skips": 0,
+        "root_origins_observed": [
+          "root-reduced-cost"
+        ]
+      }
+    },
+    "B": {
+      "complete": false,
+      "incomplete_reason": "solver process budget exhausted",
+      "solver_process_wall_seconds": 602.5138162909861,
+      "complete_process_standalone_equivalent_e2e_seconds": 802.7447495760134,
+      "standalone_equivalent_e2e_seconds": 802.7220474380156,
+      "end_to_end_seconds": 802.0871408999956,
+      "containing_process_wall_seconds": 802.4367352770059,
+      "common_setup_seconds": 0.3080142990074819,
+      "process_startup_seconds": 0.3268922390125226,
+      "remaining_arm_overhead_seconds": 3.8536710330081405,
+      "stage_wall_seconds": {
+        "generation_readback": 49.76970306799922,
+        "lp_separation": 0,
+        "integer_checks": 145.24613201800094,
+        "scope_preparation": 0.7038184900011402,
+        "lp_solving": 10.061424690997228,
+        "integer_solving": 592.4523915999889
+      },
+      "solver_calls": [
+        {
+          "kind": "lp",
+          "allocation": 10.0,
+          "actual": 10.061424690997228,
+          "overrun": 0.061424690997228026
+        },
+        {
+          "kind": "mip",
+          "allocation": 589.9385753090028,
+          "actual": 592.4523915999889,
+          "overrun": 2.513816290986142
+        }
+      ],
+      "solver_budget_valid": false,
+      "LP_policy_valid": false,
+      "LP_calls": 1,
+      "LP_accepted_pairs": 0,
+      "master_status": "Time limit reached",
+      "master_primal_objective": 14409325.059157701,
+      "master_global_lower": 13816961.37521183,
+      "master_gap_fraction_from_checked_cost_and_adjusted_bound": 0.04110974535683759,
+      "master_printed_lower": 13816961.3754,
+      "lower_rounding_allowance": 0.00018816961375399998,
+      "full_source_upper_bound": null,
+      "full_source_gap": null,
+      "full_source_primal_pass": false,
+      "matrix_check_pass": true,
+      "nonsecurity_source_checks_pass": true,
+      "source_violations": {
+        "emergency_line_limit": 21
+      },
+      "outages_checked": 1288,
+      "finite_pair_hours_checked": 66360168,
+      "violated_pair_count": 2,
+      "worst_pair_witnesses": [
+        {
+          "flow_MW": 2254.0168640726065,
+          "hour": 20,
+          "monitored_line_id": "l1202",
+          "outage_id": "c831",
+          "outage_line_id": "l831",
+          "pair": [
+            1201,
+            830
+          ],
+          "rating_MW": 1806.2,
+          "shared_overflow_MW": 0.0,
+          "unrelaxed_overload_MW": 447.81686407260645,
+          "worst_excess_MW": 447.81686407260645
+        },
+        {
+          "flow_MW": -2068.8895087069727,
+          "hour": 5,
+          "monitored_line_id": "l1379",
+          "outage_id": "c275",
+          "outage_line_id": "l275",
+          "pair": [
+            1378,
+            274
+          ],
+          "rating_MW": 1987.7,
+          "shared_overflow_MW": 0.0,
+          "unrelaxed_overload_MW": 81.18950870697267,
+          "worst_excess_MW": 81.18950870697267
+        }
+      ],
+      "total_shed_MWh": 0.0,
+      "max_overflow_MW": 0.0,
+      "base_unrelaxed_overload_MW": 0.0,
+      "reserve_shortfall_value_count": 36,
+      "sum_reserve_shortfall_MW_over_hours": 0.0,
+      "linear_cost_components": {
+        "production_linear": 13272849.399157653,
+        "startup_epigraph": 1136475.6600000001,
+        "shedding": 0.0,
+        "shared_overflow": 0.0,
+        "reserve_shortfall": 0.0
+      },
+      "child_peak_rss_KiB": 1738812,
+      "point_sha256": "222880873618865653cd40c58669a6231313728cce24c6557101127ae144525f",
+      "root_credit": {
+        "call_count": 1,
+        "applied_caps": 0,
+        "applied_skips": 0,
+        "root_origins_observed": [
+          "root-reduced-cost"
+        ]
+      }
+    }
+  },
+  "both_primal_points_identical": true,
+  "candidate_root_credit_mechanism_activated": false,
+  "speedup_ratio": null,
+  "gate_pass": false,
+  "main_reporting_E2E_field": "complete_process_standalone_equivalent_e2e_seconds",
+  "E2E_field_note": "The main descriptive table includes complete process overhead. Archived standalone_equivalent_e2e_seconds is the in-program measure and is retained separately; neither is a time-to-target result.",
+  "gap_note": "The approximately4.11percent figure is the gap for the integer master containing base-network constraints and omitting contingency-line rows. Full-source UB/gap are unavailable because both points violate original N-1 constraints.",
+  "scope_note": "Single fixed input/runtime, one incomplete reserved pair. No acceleration or broader transfer claim. No tuning/retry after outcome.",
+  "identities": {
+    "target_source_sha256": "42d2acf8a9adf569686977e38547f3ee4c6c2b16c036ec54c39492c30baee4a4",
+    "package_sha256": "bbdbc31a6a5374d02fd827a0b124bad01353242cf3a334a8664cbf179a68db17",
+    "runtime_sha256": "465ff62520aaf0c5517cfc28c377b354cf2c538e9d69ff5c433f08da3557db4e",
+    "plan_sha256": "df2e50da1e119504fcdba39f719532d6d0317ff9f968ddcf0489dbe328f2f0dc",
+    "protocol_sha256": "eb47317084e58737dda80b7bf8c2f3ae34bc269771121efbde2fc81922179328"
+  },
+  "audited_artifact_sha256": {
+    "transfer_json": "9c1a8cd8729b42a1c7b82eb44e4f38084bc8ccd4d46d38d9a4a7fd3fe417e411",
+    "outer_launch_receipt": "d41ad54937495edaad12c95ee6cc677164567a4d3dfd03b2c05905540bf67346",
+    "terminal_audit": "44db1867c785fe1ce2e4583e1fc0e33684caa6b132d13d6104b4adc1000e67e9"
+  }
+}
