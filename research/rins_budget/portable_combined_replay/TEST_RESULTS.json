@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "scope": "standard-library-only inherited contract and portable binding tests",
+  "command": "python3 -B -S tests/run_pure_tests.py",
+  "tests_run": 141,
+  "tests_passed": 138,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 3,
+  "passed": true,
+  "status": "pure_subset_passed_scientific_tests_separate",
+  "duration_seconds": 0.552432,
+  "real_numerical_modules_loaded": [],
+  "explicit_test_doubles": [
+    "fractional_separator entry points for inherited model_stage mocks",
+    "fractional_separator.point_sha256 returns a fixed mock witness"
+  ],
+  "limitations": [
+    "No actual NumPy or SciPy behavior, solver execution, C API, model generation, or topology is tested"
+  ],
+  "failed_tests": [],
+  "skipped_tests": [
+    {
+      "test": "test_contract.SourceWrapperTests.test_trusted_numpy_base_and_residual_cross_boundary",
+      "reason": "Excluded from this standard-library-only suite; real NumPy scalar tests run separately"
+    },
+    {
+      "test": "test_contract.TrustedScalarTests.test_finite_numpy_real_only_and_no_input_mutation",
+      "reason": "Excluded from this standard-library-only suite; real NumPy scalar tests run separately"
+    },
+    {
+      "test": "test_contract.TrustedScalarTests.test_reject_nonfinite_bool_complex_arrays_and_coercibles",
+      "reason": "Excluded from this standard-library-only suite; real NumPy scalar tests run separately"
+    }
+  ],
+  "public_rendering": {
+    "raw_tested_v2_results_sha256": "c042f14b808a2bc24b3dec3f9e168e700a1cc164ac3172c7196a2a870649c47a",
+    "changes": "Skip explanation and reporting status wording only; original counts and outcomes preserved"
+  },
+  "separate_scientific_validation": {
+    "tested_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+    "real_numpy_scalar_tests_passed": 3,
+    "source_test_file_unchanged": true,
+    "evidence": "../portable_validation/VALIDATION_RESULT.json"
+  }
+}

@@ -1,0 +1,188 @@
+--- revision1/prepare_replay.py
++++ revision2/prepare_replay.py
+@@ -128,8 +128,13 @@
+     if library: result['LD_LIBRARY_PATH'] = str(Path(library).parent)
+     return result
+ 
+-def bounded(command, *, env, cwd, timeout=120):
++def bounded(command, *, env, cwd, timeout=120, stdout_path=None, stderr_path=None):
+     # No inherited environment, shell interpolation, or unbounded helper wait.
++    def retain(stdout, stderr):
++        for path, text in ((stdout_path, stdout), (stderr_path, stderr)):
++            if path is not None:
++                with Path(path).open('x') as stream:
++                    stream.write(text); stream.flush(); os.fsync(stream.fileno())
+     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                text=True, env=env, cwd=cwd, start_new_session=True)
+     try:
+@@ -137,10 +142,37 @@
+     except BaseException:
+         try: os.killpg(process.pid, signal.SIGKILL)
+         except ProcessLookupError: pass
+-        process.communicate()
++        stdout, stderr = process.communicate()
++        retain(stdout, stderr)
+         raise
++    retain(stdout, stderr)
+     if process.returncode: raise BindingError('Helper failed: '+stderr[-4000:])
+     return stdout, stderr
++
++def validate_version_loader(stderr, value):
++    """Version-only loader observation; extras is lazy in the pinned source.
++
++    This does not replace the unchanged mandatory main AND extras checks in
++    every actual LP/MIP process, nor the C API function-address provider checks.
++    """
++    main, extras = [], []
++    # Consume the complete initialization-line remainder before classification.
++    # A whitespace-bearing unexpected provider must fail, never look absent.
++    for path in re.findall(r'calling init:[ \t]*([^\r\n]*)', stderr):
++        if re.search(r'(?:^|/)libhighs_extras\.so', path):
++            checked_path(path, library=True); extras.append(path)
++        elif re.search(r'(?:^|/)libhighs\.so', path):
++            checked_path(path, library=True); main.append(path)
++    if len(main) != 1 or len(extras) > 1:
++        raise BindingError('Missing or duplicate version-loader initialization record')
++    for observed, expected in ((main, value['library']), (extras, value['extras'])):
++        for path in observed:
++            resolved = checked_path(path, library=True)
++            if str(resolved) != expected or sha(resolved) != value['runtime_library_pins'][expected]:
++                raise BindingError('Version command loaded an unexpected main/extras library')
++    return {'main':main, 'extras':extras,
++            'extras_observation':'initialized_exact' if extras else 'not_initialized_by_version_command',
++            'scope':'Version-only observation; extras is lazy. Actual LP/MIP processes still require exact loaded main and extras identities.'}
+ 
+ def python_identity(python, work, library):
+     stdout, _ = bounded([str(python), '-I', '-S', '-B', str(PACKAGE/'payload/combined_screening_driver/runtime_inspect.py'), '--startup'],
+@@ -282,18 +314,19 @@
+         inventory = read_json(work/'runtime_inventory.json')
+         # Verify exact binary-loaded main/extras identity using glibc's loader log,
+         # not ldd or a successful dlopen. This is a --version invocation only.
+-        stdout, stderr = bounded([value['binary'],'--version'],env=dict(env,LD_DEBUG='libs'),cwd=work)
+-        loaded = re.findall(r'calling init:\s*(\S*libhighs\.so\S*)', stderr)
+-        extras = re.findall(r'calling init:\s*(\S*libhighs_extras\.so\S*)', stderr)
+-        if not loaded or not extras or any(str(Path(p).resolve())!=value['library'] for p in loaded) or any(str(Path(p).resolve())!=value['extras'] for p in extras):
+-            raise BindingError('Actual executable loaded an unexpected main/extras library')
++        stdout_path, stderr_path = work/'loader_version.stdout.log', work/'loader_version.stderr.log'
++        stdout, stderr = bounded([value['binary'],'--version'],env=dict(env,LD_DEBUG='libs'),cwd=work,
++                                 stdout_path=stdout_path,stderr_path=stderr_path)
++        observation = validate_version_loader(stderr,value)
++        loaded, extras = observation['main'], observation['extras']
+         loader_pins = {}
+         for path in re.findall(r'calling init:\s*(\S+)',stderr):
+             if path.startswith('/'):
+                 resolved = checked_path(path); loader_pins[str(resolved)] = sha(resolved)
+         # Inventory is append-free and immutable. Loader dependencies are retained
+         # in a separate frozen receipt, also part of every stage's mandatory pins.
+-        loader_record = {'artifact_sha256':loader_pins,'main':loaded,'extras':extras,'version_output':stdout.strip()}
++        loader_pins.update({str(stdout_path):sha(stdout_path),str(stderr_path):sha(stderr_path)})
++        loader_record = {'artifact_sha256':loader_pins,**observation,'version_output':stdout.strip()}
+         write_json(work/'loader_inventory.json', loader_record)
+         inventory_digest = sha(work/'runtime_inventory.json')
+         pins = {**release_pins(value), **value['preparation_pins'], **inventory['artifact_sha256'],
+@@ -314,6 +347,7 @@
+     except BaseException as exc:
+         receipt.update(status='failed_preserved',error=type(exc).__name__+': '+str(exc)); raise
+     finally:
++        receipt['loader_logs'] = {name:sha(work/name) for name in ('loader_version.stdout.log','loader_version.stderr.log') if (work/name).is_file()}
+         receipt['preflight_freeze_seconds'] = time.monotonic()-started
+         receipt['timing_scope'] = 'Explicit separately reported provisioning; imports and C API scalar ABI checks, no solve/model prep'
+         write_json(work/'preflight_receipt.json',receipt)
+--- /dev/null
++++ revision2/tests/test_version_loader.py
+@@ -0,0 +1,95 @@
++"""Version-only lazy-extras regression tests. Fake files and mocked processes only."""
++from pathlib import Path
++import subprocess
++from unittest.mock import Mock, patch
++import prepare_replay as prepare
++from portable_runtime import BindingError, sha
++from test_portable_runtime import TemporaryTests
++
++class VersionLoaderTests(TemporaryTests):
++    def setUp(self):
++        super().setUp()
++        self.main = self.root/'libhighs.so.1.15.1'; self.main.write_text('main bytes')
++        self.alias = self.root/'libhighs.so.1'; self.alias.symlink_to(self.main.name)
++        self.extras = self.root/'libhighs_extras.so'; self.extras.write_text('extras bytes')
++        self.value = {'library':str(self.main), 'extras':str(self.extras),
++                      'runtime_library_pins':{str(self.main):sha(self.main), str(self.extras):sha(self.extras)}}
++        self.main_log = '123: calling init: '+str(self.alias)+'\n'
++        self.extras_log = '123: calling init: '+str(self.extras)+'\n'
++
++    def test_lazy_extras_absence_accepted_only_as_unobserved(self):
++        result = prepare.validate_version_loader(self.main_log,self.value)
++        self.assertEqual(result['main'],[str(self.alias)])
++        self.assertEqual(result['extras'],[])
++        self.assertEqual(result['extras_observation'],'not_initialized_by_version_command')
++        self.assertIn('Actual LP/MIP processes still require',result['scope'])
++
++    def test_correct_present_extras_accepted(self):
++        result = prepare.validate_version_loader(self.main_log+self.extras_log,self.value)
++        self.assertEqual(result['extras_observation'],'initialized_exact')
++        self.assertEqual(result['extras'],[str(self.extras)])
++
++    def test_wrong_present_extras_rejected_even_with_identical_bytes(self):
++        other = self.root/'other';other.mkdir()
++        wrong = other/self.extras.name;wrong.write_bytes(self.extras.read_bytes())
++        with self.assertRaises(BindingError):
++            prepare.validate_version_loader(self.main_log+'calling init: '+str(wrong)+'\n',self.value)
++
++    def test_wrong_main_and_missing_main_rejected(self):
++        other = self.root/'other';other.mkdir()
++        wrong = other/self.alias.name;wrong.write_bytes(self.main.read_bytes())
++        for log in ('',self.extras_log,'calling init: '+str(wrong)+'\n'+self.extras_log):
++            with self.subTest(log=log),self.assertRaises(BindingError):
++                prepare.validate_version_loader(log,self.value)
++
++    def test_duplicate_or_conflicting_alias_initializations_rejected(self):
++        logs = [self.main_log*2,self.main_log+'calling init: '+str(self.main)+'\n',
++                self.main_log+self.extras_log*2]
++        other = self.root/'libhighs.so.foreign';other.write_text('wrong bytes')
++        logs.append(self.main_log+'calling init: '+str(other)+'\n')
++        for log in logs:
++            with self.subTest(log=log),self.assertRaises(BindingError):
++                prepare.validate_version_loader(log,self.value)
++
++    def test_whitespace_bearing_observed_provider_cannot_look_absent(self):
++        logs = [self.main_log+'calling init: /unexpected path/libhighs_extras.so\n',
++                'calling init: /unexpected path/libhighs.so.1\n',
++                self.main_log+self.extras_log.rstrip('\n')+' \n',
++                'calling init: '+str(self.alias)+' \n']
++        for log in logs:
++            with self.subTest(log=log),self.assertRaises(BindingError):
++                prepare.validate_version_loader(log,self.value)
++
++    def test_same_path_changed_provider_bytes_rejected(self):
++        for path in (self.main,self.extras):
++            original = path.read_bytes();path.write_bytes(original+b'changed')
++            with self.subTest(path=path.name),self.assertRaises(BindingError):
++                prepare.validate_version_loader(self.main_log+self.extras_log,self.value)
++            path.write_bytes(original)
++
++    def test_actual_solver_guard_still_requires_loaded_extras(self):
++        from test_contract import BoundTests
++        witness = BoundTests()
++        # Use the inherited solver report helper; omitting extras cannot become valid.
++        from contracts import LIBRARY
++        report = witness.report('calling init: '+str(LIBRARY)+'\nSolving report\n  Model master\n  Status Optimal\n  Dual bound 99.5\n')
++        self.assertFalse(report['loaded_library_identity_valid'])
++        self.assertFalse(report['bound_status_valid'])
++
++class LoaderLogRetentionTests(TemporaryTests):
++    def test_failed_version_command_retains_both_raw_streams(self):
++        stdout,stderr=self.root/'stdout.log',self.root/'stderr.log'
++        process=Mock(returncode=2);process.communicate.return_value=('raw stdout\n','raw loader stderr\n')
++        with patch.object(prepare.subprocess,'Popen',return_value=process):
++            with self.assertRaises(BindingError):
++                prepare.bounded(['mock','--version'],env={},cwd=self.root,stdout_path=stdout,stderr_path=stderr)
++        self.assertEqual(stdout.read_text(),'raw stdout\n');self.assertEqual(stderr.read_text(),'raw loader stderr\n')
++
++    def test_timed_out_version_command_retains_reaped_streams(self):
++        stdout,stderr=self.root/'stdout.log',self.root/'stderr.log'
++        process=Mock(pid=123);process.communicate.side_effect=[subprocess.TimeoutExpired(['mock'],1),('partial stdout','partial loader')]
++        with patch.object(prepare.subprocess,'Popen',return_value=process),patch.object(prepare.os,'killpg') as kill:
++            with self.assertRaises(subprocess.TimeoutExpired):
++                prepare.bounded(['mock'],env={},cwd=self.root,timeout=1,stdout_path=stdout,stderr_path=stderr)
++        self.assertEqual(stdout.read_text(),'partial stdout');self.assertEqual(stderr.read_text(),'partial loader')
++        kill.assert_called_once()

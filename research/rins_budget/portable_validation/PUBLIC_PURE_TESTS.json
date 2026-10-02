@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "public_manifest_sha256": "41ea6864066c618f2d7abde742626ac05675da68b3451f0d93c5bef932df33ca",
+  "command": "python3 -I -S -B portable_combined_replay/tests/run_pure_tests.py",
+  "tests_run": 141,
+  "pure_tests_passed": 138,
+  "scientific_tests_outside_suite": 3,
+  "errors": 0,
+  "failures": 0,
+  "numerical_or_api_work": false,
+  "public_files_unchanged_after_test": true,
+  "external_pins_verified": 7,
+  "privacy_scan_passed": true,
+  "normalized_ast_and_hash_literal_mapping_checked": true
+}

@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "passed": true,
+  "status": "tiny_runtime_and_all_witness_equivalence_passed",
+  "public_destination": "research/rins_budget/portable_combined_replay",
+  "source_files_unchanged": true,
+  "v1_snapshot_and_failure_preserved": true,
+  "source_file_count": 43,
+  "runtime_pins_verified": 2690,
+  "phase_artifacts_verified": 92,
+  "real_numpy_scalar_tests_passed": 3,
+  "runtime_versions": {
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy_version": "2.3.5",
+    "scipy_version": "1.17.0",
+    "os": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "libc": [
+      "glibc",
+      "2.41"
+    ]
+  },
+  "highs_int_bytes": 4,
+  "actual_api_model_readbacks": [
+    {
+      "arm": "A",
+      "stage": 1,
+      "kind": "mip",
+      "all_fields_equal": true,
+      "highs_int_bytes": 4,
+      "library_sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+      "receipt_sha256": "5f0a153884414c6f1981abf25f0cde684d2422ee53d10ff12383f4b35bd6d3af"
+    },
+    {
+      "arm": "A",
+      "stage": 2,
+      "kind": "mip",
+      "all_fields_equal": true,
+      "highs_int_bytes": 4,
+      "library_sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+      "receipt_sha256": "8c31b8bd6c4d1339ec4c8a0be13f52c89a63f7881a6bb2cb53b811dc6764c86a"
+    },
+    {
+      "arm": "B",
+      "stage": 1,
+      "kind": "lp",
+      "all_fields_equal": true,
+      "highs_int_bytes": 4,
+      "library_sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+      "receipt_sha256": "e5051baa735d557adde3e250974a544672af817d0afce3bc217aad52a0fd80d4"
+    },
+    {
+      "arm": "B",
+      "stage": 2,
+      "kind": "lp",
+      "all_fields_equal": true,
+      "highs_int_bytes": 4,
+      "library_sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+      "receipt_sha256": "f18443a9aef55a1bfa638dfc4a33bd3cf0fa1a41870093caab3bb02fb48cf213"
+    },
+    {
+      "arm": "B",
+      "stage": 3,
+      "kind": "mip",
+      "all_fields_equal": true,
+      "highs_int_bytes": 4,
+      "library_sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+      "receipt_sha256": "c3232448b85a403965f095e69d8ef52f527a20dd139b3449886f3bed9d0272a9"
+    }
+  ],
+  "arms": {
+    "A": {
+      "complete": true,
+      "upper": 660.0,
+      "adjusted_lower": 659.9999899995,
+      "gap": 1.515227268100716e-08,
+      "lp_calls": 0,
+      "stage_kinds": [
+        "mip",
+        "mip"
+      ],
+      "solver_process_wall_seconds": 0.1032728629943449,
+      "e2e_seconds": 10.33463877098984,
+      "standalone_equivalent_e2e_seconds": 10.600187281990657,
+      "resource_accounting_complete": true,
+      "budget_seconds": 20.0
+    },
+    "B": {
+      "complete": true,
+      "upper": 660.0,
+      "adjusted_lower": 659.9999899995,
+      "gap": 1.515227268100716e-08,
+      "lp_calls": 2,
+      "stage_kinds": [
+        "lp",
+        "lp",
+        "mip"
+      ],
+      "solver_process_wall_seconds": 0.15646909398492426,
+      "e2e_seconds": 14.457308637996903,
+      "standalone_equivalent_e2e_seconds": 14.722857148997718,
+      "resource_accounting_complete": true,
+      "budget_seconds": 20.0
+    }
+  },
+  "common_setup_seconds": 0.2655485110008158,
+  "timing": {
+    "complete_cli_launch_to_exit_seconds": 53.1370743449952,
+    "driver_launch_to_exit_seconds": 50.27076850399317,
+    "preparation_function_seconds": 0.7873194290004903,
+    "preflight_seconds": 2.435738415995729,
+    "A_B_equality_seconds": 16.457372836986906,
+    "direct_core_equality_seconds": 8.403071300010197
+  },
+  "equality": {
+    "witness_count": 5,
+    "selector_checks": 10,
+    "direct_core_checks": 5,
+    "byte_identical_across_all_three_paths": true,
+    "excluded_fields": []
+  },
+  "version_extras_observation": "not_initialized_by_version_command",
+  "actual_solver_main_and_extras_identities_verified": true,
+  "tiny_credit_mechanism": {
+    "A": {
+      "call_count": 0,
+      "applied_caps": 0,
+      "applied_skips": 0,
+      "root_origins_observed": []
+    },
+    "B": {
+      "call_count": 0,
+      "applied_caps": 0,
+      "applied_skips": 0,
+      "root_origins_observed": []
+    },
+    "candidate_mechanism_activated": false,
+    "scope": "Source-pinned heuristic telemetry only; never a global lower bound or separate process-time debit"
+  },
+  "production_solve_count": 0,
+  "tiny_pair_count": 1,
+  "performance_claim": false,
+  "historical_strict_per_date_gate_passed": false,
+  "scope": "Tiny wiring and exact checker equivalence on this runtime only. No production performance, natural-credit activation or general portability claim.",
+  "evidence": {
+    "runtime_manifest": "4509e5a356ab0d1965104ab589210b76efe49d62e6adecdbfd746b54296afb9d",
+    "tiny_pair": "ffaf2863773a2d6fe5ebeea9a45d6faaff931a1f7e2cdc60f42e2c34da9a04da",
+    "tiny_phase_receipt": "4c670105e5f6451d390d20b0630f7d9dd73a03d06656af706f3d2c7c1a17392b",
+    "A_B_equality": "5082d4f17f4ff54922e6d57a0c154fd5e9d219302e15e123cf9d9c1425ffb1e8",
+    "direct_core_equality": "affbd860af39162b0e181b2e8d3e726b41710f12b29ddbbe2e374b8d330cb685",
+    "outer_launch": "b4dbf5de13276f19d7f4d3c4c821dc3c65f0642fed8e9cc5c8ccab87e9caadb0",
+    "scalar_tests": "1c73b76ef3379517bc3c09a2ba3d3fe6a8bddc49ce619ce37ef92126097f3c9a",
+    "preflight": "335e700070fec1d14106db3d0bc0451775c5fbd8254b244017ebd132fa93e9d8"
+  },
+  "read_only_terminal_audit_seconds": 0.2579100860020844,
+  "tested_source_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+  "public_source_manifest_sha256": "41ea6864066c618f2d7abde742626ac05675da68b3451f0d93c5bef932df33ca",
+  "raw_validation_result_sha256": "edb1cb5ba0ee6123608b54174b1ac8c79e8c090909cedca1ad052eca22b36371",
+  "raw_execution_packet_sha256": "dc850566e139c2bdc64b83224c11047e5b04923bcbd6a8514cf8c6e2c7359e68",
+  "public_copy_numerically_rerun": false,
+  "public_copy_change_record": "PUBLICATION_CHANGES.json",
+  "timing_identity_note": "All reported numerical timings identify the tested v2 manifest. The public copy has distinct documentation/test-report bytes and is not a separate numerical run.",
+  "failed_revision_1": {
+    "source_manifest_sha256": "d33ba5add57435bf242f64b61a3c3a2858879c74cdfde416079fdae0a857ecd6",
+    "status": "preflight_failed_before_any_tiny_model_or_solver",
+    "reason": "Version-only process had not loaded lazy extras; main identity and ABI were correct",
+    "preflight_receipt_sha256": "6c5955c7dd15f7f82d3fb33e629a0a79ca2fbb9357d159162a63f33a0e69b3ff"
+  },
+  "source_files_unchanged_scope": "Tested-v2 numerical source snapshot remains unchanged; the public documentation/provenance changes are recorded separately",
+  "public_source_equivalence": "Mathematical and orchestration function bodies unchanged; leading model-stage module docstring curated with matching strict expected raw source-hash literal. Test-report strings also curated."
+}

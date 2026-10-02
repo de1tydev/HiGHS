@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "tested_v2_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+  "public_manifest_sha256": "41ea6864066c618f2d7abde742626ac05675da68b3451f0d93c5bef932df33ca",
+  "changes": [
+    {
+      "file": "PACKAGE_MANIFEST.json",
+      "tested_v2_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+      "public_sha256": "41ea6864066c618f2d7abde742626ac05675da68b3451f0d93c5bef932df33ca",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "README.md",
+      "tested_v2_sha256": "bb175692fe804b37f4c4bafd7f21f3946ab9f0a4a6dbc20bc3dd07cd684c17b9",
+      "public_sha256": "c4a2aea98c56c913a79ce7bb55ab22bdbc21ba159af94e57e632813326f25b82",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "SMOKE_PLAN.md",
+      "tested_v2_sha256": "015dc355c64d61da7043204c73cca53890d48fc4c1cb7eb028d74025e80fd5f5",
+      "public_sha256": "b6cd0b6696cc68af4ba7f0acca7b62d6138c4bd6c6bc8e2f7a8db30313a6f1c6",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "SOURCE_DIFF.patch",
+      "tested_v2_sha256": "8d615b52ff79f3d2deca8dc8aa00822da4e0accdf2f61f0087a7b3484b102751",
+      "public_sha256": "37b823a644f11b337e44a786fab4b64f36c3a17753c767011aca6e1743e8377f",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "SOURCE_IDENTITIES.json",
+      "tested_v2_sha256": "1882ee89cf53d6b56f587d81a9bfc1acf1ae9decef7d412ed1c873135b18790c",
+      "public_sha256": "5d4beab22e72c4f51d21c4c4a3adb06423369f183d82fbf6114d43a4e27f7df6",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "TEST_RESULTS.json",
+      "tested_v2_sha256": "c042f14b808a2bc24b3dec3f9e168e700a1cc164ac3172c7196a2a870649c47a",
+      "public_sha256": "21ce73edfb76a42209f194d2bbb508794948e65b576ebecfe8a475a4c1d7b391",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "TEST_RESULTS.log",
+      "tested_v2_sha256": "f902df7d3b18d832230b06ea9f8ecc31c4d13188dd88a341f180d913ddfc6b2f",
+      "public_sha256": "61f0122c4c63918091702aa8035fab0f7ade3b6a62f2819598f80f3ec8aec30c",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "VALIDATION_HISTORY.json",
+      "tested_v2_sha256": "2e7911762516a9c32569f0176b308ecf681430b8e353d881b8647e7d36b5cbea",
+      "public_sha256": "9f4aeb7ca295f12aa1f04ac54b3d72ddcaffea0ffa875e5bfe26175e2acdf462",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "payload/combined_screening_driver/PROTOCOL.md",
+      "tested_v2_sha256": "0b78b852af6703c920e8aac1cf74f992349134ba033b46b012898aefd5668416",
+      "public_sha256": "3ead88dfc4c11875a0f37ec0f1165f4de88e887c95c5c0ada7da3fdf2c0f1035",
+      "category": "documentation or provenance metadata"
+    },
+    {
+      "file": "payload/combined_screening_driver/frozen_core_check.py",
+      "tested_v2_sha256": "c4cf24d5bbf05464a4a3b9557973229e8e80088d1a8245b670612ebb7d675107",
+      "public_sha256": "4032c5a66f1638cd41ec48b98bb6b81cb6f4815d5e0ec1a510e6f0fb11fd0546",
+      "category": "matching strict source-hash literal and explanatory comment only; function AST unchanged"
+    },
+    {
+      "file": "payload/combined_screening_driver/model_stage.py",
+      "tested_v2_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+      "public_sha256": "b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62",
+      "category": "leading module docstring only; function/class AST unchanged"
+    },
+    {
+      "file": "tests/run_pure_tests.py",
+      "tested_v2_sha256": "ba03fabf19b3c469675f778ceb6d0ea72dc3b1393c02ea83461db972197c4ad9",
+      "public_sha256": "c542ad39fd87233c356631d2ec422da6815791566fa2959a4d99801715337eb2",
+      "category": "module docstring and test-report strings only"
+    }
+  ],
+  "all_mathematical_and_orchestration_function_bodies_unchanged": true,
+  "raw_byte_exceptions": {
+    "model_stage.py": "Leading module documentation only",
+    "frozen_core_check.py": "Corresponding strict expected raw source-hash literal and comment",
+    "tests/run_pure_tests.py": "Module documentation and two report string literals"
+  },
+  "normalized_ast_evidence": {
+    "model_stage": {
+      "historical_and_tested_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+      "public_sha256": "b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62",
+      "normalized_ast_sha256": "c98fc459a7bbdc457f6d293b3020c1328b9cb7f70371f50615d8588eefd19cd8",
+      "normalization": "Remove leading module docstring only",
+      "equal": true
+    },
+    "frozen_core_check": {
+      "tested_sha256": "c4cf24d5bbf05464a4a3b9557973229e8e80088d1a8245b670612ebb7d675107",
+      "public_sha256": "4032c5a66f1638cd41ec48b98bb6b81cb6f4815d5e0ec1a510e6f0fb11fd0546",
+      "changes": "Matching model-stage source-hash literal and explanatory comment only",
+      "normalized_ast_equal": true
+    },
+    "mathematical_and_orchestration_function_bodies_changed": false
+  },
+  "test_runner_normalizes_exactly_to_tested_bytes": true,
+  "new_numerical_or_policy_behavior": false,
+  "public_copy_numerically_rerun": false,
+  "scope": "Public documentation, reporting and matching source-identity metadata; no check relaxed. Future runs identify this public manifest; recorded timings identify tested v2."
+}

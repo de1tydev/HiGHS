@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "revision_1_manifest_sha256": "d33ba5add57435bf242f64b61a3c3a2858879c74cdfde416079fdae0a857ecd6",
+  "revision_1_outcome": "preflight_failed_before_any_model_or_solver",
+  "failure": "Version-only observation wrongly required the lazily loaded extras DSO",
+  "preflight_freeze_seconds": 2.395295306996559,
+  "passed_preliminary_checks": {
+    "real_numpy_scalar_tests": 3,
+    "highs_int_bytes": 4,
+    "main_c_api_symbol_providers": "all exact pinned main DSO"
+  },
+  "runtime_versions": {
+    "numpy_version": "2.3.5",
+    "scipy_version": "1.17.0",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "raw_failed_loader_streams_archived": false,
+  "separate_version_only_diagnostic": {
+    "returncode": 0,
+    "main_alias": "libhighs.so.1",
+    "resolved_main": "libhighs.so.1.15.1",
+    "main_sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+    "extras_initialization_observations": 0,
+    "raw_stdout_sha256": "169e5484c828668f8c06f572f88e8899c208faabb1ae9cb119170a863bd05ff9",
+    "raw_stderr_sha256": "6b5e7d8195cf8a30e4081ad7f0ae6b336b7a1b7800949d5836760544c4704ae6",
+    "optimizer_called": false
+  },
+  "revision_2_change": "Correct version-only loader observation; reject missing/wrong/duplicate main, wrong/duplicate observed extras; retain raw streams; actual solver and API identity checks unchanged",
+  "revision_2_numerical_status": "tiny_runtime_and_all_witness_equivalence_passed",
+  "scope": "Correctness and provenance on the recorded runtime only. Public curation changes docs, test-report wording and a matching source-hash literal for the module-docstring edit; mathematical and orchestration function bodies are unchanged. No production performance or broad compatibility claim.",
+  "historical_strict_per_date_gate_passed": false,
+  "revision_2_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+  "revision_2_success": {
+    "runtime_versions": {
+      "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "numpy_version": "2.3.5",
+      "scipy_version": "1.17.0",
+      "os": "Linux-6.18.44-x86_64-with-glibc2.41",
+      "libc": [
+        "glibc",
+        "2.41"
+      ]
+    },
+    "real_numpy_scalar_tests_passed": 3,
+    "tiny_pairs": 1,
+    "objective_each_arm": 660.0,
+    "actual_api_readbacks": 5,
+    "witnesses": 5,
+    "all_three_checker_paths_byte_identical": true,
+    "excluded_fields": [],
+    "production_solves": 0,
+    "natural_credit_activation": false,
+    "full_evidence": "../portable_validation/VALIDATION_RESULT.json"
+  }
+}

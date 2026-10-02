@@ -5,6 +5,13 @@ solver, its build, or its defaults. All solver checkouts below are pinned to
 HiGHS commit `73cac48c5340d775a477087198611862559be250` (source version 1.15.1).
 The patches are separate artifacts, not an enabled solver optimization.
 
+The [combined SCUC replay](portable_combined_replay/README.md) includes the full
+LP-screening pipeline, root-child-credit patch recipe, original-model checks and
+a validated tiny example. The [nine-pair result](combined_results/COMBINED_SCUC_RESULTS.md)
+reports every historical outcome, including the failed February end-to-end
+threshold. The portable entrypoint passed a separate correctness/equality check;
+its runtime has not been performance-measured on the production cases.
+
 ## What is being compared
 
 - `rins-diagnostics.patch`: observes each serial RINS scope using a steady clock

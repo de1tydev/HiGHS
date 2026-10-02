@@ -79,4 +79,4 @@ The [artifact index](README.md) links complete projected outcomes, raw-artifact 
 - Measured runtime freeze SHA-256: `4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3`
 - Frozen campaign plan SHA-256: `eab118a92b85e1a38f2f64eb52c8d6faa2821e2438d6d6fd5549e219231fbbaa`
 
-A separate portable Linux replay entrypoint is under validation and is not included in this result checkpoint. It has **not been performance-measured**; the historical timings above do not become measurements of that source/runtime-binding refactor.
+The [portable Linux replay](../portable_combined_replay/README.md) is available with a separately recorded tiny correctness/equality validation. It has **not been performance-measured on the production cases**; the historical timings above do not become measurements of that source/runtime-binding refactor.

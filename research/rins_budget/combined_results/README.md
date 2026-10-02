@@ -27,7 +27,7 @@ The 27 original integer-source check receipts include intermediate cold-screen p
 
 ## Replay and publication boundary
 
-A separate portable Linux replay entrypoint is under validation and is not included in this result checkpoint. Its source/runtime-binding refactor has not been performance-measured. The historical measured source and runtime identities remain available above.
+The [portable Linux replay](../portable_combined_replay/README.md) is available with a separately recorded tiny correctness/equality validation. Its source/runtime-binding refactor has not been performance-measured on the production cases. The historical measured source and runtime identities remain available above.
 
 This result collection is self-contained for reading, but intentionally does not redistribute the approximately 123 MB original confirmation JSON, raw vectors, MPS models or complete logs. Their exact identities are retained for audit traceability. A replay creates new observations under separately identified source/runtime/data bindings and must not replace these historical outcomes.
 

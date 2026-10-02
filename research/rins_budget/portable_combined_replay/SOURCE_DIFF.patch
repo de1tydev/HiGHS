@@ -1,0 +1,249 @@
+ANNOTATED COMPARISON — NOT AN APPLYABLE PATCH
+Every comparison line is prefixed with "| ". Obsolete workflow text is redacted; raw source hashes are retained in SOURCE_IDENTITIES.json.
+
+| --- measured/contracts.py
+| +++ payload/combined_screening_driver/contracts.py
+| @@ -7,37 +7,27 @@
+|  import sys
+|  
+|  HERE = Path(__file__).resolve().parent
+| -WORKSPACE = HERE.parents[2]
+| -HIGHS = WORKSPACE / 'highs-work'
+| -BENCH = WORKSPACE / 'scuc-bench'
+| +from portable_runtime import bindings as _bindings, validate_manifest as _validate_manifest
+| +_BINDINGS = _bindings(HERE)
+| +_WORK = Path(_BINDINGS['work']) if _BINDINGS else HERE.parent / 'UNPREPARED'
+| +HIGHS = HERE.parent / 'helpers'
+| +BENCH = HERE.parent / 'scuc'
+|  GENERATOR = BENCH / 'generate.py'
+|  CHECKER = BENCH / 'check_solution.py'
+|  EXPORTER = HERE.parent / 'canonical_mps_export'
+| -LIBRARY = HIGHS / 'build-root-child-credit/lib/libhighs.so.1.15.1'
+| -EXTRAS_LIBRARY = HIGHS / 'build-root-child-credit/lib/libhighs_extras.so'
+| -RUNTIME_LIBRARY_PINS = {
+| -    str(LIBRARY): '8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51',
+| -    str(LIBRARY.parent/'libhighs.so.1'): '8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51',
+| -    str(EXTRAS_LIBRARY): 'c2b7d0cc4453ad61b8e61edc645fca8e2f0c4855cb280a42d4c42a9cb3d361c9',
+| -}
+| -BINARY = HIGHS / 'build-root-child-credit/bin/highs'
+| -RUNTIME_PINS = dict(RUNTIME_LIBRARY_PINS, **{str(BINARY): 'cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714'})
+| -BUILD_RECEIPT = HERE.parent/'root_child_credit/build-validation.json'
+| -FINAL_SOURCE_REVIEW = HERE.parent/'root_child_credit_review/FINAL_REVIEW.json'
+| -REVIEW_PINS = {
+| -    str(BUILD_RECEIPT): '1daac3531615936da545ea2704d6edb6a158ec226693b88326fbe091c4ac54dd',
+| -    str(FINAL_SOURCE_REVIEW): '2c5a0db662da3b92d1fbbb7dc5355bc78611c5ba03261e532be346c4889a1b74',
+| -}
+| -ORIGINAL_REVIEW = HERE.parent/'root_child_credit_driver/REVIEW_MANIFEST.json'
+| -ORIGINAL_REVIEW_SHA256 = '239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c'
+| -DESIGN = HERE.parent/'combined_screening_design'
+| +LIBRARY = Path(_BINDINGS['library']) if _BINDINGS else _WORK / 'lib/libhighs.so'
+| +EXTRAS_LIBRARY = Path(_BINDINGS['extras']) if _BINDINGS else _WORK / 'lib/libhighs_extras.so'
+| +BINARY = Path(_BINDINGS['binary']) if _BINDINGS else _WORK / 'bin/highs'
+| +RUNTIME_LIBRARY_PINS = dict(_BINDINGS['runtime_library_pins']) if _BINDINGS else {}
+| +RUNTIME_PINS = dict(_BINDINGS['runtime_pins']) if _BINDINGS else {}
+| +DATA_ROOT = Path(_BINDINGS['data']) if _BINDINGS else _WORK / 'data'
+|  SEPARATOR_PATHS = {'A': HERE/'fractional_separator.py', 'B': HERE.parent/'lp_security_separator_optimized/fractional_separator.py'}
+|  SEPARATOR_SHA256 = {'A': '0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb',
+|                      'B': '1833d1f645507495daac922fbeb58ba0eb5fe3f2c25e98d331b7a56fbd436293'}
+|  NOVEMBER_SHA256 = '5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30'
+|  REQUIRED_LOCAL = ('contracts.py', 'policy.py', 'stage_child.py', 'cold_screen_pair.py', 'model_stage.py',
+|                    'primal_and_bound.py', 'credit_events.py', 'fractional_separator.py', 'tiny_triangle.json',
+| -                  'CAMPAIGN_PLAN.json', 'PROTOCOL.md', 'SOURCE_EXPOSURE.json', 'freeze_review.py', 'tiny_replay.py')
+| +                  'CAMPAIGN_PLAN.json', 'PROTOCOL.md', 'SOURCE_EXPOSURE.json', 'portable_runtime.py', 'tiny_replay.py')
+|  HOURS, TOLERANCE, TARGET = 36, 1e-5, .01
+|  SOLVER_BUDGET, LP_CAP, LP_CALL_CAP, LP_CALLS = 600., 30., 10., 3
+|  MEMORY_BYTES, AUX_WATCHDOG, MIP_GRACE = 7 * 1024**3, 120., 60.
+| @@ -95,24 +85,10 @@
+|      return result
+|  
+|  def runtime_manifest(path=None):
+| -    path = Path(path or HERE / 'REVIEW_MANIFEST.json')
+| -    record = read_json(path)
+| -    if record.get('status') != 'source_and_mock_review_ready_no_numerical_launch':
+| -        raise ContractError('Unrecognized reviewed freeze')
+| -    pins = record.get('artifact_sha256', {})
+| -    if sha(ORIGINAL_REVIEW) != ORIGINAL_REVIEW_SHA256:
+| -        raise ContractError('Inherited reviewed manifest changed')
+| -    inherited = read_json(ORIGINAL_REVIEW)['artifact_sha256']
+| -    mandatory = {**inherited, **RUNTIME_PINS, **REVIEW_PINS,
+| -        str(ORIGINAL_REVIEW): ORIGINAL_REVIEW_SHA256,
+| -        str(DESIGN/'case89pegase_2017-11-01.json.gz'): NOVEMBER_SHA256,
+| -        **{str(SEPARATOR_PATHS[k]): v for k, v in SEPARATOR_SHA256.items()}}
+| -    for name, digest in mandatory.items():
+| -        if pins.get(name) != digest: raise ContractError('Mandatory runtime/source pin omitted or changed: ' + name)
+| -    for name in REQUIRED_LOCAL:
+| -        if str(HERE/name) not in pins: raise ContractError('Mandatory local pin omitted: ' + name)
+| -    verify(pins)
+| -    return record
+| +    try:
+| +        return _validate_manifest(HERE, path)
+| +    except (ValueError, OSError, KeyError) as exc:
+| +        raise ContractError(str(exc)) from exc
+|  
+|  def pairs(raw, eligible):
+|      if not isinstance(raw, list) or any(type(p) is not list or len(p) != 2 or
+| @@ -172,5 +148,4 @@
+|  
+|  def source_case(case_date):
+|      if case_date not in {'2017-02-01', '2017-08-01', '2017-11-01'}: raise ContractError('Case outside reviewed scope')
+| -    if case_date == '2017-11-01': return DESIGN/'case89pegase_2017-11-01.json.gz'
+| -    return BENCH / ('data/case89pegase_' + case_date + '.json.gz')
+| +    return DATA_ROOT / ('case89pegase_' + case_date + '.json.gz')
+| --- measured/cold_screen_pair.py
+| +++ payload/combined_screening_driver/cold_screen_pair.py
+| @@ -24,10 +24,8 @@
+|              'mip_heuristic_near_target_root_budget_log = true'])+'\n'
+|  
+|  def environment():
+| -    env=dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',PYTHONHASHSEED='0')
+| -    for key in ('LD_PRELOAD','LD_AUDIT','LD_DEBUG','LD_DEBUG_OUTPUT','PYTHONOPTIMIZE','PYTHONPATH'): env.pop(key,None)
+| -    env['LD_LIBRARY_PATH']=str(LIBRARY.parent)
+| -    return env
+| +    from portable_runtime import minimal_environment
+| +    return minimal_environment(HERE)
+|  
+|  def execute(command,log,env,watchdog):
+|      measurement=module(HIGHS/'process_measure.py','cold_screen_process_measure')
+| @@ -425,7 +423,7 @@
+|  def main():
+|      phase_started=time.monotonic()
+|      p=argparse.ArgumentParser(description=__doc__)
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +    p.add_argument('--run-reviewed',action='store_true',required=True,help='Acknowledge the fixed protocol and one-use numerical phase')
+|      p.add_argument('--phase',choices=['tiny','development','confirmation'],required=True)
+|      a=p.parse_args()
+|      runtime_manifest()
+| @@ -433,7 +431,8 @@
+|      if a.phase=='development':
+|          prior=phase_result(out/'tiny/pair.json')
+|          replay=phase_result(out/'tiny/replay/RESULT.json')
+| -        if not prior.get('tiny_pipeline_verified') or not replay.get('passed'): raise ContractError('Tiny wiring/replay gate not passed')
+| +        core_replay=phase_result(out/'tiny/frozen_core_replay/RESULT.json')
+| +        if not prior.get('tiny_pipeline_verified') or not replay.get('passed') or not core_replay.get('passed'): raise ContractError('Tiny wiring/replay gate not passed')
+|      if a.phase=='confirmation':
+|          prior=phase_result(out/'development/pair.json')
+|          if not prior['comparison']['development_gate_pass']: raise ContractError('Development gate not passed')
+| @@ -466,6 +465,9 @@
+|              if pair.get('tiny_pipeline_verified'):
+|                  from tiny_replay import replay
+|                  passed=replay(out/'tiny')
+| +                if passed:
+| +                    from frozen_core_replay import replay as core_replay
+| +                    passed=core_replay(out/'tiny')
+|          else: passed=pair['comparison'].get('development_gate_pass',False)
+|          return 0 if passed else 1
+|      completed=[]
+| --- measured/model_stage.py
+| +++ payload/combined_screening_driver/model_stage.py
+| @@ -1,8 +1,8 @@
+|  #!/usr/bin/env python3
+|  """Watchdog child: fresh source construction, canonical v2/API gate, or primal checks.
+|  
+| -There is no optimizer entry point. Real construction/readback/checking is run only
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +There is no optimizer entry point. Construction/readback/checking requires an
+| +explicit invocation; importing this module performs no numerical work.
+|  """
+|  import argparse
+|  import copy
+| --- measured/PROTOCOL.md
+| +++ payload/combined_screening_driver/PROTOCOL.md
+| @@ -1,10 +1,10 @@
+|  # Frozen combined screening campaign
+|  
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +This is an isolated implementation of the prospective combined design and its pre-outcome seed amendment. Source/mock review does not run numerical work. An explicit user CLI invocation selects each one-use numerical phase. No C++ source, build, old protocol, global data manifest, or dataset is changed.
+|  
+|  A starts from empty pairs and runs cold integer separation, with root child credit false and baseline separator 0760ccab. B starts from empty pairs, permits at most three cold dual-simplex LP calls at 10 actual process seconds each / 30 aggregate, then fresh MIP masters, root credit true and optimized separator 1833d1f. Both use the exact same reviewed executable and DSOs, original outer-gap policy and logging, two threads, parallel off, initial-root IPX off, 1% target, and identical MIP options except the root-credit boolean. Only validated eligible pairs and the existing valid integer-master bound ledger persist within an arm. No point, LP bound, basis, rating table, topology/factorization or historical pairs carry over.
+|  
+| -The original model_stage.py, primal_and_bound.py and credit_events.py are byte-identical to reviewed driver 239e9461. Canonical loaded-matrix equality, generator, original complete source checker, finite/status checks, conservative bound allowances and (U-L)/max(abs(U),1e-10) <= .01 are preserved. Production retains 36 hours, 89 buses, 12 units, 210 lines, all 192 source-listed outages and 14,721 eligible pairs. The only added data is exact-byte November from the separately reviewed supplemental design directory.
+| +The measured mathematical implementation is retained. model_stage.py differs only in its leading module documentation; SOURCE_IDENTITIES.json records original/public raw hashes and normalized AST/function-body equivalence. primal_and_bound.py and credit_events.py remain byte-identical to the measured sources. Canonical loaded-matrix equality, generator, original complete source checker, finite/status checks, conservative bound allowances and (U-L)/max(abs(U),1e-10) <= .01 are preserved. Production retains 36 hours, 89 buses, 12 units, 210 lines, all 192 source-listed outages and 14,721 eligible pairs. The only added data is exact-byte November from the separately reviewed supplemental design directory.
+|  
+|  Every scope preparation, generation and complete check runs in a fresh pinned Python interpreter with -B -s. stage_child.py checks the fixed plan, allowlisted arm record, exact source paths and hashes, then compiles contracts, the selected separator, primal_and_bound and model_stage from verified bytes. It rejects any existing module registration. Startup/end runtime checks and exact loaded-module/input/output receipts are symmetric. Scope preparation is per arm; there is no shared numerical or source cache. The selected separator modifies only its independent source scope/direct separation; the original full source checker still runs for every emitted complete MIP point. Selector receipts are separate from unchanged checker JSON output.
+|  
+| @@ -12,10 +12,10 @@
+|  
+|  The co-primary E2E endpoint is the reviewed in-program standalone-equivalent interval: before arm directory/runtime/source work through final checks and durable summary fsync, plus full common definition-import/plan-archival time charged to each arm. Each receipt reports generation/readback, source scope, LP checks, integer checks, LP and MIP solving and remaining overhead. Pair archival has a separate receipt. The outer phase receipt starts before phase checks/marker and includes pair serialization and separately charged tiny replay. Interpreter launch itself is not claimed. A full phase is not benchmark timing.
+|  
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +The fixed one-use campaign directory is run_v1; exclusive phase markers prevent implicit rerun, restart or alternate output/seed selection. The CLI only exposes --run-reviewed --phase tiny|development|confirmation. The flag acknowledges the frozen protocol and its resource costs; no external approval file is used. A failed campaign cannot be rescued by retries, tuning, output replacement, changed seeds/budgets or credit-policy changes.
+|  
+|  Tiny: one AB pair, 20 actual solver seconds per arm, two-second MIP containment grace and twenty-second helper watchdog. A requires zero LP calls, empty first integer pairs and at least two integer rounds discovering missing pairs. B requires LP-discovered pairs and a subsequent fresh integer master. Both require full source certificates at objective 660 and selected-module identity receipts. Successful tiny runs are followed by separately charged exact A/B complete-check equality replay on every tiny witness. Tiny proves wiring, not speed or natural credit activation.
+|  
+|  Development: February seed 0, AB, fresh 600 seconds per arm. Both complete certificates, valid resource/credit telemetry, and actual B applied cap or exhausted-credit skip are mandatory, alongside at least 20% paired improvement on both solver and standalone-equivalent E2E. Failure ends this route. Development remains familiar rather than held out.
+|  
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +Confirmation, only after a separate explicit CLI invocation and a passed development gate: November1 BA, August1 AB, February3 BA, February4 AB, November2 AB, August2 BA, August3 AB, February5 BA, November3 BA. For each date separately, all three complete pairs must improve both endpoints strictly, and median of paired reductions must reach 30% for each endpoint. No pooled-ratio substitution, early success or extra repeats. Every B arm records activation. SOURCE_EXPOSURE.json and the amended design disclose February1/2 earlier RINS exposure, familiar February/August dates, and new November input provenance.
+| --- measured/SOURCE_EXPOSURE.json
+| +++ payload/combined_screening_driver/SOURCE_EXPOSURE.json
+| @@ -1,28 +1,28 @@
+|  {
+|    "scope": "Pre-outcome prior exposure and reserved-seed amendment",
+| -  "amendment_path": "<historical-private-path>",
+| -  "audit_path": "<historical-private-path>",
+| +  "amendment_path": "historical/AMENDMENT_2026-10-02.md",
+| +  "audit_path": "historical/DESIGN_AUDIT.json",
+|    "prior_february_seed_1_2_evidence": [
+|      {
+| -      "path": "<historical-private-path>",
+| +      "path": "historical/seed1-default/summary.json",
+|        "sha256": "ea80ea23ec0223b8cb285467641d76a8b7a81fd1d5874972c9c879f4b099996d",
+|        "source_date": "2017-02-01",
+|        "seed": 1
+|      },
+|      {
+| -      "path": "<historical-private-path>",
+| +      "path": "historical/seed1-nested-rins-off/summary.json",
+|        "sha256": "522a5111f2f78beafcc2982e9e2ae7c34f8b6776a444579e1e3dc2518e732c72",
+|        "source_date": "2017-02-01",
+|        "seed": 1
+|      },
+|      {
+| -      "path": "<historical-private-path>",
+| +      "path": "historical/seed2-default/summary.json",
+|        "sha256": "aa68e5184b0857e456fbaa303aa9d3abab996d2474182c92443d35445899353a",
+|        "source_date": "2017-02-01",
+|        "seed": 2
+|      },
+|      {
+| -      "path": "<historical-private-path>",
+| +      "path": "historical/seed2-nested-rins-off/summary.json",
+|        "sha256": "7768da449d20041f2c2e15834bcea03e4a0e2e1dca0d5cb330abb689e094ccc9",
+|        "source_date": "2017-02-01",
+|        "seed": 2
+| --- measured/test_combined.py
+| +++ tests/test_combined.py
+| @@ -19,23 +19,17 @@
+|          with self.assertRaises(Exception):policy.ARMS['A'].lp_discovery=True
+|          with self.assertRaises(ValueError):policy.arm_record('C')
+|  
+| -    def test_mandatory_pins_cannot_be_omitted_or_changed(self):
+| -        inherited={'/old/source':'a'*64}
+| -        mandatory={**inherited,**contracts.RUNTIME_PINS,**contracts.REVIEW_PINS,
+| -            str(contracts.ORIGINAL_REVIEW):contracts.ORIGINAL_REVIEW_SHA256,
+| -            str(contracts.DESIGN/'case89pegase_2017-11-01.json.gz'):contracts.NOVEMBER_SHA256,
+| -            **{str(contracts.SEPARATOR_PATHS[k]):v for k,v in contracts.SEPARATOR_SHA256.items()}}
+| -        pins={**{str(contracts.HERE/n):'b'*64 for n in contracts.REQUIRED_LOCAL},**mandatory}
+| -        record={'status':'source_and_mock_review_ready_no_numerical_launch','artifact_sha256':pins}
+| -        def read(path):return {'artifact_sha256':inherited} if Path(path)==contracts.ORIGINAL_REVIEW else record
+| -        with patch.object(contracts,'read_json',side_effect=read),patch.object(contracts,'sha',return_value=contracts.ORIGINAL_REVIEW_SHA256),patch.object(contracts,'verify'):
+| +    def test_runtime_manifest_delegates_and_normalizes_binding_errors(self):
+| +        # Mandatory portable pin coverage lives in test_portable_runtime. The
+| +        # numerical contracts expose the same public error type as before.
+| +        record={'status':'source_and_mock_review_ready_no_numerical_launch'}
+| +        with patch.object(contracts,'_validate_manifest',return_value=record) as validate:
+|              self.assertIs(contracts.runtime_manifest('/mock'),record)
+| -            for name in pins:
+| -                altered=dict(pins);altered.pop(name);record['artifact_sha256']=altered
+| -                with self.subTest(name=name),self.assertRaises(contracts.ContractError):contracts.runtime_manifest('/mock')
+| -            for name in mandatory:
+| -                altered=dict(pins);altered[name]='0'*64;record['artifact_sha256']=altered
+| -                with self.subTest(name=name),self.assertRaises(contracts.ContractError):contracts.runtime_manifest('/mock')
+| +            validate.assert_called_once_with(contracts.HERE,'/mock')
+| +        for error in (ValueError('changed pin'),OSError('missing artifact'),KeyError('required pin')):
+| +            with self.subTest(error=type(error)),patch.object(contracts,'_validate_manifest',side_effect=error):
+| +                with self.assertRaises(contracts.ContractError) as caught:contracts.runtime_manifest('/mock')
+| +                self.assertIs(caught.exception.__cause__,error)
+|  
+|      def good_tiny(self):
+|          def stage(arm,kind,active,new,full=False):

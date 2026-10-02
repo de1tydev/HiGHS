@@ -1,0 +1,61 @@
+{
+  "scope": "Pre-outcome prior exposure and reserved-seed amendment",
+  "amendment_path": "historical/AMENDMENT_2026-10-02.md",
+  "audit_path": "historical/DESIGN_AUDIT.json",
+  "prior_february_seed_1_2_evidence": [
+    {
+      "path": "historical/seed1-default/summary.json",
+      "sha256": "ea80ea23ec0223b8cb285467641d76a8b7a81fd1d5874972c9c879f4b099996d",
+      "source_date": "2017-02-01",
+      "seed": 1
+    },
+    {
+      "path": "historical/seed1-nested-rins-off/summary.json",
+      "sha256": "522a5111f2f78beafcc2982e9e2ae7c34f8b6776a444579e1e3dc2518e732c72",
+      "source_date": "2017-02-01",
+      "seed": 1
+    },
+    {
+      "path": "historical/seed2-default/summary.json",
+      "sha256": "aa68e5184b0857e456fbaa303aa9d3abab996d2474182c92443d35445899353a",
+      "source_date": "2017-02-01",
+      "seed": 2
+    },
+    {
+      "path": "historical/seed2-nested-rins-off/summary.json",
+      "sha256": "7768da449d20041f2c2e15834bcea03e4a0e2e1dca0d5cb330abb689e094ccc9",
+      "source_date": "2017-02-01",
+      "seed": 2
+    }
+  ],
+  "development": {
+    "date": "2017-02-01",
+    "seed": 0,
+    "prior_exposure": "Familiar development case; not held out"
+  },
+  "confirmation_reservation": {
+    "2017-02-01": [
+      3,
+      4,
+      5
+    ],
+    "2017-08-01": [
+      1,
+      2,
+      3
+    ],
+    "2017-11-01": [
+      1,
+      2,
+      3
+    ]
+  },
+  "date_exposure": {
+    "2017-02-01": "Familiar date: prior seed 0 and earlier RINS seeds 1/2",
+    "2017-08-01": "Familiar transfer date: prior seed 0 and retained checker/source evidence",
+    "2017-11-01": "New date acquired after recorded date intent; only plain metadata/provenance work before this freeze"
+  },
+  "combined_outcomes_seen_before_reservation": false,
+  "seeds_changed_after_combined_outcome": false,
+  "no_broad_unseen_dataset_claim": true
+}

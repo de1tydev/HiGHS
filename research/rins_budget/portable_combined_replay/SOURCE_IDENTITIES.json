@@ -1,0 +1,234 @@
+{
+  "schema": 1,
+  "measured_driver_manifest_sha256": "4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3",
+  "measured_only": {
+    "freeze_review.py": "a047e38eff136433b686b7bed7a90b61b8b649e0d2fbcbbcced424c79adcdc44",
+    "CAMPAIGN_PLAN.json": "eab118a92b85e1a38f2f64eb52c8d6faa2821e2438d6d6fd5549e219231fbbaa",
+    "REVIEW_MANIFEST.json": "4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3"
+  },
+  "artifacts": [
+    {
+      "measured_source": "contracts.py",
+      "portable_source": "payload/combined_screening_driver/contracts.py",
+      "measured_sha256": "f71ff3fe6a4cddaf1f81ddbcddfb90f074a441f845333c0906f171a6d5e17420",
+      "portable_sha256": "e3a0561eacb974e3e8ac165e0f673fc8b53bdb1c8e92f7c38652659afe1b5849",
+      "byte_identical": false
+    },
+    {
+      "measured_source": "policy.py",
+      "portable_source": "payload/combined_screening_driver/policy.py",
+      "measured_sha256": "8d555d314c0d9b496b1382f2f54daae75e50343c0d9405316f930ce5ec958488",
+      "portable_sha256": "8d555d314c0d9b496b1382f2f54daae75e50343c0d9405316f930ce5ec958488",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "stage_child.py",
+      "portable_source": "payload/combined_screening_driver/stage_child.py",
+      "measured_sha256": "004602593d902375332c7d289db0da7925aad0eb1d6a80452e50546d8f3d4180",
+      "portable_sha256": "004602593d902375332c7d289db0da7925aad0eb1d6a80452e50546d8f3d4180",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "cold_screen_pair.py",
+      "portable_source": "payload/combined_screening_driver/cold_screen_pair.py",
+      "measured_sha256": "a05f465564af7f0ebb520c1c36b69af7b2f516e409dc40375e90175bc1e5010b",
+      "portable_sha256": "5457d4fe204c1638dcccc1b732cc2bf612c4f7fe121890c93749a59c9d6bbb2c",
+      "byte_identical": false
+    },
+    {
+      "measured_source": "model_stage.py",
+      "portable_source": "payload/combined_screening_driver/model_stage.py",
+      "measured_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+      "portable_sha256": "b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62",
+      "byte_identical": false,
+      "difference": "Module docstring only; entire AST excluding that docstring is unchanged"
+    },
+    {
+      "measured_source": "primal_and_bound.py",
+      "portable_source": "payload/combined_screening_driver/primal_and_bound.py",
+      "measured_sha256": "2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00",
+      "portable_sha256": "2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "credit_events.py",
+      "portable_source": "payload/combined_screening_driver/credit_events.py",
+      "measured_sha256": "477c74bdf47379ceeba1f24eb94dbad4256a5092cd4c36bd193076e2b0373c0a",
+      "portable_sha256": "477c74bdf47379ceeba1f24eb94dbad4256a5092cd4c36bd193076e2b0373c0a",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "fractional_separator.py",
+      "portable_source": "payload/combined_screening_driver/fractional_separator.py",
+      "measured_sha256": "0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb",
+      "portable_sha256": "0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "tiny_replay.py",
+      "portable_source": "payload/combined_screening_driver/tiny_replay.py",
+      "measured_sha256": "a4dbdfc17d629fa368d8c32f185c097897b7fa7daa078875943130ef2123056e",
+      "portable_sha256": "a4dbdfc17d629fa368d8c32f185c097897b7fa7daa078875943130ef2123056e",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "tiny_triangle.json",
+      "portable_source": "payload/combined_screening_driver/tiny_triangle.json",
+      "measured_sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48",
+      "portable_sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "PROTOCOL.md",
+      "portable_source": "payload/combined_screening_driver/PROTOCOL.md",
+      "measured_sha256": "2cfcb83ce73eab3bbb8160842229efead93ad6a1b5576effb8194d58e35cf0ab",
+      "portable_sha256": "3ead88dfc4c11875a0f37ec0f1165f4de88e887c95c5c0ada7da3fdf2c0f1035",
+      "byte_identical": false
+    },
+    {
+      "measured_source": "SOURCE_EXPOSURE.json",
+      "portable_source": "payload/combined_screening_driver/SOURCE_EXPOSURE.json",
+      "measured_sha256": "a75e793fc08d559be3a313abf03d45575d3e205b40c879a2515f01ff5f15b0c1",
+      "portable_sha256": "ef70e4c5166a812f6e1c82b23aef56a320a117738057731e3f5309246420d66e",
+      "byte_identical": false,
+      "diff_redaction": "Historical absolute paths fully replaced with <historical-private-path>; exact original and portable byte hashes retained"
+    },
+    {
+      "measured_source": "canonical_mps_export/export_v2.py",
+      "portable_source": "payload/canonical_mps_export/export_v2.py",
+      "measured_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+      "portable_sha256": "dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "canonical_mps_export/readback.py",
+      "portable_source": "payload/canonical_mps_export/readback.py",
+      "measured_sha256": "4400ec93e891719348dc3c574c4a5f4e1b3b2c26b00825ae4ecef3c977d52755",
+      "portable_sha256": "4400ec93e891719348dc3c574c4a5f4e1b3b2c26b00825ae4ecef3c977d52755",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "lp_security_separator_optimized/fractional_separator.py",
+      "portable_source": "payload/lp_security_separator_optimized/fractional_separator.py",
+      "measured_sha256": "1833d1f645507495daac922fbeb58ba0eb5fe3f2c25e98d331b7a56fbd436293",
+      "portable_sha256": "1833d1f645507495daac922fbeb58ba0eb5fe3f2c25e98d331b7a56fbd436293",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "test_contract.py",
+      "portable_source": "tests/test_contract.py",
+      "measured_sha256": "37e08ec61aa4f90dfb44dc3735a7225a4cbb5e3f9dc8163c99ef4fe0b1aa84c3",
+      "portable_sha256": "37e08ec61aa4f90dfb44dc3735a7225a4cbb5e3f9dc8163c99ef4fe0b1aa84c3",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "test_credit_events.py",
+      "portable_source": "tests/test_credit_events.py",
+      "measured_sha256": "453e93178850a18e18e37965ee35fe49219641150fe3c751cd80316cc37e3496",
+      "portable_sha256": "453e93178850a18e18e37965ee35fe49219641150fe3c751cd80316cc37e3496",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "test_pair_policy.py",
+      "portable_source": "tests/test_pair_policy.py",
+      "measured_sha256": "c47c56bfbb9d00796c5d95bae125e1d629e5614877634e35116e5be87ddfd0b5",
+      "portable_sha256": "c47c56bfbb9d00796c5d95bae125e1d629e5614877634e35116e5be87ddfd0b5",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "test_combined.py",
+      "portable_source": "tests/test_combined.py",
+      "measured_sha256": "13ac3cf8b82dcd4c9c24abac961c09296fb48106fb42f1cf80e9a750ea0b3386",
+      "portable_sha256": "ec56a825a99c9dc3cc7aacc1e76ed342fae8d3fcf75acab36f8e406553a0d3dc",
+      "byte_identical": false
+    },
+    {
+      "measured_source": "research-package/scuc/generate.py",
+      "portable_external_source": "scuc/generate.py",
+      "measured_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+      "portable_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "research-package/scuc/check_solution.py",
+      "portable_external_source": "scuc/check_solution.py",
+      "measured_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "portable_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "research-package/process_measure.py",
+      "portable_external_source": "process_measure.py",
+      "measured_sha256": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1",
+      "portable_sha256": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "research-package/outer-gap-heuristic.patch",
+      "portable_external_source": "outer-gap-heuristic.patch",
+      "measured_sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae",
+      "portable_sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "research-package/initial-root-ipx.patch",
+      "portable_external_source": "initial-root-ipx.patch",
+      "measured_sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24",
+      "portable_sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24",
+      "byte_identical": true
+    },
+    {
+      "measured_source": "research-package/root-child-credit.patch",
+      "portable_external_source": "root-child-credit.patch",
+      "measured_sha256": "03041fda1e20fcf0a3fcae6489c7cbb1a8d03769377567ab7ac2ae64fa3ad9c1",
+      "portable_sha256": "03041fda1e20fcf0a3fcae6489c7cbb1a8d03769377567ab7ac2ae64fa3ad9c1",
+      "byte_identical": true
+    }
+  ],
+  "replacement_entrypoint": "prepare_replay.py replaces machine-specific freeze_review.py; generated plan/binding/runtime documents are new local artifacts, not measured records",
+  "functional_changes": [
+    "Preparation/materialization and release-vs-runtime pin separation",
+    "Validated local source/build/data/interpreter paths",
+    "Minimal child environment and executable startup checks",
+    "Runtime ABI/ELF provider receipts",
+    "Separately charged direct historical-core tiny equality audit and prerequisite gate"
+  ],
+  "source_exposure_sanitization": "Historical absolute machine prefixes replaced with historical evidence labels; prior exposures and seeds unchanged",
+  "historical_confirmation": {
+    "pairs": 9,
+    "valid_arms": 18,
+    "all_pairs_faster_on_both_endpoints": true,
+    "overall_paired_median_solver_reduction_percent": 45.7,
+    "overall_paired_median_e2e_reduction_percent": 34.54,
+    "strict_per_date_gate_passed": false,
+    "february_median_e2e_reduction_percent": 25.04,
+    "scope": "Historical measured prototype, not portable-source timing or stable/general MILP promotion"
+  },
+  "portable_validation_status": "Tested v2 passed runtime/tiny/equality validation; public copy changes docs, test-report text and the matching expected raw hash for a module-docstring-only edit. Mathematical and orchestration function bodies are unchanged.",
+  "new_source_files": [
+    "prepare_replay.py",
+    "payload/combined_screening_driver/frozen_core_check.py",
+    "payload/combined_screening_driver/frozen_core_replay.py",
+    "payload/combined_screening_driver/portable_runtime.py",
+    "payload/combined_screening_driver/runtime_inspect.py"
+  ],
+  "source_diff_format": "Nonapplyable annotated historical comparison. Obsolete internal workflow prose and private paths redacted; exact raw source hashes preserved.",
+  "tested_implementation_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+  "public_copy_change_record": "../portable_validation/PUBLICATION_CHANGES.json",
+  "public_source_normalization": {
+    "model_stage": {
+      "historical_and_tested_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+      "public_sha256": "b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62",
+      "normalized_ast_sha256": "c98fc459a7bbdc457f6d293b3020c1328b9cb7f70371f50615d8588eefd19cd8",
+      "normalization": "Remove leading module docstring only",
+      "equal": true
+    },
+    "frozen_core_check": {
+      "tested_sha256": "c4cf24d5bbf05464a4a3b9557973229e8e80088d1a8245b670612ebb7d675107",
+      "public_sha256": "4032c5a66f1638cd41ec48b98bb6b81cb6f4815d5e0ec1a510e6f0fb11fd0546",
+      "changes": "Matching model-stage source-hash literal and explanatory comment only",
+      "normalized_ast_equal": true
+    },
+    "mathematical_and_orchestration_function_bodies_changed": false
+  }
+}

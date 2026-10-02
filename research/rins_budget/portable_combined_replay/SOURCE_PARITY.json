@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "passed": true,
+  "method": "Exact AST equality excluding source locations; no source execution",
+  "reference_component": "historical combined_screening_driver/contracts.py",
+  "reference_sha256": "f71ff3fe6a4cddaf1f81ddbcddfb90f074a441f845333c0906f171a6d5e17420",
+  "portable_component": "payload/combined_screening_driver/contracts.py",
+  "portable_sha256": "e3a0561eacb974e3e8ac165e0f673fc8b53bdb1c8e92f7c38652659afe1b5849",
+  "unchanged_definitions": [
+    "Budget",
+    "ContractError",
+    "check_lp_integer_difference",
+    "finite",
+    "module",
+    "pairs",
+    "read_json",
+    "sha",
+    "verify",
+    "write_json"
+  ],
+  "unchanged_policy_constants": [
+    "AUX_WATCHDOG",
+    "FIDELITY_FIELDS",
+    "HOURS",
+    "LP_CALLS",
+    "LP_CALL_CAP",
+    "LP_CAP",
+    "LP_SCOPE",
+    "MEMORY_BYTES",
+    "MIP_GRACE",
+    "MIP_SCOPE",
+    "SOLVER_BUDGET",
+    "TARGET",
+    "TOLERANCE"
+  ],
+  "changed_binding_definitions": [
+    "runtime_manifest",
+    "source_case"
+  ],
+  "added_or_removed_definitions": [],
+  "numerical_imports_or_calls": false
+}

@@ -1,0 +1,14 @@
+{
+  "Parameters": {"Version": "0.3", "Time horizon (h)": 2, "Time step (min)": 60, "Power balance penalty ($/MW)": 1000},
+  "Buses": {"b1": {"Load (MW)": 0}, "b2": {"Load (MW)": 0}, "b3": {"Load (MW)": 60}},
+  "Generators": {
+    "cheap": {"Bus": "b1", "Production cost curve (MW)": [0, 100], "Production cost curve ($)": [0, 100], "Initial status (h)": 10, "Initial power (MW)": 0, "Minimum uptime (h)": 1, "Minimum downtime (h)": 1, "Startup costs ($)": [0], "Startup delays (h)": [1]},
+    "local": {"Bus": "b3", "Production cost curve (MW)": [0, 100], "Production cost curve ($)": [0, 1000], "Initial status (h)": 10, "Initial power (MW)": 0, "Minimum uptime (h)": 1, "Minimum downtime (h)": 1, "Startup costs ($)": [0], "Startup delays (h)": [1]}
+  },
+  "Transmission lines": {
+    "l12": {"Source bus": "b1", "Target bus": "b2", "Susceptance (S)": 1, "Normal flow limit (MW)": 100, "Emergency flow limit (MW)": 30, "Flow limit penalty ($/MW)": 5000},
+    "l23": {"Source bus": "b2", "Target bus": "b3", "Susceptance (S)": 1, "Normal flow limit (MW)": 100, "Emergency flow limit (MW)": 30, "Flow limit penalty ($/MW)": 5000},
+    "l13": {"Source bus": "b1", "Target bus": "b3", "Susceptance (S)": 1, "Normal flow limit (MW)": 100, "Emergency flow limit (MW)": 100, "Flow limit penalty ($/MW)": 5000}
+  },
+  "Contingencies": {"lose_l13": {"Affected lines": ["l13"]}}
+}

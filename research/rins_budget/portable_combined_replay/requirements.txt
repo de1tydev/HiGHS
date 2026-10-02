@@ -1,0 +1,3 @@
+# Python >= 3.11; install separately into a clean startup-hook-free environment.
+numpy>=1.26
+scipy>=1.11

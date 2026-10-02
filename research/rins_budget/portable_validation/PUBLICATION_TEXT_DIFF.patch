@@ -1,0 +1,563 @@
+ANNOTATED COMPARISON — NOT AN APPLYABLE PATCH
+Every comparison line is prefixed with "| ". Obsolete workflow text is redacted; raw source hashes are retained in PUBLICATION_CHANGES.json.
+
+| --- tested-v2/README.md
+| +++ public/README.md
+| @@ -1,12 +1,15 @@
+|  # Portable combined-screening replay
+|  
+|  This opt-in research package makes the frozen combined-screening method
+| -inspectable and provides an entry point for a new local replay. It does not
+| -enable a solver default or promote the method. The first packaged snapshot
+| -failed runtime preflight before any tiny model, solve or equality replay. The
+| -corrective source revision supplied here has not been run through numerical
+| -preflight or the tiny smoke. Portability is not validated; the bounded procedure
+| -is in [SMOKE_PLAN.md](SMOKE_PLAN.md).
+| +inspectable and provides an entry point for a new local replay. The tested v2
+| +snapshot passed runtime preflight, one tiny A/B pair and every-witness checker
+| +equality on the recorded Linux runtime. This public copy changes documentation and test-report wording, plus the
+| +expected source-hash literal corresponding to a module-docstring edit.
+| +Mathematical and orchestration function bodies match tested v2 exactly;
+| +normalized AST evidence records the precise exceptions to byte identity.
+| +It has a distinct release identity. See [validation evidence](../portable_validation/VALIDATION_RESULT.json)
+| +and the [public-copy change record](../portable_validation/PUBLICATION_CHANGES.json).
+| +No solver default is enabled and no method or performance promotion follows.
+|  
+|  The completed historical confirmation retained all nine pairs and 18 valid,
+|  complete arms. B was faster in every pair on both recorded endpoints. Overall
+| @@ -19,28 +22,35 @@
+|  
+|  ## Validation status and the preflight correction
+|  
+| -On the first packaged snapshot, all three tests using actual NumPy scalars
+| -passed in a clean virtual environment with Python 3.12.14, NumPy 2.3.5 and SciPy
+| -1.17.0. Scalar HiGHS ABI inspection reported a four-byte `HighsInt`, and the
+| -required C-symbol provider checks passed. These observations apply to that
+| -snapshot and the exact unchanged source they exercised; they do not establish
+| -matrix readback, model generation, solver behavior or complete-check equality.
+| -
+| -The original preflight then failed during the executable's `--version` loader
+| -check. The main library identity was correct, but the version-only process had
+| -not initialized the lazily loaded extras library. The old preflight incorrectly
+| -required an extras initialization record even for this version-only invocation.
+| -The original failure receipt is retained. Its launcher did not archive the raw
+| -loader streams on failure; a subsequent version-only diagnostic retained both
+| -raw streams and confirmed the exact main alias with no extras initialization. No tiny model, solver run,
+| -A/B checker equality or frozen-core equality replay was launched.
+| -
+| -The corrective v2 source changes only the version-only observation: the exact
+| -main library remains mandatory; an observed extras library must match exactly;
+| -absence of a lazily initialized extras library is allowed only for `--version`.
+| -Actual solver invocations retain the unchanged mandatory main-and-extras checks.
+| -This correction has not been numerically validated. Neither the scalar checks
+| -nor the source correction is a successful portability result.
+| +The original v1 preflight failed before any tiny model, solve or equality replay.
+| +Its main C-symbol providers and four-byte `HighsInt` were correct; `--version`
+| +had not initialized the lazily loaded extras DSO. The old preflight incorrectly
+| +required that initialization. The failure receipt is retained. A subsequent
+| +version-only diagnostic retained both raw streams and confirmed the exact main
+| +alias with no extras initialization; the failed launch itself had not archived
+| +those streams.
+| +
+| +The corrected v2 requires the exact main DSO during `--version`, rejects any
+| +wrong or duplicate observed provider, and labels absent extras as unobserved.
+| +Actual LP/MIP processes still require the exact main and extras identities;
+| +actual model readback still verifies C-symbol providers, 32-bit ABI and every
+| +mathematical field. Raw preflight streams are now retained on failure.
+| +
+| +Tested v2 manifest `5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c`
+| +passed one fresh bounded validation with CPython 3.12.14, NumPy 2.3.5, SciPy
+| +1.17.0 and Linux x86_64/glibc 2.41. All three real-NumPy scalar tests passed.
+| +A used two MIP calls and no LP calls; B used two LP calls and one MIP call.
+| +Both completed at objective 660 within their 20-second solver budgets. All five
+| +actual API model readbacks passed; all five witnesses had byte-identical outputs
+| +across both selector checkers and the direct historical core, with no excluded
+| +fields. Tiny did not activate root-child credit and makes no speed claim.
+| +
+| +The complete validation CLI took 53.1370743449952 seconds, including preflight
+| +and equality checks. This is distinct from solver-process time, each arm's
+| +standalone-equivalent endpoint, provisioning and preparation. Full-precision
+| +endpoint definitions and values are in the linked validation evidence. No
+| +production case was solved by the portable validation. The public reporting
+| +copy was not numerically rerun; future runs identify its own manifest.
+|  
+|  ## Contents and trust boundary
+|  
+| @@ -82,12 +92,11 @@
+|  - Fresh, disjoint source, build, data and replay output locations as applicable
+|  
+|  These version floors are declared requirements, not a tested compatibility
+| -matrix. The historical scientific environment recorded NumPy 2.3.5 and SciPy
+| -1.17.0. The limited scalar checks described above also used those versions with
+| -Python 3.12.14; no Python/NumPy/SciPy combination has yet passed this portable
+| -package's numerical smoke. Compiler, libc, CPU, NumPy/SciPy and native-library
+| -differences can change numerical trajectories and timings. This implementation uses
+| -Python/ctypes; it does not require `highspy` or execute UnitCommitment.jl's solver.
+| +matrix. The successful tiny validation used CPython 3.12.14, NumPy 2.3.5, SciPy
+| +1.17.0 and Linux x86_64/glibc 2.41. Other combinations remain untested. Compiler,
+| +libc, CPU and scientific/native-library differences can change trajectories and
+| +timings. This implementation uses Python/ctypes; it does not require `highspy`
+| +or execute UnitCommitment.jl's solver.
+|  
+|  Numerical children use `-B -s`; `-s` disables user site packages but does not
+|  disable global startup hooks. The selected Python installation must have no
+| @@ -103,6 +112,63 @@
+|  must contain neither whitespace nor a colon,
+|  because the frozen loader-record parser uses non-whitespace path tokens. macOS,
+|  Windows and musl are outside this package's supported runtime contract.
+| +
+| +## Provision the clean Python environment
+| +
+| +A generic virtual environment is not guaranteed to satisfy startup-hook checks.
+| +The original base installation contained `distutils-precedence.pth`. The tested
+| +setup used a fresh `--without-pip` environment and copied only the already
+| +installed NumPy/SciPy distributions, metadata and their native-library folders,
+| +excluding bytecode and startup hooks. No download, package installation or
+| +system configuration change was involved.
+| +
+| +For that same CPython wheel-layout procedure, set `BASE_PYTHON` to an existing
+| +trusted Python executable, `SCIENCE_SITE` to its NumPy/SciPy `site-packages`
+| +directory, and `CLEAN_PYTHON_ENV` to a new directory whose parent already exists.
+| +This example adds an explicit byte-for-byte copy receipt; preparation separately
+| +pins the actual installation and rejects any remaining startup hooks. It does
+| +not import the scientific packages while provisioning.
+| +
+| +```sh
+| +"$BASE_PYTHON" -I -S -B - "$SCIENCE_SITE" "$CLEAN_PYTHON_ENV" <<'PY'
+| +from pathlib import Path
+| +import hashlib, json, shutil, sys, venv
+| +source, target = map(lambda v: Path(v).absolute(), sys.argv[1:])
+| +if target.exists() or target.is_symlink():
+| +    raise FileExistsError(target)
+| +if not target.parent.is_dir():
+| +    raise ValueError("Create the environment's parent directory first")
+| +venv.EnvBuilder(with_pip=False, symlinks=True).create(target)
+| +site = target / "lib" / ("python%d.%d" % sys.version_info[:2]) / "site-packages"
+| +sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+| +pins = {}
+| +for name in ("numpy", "scipy"):
+| +    metadata = list(source.glob(name + "-*.dist-info"))
+| +    if len(metadata) != 1:
+| +        raise ValueError("Need exactly one installed distribution: " + name)
+| +    folders = [source / name, metadata[0]]
+| +    if (source / (name + ".libs")).exists():
+| +        folders.append(source / (name + ".libs"))
+| +    for folder in folders:
+| +        copied = site / folder.name
+| +        shutil.copytree(folder, copied,
+| +                        ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.pyo"))
+| +        for path in copied.rglob("*"):
+| +            if path.is_file():
+| +                digest = sha(path)
+| +                if digest != sha(folder / path.relative_to(copied)):
+| +                    raise ValueError("Copy identity mismatch")
+| +                pins[str(path.relative_to(target))] = digest
+| +with (target / "distribution_copy_sha256.json").open("x") as stream:
+| +    json.dump(pins, stream, indent=2)
+| +PY
+| +REPLAY_PYTHON="$CLEAN_PYTHON_ENV/bin/python3"
+| +```
+| +
+| +The recorded validation used this mechanism with CPython 3.12 and the versions
+| +above. Other installation layouts or dependencies must pass the same preparation
+| +and runtime checks; the recipe is not a claim that arbitrary distributions are
+| +compatible. Keep this environment outside the fresh replay work directory.
+|  
+|  ## Prepare the pinned source and build
+|  
+| @@ -216,7 +282,7 @@
+|  standard-library pure/mocked suite without changing the package. The retained
+|  `TEST_RESULTS.json` records that suite's exact counts and its three explicit
+|  scientific-test skips. The separate actual-NumPy run described above passed all
+| -three skipped cases on the first snapshot's unchanged test/core source; this does
+| +three skipped cases on the tested v2 source; this does
+|  not change the pure suite's original record or turn it into a scientific run.
+|  No solver, C-API, matrix generation or topology runs in the pure-suite command.
+|  
+| @@ -237,12 +303,16 @@
+|  `--run-reviewed` is the user's explicit acknowledgement of the contract.
+|  Follow [SMOKE_PLAN.md](SMOKE_PLAN.md)
+|  for the required tiny receipts and equality checks. A successful tiny phase
+| -also rechecks each witness through a direct entry point using the exact
+| -historical mathematical/checker bytes, bypassing selector dispatch. Its
+| +also rechecks each witness through a direct entry point using the same
+| +historical mathematical/checker implementation, bypassing selector dispatch.
+| +The public source-byte mapping documents the curated module docstring and
+| +matching expected-hash literal. Its
+|  separately charged `run_v1/tiny/frozen_core_replay/RESULT.json` requires
+|  byte-identical output against both selected checkers; it excludes no fields.
+| -These steps remain unexecuted for this revision. Do not infer successful portable
+| -validation from preparation or scalar checks alone.
+| +The complete tiny/equality steps passed on tested v2. The documentation and
+| +provenance-normalized public copy was not numerically rerun; its function-body
+| +and source-identity correspondence is recorded separately. Preparation or scalar
+| +checks alone do not establish a successful run on another runtime.
+|  
+|  The other fixed phase values are `development` and `confirmation`. Each retains
+|  its prerequisite gate. They are not part of the source-only publication or the
+| --- tested-v2/SMOKE_PLAN.md
+| +++ public/SMOKE_PLAN.md
+| @@ -1,12 +1,18 @@
+|  # Portable replay smoke plan
+|  
+| -Status: this bounded validation procedure has not been completed. On the first
+| -packaged snapshot, three actual NumPy scalar tests, four-byte `HighsInt` and
+| -C-symbol provider checks passed. Preflight then failed before any tiny model,
+| -solve or equality replay because the version-only process had not initialized
+| -the extras library. The corrective v2 source permits that absence only for
+| -`--version`; it has not yet been numerically validated. The failed observation
+| -is retained. See the [README validation status](README.md#validation-status-and-the-preflight-correction).
+| +Status: tested v2 completed this bounded procedure successfully on the recorded
+| +runtime: three real-NumPy scalar tests, 32-bit HighsInt and exact symbol/provider
+| +checks, one tiny A/B pair, five actual API readbacks and exact three-path checker
+| +equality on all five witnesses. The public copy changes documentation, test-report wording and the expected
+| +raw source hash for the module-docstring edit, with a separate manifest identity.
+| +Normalized AST evidence verifies unchanged mathematical and orchestration
+| +function bodies. See the
+| +[validation receipt](../portable_validation/VALIDATION_RESULT.json).
+| +
+| +The failed v1 preflight is retained: its version-only invocation had not loaded
+| +the lazy extras DSO, and no tiny model or solve ran. V2 corrected that observation
+| +without relaxing the actual solver or API identity guards. The procedure below
+| +remains the bounded validation to perform on a new runtime.
+|  
+|  The historical campaign is complete and failed its strict confirmation gate.
+|  Publication and this procedure do not promote the method or reopen that result.
+| @@ -19,7 +25,8 @@
+|  
+|  ## 1. Finish source review before any numerical launch
+|  
+| -Review the exact publication diff and its identity receipts. Require:
+| +Review the annotated historical comparison, exact v1-to-v2 functional diff,
+| +public-copy change list and their identity receipts. Require:
+|  
+|  - Unchanged mathematical, policy, complete-checker, exporter/readback, separator
+|    and tiny-fixture bytes, except explicitly documented binding-only changes
+| @@ -61,7 +68,7 @@
+|  ## 2. Prepare an isolated host and interpreter
+|  
+|  Finish the pinned build and correctness tests before the tiny phase. Use the
+| -README's Python installation requirements, including startup-hook rejection,
+| +README's tested clean-environment provisioning steps and startup-hook rejection,
+|  and record the interpreter and scientific/native dependency identities.
+|  
+|  Use an otherwise idle Linux/glibc host, a fresh replay directory and the pinned
+| @@ -144,10 +151,12 @@
+|  It invokes `frozen_core_check.py` in a fresh clean child for every witness and
+|  requires byte-identical output against both selector checkers, with no excluded
+|  fields. This direct entry point bypasses selector dispatch while retaining
+| -portable path/runtime bindings and the exact historical core.
+| +portable path/runtime bindings and the same historical mathematical core.
+| +The public source map records its module-docstring normalization and matching
+| +strict source-hash literal; mathematical and orchestration function bodies match.
+|  
+|  Retain this frozen-core comparison using those same witnesses and the exact
+| -historical mathematical/checker bytes. Document the explicit relocation needed
+| +historical mathematical/checker implementation and its explicit source-byte map. Document the explicit relocation needed
+|  to run that core on the new runtime. Compare checker output and all mathematical
+|  fields, including status, objective, violations, bounds and integrality. Pin
+|  the witness, checker, source-model and comparison-code identities in the receipt.
+| @@ -178,8 +187,8 @@
+|  
+|  Keep raw models, solutions, binaries, datasets and large logs local. Public
+|  summaries may sanitize path/provenance fields only; retain numerical evidence and
+| -all failed/incomplete outcomes. Do not claim tested portable versions until this
+| -smoke actually passes. Do not extrapolate a tiny pass to production speed,
+| +all failed/incomplete outcomes. Treat only the recorded runtime as tested until another
+| +complete smoke passes. Do not extrapolate a tiny pass to production speed,
+|  root-credit activation, another ABI or another operating system.
+|  
+|  The historical nine-pair confirmation remains **STOP / NO PROMOTION** even if
+| --- tested-v2/SOURCE_DIFF.patch
+| +++ public/SOURCE_DIFF.patch
+| @@ -1,6 +1,5 @@
+| -ANNOTATED HISTORICAL COMPARISON — NOT AN APPLYABLE PATCH
+| -Every comparison line is prefixed with "| ". Workflow prose and private paths are redacted.
+| -Exact measured and portable source hashes are retained in SOURCE_IDENTITIES.json.
+| +ANNOTATED COMPARISON — NOT AN APPLYABLE PATCH
+| +Every comparison line is prefixed with "| ". Obsolete workflow text is redacted; raw source hashes are retained in SOURCE_IDENTITIES.json.
+|  
+|  | --- measured/contracts.py
+|  | +++ payload/combined_screening_driver/contracts.py
+| @@ -109,7 +108,7 @@
+|  |  def main():
+|  |      phase_started=time.monotonic()
+|  |      p=argparse.ArgumentParser(description=__doc__)
+| -| -[obsolete internal workflow prose redacted; raw source identity retained]
+| +| -[obsolete internal workflow text redacted; raw source hashes retained]
+|  | +    p.add_argument('--run-reviewed',action='store_true',required=True,help='Acknowledge the fixed protocol and one-use numerical phase')
+|  |      p.add_argument('--phase',choices=['tiny','development','confirmation'],required=True)
+|  |      a=p.parse_args()
+| @@ -134,28 +133,46 @@
+|  |          else: passed=pair['comparison'].get('development_gate_pass',False)
+|  |          return 0 if passed else 1
+|  |      completed=[]
+| +| --- measured/model_stage.py
+| +| +++ payload/combined_screening_driver/model_stage.py
+| +| @@ -1,8 +1,8 @@
+| +|  #!/usr/bin/env python3
+| +|  """Watchdog child: fresh source construction, canonical v2/API gate, or primal checks.
+| +|  
+| +| -There is no optimizer entry point. Real construction/readback/checking is run only
+| +| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +| +There is no optimizer entry point. Construction/readback/checking requires an
+| +| +explicit invocation; importing this module performs no numerical work.
+| +|  """
+| +|  import argparse
+| +|  import copy
+|  | --- measured/PROTOCOL.md
+|  | +++ payload/combined_screening_driver/PROTOCOL.md
+| -| @@ -1,6 +1,6 @@
+| +| @@ -1,10 +1,10 @@
+|  |  # Frozen combined screening campaign
+|  |  
+| -| -[obsolete internal workflow prose redacted; raw source identity retained]
+| +| -[obsolete internal workflow text redacted; raw source hashes retained]
+|  | +This is an isolated implementation of the prospective combined design and its pre-outcome seed amendment. Source/mock review does not run numerical work. An explicit user CLI invocation selects each one-use numerical phase. No C++ source, build, old protocol, global data manifest, or dataset is changed.
+|  |  
+|  |  A starts from empty pairs and runs cold integer separation, with root child credit false and baseline separator 0760ccab. B starts from empty pairs, permits at most three cold dual-simplex LP calls at 10 actual process seconds each / 30 aggregate, then fresh MIP masters, root credit true and optimized separator 1833d1f. Both use the exact same reviewed executable and DSOs, original outer-gap policy and logging, two threads, parallel off, initial-root IPX off, 1% target, and identical MIP options except the root-credit boolean. Only validated eligible pairs and the existing valid integer-master bound ledger persist within an arm. No point, LP bound, basis, rating table, topology/factorization or historical pairs carry over.
+|  |  
+| +| -The original model_stage.py, primal_and_bound.py and credit_events.py are byte-identical to reviewed driver 239e9461. Canonical loaded-matrix equality, generator, original complete source checker, finite/status checks, conservative bound allowances and (U-L)/max(abs(U),1e-10) <= .01 are preserved. Production retains 36 hours, 89 buses, 12 units, 210 lines, all 192 source-listed outages and 14,721 eligible pairs. The only added data is exact-byte November from the separately reviewed supplemental design directory.
+| +| +The measured mathematical implementation is retained. model_stage.py differs only in its leading module documentation; SOURCE_IDENTITIES.json records original/public raw hashes and normalized AST/function-body equivalence. primal_and_bound.py and credit_events.py remain byte-identical to the measured sources. Canonical loaded-matrix equality, generator, original complete source checker, finite/status checks, conservative bound allowances and (U-L)/max(abs(U),1e-10) <= .01 are preserved. Production retains 36 hours, 89 buses, 12 units, 210 lines, all 192 source-listed outages and 14,721 eligible pairs. The only added data is exact-byte November from the separately reviewed supplemental design directory.
+| +|  
+| +|  Every scope preparation, generation and complete check runs in a fresh pinned Python interpreter with -B -s. stage_child.py checks the fixed plan, allowlisted arm record, exact source paths and hashes, then compiles contracts, the selected separator, primal_and_bound and model_stage from verified bytes. It rejects any existing module registration. Startup/end runtime checks and exact loaded-module/input/output receipts are symmetric. Scope preparation is per arm; there is no shared numerical or source cache. The selected separator modifies only its independent source scope/direct separation; the original full source checker still runs for every emitted complete MIP point. Selector receipts are separate from unchanged checker JSON output.
+| +|  
+|  | @@ -12,10 +12,10 @@
+|  |  
+|  |  The co-primary E2E endpoint is the reviewed in-program standalone-equivalent interval: before arm directory/runtime/source work through final checks and durable summary fsync, plus full common definition-import/plan-archival time charged to each arm. Each receipt reports generation/readback, source scope, LP checks, integer checks, LP and MIP solving and remaining overhead. Pair archival has a separate receipt. The outer phase receipt starts before phase checks/marker and includes pair serialization and separately charged tiny replay. Interpreter launch itself is not claimed. A full phase is not benchmark timing.
+|  |  
+| -| -[obsolete internal workflow prose redacted; raw source identity retained]
+| +| -[obsolete internal workflow text redacted; raw source hashes retained]
+|  | +The fixed one-use campaign directory is run_v1; exclusive phase markers prevent implicit rerun, restart or alternate output/seed selection. The CLI only exposes --run-reviewed --phase tiny|development|confirmation. The flag acknowledges the frozen protocol and its resource costs; no external approval file is used. A failed campaign cannot be rescued by retries, tuning, output replacement, changed seeds/budgets or credit-policy changes.
+|  |  
+|  |  Tiny: one AB pair, 20 actual solver seconds per arm, two-second MIP containment grace and twenty-second helper watchdog. A requires zero LP calls, empty first integer pairs and at least two integer rounds discovering missing pairs. B requires LP-discovered pairs and a subsequent fresh integer master. Both require full source certificates at objective 660 and selected-module identity receipts. Successful tiny runs are followed by separately charged exact A/B complete-check equality replay on every tiny witness. Tiny proves wiring, not speed or natural credit activation.
+|  |  
+|  |  Development: February seed 0, AB, fresh 600 seconds per arm. Both complete certificates, valid resource/credit telemetry, and actual B applied cap or exhausted-credit skip are mandatory, alongside at least 20% paired improvement on both solver and standalone-equivalent E2E. Failure ends this route. Development remains familiar rather than held out.
+|  |  
+| -| -[obsolete internal workflow prose redacted; raw source identity retained]
+| +| -[obsolete internal workflow text redacted; raw source hashes retained]
+|  | +Confirmation, only after a separate explicit CLI invocation and a passed development gate: November1 BA, August1 AB, February3 BA, February4 AB, November2 AB, August2 BA, August3 AB, February5 BA, November3 BA. For each date separately, all three complete pairs must improve both endpoints strictly, and median of paired reductions must reach 30% for each endpoint. No pooled-ratio substitution, early success or extra repeats. Every B arm records activation. SOURCE_EXPOSURE.json and the amended design disclose February1/2 earlier RINS exposure, familiar February/August dates, and new November input provenance.
+|  | --- measured/SOURCE_EXPOSURE.json
+|  | +++ payload/combined_screening_driver/SOURCE_EXPOSURE.json
+| --- tested-v2/SOURCE_IDENTITIES.json
+| +++ public/SOURCE_IDENTITIES.json
+| @@ -39,8 +39,9 @@
+|        "measured_source": "model_stage.py",
+|        "portable_source": "payload/combined_screening_driver/model_stage.py",
+|        "measured_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+| -      "portable_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+| -      "byte_identical": true
+| +      "portable_sha256": "b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62",
+| +      "byte_identical": false,
+| +      "difference": "Module docstring only; entire AST excluding that docstring is unchanged"
+|      },
+|      {
+|        "measured_source": "primal_and_bound.py",
+| @@ -81,7 +82,7 @@
+|        "measured_source": "PROTOCOL.md",
+|        "portable_source": "payload/combined_screening_driver/PROTOCOL.md",
+|        "measured_sha256": "2cfcb83ce73eab3bbb8160842229efead93ad6a1b5576effb8194d58e35cf0ab",
+| -      "portable_sha256": "0b78b852af6703c920e8aac1cf74f992349134ba033b46b012898aefd5668416",
+| +      "portable_sha256": "3ead88dfc4c11875a0f37ec0f1165f4de88e887c95c5c0ada7da3fdf2c0f1035",
+|        "byte_identical": false
+|      },
+|      {
+| @@ -203,7 +204,7 @@
+|      "february_median_e2e_reduction_percent": 25.04,
+|      "scope": "Historical measured prototype, not portable-source timing or stable/general MILP promotion"
+|    },
+| -  "portable_validation_status": "Revision 2 source/pure-mock checks only; revision 1 preflight failed before model/solver; no successful portability validation",
+| +  "portable_validation_status": "Tested v2 passed runtime/tiny/equality validation; public copy changes docs, test-report text and the matching expected raw hash for a module-docstring-only edit. Mathematical and orchestration function bodies are unchanged.",
+|    "new_source_files": [
+|      "prepare_replay.py",
+|      "payload/combined_screening_driver/frozen_core_check.py",
+| @@ -211,5 +212,23 @@
+|      "payload/combined_screening_driver/portable_runtime.py",
+|      "payload/combined_screening_driver/runtime_inspect.py"
+|    ],
+| -  "source_diff_format": "Nonapplyable annotated historical comparison. Obsolete internal workflow prose and private paths redacted; exact raw source hashes preserved."
+| +  "source_diff_format": "Nonapplyable annotated historical comparison. Obsolete internal workflow prose and private paths redacted; exact raw source hashes preserved.",
+| +  "tested_implementation_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+| +  "public_copy_change_record": "../portable_validation/PUBLICATION_CHANGES.json",
+| +  "public_source_normalization": {
+| +    "model_stage": {
+| +      "historical_and_tested_sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+| +      "public_sha256": "b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62",
+| +      "normalized_ast_sha256": "c98fc459a7bbdc457f6d293b3020c1328b9cb7f70371f50615d8588eefd19cd8",
+| +      "normalization": "Remove leading module docstring only",
+| +      "equal": true
+| +    },
+| +    "frozen_core_check": {
+| +      "tested_sha256": "c4cf24d5bbf05464a4a3b9557973229e8e80088d1a8245b670612ebb7d675107",
+| +      "public_sha256": "4032c5a66f1638cd41ec48b98bb6b81cb6f4815d5e0ec1a510e6f0fb11fd0546",
+| +      "changes": "Matching model-stage source-hash literal and explanatory comment only",
+| +      "normalized_ast_equal": true
+| +    },
+| +    "mathematical_and_orchestration_function_bodies_changed": false
+| +  }
+|  }
+| --- tested-v2/TEST_RESULTS.json
+| +++ public/TEST_RESULTS.json
+| @@ -8,7 +8,7 @@
+|    "errors": 0,
+|    "skipped": 3,
+|    "passed": true,
+| -  "status": "pure_subset_passed_scientific_tests_pending",
+| +  "status": "pure_subset_passed_scientific_tests_separate",
+|    "duration_seconds": 0.552432,
+|    "real_numerical_modules_loaded": [],
+|    "explicit_test_doubles": [
+| @@ -22,15 +22,25 @@
+|    "skipped_tests": [
+|      {
+|        "test": "test_contract.SourceWrapperTests.test_trusted_numpy_base_and_residual_cross_boundary",
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +      "reason": "Excluded from this standard-library-only suite; real NumPy scalar tests run separately"
+|      },
+|      {
+|        "test": "test_contract.TrustedScalarTests.test_finite_numpy_real_only_and_no_input_mutation",
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +      "reason": "Excluded from this standard-library-only suite; real NumPy scalar tests run separately"
+|      },
+|      {
+|        "test": "test_contract.TrustedScalarTests.test_reject_nonfinite_bool_complex_arrays_and_coercibles",
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +      "reason": "Excluded from this standard-library-only suite; real NumPy scalar tests run separately"
+|      }
+| -  ]
+| +  ],
+| +  "public_rendering": {
+| +    "raw_tested_v2_results_sha256": "c042f14b808a2bc24b3dec3f9e168e700a1cc164ac3172c7196a2a870649c47a",
+| +    "changes": "Skip explanation and reporting status wording only; original counts and outcomes preserved"
+| +  },
+| +  "separate_scientific_validation": {
+| +    "tested_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+| +    "real_numpy_scalar_tests_passed": 3,
+| +    "source_test_file_unchanged": true,
+| +    "evidence": "../portable_validation/VALIDATION_RESULT.json"
+| +  }
+|  }
+| --- tested-v2/TEST_RESULTS.log
+| +++ public/TEST_RESULTS.log
+| @@ -1,3 +1,5 @@
+| +Public rendering: original test outcomes retained; scientific-test skip explanation normalized.
+| +Original tested-v2 log SHA-256: f902df7d3b18d832230b06ea9f8ecc31c4d13188dd88a341f180d913ddfc6b2f
+|  test_fixed_arm_records (test_combined.CombinedTests.test_fixed_arm_records) ... ok
+|  test_integrity_failure_is_fail_closed_and_debited (test_combined.CombinedTests.test_integrity_failure_is_fail_closed_and_debited) ... ok
+|  test_normal_solver_timeout_retains_debit_without_integrity_stop (test_combined.CombinedTests.test_normal_solver_timeout_retains_debit_without_integrity_stop) ... ok
+| @@ -43,9 +45,9 @@
+|  test_fractional_mip_and_nonsecurity_fail (test_contract.SourceWrapperTests.test_fractional_mip_and_nonsecurity_fail) ... ok
+|  test_frozen_tuple_violation_continues_screening (test_contract.SourceWrapperTests.test_frozen_tuple_violation_continues_screening) ... ok
+|  test_secure_integer_uses_both_checks (test_contract.SourceWrapperTests.test_secure_integer_uses_both_checks) ... ok
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +test_trusted_numpy_base_and_residual_cross_boundary (test_contract.SourceWrapperTests.test_trusted_numpy_base_and_residual_cross_boundary) ... skipped 'Excluded from this standard-library-only suite; real NumPy scalar tests run separately'
+| +test_finite_numpy_real_only_and_no_input_mutation (test_contract.TrustedScalarTests.test_finite_numpy_real_only_and_no_input_mutation) ... skipped 'Excluded from this standard-library-only suite; real NumPy scalar tests run separately'
+| +test_reject_nonfinite_bool_complex_arrays_and_coercibles (test_contract.TrustedScalarTests.test_reject_nonfinite_bool_complex_arrays_and_coercibles) ... skipped 'Excluded from this standard-library-only suite; real NumPy scalar tests run separately'
+|  test_credit_renewal_needs_actual_accepted_improvement (test_credit_events.TraceTests.test_credit_renewal_needs_actual_accepted_improvement) ... ok
+|  test_exhausted_skip_and_invalid_skip (test_credit_events.TraceTests.test_exhausted_skip_and_invalid_skip) ... ok
+|  test_inactive_nonfinite_gap_is_preserved_as_text (test_credit_events.TraceTests.test_inactive_nonfinite_gap_is_preserved_as_text) ... ok
+| --- tested-v2/VALIDATION_HISTORY.json
+| +++ public/VALIDATION_HISTORY.json
+| @@ -26,7 +26,30 @@
+|      "optimizer_called": false
+|    },
+|    "revision_2_change": "Correct version-only loader observation; reject missing/wrong/duplicate main, wrong/duplicate observed extras; retain raw streams; actual solver and API identity checks unchanged",
+| -  "revision_2_numerical_status": "not_run",
+| -  "scope": "Correctness/provenance only; no successful portability or performance claim",
+| -  "historical_strict_per_date_gate_passed": false
+| +  "revision_2_numerical_status": "tiny_runtime_and_all_witness_equivalence_passed",
+| +  "scope": "Correctness and provenance on the recorded runtime only. Public curation changes docs, test-report wording and a matching source-hash literal for the module-docstring edit; mathematical and orchestration function bodies are unchanged. No production performance or broad compatibility claim.",
+| +  "historical_strict_per_date_gate_passed": false,
+| +  "revision_2_manifest_sha256": "5771998b84595f3553f69a25f2ca35c6786f7f139e0481915751798c4f92dc0c",
+| +  "revision_2_success": {
+| +    "runtime_versions": {
+| +      "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+| +      "numpy_version": "2.3.5",
+| +      "scipy_version": "1.17.0",
+| +      "os": "Linux-6.18.44-x86_64-with-glibc2.41",
+| +      "libc": [
+| +        "glibc",
+| +        "2.41"
+| +      ]
+| +    },
+| +    "real_numpy_scalar_tests_passed": 3,
+| +    "tiny_pairs": 1,
+| +    "objective_each_arm": 660.0,
+| +    "actual_api_readbacks": 5,
+| +    "witnesses": 5,
+| +    "all_three_checker_paths_byte_identical": true,
+| +    "excluded_fields": [],
+| +    "production_solves": 0,
+| +    "natural_credit_activation": false,
+| +    "full_evidence": "../portable_validation/VALIDATION_RESULT.json"
+| +  }
+|  }
+| --- tested-v2/payload/combined_screening_driver/PROTOCOL.md
+| +++ public/payload/combined_screening_driver/PROTOCOL.md
+| @@ -4,7 +4,7 @@
+|  
+|  A starts from empty pairs and runs cold integer separation, with root child credit false and baseline separator 0760ccab. B starts from empty pairs, permits at most three cold dual-simplex LP calls at 10 actual process seconds each / 30 aggregate, then fresh MIP masters, root credit true and optimized separator 1833d1f. Both use the exact same reviewed executable and DSOs, original outer-gap policy and logging, two threads, parallel off, initial-root IPX off, 1% target, and identical MIP options except the root-credit boolean. Only validated eligible pairs and the existing valid integer-master bound ledger persist within an arm. No point, LP bound, basis, rating table, topology/factorization or historical pairs carry over.
+|  
+| -The original model_stage.py, primal_and_bound.py and credit_events.py are byte-identical to reviewed driver 239e9461. Canonical loaded-matrix equality, generator, original complete source checker, finite/status checks, conservative bound allowances and (U-L)/max(abs(U),1e-10) <= .01 are preserved. Production retains 36 hours, 89 buses, 12 units, 210 lines, all 192 source-listed outages and 14,721 eligible pairs. The only added data is exact-byte November from the separately reviewed supplemental design directory.
+| +The measured mathematical implementation is retained. model_stage.py differs only in its leading module documentation; SOURCE_IDENTITIES.json records original/public raw hashes and normalized AST/function-body equivalence. primal_and_bound.py and credit_events.py remain byte-identical to the measured sources. Canonical loaded-matrix equality, generator, original complete source checker, finite/status checks, conservative bound allowances and (U-L)/max(abs(U),1e-10) <= .01 are preserved. Production retains 36 hours, 89 buses, 12 units, 210 lines, all 192 source-listed outages and 14,721 eligible pairs. The only added data is exact-byte November from the separately reviewed supplemental design directory.
+|  
+|  Every scope preparation, generation and complete check runs in a fresh pinned Python interpreter with -B -s. stage_child.py checks the fixed plan, allowlisted arm record, exact source paths and hashes, then compiles contracts, the selected separator, primal_and_bound and model_stage from verified bytes. It rejects any existing module registration. Startup/end runtime checks and exact loaded-module/input/output receipts are symmetric. Scope preparation is per arm; there is no shared numerical or source cache. The selected separator modifies only its independent source scope/direct separation; the original full source checker still runs for every emitted complete MIP point. Selector receipts are separate from unchanged checker JSON output.
+|  
+| --- tested-v2/payload/combined_screening_driver/frozen_core_check.py
+| +++ public/payload/combined_screening_driver/frozen_core_check.py
+| @@ -4,8 +4,9 @@
+|  import sys
+|  from contracts import *
+|  
+| -# Exact historical mathematical/checker source identities. No selector is used.
+| -FROZEN_CORE = {'model_stage.py': '272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd', 'primal_and_bound.py': '2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00', 'fractional_separator.py': '0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb', '../scuc/generate.py': 'ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04', '../scuc/check_solution.py': '77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024', '../canonical_mps_export/export_v2.py': 'dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d', '../canonical_mps_export/readback.py': '4400ec93e891719348dc3c574c4a5f4e1b3b2c26b00825ae4ecef3c977d52755'}
+| +# Exact public source identities; model-stage documentation is curated.
+| +# Historical/core AST equivalence is recorded in SOURCE_IDENTITIES.json. No selector is used.
+| +FROZEN_CORE = {'model_stage.py': 'b2dc7e0f02a66c492c33bcf2448bb0f0ebf40951ebf17a470130166bf7ac0e62', 'primal_and_bound.py': '2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00', 'fractional_separator.py': '0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb', '../scuc/generate.py': 'ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04', '../scuc/check_solution.py': '77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024', '../canonical_mps_export/export_v2.py': 'dab515d7a9a4657358df9ed842a239a7b5a327319ae76bdf19801c09389fec5d', '../canonical_mps_export/readback.py': '4400ec93e891719348dc3c574c4a5f4e1b3b2c26b00825ae4ecef3c977d52755'}
+|  
+|  def main():
+|      p = argparse.ArgumentParser(description=__doc__)
+| --- tested-v2/payload/combined_screening_driver/model_stage.py
+| +++ public/payload/combined_screening_driver/model_stage.py
+| @@ -1,8 +1,8 @@
+|  #!/usr/bin/env python3
+|  """Watchdog child: fresh source construction, canonical v2/API gate, or primal checks.
+|  
+| -There is no optimizer entry point. Real construction/readback/checking is run only
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +There is no optimizer entry point. Construction/readback/checking requires an
+| +explicit invocation; importing this module performs no numerical work.
+|  """
+|  import argparse
+|  import copy
+| --- tested-v2/tests/run_pure_tests.py
+| +++ public/tests/run_pure_tests.py
+| @@ -2,7 +2,7 @@
+|  """Run inherited contracts with explicit mocks; never import numerical packages.
+|  
+|  Invoke with python3 -B -S tests/run_pure_tests.py. Exactly three inherited tests
+| -requiring actual NumPy scalars remain pending and are explicitly skipped. The
+| +requiring actual NumPy scalars are outside this suite and explicitly skipped. The
+|  separator stub prevents patch resolution from importing topology code.
+|  """
+|  import argparse
+| @@ -62,7 +62,7 @@
+|          elif item.id() in PENDING_SCIENTIFIC_TESTS:
+|              test = getattr(type(item), item._testMethodName)
+|              test.__unittest_skip__ = True
+| -[obsolete internal workflow text redacted; raw source hashes retained]
+| +            test.__unittest_skip_why__ = 'Excluded from this standard-library-only suite; real NumPy scalar tests run separately'
+|              found.add(item.id())
+|      return found
+|  
+| @@ -97,7 +97,7 @@
+|          'tests_passed': result.testsRun - len(result.failures) - len(result.errors) - len(result.skipped),
+|          'failures': len(result.failures), 'errors': len(result.errors), 'skipped': len(result.skipped),
+|          'passed': result.wasSuccessful() and not real_numerical,
+| -        'status': 'pure_subset_passed_scientific_tests_pending' if result.wasSuccessful() and not real_numerical else 'failed',
+| +        'status': 'pure_subset_passed_scientific_tests_separate' if result.wasSuccessful() and not real_numerical else 'failed',
+|          'duration_seconds': round(time.monotonic() - start, 6),
+|          'real_numerical_modules_loaded': real_numerical,
+|          'explicit_test_doubles': ['fractional_separator entry points for inherited model_stage mocks',
