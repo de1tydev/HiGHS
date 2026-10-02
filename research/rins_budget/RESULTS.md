@@ -149,3 +149,15 @@ normal defaults remain unchanged. The retained-result audit passed. See
 [ROOT_CHILD_CREDIT.md](ROOT_CHILD_CREDIT.md) for mechanism, timing definitions,
 source/tests, exact provenance, and the explicit limit that the measured
 cold-screen E2E harness is not published as a portable reproduction.
+
+## Combined cold SCUC screening: consistent gains, declared gate unmet
+
+A separately frozen nine-pair confirmation compared a fresh cold-integer control against cold LP discovery plus unchanged direct-root child credit and an exact-output optimized separator. Both used the same solver binary, original model, two threads and fully checked 1% target. All 18 arms completed correctly; all nine candidate arms improved both endpoints, with no timeout, regression, omitted or replaced case.
+
+The overall descriptive median paired reductions were **45.7012% solver-process wall** and **34.5375% complete standalone-equivalent E2E**. However, the experiment **failed its predeclared per-date 30%-both gate**: February's E2E median was 25.0394%. Date medians, solver/E2E, were February 36.9286%/25.0394%, August 42.2445%/34.5375%, and November 48.9415%/36.1520%. The pooled median does not rescue that failure.
+
+Every final point passed the unchanged original-source, matrix, objective and listed-outage checks: 192 source-listed line outages and 529,956 eligible pair-hours per full check. August includes approximately 312.105451 MWh of allowed, penalty-accounted shedding in both arms; the other dates have zero final shedding, and all final overflow is zero. Intermediate screening points are not claimed to be security-feasible. Five candidate arms applied an actual root-credit cap and none applied an exhausted-credit skip, so these results identify the bundle's observed effect, not a kernel-only causal speedup.
+
+The familiar February seed-0 development pair (37.0039% solver, 23.5818% E2E) remains separate. Prior February seed-1/2 exposure prompted a disclosed amendment to confirmation seeds 3/4/5 before combined outcomes. August seeds 1/2/3 are a familiar-date transfer check; November seeds 1/2/3 use a new date selected before acquisition. Three seeds per date are a small descriptive consistency check, not broad MILP or production zero-shed evidence.
+
+See [the complete combined result](combined_results/COMBINED_SCUC_RESULTS.md) for every timing, the fixed gate, precise timing boundaries, source/runtime hashes and resource/tail information. The portable Linux replay entrypoint is under validation, is not included in this checkpoint, and has not been performance-measured. Earlier individual failed gates remain failed; no additional solve or retuning was used to rescue this campaign.

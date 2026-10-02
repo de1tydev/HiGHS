@@ -1,0 +1,90 @@
+{
+  "revision_note": "Official mutable UC.jl0.3-hosted files; byte hashes identify exact downloaded data, not a claimed Git commit. Reference source v0.3.0 commit6573bb7ea2d5da5eff4a190744edc5a392e90c98.",
+  "instances": [
+    {
+      "file": "case89pegase_2017-02-01.json.gz",
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-02-01.json.gz",
+      "download_date_utc": "2026-10-01",
+      "sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+      "decompressed_sha256": "c5c2f91eaac07cdd5b0c5b7c09232c4e6737df171e8e182eec6fda6da3fc2bb4",
+      "format_version": "0.3",
+      "hours": 36,
+      "buses": 89,
+      "generators": 12,
+      "lines": 210,
+      "contingencies": 192,
+      "finite_normal_limits": 77,
+      "finite_emergency_limits": 77,
+      "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n"
+    },
+    {
+      "file": "case89pegase_2017-08-01.json.gz",
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-08-01.json.gz",
+      "download_date_utc": "2026-10-01",
+      "sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+      "decompressed_sha256": "3c172511e1a27c289f21b07b6c0124894bdeaf2bc8f175b8eb41afbc2fef7ec4",
+      "format_version": "0.3",
+      "hours": 36,
+      "buses": 89,
+      "generators": 12,
+      "lines": 210,
+      "contingencies": 192,
+      "finite_normal_limits": 77,
+      "finite_emergency_limits": 77,
+      "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n"
+    },
+    {
+      "file": "case89pegase_2017-11-01.json.gz",
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-11-01.json.gz",
+      "download_date_utc": "2026-10-02T00:33:26.014942+00:00",
+      "sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+      "decompressed_sha256": "7af8f96f15d5aad59075a890bf7b4444e7ad7dd3a26bb6718786396609418d60",
+      "compressed_bytes": 15350,
+      "decompressed_bytes": 89804,
+      "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n"
+    }
+  ],
+  "raw_data_manifest_sha256": "92fa3f592886a45a9da6d29c2718ccbc2e74f46622cd3dd6a6ceaa6a6203334d",
+  "november_date_intent_sha256": "ff690516c8f0c75b558124e97109246f391ebad87e5a0de63564180cffddabf6",
+  "november_date_intent": {
+    "status": "preregistered_before_any_november_lookup_or_download",
+    "intended_dataset": "Official UnitCommitment.jl version 0.3 hosted instance",
+    "intended_case": "matpower/case89pegase",
+    "intended_date": "2017-11-01",
+    "purpose": "New input-date confirmation for a future combined screening experiment",
+    "selection_rule": "Use only the exact November 1 file after observing its official listing link; do not substitute another date if absent or incompatible",
+    "required_scope": {
+      "format_version": "0.3",
+      "hours": 36,
+      "time_step_minutes": 60,
+      "buses": 89,
+      "generators": 12,
+      "lines": 210,
+      "listed_outages": 192,
+      "eligible_line_outage_pairs": 14721
+    },
+    "allowed_preflight": "Official listing read, exact public-file download, byte hashes, strict JSON/schema/dimension/rating metadata and input distinctness only",
+    "prohibited_preflight": "No source model construction, API readback, topology solve/factorization, solver, build or numerical timing",
+    "publication_limit": "No performance or full model-fidelity claim; metadata alone cannot certify a loaded model"
+  },
+  "november_download_receipt": {
+    "date_intent_sha256": "ff690516c8f0c75b558124e97109246f391ebad87e5a0de63564180cffddabf6",
+    "listing_url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/",
+    "official_listing_observation": "The official case89pegase directory listed 2017-11-01.json.gz at the exact source URL recorded below before download.",
+    "source_url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-11-01.json.gz",
+    "requested_utc": "2026-10-02T00:33:26.014942+00:00",
+    "source_only": true,
+    "response_url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-11-01.json.gz",
+    "headers": {
+      "Content-Type": "application/gzip",
+      "Content-Length": "15350",
+      "Last-Modified": "Mon, 18 Jul 2022 16:06:50 GMT",
+      "ETag": "\"rf84rebue\""
+    },
+    "download_succeeded": true,
+    "file": "research-archive/protocols/combined_screening_design/case89pegase_2017-11-01.json.gz",
+    "compressed_bytes": 15350,
+    "compressed_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30"
+  },
+  "scope": "Compressed and decompressed byte identities; parsed/canonical source_data_sha256 fields in stage receipts are separate identities."
+}

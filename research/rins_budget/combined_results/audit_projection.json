@@ -1,0 +1,1270 @@
+{
+  "raw_review_sha256": "7a21253492738216cb13cc76c8251285ff262709865947dc2c66134fa84bbc23",
+  "review": {
+    "status": "artifact_correctness_accounting_pass_performance_gate_fail",
+    "critical_correctness_or_accounting_blockers": [],
+    "experiment_gate_passed": false,
+    "failure": "February median complete E2E reduction 25.03942680924718% is below 30%",
+    "all_arms_complete": true,
+    "all_nine_pairs_improve_both": true,
+    "no_missing_replaced_or_extra_outcomes": true,
+    "no_more_solver_calls_or_retuning": true,
+    "runtime_manifest_sha256": "4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3",
+    "campaign_plan_sha256": "eab118a92b85e1a38f2f64eb52c8d6faa2821e2438d6d6fd5549e219231fbbaa",
+    "confirmation_sha256": "ae232a009a9a72bcfa3808333f6de20b36c0d7092b4861c90fbbbf7a53f04fbf",
+    "audit_counts": {
+      "phase_json_artifacts_verified": 674,
+      "pair_count": 9,
+      "arm_count": 18,
+      "stage_count": 45,
+      "api_fidelity_receipts": 45,
+      "original_integer_source_check_receipts": 27,
+      "selected_module_receipts": 108
+    },
+    "source_inventory_paths": 983,
+    "overall_descriptive_statistics": {
+      "solver_process_wall_seconds": {
+        "median_paired_reduction": 0.45701209347257143,
+        "minimum_paired_reduction": 0.3260747469839075,
+        "maximum_paired_reduction": 0.5545113774297399,
+        "ordered_paired_reductions": [
+          0.3260747469839075,
+          0.36236167769945427,
+          0.3692860052894643,
+          0.4224450224110736,
+          0.45701209347257143,
+          0.4894151980329573,
+          0.5010047641748041,
+          0.5437663827210399,
+          0.5545113774297399
+        ],
+        "at_least_30_percent_pairs": 9,
+        "empirical_p10_reduction_linear": 0.35510429155634493,
+        "empirical_p90_reduction_linear": 0.54591538166278,
+        "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+      },
+      "standalone_equivalent_e2e_seconds": {
+        "median_paired_reduction": 0.345374748850101,
+        "minimum_paired_reduction": 0.24111336851463872,
+        "maximum_paired_reduction": 0.46671645238241855,
+        "ordered_paired_reductions": [
+          0.24111336851463872,
+          0.24415617250304322,
+          0.2503942680924718,
+          0.3428131177392292,
+          0.345374748850101,
+          0.3615198702725789,
+          0.36816891485832826,
+          0.4282613320631654,
+          0.46671645238241855
+        ],
+        "at_least_30_percent_pairs": 6,
+        "empirical_p10_reduction_linear": 0.24354761170536232,
+        "empirical_p90_reduction_linear": 0.43595235612701605,
+        "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+      }
+    },
+    "date_gate": {
+      "passed": false,
+      "by_date": {
+        "2017-02-01": {
+          "solver_process_wall_seconds": {
+            "paired_reductions": [
+              0.3692860052894643,
+              0.5010047641748041,
+              0.36236167769945427
+            ],
+            "median_paired_reduction": 0.3692860052894643,
+            "passed": true
+          },
+          "standalone_equivalent_e2e_seconds": {
+            "paired_reductions": [
+              0.24415617250304322,
+              0.36816891485832826,
+              0.2503942680924718
+            ],
+            "median_paired_reduction": 0.2503942680924718,
+            "passed": false
+          }
+        },
+        "2017-08-01": {
+          "solver_process_wall_seconds": {
+            "paired_reductions": [
+              0.4224450224110736,
+              0.5437663827210399,
+              0.3260747469839075
+            ],
+            "median_paired_reduction": 0.4224450224110736,
+            "passed": true
+          },
+          "standalone_equivalent_e2e_seconds": {
+            "paired_reductions": [
+              0.345374748850101,
+              0.46671645238241855,
+              0.24111336851463872
+            ],
+            "median_paired_reduction": 0.345374748850101,
+            "passed": true
+          }
+        },
+        "2017-11-01": {
+          "solver_process_wall_seconds": {
+            "paired_reductions": [
+              0.5545113774297399,
+              0.45701209347257143,
+              0.4894151980329573
+            ],
+            "median_paired_reduction": 0.4894151980329573,
+            "passed": true
+          },
+          "standalone_equivalent_e2e_seconds": {
+            "paired_reductions": [
+              0.4282613320631654,
+              0.3615198702725789,
+              0.3428131177392292
+            ],
+            "median_paired_reduction": 0.3615198702725789,
+            "passed": true
+          }
+        }
+      }
+    },
+    "actual_mechanism": {
+      "A": {
+        "applied_caps": 0,
+        "applied_skips": 0,
+        "activated_pairs": 0
+      },
+      "B": {
+        "applied_caps": 5,
+        "applied_skips": 0,
+        "activated_pairs": 5
+      }
+    },
+    "artifacts": {
+      "CONFIRMATION_REVIEW.md": "35a48b8b6ae8220ce93115bc756cc06d519c7580c91a3d9dc4c14406887523a2",
+      "CONFIRMATION_ARTIFACT_AUDIT.json": "a0c9673f042cbc87948465830aafcd7fa7b459521c8854bef5c00b4b31266dd2",
+      "CONFIRMATION_INDEPENDENT_ARITHMETIC.json": "a99e4addc822be43388b3427aa050f458af9dae56ecd9dc4a1f65b0198be859d",
+      "CONFIRMATION_SOURCE_CHAIN.json": "997030cb9cd8a8d1d74f706e822da5e2aad8744d46dea308fa06ea65a8d98f1e",
+      "audit_confirmation_results.py": "10e740e68235ec32a2e1408049df0881659232b8031a0e1eef42735c02130c56"
+    },
+    "review_numerical_work_performed": false
+  },
+  "artifact_audit": {
+    "passed": true,
+    "confirmation_outcome": "strict_per_date_performance_gate_failed_with_all_arms_correct_and_complete",
+    "manifest_sha256": "4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3",
+    "campaign_plan_sha256": "eab118a92b85e1a38f2f64eb52c8d6faa2821e2438d6d6fd5549e219231fbbaa",
+    "confirmation_sha256": "ae232a009a9a72bcfa3808333f6de20b36c0d7092b4861c90fbbbf7a53f04fbf",
+    "phase_json_artifacts_verified": 674,
+    "pair_count": 9,
+    "arm_count": 18,
+    "stage_count": 45,
+    "api_fidelity_receipts": 45,
+    "original_integer_source_check_receipts": 27,
+    "selected_module_receipts": 108,
+    "confirmation_gate": {
+      "passed": false,
+      "by_date": {
+        "2017-02-01": {
+          "solver_process_wall_seconds": {
+            "paired_reductions": [
+              0.3692860052894643,
+              0.5010047641748041,
+              0.36236167769945427
+            ],
+            "median_paired_reduction": 0.3692860052894643,
+            "passed": true
+          },
+          "standalone_equivalent_e2e_seconds": {
+            "paired_reductions": [
+              0.24415617250304322,
+              0.36816891485832826,
+              0.2503942680924718
+            ],
+            "median_paired_reduction": 0.2503942680924718,
+            "passed": false
+          }
+        },
+        "2017-08-01": {
+          "solver_process_wall_seconds": {
+            "paired_reductions": [
+              0.4224450224110736,
+              0.5437663827210399,
+              0.3260747469839075
+            ],
+            "median_paired_reduction": 0.4224450224110736,
+            "passed": true
+          },
+          "standalone_equivalent_e2e_seconds": {
+            "paired_reductions": [
+              0.345374748850101,
+              0.46671645238241855,
+              0.24111336851463872
+            ],
+            "median_paired_reduction": 0.345374748850101,
+            "passed": true
+          }
+        },
+        "2017-11-01": {
+          "solver_process_wall_seconds": {
+            "paired_reductions": [
+              0.5545113774297399,
+              0.45701209347257143,
+              0.4894151980329573
+            ],
+            "median_paired_reduction": 0.4894151980329573,
+            "passed": true
+          },
+          "standalone_equivalent_e2e_seconds": {
+            "paired_reductions": [
+              0.4282613320631654,
+              0.3615198702725789,
+              0.3428131177392292
+            ],
+            "median_paired_reduction": 0.3615198702725789,
+            "passed": true
+          }
+        }
+      }
+    },
+    "overall_descriptive_statistics": {
+      "solver_process_wall_seconds": {
+        "median_paired_reduction": 0.45701209347257143,
+        "minimum_paired_reduction": 0.3260747469839075,
+        "maximum_paired_reduction": 0.5545113774297399,
+        "ordered_paired_reductions": [
+          0.3260747469839075,
+          0.36236167769945427,
+          0.3692860052894643,
+          0.4224450224110736,
+          0.45701209347257143,
+          0.4894151980329573,
+          0.5010047641748041,
+          0.5437663827210399,
+          0.5545113774297399
+        ],
+        "at_least_30_percent_pairs": 9,
+        "empirical_p10_reduction_linear": 0.35510429155634493,
+        "empirical_p90_reduction_linear": 0.54591538166278,
+        "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+      },
+      "standalone_equivalent_e2e_seconds": {
+        "median_paired_reduction": 0.345374748850101,
+        "minimum_paired_reduction": 0.24111336851463872,
+        "maximum_paired_reduction": 0.46671645238241855,
+        "ordered_paired_reductions": [
+          0.24111336851463872,
+          0.24415617250304322,
+          0.2503942680924718,
+          0.3428131177392292,
+          0.345374748850101,
+          0.3615198702725789,
+          0.36816891485832826,
+          0.4282613320631654,
+          0.46671645238241855
+        ],
+        "at_least_30_percent_pairs": 6,
+        "empirical_p10_reduction_linear": 0.24354761170536232,
+        "empirical_p90_reduction_linear": 0.43595235612701605,
+        "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+      }
+    },
+    "actual_mechanism": {
+      "A": {
+        "applied_caps": 0,
+        "applied_skips": 0,
+        "activated_pairs": 0
+      },
+      "B": {
+        "applied_caps": 5,
+        "applied_skips": 0,
+        "activated_pairs": 5
+      }
+    },
+    "pairs": {
+      "confirmation_01": {
+        "passed": true,
+        "pair_sha256": "58f4b62c64ae31faa859acf799fb730b88b5e0bedc6a5753c524a37d773538c3",
+        "arms": {
+          "B": {
+            "source_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 25.13781883699994,
+            "lp_solver_seconds": 1.3586344140057918,
+            "standalone_e2e_seconds": 38.27170870000555,
+            "stage_wall_seconds": {
+              "generation_readback": 4.771474803012097,
+              "lp_separation": 3.1624004850018537,
+              "integer_checks": 2.2589732940105023,
+              "scope_preparation": 0.5534862399945268,
+              "lp_solving": 1.3586344140057918,
+              "integer_solving": 23.77918442299415
+            },
+            "remaining_arm_overhead_seconds": 2.2862414339906536,
+            "upper": 2710978.3471007533,
+            "lower": 2684979.4457381503,
+            "gap": 0.009590228335983391,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 321388,
+            "applied_caps": 1,
+            "applied_skips": 0
+          },
+          "A": {
+            "source_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 56.42752152000321,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 66.93916442299087,
+            "stage_wall_seconds": {
+              "generation_readback": 3.1647933430067496,
+              "lp_separation": 0,
+              "integer_checks": 5.1197539340064395,
+              "scope_preparation": 0.5541590929933591,
+              "lp_solving": 0.0,
+              "integer_solving": 56.42752152000321
+            },
+            "remaining_arm_overhead_seconds": 1.5716229259851389,
+            "upper": 2710978.3471007533,
+            "lower": 2684979.4457381503,
+            "gap": 0.009590228335983391,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 321280,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 66.93916442299087,
+              "candidate": 38.27170870000555,
+              "reduction_fraction": 0.4282613320631654
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 56.42752152000321,
+              "candidate": 25.13781883699994,
+              "reduction_fraction": 0.5545113774297399
+            }
+          },
+          "development_gate_pass": true,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-11-01",
+        "seed": 1,
+        "arm_order": [
+          "B",
+          "A"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 105.36930904099427
+      },
+      "confirmation_02": {
+        "passed": true,
+        "pair_sha256": "c98040f362e4d38c7b713e5374d75ceaba0a48ef48a6d2d41043f7a0e157ffd6",
+        "arms": {
+          "A": {
+            "source_sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 312.1054513112167,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 312105.4513112167,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 81.90390112901514,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 92.33435887299129,
+            "stage_wall_seconds": {
+              "generation_readback": 3.1633523799973773,
+              "lp_separation": 0,
+              "integer_checks": 5.073386247007875,
+              "scope_preparation": 0.5551288319984451,
+              "lp_solving": 0.0,
+              "integer_solving": 81.90390112901514
+            },
+            "remaining_arm_overhead_seconds": 1.5372901669761632,
+            "upper": 4573590.815338733,
+            "lower": 4527971.54428972,
+            "gap": 0.00997449769577468,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 397644,
+            "applied_caps": 0,
+            "applied_skips": 0
+          },
+          "B": {
+            "source_sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 312.10545131121944,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 312105.4513112195,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 47.304005781013984,
+            "lp_solver_seconds": 1.5631983920029597,
+            "standalone_e2e_seconds": 60.444402866996825,
+            "stage_wall_seconds": {
+              "generation_readback": 4.825844547987799,
+              "lp_separation": 3.2156888819881715,
+              "integer_checks": 2.209948176998296,
+              "scope_preparation": 0.5541021020035259,
+              "lp_solving": 1.5631983920029597,
+              "integer_solving": 45.740807389011024
+            },
+            "remaining_arm_overhead_seconds": 2.2335132590087596,
+            "upper": 4573590.81533874,
+            "lower": 4528038.85048972,
+            "gap": 0.00995978142518781,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 422668,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 92.33435887299129,
+              "candidate": 60.444402866996825,
+              "reduction_fraction": 0.345374748850101
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 81.90390112901514,
+              "candidate": 47.304005781013984,
+              "reduction_fraction": 0.4224450224110736
+            }
+          },
+          "development_gate_pass": false,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-08-01",
+        "seed": 1,
+        "arm_order": [
+          "A",
+          "B"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 152.93576708099863
+      },
+      "confirmation_03": {
+        "passed": true,
+        "pair_sha256": "351caa631f53edfd213814e9318076373da9b7edeb3d47d0878239b44872f6af",
+        "arms": {
+          "B": {
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 24.58469770902593,
+            "lp_solver_seconds": 1.2098987670178758,
+            "standalone_e2e_seconds": 37.434174698995776,
+            "stage_wall_seconds": {
+              "generation_readback": 4.621359903001576,
+              "lp_separation": 3.072719181989669,
+              "integer_checks": 2.3092851039982634,
+              "scope_preparation": 0.5039529000059702,
+              "lp_solving": 1.2098987670178758,
+              "integer_solving": 23.374798942008056
+            },
+            "remaining_arm_overhead_seconds": 2.2439999639755115,
+            "upper": 3534678.7624266683,
+            "lower": 3499785.015830002,
+            "gap": 0.009871829646185687,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 356180,
+            "applied_caps": 1,
+            "applied_skips": 0
+          },
+          "A": {
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 38.9791536499979,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 49.526335119997384,
+            "stage_wall_seconds": {
+              "generation_readback": 3.1691460519941757,
+              "lp_separation": 0,
+              "integer_checks": 5.173080799999298,
+              "scope_preparation": 0.5564948640094372,
+              "lp_solving": 0.0,
+              "integer_solving": 38.9791536499979
+            },
+            "remaining_arm_overhead_seconds": 1.5502998169977218,
+            "upper": 3534678.7624266357,
+            "lower": 3499785.015830002,
+            "gap": 0.009871829646176555,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 403688,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 49.526335119997384,
+              "candidate": 37.434174698995776,
+              "reduction_fraction": 0.24415617250304322
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 38.9791536499979,
+              "candidate": 24.58469770902593,
+              "reduction_fraction": 0.3692860052894643
+            }
+          },
+          "development_gate_pass": true,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-02-01",
+        "seed": 3,
+        "arm_order": [
+          "B",
+          "A"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 87.12653686299745
+      },
+      "confirmation_04": {
+        "passed": true,
+        "pair_sha256": "8460b8940563df47175d7f60a68fef04f1fcc5086bdbe54d1e8b6aaad6045781",
+        "arms": {
+          "A": {
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 48.505942713003606,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 58.955858553003054,
+            "stage_wall_seconds": {
+              "generation_readback": 3.1649684120202437,
+              "lp_separation": 0,
+              "integer_checks": 5.026139781999518,
+              "scope_preparation": 0.5541121099959128,
+              "lp_solving": 0.0,
+              "integer_solving": 48.505942713003606
+            },
+            "remaining_arm_overhead_seconds": 1.608522031980101,
+            "upper": 3534678.7624266683,
+            "lower": 3499338.7024200065,
+            "gap": 0.009998096682030517,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 361704,
+            "applied_caps": 0,
+            "applied_skips": 0
+          },
+          "B": {
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 24.204234322998673,
+            "lp_solver_seconds": 1.159490784004447,
+            "standalone_e2e_seconds": 37.25014408500283,
+            "stage_wall_seconds": {
+              "generation_readback": 4.726042192996829,
+              "lp_separation": 3.1662498310033698,
+              "integer_checks": 2.2119923480058787,
+              "scope_preparation": 0.5568054909963394,
+              "lp_solving": 1.159490784004447,
+              "integer_solving": 23.044743538994226
+            },
+            "remaining_arm_overhead_seconds": 2.288646394998068,
+            "upper": 3534678.7624266683,
+            "lower": 3499338.7024200065,
+            "gap": 0.009998096682030517,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 349992,
+            "applied_caps": 1,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 58.955858553003054,
+              "candidate": 37.25014408500283,
+              "reduction_fraction": 0.36816891485832826
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 48.505942713003606,
+              "candidate": 24.204234322998673,
+              "reduction_fraction": 0.5010047641748041
+            }
+          },
+          "development_gate_pass": true,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-02-01",
+        "seed": 4,
+        "arm_order": [
+          "A",
+          "B"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 96.37470480200136
+      },
+      "confirmation_05": {
+        "passed": true,
+        "pair_sha256": "f1edad4d9c3d99ff0a9c847179474b34fad8e928d06d317b3bff702ccbf565f2",
+        "arms": {
+          "A": {
+            "source_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 63.75116173099377,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 74.19792467499792,
+            "stage_wall_seconds": {
+              "generation_readback": 3.167949224996846,
+              "lp_separation": 0,
+              "integer_checks": 5.073716914004763,
+              "scope_preparation": 0.556824144005077,
+              "lp_solving": 0.0,
+              "integer_solving": 63.75116173099377
+            },
+            "remaining_arm_overhead_seconds": 1.5505431159981526,
+            "upper": 2710978.347100752,
+            "lower": 2684535.696208155,
+            "gap": 0.00975391445707273,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 334424,
+            "applied_caps": 0,
+            "applied_skips": 0
+          },
+          "B": {
+            "source_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 34.61610984700383,
+            "lp_solver_seconds": 1.3611833580071107,
+            "standalone_e2e_seconds": 47.37390057199809,
+            "stage_wall_seconds": {
+              "generation_readback": 4.577889104999485,
+              "lp_separation": 3.115472058983869,
+              "integer_checks": 2.1603925910021644,
+              "scope_preparation": 0.5051092329958919,
+              "lp_solving": 1.3611833580071107,
+              "integer_solving": 33.254926488996716
+            },
+            "remaining_arm_overhead_seconds": 2.301198192013544,
+            "upper": 2710978.347100752,
+            "lower": 2684535.696208155,
+            "gap": 0.00975391445707273,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 339988,
+            "applied_caps": 1,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 74.19792467499792,
+              "candidate": 47.37390057199809,
+              "reduction_fraction": 0.3615198702725789
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 63.75116173099377,
+              "candidate": 34.61610984700383,
+              "reduction_fraction": 0.45701209347257143
+            }
+          },
+          "development_gate_pass": true,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-11-01",
+        "seed": 2,
+        "arm_order": [
+          "A",
+          "B"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 121.74768046700046
+      },
+      "confirmation_06": {
+        "passed": true,
+        "pair_sha256": "79baebcb4475e7d425bd5d7622ae88ea042eee7c40ee4b83605aeaad14263237",
+        "arms": {
+          "B": {
+            "source_sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 312.1054513112215,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 312105.45131122146,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 44.854974979010876,
+            "lp_solver_seconds": 1.711537473005592,
+            "standalone_e2e_seconds": 57.92562260800332,
+            "stage_wall_seconds": {
+              "generation_readback": 4.623710247004055,
+              "lp_separation": 3.2182324860041263,
+              "integer_checks": 2.2600324859959073,
+              "scope_preparation": 0.5547027589927893,
+              "lp_solving": 1.711537473005592,
+              "integer_solving": 43.143437506005284
+            },
+            "remaining_arm_overhead_seconds": 2.280282883992186,
+            "upper": 4573590.815338741,
+            "lower": 4528350.597889716,
+            "gap": 0.009891618921679717,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 388716,
+            "applied_caps": 0,
+            "applied_skips": 0
+          },
+          "A": {
+            "source_sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 312.10545131121864,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 312105.45131121855,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 98.31580418499652,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 108.62068193699815,
+            "stage_wall_seconds": {
+              "generation_readback": 3.065997026991681,
+              "lp_separation": 0,
+              "integer_checks": 5.020703853995656,
+              "scope_preparation": 0.5551014500088058,
+              "lp_solving": 0.0,
+              "integer_solving": 98.31580418499652
+            },
+            "remaining_arm_overhead_seconds": 1.5293886540021049,
+            "upper": 4573590.81533873,
+            "lower": 4527956.966519721,
+            "gap": 0.009977685075360046,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 447768,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 108.62068193699815,
+              "candidate": 57.92562260800332,
+              "reduction_fraction": 0.46671645238241855
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 98.31580418499652,
+              "candidate": 44.854974979010876,
+              "reduction_fraction": 0.5437663827210399
+            }
+          },
+          "development_gate_pass": false,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-08-01",
+        "seed": 2,
+        "arm_order": [
+          "B",
+          "A"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 166.67887565300043
+      },
+      "confirmation_07": {
+        "passed": true,
+        "pair_sha256": "9a028272c492bb79e3c592a220777ec4a5add0556da38afa43466fe83bf84c02",
+        "arms": {
+          "A": {
+            "source_sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 312.1054513112207,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 312105.45131122076,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 61.20345311801066,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 71.73171336601081,
+            "stage_wall_seconds": {
+              "generation_readback": 3.2160939400055213,
+              "lp_separation": 0,
+              "integer_checks": 5.173521277989494,
+              "scope_preparation": 0.5072336659941357,
+              "lp_solving": 0.0,
+              "integer_solving": 61.20345311801066
+            },
+            "remaining_arm_overhead_seconds": 1.5332763940095901,
+            "upper": 4573590.815338743,
+            "lower": 4527973.791259721,
+            "gap": 0.00997400640346602,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 392492,
+            "applied_caps": 0,
+            "applied_skips": 0
+          },
+          "B": {
+            "source_sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 312.10545131121796,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 312105.4513112179,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 41.24655262801389,
+            "lp_solver_seconds": 1.6139643770147813,
+            "standalone_e2e_seconds": 54.43623832700541,
+            "stage_wall_seconds": {
+              "generation_readback": 4.68435995800246,
+              "lp_separation": 3.1699662630126113,
+              "integer_checks": 2.361319829011336,
+              "scope_preparation": 0.556022759003099,
+              "lp_solving": 1.6139643770147813,
+              "integer_solving": 39.632588250999106
+            },
+            "remaining_arm_overhead_seconds": 2.3198819199606078,
+            "upper": 4573590.815338738,
+            "lower": 4527874.220219722,
+            "gap": 0.009995777271043494,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 400244,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 71.73171336601081,
+              "candidate": 54.43623832700541,
+              "reduction_fraction": 0.24111336851463872
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 61.20345311801066,
+              "candidate": 41.24655262801389,
+              "reduction_fraction": 0.3260747469839075
+            }
+          },
+          "development_gate_pass": false,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-08-01",
+        "seed": 3,
+        "arm_order": [
+          "A",
+          "B"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 126.3507477069943
+      },
+      "confirmation_08": {
+        "passed": true,
+        "pair_sha256": "e589239754bed91e2f46b0ea595a891c08e80108a617f3760d20254f2e63bb95",
+        "arms": {
+          "B": {
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 28.404944331981824,
+            "lp_solver_seconds": 1.2144800949899945,
+            "standalone_e2e_seconds": 41.56739227598882,
+            "stage_wall_seconds": {
+              "generation_readback": 4.681367975004832,
+              "lp_separation": 3.3209866959950887,
+              "integer_checks": 2.2116796460031765,
+              "scope_preparation": 0.555813416998717,
+              "lp_solving": 1.2144800949899945,
+              "integer_solving": 27.19046423699183
+            },
+            "remaining_arm_overhead_seconds": 2.2923957020102534,
+            "upper": 3534678.7624266683,
+            "lower": 3499676.3337600036,
+            "gap": 0.009902577014561426,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 361364,
+            "applied_caps": 1,
+            "applied_skips": 0
+          },
+          "A": {
+            "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 44.54710976200295,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 55.45234048599377,
+            "stage_wall_seconds": {
+              "generation_readback": 3.3754481820069486,
+              "lp_separation": 0,
+              "integer_checks": 5.330070616997546,
+              "scope_preparation": 0.5086167150002439,
+              "lp_solving": 0.0,
+              "integer_solving": 44.54710976200295
+            },
+            "remaining_arm_overhead_seconds": 1.5908907019911567,
+            "upper": 3534678.762426643,
+            "lower": 3499676.3337600036,
+            "gap": 0.009902577014554383,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 346428,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 55.45234048599377,
+              "candidate": 41.56739227598882,
+              "reduction_fraction": 0.2503942680924718
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 44.54710976200295,
+              "candidate": 28.404944331981824,
+              "reduction_fraction": 0.36236167769945427
+            }
+          },
+          "development_gate_pass": true,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-02-01",
+        "seed": 5,
+        "arm_order": [
+          "B",
+          "A"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 97.1856401279947
+      },
+      "confirmation_09": {
+        "passed": true,
+        "pair_sha256": "cd84d0535693055ac0b45532c390fb5ad404adfb9a7e040e89c45264bff993c1",
+        "arms": {
+          "B": {
+            "source_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "lp",
+              "lp",
+              "mip"
+            ],
+            "solver_seconds": 23.44372822099831,
+            "lp_solver_seconds": 1.5167586989991833,
+            "standalone_e2e_seconds": 37.1165146560088,
+            "stage_wall_seconds": {
+              "generation_readback": 4.881475638991105,
+              "lp_separation": 3.469598401003168,
+              "integer_checks": 2.26377395101008,
+              "scope_preparation": 0.55531712899392,
+              "lp_solving": 1.5167586989991833,
+              "integer_solving": 21.926969521999126
+            },
+            "remaining_arm_overhead_seconds": 2.405143511015922,
+            "upper": 2715066.5847706464,
+            "lower": 2688359.094658117,
+            "gap": 0.009836771688155744,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 248780,
+            "applied_caps": 0,
+            "applied_skips": 0
+          },
+          "A": {
+            "source_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+            "source_shedding_penalty": 1000.0,
+            "total_shed_MWh": 0.0,
+            "max_overflow_MW": 0.0,
+            "shedding_cost": 0.0,
+            "stages": [
+              "mip",
+              "mip"
+            ],
+            "solver_seconds": 45.91544466400228,
+            "lp_solver_seconds": 0.0,
+            "standalone_e2e_seconds": 56.47786901699146,
+            "stage_wall_seconds": {
+              "generation_readback": 3.2705621880013496,
+              "lp_separation": 0,
+              "integer_checks": 5.075777259000461,
+              "scope_preparation": 0.5589950519934064,
+              "lp_solving": 0.0,
+              "integer_solving": 45.91544466400228
+            },
+            "remaining_arm_overhead_seconds": 1.5596120499976678,
+            "upper": 2715066.5847706464,
+            "lower": 2688359.094658117,
+            "gap": 0.009836771688155744,
+            "listed_outages": 192,
+            "checked_pair_hours": 529956,
+            "peak_child_rss_KiB": 282320,
+            "applied_caps": 0,
+            "applied_skips": 0
+          }
+        },
+        "comparison": {
+          "valid_comparison": true,
+          "metrics": {
+            "standalone_equivalent_e2e_seconds": {
+              "baseline": 56.47786901699146,
+              "candidate": 37.1165146560088,
+              "reduction_fraction": 0.3428131177392292
+            },
+            "solver_process_wall_seconds": {
+              "baseline": 45.91544466400228,
+              "candidate": 23.44372822099831,
+              "reduction_fraction": 0.4894151980329573
+            }
+          },
+          "development_gate_pass": false,
+          "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+          "timing_gate_pass": true
+        },
+        "phase_artifact_count": 674,
+        "case": "2017-11-01",
+        "seed": 3,
+        "arm_order": [
+          "B",
+          "A"
+        ],
+        "phase_wall_seconds": 1050.8778455270076,
+        "pair_wall_seconds": 93.7578956340003
+      }
+    },
+    "outer_phase_seconds": 1050.8778455270076,
+    "sum_pair_archival_seconds": 1047.527157375982,
+    "phase_overhead_outside_pairs_seconds": 3.350688151025679,
+    "strict_gate_met": false,
+    "all_arms_complete": true,
+    "all_nine_pairs_strictly_improve_both": true,
+    "stable_30_percent_both_claim_established": false,
+    "review_optimizer_calls": 0,
+    "review_model_generation_calls": 0,
+    "review_c_api_calls": 0,
+    "review_topology_calls": 0,
+    "scope": "Readback and SHA-256 of existing files, strict log reparse and scalar arithmetic only"
+  },
+  "source_chain": {
+    "passed": true,
+    "source_inventory_paths": 983,
+    "source_tree_manifest_sha256": "b00bd702ff29a4737b1be49156fee934f0b339b88ad155a0b13810300a891cd1",
+    "runtime_manifest_sha256": "4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3"
+  },
+  "independent_arithmetic": {
+    "passed": true,
+    "independently_recomputed_by_date": {
+      "2017-02-01": {
+        "solver_process_wall_seconds": {
+          "median": 0.3692860052894643,
+          "minimum": 0.36236167769945427,
+          "maximum": 0.5010047641748041,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "median": 0.2503942680924718,
+          "minimum": 0.24415617250304322,
+          "maximum": 0.36816891485832826,
+          "passed": false
+        }
+      },
+      "2017-08-01": {
+        "solver_process_wall_seconds": {
+          "median": 0.4224450224110736,
+          "minimum": 0.3260747469839075,
+          "maximum": 0.5437663827210399,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "median": 0.345374748850101,
+          "minimum": 0.24111336851463872,
+          "maximum": 0.46671645238241855,
+          "passed": true
+        }
+      },
+      "2017-11-01": {
+        "solver_process_wall_seconds": {
+          "median": 0.4894151980329573,
+          "minimum": 0.45701209347257143,
+          "maximum": 0.5545113774297399,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "median": 0.3615198702725789,
+          "minimum": 0.3428131177392292,
+          "maximum": 0.4282613320631654,
+          "passed": true
+        }
+      }
+    },
+    "all_arms_gap_range": [
+      0.009590228335983391,
+      0.009998096682030517
+    ],
+    "child_rss_KiB_range": [
+      248780,
+      447768
+    ],
+    "outer_phase_seconds": 1050.8778455270076,
+    "sum_pair_archival_seconds": 1047.527157375982,
+    "phase_overhead_outside_pairs_seconds": 3.350688151025679,
+    "overall_descriptive_statistics": {
+      "solver_process_wall_seconds": {
+        "median_paired_reduction": 0.45701209347257143,
+        "minimum_paired_reduction": 0.3260747469839075,
+        "maximum_paired_reduction": 0.5545113774297399,
+        "ordered_paired_reductions": [
+          0.3260747469839075,
+          0.36236167769945427,
+          0.3692860052894643,
+          0.4224450224110736,
+          0.45701209347257143,
+          0.4894151980329573,
+          0.5010047641748041,
+          0.5437663827210399,
+          0.5545113774297399
+        ],
+        "at_least_30_percent_pairs": 9,
+        "empirical_p10_reduction_linear": 0.35510429155634493,
+        "empirical_p90_reduction_linear": 0.54591538166278,
+        "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+      },
+      "standalone_equivalent_e2e_seconds": {
+        "median_paired_reduction": 0.345374748850101,
+        "minimum_paired_reduction": 0.24111336851463872,
+        "maximum_paired_reduction": 0.46671645238241855,
+        "ordered_paired_reductions": [
+          0.24111336851463872,
+          0.24415617250304322,
+          0.2503942680924718,
+          0.3428131177392292,
+          0.345374748850101,
+          0.3615198702725789,
+          0.36816891485832826,
+          0.4282613320631654,
+          0.46671645238241855
+        ],
+        "at_least_30_percent_pairs": 6,
+        "empirical_p10_reduction_linear": 0.24354761170536232,
+        "empirical_p90_reduction_linear": 0.43595235612701605,
+        "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+      }
+    }
+  }
+}

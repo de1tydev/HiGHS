@@ -1,0 +1,272 @@
+{
+  "scope": "Sanitized projection of the plan frozen before numerical outcomes, with complete sequence and exposure disclosure.",
+  "raw_campaign_plan_sha256": "eab118a92b85e1a38f2f64eb52c8d6faa2821e2438d6d6fd5549e219231fbbaa",
+  "plan": {
+    "status": "frozen_before_any_combined_numerical_outcome",
+    "design_manifest_sha256": "02a4c5b80a9ce36a70e273c822287cc8d447cf3c49f82da5563287c9c2702f53",
+    "inherited_runtime_manifest_sha256": "239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c",
+    "arms": {
+      "A": {
+        "name": "A",
+        "lp_discovery": false,
+        "root_credit": false,
+        "separator_variant": "baseline"
+      },
+      "B": {
+        "name": "B",
+        "lp_discovery": true,
+        "root_credit": true,
+        "separator_variant": "optimized"
+      }
+    },
+    "common_module_paths": {
+      "contracts": "research-archive/protocols/combined_screening_driver/contracts.py",
+      "primal_and_bound": "research-archive/protocols/combined_screening_driver/primal_and_bound.py",
+      "model_stage": "research-archive/protocols/combined_screening_driver/model_stage.py"
+    },
+    "separator_paths": {
+      "A": "research-archive/protocols/combined_screening_driver/fractional_separator.py",
+      "B": "research-archive/protocols/lp_security_separator_optimized/fractional_separator.py"
+    },
+    "module_sha256": {
+      "research-archive/protocols/combined_screening_driver/contracts.py": "f71ff3fe6a4cddaf1f81ddbcddfb90f074a441f845333c0906f171a6d5e17420",
+      "research-archive/protocols/combined_screening_driver/primal_and_bound.py": "2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00",
+      "research-archive/protocols/combined_screening_driver/model_stage.py": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+      "research-archive/protocols/combined_screening_driver/fractional_separator.py": "0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb",
+      "research-archive/protocols/lp_security_separator_optimized/fractional_separator.py": "1833d1f645507495daac922fbeb58ba0eb5fe3f2c25e98d331b7a56fbd436293"
+    },
+    "allowed_sources": {
+      "benchmark/data/case89pegase_2017-02-01.json.gz": {
+        "sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+        "hours": 36
+      },
+      "benchmark/data/case89pegase_2017-08-01.json.gz": {
+        "sha256": "63241562ef41d1b31aa10f20552b1ea9f0753f541ca844f06b9cb21a6ed5f78e",
+        "hours": 36
+      },
+      "research-archive/protocols/combined_screening_design/case89pegase_2017-11-01.json.gz": {
+        "sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+        "hours": 36
+      },
+      "research-archive/protocols/combined_screening_driver/tiny_triangle.json": {
+        "sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48",
+        "hours": 2
+      }
+    },
+    "confirmation": [
+      {
+        "sequence": 1,
+        "case": "2017-11-01",
+        "seed": 1,
+        "arm_order": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "sequence": 2,
+        "case": "2017-08-01",
+        "seed": 1,
+        "arm_order": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "sequence": 3,
+        "case": "2017-02-01",
+        "seed": 3,
+        "arm_order": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "sequence": 4,
+        "case": "2017-02-01",
+        "seed": 4,
+        "arm_order": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "sequence": 5,
+        "case": "2017-11-01",
+        "seed": 2,
+        "arm_order": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "sequence": 6,
+        "case": "2017-08-01",
+        "seed": 2,
+        "arm_order": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "sequence": 7,
+        "case": "2017-08-01",
+        "seed": 3,
+        "arm_order": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "sequence": 8,
+        "case": "2017-02-01",
+        "seed": 5,
+        "arm_order": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "sequence": 9,
+        "case": "2017-11-01",
+        "seed": 3,
+        "arm_order": [
+          "B",
+          "A"
+        ]
+      }
+    ],
+    "development": {
+      "case": "2017-02-01",
+      "seed": 0,
+      "arm_order": [
+        "A",
+        "B"
+      ]
+    },
+    "campaign_directory": "research-archive/protocols/combined_screening_driver/run_v1",
+    "solver_budget_per_arm": 600.0,
+    "tiny_budget_per_arm": 20.0,
+    "source_exposure_sha256": "a75e793fc08d559be3a313abf03d45575d3e205b40c879a2515f01ff5f15b0c1",
+    "source_only_freeze": true
+  },
+  "source_exposure": {
+    "scope": "Pre-outcome prior exposure and reserved-seed amendment",
+    "amendment_path": "research-archive/protocols/combined_screening_design/AMENDMENT_2026-10-02.md",
+    "audit_path": "research-archive/protocols/combined_screening_driver_review/DESIGN_AUDIT.json",
+    "prior_february_seed_1_2_evidence": [
+      {
+        "path": "research-archive/results/scuc-nested-rins-paired/seed1-default/summary.json",
+        "sha256": "ea80ea23ec0223b8cb285467641d76a8b7a81fd1d5874972c9c879f4b099996d",
+        "source_date": "2017-02-01",
+        "seed": 1
+      },
+      {
+        "path": "research-archive/results/scuc-nested-rins-paired/seed1-nested-rins-off/summary.json",
+        "sha256": "522a5111f2f78beafcc2982e9e2ae7c34f8b6776a444579e1e3dc2518e732c72",
+        "source_date": "2017-02-01",
+        "seed": 1
+      },
+      {
+        "path": "research-archive/results/scuc-nested-rins-paired/seed2-default/summary.json",
+        "sha256": "aa68e5184b0857e456fbaa303aa9d3abab996d2474182c92443d35445899353a",
+        "source_date": "2017-02-01",
+        "seed": 2
+      },
+      {
+        "path": "research-archive/results/scuc-nested-rins-paired/seed2-nested-rins-off/summary.json",
+        "sha256": "7768da449d20041f2c2e15834bcea03e4a0e2e1dca0d5cb330abb689e094ccc9",
+        "source_date": "2017-02-01",
+        "seed": 2
+      }
+    ],
+    "development": {
+      "date": "2017-02-01",
+      "seed": 0,
+      "prior_exposure": "Familiar development case; not held out"
+    },
+    "confirmation_reservation": {
+      "2017-02-01": [
+        3,
+        4,
+        5
+      ],
+      "2017-08-01": [
+        1,
+        2,
+        3
+      ],
+      "2017-11-01": [
+        1,
+        2,
+        3
+      ]
+    },
+    "date_exposure": {
+      "2017-02-01": "Familiar date: prior seed 0 and earlier RINS seeds 1/2",
+      "2017-08-01": "Familiar transfer date: prior seed 0 and retained checker/source evidence",
+      "2017-11-01": "New date acquired after recorded date intent; only plain metadata/provenance work before this freeze"
+    },
+    "combined_outcomes_seen_before_reservation": false,
+    "seeds_changed_after_combined_outcome": false,
+    "no_broad_unseen_dataset_claim": true
+  },
+  "amendment_raw_sha256": "e3ca55a9e23dc6db3fa12b953856f9b6619413bbacc1c9e00ea2a6dac68bfcf5",
+  "design_manifest": {
+    "status": "metadata_preflight_passed_before_numerical_work",
+    "dataset": "UnitCommitment.jl official version 0.3 hosted matpower/case89pegase/2017-11-01",
+    "revision_note": "Mutable hosted data pinned by exact bytes, not by a reference code commit",
+    "instance": {
+      "path": "research-archive/protocols/combined_screening_design/case89pegase_2017-11-01.json.gz",
+      "compressed_sha256": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+      "decompressed_sha256": "7af8f96f15d5aad59075a890bf7b4444e7ad7dd3a26bb6718786396609418d60",
+      "compressed_bytes": 15350,
+      "decompressed_bytes": 89804,
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-11-01.json.gz",
+      "download_date_utc": "2026-10-02T00:33:26.014942+00:00",
+      "metadata_artifact": "SOURCE_METADATA.json",
+      "source_notice": "- C. Josz, S. Fliscounakis, J. Maeght, and P. Panciatici. \"AC Power Flow Data in MATPOWER and QCQP Format: iTesla, RTE Snapshots, and PEGASE\". ArXiv (2016). https://arxiv.org/abs/1603.01533\n\n- S. Fliscounakis, P. Panciatici, F. Capitanescu, and L. Wehenkel. \"Contingency ranking with respect to overloads in very large power systems taking into account uncertainty, preventive and corrective actions\", Power Systems, IEEE Trans. on, (28)4:4909-4917, 2013. DOI: 10.1109/TPWRS.2013.2251015\n\n- D. Zimmerman, C. E. Murillo-Sandnchez and R. J. Thomas. \"Matpower: Steady-state operations, planning, and analysis tools forpower systems research and education\", IEEE Transactions on PowerSystems, vol. 26, no. 1, pp. 12 \u201319, Feb. 2011. DOI: 10.1109/TPWRS.2010.2051168\n\n- A. S. Xavier, A. M. Kazachkov, O. Yurdakul, F. Qiu. \"UnitCommitment.jl: A Julia/JuMP Optimization Package for Security-Constrained Unit Commitment (Version 0.3)\". Zenodo (2022). DOI: 10.5281/zenodo.4269874\n"
+    },
+    "date_intent_sha256": "ff690516c8f0c75b558124e97109246f391ebad87e5a0de63564180cffddabf6",
+    "artifacts": {
+      "AMENDMENT_2026-10-02.md": "e3ca55a9e23dc6db3fa12b953856f9b6619413bbacc1c9e00ea2a6dac68bfcf5",
+      "DATE_INTENT.json": "ff690516c8f0c75b558124e97109246f391ebad87e5a0de63564180cffddabf6",
+      "DOWNLOAD_RECEIPT.json": "1e9545fe50196a5a39e254c7595541821dd815b87de4b9cf7ea619f469f1181a",
+      "IMPLEMENTATION_MAP.md": "a8ac2b881232e1b8b1d7c39e0ee7e1525e17ec4c850f9e431b35a3be002855ee",
+      "PROPOSAL.md": "cf1c42707fd2802b45cb8ea425b9ad5a2fa474818f49bf38518e0e5c373d156d",
+      "SOURCE_METADATA.json": "8a3f4dec6c786287d2f9801caee3ce5caa2a2fcbdf523ec0cab1294a91923b31",
+      "case89pegase_2017-11-01.json.gz": "5dea4e6c360297b1cce32a018af55155739349d8a4195e1a919b190f420ffe30",
+      "inspect_source_metadata.py": "7b05886a53e923ed9823d0b0f02b09ce84d7ea4fc6f2f091ec9d7f4a25fd74fa"
+    },
+    "existing_sources_unchanged": true,
+    "no_solver_or_model_or_api_or_topology_work": true,
+    "amendment": {
+      "date_utc": "2026-10-02",
+      "scope": "February confirmation seeds 1/2/3 -> 3/4/5; same positions/orders; February development 0; August and November 1/2/3 unchanged",
+      "reason": "Confirmed prior February seed-1/2 nested-RINS exposure on identical source",
+      "before_any_combined_numerical_outcome": true,
+      "driver_seed_range": [
+        0,
+        5
+      ],
+      "previous_manifest_sha256": "d6d441951001df92778e07ec5808b024084ae26451ed60196667addfe36ad164",
+      "previous_freeze_snapshot": "history/prepared_d6d441951001df92",
+      "review_path": "../combined_screening_driver_review/DESIGN_REVIEW.md",
+      "review_sha256": "1189b81dd6f6ebc3a02992e39b2893d5d143dcc03f72a221e3d58b51718661a3",
+      "audit_path": "../combined_screening_driver_review/DESIGN_AUDIT.json",
+      "audit_sha256": "8b11dbc9f846a96408697112d2e4e0e6b1b976213306646e817428b7d364826b",
+      "amendment_file": "AMENDMENT_2026-10-02.md"
+    }
+  },
+  "amendment_summary": {
+    "recorded_utc_date": "2026-10-02",
+    "timing": "Before any combined-screening numerical run or outcome",
+    "reason": "Earlier nested-RINS ablations had already used February seeds 1 and 2 on the same input. The input date remained familiar.",
+    "change": "Reserved February confirmation seeds changed from 1/2/3 to 3/4/5, preserving sequence positions 3/4/8 and orders BA/AB/BA.",
+    "unchanged": "February seed-0 development; August and November seeds 1/2/3; nine confirmation pairs; endpoint definitions; thresholds; budgets; policy; data and mathematical sources.",
+    "exposure": "February and August were previously examined dates. November was selected before lookup and acquired before any combined numerical outcome.",
+    "previous_design_manifest_sha256": "d6d441951001df92778e07ec5808b024084ae26451ed60196667addfe36ad164",
+    "amendment_review_sha256": "1189b81dd6f6ebc3a02992e39b2893d5d143dcc03f72a221e3d58b51718661a3",
+    "amendment_audit_sha256": "8b11dbc9f846a96408697112d2e4e0e6b1b976213306646e817428b7d364826b"
+  }
+}

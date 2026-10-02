@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "raw_confirmation_sha256": "ae232a009a9a72bcfa3808333f6de20b36c0d7092b4861c90fbbbf7a53f04fbf",
+  "raw_final_audit_sha256": "7a21253492738216cb13cc76c8251285ff262709865947dc2c66134fa84bbc23",
+  "runtime_manifest_sha256": "4e51bb2fe6595d65fc67da1d136172b40df6cba6d6970d45e8793c9da2c982e3",
+  "campaign_plan_sha256": "eab118a92b85e1a38f2f64eb52c8d6faa2821e2438d6d6fd5549e219231fbbaa",
+  "all_nine_pairs_present": true,
+  "all_18_arms_complete": true,
+  "all_nine_pairs_improve_both": true,
+  "remaining_unrun": [],
+  "predeclared_gate": "For every date: all three pairs complete and valid; every pair strictly improves both metrics; median of paired reductions >= 0.30 on each metric.",
+  "gate": {
+    "passed": false,
+    "by_date": {
+      "2017-02-01": {
+        "solver_process_wall_seconds": {
+          "paired_reductions": [
+            0.3692860052894643,
+            0.5010047641748041,
+            0.36236167769945427
+          ],
+          "median_paired_reduction": 0.3692860052894643,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "paired_reductions": [
+            0.24415617250304322,
+            0.36816891485832826,
+            0.2503942680924718
+          ],
+          "median_paired_reduction": 0.2503942680924718,
+          "passed": false
+        }
+      },
+      "2017-08-01": {
+        "solver_process_wall_seconds": {
+          "paired_reductions": [
+            0.4224450224110736,
+            0.5437663827210399,
+            0.3260747469839075
+          ],
+          "median_paired_reduction": 0.4224450224110736,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "paired_reductions": [
+            0.345374748850101,
+            0.46671645238241855,
+            0.24111336851463872
+          ],
+          "median_paired_reduction": 0.345374748850101,
+          "passed": true
+        }
+      },
+      "2017-11-01": {
+        "solver_process_wall_seconds": {
+          "paired_reductions": [
+            0.5545113774297399,
+            0.45701209347257143,
+            0.4894151980329573
+          ],
+          "median_paired_reduction": 0.4894151980329573,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "paired_reductions": [
+            0.4282613320631654,
+            0.3615198702725789,
+            0.3428131177392292
+          ],
+          "median_paired_reduction": 0.3615198702725789,
+          "passed": true
+        }
+      }
+    }
+  },
+  "experiment_gate_passed": false,
+  "failure": "February median complete E2E reduction 25.03942680924718% is below 30%",
+  "overall_descriptive_statistics": {
+    "solver_process_wall_seconds": {
+      "median_paired_reduction": 0.45701209347257143,
+      "minimum_paired_reduction": 0.3260747469839075,
+      "maximum_paired_reduction": 0.5545113774297399,
+      "ordered_paired_reductions": [
+        0.3260747469839075,
+        0.36236167769945427,
+        0.3692860052894643,
+        0.4224450224110736,
+        0.45701209347257143,
+        0.4894151980329573,
+        0.5010047641748041,
+        0.5437663827210399,
+        0.5545113774297399
+      ],
+      "at_least_30_percent_pairs": 9,
+      "empirical_p10_reduction_linear": 0.35510429155634493,
+      "empirical_p90_reduction_linear": 0.54591538166278,
+      "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+    },
+    "standalone_equivalent_e2e_seconds": {
+      "median_paired_reduction": 0.345374748850101,
+      "minimum_paired_reduction": 0.24111336851463872,
+      "maximum_paired_reduction": 0.46671645238241855,
+      "ordered_paired_reductions": [
+        0.24111336851463872,
+        0.24415617250304322,
+        0.2503942680924718,
+        0.3428131177392292,
+        0.345374748850101,
+        0.3615198702725789,
+        0.36816891485832826,
+        0.4282613320631654,
+        0.46671645238241855
+      ],
+      "at_least_30_percent_pairs": 6,
+      "empirical_p10_reduction_linear": 0.24354761170536232,
+      "empirical_p90_reduction_linear": 0.43595235612701605,
+      "quantile_scope": "Descriptive order-statistic interpolation of nine observed reductions; no population inference"
+    }
+  },
+  "date_gate": {
+    "passed": false,
+    "by_date": {
+      "2017-02-01": {
+        "solver_process_wall_seconds": {
+          "paired_reductions": [
+            0.3692860052894643,
+            0.5010047641748041,
+            0.36236167769945427
+          ],
+          "median_paired_reduction": 0.3692860052894643,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "paired_reductions": [
+            0.24415617250304322,
+            0.36816891485832826,
+            0.2503942680924718
+          ],
+          "median_paired_reduction": 0.2503942680924718,
+          "passed": false
+        }
+      },
+      "2017-08-01": {
+        "solver_process_wall_seconds": {
+          "paired_reductions": [
+            0.4224450224110736,
+            0.5437663827210399,
+            0.3260747469839075
+          ],
+          "median_paired_reduction": 0.4224450224110736,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "paired_reductions": [
+            0.345374748850101,
+            0.46671645238241855,
+            0.24111336851463872
+          ],
+          "median_paired_reduction": 0.345374748850101,
+          "passed": true
+        }
+      },
+      "2017-11-01": {
+        "solver_process_wall_seconds": {
+          "paired_reductions": [
+            0.5545113774297399,
+            0.45701209347257143,
+            0.4894151980329573
+          ],
+          "median_paired_reduction": 0.4894151980329573,
+          "passed": true
+        },
+        "standalone_equivalent_e2e_seconds": {
+          "paired_reductions": [
+            0.4282613320631654,
+            0.3615198702725789,
+            0.3428131177392292
+          ],
+          "median_paired_reduction": 0.3615198702725789,
+          "passed": true
+        }
+      }
+    }
+  },
+  "actual_mechanism": {
+    "A": {
+      "applied_caps": 0,
+      "applied_skips": 0,
+      "activated_pairs": 0
+    },
+    "B": {
+      "applied_caps": 5,
+      "applied_skips": 0,
+      "activated_pairs": 5
+    }
+  },
+  "audit_counts": {
+    "phase_json_artifacts_verified": 674,
+    "pair_count": 9,
+    "arm_count": 18,
+    "stage_count": 45,
+    "api_fidelity_receipts": 45,
+    "original_integer_source_check_receipts": 27,
+    "selected_module_receipts": 108
+  },
+  "timing": {
+    "outer_phase_seconds": 1050.8778455270076,
+    "sum_pair_archival_seconds": 1047.527157375982,
+    "phase_overhead_outside_pairs_seconds": 3.350688151025679
+  },
+  "historical_source_inventory_paths": 983,
+  "projection_notice": "Fields retain original scalar values and raw hashes. Paths are logical archive labels, not executable local paths. Projection bytes have separate SHA-256 identities in SHA256SUMS.",
+  "evidence_scope": "Projection of completed historical measurements and retained audit identities; this file contains no new numerical results.",
+  "pair_artifacts": [
+    {
+      "path": "pairs/01-2017-11-01-seed1.json.gz",
+      "sha256": "482ffd5757f6830ec335eced355b9353262093ba5590c7aa087f79199da03974",
+      "uncompressed_sha256": "11909281caf82a72a43b53633da95e9bd29afce3d06f9b7d5e9ab1abde6cbaba",
+      "uncompressed_bytes": 297002
+    },
+    {
+      "path": "pairs/02-2017-08-01-seed1.json.gz",
+      "sha256": "c6920ed5fb9841f1ad8e5e3cf9a64d288d25e75f85fb6fa01ac8a0f884edea04",
+      "uncompressed_sha256": "36add0d637efe78514949fd5b8a857c46780a3f010f77025d88d95e40a9e5d9f",
+      "uncompressed_bytes": 326044
+    },
+    {
+      "path": "pairs/03-2017-02-01-seed3.json.gz",
+      "sha256": "5b8fddce669fedc8d68a66ea6f6336aa9608f727d3338758f341b4185a2f34a7",
+      "uncompressed_sha256": "d50a2b8ed8e3fc004a92eab313ac2fb174187068dd07372b3a03ed4fa8625f47",
+      "uncompressed_bytes": 308028
+    },
+    {
+      "path": "pairs/04-2017-02-01-seed4.json.gz",
+      "sha256": "bb21c6aa2f9c2ae8f9d15ad3ce7462d6f0c50a1abdcbb78f4bdd0074f12fd17b",
+      "uncompressed_sha256": "663a584e4e886789f4db421d1c12a2e6c5ef1ee14a4e2aa00c00d40565ca5b8b",
+      "uncompressed_bytes": 307985
+    },
+    {
+      "path": "pairs/05-2017-11-01-seed2.json.gz",
+      "sha256": "18001fa54b5bccad75a06596cf1110ca6de972e7f6d26a1b1852259025148f8e",
+      "uncompressed_sha256": "a4284478ce647463e4cafc5e8a085f30a417f8cc67a315bc0cd9b262f60077f9",
+      "uncompressed_bytes": 301055
+    },
+    {
+      "path": "pairs/06-2017-08-01-seed2.json.gz",
+      "sha256": "a0796add2a7051528bfe008ed9709892101e75f74522ee8861514931f1f695f4",
+      "uncompressed_sha256": "a37391cfa0ccdb23c5d6e7c4a41cbf8e813f56b39a3be0cb52ba45f134c4c67d",
+      "uncompressed_bytes": 326120
+    },
+    {
+      "path": "pairs/07-2017-08-01-seed3.json.gz",
+      "sha256": "4d6dd016ebdaa526590352e96e17501c6a4bb0dcf049946f3e0547b56d99227c",
+      "uncompressed_sha256": "a84b41d10f6c449358ea68409d3dc85f42ec65db095c08bfe7cdadce323b4752",
+      "uncompressed_bytes": 334054
+    },
+    {
+      "path": "pairs/08-2017-02-01-seed5.json.gz",
+      "sha256": "2ff8dfec295625386143c6e27a1e135929c2b7ba22f8eb7a11cfcd983ec31477",
+      "uncompressed_sha256": "aab3b25a6eec8a53767fc1f820cf1296b0a74196ccfb4bb9107cae8f01a8baf8",
+      "uncompressed_bytes": 311894
+    },
+    {
+      "path": "pairs/09-2017-11-01-seed3.json.gz",
+      "sha256": "54ba686b361f66a13602be63d7b4d494886b8b83701287a58db837c19462c548",
+      "uncompressed_sha256": "5d5d316d9d76e9f4d2bd785ff3e5223fdb255716358d0d23c69b8301873ef040",
+      "uncompressed_bytes": 297122
+    }
+  ],
+  "unsplit_projection_sha256": "9ba95a6d4736d67c6815e75cb617da3f3be796df33dc54b4aed7cc98a0431fab",
+  "transport_note": "The nine pair objects are stored in losslessly compressed JSON files; reconstruct pairs in listed order. All numeric values and other evidence fields are unchanged."
+}
