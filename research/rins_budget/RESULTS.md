@@ -171,3 +171,15 @@ outage pairs among the 1,288 listed outages. The LP probe supplied no cuts and r
 Seeds 1/2 remained unrun under the prespecified stop rule. No speedup ratio is
 valid. See [the complete negative result](may1354_transfer/RESULTS.md) for the
 checked scope, all overshoot, full process costs and immutable provenance.
+
+## Deterministic source-derived security seed: negative pilot
+
+Replacing LP discovery with one source-derived arithmetic probe selected nine
+valid pairs cheaply, but still needed a second cold MIP after discovering one
+omitted pair. On the fixed February PEGASE89 seed-0 A/B/C development block,
+solver/E2E seconds were A 36.823/52.269, current bundle B 24.130/44.098, and seed
+replacement C 66.457/83.465. All three final original-source 1% certificates
+passed with zero shedding, overflow and reserve shortfall. C failed the fixed
+advancement gate; no confirmation or larger diagnostic followed. See the
+[complete negative result](constructive_seed_result/RESULTS.md) for mechanism,
+exact scope, timing boundaries and provenance.

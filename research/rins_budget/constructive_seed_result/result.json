@@ -1,0 +1,761 @@
+{
+  "schema": "constructive-security-seed-public-result-v1",
+  "scope": {
+    "case": "PEGASE89",
+    "source_date": "2017-02-01",
+    "hours": 36,
+    "seed": 0,
+    "order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "source_url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-02-01.json.gz",
+    "buses": 89,
+    "units": 12,
+    "lines": 210,
+    "listed_outages": 192,
+    "eligible_pairs": 14721,
+    "eligible_pair_hours": 529956,
+    "model": "custom preventive DC SCUC with original source slack semantics",
+    "target_gap": 0.01
+  },
+  "valid_execution": true,
+  "advancement_passed": false,
+  "future_reserved_sources_used": false,
+  "gate": {
+    "passed": false,
+    "rule": "All three1% certificates; A/C at least20% on both primary endpoints; C strictly faster than B on complete-process E2E"
+  },
+  "comparison": {
+    "comparisons": {
+      "A_versus_B": {
+        "valid_comparison": true,
+        "metrics": {
+          "solver_process_wall_seconds": {
+            "baseline": 36.82255786599126,
+            "candidate": 24.12985376099823,
+            "reduction_fraction": 0.3446991420635613
+          },
+          "complete_process_standalone_equivalent_e2e_seconds": {
+            "baseline": 52.26901263000036,
+            "candidate": 44.09813173300063,
+            "reduction_fraction": 0.15632361289927962
+          }
+        }
+      },
+      "A_versus_C": {
+        "valid_comparison": true,
+        "metrics": {
+          "solver_process_wall_seconds": {
+            "baseline": 36.82255786599126,
+            "candidate": 66.45690374200058,
+            "reduction_fraction": -0.8047878146829974
+          },
+          "complete_process_standalone_equivalent_e2e_seconds": {
+            "baseline": 52.26901263000036,
+            "candidate": 83.4645557069889,
+            "reduction_fraction": -0.5968267144783126
+          }
+        }
+      },
+      "B_versus_C": {
+        "valid_comparison": true,
+        "metrics": {
+          "solver_process_wall_seconds": {
+            "baseline": 24.12985376099823,
+            "candidate": 66.45690374200058,
+            "reduction_fraction": -1.7541361999224696
+          },
+          "complete_process_standalone_equivalent_e2e_seconds": {
+            "baseline": 44.09813173300063,
+            "candidate": 83.4645557069889,
+            "reduction_fraction": -0.892700493806376
+          }
+        }
+      }
+    },
+    "completion": {
+      "A": true,
+      "B": true,
+      "C": true
+    },
+    "primary_endpoints": [
+      "solver_process_wall_seconds",
+      "complete_process_standalone_equivalent_e2e_seconds"
+    ],
+    "attribution": {
+      "A_versus_C": "complete bundle including existing root-credit and separator differences",
+      "B_versus_C": "secondary initial-preparation replacement comparison; report all outcomes"
+    },
+    "root_credit_activation_required_for_seed_claim": false,
+    "seed_mechanism": {
+      "A": null,
+      "B": null,
+      "C": "complete"
+    }
+  },
+  "provenance": {
+    "execution_plan_sha256": "38826a276f5ad9901b1b0a3a0f8e92023e565e59d17e860a5edc5240c09553f0",
+    "execution_result_sha256": "7cc8eac198b2441d0653c500dfd0bf3b3afb9430d981569e4a5a5441d77f583c",
+    "raw_output_manifest_sha256": "1c8c81e627b56a3d15b3f11674c84e351f1182f173d55e30acbf18dfc8bf76ca",
+    "raw_output_files": 197,
+    "raw_output_bytes": 70066172,
+    "mechanism_projection_sha256": "f1aedefd30200562ddebf14bce05f6dfe492b28f08685011381ae46612b8a23a",
+    "official_base_commit": "73cac48c5340d775a477087198611862559be250",
+    "sha256": "b242dbc59c0762b49d027848acd289f49f1814e741b6ae9a3d189b748e38117a",
+    "package_sha256": "7ecafee83375b345a6d68a93ecb57efba8567638d6cdc6415ca355f8afc7bc15",
+    "runtime_sha256": "0fa10df89343ca7090af6fba761906554855281727599667aac309df4f08ee7c",
+    "plan_sha256": "cb50ad35c6c994490065678041ea20e284e688ba6e3a8c8c5043731f294a3396",
+    "protocol_sha256": "8bca4b9d7b5927321456146209db8e56f787503553085686f87fbd01e548d8d1"
+  },
+  "mechanism": {
+    "schema": "constructive-seed-mechanism-projection-v1",
+    "source_results": {
+      "sha256": "6af3e535971d56a61fbd61b4f7cdde10dee2d4974e4cdcab8d55cd2dc23cc048"
+    },
+    "interpretation": "Read-only projection of the one frozen development pilot; no extra numerical work or causal attribution beyond recorded stages.",
+    "arms": {
+      "A": {
+        "summary_sha256": "740bf19f3a48e98e852f50d7f336dd30f2455c5f84f066f209e7b503a25dad78",
+        "seed": null,
+        "flags": {
+          "warm_start": false,
+          "lp_point_carry": false,
+          "lp_basis_carry": false,
+          "lp_bound_carry": false
+        },
+        "stages": [
+          {
+            "kind": "mip",
+            "record_sha256": "ab7c0d12cb1885ef545f2d40fe6044ff8c7598dc8272c2a3eeb6f15a75161ee5",
+            "active_pairs": 0,
+            "new_pairs": 12,
+            "solver_process_seconds": 11.537523921986576,
+            "generation_readback_process_seconds": 2.409696888993494,
+            "check_process_seconds": 3.4614344849978806,
+            "upper_bound_eligible": false,
+            "full_source_primal_pass": false,
+            "checked_upper": null,
+            "model": {
+              "rows": 23676,
+              "columns": 21096,
+              "binaries": 1296,
+              "nonzeros": 80103,
+              "mps_bytes": 3896887,
+              "mps_sha256": "c66078c82109259dec1e61fce5842f5e3d174baa3d5ad0a4887e8c092ad2f49b",
+              "expected_sha256": "76a01a307cc37105ef6062241aaf2f6ffb30e1b314e26de586c870c698c3d500",
+              "readback_sha256": "db14d5015eed614ed81e460862685b2691384b34ec1e59153bd4996ce12794f5",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "ea3da331029461d403102f5dea9e5444cb284e2e16c43217322f3819532df577",
+            "printed_root_timing_lines": [
+              {
+                "line": 167,
+                "text": "MIP-Timing:        0.39 - starting evaluate root node"
+              },
+              {
+                "line": 212,
+                "text": "MIP-Timing:         9.2 - completed evaluate root node"
+              }
+            ],
+            "root_child_calls": [
+              {
+                "call": 1,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 6.043248414993286,
+                "parent_run_delta_seconds": 6.043250322341919,
+                "parent_import_delta_seconds": 0.0012242794036865234,
+                "pre_original": 4417847.303290202,
+                "post_original": 3203022.0651254347,
+                "event": "learn"
+              }
+            ],
+            "root_child_solver_elapsed_sum_seconds": 6.043248414993286,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          },
+          {
+            "kind": "mip",
+            "record_sha256": "9d1b5b5b669b763cc3cc8671425564ea1b4e11bfa6e00e98acc6c7c404d7dda7",
+            "active_pairs": 12,
+            "new_pairs": 0,
+            "solver_process_seconds": 25.28503394400468,
+            "generation_readback_process_seconds": 2.3583579149999423,
+            "check_process_seconds": 3.512290850005229,
+            "upper_bound_eligible": true,
+            "full_source_primal_pass": true,
+            "checked_upper": 3534678.7624266683,
+            "model": {
+              "rows": 24540,
+              "columns": 21096,
+              "binaries": 1296,
+              "nonzeros": 82695,
+              "mps_bytes": 4018423,
+              "mps_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+              "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+              "readback_sha256": "9fe3375ff9db35f482906294a5af8aa8037ebb040970c89d5462e8472aba82c8",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "0eda205564c4e01bf09885eff167fc5c5db1e767088c16e60239cb04321cbaeb",
+            "printed_root_timing_lines": [
+              {
+                "line": 168,
+                "text": "MIP-Timing:        0.39 - starting evaluate root node"
+              },
+              {
+                "line": 312,
+                "text": "MIP-Timing:          24 - completed evaluate root node"
+              }
+            ],
+            "root_child_calls": [
+              {
+                "call": 1,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 5.206810235977173,
+                "parent_run_delta_seconds": 5.206812381744385,
+                "parent_import_delta_seconds": 0.1622469425201416,
+                "pre_original": 3552538.821472566,
+                "post_original": 3534678.762426666,
+                "event": "learn"
+              },
+              {
+                "call": 2,
+                "origin": "root-RENS",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 15.369808673858643,
+                "parent_run_delta_seconds": 15.369810819625854,
+                "parent_import_delta_seconds": 0.00011754035949707031,
+                "pre_original": 3534678.762426666,
+                "post_original": 3534678.762426666,
+                "event": "none"
+              }
+            ],
+            "root_child_solver_elapsed_sum_seconds": 20.576618909835815,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          }
+        ]
+      },
+      "B": {
+        "summary_sha256": "b5f20cadc899609105273d9b80a6bde9c1b98f76b6b3d62a29d673aa7e5e90bd",
+        "seed": null,
+        "flags": {
+          "warm_start": false,
+          "lp_point_carry": false,
+          "lp_basis_carry": false,
+          "lp_bound_carry": false
+        },
+        "stages": [
+          {
+            "kind": "lp",
+            "record_sha256": "63f8eae0520fce5cd445884103411582973d0495d20f8cfabcd79890846392f0",
+            "active_pairs": 0,
+            "new_pairs": 12,
+            "solver_process_seconds": 0.603426881993073,
+            "generation_readback_process_seconds": 2.3591804710013093,
+            "check_process_seconds": 2.409155165994889,
+            "upper_bound_eligible": false,
+            "full_source_primal_pass": false,
+            "checked_upper": null,
+            "model": {
+              "rows": 23676,
+              "columns": 21096,
+              "binaries": 0,
+              "nonzeros": 80103,
+              "mps_bytes": 3873237,
+              "mps_sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+              "expected_sha256": "48f750ecb087947da53044b6c493bf3d1caaf4aa1e36d658fccd5257b9974fe0",
+              "readback_sha256": "2cb2b97a2a45d47438c651b285f7204ed6164b3886efb79ab6e809d7287ff253",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "cebcfe6ef5451f05ea222978a2294a659c97207e010619dfd528023c9ed0c8f9",
+            "printed_root_timing_lines": [],
+            "root_child_calls": [],
+            "root_child_solver_elapsed_sum_seconds": 0,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          },
+          {
+            "kind": "lp",
+            "record_sha256": "7fdb7d631681fb29f5215ab26f9ab1dca50a52794bbaead46993570f92220bd7",
+            "active_pairs": 12,
+            "new_pairs": 0,
+            "solver_process_seconds": 0.6038713300076779,
+            "generation_readback_process_seconds": 2.4086165099870414,
+            "check_process_seconds": 2.6098240849969443,
+            "upper_bound_eligible": false,
+            "full_source_primal_pass": false,
+            "checked_upper": null,
+            "model": {
+              "rows": 24540,
+              "columns": 21096,
+              "binaries": 0,
+              "nonzeros": 82695,
+              "mps_bytes": 3994773,
+              "mps_sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+              "expected_sha256": "dfe13e11c9cc57756d9285194f7fd71048ef91c1e5397c5fc684a1a9d5ade7e3",
+              "readback_sha256": "c313f5d56226e984d501532608ee0859e312bcf58e8392a90d1e2e5ebcfc078a",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "097de843d5ccf3bc1d2c28a6ea6c972a006900354e621b223044fa17c8f11925",
+            "printed_root_timing_lines": [],
+            "root_child_calls": [],
+            "root_child_solver_elapsed_sum_seconds": 0,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          },
+          {
+            "kind": "mip",
+            "record_sha256": "3acd26c7e25863c0e18305c38659d97f7f6048c93ca115f344967aa57013a2e4",
+            "active_pairs": 12,
+            "new_pairs": 0,
+            "solver_process_seconds": 22.92255554899748,
+            "generation_readback_process_seconds": 2.411354064999614,
+            "check_process_seconds": 3.1104082240053685,
+            "upper_bound_eligible": true,
+            "full_source_primal_pass": true,
+            "checked_upper": 3534678.7624266683,
+            "model": {
+              "rows": 24540,
+              "columns": 21096,
+              "binaries": 1296,
+              "nonzeros": 82695,
+              "mps_bytes": 4018423,
+              "mps_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+              "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+              "readback_sha256": "4180fe7c74050dd9880b3e672e3b8aa9bd50a19ac46bc3f9fa7b2d5589bf4fa5",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "88f3c009dff805da2baff8ab2cc75108fd2a9bf0a41f0a421ad22026d54c8b41",
+            "printed_root_timing_lines": [
+              {
+                "line": 169,
+                "text": "MIP-Timing:        0.42 - starting evaluate root node"
+              },
+              {
+                "line": 283,
+                "text": "MIP-Timing:          22 - completed evaluate root node"
+              }
+            ],
+            "root_child_calls": [
+              {
+                "call": 1,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 5.417778015136719,
+                "parent_run_delta_seconds": 5.417780160903931,
+                "parent_import_delta_seconds": 0.14680242538452148,
+                "pre_original": 3552538.821472566,
+                "post_original": 3534678.762426666,
+                "event": "learn"
+              },
+              {
+                "call": 2,
+                "origin": "root-RENS",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": true,
+                "skipped": false,
+                "solver_elapsed_seconds": 5.477123022079468,
+                "parent_run_delta_seconds": 5.477124214172363,
+                "parent_import_delta_seconds": 0.00011539459228515625,
+                "pre_original": 3534678.762426666,
+                "post_original": 3534678.762426666,
+                "event": "none"
+              },
+              {
+                "call": 3,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 1,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 7.174938440322876,
+                "parent_run_delta_seconds": 7.174940586090088,
+                "parent_import_delta_seconds": 0.151780366897583,
+                "pre_original": 3534678.762426666,
+                "post_original": 3534678.762426666,
+                "event": "none"
+              }
+            ],
+            "root_child_solver_elapsed_sum_seconds": 18.069839477539062,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          }
+        ]
+      },
+      "C": {
+        "summary_sha256": "5f8854d385dfc19e3cbcbfe8ff24bc3339680d66889b09ed008ee170af536e5d",
+        "seed": {
+          "status": "complete",
+          "reason": "complete source-derived outage sweep",
+          "requested_seconds": 120.0,
+          "hard_watchdog_seconds": 150.0,
+          "stage_wall_before_final_checkpoint_seconds": 2.1696954119979637,
+          "result_sha256": "3d648daf63605011d9b52f3f75cfe06d3be91e60b4e49037d6db2b9579f91d9a",
+          "pair_count": 9,
+          "helper_process_seconds": 1.8571086919982918
+        },
+        "flags": {
+          "warm_start": false,
+          "lp_point_carry": false,
+          "lp_basis_carry": false,
+          "lp_bound_carry": false
+        },
+        "stages": [
+          {
+            "kind": "mip",
+            "record_sha256": "f0a0fab1aa4036b3df57ac5446c4746277fef90401e7ca6fa901e64f29cc2e54",
+            "active_pairs": 9,
+            "new_pairs": 1,
+            "solver_process_seconds": 30.74629773599736,
+            "generation_readback_process_seconds": 2.408850613006507,
+            "check_process_seconds": 3.110292790006497,
+            "upper_bound_eligible": false,
+            "full_source_primal_pass": false,
+            "checked_upper": null,
+            "model": {
+              "rows": 24324,
+              "columns": 21096,
+              "binaries": 1296,
+              "nonzeros": 82047,
+              "mps_bytes": 3989443,
+              "mps_sha256": "4d10cea29aba64be0fd2358d0eb70ccf47a6fbdbbdcabb563f1a8e7a685d6633",
+              "expected_sha256": "f1f77b3584892f0642927fbc35bdb86e00c083c1f6c5ecf8534f4a65c5bcc5b6",
+              "readback_sha256": "be6665f2f64fc3f7e19079e48a30e35c4bbc164d55dcad3cd4204370e1a8ee03",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "12a9b00b0b56d920cffdf0da9917f9eeb39a57cee58f52cff06c977ba11ca4e1",
+            "printed_root_timing_lines": [
+              {
+                "line": 168,
+                "text": "MIP-Timing:        0.37 - starting evaluate root node"
+              },
+              {
+                "line": 373,
+                "text": "MIP-Timing:          30 - completed evaluate root node"
+              }
+            ],
+            "root_child_calls": [
+              {
+                "call": 1,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 4.13651704788208,
+                "parent_run_delta_seconds": 4.136519193649292,
+                "parent_import_delta_seconds": 0.0012784004211425781,
+                "pre_original": 3812308.7205788004,
+                "post_original": 3485561.951674046,
+                "event": "learn"
+              },
+              {
+                "call": 2,
+                "origin": "root-RENS",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": true,
+                "skipped": false,
+                "solver_elapsed_seconds": 4.1404454708099365,
+                "parent_run_delta_seconds": 4.140447378158569,
+                "parent_import_delta_seconds": 0.00011181831359863281,
+                "pre_original": 3485561.951674046,
+                "post_original": 3485561.951674046,
+                "event": "none"
+              },
+              {
+                "call": 3,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 1,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 18.15883231163025,
+                "parent_run_delta_seconds": 18.15883469581604,
+                "parent_import_delta_seconds": 0.00011372566223144531,
+                "pre_original": 3485561.951674046,
+                "post_original": 3485561.951674046,
+                "event": "none"
+              }
+            ],
+            "root_child_solver_elapsed_sum_seconds": 26.435794830322266,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          },
+          {
+            "kind": "mip",
+            "record_sha256": "192cd268436c672c1e7a272cf2d02dbdb20e910524c50bb605e8a9ff14ea7935",
+            "active_pairs": 10,
+            "new_pairs": 0,
+            "solver_process_seconds": 35.71060600600322,
+            "generation_readback_process_seconds": 2.5594466740003554,
+            "check_process_seconds": 3.060525595996296,
+            "upper_bound_eligible": true,
+            "full_source_primal_pass": true,
+            "checked_upper": 3534678.762426626,
+            "model": {
+              "rows": 24396,
+              "columns": 21096,
+              "binaries": 1296,
+              "nonzeros": 82263,
+              "mps_bytes": 3999823,
+              "mps_sha256": "3a31807da69a0868d5b3f115959bfd52ce6f632dbf5d6769ea4f6b8be2232167",
+              "expected_sha256": "8716c0aaad050d9ad3f0a2502217624c202571120f2aacd93fcd1ca2a7864016",
+              "readback_sha256": "7c7f6c8f1e57279ec9e9fe9198d5928aea0df38ec685d49241b82e88439e411e",
+              "objective_scope": "unchanged_original_source"
+            },
+            "solver_log_sha256": "f067084efbb5ad77031f8dc090b0c1067b5a1cca3d4f0df6c7f4e426c7a8bbb9",
+            "printed_root_timing_lines": [
+              {
+                "line": 168,
+                "text": "MIP-Timing:        0.39 - starting evaluate root node"
+              },
+              {
+                "line": 378,
+                "text": "MIP-Timing:          35 - completed evaluate root node"
+              }
+            ],
+            "root_child_calls": [
+              {
+                "call": 1,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 4.925081968307495,
+                "parent_run_delta_seconds": 4.925083875656128,
+                "parent_import_delta_seconds": 0.0012433528900146484,
+                "pre_original": 3552538.821472559,
+                "post_original": 3534678.7624266637,
+                "event": "learn"
+              },
+              {
+                "call": 2,
+                "origin": "root-RENS",
+                "phase": "root",
+                "restart": 0,
+                "cap_applied": true,
+                "skipped": false,
+                "solver_elapsed_seconds": 5.1609015464782715,
+                "parent_run_delta_seconds": 5.160903453826904,
+                "parent_import_delta_seconds": 0.00011301040649414062,
+                "pre_original": 3534678.7624266637,
+                "post_original": 3534678.7624266637,
+                "event": "none"
+              },
+              {
+                "call": 3,
+                "origin": "root-reduced-cost",
+                "phase": "root",
+                "restart": 1,
+                "cap_applied": false,
+                "skipped": false,
+                "solver_elapsed_seconds": 21.42658019065857,
+                "parent_run_delta_seconds": 21.426581621170044,
+                "parent_import_delta_seconds": 0.0012516975402832031,
+                "pre_original": 3534678.7624266637,
+                "post_original": 3534678.7624266236,
+                "event": "learn"
+              }
+            ],
+            "root_child_solver_elapsed_sum_seconds": 31.512563705444336,
+            "nested_timing_scope": "Diagnostic nested root-child wall intervals inside this solver process; never add again to aggregate solver budget or sum concurrent thread profiles."
+          }
+        ]
+      }
+    },
+    "final_B_C_matrix_comparison": {
+      "B": {
+        "rows": 24540,
+        "columns": 21096,
+        "binaries": 1296,
+        "nonzeros": 82695,
+        "mps_bytes": 4018423,
+        "mps_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+        "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+        "readback_sha256": "4180fe7c74050dd9880b3e672e3b8aa9bd50a19ac46bc3f9fa7b2d5589bf4fa5",
+        "objective_scope": "unchanged_original_source"
+      },
+      "C": {
+        "rows": 24396,
+        "columns": 21096,
+        "binaries": 1296,
+        "nonzeros": 82263,
+        "mps_bytes": 3999823,
+        "mps_sha256": "3a31807da69a0868d5b3f115959bfd52ce6f632dbf5d6769ea4f6b8be2232167",
+        "expected_sha256": "8716c0aaad050d9ad3f0a2502217624c202571120f2aacd93fcd1ca2a7864016",
+        "readback_sha256": "7c7f6c8f1e57279ec9e9fe9198d5928aea0df38ec685d49241b82e88439e411e",
+        "objective_scope": "unchanged_original_source"
+      },
+      "identical_model_hash": false,
+      "C_minus_B": {
+        "rows": -144,
+        "columns": 0,
+        "binaries": 0,
+        "nonzeros": -432,
+        "mps_bytes": -18600
+      },
+      "interpretation": "Both independently match their original source plus selected original rows. Different selected row sets yield different exact model hashes; neither hash alone implies a stronger finite-time solve."
+    },
+    "second_C_master_carry": {
+      "primal_incumbent_or_basis_carried": false,
+      "first_C_master_upper_bound_eligible": false,
+      "first_C_master_full_source_primal_pass": false,
+      "first_C_master_checked_upper": null,
+      "state_carry_only": "Validated original pair IDs and eligible global-bound accounting; original cold solver command contains no start/basis/cutoff option",
+      "second_record_before_solve_sha256": "05fa92a5652e1c1c48e41a8e8ca84f7c77cadc3fbe072e679680155df95ecba4"
+    }
+  },
+  "final_certificates": {
+    "A": {
+      "valid": true,
+      "complete": true,
+      "upper": 3534678.7624266683,
+      "lower": 3499824.9019100014,
+      "gap": 0.009860545429802687,
+      "target_met": true,
+      "budget_valid": true,
+      "bound_source": "HiGHS numerical global bound from original integer security master, conservatively adjusted for printed precision; not independently proved",
+      "printed_lower": 3499824.90195,
+      "lower_rounding_allowance": 3.999824901949999e-05,
+      "status": "Optimal",
+      "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+      "source_data_sha256": "ea0cf6abe09cb86e2d5738d50d889e1e655bb1a69cb4eeaddeca38b63b890c49",
+      "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+      "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+      "matrix_check": {
+        "passed": true,
+        "exact_column_names": true,
+        "integrality_scope": "original_integer",
+        "linear_objective": 3534678.762426666,
+        "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+        "tolerance": 1e-05,
+        "violations_by_category": {},
+        "max_violation_by_category": {
+          "row": 7.401865786960116e-10,
+          "lower_bound": 0.0,
+          "upper_bound": 5.684341886080802e-14,
+          "integrality": 0.0
+        },
+        "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+        "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+        "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+        "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+        "pair_manifest_sha256": "ba9a8bf52109f70ac680c845849ffffd98faa7b3efdfdd0d7867c5a98fc76bd9"
+      },
+      "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+      "options_sha256": "ff7fe07cbff957f44c3ef63a38f766f75ad305931bd78b2baff3a6a681026fb8",
+      "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+      "generator_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+      "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "zero_shedding_overflow_reserve_shortfall": true
+    },
+    "B": {
+      "valid": true,
+      "complete": true,
+      "upper": 3534678.7624266683,
+      "lower": 3499824.9019100014,
+      "gap": 0.009860545429802687,
+      "target_met": true,
+      "budget_valid": true,
+      "bound_source": "HiGHS numerical global bound from original integer security master, conservatively adjusted for printed precision; not independently proved",
+      "printed_lower": 3499824.90195,
+      "lower_rounding_allowance": 3.999824901949999e-05,
+      "status": "Optimal",
+      "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+      "source_data_sha256": "ea0cf6abe09cb86e2d5738d50d889e1e655bb1a69cb4eeaddeca38b63b890c49",
+      "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+      "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+      "matrix_check": {
+        "passed": true,
+        "exact_column_names": true,
+        "integrality_scope": "original_integer",
+        "linear_objective": 3534678.762426666,
+        "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+        "tolerance": 1e-05,
+        "violations_by_category": {},
+        "max_violation_by_category": {
+          "row": 7.401865786960116e-10,
+          "lower_bound": 0.0,
+          "upper_bound": 5.684341886080802e-14,
+          "integrality": 0.0
+        },
+        "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+        "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+        "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+        "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+        "pair_manifest_sha256": "a77fc4a855b89a659afb11995c45a277f992a0d3eda856c29dfcbbb85b542795"
+      },
+      "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+      "options_sha256": "0d3d5a4c97246e74d2e0a45acca5b6fa04e352ac751d17ab04f739f3b59cb720",
+      "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+      "generator_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+      "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "zero_shedding_overflow_reserve_shortfall": true
+    },
+    "C": {
+      "valid": true,
+      "complete": true,
+      "upper": 3534678.762426626,
+      "lower": 3500092.189829999,
+      "gap": 0.009784926699500825,
+      "target_met": true,
+      "budget_valid": true,
+      "bound_source": "HiGHS numerical global bound from original integer security master, conservatively adjusted for printed precision; not independently proved",
+      "printed_lower": 3500092.18987,
+      "lower_rounding_allowance": 4.0000921898699995e-05,
+      "status": "Optimal",
+      "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+      "source_data_sha256": "ea0cf6abe09cb86e2d5738d50d889e1e655bb1a69cb4eeaddeca38b63b890c49",
+      "solution_sha256": "e4d26ae41f149b5c077ac6f8e4fc7cbddcb2f22cfc8c2ca91c91efdaa5889fd2",
+      "point_sha256": "4ed905a241e5fb29c88206f2e074c2663c649aae6aa03c061b458679b31dd488",
+      "matrix_check": {
+        "passed": true,
+        "exact_column_names": true,
+        "integrality_scope": "original_integer",
+        "linear_objective": 3534678.7624266236,
+        "point_sha256": "4ed905a241e5fb29c88206f2e074c2663c649aae6aa03c061b458679b31dd488",
+        "tolerance": 1e-05,
+        "violations_by_category": {},
+        "max_violation_by_category": {
+          "row": 2.6516602247284027e-09,
+          "lower_bound": 3.0096e-09,
+          "upper_bound": 5.684341886080802e-14,
+          "integrality": 0.0
+        },
+        "model_sha256": "3a31807da69a0868d5b3f115959bfd52ce6f632dbf5d6769ea4f6b8be2232167",
+        "expected_sha256": "8716c0aaad050d9ad3f0a2502217624c202571120f2aacd93fcd1ca2a7864016",
+        "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+        "solution_sha256": "e4d26ae41f149b5c077ac6f8e4fc7cbddcb2f22cfc8c2ca91c91efdaa5889fd2",
+        "pair_manifest_sha256": "7dfa9ae83463fc3f478b0b62775de3f0e4b8fda7443852c993c9af065ea660ab"
+      },
+      "model_sha256": "3a31807da69a0868d5b3f115959bfd52ce6f632dbf5d6769ea4f6b8be2232167",
+      "options_sha256": "0d3d5a4c97246e74d2e0a45acca5b6fa04e352ac751d17ab04f739f3b59cb720",
+      "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+      "generator_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+      "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "zero_shedding_overflow_reserve_shortfall": true
+    }
+  },
+  "limits": {
+    "aggregate_actual_solver_seconds_per_arm": 600,
+    "complete_arm_seconds": 1800,
+    "ordinary_helper_seconds": 600,
+    "seed_whole_stage_success_seconds": 120,
+    "seed_helper_hard_seconds": 150,
+    "process_memory_bytes": 7516192768,
+    "live_free_disk_headroom_bytes": 2147483648
+  }
+}
