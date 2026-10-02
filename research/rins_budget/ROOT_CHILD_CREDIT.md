@@ -75,7 +75,8 @@ credit when the parent is above its relative/absolute stopping target and no
 more than twice the relative target. Credit is anchored to both authoritative
 objective representations and the restart epoch. A restart or changed anchor
 clears it. Exhausted credit can skip an eligible child; no skip occurred in this
-pilot. Both the policy and its diagnostic option are advanced and default off.
+pilot. Both the policy and its diagnostic option are experimental and default off.
+Their option-metadata advanced flag is false in this frozen patch.
 Normal candidate validation, proof handling, and shared termination priority are
 preserved. Restricted child bounds never become global lower bounds.
 
@@ -119,7 +120,11 @@ Before the pilot, the frozen implementation passed 168/168 CTest entries;
 352 unit cases with 1,259,988 assertions; 23 focused cases with 1,020 assertions
 in both Release and ASAN/UBSAN builds; and 18 C-API old-control/off/observe runs
 forming six exact triples. LeakSanitizer was disabled. Independent source/build
-review and 85 driver mock tests preceded numerical work. Natural root wiring and
+review and 85 driver unit tests preceded the application benchmark. These included
+53 contract/parser/policy tests and 32 tiny synthetic separator tests. The latter
+used small direct-network factorizations with mocked matrix witnesses; no optimizer,
+real benchmark input, model generation or HiGHS API call was used in this unit suite.
+Natural root wiring and
 prepared-parent timeout/acceptance tests are separate evidence, not application
 speedup measurements. The two-hour triangle integration passed six API readbacks
 and both objective-660 completions, but had no root-child activation.

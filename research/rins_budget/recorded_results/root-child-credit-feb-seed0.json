@@ -1097,10 +1097,13 @@
       "parent_proof_acceptance_unchanged": true
     },
     "driver_review_status": "pass_exact_source_mock_driver_freeze",
-    "driver_mock_tests": {
+    "driver_unit_tests": {
       "passed": true,
       "test_count": 85,
-      "seconds": 0.195
+      "seconds": 0.195,
+      "contract_parser_policy_tests": 53,
+      "tiny_synthetic_separator_tests": 32,
+      "scope": "The synthetic separator cases use small direct-network factorizations with mocked matrix witnesses. No optimizer, real benchmark input, model generation or HiGHS API call was used by the unit suite."
     }
   },
   "reproduction_limits": [

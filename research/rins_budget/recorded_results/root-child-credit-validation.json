@@ -33,11 +33,6 @@
     "parent_trySolution_unchanged": true,
     "parent_proof_acceptance_unchanged": true
   },
-  "driver_mock_tests": {
-    "passed": true,
-    "test_count": 85,
-    "seconds": 0.195
-  },
   "verification_method": "Retained build/test receipts and independent source/artifact review; publication preparation did not rebuild or solve",
   "test_scope_limits": [
     "Natural rgn root scheduling demonstrates real origin wiring and a finite applied cap at 4%; the cap need not expire",
@@ -73,5 +68,24 @@
     "extra_paths": [],
     "built_or_solved": false,
     "existing_worktree_modified": false
+  },
+  "driver_unit_tests": {
+    "passed": true,
+    "test_count": 85,
+    "seconds": 0.195,
+    "contract_parser_policy_tests": 53,
+    "tiny_synthetic_separator_tests": 32,
+    "scope": "The synthetic separator cases use small direct-network factorizations with mocked matrix witnesses. No optimizer, real benchmark input, model generation or HiGHS API call was used by the unit suite."
+  },
+  "option_metadata": {
+    "mip_heuristic_near_target_root_budget": {
+      "default": false,
+      "advanced": false
+    },
+    "mip_heuristic_near_target_root_budget_log": {
+      "default": false,
+      "advanced": false
+    },
+    "source_basis": "HighsOptions.h initializes the local advanced flag to false before these registrations and changes it to true later. This metadata clarification does not change the frozen source or runtime."
   }
 }
