@@ -1,9 +1,19 @@
-# RINS budget research: replayable diagnostic and ablation tools
+# HiGHS MILP and SCUC acceleration research
 
 This directory is an opt-in research package. It does not change the production
 solver, its build, or its defaults. All solver checkouts below are pinned to
 HiGHS commit `73cac48c5340d775a477087198611862559be250` (source version 1.15.1).
 The patches are separate artifacts, not an enabled solver optimization.
+
+The latest [early-integer discovery confirmation](early_integer_results/RESULTS.md)
+passed its fixed nine-pair PG89 gate: all 18 arms obtained independently checked
+original-source 1% numerical certificates. Median reductions were 65.52% in
+solver-process wall time and 54.85% in arm-process E2E; every pair improved both
+endpoints. The comparator is the cold integer screening loop, not the earlier
+LP bundle. This is scoped evidence on three dates of one network, with no
+change to normal solver defaults. The report preserves every outcome,
+objective/slack check and clock boundary. Portable early-only replay validation
+is a separate deliverable.
 
 The [combined SCUC replay](portable_combined_replay/README.md) includes the full
 LP-screening pipeline, root-child-credit patch recipe, original-model checks and

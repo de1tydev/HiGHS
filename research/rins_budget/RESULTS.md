@@ -1,6 +1,29 @@
-# Recorded research results (2026-10-01)
+# Recorded research results (2026-10-01–02)
 
-## Decision
+## Latest result: early-integer discovery passes scoped confirmation
+
+The fixed early-only SCUC workflow passed all nine reserved PG89 confirmation
+pairs on May, June and September 2017, seeds 211–213. Both arms obtained the
+same original-source 1% acceptance standard in every pair; the candidate was
+faster on both endpoints throughout. Overall median reductions were 65.5174%
+solver-process wall and 54.8522% arm-process E2E. The worst paired reductions
+were 55.2811% and 48.9598%. All three dates passed the predeclared 30%-on-both
+median criterion, with no censoring, retries or unrun slots.
+
+All 18 certified points have exactly zero shedding, shared overflow and reserve
+shortfall. Small positive numerical residuals are retained and lie below the
+unchanged tolerance; paired objectives need not be identical within the common
+1% target. The measured comparator is the ordinary cold integer loop. These
+results do not establish superiority to the earlier LP bundle or transfer to a
+larger network. Arm E2E includes all algorithmic work and checks inside the arm
+process; redundant benchmark-controller administration is explicitly excluded
+and unmeasured.
+
+See [the complete early-integer result](early_integer_results/RESULTS.md) for
+every pair, exact timing boundaries, source/runtime provenance and limitations.
+The earlier negative experiments below retain their original conclusions.
+
+## Initial RINS decision
 
 Keep the normal HiGHS defaults. Nested-RINS-off is an experimental ablation, not a demonstrated general improvement. Its result on one custom public SCUC model is mixed. The patch is supplied for reproduction and further investigation.
 
