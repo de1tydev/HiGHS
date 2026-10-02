@@ -26,6 +26,21 @@ The [portable early-only replay](portable_early_integer_replay/README.md) has a
 with no production performance rerun.
 The earlier negative experiments below retain their original conclusions.
 
+## June1354 transfer: both arms incomplete
+
+A separately frozen, unchanged-policy transfer used the public June 2017
+PEGASE1354 instance, all 36 hours and all 1,288 listed outages. Seed 0 A used
+603.618 solver / 790.201 containing-arm seconds; early used 643.324 / 1009.327.
+Both exceeded the fixed 600-second actual solver cap and still violated original
+security constraints. Their printed master gaps were 1.47% and 14.75%, and the
+candidate's last checked point shed 1,975.12 MWh. These are incomplete master
+points, with no full-source certificate or completion-time ratio.
+
+The four seed-1/2 slots stayed unrun under the declared stop rule.
+[The complete negative transfer record](june1354_early_transfer/RESULTS.md)
+retains every charged overrun, checked cost/slack/security quantity and scope
+limitation. The verified PG89 result above remains scoped to its original set.
+
 ## Initial RINS decision
 
 Keep the normal HiGHS defaults. Nested-RINS-off is an experimental ablation, not a demonstrated general improvement. Its result on one custom public SCUC model is mixed. The patch is supplied for reproduction and further investigation.

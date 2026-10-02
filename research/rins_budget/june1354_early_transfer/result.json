@@ -1,0 +1,740 @@
+{
+  "schema": "june1354-early-integer-transfer-public-v1",
+  "input": {
+    "case": "case1354pegase",
+    "date": "2017-06-01",
+    "hours": 36,
+    "source_url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-06-01.json.gz",
+    "catalogue_url": "https://anl-ceeesa.github.io/UnitCommitment.jl/0.3/instances/",
+    "source_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "decompressed_sha256": "0c9c1caff6c0c29b8674b07b891a6a705bec96bc7f9dfaa6cc6f781635987e4a",
+    "source_scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942",
+    "buses": 1354,
+    "units": 260,
+    "lines": 1991,
+    "listed_single_line_outages": 1288,
+    "finite_rated_lines": 1432,
+    "singleton_units": 4,
+    "eligible_pairs": 1843338,
+    "eligible_pair_hours": 66360168
+  },
+  "method": {
+    "common_pipeline_arm": "A",
+    "baseline_separator": true,
+    "initial_pairs": 0,
+    "single_integer_discovery": true,
+    "improving_solution_limit": 1,
+    "discovery_max_requested_seconds": 300,
+    "ordinary_relative_gap": 0.01,
+    "discovery_U_L_eligible": false,
+    "carry": "Every independently selected original violated pair only, both signs at every finite original hour",
+    "fresh_cold_original_integer_proof": true,
+    "vector_start_basis_cutoff_state_LP_constructive_carry": false,
+    "original_singleton_costs_and_all_outages_preserved": true,
+    "actual_solver_cap_per_arm_seconds": 600,
+    "arm_containment_seconds": 1800,
+    "helper_watchdog_seconds": 600,
+    "charged_solver_watchdog_grace_seconds": 60,
+    "process_address_space_bytes": 7516192768,
+    "conservative_allocation_bytes": 6442450944,
+    "live_memory_and_disk_reserve_bytes": 2147483648,
+    "campaign_storage_bytes": 25769803776
+  },
+  "schedule": [
+    {
+      "seed": 0,
+      "order": [
+        "A",
+        "early_candidate"
+      ]
+    },
+    {
+      "seed": 1,
+      "order": [
+        "early_candidate",
+        "A"
+      ]
+    },
+    {
+      "seed": 2,
+      "order": [
+        "A",
+        "early_candidate"
+      ]
+    }
+  ],
+  "continuation": "Finish mate after clean incomplete; later seeds only when preceding pairs both complete; fatal integrity/resource/cancellation/cleanup stops immediately",
+  "arms": {
+    "A": {
+      "complete": false,
+      "reason": "solver process budget exhausted",
+      "fatal": false,
+      "actual_solver_seconds": 603.6183040679898,
+      "charged_aggregate_solver_overrun_seconds": 3.6183040679898113,
+      "complete_process_e2e_seconds": 790.2006275020103,
+      "scope_process": {
+        "returncode": 0,
+        "hard_watchdog_killed": false,
+        "process_wall_seconds": 0.7038771829975303,
+        "peak_rss_KiB": 24628,
+        "user_cpu_seconds": 0.5685129999999999,
+        "system_cpu_seconds": 0.104392
+      },
+      "stage_wall_seconds": {
+        "scope_preparation": 0.7038771829975303,
+        "generation_readback": 26.745750690010027,
+        "integer_checks": 154.94218323800305,
+        "integer_solving": 603.6183040679898
+      },
+      "child_peak_rss_KiB": 2474968,
+      "per_child_rss_scope": "Each recorded process has its own peak RSS in KiB; the arm maximum is not a simultaneous sum",
+      "child_resource_accounting_complete": true,
+      "outer_process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 790.2006275020103,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "final_full_source_certificate": {
+        "valid": false,
+        "complete": false,
+        "reason": "No source-and-matrix checked integer upper bound",
+        "gap": null
+      },
+      "last_checked_proof_point": {
+        "role": "integer_proof",
+        "status": "Time limit reached",
+        "check_sha256": "359b872681af22018311e26aca8168b19b0c7ff52430645ba8acb5b5ef148791",
+        "solution_sha256": "7977d57b573bae528ec363ec8be337ab0fbd4524132a4a58cd284e5d51f09589",
+        "original_master_matrix_and_integrality_pass": true,
+        "full_source_primal_pass": false,
+        "final_certificate_upper_eligible": false,
+        "source_feasible_is_separate_from_zero_slack": true,
+        "true_source_cost": 13806823.971834783,
+        "linear_model_cost": 13806823.971834868,
+        "objective_overpayment": 8.568167686462402e-08,
+        "total_shed_MWh": 2e-13,
+        "max_shared_overflow_MW": 0.0,
+        "total_shared_overflow_MW_hours": 0.0,
+        "reserve_shortfall_MW_by_hour": {
+          "r1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "total_reserve_shortfall_MWh": 0.0,
+        "reserve_shortfall_quantity_scope": "Sum of exact hash-bound checked solution short_* columns; original one-hour intervals; diagnostic only",
+        "original_linear_cost_components": {
+          "production_linear": 13263068.951834857,
+          "startup_epigraph": 543755.02,
+          "shedding": 2e-10,
+          "shared_overflow": 0.0,
+          "reserve_shortfall": 0.0
+        },
+        "base_unrelaxed_overload_MW": 0.0,
+        "base_max_violation_after_shared_slack_MW": 0.0,
+        "outages_checked": 1288,
+        "checked_pair_hours": 66360168,
+        "violated_pairs_count": 3,
+        "violated_line_hours": 24,
+        "security_max_violation_after_shared_slack_MW": 272.47338756793874,
+        "security_max_unrelaxed_overload_MW": 272.47338756793874,
+        "violations_by_category": {
+          "emergency_line_limit": 24
+        },
+        "violated_pairs_artifact": {
+          "schema": "packed-pairs-u32le-v1",
+          "count": 3,
+          "bytes": 12,
+          "sha256": "8bad193dc19dbb78de9002d44c1c6a25924816b2f9980be5f77993788eadbb03",
+          "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942",
+          "line_count": 1991
+        },
+        "pair_worst_witness_artifact": {
+          "schema": "complete-pair-worst-jsonl-v1",
+          "count": 3,
+          "bytes": 761,
+          "sha256": "2c41613fdc065581b6949cb8bce78b7bc927641831a6fd4869f5b7a0a948bef5",
+          "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942"
+        },
+        "raw_signed_exported_slack_quantities": {
+          "shed": {
+            "columns": 48744,
+            "sum_exact_decimal": "2E-13",
+            "sum_fsum": 2e-13,
+            "minimum_exact_decimal": "0",
+            "maximum_exact_decimal": "1E-13",
+            "positive_columns": 2,
+            "negative_columns": 0,
+            "nonzero_columns": 2,
+            "all_exactly_zero": false
+          },
+          "over": {
+            "columns": 51552,
+            "sum_exact_decimal": "0",
+            "sum_fsum": 0.0,
+            "minimum_exact_decimal": "0",
+            "maximum_exact_decimal": "0",
+            "positive_columns": 0,
+            "negative_columns": 0,
+            "nonzero_columns": 0,
+            "all_exactly_zero": true
+          },
+          "short": {
+            "columns": 36,
+            "sum_exact_decimal": "0",
+            "sum_fsum": 0.0,
+            "minimum_exact_decimal": "0",
+            "maximum_exact_decimal": "0",
+            "positive_columns": 0,
+            "negative_columns": 0,
+            "nonzero_columns": 0,
+            "all_exactly_zero": true
+          }
+        },
+        "slack_sum_roundoff_note": "Preserve the source checker sequential total and the raw signed exported Decimal/fsum total separately. No values were clipped; tiny negative/positive entries and summation roundoff remain explicit."
+      },
+      "stages": [
+        {
+          "index": 1,
+          "role": "integer_proof",
+          "requested_seconds": 600.0,
+          "actual_solver_seconds": 603.6183040679898,
+          "charged_overrun_seconds": 3.6183040679898113,
+          "watchdog_seconds": 660.0,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 603.6183040679898,
+            "peak_rss_KiB": 2474968,
+            "user_cpu_seconds": 773.856502,
+            "system_cpu_seconds": 7.487897
+          },
+          "generation_and_readback_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 26.745750690010027,
+            "peak_rss_KiB": 815896,
+            "user_cpu_seconds": 25.058892,
+            "system_cpu_seconds": 1.64902
+          },
+          "source_and_outage_check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 154.94218323800305,
+            "peak_rss_KiB": 434944,
+            "user_cpu_seconds": 154.313826,
+            "system_cpu_seconds": 0.563973
+          },
+          "active_original_pairs": 0,
+          "accepted_new_original_pairs": 3,
+          "original_model_columns": 313776,
+          "original_model_rows": 381268,
+          "canonical_api_fidelity_pass": true,
+          "raw_printed_master_report": {
+            "status": "Time limit reached",
+            "primal_bound": "13806823.9718",
+            "dual_bound": "13603314.353",
+            "gap": "1.47% (tolerance: 1%)",
+            "timing_seconds": "601.11",
+            "nodes": "0",
+            "lp_iterations": "126694",
+            "max_sub_mip_depth": "4"
+          },
+          "eligible_role_lower": 13603314.352813967,
+          "role_bound_status_valid": true,
+          "role_bound_eligible": true,
+          "role_upper_eligible": false,
+          "first_printed_finite_incumbent": {
+            "line": " R       0       0         0   0.00%   13469833.69038  15314834.48061    12.05%        0      0      0     72922   257.6s",
+            "printed_primal": 15314834.48061,
+            "logged_seconds": 257.6
+          },
+          "printed_incumbent_clock_limitation": "Earliest finite progress-table incumbent line; not a guaranteed chronological first solution; printed clock resolution only",
+          "full_source_primal_pass": false,
+          "violated_pairs": {
+            "schema": "packed-pairs-u32le-v1",
+            "count": 3,
+            "bytes": 12,
+            "sha256": "8bad193dc19dbb78de9002d44c1c6a25924816b2f9980be5f77993788eadbb03",
+            "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942",
+            "line_count": 1991
+          },
+          "pair_worst_witness": {
+            "schema": "complete-pair-worst-jsonl-v1",
+            "count": 3,
+            "bytes": 761,
+            "sha256": "2c41613fdc065581b6949cb8bce78b7bc927641831a6fd4869f5b7a0a948bef5",
+            "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942"
+          },
+          "artifact_sha256": {
+            "model_sha256": "1ed299a2ea2d79c8f1d2b38d77376aafc239f45473a997065106ed2b82e266ff",
+            "expected_sha256": "bc5d1cf62e07a4d90d3b1cec0de589010d7704ebea154e3476ac4db78a030dd6",
+            "pair_manifest_sha256": "2621a1081c541514076f67385f1a99b2f0131bd09220ef9aa5ca0e992decbf40",
+            "api_report_sha256": "54a7e9a20ffe1160d38a525e312f2cf7af64f70c1a9592b07e6d36f616a3de7a",
+            "options_sha256": "ff7fe07cbff957f44c3ef63a38f766f75ad305931bd78b2baff3a6a681026fb8",
+            "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+            "generator_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+            "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024"
+          },
+          "solution_sha256": "7977d57b573bae528ec363ec8be337ab0fbd4524132a4a58cd284e5d51f09589",
+          "solver_log_sha256": "0985099cd2d245ff963e45e849532a806f783a4b21d26eca7ecedcdc3fc4c9f8",
+          "check_sha256": "359b872681af22018311e26aca8168b19b0c7ff52430645ba8acb5b5ef148791"
+        }
+      ],
+      "summary_sha256": "f27ea98cfcd7944a6960f2d023d578d421a876208470801c3ac61c3845cc95b7"
+    },
+    "early_candidate": {
+      "complete": false,
+      "reason": "solver process budget exhausted",
+      "fatal": false,
+      "actual_solver_seconds": 643.3235209530103,
+      "charged_aggregate_solver_overrun_seconds": 43.3235209530103,
+      "complete_process_e2e_seconds": 1009.3270607540035,
+      "scope_process": {
+        "returncode": 0,
+        "hard_watchdog_killed": false,
+        "process_wall_seconds": 0.7045676129928324,
+        "peak_rss_KiB": 24904,
+        "user_cpu_seconds": 0.551987,
+        "system_cpu_seconds": 0.126086
+      },
+      "stage_wall_seconds": {
+        "scope_preparation": 0.7045676129928324,
+        "generation_readback": 51.543693225015886,
+        "integer_checks": 306.72857269100496,
+        "integer_solving": 643.3235209530103
+      },
+      "child_peak_rss_KiB": 1639064,
+      "per_child_rss_scope": "Each recorded process has its own peak RSS in KiB; the arm maximum is not a simultaneous sum",
+      "child_resource_accounting_complete": true,
+      "outer_process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 1009.3270607540035,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "final_full_source_certificate": {
+        "valid": false,
+        "complete": false,
+        "reason": "No source-and-matrix checked integer upper bound",
+        "gap": null
+      },
+      "last_checked_proof_point": {
+        "role": "integer_proof",
+        "status": "Time limit reached",
+        "check_sha256": "8246d2409b5a623569f33a549645cb1bcbc7c3a51eef8d8f28cad3273a0b443b",
+        "solution_sha256": "502f087f6e62819f8c23d2fd08cbf6d864eb9bd0a45cd1bfe4e73ee4ac632265",
+        "original_master_matrix_and_integrality_pass": true,
+        "full_source_primal_pass": false,
+        "final_certificate_upper_eligible": false,
+        "source_feasible_is_separate_from_zero_slack": true,
+        "true_source_cost": 15971060.65716508,
+        "linear_model_cost": 15971060.657166,
+        "objective_overpayment": 9.201467037200928e-07,
+        "total_shed_MWh": 1975.1173377798737,
+        "max_shared_overflow_MW": 0.0,
+        "total_shared_overflow_MW_hours": 0.0,
+        "reserve_shortfall_MW_by_hour": {
+          "r1": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "total_reserve_shortfall_MWh": 0.0,
+        "reserve_shortfall_quantity_scope": "Sum of exact hash-bound checked solution short_* columns; original one-hour intervals; diagnostic only",
+        "original_linear_cost_components": {
+          "production_linear": 13198698.469385957,
+          "startup_epigraph": 797244.8500000242,
+          "shedding": 1975117.337779874,
+          "shared_overflow": 0.0,
+          "reserve_shortfall": 0.0
+        },
+        "base_unrelaxed_overload_MW": 0.0,
+        "base_max_violation_after_shared_slack_MW": 0.0,
+        "outages_checked": 1288,
+        "checked_pair_hours": 66360168,
+        "violated_pairs_count": 1,
+        "violated_line_hours": 1,
+        "security_max_violation_after_shared_slack_MW": 34.06608680398631,
+        "security_max_unrelaxed_overload_MW": 34.06608680398631,
+        "violations_by_category": {
+          "emergency_line_limit": 1
+        },
+        "violated_pairs_artifact": {
+          "schema": "packed-pairs-u32le-v1",
+          "count": 1,
+          "bytes": 4,
+          "sha256": "3404009d30055eced097e2d77f7dc97397e4ad4eebf743e1b521f012395849ef",
+          "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942",
+          "line_count": 1991
+        },
+        "pair_worst_witness_artifact": {
+          "schema": "complete-pair-worst-jsonl-v1",
+          "count": 1,
+          "bytes": 255,
+          "sha256": "711c8fbcefc4139961500742e16cb2ca72b19d9bee2b9c8b5555f4e19c3f2f76",
+          "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942"
+        },
+        "raw_signed_exported_slack_quantities": {
+          "shed": {
+            "columns": 48744,
+            "sum_exact_decimal": "1975.1173377798743",
+            "sum_fsum": 1975.1173377798743,
+            "minimum_exact_decimal": "-3.4E-12",
+            "maximum_exact_decimal": "352.39963",
+            "positive_columns": 32,
+            "negative_columns": 1,
+            "nonzero_columns": 33,
+            "all_exactly_zero": false
+          },
+          "over": {
+            "columns": 51552,
+            "sum_exact_decimal": "0",
+            "sum_fsum": 0.0,
+            "minimum_exact_decimal": "0",
+            "maximum_exact_decimal": "0",
+            "positive_columns": 0,
+            "negative_columns": 0,
+            "nonzero_columns": 0,
+            "all_exactly_zero": true
+          },
+          "short": {
+            "columns": 36,
+            "sum_exact_decimal": "0",
+            "sum_fsum": 0.0,
+            "minimum_exact_decimal": "0",
+            "maximum_exact_decimal": "0",
+            "positive_columns": 0,
+            "negative_columns": 0,
+            "nonzero_columns": 0,
+            "all_exactly_zero": true
+          }
+        },
+        "slack_sum_roundoff_note": "Preserve the source checker sequential total and the raw signed exported Decimal/fsum total separately. No values were clipped; tiny negative/positive entries and summation roundoff remain explicit."
+      },
+      "stages": [
+        {
+          "index": 1,
+          "role": "integer_discovery",
+          "requested_seconds": 300.0,
+          "actual_solver_seconds": 242.85524765000446,
+          "charged_overrun_seconds": 0.0,
+          "watchdog_seconds": 360.0,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 242.85524765000446,
+            "peak_rss_KiB": 1489944,
+            "user_cpu_seconds": 338.569961,
+            "system_cpu_seconds": 0.7327429999999999
+          },
+          "generation_and_readback_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 25.796534920009435,
+            "peak_rss_KiB": 814812,
+            "user_cpu_seconds": 24.824768,
+            "system_cpu_seconds": 0.96041
+          },
+          "source_and_outage_check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 152.65513013400778,
+            "peak_rss_KiB": 435216,
+            "user_cpu_seconds": 151.958255,
+            "system_cpu_seconds": 0.630722
+          },
+          "active_original_pairs": 0,
+          "accepted_new_original_pairs": 2,
+          "original_model_columns": 313776,
+          "original_model_rows": 381268,
+          "canonical_api_fidelity_pass": true,
+          "raw_printed_master_report": {
+            "status": "Solution limit reached",
+            "primal_bound": "15314834.4806",
+            "dual_bound": "13469833.6904",
+            "gap": "12.05% (tolerance: 1%)",
+            "timing_seconds": "240.20",
+            "nodes": "0",
+            "lp_iterations": "72922",
+            "max_sub_mip_depth": "0"
+          },
+          "eligible_role_lower": null,
+          "role_bound_status_valid": false,
+          "role_bound_eligible": false,
+          "role_upper_eligible": false,
+          "first_printed_finite_incumbent": {
+            "line": " R       0       0         0   0.00%   13469833.69038  15314834.48061    12.05%        0      0      0     72922   240.2s",
+            "printed_primal": 15314834.48061,
+            "logged_seconds": 240.2
+          },
+          "printed_incumbent_clock_limitation": "Earliest finite progress-table incumbent line; not a guaranteed chronological first solution; printed clock resolution only",
+          "full_source_primal_pass": false,
+          "violated_pairs": {
+            "schema": "packed-pairs-u32le-v1",
+            "count": 2,
+            "bytes": 8,
+            "sha256": "736a452b682b9fc50941699fd0b6f3e96e8cc89972404c5946851ce345117fb8",
+            "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942",
+            "line_count": 1991
+          },
+          "pair_worst_witness": {
+            "schema": "complete-pair-worst-jsonl-v1",
+            "count": 2,
+            "bytes": 507,
+            "sha256": "41e7d5efcb67e11eab54465a264d354bea34e687c0e678a2ee37f8370cf686a3",
+            "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942"
+          },
+          "artifact_sha256": {
+            "model_sha256": "1ed299a2ea2d79c8f1d2b38d77376aafc239f45473a997065106ed2b82e266ff",
+            "expected_sha256": "bc5d1cf62e07a4d90d3b1cec0de589010d7704ebea154e3476ac4db78a030dd6",
+            "pair_manifest_sha256": "37af52d9a1ca94c8c84eb989d1ed978781cae733b2a415aa89a8f4822e151689",
+            "api_report_sha256": "ff6930a0a23f1d50bae2883886d545e2cc4c5a6c6819aa242f1e108191f602ab",
+            "options_sha256": "a1d6c4477a53815a89bc90058969e1f302680fa432955bfb0ab8fb6d61cbb493",
+            "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+            "generator_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+            "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024"
+          },
+          "solution_sha256": "9793f69eb3f9c981ea10377cc2655eb6123564e6752dc8118d82568c5252378c",
+          "solver_log_sha256": "62e76dab01de3e8f379ac03dda9542179ffd56900d123ff59051c5bb10d7fbff",
+          "check_sha256": "a23c78f1580579e5b4105c047ecb69be14bb7fcd7eedaea071a209af8d5c19d6"
+        },
+        {
+          "index": 2,
+          "role": "integer_proof",
+          "requested_seconds": 357.14475234999554,
+          "actual_solver_seconds": 400.46827330300584,
+          "charged_overrun_seconds": 43.3235209530103,
+          "watchdog_seconds": 417.14475234999554,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 400.46827330300584,
+            "peak_rss_KiB": 1639064,
+            "user_cpu_seconds": 491.590044,
+            "system_cpu_seconds": 2.091672
+          },
+          "generation_and_readback_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 25.74715830500645,
+            "peak_rss_KiB": 818356,
+            "user_cpu_seconds": 24.822553,
+            "system_cpu_seconds": 0.867485
+          },
+          "source_and_outage_check_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 154.07344255699718,
+            "peak_rss_KiB": 435428,
+            "user_cpu_seconds": 153.464058,
+            "system_cpu_seconds": 0.5678
+          },
+          "active_original_pairs": 2,
+          "accepted_new_original_pairs": 1,
+          "original_model_columns": 313776,
+          "original_model_rows": 381412,
+          "canonical_api_fidelity_pass": true,
+          "raw_printed_master_report": {
+            "status": "Time limit reached",
+            "primal_bound": "15971060.6572",
+            "dual_bound": "13614981.988",
+            "gap": "14.75% (tolerance: 1%)",
+            "timing_seconds": "397.65",
+            "nodes": "0",
+            "lp_iterations": "83860",
+            "max_sub_mip_depth": "0"
+          },
+          "eligible_role_lower": 13614981.98781385,
+          "role_bound_status_valid": true,
+          "role_bound_eligible": true,
+          "role_upper_eligible": false,
+          "first_printed_finite_incumbent": {
+            "line": " R       0       0         0   0.00%   13574697.83774  15971060.65717    15.00%      369    130      3     70999   231.2s",
+            "printed_primal": 15971060.65717,
+            "logged_seconds": 231.2
+          },
+          "printed_incumbent_clock_limitation": "Earliest finite progress-table incumbent line; not a guaranteed chronological first solution; printed clock resolution only",
+          "full_source_primal_pass": false,
+          "violated_pairs": {
+            "schema": "packed-pairs-u32le-v1",
+            "count": 1,
+            "bytes": 4,
+            "sha256": "3404009d30055eced097e2d77f7dc97397e4ad4eebf743e1b521f012395849ef",
+            "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942",
+            "line_count": 1991
+          },
+          "pair_worst_witness": {
+            "schema": "complete-pair-worst-jsonl-v1",
+            "count": 1,
+            "bytes": 255,
+            "sha256": "711c8fbcefc4139961500742e16cb2ca72b19d9bee2b9c8b5555f4e19c3f2f76",
+            "scope_sha256": "340b7dca4039a2f9a5fe819c09174652edacca64870ec5b3839f542d70727942"
+          },
+          "artifact_sha256": {
+            "model_sha256": "0154c5d9ff00234b9a082b31dc06eda74c064e8412ecdc1bc588ce1f42c4cee4",
+            "expected_sha256": "336a6a2efc6d698bac0c29a8c93715e279dd8f739f4ef692d66b64719139dbfa",
+            "pair_manifest_sha256": "0f192901682504bd47cbf8c7c18726baa825cf2be6f1f65f9afd1ddc701e4f68",
+            "api_report_sha256": "a1d14b5e4ff54b4c0b411be144db796b1cb9184f2d140f1964ad839cca423d7b",
+            "options_sha256": "ff7fe07cbff957f44c3ef63a38f766f75ad305931bd78b2baff3a6a681026fb8",
+            "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+            "generator_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+            "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024"
+          },
+          "solution_sha256": "502f087f6e62819f8c23d2fd08cbf6d864eb9bd0a45cd1bfe4e73ee4ac632265",
+          "solver_log_sha256": "2bda4e5309dc2b6e6a19317e61bcda10f5d14176f06423e020502fd02907545a",
+          "check_sha256": "8246d2409b5a623569f33a549645cb1bcbc7c3a51eef8d8f28cad3273a0b443b"
+        }
+      ],
+      "summary_sha256": "2ab6a4e51f357dc2dcd2c657b6c0e3068445c264d2770b1a4b92ebe64181913d"
+    }
+  },
+  "stopped": {
+    "action": "stop",
+    "reason": "paired_clean_incomplete",
+    "seed": 0
+  },
+  "unrun_slots": [
+    {
+      "seed": 1,
+      "arm": "early_candidate"
+    },
+    {
+      "seed": 1,
+      "arm": "A"
+    },
+    {
+      "seed": 2,
+      "arm": "A"
+    },
+    {
+      "seed": 2,
+      "arm": "early_candidate"
+    }
+  ],
+  "solver_retries": 0,
+  "completed_pairs": 0,
+  "attempted_pairs": 1,
+  "completion_time_ratio": null,
+  "date_median": null,
+  "goal": {
+    "required_date_median_reduction": 0.3,
+    "eligible": false,
+    "passed": false
+  },
+  "provisioning": {
+    "materialization_seconds": 0.9140402609918965,
+    "runtime_preflight_seconds": 2.5340052480023587,
+    "scope": "Separate provisioning body clocks; native/scientific identity and scalar ABI checks; no extra June model preflight"
+  },
+  "identities": {
+    "public_portable_manifest_sha256": "62c97392d77cd0af2eb8056ea1167222ad969c82e9efa59c0196dcb5ebaa9743",
+    "public_portable_commit": "00252d271be9b29facc043c74f9d25b67681955e",
+    "derived_package_manifest_sha256": "1763579ec9a68b78616941c43ddd3e562d47317be586b73df2698142fd8fd3cf",
+    "runtime_manifest_sha256": "14b72881bdb512213478c4e4649ff93834410cee8aff3fea68684365726cf919",
+    "protocol_sha256": "2140cf81d30d169553a34c69f72ebff66459c643cad9f06ca5d4d9dca4da1015",
+    "unchanged_trial_manifest_sha256": "da5209fb63b65608df69e27d70e3069b648b67c13afb5af076bd549fbfb8a9cb",
+    "raw_evidence_manifest_sha256": "33fc437f1b9a63ed55753090749e1eee26f9f21cb367497051cca4df25143500",
+    "raw_campaign_result_sha256": "2d1dff4856c0ad0cfc8def28ae301ba1b875e1f114efb5925a0c4402f443da53",
+    "scalar_result_sha256": "3d0e0816c6072d9bb2a858d897ee8eeea466c0fec6eafee1b3ae3cab07948596",
+    "proof_bound_diagnostics_sha256": "59e76f2bd0163874da9d2922055db739c2db773147c60da1eb8cabb5e671e88c",
+    "frozen_raw_file_count": 102,
+    "frozen_raw_bytes": 428592054,
+    "unchanged_method_file_sha256": {
+      "canonical_mps_export/export_v2.py": "83b7a73d06bfc35571ac446e92b25758967f01197f5ada752446e88f7372ce6b",
+      "canonical_mps_export/readback.py": "0721722b090506be5c349d1fc9e4ec3493ef49db5f0fe04bc3e08d64998a169a",
+      "combined_screening_driver/early_runtime.py": "d5ae1ce9c2521e8d004ada6c90e4f2c0444c60c035f323287b9e292aa5bf69e4",
+      "combined_screening_driver/fractional_separator.py": "715a29f2f8fdc89b69dd5851a5c398da5d6254a958b67f6becaea224059393b2",
+      "combined_screening_driver/trial_policy.py": "813106d37b2b56e01cb71b11d3d719ef155d64fe496934dd427e77a4db5805b5",
+      "helpers/process_measure.py": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1",
+      "helpers/slot_envelope.py": "9b6dbeb96f2e6df93a96e0f84ae02bf86529f68fc6f9215ef9574d1745f15055",
+      "scuc/check_solution.py": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "scuc/generate.py": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3"
+    }
+  },
+  "public_replay_scope": "The published portable CLI remains scoped to PG89; June used a separate unchanged-policy source/seed/output binding. This projection is evidence, not a new public June replay CLI.",
+  "interpretation": "Both last proof points violate full-source security. Their cost/slack diagnostics are not completed SCUC solutions. Penalized slack quantities are separate from source feasibility. No June speed ratio, repeatability, cross-case generality or significance claim exists. June is exposed for future method design."
+}

@@ -15,6 +15,8 @@ change to normal solver defaults. The report preserves every outcome,
 objective/slack check and clock boundary. The [portable early-only replay](portable_early_integer_replay/README.md)
 now includes the runnable workflow; its [separate tiny validation](portable_early_integer_validation/RESULTS.md)
 preserves the two development failures and the artifact-only verifier correction.
+The separately bounded [June1354 transfer](june1354_early_transfer/RESULTS.md)
+left both arms incomplete and establishes no larger-case speedup.
 
 The [combined SCUC replay](portable_combined_replay/README.md) includes the full
 LP-screening pipeline, root-child-credit patch recipe, original-model checks and

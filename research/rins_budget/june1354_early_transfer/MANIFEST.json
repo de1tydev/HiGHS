@@ -1,0 +1,17 @@
+{
+  "schema": "june1354-negative-transfer-public-projection-v1",
+  "files": {
+    "RESULTS.md": {
+      "bytes": 6385,
+      "sha256": "b313f752d9eb7340d7f9b3a0b41d03fda73270dd3be7a5a9ab94ad36b7e8c8f6"
+    },
+    "result.json": {
+      "bytes": 31515,
+      "sha256": "bd3bf6d4202a54727b5bb5dbcff390c8a2aec1ceceb749957b4407a23040a0e2"
+    }
+  },
+  "raw_evidence_manifest_sha256": "33fc437f1b9a63ed55753090749e1eee26f9f21cb367497051cca4df25143500",
+  "raw_campaign_result_sha256": "2d1dff4856c0ad0cfc8def28ae301ba1b875e1f114efb5925a0c4402f443da53",
+  "projection_only": true,
+  "new_numerical_calls": 0
+}
