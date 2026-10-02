@@ -1,0 +1,1041 @@
+--- a/check/CMakeLists.txt
++++ b/check/CMakeLists.txt
+@@ -65,6 +65,7 @@
+       TestMain.cpp
+       TestMipSolver.cpp
+       TestMipInitialRootIpx.cpp
++      TestRootChildCredit.cpp
+       TestModelProperties.cpp
+       TestMultiObjective.cpp
+       TestNames.cpp
+--- /dev/null
++++ b/check/TestRootChildCredit.cpp
+@@ -0,0 +1,522 @@
++#include <cmath>
++#include <cstdio>
++#include <fstream>
++#include <limits>
++#include <string>
++
++#include "HCheckConfig.h"
++#include "Highs.h"
++#include "catch.hpp"
++#include "mip/HighsMipSolver.h"
++#include "mip/HighsMipSolverData.h"
++#include "mip/HighsPrimalHeuristics.h"
++
++using Credit = HighsRootChildCredit;
++using Incumbent = Credit::Incumbent;
++
++static Incumbent creditIncumbent(bool feasible, HighsInt restart,
++                                double original, double upper) {
++  Incumbent result;
++  result.feasible = feasible;
++  result.restart = restart;
++  result.original = original;
++  result.upper = upper;
++  return result;
++}
++
++TEST_CASE("MIP-root-child-credit-band", "[root_child_credit][root_child_pure]") {
++  const auto band = Credit::nearTarget;
++  // Exact binary target, with adjacent representable values on each boundary.
++  REQUIRE(!band(1, std::nextafter(0.75, 1.0), 0, 0.25, 0));
++  REQUIRE(!band(1, 0.75, 0, 0.25, 0));
++  REQUIRE(band(1, std::nextafter(0.75, 0.0), 0, 0.25, 0));
++  REQUIRE(band(1, std::nextafter(0.5, 1.0), 0, 0.25, 0));
++  REQUIRE(band(1, 0.5, 0, 0.25, 0));
++  REQUIRE(!band(1, std::nextafter(0.5, 0.0), 0, 0.25, 0));
++  REQUIRE(band(-1, -1.5, 0, 0.25, 0));
++  REQUIRE(band(0, -0.5, 1, 0.25, 0));
++  REQUIRE(band(0, -0.5, -1, 0.25, 0));
++  REQUIRE(band(-100, -110, -500, 0.01, 0)); // normalized maximum
++  REQUIRE(!band(0, -1, 0, 0.25, 0));
++  REQUIRE(!band(0, 0, 0, 0.25, 0));
++  REQUIRE(!band(1, 0.5, 0, 0.25, 0.5));
++  REQUIRE(band(1, 0.5, 0, 0.25, std::nextafter(0.5, 0.0)));
++  REQUIRE(!band(1, 0.5, 0, 0, 0));
++  REQUIRE(!band(1, 0.5, 0, -1, 0));
++  REQUIRE(!band(1, 0.5, 0, 0.25, -1));
++  REQUIRE(!band(1, 2, 0, 0.25, 0));
++  // Large offset: compute the numerator before adding the offset.
++  const long double offset = std::ldexp(1.0L, 60);
++  REQUIRE(band(64, 32, offset, 24 / offset, 0));
++  for (long double bad : {std::numeric_limits<long double>::infinity(),
++                         -std::numeric_limits<long double>::infinity(),
++                         std::numeric_limits<long double>::quiet_NaN()}) {
++    REQUIRE(!band(bad, 0.5, 0, 0.25, 0));
++    REQUIRE(!band(1, bad, 0, 0.25, 0));
++    REQUIRE(!band(1, 0.5, bad, 0.25, 0));
++    REQUIRE(!band(1, 0.5, 0, bad, 0));
++    REQUIRE(!band(1, 0.5, 0, 0.25, bad));
++  }
++  const long double max = std::numeric_limits<long double>::max();
++  REQUIRE(!band(max, -max, 0, 0.25, 0));
++  REQUIRE(!band(max, 0, max, 0.25, 0));
++  REQUIRE(!band(max, 0, 0, max, 0));
++  REQUIRE(!band(max, 0, 0, 1, 0)); // 2*target overflows
++}
++
++TEST_CASE("MIP-root-child-credit-ledger", "[root_child_credit][root_child_pure]") {
++  Credit ledger;
++  Incumbent absent;
++  Incumbent current = creditIncumbent(true, 0, 100, 100);
++  auto decision = ledger.decide(true, true, true, kHighsInf, false);
++  REQUIRE(!decision.spend);
++  REQUIRE(!decision.skip);
++  REQUIRE(ledger.finish(absent, current, false, ObjSense::kMinimize, 5) ==
++          std::string("none"));
++  REQUIRE(!ledger.valid);
++  REQUIRE(ledger.finish(absent, current, true, ObjSense::kMinimize, 5) ==
++          std::string("learn"));
++  REQUIRE(ledger.initial == 5);
++  REQUIRE(ledger.remaining == 5);
++  decision = ledger.decide(true, true, true, kHighsInf, false);
++  REQUIRE(decision.spend);
++  REQUIRE(decision.limit == 5);
++  REQUIRE(ledger.charge(decision, 2) == std::string("debit"));
++  REQUIRE(ledger.remaining == 3);
++  REQUIRE(!Credit::improved(true, current, current, ObjSense::kMinimize));
++  ledger.finish(current, current, true, ObjSense::kMinimize, 2);
++  REQUIRE(ledger.remaining == 3); // accepted nonimprovement earns nothing
++  decision = ledger.decide(true, true, true, kHighsInf, false);
++  REQUIRE(decision.limit == 3);
++  ledger.charge(decision, 4); // includes actual overshoot, even on infeasibility
++  REQUIRE(ledger.remaining == 0);
++  decision = ledger.decide(true, true, true, kHighsInf, false);
++  REQUIRE(decision.skip);
++  REQUIRE(decision.limit == 0);
++  REQUIRE(ledger.remaining == 0); // a skipped launch neither charges nor learns
++  Incumbent better = creditIncumbent(true, 0, 99, 99);
++  REQUIRE(ledger.finish(current, better, true, ObjSense::kMinimize, 2) ==
++          std::string("renew"));
++  REQUIRE(ledger.remaining == 2);
++  decision = ledger.decide(true, true, false, 100, false);
++  REQUIRE(!decision.spend);
++  ledger.charge(decision, 10);
++  ledger.finish(better, better, false, ObjSense::kMinimize, 10);
++  REQUIRE(ledger.remaining == 2); // out-of-band failures cannot spend
++  Incumbent best = creditIncumbent(true, 0, 98, 98);
++  ledger.finish(better, best, true, ObjSense::kMinimize, 7);
++  REQUIRE(ledger.remaining == 7); // out-of-band successful root child can learn
++  REQUIRE(ledger.decide(true, true, true, 3, false).limit == 3);
++  for (double elapsed : {-1.0, kHighsInf,
++                         std::numeric_limits<double>::quiet_NaN()}) {
++    ledger.finish(absent, current, true, ObjSense::kMinimize, 5);
++    ledger.charge(ledger.decide(true, true, true, 100, false), elapsed);
++    REQUIRE(!ledger.valid);
++    ledger.finish(current, better, true, ObjSense::kMinimize, elapsed);
++    REQUIRE(!ledger.valid);
++  }
++  for (ObjSense sense : {ObjSense::kMinimize, ObjSense::kMaximize}) {
++    REQUIRE(Credit::improved(true, absent, current, sense));
++    REQUIRE(!Credit::improved(false, absent, current, sense));
++    REQUIRE(!Credit::improved(true, current, absent, sense));
++  }
++  Incumbent max_better = creditIncumbent(true, 0, 101, 99);
++  REQUIRE(Credit::improved(true, current, max_better, ObjSense::kMaximize));
++  REQUIRE(!Credit::improved(true, current, better, ObjSense::kMaximize));
++  max_better.upper = 100;
++  REQUIRE(!Credit::improved(true, current, max_better, ObjSense::kMaximize));
++}
++
++TEST_CASE("MIP-root-child-credit-epochs", "[root_child_credit][root_child_pure]") {
++  Credit ledger;
++  const double offset = std::ldexp(1.0, 60);
++  Incumbent absent;
++  Incumbent old = creditIncumbent(true, 4, double(offset + 64), 64);
++  Incumbent rounded = creditIncumbent(true, 4, double(offset + 32), 32);
++  REQUIRE(old.original == rounded.original);
++  ledger.finish(absent, old, true, ObjSense::kMinimize, 5);
++  REQUIRE(ledger.synchronize(old) == std::string("none"));
++  REQUIRE(ledger.remaining == 5);
++  REQUIRE(ledger.synchronize(rounded) == std::string("upper"));
++  REQUIRE(!ledger.valid); // external normalized-only incumbent change
++  REQUIRE(!ledger.decide(true, true, true, 100, false).spend);
++  ledger.finish(absent, old, true, ObjSense::kMinimize, 5);
++  ledger.charge(ledger.decide(true, true, true, 100, false), 2);
++  REQUIRE(ledger.remaining == 3); // charged before import/reset
++  REQUIRE(!Credit::improved(true, old, rounded, ObjSense::kMinimize));
++  REQUIRE(ledger.finish(old, rounded, true, ObjSense::kMinimize, 2) ==
++          std::string("upper"));
++  REQUIRE(!ledger.valid);
++  REQUIRE(!ledger.decide(true, true, true, 100, false).skip);
++  for (int change = 0; change < 4; ++change) {
++    ledger.finish(absent, old, true, ObjSense::kMinimize, 5);
++    Incumbent next = old;
++    if (change == 0) ++next.restart;
++    if (change == 1) next.original = std::nextafter(old.original, kHighsInf);
++    if (change == 2) --next.upper;
++    if (change == 3) next.feasible = false;
++    REQUIRE(ledger.synchronize(next) != std::string("none"));
++    REQUIRE(!ledger.valid);
++  }
++}
++
++TEST_CASE("MIP-root-child-credit-scope", "[root_child_credit][root_child_pure]") {
++  Credit ledger;
++  ledger.finish(Incumbent(), creditIncumbent(true, 0, 100, 100), true, ObjSense::kMinimize, 5);
++  for (HighsSubMipOrigin origin : {HighsSubMipOrigin::kRootReducedCost,
++                                   HighsSubMipOrigin::kRootRens}) {
++    REQUIRE(Credit::inScope(origin, false, false, 1));
++    REQUIRE(!Credit::inScope(origin, true, false, 1));
++    REQUIRE(!Credit::inScope(origin, false, true, 1));
++    REQUIRE(!Credit::inScope(origin, false, false, 2));
++  }
++  for (HighsSubMipOrigin origin : {HighsSubMipOrigin::kOther,
++                                   HighsSubMipOrigin::kSearchRens,
++                                   HighsSubMipOrigin::kSearchRins})
++    REQUIRE(!Credit::inScope(origin, false, false, 1));
++  REQUIRE(!ledger.decide(false, true, true, 100, false).spend);
++  REQUIRE(!ledger.decide(true, false, true, 100, false).spend);
++  ledger.remaining = 0;
++  for (double existing : {0.0, -1.0,
++                          std::numeric_limits<double>::quiet_NaN()})
++    REQUIRE(!ledger.decide(true, true, true, existing, false).skip);
++  REQUIRE(!ledger.decide(true, true, true, 100, true).skip);
++  REQUIRE(ledger.decide(true, true, true, 100, false).skip);
++}
++
++TEST_CASE("MIP-root-child-credit-options", "[root_child_credit][highs_options]") {
++  Highs highs;
++  highs.setOptionValue("output_flag", false);
++  for (const std::string option : {"mip_heuristic_near_target_root_budget",
++                                  "mip_heuristic_near_target_root_budget_log"}) {
++    bool value = true, default_value = true;
++    REQUIRE(highs.getBoolOptionValues(option, &value, &default_value) ==
++            HighsStatus::kOk);
++    REQUIRE(!value);
++    REQUIRE(!default_value);
++    REQUIRE(highs.setOptionValue(option, true) == HighsStatus::kOk);
++  }
++  const std::string filename = "root-child-credit-options.txt";
++  REQUIRE(highs.writeOptions(filename) == HighsStatus::kOk);
++  Highs restored;
++  restored.setOptionValue("output_flag", false);
++  REQUIRE(restored.readOptions(filename) == HighsStatus::kOk);
++  REQUIRE(restored.getOptions().mip_heuristic_near_target_root_budget);
++  REQUIRE(restored.getOptions().mip_heuristic_near_target_root_budget_log);
++  std::remove(filename.c_str());
++}
++
++TEST_CASE("MIP-root-child-credit-local-timeout", "[root_child_credit]") {
++  Highs highs;
++  highs.setOptionValue("output_flag", false);
++  HighsOptions options = highs.getOptions();
++  options.time_limit = -1;
++  HighsLp lp;
++  lp.num_col_ = 1;
++  lp.col_cost_ = {1};
++  lp.col_lower_ = {0};
++  lp.col_upper_ = {200};
++  lp.integrality_ = {HighsVarType::kInteger};
++  lp.a_matrix_.num_col_ = 1;
++  lp.a_matrix_.start_ = {0, 0};
++  HighsCallback callback(nullptr);
++  HighsSolution solution;
++  HighsMipSolver parent(callback, options, lp, solution);
++  parent.mipdata_.reset(new HighsMipSolverData(parent));
++  auto record = parent.initialiseTerminatorRecord(2);
++  parent.initialiseTerminator(2, 0, record.data());
++  HighsMipSolver child(callback, options, lp, solution, true, 1);
++  child.initialiseTerminator(parent);
++  child.mipdata_.reset(new HighsMipSolverData(child));
++  child.modelstatus_ = HighsModelStatus::kNotset;
++  child.timer_.start();
++  child.solution_ = {100};
++  child.solution_objective_ = 100;
++  child.bound_violation_ = child.row_violation_ = child.integrality_violation_ = 0;
++  REQUIRE(child.mipdata_->checkLimits());
++  REQUIRE(child.modelstatus_ == HighsModelStatus::kTimeLimit);
++  REQUIRE(child.termination_status_ == HighsModelStatus::kNotset);
++  REQUIRE(parent.termination_status_ == HighsModelStatus::kNotset);
++  REQUIRE(record[0] == HighsModelStatus::kNotset);
++  REQUIRE(record[1] == HighsModelStatus::kNotset);
++  REQUIRE(child.solution_ == std::vector<double>{100});
++  HighsCDouble objective;
++  double bound, row, integer;
++  REQUIRE(parent.solutionFeasible(&lp, child.solution_, nullptr,
++                                  bound, row, integer, objective));
++  child.modelstatus_ = HighsModelStatus::kNotset;
++  record[1] = HighsModelStatus::kHighsInterrupt;
++  REQUIRE(child.mipdata_->checkLimits());
++  REQUIRE(child.termination_status_ == HighsModelStatus::kHighsInterrupt);
++  REQUIRE(child.modelstatus_ == HighsModelStatus::kNotset);
++  REQUIRE(parent.termination_status_ == HighsModelStatus::kNotset);
++  child.timer_.stop();
++  highs.resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-root-child-credit-root-wiring", "[root_child_credit]") {
++  // rgn exercises actual evaluateRootNode -> reduced cost -> root RENS calls.
++  // Its first child earns credit, and the second is in (4%,8%]. The cap need
++  // not expire: assert the applied scheduling decision, never wall timing.
++  for (bool enforce : {false, true}) {
++    Highs highs;
++    highs.setOptionValue("output_flag", true);
++    highs.setOptionValue("log_to_console", false);
++    highs.setOptionValue("threads", 2);
++    highs.setOptionValue("parallel", "off");
++    highs.setOptionValue("mip_rel_gap", 0.04);
++    highs.setOptionValue("mip_heuristic_effort", 0.5);
++    highs.setOptionValue("mip_heuristic_outer_gap", true);
++    highs.setOptionValue("mip_heuristic_near_target_root_budget", enforce);
++    highs.setOptionValue("mip_heuristic_near_target_root_budget_log", true);
++    REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps") ==
++            HighsStatus::kOk);
++    std::string log;
++    highs.setCallback([&](int type, const std::string& message,
++                          const HighsCallbackOutput*, HighsCallbackInput*, void*) {
++      if (type == kCallbackLogging) log += message;
++    }, nullptr);
++    REQUIRE(highs.startCallback(kCallbackLogging) == HighsStatus::kOk);
++    REQUIRE(highs.run() == HighsStatus::kOk);
++    INFO(log);
++    REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++    REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++    REQUIRE(highs.getInfo().mip_gap <= 0.04);
++    REQUIRE(log.find("origin=root-reduced-cost phase=root event=learn") !=
++            std::string::npos);
++    const auto rens = log.find("origin=root-RENS phase=root depth=0");
++    REQUIRE(rens != std::string::npos);
++    const auto decision = log.substr(rens, log.find('\n', rens) - rens);
++    REQUIRE(decision.find("reason=credit") != std::string::npos);
++    REQUIRE(decision.find("existing_limit=inf") != std::string::npos);
++    REQUIRE(decision.find("proposed_limit=inf") == std::string::npos);
++    REQUIRE((decision.find("applied_limit=inf") == std::string::npos) == enforce);
++    REQUIRE(log.find("origin=root-RENS phase=root event=none charge=debit") !=
++            std::string::npos);
++    REQUIRE(log.find("termination_status=0") != std::string::npos);
++    // Nested children inherit options but do not own a policy ledger/log.
++    REQUIRE(log.find("phase=root depth=1") == std::string::npos);
++    highs.resetGlobalScheduler(true);
++  }
++}
++
++TEST_CASE("MIP-root-child-credit-observe-regression", "[root_child_credit]") {
++  for (bool parallel : {false, true}) {
++    for (bool maximize : {false, true}) {
++      double objective = 0, bound = 0;
++      int64_t nodes = -1;
++      HighsInt iterations = -1;
++      for (int mode = 0; mode < (parallel ? 3 : 2); ++mode) {
++        Highs highs;
++        highs.setOptionValue("output_flag", true);
++        highs.setOptionValue("log_to_console", false);
++        highs.setOptionValue("threads", 2);
++        highs.setOptionValue("parallel", parallel ? "on" : "off");
++        highs.setOptionValue("mip_rel_gap", 0.02);
++        highs.setOptionValue("mip_heuristic_effort", 0.5);
++        highs.setOptionValue("mip_heuristic_near_target_root_budget", mode == 2);
++        highs.setOptionValue("mip_heuristic_near_target_root_budget_log", mode != 0);
++        REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps") ==
++                HighsStatus::kOk);
++        HighsLp lp = highs.getLp();
++        lp.offset_ = -20;
++        if (maximize) {
++          for (double& cost : lp.col_cost_) cost = -cost;
++          lp.offset_ = -lp.offset_;
++          lp.sense_ = ObjSense::kMaximize;
++        }
++        REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++        std::string log;
++        highs.setCallback([&](int type, const std::string& message,
++                              const HighsCallbackOutput*, HighsCallbackInput*, void*) {
++          if (type == kCallbackLogging) log += message;
++        }, nullptr);
++        REQUIRE(highs.startCallback(kCallbackLogging) == HighsStatus::kOk);
++        REQUIRE(highs.run() == HighsStatus::kOk);
++        REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++        REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++        const auto& info = highs.getInfo();
++        if (mode == 0) {
++          objective = info.objective_function_value;
++          bound = info.mip_dual_bound;
++          nodes = info.mip_node_count;
++          iterations = info.simplex_iteration_count;
++          REQUIRE(log.find("RootChildCredit") == std::string::npos);
++        } else {
++          REQUIRE(info.objective_function_value == objective);
++          REQUIRE(info.mip_dual_bound == bound);
++          REQUIRE(info.mip_node_count == nodes);
++          REQUIRE(info.simplex_iteration_count == iterations);
++          if (parallel)
++            REQUIRE(log.find("RootChildCredit") == std::string::npos);
++          else
++            REQUIRE(log.find("mode=observe") != std::string::npos);
++        }
++        highs.resetGlobalScheduler(true);
++      }
++    }
++  }
++}
++
++TEST_CASE("MIP-root-child-credit-search-rins", "[root_child_credit]") {
++  Highs highs;
++  highs.setOptionValue("output_flag", true);
++  highs.setOptionValue("log_to_console", false);
++  highs.setOptionValue("threads", 1);
++  highs.setOptionValue("parallel", "off");
++  highs.setOptionValue("mip_rel_gap", 0.01);
++  highs.setOptionValue("mip_heuristic_effort", 0.5);
++  highs.setOptionValue("mip_heuristic_outer_gap", true);
++  highs.setOptionValue("mip_heuristic_near_target_root_budget", true);
++  highs.setOptionValue("mip_heuristic_near_target_root_budget_log", true);
++  REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/bell5.mps") ==
++          HighsStatus::kOk);
++  std::string log;
++  highs.setCallback([&](int type, const std::string& message,
++                        const HighsCallbackOutput*, HighsCallbackInput*, void*) {
++    if (type == kCallbackLogging) log += message;
++  }, nullptr);
++  REQUIRE(highs.startCallback(kCallbackLogging) == HighsStatus::kOk);
++  REQUIRE(highs.run() == HighsStatus::kOk);
++  INFO(log);
++  const auto search = log.find("origin=search-RINS phase=search depth=0");
++  REQUIRE(search != std::string::npos);
++  const auto decision = log.substr(search, log.find('\n', search) - search);
++  REQUIRE(decision.find("reason=scope") != std::string::npos);
++  REQUIRE(decision.find("applied_limit=inf") != std::string::npos);
++  REQUIRE(log.find("origin=search-RINS phase=search event=none charge=none") !=
++          std::string::npos);
++  REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++  REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++  highs.resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-root-child-credit-direct-timeout-import", "[root_child_credit]") {
++  // A prepared parent lets this integration exercise repeated direct children
++  // in one epoch, independently of how many dives normal root scheduling picks.
++  Highs highs;
++  highs.setOptionValue("output_flag", true);
++  highs.setOptionValue("log_to_console", false);
++  highs.setOptionValue("threads", 1);
++  highs.setOptionValue("parallel", "off");
++  highs.setOptionValue("presolve", "off");
++  highs.setOptionValue("mip_rel_gap", 0.04);
++  highs.setOptionValue("mip_heuristic_near_target_root_budget", true);
++  highs.setOptionValue("mip_heuristic_near_target_root_budget_log", true);
++  REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps") ==
++          HighsStatus::kOk);
++  std::string log;
++  highs.setCallback([&](int type, const std::string& message,
++                        const HighsCallbackOutput*, HighsCallbackInput*, void*) {
++    if (type == kCallbackLogging) log += message;
++  }, nullptr);
++  REQUIRE(highs.startCallback(kCallbackLogging) == HighsStatus::kOk);
++  HighsOptions options = highs.getOptions();
++  options.mip_max_nodes = 0; // initialize a real parent without evaluating root
++  HighsLp lp = highs.getLp();
++  HighsCallback callback(nullptr);
++  HighsSolution empty;
++  highs::parallel::initialize_scheduler(1);
++  HighsTimer timer;
++  HighsProfiling profiling;
++  profiling.multi_threaded = false;
++  profiling.initialize(timer, false, false);
++  HighsMipSolver parent(callback, options, lp, empty);
++  parent.setProfiling(&profiling);
++  parent.run();
++  REQUIRE(parent.mipdata_->workers.size() == 1);
++  parent.modelstatus_ = HighsModelStatus::kNotset;
++  parent.timer_.start();
++  HighsMipWorker& worker = parent.mipdata_->workers[0];
++  HighsBasis basis;
++  basis.col_status.assign(parent.numCol(), HighsBasisStatus::kLower);
++  basis.row_status.assign(parent.numRow(), HighsBasisStatus::kBasic);
++  basis.valid = true;
++  auto child = [&](HighsSubMipOrigin origin) {
++    return parent.mipdata_->heuristics.solveSubMip(
++        worker, *parent.model_, basis, 0.0, parent.model_->col_lower_,
++        parent.model_->col_upper_, 500, 200, 12, origin);
++  };
++  REQUIRE(child(HighsSubMipOrigin::kRootReducedCost));
++  REQUIRE(std::isfinite(parent.solution_objective_));
++  REQUIRE(log.find("event=learn") != std::string::npos);
++  // This is a conservative, valid fixture bound (rgn optimum is 82.19999924).
++  // It places repeated children in the declared band without changing costs.
++  parent.mipdata_->updateLowerBound(77);
++  // An infeasible root attempt must be charged before its false/retry return.
++  const size_t infeasible_begin = log.size();
++  REQUIRE(!parent.mipdata_->heuristics.solveSubMip(
++      worker, *parent.model_, basis, 1.0, std::vector<double>(parent.numCol(), 0),
++      std::vector<double>(parent.numCol(), 0), 500, 200, 12,
++      HighsSubMipOrigin::kRootRens));
++  REQUIRE(log.find("event=infeasible charge=debit", infeasible_begin) !=
++          std::string::npos);
++  bool skipped = false;
++  for (int call = 0; call < 12 && !skipped; ++call) {
++    const size_t begin = log.size();
++    REQUIRE(child(HighsSubMipOrigin::kRootRens));
++    skipped = log.find("RootChildCredit v1 skip:", begin) != std::string::npos;
++  }
++  INFO(log);
++  std::ofstream("root-child-credit-direct.log") << log;
++  REQUIRE(skipped);
++  const auto timeout = log.find("status=13 termination_status=0");
++  REQUIRE(timeout != std::string::npos);
++  const auto timeout_return = log.substr(timeout, log.find('\n', timeout) - timeout);
++  REQUIRE(timeout_return.find("accepted=1 improved=0") != std::string::npos);
++  REQUIRE(log.find("charge=debit") != std::string::npos);
++  const auto previous_infeasible =
++      parent.mipdata_->heuristics.getNumInfeasObservations(worker);
++  REQUIRE(child(HighsSubMipOrigin::kRootRens)); // exhausted: no false retry signal
++  REQUIRE(parent.mipdata_->heuristics.getNumInfeasObservations(worker) ==
++          previous_infeasible);
++  options.mip_max_nodes = kHighsIInf;
++  REQUIRE(!parent.mipdata_->checkLimits()); // parent can continue ordinary work
++  // Search RENS is explicitly excluded even after root credit is exhausted.
++  const size_t search_begin = log.size();
++  REQUIRE(child(HighsSubMipOrigin::kSearchRens));
++  REQUIRE(log.find("origin=search-RENS phase=search event=none charge=none",
++                   search_begin) != std::string::npos);
++  REQUIRE(log.find("RootChildCredit v1 skip:", search_begin) == std::string::npos);
++  REQUIRE(parent.termination_status_ == HighsModelStatus::kNotset);
++  REQUIRE(parent.modelstatus_ == HighsModelStatus::kNotset);
++  HighsCDouble objective;
++  double bound, row, integer;
++  REQUIRE(parent.solutionFeasible(parent.orig_model_, parent.solution_, nullptr,
++                                  bound, row, integer, objective));
++  REQUIRE(parent.solution_objective_ == Approx(double(objective)));
++
++  // Exercise original-space postsolve repair and rejection independently of
++  // scheduling. A damaged continuous value can be repaired with integers fixed;
++  // an improving but out-of-bounds integer candidate must remain rejected.
++  const auto incumbent = parent.solution_;
++  const double incumbent_objective = parent.solution_objective_;
++  auto repair_candidate = incumbent;
++  HighsInt continuous = -1, integer_col = -1;
++  for (HighsInt col = 0; col < parent.numCol(); ++col) {
++    if (lp.integrality_[col] == HighsVarType::kContinuous && continuous < 0)
++      continuous = col;
++    if (lp.integrality_[col] == HighsVarType::kInteger &&
++        std::isfinite(lp.col_lower_[col]) && integer_col < 0)
++      integer_col = col;
++  }
++  REQUIRE(continuous >= 0);
++  REQUIRE(integer_col >= 0);
++  repair_candidate[continuous] = -1000;
++  const auto repair_count = parent.mipdata_->total_repair_lp;
++  const auto feasible_repairs = parent.mipdata_->total_repair_lp_feasible;
++  REQUIRE(std::isfinite(parent.mipdata_->transformNewIntegerFeasibleSolution(
++      repair_candidate)));
++  REQUIRE(parent.mipdata_->total_repair_lp == repair_count + 1);
++  REQUIRE(parent.mipdata_->total_repair_lp_feasible == feasible_repairs + 1);
++  auto reject_candidate = repair_candidate;
++  reject_candidate[integer_col] = lp.col_lower_[integer_col] - 1;
++  REQUIRE(!parent.mipdata_->trySolution(reject_candidate, kSolutionSourceSubMip));
++  REQUIRE(parent.mipdata_->transformNewIntegerFeasibleSolution(reject_candidate) ==
++          kHighsInf);
++  REQUIRE(parent.solution_objective_ == incumbent_objective);
++  REQUIRE(parent.solution_ == incumbent);
++  std::ofstream("root-child-credit-direct.log") << log;
++  parent.timer_.stop();
++  highs.resetGlobalScheduler(true);
++}
+--- a/check/meson.build
++++ b/check/meson.build
+@@ -50,6 +50,7 @@
+   ['test_TestMain', 'TestMain.cpp'],
+   ['test_TestMipSolver', 'TestMipSolver.cpp'],
+   ['test_TestMipInitialRootIpx', 'TestMipInitialRootIpx.cpp'],
++  ['test_TestRootChildCredit', 'TestRootChildCredit.cpp'],
+   ['test_TestModelProperties', 'TestModelProperties.cpp'],
+   ['test_TestMultiObjective', 'TestMultiObjective.cpp'],
+   ['test_TestNames', 'TestNames.cpp'],
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -500,6 +500,8 @@
+   double mip_heuristic_effort;
+   bool mip_heuristic_outer_gap;
+   bool mip_heuristic_outer_gap_log;
++  bool mip_heuristic_near_target_root_budget;
++  bool mip_heuristic_near_target_root_budget_log;
+   bool mip_heuristic_run_feasibility_jump;
+   bool mip_heuristic_run_rins;
+   bool mip_heuristic_run_rens;
+@@ -669,6 +671,8 @@
+         mip_heuristic_effort(0.0),
+         mip_heuristic_outer_gap(false),
+         mip_heuristic_outer_gap_log(false),
++        mip_heuristic_near_target_root_budget(false),
++        mip_heuristic_near_target_root_budget_log(false),
+         mip_heuristic_run_feasibility_jump(false),
+         mip_heuristic_run_rins(false),
+         mip_heuristic_run_rens(false),
+@@ -1243,6 +1247,18 @@
+         advanced, &mip_heuristic_outer_gap_log, false);
+     records.push_back(record_bool);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_heuristic_near_target_root_budget",
++        "Experimental: budget near-target serial main-root heuristic children",
++        advanced, &mip_heuristic_near_target_root_budget, false);
++    records.push_back(record_bool);
++
++    record_bool = new OptionRecordBool(
++        "mip_heuristic_near_target_root_budget_log",
++        "Observe and log the main-root child time-credit ledger",
++        advanced, &mip_heuristic_near_target_root_budget_log, false);
++    records.push_back(record_bool);
++
+     record_bool =
+         new OptionRecordBool("mip_heuristic_run_feasibility_jump",
+                              "Use the feasibility jump heuristic", advanced,
+--- a/highs/mip/HighsMipSolver.cpp
++++ b/highs/mip/HighsMipSolver.cpp
+@@ -798,7 +798,8 @@
+           profiling_->start(kMipClockDiveRens);
+         mipdata_->heuristics.RENS(
+             worker,
+-            worker.getLpRelaxation().getLpSolver().getSolution().col_value);
++            worker.getLpRelaxation().getLpSolver().getSolution().col_value,
++            HighsRensPhase::kSearch);
+         if (!mipdata_->parallelLockActive())
+           profiling_->stop(kMipClockDiveRens);
+       }
+--- a/highs/mip/HighsMipSolverData.cpp
++++ b/highs/mip/HighsMipSolverData.cpp
+@@ -2396,7 +2396,7 @@
+     if (checkLimits()) return clockOff(profiling);
+     if (mipsolver.options_mip_->mip_heuristic_run_rens) {
+       profiling->start(kMipClockRootHeuristicsRens);
+-      heuristics.RENS(worker, rootlpsol);
++      heuristics.RENS(worker, rootlpsol, HighsRensPhase::kRoot);
+       profiling->stop(kMipClockRootHeuristicsRens);
+       heuristics.flushStatistics(mipsolver, worker);
+     }
+--- a/highs/mip/HighsPrimalHeuristics.cpp
++++ b/highs/mip/HighsPrimalHeuristics.cpp
+@@ -78,7 +78,7 @@
+     HighsMipWorker& worker, const HighsLp& lp, const HighsBasis& basis,
+     double fixingRate, std::vector<double> colLower,
+     std::vector<double> colUpper, HighsInt maxleaves, HighsInt maxnodes,
+-    HighsInt stallnodes) {
++    HighsInt stallnodes, HighsSubMipOrigin origin) {
+   HighsOptions submipoptions = *mipsolver.options_mip_;
+   HighsLp submip = lp;
+ 
+@@ -128,6 +128,116 @@
+     submipoptions.presolve = kHighsOnString;
+   submipoptions.mip_detect_symmetry = false;
+   submipoptions.mip_heuristic_effort = 0.8;
++  // Off/log-off retains the original path without snapshots or timer reads.
++  const bool observe_credit =
++      (mipsolver.options_mip_->mip_heuristic_near_target_root_budget ||
++       mipsolver.options_mip_->mip_heuristic_near_target_root_budget_log) &&
++      !mipsolver.submip && !mipsolver.mipdata_->parallelLockActive() &&
++      mipsolver.getMaxNumWorkers() == 1;
++  const bool credit_scope = observe_credit && HighsRootChildCredit::inScope(
++      origin, mipsolver.submip, mipsolver.mipdata_->parallelLockActive(),
++      mipsolver.getMaxNumWorkers());
++  const bool credit_coordinates = observe_credit &&
++      mipsolver.model_->sense_ == ObjSense::kMinimize &&
++      submip.sense_ == ObjSense::kMinimize && submip.offset_ == 0 &&
++      submip.col_cost_ == mipsolver.model_->col_cost_;
++  auto incumbent_snapshot = [&]() {
++    HighsRootChildCredit::Incumbent current;
++    current.restart = mipsolver.mipdata_->numRestarts;
++    current.original = mipsolver.solution_objective_;
++    current.upper = mipsolver.mipdata_->upper_bound;
++    current.feasible = std::isfinite(current.original) &&
++        std::isfinite(current.upper) &&
++        mipsolver.solution_.size() ==
++            static_cast<size_t>(mipsolver.orig_model_->num_col_) &&
++        mipsolver.bound_violation_ <=
++            mipsolver.options_mip_->mip_feasibility_tolerance &&
++        mipsolver.integrality_violation_ <=
++            mipsolver.options_mip_->mip_feasibility_tolerance &&
++        mipsolver.row_violation_ <=
++            mipsolver.options_mip_->mip_feasibility_tolerance;
++    return current;
++  };
++  HighsRootChildCredit::Incumbent credit_launch;
++  HighsRootChildCredit::Decision credit_decision;
++  const char* credit_reset = "none";
++  const char* credit_origin = "other";
++  switch (origin) {
++    case HighsSubMipOrigin::kRootReducedCost: credit_origin = "root-reduced-cost"; break;
++    case HighsSubMipOrigin::kRootRens: credit_origin = "root-RENS"; break;
++    case HighsSubMipOrigin::kSearchRens: credit_origin = "search-RENS"; break;
++    case HighsSubMipOrigin::kSearchRins: credit_origin = "search-RINS"; break;
++    case HighsSubMipOrigin::kOther: break;
++  }
++  const char* credit_phase =
++      origin == HighsSubMipOrigin::kRootReducedCost ||
++      origin == HighsSubMipOrigin::kRootRens ? "root" :
++      origin == HighsSubMipOrigin::kOther ? "other" : "search";
++  const bool enforce_credit =
++      mipsolver.options_mip_->mip_heuristic_near_target_root_budget;
++  const bool log_credit = observe_credit &&
++      mipsolver.options_mip_->mip_heuristic_near_target_root_budget_log;
++  const double existing_child_limit = submipoptions.time_limit;
++  double credit_before = 0;
++  uint64_t credit_call = 0;
++  if (observe_credit) {
++    credit_call = ++root_child_call_id;
++    credit_launch = incumbent_snapshot();
++    if (credit_scope) credit_reset = root_child_credit.synchronize(credit_launch);
++    credit_before = root_child_credit.remaining;
++    const bool pending_termination =
++        mipsolver.termination_status_ != HighsModelStatus::kNotset ||
++        (mipsolver.mipdata_->terminatorActive() &&
++         mipsolver.terminator_.terminationStatus() != HighsModelStatus::kNotset);
++    credit_decision = root_child_credit.decide(
++        credit_scope, credit_coordinates,
++        HighsRootChildCredit::nearTarget(
++            credit_launch.upper, mipsolver.mipdata_->lower_bound,
++            mipsolver.model_->offset_, mipsolver.options_mip_->mip_rel_gap,
++            mipsolver.options_mip_->mip_abs_gap),
++        existing_child_limit, pending_termination);
++    if (enforce_credit && credit_decision.spend && !credit_decision.skip)
++      submipoptions.time_limit = credit_decision.limit;
++    if (log_credit) {
++      const long double value = static_cast<long double>(credit_launch.upper) +
++                               mipsolver.model_->offset_;
++      const long double raw_gap =
++          (static_cast<long double>(credit_launch.upper) -
++           mipsolver.mipdata_->lower_bound) / std::abs(value);
++      highsLogUser(mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++          "RootChildCredit v1 decision: call=%llu mode=%s origin=%s phase=%s "
++          "depth=%d workers=%d parallel_lock=%d restart=%d original=%.17g "
++          "u=%.17g l=%.17g o=%.17g r=%.17g a=%.17g raw_gap=%.17g "
++          "reason=%s reset=%s valid=%d anchor_original=%.17g anchor_upper=%.17g "
++          "S=%.17g C_before=%.17g existing_limit=%.17g proposed_limit=%.17g "
++          "applied_limit=%.17g would_skip=%d skip=%d launch=%.17g\n",
++          static_cast<unsigned long long>(credit_call),
++          enforce_credit ? "enforce" : "observe", credit_origin, credit_phase,
++          int(mipsolver.submip_level), int(mipsolver.getMaxNumWorkers()),
++          int(mipsolver.mipdata_->parallelLockActive()), int(credit_launch.restart),
++          credit_launch.original, credit_launch.upper, mipsolver.mipdata_->lower_bound,
++          mipsolver.model_->offset_, mipsolver.options_mip_->mip_rel_gap,
++          mipsolver.options_mip_->mip_abs_gap, double(raw_gap),
++          credit_decision.reason, credit_reset, int(root_child_credit.valid),
++          root_child_credit.anchor.original, root_child_credit.anchor.upper,
++          root_child_credit.initial, credit_before, existing_child_limit,
++          credit_decision.limit,
++          enforce_credit && credit_decision.skip ? 0.0 : submipoptions.time_limit,
++          int(credit_decision.skip), int(enforce_credit && credit_decision.skip),
++          mipsolver.timer_.read());
++    }
++    if (enforce_credit && credit_decision.skip) {
++      if (log_credit)
++        highsLogUser(mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++            "RootChildCredit v1 skip: call=%llu origin=%s event=skip "
++            "solver_elapsed=0 C_after=%.17g\n",
++            static_cast<unsigned long long>(credit_call), credit_origin,
++            root_child_credit.remaining);
++      // RENS interprets false as infeasibility and retries. Do not create a
++      // solver or change heuristic/profiling statistics for an omitted call.
++      return true;
++    }
++  }
+   // setup solver and run it
+ 
+   HighsSolution solution;
+@@ -192,7 +302,39 @@
+   if (!mipsolver.submip) mipsolver.profiling_->start(kSubSolverSubMip);
+   // Ensure that sub-solver call time data accumulate in the sub-MIP record
+   mipsolver.profiling_->setSubMip(true);
++  const double credit_run_start = observe_credit ? mipsolver.timer_.read() : 0;
+   submipsolver.run();
++  // Charge before termination/infeasibility can return (and RENS can retry).
++  const double credit_elapsed = observe_credit ? submipsolver.timer_.read() : 0;
++  const double credit_run_end = observe_credit ? mipsolver.timer_.read() : 0;
++  const char* credit_charge = credit_scope && credit_coordinates
++      ? root_child_credit.charge(credit_decision, credit_elapsed) : "none";
++  auto log_credit_return = [&](const char* event, bool accepted, bool improved,
++                               const HighsRootChildCredit::Incumbent& before,
++                               double import_start) {
++    if (!log_credit) return;
++    const auto after = incumbent_snapshot();
++    const double now = mipsolver.timer_.read();
++    highsLogUser(mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++        "RootChildCredit v1 return: call=%llu origin=%s phase=%s event=%s "
++        "charge=%s solver_elapsed=%.17g solver_overshoot=%.17g "
++        "parent_run_start=%.17g parent_run_end=%.17g parent_run_delta=%.17g "
++        "parent_import_end=%.17g parent_import_delta=%.17g status=%d "
++        "termination_status=%d first_hit=%.17g outer_gap_stopped=%d "
++        "accepted=%d improved=%d pre_original=%.17g post_original=%.17g "
++        "pre_upper=%.17g post_upper=%.17g restart=%d valid=%d S=%.17g C_after=%.17g\n",
++        static_cast<unsigned long long>(credit_call), credit_origin, credit_phase,
++        event, credit_charge, credit_elapsed,
++        std::max(0.0, credit_elapsed - submipoptions.time_limit),
++        credit_run_start, credit_run_end, credit_run_end - credit_run_start,
++        now, import_start >= 0 ? now - import_start : 0.0,
++        int(submipsolver.modelstatus_), int(submipsolver.termination_status_),
++        submipsolver.outer_gap_goal_.first_hit_time,
++        int(submipsolver.outer_gap_goal_.stopped), int(accepted), int(improved),
++        before.original, after.original, before.upper, after.upper,
++        int(after.restart), int(root_child_credit.valid), root_child_credit.initial,
++        root_child_credit.remaining);
++  };
+   if (mipsolver.profiling_->sub_solver_)
+     printf(
+         "HighsPrimalHeuristics::solveSubMip After  run() for %sMIP at depth "
+@@ -243,6 +385,8 @@
+                  submipoptions.objective_bound, int(submipsolver.modelstatus_));
+   }
+   if (submipsolver.termination_status_ != HighsModelStatus::kNotset) {
++    if (credit_scope) root_child_credit.synchronize(incumbent_snapshot());
++    log_credit_return("termination", false, false, credit_launch, -1);
+     worker.setHeurTerminationStatus(submipsolver.termination_status_);
+     return false;
+   }
+@@ -270,8 +414,14 @@
+     worker.updateHeurStatsInfeasObservations(fixingRate);
+   }
+   if (submipsolver.node_count_ <= 1 &&
+-      submipsolver.modelstatus_ == HighsModelStatus::kInfeasible)
++      submipsolver.modelstatus_ == HighsModelStatus::kInfeasible) {
++    if (credit_scope) root_child_credit.synchronize(incumbent_snapshot());
++    log_credit_return("infeasible", false, false, credit_launch, -1);
+     return false;
++  }
++  const auto credit_pre_import = observe_credit ? incumbent_snapshot()
++      : HighsRootChildCredit::Incumbent();
++  const double credit_import_start = observe_credit ? mipsolver.timer_.read() : 0;
+   double oldUpperLimit = worker.upper_limit;
+   bool accepted = false;
+   if (submipsolver.modelstatus_ != HighsModelStatus::kInfeasible &&
+@@ -279,6 +429,16 @@
+     accepted =
+         trySolution(submipsolver.solution_, kSolutionSourceSubMip, worker);
+   }
++  const auto credit_post_import = observe_credit ? incumbent_snapshot()
++      : HighsRootChildCredit::Incumbent();
++  const bool credit_improved = credit_scope && credit_coordinates &&
++      HighsRootChildCredit::improved(accepted, credit_pre_import,
++          credit_post_import, mipsolver.orig_model_->sense_);
++  const char* credit_event = credit_scope && credit_coordinates
++      ? root_child_credit.finish(credit_pre_import, credit_post_import, accepted,
++          mipsolver.orig_model_->sense_, credit_elapsed) : "none";
++  log_credit_return(credit_event, accepted, credit_improved, credit_pre_import,
++                    credit_import_start);
+   if (serial_outer_gap &&
+       mipsolver.options_mip_->mip_heuristic_outer_gap_log) {
+     double lb, ub;
+@@ -424,7 +584,7 @@
+               500,  // std::max(50, int(0.05 *
+                     // (mipsolver.mipdata_->num_leaves))),
+               200 + static_cast<HighsInt>(mipsolver.mipdata_->num_nodes / 20),
+-              12);
++              12, HighsSubMipOrigin::kRootReducedCost);
+ }
+ 
+ static double calcFixVal(double rootchange, double fracval, double cost) {
+@@ -445,7 +605,8 @@
+ }
+ 
+ void HighsPrimalHeuristics::RENS(HighsMipWorker& worker,
+-                                 const std::vector<double>& tmp) {
++                                 const std::vector<double>& tmp,
++                                 HighsRensPhase phase) {
+   // return if domain is infeasible
+   if (worker.getGlobalDomain().infeasible()) return;
+ 
+@@ -682,7 +843,9 @@
+       localdom.col_lower_, localdom.col_upper_,
+       500,  // std::max(50, int(0.05 *
+       // (mipsolver.mipdata_->num_leaves))),
+-      200 + mipsolver.mipdata_->num_nodes / (node_reduction_factor * 20), 12);
++      200 + mipsolver.mipdata_->num_nodes / (node_reduction_factor * 20), 12,
++      phase == HighsRensPhase::kRoot ? HighsSubMipOrigin::kRootRens
++                                    : HighsSubMipOrigin::kSearchRens);
+   if (worker.terminatorTerminated()) return;
+   if (!solve_sub_mip_return) {
+     int64_t new_lp_iterations =
+@@ -993,7 +1156,8 @@
+       localdom.col_lower_, localdom.col_upper_,
+       500,  // std::max(50, int(0.05 *
+       // (mipsolver.mipdata_->num_leaves))),
+-      200 + mipsolver.mipdata_->num_nodes / (node_reduction_factor * 20), 12);
++      200 + mipsolver.mipdata_->num_nodes / (node_reduction_factor * 20), 12,
++      HighsSubMipOrigin::kSearchRins);
+   if (worker.terminatorTerminated()) return;
+   if (!solve_sub_mip_return) {
+     int64_t new_lp_iterations =
+--- a/highs/mip/HighsPrimalHeuristics.h
++++ b/highs/mip/HighsPrimalHeuristics.h
+@@ -8,6 +8,8 @@
+ #ifndef HIGHS_PRIMAL_HEURISTICS_H_
+ #define HIGHS_PRIMAL_HEURISTICS_H_
+ 
++#include <algorithm>
++#include <cmath>
+ #include <vector>
+ 
+ #include "lp_data/HStruct.h"
+@@ -17,6 +19,145 @@
+ class HighsMipSolver;
+ class HighsMipWorker;
+ class HighsLpRelaxation;
++
++// Explicit caller tags: RENS is used in both root evaluation and search.
++enum class HighsSubMipOrigin {
++  kOther,
++  kRootReducedCost,
++  kRootRens,
++  kSearchRens,
++  kSearchRins
++};
++enum class HighsRensPhase { kRoot, kSearch };
++
++// Scheduling state only. Neither this ledger nor a restricted child's bound
++// participates in proof or candidate acceptance. Kept pure for replay tests.
++struct HighsRootChildCredit {
++  struct Incumbent {
++    bool feasible = false;
++    HighsInt restart = 0;
++    double original = 0;
++    double upper = 0;
++  };
++  struct Decision {
++    const char* reason = "uncalibrated";
++    bool spend = false;
++    bool skip = false;
++    double limit = 0;
++  };
++
++  bool valid = false;
++  Incumbent anchor;
++  double initial = 0;
++  double remaining = 0;
++
++  static bool inScope(HighsSubMipOrigin origin, bool submip, bool parallel_lock,
++                      HighsInt workers) {
++    return !submip && !parallel_lock && workers == 1 &&
++           (origin == HighsSubMipOrigin::kRootReducedCost ||
++            origin == HighsSubMipOrigin::kRootRens);
++  }
++
++  static bool nearTarget(long double upper, long double lower,
++                         long double offset, long double relative,
++                         long double absolute) {
++    if (!std::isfinite(upper) || !std::isfinite(lower) ||
++        !std::isfinite(offset) || !std::isfinite(relative) ||
++        !std::isfinite(absolute) || relative <= 0 || absolute < 0)
++      return false;
++    const long double difference = upper - lower;
++    const long double value = upper + offset;
++    const long double target = relative * std::abs(value);
++    return std::isfinite(difference) && std::isfinite(value) &&
++           std::isfinite(target) && std::isfinite(2 * target) &&
++           difference >= 0 && std::abs(value) > 0 &&
++           difference > std::max(absolute, target) && difference <= 2 * target;
++  }
++
++  void clear() {
++    valid = false;
++    initial = remaining = 0;
++  }
++
++  const char* synchronize(const Incumbent& current) {
++    if (!valid) return "none";
++    const char* reason = "none";
++    if (current.restart != anchor.restart)
++      reason = "restart";
++    else if (!current.feasible)
++      reason = "incumbent";
++    else if (current.original != anchor.original)
++      reason = "original";
++    else if (current.upper != anchor.upper)
++      reason = "upper";
++    else
++      return reason;
++    clear();
++    return reason;
++  }
++
++  Decision decide(bool scope, bool coordinates, bool band, double existing,
++                  bool pending_termination) const {
++    Decision result;
++    result.limit = existing;
++    if (!scope)
++      result.reason = "scope";
++    else if (!coordinates)
++      result.reason = "coordinates";
++    else if (pending_termination)
++      result.reason = "termination";
++    else if (!(existing > 0))
++      result.reason = "time";
++    else if (!band)
++      result.reason = "band";
++    else if (!valid)
++      result.reason = "uncalibrated";
++    else {
++      result.spend = true;
++      result.skip = remaining == 0;
++      result.limit = std::min(existing, remaining);
++      result.reason = result.skip ? "exhausted" : "credit";
++    }
++    return result;
++  }
++
++  // Called exactly once, immediately after run(), including early-return paths.
++  const char* charge(const Decision& decision, double elapsed) {
++    if (!std::isfinite(elapsed) || elapsed < 0) {
++      clear();
++      return "invalid_elapsed";
++    }
++    if (!decision.spend || !valid) return "none";
++    remaining = std::max(0.0, remaining - elapsed);
++    return "debit";
++  }
++
++  static bool improved(bool accepted, const Incumbent& before,
++                       const Incumbent& after, ObjSense sense) {
++    if (!accepted || !after.feasible) return false;
++    if (!before.feasible) return true;  // no arithmetic on the absent sentinel
++    return after.upper < before.upper &&
++           (sense == ObjSense::kMinimize ? after.original < before.original
++                                        : after.original > before.original);
++  }
++
++  const char* finish(const Incumbent& before, const Incumbent& after,
++                     bool accepted, ObjSense sense, double elapsed) {
++    const bool had_credit = valid;
++    const char* reset = synchronize(after);  // both authoritative objectives
++    if (!std::isfinite(elapsed) || elapsed < 0) {
++      clear();
++      return "invalid_elapsed";
++    }
++    if (improved(accepted, before, after, sense) && elapsed > 0) {
++      valid = true;
++      anchor = after;
++      initial = remaining = elapsed;
++      return had_credit ? "renew" : "learn";
++    }
++    return reset;
++  }
++};
+ 
+ class HighsPrimalHeuristics {
+  private:
+@@ -28,6 +169,8 @@
+   HighsInt numInfeasObservations;
+ 
+   HighsRandom randgen;
++  HighsRootChildCredit root_child_credit;
++  uint64_t root_child_call_id = 0;
+ 
+  public:
+   HighsPrimalHeuristics(HighsMipSolver& mipsolver);
+@@ -37,13 +180,15 @@
+   bool solveSubMip(HighsMipWorker& worker, const HighsLp& lp,
+                    const HighsBasis& basis, double fixingRate,
+                    std::vector<double> colLower, std::vector<double> colUpper,
+-                   HighsInt maxleaves, HighsInt maxnodes, HighsInt stallnodes);
++                   HighsInt maxleaves, HighsInt maxnodes, HighsInt stallnodes,
++                   HighsSubMipOrigin origin = HighsSubMipOrigin::kOther);
+ 
+   double determineTargetFixingRate(HighsMipWorker& worker);
+ 
+   void rootReducedCost(HighsMipWorker& worker);
+ 
+-  void RENS(HighsMipWorker& worker, const std::vector<double>& relaxationsol);
++  void RENS(HighsMipWorker& worker, const std::vector<double>& relaxationsol,
++            HighsRensPhase phase);
+ 
+   void RINS(HighsMipWorker& worker, const std::vector<double>& relaxationsol);
+ 

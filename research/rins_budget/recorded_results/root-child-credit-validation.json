@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "build_receipt_sha256": "1daac3531615936da545ea2704d6edb6a158ec226693b88326fbe091c4ac54dd",
+  "source_review_sha256": "2c5a0db662da3b92d1fbbb7dc5355bc78611c5ba03261e532be346c4889a1b74",
+  "driver_review_sha256": "f50117427d309a1d22974cbf70e7ea2477ac25a5329abf61295ac2f32ad16e1a",
+  "build_settings": {
+    "ctest_jobs": 1,
+    "parallel_build_jobs": 4,
+    "release": "Release; FAST_BUILD=ON; BUILD_SHARED_LIBS=ON; BUILD_TESTING=ON; ALL_TESTS=ON; HIPO=OFF"
+  },
+  "tests": {
+    "ctest_passed": 168,
+    "ctest_total": 168,
+    "unit_cases": 352,
+    "unit_assertions": 1259988,
+    "release_focused_cases": 23,
+    "release_focused_assertions": 1020,
+    "asan_ubsan_focused_cases": 23,
+    "asan_ubsan_focused_assertions": 1020,
+    "leak_detection_enabled": false,
+    "old_off_observe_capi_runs": 18,
+    "exact_triples": 6
+  },
+  "source_invariants": {
+    "runtime_v1_unchanged": true,
+    "final_test_helper_only_updateLowerBound": true,
+    "default_options_false": true,
+    "direct_serial_main_root_only": true,
+    "search_nested_multiworker_excluded": true,
+    "dual_objective_and_restart_epoch_anchors": true,
+    "local_child_limit_only": true,
+    "shared_termination_priority_preserved": true,
+    "parent_trySolution_unchanged": true,
+    "parent_proof_acceptance_unchanged": true
+  },
+  "driver_mock_tests": {
+    "passed": true,
+    "test_count": 85,
+    "seconds": 0.195
+  },
+  "verification_method": "Retained build/test receipts and independent source/artifact review; publication preparation did not rebuild or solve",
+  "test_scope_limits": [
+    "Natural rgn root scheduling demonstrates real origin wiring and a finite applied cap at 4%; the cap need not expire",
+    "Actual timeout, accepted returned candidate and exhaustion are demonstrated separately by a prepared parent with fixture lower bound 77",
+    "Parent continuation in the prepared fixture is demonstrated by unset status and checkLimits plus further child/import operations, not completion of a new full parent search",
+    "Retained test receipts were verified, not rerun",
+    "Cooperative limits can overshoot; credit excludes parent preparation/import and untimed cleanup",
+    "LeakSanitizer was disabled; no leak-safety claim.",
+    "18 C-API runs form 6 exact old-control/off/observe triples; this is selected regression evidence, not equivalence for every instance."
+  ],
+  "replay": {
+    "schema_version": 1,
+    "passed": true,
+    "method": "fresh official git archive; git apply --check and git apply (without index) for the three ordered patches; complete frozen file-inventory comparison",
+    "base_commit": "73cac48c5340d775a477087198611862559be250",
+    "patches": [
+      {
+        "artifact": "outer-gap-heuristic.patch",
+        "sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae"
+      },
+      {
+        "artifact": "initial-root-ipx.patch",
+        "sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24"
+      },
+      {
+        "artifact": "root-child-credit.patch",
+        "sha256": "03041fda1e20fcf0a3fcae6489c7cbb1a8d03769377567ab7ac2ae64fa3ad9c1"
+      }
+    ],
+    "verified_source_paths": 983,
+    "frozen_source_inventory_sha256": "b00bd702ff29a4737b1be49156fee934f0b339b88ad155a0b13810300a891cd1",
+    "mismatches": [],
+    "extra_paths": [],
+    "built_or_solved": false,
+    "existing_worktree_modified": false
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "method": "fresh official git archive; git apply --check and git apply (without index) for the three ordered patches; complete frozen file-inventory comparison",
+  "base_commit": "73cac48c5340d775a477087198611862559be250",
+  "patches": [
+    {
+      "artifact": "outer-gap-heuristic.patch",
+      "sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae"
+    },
+    {
+      "artifact": "initial-root-ipx.patch",
+      "sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24"
+    },
+    {
+      "artifact": "root-child-credit.patch",
+      "sha256": "03041fda1e20fcf0a3fcae6489c7cbb1a8d03769377567ab7ac2ae64fa3ad9c1"
+    }
+  ],
+  "verified_source_paths": 983,
+  "frozen_source_inventory_sha256": "b00bd702ff29a4737b1be49156fee934f0b339b88ad155a0b13810300a891cd1",
+  "mismatches": [],
+  "extra_paths": [],
+  "built_or_solved": false,
+  "existing_worktree_modified": false
+}

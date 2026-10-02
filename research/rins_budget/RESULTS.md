@@ -132,3 +132,20 @@ seconds. Both final source/192-outage certificates are identical at 0.98605%.
 The predeclared 20%-on-both gate failed, so no held-out campaign followed.
 See [LP_SECURITY_RESULTS.md](LP_SECURITY_RESULTS.md) for all preparation costs,
 validation and the retained earlier wrapper failure.
+
+## Default-off main-root child credit: gate failed
+
+A later same-binary February PEGASE89 seed-0 pair, with cold LP discovery in both
+arms, measured 26.0865 versus 23.0797 aggregate solver-process seconds (11.53%
+reduction) and 38.2933 versus 34.9718 standalone-equivalent E2E seconds (8.67%).
+One root-RENS cap activated; a normal restart subsequently added uncapped
+root-child work. Both independently checked incumbents and adjusted
+solver-reported lower bounds were identical, giving a 0.98605454% numerical gap,
+zero shed/overflow, and checks of all 192 source-listed outages.
+
+Neither metric met the predeclared 20% reduction gate. The campaign stopped with
+no held-out runs or retuning; no stable acceleration is established and all
+normal defaults remain unchanged. The retained-result audit passed. See
+[ROOT_CHILD_CREDIT.md](ROOT_CHILD_CREDIT.md) for mechanism, timing definitions,
+source/tests, exact provenance, and the explicit limit that the measured
+cold-screen E2E harness is not published as a portable reproduction.

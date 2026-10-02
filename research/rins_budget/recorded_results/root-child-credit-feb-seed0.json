@@ -1,0 +1,1500 @@
+{
+  "schema_version": 1,
+  "title": "Default-off direct-main-root child-credit development pair",
+  "recorded_date_utc": "2026-10-02",
+  "publication_state": "draft_terminal_pair_audit_complete",
+  "terminal_pair_audit": {
+    "schema_version": 1,
+    "review_date_utc": "2026-10-02",
+    "status": "pass_retained_result_integrity_fail_advancement_gate",
+    "critical_integrity_blockers": [],
+    "driver_manifest_sha256": "239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c",
+    "pilot_pair_sha256": "7cd6712d30aeba2918b3ad7b69e20d7546f19d5a703c61abb89734df4dfb800f",
+    "tiny_pair_sha256": "2d88e6b073a0a2be6948f3e55cda8fbfb5419732c2d1b3dc33cec02f68611de2",
+    "tiny_verification_sha256": "af857685cd7ba54fdd265a1ca0aeaae51a9151116cd309696992f826a7e7fa90",
+    "both_source_correct_one_percent_complete": true,
+    "candidate_mechanism_activated": true,
+    "solver_reduction_fraction": 0.11526285000774283,
+    "standalone_e2e_reduction_fraction": 0.08673849467293293,
+    "required_reduction_each_metric": 0.2,
+    "development_gate_pass": false,
+    "campaign_decision": "STOP_NO_ADVANCE_NO_POST_RESULT_RETUNING",
+    "runtime_pins_reverified": 360,
+    "pilot_actual_api_readbacks_reviewed": 6,
+    "pilot_solver_logs_reviewed": 6,
+    "source_outages_checked_per_stage": 192,
+    "candidate_applied_cap_seconds": 5.149598598480225,
+    "candidate_capped_child_elapsed_seconds": 5.165372610092163,
+    "candidate_cooperative_overshoot_seconds": 0.015774011611938477,
+    "candidate_shared_termination_status": 0,
+    "candidate_local_status": 13,
+    "candidate_post_restart_uncapped_child_seconds": 6.914916753768921,
+    "signed_zero_note": "Every production stage: expected/loaded row-bound hash differences exactly explained by 1296 lower and 9 upper negative zeros becoming positive zero; exact elementwise equality, no tolerance expansion",
+    "tiny_pipeline_pass": true,
+    "tiny_credit_activation_claim": false,
+    "new_numerical_or_resource_failures": false,
+    "fresh_numerical_work_called": false,
+    "additional_launch_authorized_by_review": false,
+    "artifact_sha256": "6e42d8b996005af03d0095320f65f10a9872cacbcb1cf6513fc3d34e65b5aa07",
+    "method": "Independent retained-artifact, raw-log and arithmetic audit; no fresh numerical execution"
+  },
+  "decision": {
+    "development_gate": "At least 20% reduction in both aggregate solver-process wall and standalone-equivalent E2E, valid 1% completions and actual mechanism activation",
+    "passed": false,
+    "policy_default": false,
+    "held_out_campaign_run": false,
+    "stable_acceleration_established": false,
+    "result_scope": "one seed, one off-then-on pair; host noise and order effects unquantified"
+  },
+  "source_provenance": {
+    "official_base_commit": "73cac48c5340d775a477087198611862559be250",
+    "ordered_patch_chain": [
+      {
+        "artifact": "outer-gap-heuristic.patch",
+        "sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae"
+      },
+      {
+        "artifact": "initial-root-ipx.patch",
+        "sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24"
+      },
+      {
+        "artifact": "root-child-credit.patch",
+        "sha256": "03041fda1e20fcf0a3fcae6489c7cbb1a8d03769377567ab7ac2ae64fa3ad9c1"
+      }
+    ],
+    "source_inventory_sha256": "b00bd702ff29a4737b1be49156fee934f0b339b88ad155a0b13810300a891cd1",
+    "build_receipt_sha256": "1daac3531615936da545ea2704d6edb6a158ec226693b88326fbe091c4ac54dd",
+    "source_review_sha256": "2c5a0db662da3b92d1fbbb7dc5355bc78611c5ba03261e532be346c4889a1b74",
+    "driver_review_sha256": "f50117427d309a1d22974cbf70e7ea2477ac25a5329abf61295ac2f32ad16e1a",
+    "driver_runtime_freeze_sha256": "239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c",
+    "measured_runtime": {
+      "binary": {
+        "basename": "highs",
+        "sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+        "bytes": 566744
+      },
+      "extras_library": {
+        "basename": "libhighs_extras.so",
+        "sha256": "c2b7d0cc4453ad61b8e61edc645fca8e2f0c4855cb280a42d4c42a9cb3d361c9",
+        "bytes": 15496
+      },
+      "main_library": {
+        "basename": "libhighs.so.1.15.1",
+        "sha256": "8f36d220b029c78f044a1410f76c1cce2d7854fb4989b08633387a9cec1eae51",
+        "bytes": 6188728
+      }
+    }
+  },
+  "protocol": {
+    "case": "case89pegase_2017-02-01",
+    "source_file_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+    "hours": 36,
+    "seed": 0,
+    "arm_order": [
+      "root_credit_off",
+      "root_credit_on"
+    ],
+    "custom_model": "preventive DC unit commitment; input-listed line-outage security; original objective and penalties unchanged",
+    "buses": 89,
+    "lines": 210,
+    "generators": 12,
+    "listed_outages_checked": 192,
+    "monitored_outage_pairs": 14721,
+    "checked_pair_hours": 529956,
+    "target_gap": 0.01,
+    "tolerance": 1e-05,
+    "solver_budget_per_arm_seconds": 600,
+    "threads_option": 2,
+    "parallel": "off",
+    "actual_main_mip_workers": 1,
+    "empty_initial_pair_cache": true,
+    "lp_discovery_in_both_arms": true,
+    "lp_call_cap_seconds": 10,
+    "lp_total_cap_seconds": 30,
+    "lp_max_calls": 3,
+    "no_primal_basis_or_lp_bound_carry": true,
+    "same_binary_option_only_difference": true,
+    "outer_gap_enabled_in_both": true,
+    "initial_root_ipx_enabled_in_either": false,
+    "separator_optimization_included": false
+  },
+  "timing_definition": {
+    "solver_process_wall": "Sum of exact solver-child launch-to-reap wall intervals for LP and MIP; nested heuristic time is not added again",
+    "standalone_equivalent_e2e": "Per-arm interval beginning before source/runtime checks and ending after checks plus durable summary, plus the full common Python/setup/archival interval; this is an in-program standalone-equivalent measure, not a separate cold OS process",
+    "common_setup_seconds": 0.28610222799761686,
+    "pair_e2e_including_archival_seconds": 72.98693872500735,
+    "receipt_and_pair_archival": "Arm completion receipts follow per-arm E2E. The retained pair interval includes those receipts but is sampled before final pair calculations and pair.json serialization; it does not include final pair archival despite the raw field name.",
+    "pair_interval_endpoint": "After arm completion receipts; before pair comparison/mechanism calculations and final pair.json serialization"
+  },
+  "comparison": {
+    "valid_comparison": true,
+    "metrics": {
+      "standalone_equivalent_e2e_seconds": {
+        "baseline": 38.29326003999449,
+        "candidate": 34.971760308006196,
+        "reduction_fraction": 0.08673849467293293
+      },
+      "solver_process_wall_seconds": {
+        "baseline": 26.08653052400041,
+        "candidate": 23.079722668990144,
+        "reduction_fraction": 0.11526285000774283
+      }
+    },
+    "development_gate_pass": false,
+    "e2e_comparison_scope": "common source/runtime archival and Python-definition startup charged in full to each standalone-equivalent arm",
+    "timing_gate_pass": false
+  },
+  "mechanism_summary": {
+    "root_credit_off": {
+      "call_count": 2,
+      "applied_caps": 0,
+      "applied_skips": 0,
+      "root_origins_observed": [
+        "root-RENS",
+        "root-reduced-cost"
+      ]
+    },
+    "root_credit_on": {
+      "call_count": 3,
+      "applied_caps": 1,
+      "applied_skips": 0,
+      "root_origins_observed": [
+        "root-RENS",
+        "root-reduced-cost"
+      ]
+    },
+    "candidate_mechanism_activated": true,
+    "scope": "Source-pinned heuristic telemetry only; never a global lower bound or separate process-time debit"
+  },
+  "arms": {
+    "root_credit_off": {
+      "complete": true,
+      "seed": 0,
+      "hours": 36,
+      "credit_enabled": false,
+      "timing": {
+        "end_to_end_seconds": 38.007157811996876,
+        "summary_sha256": "4db8d5be2c5435eff8e0fed696adc319aa5ad9a19351baace04579727d990d0b",
+        "common_setup_seconds": 0.28610222799761686,
+        "standalone_equivalent_e2e_seconds": 38.29326003999449,
+        "timing": "starts before source/runtime verification; stops after all checks and durable summary; this timing receipt is pair archival",
+        "complete": true,
+        "solver_process_wall_seconds": 26.08653052400041
+      },
+      "budget": {
+        "total": 600.0,
+        "solver_process_wall_seconds": 26.08653052400041,
+        "lp_process_wall_seconds": 1.1092243180028163,
+        "lp_calls": 2,
+        "remaining": 573.9134694759996,
+        "lp_policy_valid": true,
+        "in_budget": true,
+        "calls": [
+          {
+            "kind": "lp",
+            "allocation": 10.0,
+            "actual": 0.5544280360045377,
+            "overrun": 0.0
+          },
+          {
+            "kind": "lp",
+            "allocation": 10.0,
+            "actual": 0.5547962819982786,
+            "overrun": 0.0
+          },
+          {
+            "kind": "mip",
+            "allocation": 598.8907756819972,
+            "actual": 24.977306205997593,
+            "overrun": 0.0
+          }
+        ]
+      },
+      "stage_wall_seconds": {
+        "generation_readback": 4.020599594005034,
+        "lp_separation": 3.465761626997846,
+        "integer_checks": 2.2087442189949797,
+        "lp_solving": 1.1092243180028163,
+        "integer_solving": 24.977306205997593
+      },
+      "resources": {
+        "child_user_cpu_seconds": 41.396262,
+        "child_system_cpu_seconds": 0.99151,
+        "child_peak_rss_KiB": 353244,
+        "child_resource_accounting_complete": true,
+        "parent_cpu_seconds": 2.080623571,
+        "parent_process_cumulative_peak_rss_KiB": 77880,
+        "parent_rss_scope": "cumulative lifetime peak of shared pair Python parent; second arm may inherit an earlier peak"
+      },
+      "final_primal": {
+        "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+        "checked_upper": 3534678.7624266683,
+        "matrix_check": {
+          "passed": true,
+          "exact_column_names": true,
+          "integrality_scope": "original_integer",
+          "linear_objective": 3534678.762426666,
+          "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+          "tolerance": 1e-05,
+          "violations_by_category": {},
+          "max_violation_by_category": {
+            "row": 7.401865786960116e-10,
+            "lower_bound": 0.0,
+            "upper_bound": 5.684341886080802e-14,
+            "integrality": 0.0
+          },
+          "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+          "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+          "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+          "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e"
+        },
+        "source_check": {
+          "pass_primal": true,
+          "tolerance": 1e-05,
+          "mode": "n1",
+          "hours": 36,
+          "max_violation_by_category": {
+            "shed_bounds": 0.0,
+            "binary": 0.0,
+            "transition": 0.0,
+            "exclusive_transition": 0.0,
+            "reserve_nonnegative": 0.0,
+            "dispatch_bounds": 0.0,
+            "startup_power": 0.0,
+            "ramp_up": 0.0,
+            "ramp_down": 0.0,
+            "shutdown_power": 0.0,
+            "dispatch_nonnegative": 0.0,
+            "startup_cost_nonnegative": 0.0,
+            "minimum_time": 0.0,
+            "startup_cost_epigraph": 0.0,
+            "reserve_shortfall_bound": 0.0,
+            "reserve_requirement": 0.0,
+            "system_balance": 2.1373125491663814e-11,
+            "reference_angle": 0.0,
+            "overflow_nonnegative": 0.0,
+            "direct_base_flow": 2.3987922759260982e-11,
+            "phase_angle_flow": 7.450466910086107e-10,
+            "normal_line_limit": 0.0,
+            "emergency_line_limit": 2.262368070660159e-11,
+            "segment_bounds": 5.684341886080802e-14,
+            "segment_dispatch": 4.547473508864641e-13
+          },
+          "violations_by_category": {},
+          "true_source_cost": 3534678.7624266716,
+          "linear_model_cost": 3534678.7624266683,
+          "objective_overpayment": -3.259629011154175e-09,
+          "total_shed_MWh": 0.0,
+          "max_overflow_MW": 0.0,
+          "base_unrelaxed_overload_MW": 0.0,
+          "security": {
+            "violated_pairs": [],
+            "outages_checked": 192,
+            "max_violation_after_shared_slack_MW": 2.262368070660159e-11,
+            "max_unrelaxed_overload_MW": 2.262368070660159e-11,
+            "violated_line_hours": 0
+          },
+          "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad"
+        },
+        "new_pairs": [],
+        "full_source_primal_pass": true
+      },
+      "numerical_gap": {
+        "upper": 3534678.7624266683,
+        "adjusted_solver_lower": 3499824.9019100014,
+        "fraction": 0.009860545429802687,
+        "target_met": true,
+        "primal_independently_checked": true,
+        "solver_lower_independently_proved": false,
+        "raw_lower_token": "3499824.90195",
+        "printed_lower": 3499824.90195,
+        "lower_rounding_allowance": 3.999824901949999e-05,
+        "lower_rounding_allowance_reason": "half of 12-significant-digit display unit plus max(1e-5,abs(raw)*1e-11)",
+        "parent_status": "Optimal",
+        "bound_scope": "original_security_master_mip",
+        "loaded_library_identity_valid": true,
+        "master_identity": {
+          "kind": "mip",
+          "stage_index": 3,
+          "hours": 36,
+          "objective_scope": "unchanged_original_source",
+          "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+          "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+          "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+          "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e",
+          "api_report_sha256": "2923a582a570aef685b9800c7d34a23c4be4ee2bc6f5c09c2944a1fd028263ff",
+          "options_sha256": "ff7fe07cbff957f44c3ef63a38f766f75ad305931bd78b2baff3a6a681026fb8",
+          "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+          "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+          "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+          "runtime_manifest_sha256": "239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c"
+        }
+      },
+      "stages": [
+        {
+          "kind": "lp",
+          "stage": "01_lp",
+          "allocation_seconds": 10.0,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 0.5544280360045377,
+            "peak_rss_KiB": 50780,
+            "user_cpu_seconds": 0.533094,
+            "system_cpu_seconds": 0.012072999999999999,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model_sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+          "solution_sha256": "fad752047cae87e717b66a06eb62c10432b8162bed55857744cd108acbf6b9e2",
+          "active_pairs_count": 0,
+          "accepted_new_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "loaded_library_identity_valid": true
+        },
+        {
+          "kind": "lp",
+          "stage": "02_lp",
+          "allocation_seconds": 10.0,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 0.5547962819982786,
+            "peak_rss_KiB": 52208,
+            "user_cpu_seconds": 0.521656,
+            "system_cpu_seconds": 0.020399999999999998,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model_sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+          "solution_sha256": "bb08aa677e4d9ebcfc40df8d40093b0e7ce157120414080d41a8bf97948829c7",
+          "active_pairs_count": 12,
+          "accepted_new_pairs": [],
+          "loaded_library_identity_valid": true
+        },
+        {
+          "kind": "mip",
+          "stage": "03_mip",
+          "allocation_seconds": 598.8907756819972,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 24.977306205997593,
+            "peak_rss_KiB": 353244,
+            "user_cpu_seconds": 31.409109,
+            "system_cpu_seconds": 0.380094,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+          "active_pairs_count": 12,
+          "accepted_new_pairs": [],
+          "loaded_library_identity_valid": true,
+          "root_child_credit": {
+            "version": 1,
+            "mode": "observe",
+            "call_count": 2,
+            "applied_caps": 0,
+            "applied_skips": 0,
+            "root_origins_observed": [
+              "root-RENS",
+              "root-reduced-cost"
+            ],
+            "global_bound_eligible": false,
+            "nested_time_added_to_process_budget": false,
+            "calls": [
+              {
+                "decision": {
+                  "call": "1",
+                  "mode": "observe",
+                  "origin": "root-reduced-cost",
+                  "phase": "root",
+                  "depth": "0",
+                  "workers": "1",
+                  "parallel_lock": "0",
+                  "restart": "0",
+                  "original": "3552538.8214725661",
+                  "u": "-5519026.2118722489",
+                  "l": "-5586421.3194980333",
+                  "o": "9071565.0333448146",
+                  "r": "0.01",
+                  "a": "9.9999999999999995e-07",
+                  "raw_gap": "0.01897097006186926",
+                  "reason": "uncalibrated",
+                  "reset": "none",
+                  "valid": "0",
+                  "anchor_original": "0",
+                  "anchor_upper": "0",
+                  "S": "0",
+                  "C_before": "0",
+                  "existing_limit": "595.83053922798717",
+                  "proposed_limit": "595.83053922798717",
+                  "applied_limit": "595.83053922798717",
+                  "would_skip": "0",
+                  "skip": "0",
+                  "launch": "3.0602421760559082"
+                },
+                "cap_applied": false,
+                "skipped": false,
+                "terminal_kind": "return",
+                "terminal": {
+                  "call": "1",
+                  "origin": "root-reduced-cost",
+                  "phase": "root",
+                  "event": "learn",
+                  "charge": "none",
+                  "solver_elapsed": "5.1451761722564697",
+                  "solver_overshoot": "0",
+                  "parent_run_start": "3.0603823661804199",
+                  "parent_run_end": "8.2055599689483643",
+                  "parent_run_delta": "5.1451776027679443",
+                  "parent_import_end": "8.3524906635284424",
+                  "parent_import_delta": "0.14687275886535645",
+                  "status": "16",
+                  "termination_status": "0",
+                  "first_hit": "-1",
+                  "outer_gap_stopped": "0",
+                  "accepted": "1",
+                  "improved": "1",
+                  "pre_original": "3552538.8214725661",
+                  "post_original": "3534678.762426666",
+                  "pre_upper": "-5519026.2118722489",
+                  "post_upper": "-5536886.2709181486",
+                  "restart": "0",
+                  "valid": "1",
+                  "S": "5.1451761722564697",
+                  "C_after": "5.1451761722564697"
+                }
+              },
+              {
+                "decision": {
+                  "call": "2",
+                  "mode": "observe",
+                  "origin": "root-RENS",
+                  "phase": "root",
+                  "depth": "0",
+                  "workers": "1",
+                  "parallel_lock": "0",
+                  "restart": "0",
+                  "original": "3534678.762426666",
+                  "u": "-5536886.2709181486",
+                  "l": "-5586421.3194980333",
+                  "o": "9071565.0333448146",
+                  "r": "0.01",
+                  "a": "9.9999999999999995e-07",
+                  "raw_gap": "0.014014017088748783",
+                  "reason": "credit",
+                  "reset": "none",
+                  "valid": "1",
+                  "anchor_original": "3534678.762426666",
+                  "anchor_upper": "-5536886.2709181486",
+                  "S": "5.1451761722564697",
+                  "C_before": "5.1451761722564697",
+                  "existing_limit": "590.46503543999279",
+                  "proposed_limit": "5.1451761722564697",
+                  "applied_limit": "590.46503543999279",
+                  "would_skip": "0",
+                  "skip": "0",
+                  "launch": "8.4257469177246094"
+                },
+                "cap_applied": false,
+                "skipped": false,
+                "terminal_kind": "return",
+                "terminal": {
+                  "call": "2",
+                  "origin": "root-RENS",
+                  "phase": "root",
+                  "event": "none",
+                  "charge": "debit",
+                  "solver_elapsed": "15.16914963722229",
+                  "solver_overshoot": "0",
+                  "parent_run_start": "8.4259018898010254",
+                  "parent_run_end": "23.59505295753479",
+                  "parent_run_delta": "15.169151067733765",
+                  "parent_import_end": "23.595270156860352",
+                  "parent_import_delta": "0.00013256072998046875",
+                  "status": "16",
+                  "termination_status": "0",
+                  "first_hit": "-1",
+                  "outer_gap_stopped": "0",
+                  "accepted": "1",
+                  "improved": "0",
+                  "pre_original": "3534678.762426666",
+                  "post_original": "3534678.762426666",
+                  "pre_upper": "-5536886.2709181486",
+                  "post_upper": "-5536886.2709181486",
+                  "restart": "0",
+                  "valid": "1",
+                  "S": "5.1451761722564697",
+                  "C_after": "0"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "root_credit_on": {
+      "complete": true,
+      "seed": 0,
+      "hours": 36,
+      "credit_enabled": true,
+      "timing": {
+        "end_to_end_seconds": 34.68565808000858,
+        "summary_sha256": "fc0a90fba03f151cfa6bbda654660eeece2dc86e568f5c04e56b0dd703e261b9",
+        "common_setup_seconds": 0.28610222799761686,
+        "standalone_equivalent_e2e_seconds": 34.971760308006196,
+        "timing": "starts before source/runtime verification; stops after all checks and durable summary; this timing receipt is pair archival",
+        "complete": true,
+        "solver_process_wall_seconds": 23.079722668990144
+      },
+      "budget": {
+        "total": 600.0,
+        "solver_process_wall_seconds": 23.079722668990144,
+        "lp_process_wall_seconds": 1.162039767994429,
+        "lp_calls": 2,
+        "remaining": 576.9202773310099,
+        "lp_policy_valid": true,
+        "in_budget": true,
+        "calls": [
+          {
+            "kind": "lp",
+            "allocation": 10.0,
+            "actual": 0.6063286290009273,
+            "overrun": 0.0
+          },
+          {
+            "kind": "lp",
+            "allocation": 10.0,
+            "actual": 0.5557111389935017,
+            "overrun": 0.0
+          },
+          {
+            "kind": "mip",
+            "allocation": 598.8379602320056,
+            "actual": 21.917682900995715,
+            "overrun": 0.0
+          }
+        ]
+      },
+      "stage_wall_seconds": {
+        "generation_readback": 4.020239659992512,
+        "lp_separation": 3.216138982999837,
+        "integer_checks": 2.2113524690066697,
+        "lp_solving": 1.162039767994429,
+        "integer_solving": 21.917682900995715
+      },
+      "resources": {
+        "child_user_cpu_seconds": 38.236546000000004,
+        "child_system_cpu_seconds": 0.868968,
+        "child_peak_rss_KiB": 294624,
+        "child_resource_accounting_complete": true,
+        "parent_cpu_seconds": 2.000810669,
+        "parent_process_cumulative_peak_rss_KiB": 83776,
+        "parent_rss_scope": "cumulative lifetime peak of shared pair Python parent; second arm may inherit an earlier peak"
+      },
+      "final_primal": {
+        "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+        "checked_upper": 3534678.7624266683,
+        "matrix_check": {
+          "passed": true,
+          "exact_column_names": true,
+          "integrality_scope": "original_integer",
+          "linear_objective": 3534678.762426666,
+          "point_sha256": "8d193448453cd7448b8faf5b8ae68b4c55276ad81d996235f37981b3cb65b613",
+          "tolerance": 1e-05,
+          "violations_by_category": {},
+          "max_violation_by_category": {
+            "row": 7.401865786960116e-10,
+            "lower_bound": 0.0,
+            "upper_bound": 5.684341886080802e-14,
+            "integrality": 0.0
+          },
+          "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+          "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+          "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+          "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e"
+        },
+        "source_check": {
+          "pass_primal": true,
+          "tolerance": 1e-05,
+          "mode": "n1",
+          "hours": 36,
+          "max_violation_by_category": {
+            "shed_bounds": 0.0,
+            "binary": 0.0,
+            "transition": 0.0,
+            "exclusive_transition": 0.0,
+            "reserve_nonnegative": 0.0,
+            "dispatch_bounds": 0.0,
+            "startup_power": 0.0,
+            "ramp_up": 0.0,
+            "ramp_down": 0.0,
+            "shutdown_power": 0.0,
+            "dispatch_nonnegative": 0.0,
+            "startup_cost_nonnegative": 0.0,
+            "minimum_time": 0.0,
+            "startup_cost_epigraph": 0.0,
+            "reserve_shortfall_bound": 0.0,
+            "reserve_requirement": 0.0,
+            "system_balance": 2.1373125491663814e-11,
+            "reference_angle": 0.0,
+            "overflow_nonnegative": 0.0,
+            "direct_base_flow": 2.3987922759260982e-11,
+            "phase_angle_flow": 7.450466910086107e-10,
+            "normal_line_limit": 0.0,
+            "emergency_line_limit": 2.262368070660159e-11,
+            "segment_bounds": 5.684341886080802e-14,
+            "segment_dispatch": 4.547473508864641e-13
+          },
+          "violations_by_category": {},
+          "true_source_cost": 3534678.7624266716,
+          "linear_model_cost": 3534678.7624266683,
+          "objective_overpayment": -3.259629011154175e-09,
+          "total_shed_MWh": 0.0,
+          "max_overflow_MW": 0.0,
+          "base_unrelaxed_overload_MW": 0.0,
+          "security": {
+            "violated_pairs": [],
+            "outages_checked": 192,
+            "max_violation_after_shared_slack_MW": 2.262368070660159e-11,
+            "max_unrelaxed_overload_MW": 2.262368070660159e-11,
+            "violated_line_hours": 0
+          },
+          "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad"
+        },
+        "new_pairs": [],
+        "full_source_primal_pass": true
+      },
+      "numerical_gap": {
+        "upper": 3534678.7624266683,
+        "adjusted_solver_lower": 3499824.9019100014,
+        "fraction": 0.009860545429802687,
+        "target_met": true,
+        "primal_independently_checked": true,
+        "solver_lower_independently_proved": false,
+        "raw_lower_token": "3499824.90195",
+        "printed_lower": 3499824.90195,
+        "lower_rounding_allowance": 3.999824901949999e-05,
+        "lower_rounding_allowance_reason": "half of 12-significant-digit display unit plus max(1e-5,abs(raw)*1e-11)",
+        "parent_status": "Optimal",
+        "bound_scope": "original_security_master_mip",
+        "loaded_library_identity_valid": true,
+        "master_identity": {
+          "kind": "mip",
+          "stage_index": 3,
+          "hours": 36,
+          "objective_scope": "unchanged_original_source",
+          "source_sha256": "392dba4e7918848866d7e4fda7134b79db9961e37c7e7e0ac46f6d0a20a7a05e",
+          "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+          "expected_sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+          "pair_manifest_sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e",
+          "api_report_sha256": "67452313273287b00b06a6501c4cde91ce4c71e2dfb13ccc6e124ce17419c83d",
+          "options_sha256": "0d3d5a4c97246e74d2e0a45acca5b6fa04e352ac751d17ab04f739f3b59cb720",
+          "executable_sha256": "cec62e952fdbf81040d090904b4e858b499ddccbcee2863c8c0fb91133a5b714",
+          "generator_sha256": "ea57607bc600ee425c3a465dbda9ecf3980d98b06c4f305520ea2b0dc90c7e04",
+          "checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+          "runtime_manifest_sha256": "239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c"
+        }
+      },
+      "stages": [
+        {
+          "kind": "lp",
+          "stage": "01_lp",
+          "allocation_seconds": 10.0,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 0.6063286290009273,
+            "peak_rss_KiB": 50768,
+            "user_cpu_seconds": 0.543122,
+            "system_cpu_seconds": 0.026324999999999998,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model_sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+          "solution_sha256": "fad752047cae87e717b66a06eb62c10432b8162bed55857744cd108acbf6b9e2",
+          "active_pairs_count": 0,
+          "accepted_new_pairs": [
+            [
+              65,
+              7
+            ],
+            [
+              65,
+              67
+            ],
+            [
+              65,
+              159
+            ],
+            [
+              65,
+              179
+            ],
+            [
+              65,
+              208
+            ],
+            [
+              96,
+              179
+            ],
+            [
+              159,
+              65
+            ],
+            [
+              159,
+              66
+            ],
+            [
+              179,
+              66
+            ],
+            [
+              179,
+              96
+            ],
+            [
+              203,
+              83
+            ],
+            [
+              208,
+              66
+            ]
+          ],
+          "loaded_library_identity_valid": true
+        },
+        {
+          "kind": "lp",
+          "stage": "02_lp",
+          "allocation_seconds": 10.0,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 0.5557111389935017,
+            "peak_rss_KiB": 52280,
+            "user_cpu_seconds": 0.49396199999999996,
+            "system_cpu_seconds": 0.024512,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model_sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+          "solution_sha256": "bb08aa677e4d9ebcfc40df8d40093b0e7ce157120414080d41a8bf97948829c7",
+          "active_pairs_count": 12,
+          "accepted_new_pairs": [],
+          "loaded_library_identity_valid": true
+        },
+        {
+          "kind": "mip",
+          "stage": "03_mip",
+          "allocation_seconds": 598.8379602320056,
+          "solver_process": {
+            "returncode": 0,
+            "hard_watchdog_killed": false,
+            "process_wall_seconds": 21.917682900995715,
+            "peak_rss_KiB": 294624,
+            "user_cpu_seconds": 28.454063,
+            "system_cpu_seconds": 0.261465,
+            "resource_accounting": "os.wait4 rusage of this solver child only; Linux RSS KiB"
+          },
+          "model_sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+          "solution_sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+          "active_pairs_count": 12,
+          "accepted_new_pairs": [],
+          "loaded_library_identity_valid": true,
+          "root_child_credit": {
+            "version": 1,
+            "mode": "enforce",
+            "call_count": 3,
+            "applied_caps": 1,
+            "applied_skips": 0,
+            "root_origins_observed": [
+              "root-RENS",
+              "root-reduced-cost"
+            ],
+            "global_bound_eligible": false,
+            "nested_time_added_to_process_budget": false,
+            "calls": [
+              {
+                "decision": {
+                  "call": "1",
+                  "mode": "enforce",
+                  "origin": "root-reduced-cost",
+                  "phase": "root",
+                  "depth": "0",
+                  "workers": "1",
+                  "parallel_lock": "0",
+                  "restart": "0",
+                  "original": "3552538.8214725661",
+                  "u": "-5519026.2118722489",
+                  "l": "-5586421.3194980333",
+                  "o": "9071565.0333448146",
+                  "r": "0.01",
+                  "a": "9.9999999999999995e-07",
+                  "raw_gap": "0.01897097006186926",
+                  "reason": "uncalibrated",
+                  "reset": "none",
+                  "valid": "0",
+                  "anchor_original": "0",
+                  "anchor_upper": "0",
+                  "S": "0",
+                  "C_before": "0",
+                  "existing_limit": "595.88601707290218",
+                  "proposed_limit": "595.88601707290218",
+                  "applied_limit": "595.88601707290218",
+                  "would_skip": "0",
+                  "skip": "0",
+                  "launch": "2.9519491195678711"
+                },
+                "cap_applied": false,
+                "skipped": false,
+                "terminal_kind": "return",
+                "terminal": {
+                  "call": "1",
+                  "origin": "root-reduced-cost",
+                  "phase": "root",
+                  "event": "learn",
+                  "charge": "none",
+                  "solver_elapsed": "5.1495985984802246",
+                  "solver_overshoot": "0",
+                  "parent_run_start": "2.9520702362060547",
+                  "parent_run_end": "8.1016702651977539",
+                  "parent_run_delta": "5.1496000289916992",
+                  "parent_import_end": "8.240933895111084",
+                  "parent_import_delta": "0.13920426368713379",
+                  "status": "16",
+                  "termination_status": "0",
+                  "first_hit": "-1",
+                  "outer_gap_stopped": "0",
+                  "accepted": "1",
+                  "improved": "1",
+                  "pre_original": "3552538.8214725661",
+                  "post_original": "3534678.762426666",
+                  "pre_upper": "-5519026.2118722489",
+                  "post_upper": "-5536886.2709181486",
+                  "restart": "0",
+                  "valid": "1",
+                  "S": "5.1495985984802246",
+                  "C_after": "5.1495985984802246"
+                }
+              },
+              {
+                "decision": {
+                  "call": "2",
+                  "mode": "enforce",
+                  "origin": "root-RENS",
+                  "phase": "root",
+                  "depth": "0",
+                  "workers": "1",
+                  "parallel_lock": "0",
+                  "restart": "0",
+                  "original": "3534678.762426666",
+                  "u": "-5536886.2709181486",
+                  "l": "-5586421.3194980333",
+                  "o": "9071565.0333448146",
+                  "r": "0.01",
+                  "a": "9.9999999999999995e-07",
+                  "raw_gap": "0.014014017088748783",
+                  "reason": "credit",
+                  "reset": "none",
+                  "valid": "1",
+                  "anchor_original": "3534678.762426666",
+                  "anchor_upper": "-5536886.2709181486",
+                  "S": "5.1495985984802246",
+                  "C_before": "5.1495985984802246",
+                  "existing_limit": "590.52506851028011",
+                  "proposed_limit": "5.1495985984802246",
+                  "applied_limit": "5.1495985984802246",
+                  "would_skip": "0",
+                  "skip": "0",
+                  "launch": "8.3128983974456787"
+                },
+                "cap_applied": true,
+                "skipped": false,
+                "terminal_kind": "return",
+                "terminal": {
+                  "call": "2",
+                  "origin": "root-RENS",
+                  "phase": "root",
+                  "event": "none",
+                  "charge": "debit",
+                  "solver_elapsed": "5.1653726100921631",
+                  "solver_overshoot": "0.015774011611938477",
+                  "parent_run_start": "8.3130464553833008",
+                  "parent_run_end": "13.478420257568359",
+                  "parent_run_delta": "5.1653738021850586",
+                  "parent_import_end": "13.478620290756226",
+                  "parent_import_delta": "0.0001354217529296875",
+                  "status": "13",
+                  "termination_status": "0",
+                  "first_hit": "-1",
+                  "outer_gap_stopped": "0",
+                  "accepted": "1",
+                  "improved": "0",
+                  "pre_original": "3534678.762426666",
+                  "post_original": "3534678.762426666",
+                  "pre_upper": "-5536886.2709181486",
+                  "post_upper": "-5536886.2709181486",
+                  "restart": "0",
+                  "valid": "1",
+                  "S": "5.1495985984802246",
+                  "C_after": "0"
+                }
+              },
+              {
+                "decision": {
+                  "call": "3",
+                  "mode": "enforce",
+                  "origin": "root-reduced-cost",
+                  "phase": "root",
+                  "depth": "0",
+                  "workers": "1",
+                  "parallel_lock": "0",
+                  "restart": "1",
+                  "original": "3534678.762426666",
+                  "u": "-5536886.2709181486",
+                  "l": "-5586421.3194980333",
+                  "o": "9071565.0333448146",
+                  "r": "0.01",
+                  "a": "9.9999999999999995e-07",
+                  "raw_gap": "0.014014017088748783",
+                  "reason": "uncalibrated",
+                  "reset": "restart",
+                  "valid": "0",
+                  "anchor_original": "3534678.762426666",
+                  "anchor_upper": "-5536886.2709181486",
+                  "S": "0",
+                  "C_before": "0",
+                  "existing_limit": "584.87018631766841",
+                  "proposed_limit": "584.87018631766841",
+                  "applied_limit": "584.87018631766841",
+                  "would_skip": "0",
+                  "skip": "0",
+                  "launch": "13.967779874801636"
+                },
+                "cap_applied": false,
+                "skipped": false,
+                "terminal_kind": "return",
+                "terminal": {
+                  "call": "3",
+                  "origin": "root-reduced-cost",
+                  "phase": "root",
+                  "event": "none",
+                  "charge": "none",
+                  "solver_elapsed": "6.9149167537689209",
+                  "solver_overshoot": "0",
+                  "parent_run_start": "13.967890739440918",
+                  "parent_run_end": "20.882810115814209",
+                  "parent_run_delta": "6.914919376373291",
+                  "parent_import_end": "21.032626390457153",
+                  "parent_import_delta": "0.14975309371948242",
+                  "status": "16",
+                  "termination_status": "0",
+                  "first_hit": "-1",
+                  "outer_gap_stopped": "0",
+                  "accepted": "0",
+                  "improved": "0",
+                  "pre_original": "3534678.762426666",
+                  "post_original": "3534678.762426666",
+                  "pre_upper": "-5536886.2709181486",
+                  "post_upper": "-5536886.2709181486",
+                  "restart": "1",
+                  "valid": "0",
+                  "S": "0",
+                  "C_after": "0"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "tiny_integration": {
+    "verified": true,
+    "source_objective_both": 660.0,
+    "solver_calls": 6,
+    "actual_api_readbacks": 6,
+    "no_root_child_activation_observed": true,
+    "scope": "Pipeline integration only; cannot establish credit-policy performance"
+  },
+  "validation": {
+    "source_review_status": "pass_source_build_test_freeze",
+    "source_review_test_receipts": {
+      "ctest_passed": 168,
+      "ctest_total": 168,
+      "unit_cases": 352,
+      "unit_assertions": 1259988,
+      "release_focused_cases": 23,
+      "release_focused_assertions": 1020,
+      "asan_ubsan_focused_cases": 23,
+      "asan_ubsan_focused_assertions": 1020,
+      "leak_detection_enabled": false,
+      "old_off_observe_capi_runs": 18,
+      "exact_triples": 6
+    },
+    "source_review_invariants": {
+      "runtime_v1_unchanged": true,
+      "final_test_helper_only_updateLowerBound": true,
+      "default_options_false": true,
+      "direct_serial_main_root_only": true,
+      "search_nested_multiworker_excluded": true,
+      "dual_objective_and_restart_epoch_anchors": true,
+      "local_child_limit_only": true,
+      "shared_termination_priority_preserved": true,
+      "parent_trySolution_unchanged": true,
+      "parent_proof_acceptance_unchanged": true
+    },
+    "driver_review_status": "pass_exact_source_mock_driver_freeze",
+    "driver_mock_tests": {
+      "passed": true,
+      "test_count": 85,
+      "seconds": 0.195
+    }
+  },
+  "reproduction_limits": [
+    "The full measured end-to-end driver has fixed local source/runtime pins and is not included or claimed portable.",
+    "Published patches and options reproduce the source-policy configuration; direct-MPS runs omit discovery, generation, API checks, separation, source checking, and archival costs.",
+    "Raw artifact hashes identify the retained evidence; the compact projection is not a complete raw-data archive.",
+    "Lower bounds are numerical reports from the original integer security master, conservatively adjusted for printed rounding; no independent dual or exact-rational proof is supplied.",
+    "Security scope is the 192 line outages listed by the input, not all 210 lines, AC feasibility, or generator contingencies."
+  ],
+  "retained_raw_artifacts": {
+    "root-child-credit-feb-seed0-v1/pair.json": {
+      "sha256": "7cd6712d30aeba2918b3ad7b69e20d7546f19d5a703c61abb89734df4dfb800f",
+      "bytes": 12748147,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/plan.json": {
+      "sha256": "49c2267ded8882a49e568314cc7da1c581fd7cc461efce6e623d657296b95b96",
+      "bytes": 1694,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/runtime_freeze.json": {
+      "sha256": "239e9461e28a1b5b4fc25f697e3956c28d44a5c806b65493419ec989af05594c",
+      "bytes": 70662,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-tiny-v1/pair.json": {
+      "sha256": "2d88e6b073a0a2be6948f3e55cda8fbfb5419732c2d1b3dc33cec02f68611de2",
+      "bytes": 170880,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-tiny-v1/verification.json": {
+      "sha256": "af857685cd7ba54fdd265a1ca0aeaae51a9151116cd309696992f826a7e7fa90",
+      "bytes": 2474,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit/build-validation.json": {
+      "sha256": "1daac3531615936da545ea2704d6edb6a158ec226693b88326fbe091c4ac54dd",
+      "bytes": 12278,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit/final_source_v2/identity.json": {
+      "sha256": "919b565bacfc815c773ff47b514de2f87384ddbf3cf48bf0abd1ba1f23bd97c5",
+      "bytes": 680,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit/final_source_v2/SOURCE_TREE.sha256": {
+      "sha256": "b00bd702ff29a4737b1be49156fee934f0b339b88ad155a0b13810300a891cd1",
+      "bytes": 93923,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit/final_source_v2/combined-from-official.patch": {
+      "sha256": "dd5917d7899e778afcd6b289a02009d2b26934a1818e08273b9dc386657e1428",
+      "bytes": 92225,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_review/FINAL_REVIEW.json": {
+      "sha256": "2c5a0db662da3b92d1fbbb7dc5355bc78611c5ba03261e532be346c4889a1b74",
+      "bytes": 3455,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver_review/FINAL_REVIEW.json": {
+      "sha256": "f50117427d309a1d22974cbf70e7ea2477ac25a5329abf61295ac2f32ad16e1a",
+      "bytes": 3982,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver/cold_screen_pair.py": {
+      "sha256": "92164ff405610ba925694a7316c11b21cfc86c416fc4692ea1f679479c9f8bd4",
+      "bytes": 24111,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver/contracts.py": {
+      "sha256": "f0a29de2703f77ed0758e61e16dbc18a68a20a06872830713f6b6e1a3ce57587",
+      "bytes": 7291,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver/credit_events.py": {
+      "sha256": "477c74bdf47379ceeba1f24eb94dbad4256a5092cd4c36bd193076e2b0373c0a",
+      "bytes": 8961,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver/model_stage.py": {
+      "sha256": "272fc7739c47ba50cf49c7dc3e4dc694d6025f6236acdfb799a89d97246df6cd",
+      "bytes": 12956,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver/primal_and_bound.py": {
+      "sha256": "2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00",
+      "bytes": 12680,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver/fractional_separator.py": {
+      "sha256": "0760ccabff276b927cc746437e8ee83c0517e00c6aa27f0bf12de043a50582bb",
+      "bytes": 29283,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/summary.json": {
+      "sha256": "4db8d5be2c5435eff8e0fed696adc319aa5ad9a19351baace04579727d990d0b",
+      "bytes": 4532644,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/completion_receipt.json": {
+      "sha256": "b42fc52c33965e9bd2e5b64215f32785f2118d7b0daa852e256f32788001728c",
+      "bytes": 451,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/mip.options": {
+      "sha256": "ff7fe07cbff957f44c3ef63a38f766f75ad305931bd78b2baff3a6a681026fb8",
+      "bytes": 433,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/lp.options": {
+      "sha256": "a4f3332bf2324113066f745e76a33197292edf394db93bf060834f452cbd8fb0",
+      "bytes": 179,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/master.mps": {
+      "sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+      "bytes": 3873237,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/master.mps.expected.json": {
+      "sha256": "48f750ecb087947da53044b6c493bf3d1caaf4aa1e36d658fccd5257b9974fe0",
+      "bytes": 4063086,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/master.mps.readback.json": {
+      "sha256": "de156db2154468b4124de1b1be53a7e470d0a84b944964d0a153d400417de455",
+      "bytes": 6184,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/pairs.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/record.json": {
+      "sha256": "a82d374d57abf68f9d0aa5db8331d42cc0eb1dedf6e05dffd3cad91b8eb76420",
+      "bytes": 793947,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/solver.log": {
+      "sha256": "b93afbac5fdca65497b8a6c646463046b5929c6d1cc38f37dfba2cc6c9be591f",
+      "bytes": 17409,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/solution.sol": {
+      "sha256": "fad752047cae87e717b66a06eb62c10432b8162bed55857744cd108acbf6b9e2",
+      "bytes": 1926331,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/01_lp/check.json": {
+      "sha256": "84c7c95f84ac3232cb6ddbf050bb5c10f86885dffaae18549a50ac8a5f55e802",
+      "bytes": 660642,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/master.mps": {
+      "sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+      "bytes": 3994773,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/master.mps.expected.json": {
+      "sha256": "dfe13e11c9cc57756d9285194f7fd71048ef91c1e5397c5fc684a1a9d5ade7e3",
+      "bytes": 4160934,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/master.mps.readback.json": {
+      "sha256": "730da02965c5c7998715064faaeeec0f8e3d996c1e163d010ae441eea4b54f96",
+      "bytes": 6184,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/pairs.json": {
+      "sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e",
+      "bytes": 300,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/record.json": {
+      "sha256": "d2f6b0469f394318d9043db7b7fab7e4d80302f1b6b29e560c39520dabb002ca",
+      "bytes": 789907,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/solver.log": {
+      "sha256": "7d280274ba4bf3fbee7883e740253a0cfbfdb577fac6754cae18e58df84271cd",
+      "bytes": 17335,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/solution.sol": {
+      "sha256": "bb08aa677e4d9ebcfc40df8d40093b0e7ce157120414080d41a8bf97948829c7",
+      "bytes": 1918922,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/02_lp/check.json": {
+      "sha256": "66c9d80bcce8adc025a8e2fb87ce65e2eb654790fa08a3f3f45a937d37ca0b0d",
+      "bytes": 656075,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/master.mps": {
+      "sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+      "bytes": 4018423,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/master.mps.expected.json": {
+      "sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+      "bytes": 4160934,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/master.mps.readback.json": {
+      "sha256": "2923a582a570aef685b9800c7d34a23c4be4ee2bc6f5c09c2944a1fd028263ff",
+      "bytes": 6189,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/pairs.json": {
+      "sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e",
+      "bytes": 300,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/record.json": {
+      "sha256": "56208c4a99de1446a92851726900e8554971c246bd7d54ffd3d792ba3665a681",
+      "bytes": 799674,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/solver.log": {
+      "sha256": "3c645b03b97f838825a16f50a9bdbe6b0bf377b704252119c0c575f7a37c9e26",
+      "bytes": 24819,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/solution.sol": {
+      "sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+      "bytes": 783186,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_off/03_mip/check.json": {
+      "sha256": "09f75d864cffb99c14e282a88d390f8e2a94cf39ac7ed278d9642cf6e8a49677",
+      "bytes": 658306,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/summary.json": {
+      "sha256": "fc0a90fba03f151cfa6bbda654660eeece2dc86e568f5c04e56b0dd703e261b9",
+      "bytes": 4536271,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/completion_receipt.json": {
+      "sha256": "fb3f05946273f6dd1295d8f0291d6aadc439278dced051b19601ca878ce045e2",
+      "bytes": 452,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/mip.options": {
+      "sha256": "0d3d5a4c97246e74d2e0a45acca5b6fa04e352ac751d17ab04f739f3b59cb720",
+      "bytes": 432,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/lp.options": {
+      "sha256": "a4f3332bf2324113066f745e76a33197292edf394db93bf060834f452cbd8fb0",
+      "bytes": 179,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/master.mps": {
+      "sha256": "8e7656768783c426fc38764fbcd804273455dfc760effc1418e0f97cf9b16756",
+      "bytes": 3873237,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/master.mps.expected.json": {
+      "sha256": "48f750ecb087947da53044b6c493bf3d1caaf4aa1e36d658fccd5257b9974fe0",
+      "bytes": 4063086,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/master.mps.readback.json": {
+      "sha256": "1099b3ddf3d3bfda6d4e00d9c0c4af766f840da0b1d52cf603a0e593f40cb523",
+      "bytes": 6183,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/pairs.json": {
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/record.json": {
+      "sha256": "a88cf29c45d26fc9479fe2df06690d057763fdff40501d6a2de85849868cd2ab",
+      "bytes": 793923,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/solver.log": {
+      "sha256": "5904ba0b18e3fb616f066c640aa757c73d8a46d60ac3401c502fa48b75097999",
+      "bytes": 17406,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/solution.sol": {
+      "sha256": "fad752047cae87e717b66a06eb62c10432b8162bed55857744cd108acbf6b9e2",
+      "bytes": 1926331,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/01_lp/check.json": {
+      "sha256": "84c7c95f84ac3232cb6ddbf050bb5c10f86885dffaae18549a50ac8a5f55e802",
+      "bytes": 660642,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/master.mps": {
+      "sha256": "570552b885651e637c3428fbc849a8299fdd89c2df477cfc7bfd5f3186dae542",
+      "bytes": 3994773,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/master.mps.expected.json": {
+      "sha256": "dfe13e11c9cc57756d9285194f7fd71048ef91c1e5397c5fc684a1a9d5ade7e3",
+      "bytes": 4160934,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/master.mps.readback.json": {
+      "sha256": "de8ee7c48a2ffbf188c6ca5e7fe2b3dd01d1202bbd5555131922f20dc0d5aea0",
+      "bytes": 6183,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/pairs.json": {
+      "sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e",
+      "bytes": 300,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/record.json": {
+      "sha256": "27e829640a3b114eb2e4cf238d31bd2f4e2ad61deee72995a9d4a70380d29452",
+      "bytes": 789882,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/solver.log": {
+      "sha256": "5cfd7f5fdb6d1bdd32d5b2fe261fc5d7b551058a4891757456015fc86c7e3122",
+      "bytes": 17332,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/solution.sol": {
+      "sha256": "bb08aa677e4d9ebcfc40df8d40093b0e7ce157120414080d41a8bf97948829c7",
+      "bytes": 1918922,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/02_lp/check.json": {
+      "sha256": "66c9d80bcce8adc025a8e2fb87ce65e2eb654790fa08a3f3f45a937d37ca0b0d",
+      "bytes": 656075,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/master.mps": {
+      "sha256": "c3c8dc7c4541bbe8f10808c69661d91866ece69bbe5baa14abdb42c3ac235d8b",
+      "bytes": 4018423,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/master.mps.expected.json": {
+      "sha256": "924dad357870ca7bebe4ef7219e783be448f23c452011eafc88d18962fba5ce3",
+      "bytes": 4160934,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/master.mps.readback.json": {
+      "sha256": "67452313273287b00b06a6501c4cde91ce4c71e2dfb13ccc6e124ce17419c83d",
+      "bytes": 6188,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/pairs.json": {
+      "sha256": "576d63943b17e2058617e0671fb96311f7526183383277ed3b58cc547214040e",
+      "bytes": 300,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/record.json": {
+      "sha256": "fb72b8615101ad67dcdd02331ed3c130194b00599304ff1523f6557746a8b999",
+      "bytes": 803087,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/solver.log": {
+      "sha256": "3d01c649f0c59a31f65ed9c09103cfe5f6ca22d241f3759015af4c33e62ecc98",
+      "bytes": 25076,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/solution.sol": {
+      "sha256": "c00318e8b0d2dfa43cdaaae622cbb6094d00dba4c41fe9b12496c276c84d0aad",
+      "bytes": 783186,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root-child-credit-feb-seed0-v1/root_credit_on/03_mip/check.json": {
+      "sha256": "09f75d864cffb99c14e282a88d390f8e2a94cf39ac7ed278d9642cf6e8a49677",
+      "bytes": 658306,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver_review/PILOT_RESULT_REVIEW.json": {
+      "sha256": "6e42d8b996005af03d0095320f65f10a9872cacbcb1cf6513fc3d34e65b5aa07",
+      "bytes": 4488,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver_review/PILOT_RESULT_REVIEW.md": {
+      "sha256": "b2ab26dcadc952cce94678da97ff3f75e3d6713ae96e48ec184f9f364eae156c",
+      "bytes": 6993,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver_review/RESULT_ARTIFACT_CHECKS.json": {
+      "sha256": "27d9e6f248286cc729fb72ebc84cf5c3292b6f40075ecc41ddb3205d04040e03",
+      "bytes": 15679,
+      "availability": "retained original; not included in this compact publication"
+    },
+    "root_child_credit_driver_review/audit_results.py": {
+      "sha256": "23df13bc9ddc4ccb3b95ae099e568deab4c36430d53ba3af478fb8a6f4733121",
+      "bytes": 17252,
+      "availability": "retained original; not included in this compact publication"
+    }
+  }
+}

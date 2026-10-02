@@ -1,0 +1,9 @@
+threads = 2
+parallel = off
+presolve = on
+write_solution_to_file = true
+write_solution_style = 0
+log_dev_level = 1
+highs_analysis_level = 128
+solver = simplex
+simplex_strategy = 1
