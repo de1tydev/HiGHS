@@ -1,0 +1,557 @@
+diff --git a/check/TestMipSolver.cpp b/check/TestMipSolver.cpp
+index 6a5e6a395..ceaf1145d 100644
+--- a/check/TestMipSolver.cpp
++++ b/check/TestMipSolver.cpp
+@@ -2,6 +2,8 @@
+ #include "Highs.h"
+ #include "SpecialLps.h"
+ #include "catch.hpp"
++#include "mip/HighsMipSolver.h"
++#include "mip/HighsMipSolverData.h"
+ 
+ const bool dev_run = false;
+ const double double_equal_tolerance = 1e-5;
+@@ -1483,3 +1485,294 @@ TEST_CASE("issue-2975", "[highs_test_mip_solver]") {
+ 
+   highs.resetGlobalScheduler(true);
+ }
++
++// Experimental outer-gap heuristic return tests. These exercise the private
++// scheduling goal; proof and candidate acceptance still belong to the parent.
++
++TEST_CASE("MIP-outer-gap-predicate", "[highs_test_mip_solver][outer_gap]") {
++  HighsMipOuterGapGoal goal;
++  REQUIRE(!goal.reached(100));
++  goal.active = true;
++  goal.lower_bound = 100;
++  goal.rel_gap = 0.005;
++  REQUIRE(goal.reached(100.4));
++  REQUIRE(!goal.reached(100.6));
++  REQUIRE(!goal.reached(99));  // inconsistent bound fails closed
++  goal.offset = 1000;
++  REQUIRE(goal.reached(105));
++  REQUIRE(!goal.reached(106));
++  goal.offset = -1000;
++  REQUIRE(goal.reached(104));  // negative normalized outer objective
++  REQUIRE(!goal.reached(105));
++  goal.offset = -100;
++  REQUIRE(goal.reached(100));  // exact zero, zero absolute gap
++  REQUIRE(!goal.reached(100.000001));
++  goal.abs_gap = 0.00001;
++  REQUIRE(goal.reached(100.000001));
++  goal.lower_bound = -1;
++  goal.offset = 0;
++  goal.abs_gap = 0;
++  goal.rel_gap = 0.99;
++  REQUIRE(!goal.reached(0));
++  REQUIRE(!goal.reached(1));  // crosses zero, gap=2 rather than 1
++  goal.rel_gap = 2;
++  REQUIRE(goal.reached(1));
++  goal.rel_gap = 0;
++  goal.abs_gap = 2;
++  REQUIRE(goal.reached(1));  // equality is permitted for scheduling only
++  goal.abs_gap = std::nextafter(2.0, 0.0);
++  REQUIRE(!goal.reached(1));
++
++  // The ratio is invariant under minimization normalization of a maximum.
++  goal.lower_bound = -110;
++  goal.offset = -500;
++  goal.rel_gap = 0.01;
++  goal.abs_gap = 0;
++  REQUIRE(goal.reached(-105));  // raw maximizing incumbent 605, bound 610
++  REQUIRE(!goal.reached(-100));
++  goal.lower_bound = 100;
++  goal.offset = 1e20;
++  goal.rel_gap = 0;
++  REQUIRE(!goal.reached(101));  // avoid cancellation via (q+O)-(L+O)
++  goal.abs_gap = 1;
++  REQUIRE(goal.reached(101));
++  REQUIRE(!goal.reached(kHighsInf));
++  REQUIRE(!goal.reached(-kHighsInf));
++  REQUIRE(!goal.reached(std::numeric_limits<double>::quiet_NaN()));
++  for (double bad : {kHighsInf, -kHighsInf,
++                     std::numeric_limits<double>::quiet_NaN()}) {
++    HighsMipOuterGapGoal invalid = goal;
++    invalid.lower_bound = bad;
++    REQUIRE(!invalid.reached(101));
++    invalid = goal;
++    invalid.offset = bad;
++    REQUIRE(!invalid.reached(101));
++    invalid = goal;
++    invalid.rel_gap = bad;
++    REQUIRE(!invalid.reached(101));
++    invalid = goal;
++    invalid.abs_gap = bad;
++    REQUIRE(!invalid.reached(101));
++  }
++  goal.abs_gap = -1;
++  REQUIRE(!goal.reached(100));
++  goal.abs_gap = 0;
++  goal.rel_gap = -1;
++  REQUIRE(!goal.reached(100));
++}
++
++TEST_CASE("MIP-outer-gap-local-stop", "[highs_test_mip_solver][outer_gap]") {
++  Highs high;
++  high.setOptionValue("output_flag", false);
++  HighsOptions options = high.getOptions();
++  REQUIRE(!options.mip_heuristic_outer_gap);
++  REQUIRE(!options.mip_heuristic_outer_gap_log);
++  // This public user target must continue to be ignored in a child.
++  options.objective_target = 1e9;
++  HighsCallback callback(nullptr);
++  HighsLp lp;
++  lp.num_col_ = 1;
++  lp.col_cost_ = {1};
++  lp.col_lower_ = {0};
++  lp.col_upper_ = {200};
++  lp.integrality_ = {HighsVarType::kInteger};
++  lp.a_matrix_.num_col_ = 1;
++  lp.a_matrix_.start_ = {0, 0};
++  HighsSolution no_solution;
++  HighsMipSolver child(callback, options, lp, no_solution, true, 1);
++  child.mipdata_.reset(new HighsMipSolverData(child));
++  child.modelstatus_ = HighsModelStatus::kNotset;
++  child.timer_.start();
++  HighsMipOuterGapGoal& goal = child.outer_gap_goal_;
++  goal.active = true;
++  goal.lower_bound = 99;
++  goal.abs_gap = 1;
++  child.solution_objective_ = 100;
++  child.solution_ = {100};
++  child.bound_violation_ = child.integrality_violation_ = child.row_violation_ = 0;
++  child.mipdata_->lower_bound = 1e8;  // restricted child bound is irrelevant
++  REQUIRE(child.observeOuterGapGoal());
++  REQUIRE(goal.first_hit_time >= 0);
++  REQUIRE(goal.first_hit_objective == 100);
++  REQUIRE(!child.mipdata_->checkLimits());  // observation-only
++  REQUIRE(child.modelstatus_ == HighsModelStatus::kNotset);
++  const double first_hit = goal.first_hit_time;
++  child.solution_objective_ = 99;
++  REQUIRE(child.observeOuterGapGoal());
++  REQUIRE(goal.first_hit_time == first_hit);
++  goal.stop = true;
++  for (double invalid : {1.0, kHighsInf,
++                         std::numeric_limits<double>::quiet_NaN()}) {
++    child.row_violation_ = invalid;
++    REQUIRE(!child.mipdata_->checkLimits());
++  }
++  child.row_violation_ = 0;
++  child.solution_.clear();
++  REQUIRE(!child.mipdata_->checkLimits());
++  child.solution_ = {99};
++  lp.sense_ = ObjSense::kMaximize;
++  REQUIRE(!child.mipdata_->checkLimits());
++  lp.sense_ = ObjSense::kMinimize;
++  lp.offset_ = 1;
++  REQUIRE(!child.mipdata_->checkLimits());
++  lp.offset_ = 0;
++  REQUIRE(child.mipdata_->checkLimits());
++  REQUIRE(goal.stopped);
++  REQUIRE(child.modelstatus_ == HighsModelStatus::kSolutionLimit);
++  REQUIRE(child.termination_status_ == HighsModelStatus::kNotset);
++  // A newly constructed nested child does not inherit the goal.
++  HighsMipSolver nested(callback, options, lp, no_solution, true, 2);
++  REQUIRE(!nested.outer_gap_goal_.active);
++  child.timer_.stop();
++  high.resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-outer-gap-child-postsolve", "[highs_test_mip_solver][outer_gap]") {
++  for (bool stop : {false, true}) {
++    Highs highs;
++    highs.setOptionValue("output_flag", false);
++    highs.setOptionValue("threads", 1);
++    highs.setOptionValue("mip_rel_gap", 0.0);
++    highs.setOptionValue("mip_abs_gap", 0.0);
++    REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/egout.mps")
++            == HighsStatus::kOk);
++    // Force a known child-presolve offset. The original child objective must
++    // contain this 300 exactly once, irrespective of its reduced offset.
++    REQUIRE(highs.addCol(100, 3, 3, 0, nullptr, nullptr) == HighsStatus::kOk);
++    HighsOptions options = highs.getOptions();
++    HighsLp lp = highs.getLp();
++    lp.offset_ = 0;
++    HighsCallback callback(nullptr);
++    HighsSolution empty;
++    highs::parallel::initialize_scheduler(1);
++    HighsTimer timer;
++    HighsProfiling profiling;
++    profiling.multi_threaded = false;
++    profiling.initialize(timer, false, false);
++    HighsMipSolver child(callback, options, lp, empty, true, 1);
++    child.setProfiling(&profiling);
++    child.outer_gap_goal_.active = true;
++    child.outer_gap_goal_.stop = stop;
++    child.outer_gap_goal_.lower_bound = 0;
++    child.outer_gap_goal_.offset = -300;
++    child.outer_gap_goal_.abs_gap = 1e8;
++    child.run();
++    REQUIRE(child.outer_gap_goal_.first_hit_time >= 0);
++    REQUIRE(child.solution_.size() == static_cast<size_t>(lp.num_col_));
++    REQUIRE(child.solution_.back() == 3);
++    HighsCDouble objective;
++    double bound_violation, row_violation, integrality_violation;
++    REQUIRE(child.solutionFeasible(&lp, child.solution_, nullptr,
++                                   bound_violation, row_violation,
++                                   integrality_violation, objective));
++    REQUIRE(child.solution_objective_ == Approx(double(objective)));
++    REQUIRE(child.termination_status_ == HighsModelStatus::kNotset);
++    if (stop) {
++      REQUIRE(child.outer_gap_goal_.stopped);
++      REQUIRE(child.modelstatus_ == HighsModelStatus::kSolutionLimit);
++    } else {
++      REQUIRE(!child.outer_gap_goal_.stopped);
++      REQUIRE(child.modelstatus_ == HighsModelStatus::kOptimal);
++      REQUIRE(child.solution_objective_ == Approx(868.1007));
++    }
++    highs.resetGlobalScheduler(true);
++  }
++}
++
++TEST_CASE("MIP-outer-gap-outer-regression", "[highs_test_mip_solver][outer_gap]") {
++  for (bool maximize : {false, true}) {
++    for (const std::string presolve : {kHighsOnString, kHighsOffString}) {
++      double objective = 0;
++      int64_t nodes = -1;
++      HighsInt iterations = -1;
++      for (int mode = 0; mode != 3; ++mode) {
++        Highs highs;
++        highs.setOptionValue("output_flag", false);
++        highs.setOptionValue("threads", 1);
++        highs.setOptionValue("presolve", presolve);
++        highs.setOptionValue("mip_rel_gap", 0.005);
++        highs.setOptionValue("mip_heuristic_outer_gap_log", mode == 1);
++        highs.setOptionValue("mip_heuristic_outer_gap", mode == 2);
++        REQUIRE(highs.readModel(std::string(HIGHS_DIR) +
++                                "/check/instances/egout.mps") == HighsStatus::kOk);
++        REQUIRE(highs.addCol(100, 3, 3, 0, nullptr, nullptr) == HighsStatus::kOk);
++        HighsLp lp = highs.getLp();
++        lp.offset_ = -900;
++        if (maximize) {
++          for (double& cost : lp.col_cost_) cost = -cost;
++          lp.offset_ = -lp.offset_;
++          lp.sense_ = ObjSense::kMaximize;
++        }
++        REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++        REQUIRE(highs.run() == HighsStatus::kOk);
++        REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++        REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++        REQUIRE(highs.getInfo().mip_gap <= 0.005);
++        if (mode == 0) {
++          objective = highs.getInfo().objective_function_value;
++          nodes = highs.getInfo().mip_node_count;
++          iterations = highs.getInfo().simplex_iteration_count;
++        } else {
++          REQUIRE(highs.getInfo().objective_function_value == Approx(objective));
++          if (mode == 1) {  // observing must not alter search decisions
++            REQUIRE(highs.getInfo().mip_node_count == nodes);
++            REQUIRE(highs.getInfo().simplex_iteration_count == iterations);
++          }
++        }
++        highs.resetGlobalScheduler(true);
++      }
++    }
++  }
++}
++
++TEST_CASE("MIP-outer-gap-parent-integration",
++          "[highs_test_mip_solver][outer_gap]") {
++  for (bool maximize : {false, true}) {
++    for (bool parallel : {false, true}) {
++      Highs highs;
++      highs.setOptionValue("output_flag", true);
++      highs.setOptionValue("log_to_console", false);
++      highs.setOptionValue("threads", parallel ? 2 : 1);
++      highs.setOptionValue("parallel", parallel ? kHighsOnString : kHighsOffString);
++      highs.setOptionValue("mip_rel_gap", 0.02);
++      highs.setOptionValue("mip_heuristic_effort", 0.5);
++      highs.setOptionValue("mip_heuristic_outer_gap", true);
++      highs.setOptionValue("mip_heuristic_outer_gap_log", true);
++      REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps")
++              == HighsStatus::kOk);
++      REQUIRE(highs.addCol(100, 3, 3, 0, nullptr, nullptr) == HighsStatus::kOk);
++      HighsLp lp = highs.getLp();
++      lp.offset_ = 100;
++      if (maximize) {
++        for (double& cost : lp.col_cost_) cost = -cost;
++        lp.offset_ = -lp.offset_;
++        lp.sense_ = ObjSense::kMaximize;
++      }
++      REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++      std::string log;
++      highs.setCallback(
++          [&](int type, const std::string& message, const HighsCallbackOutput*,
++              HighsCallbackInput*, void*) {
++            if (type == kCallbackLogging) log += message;
++          }, nullptr);
++      REQUIRE(highs.startCallback(kCallbackLogging) == HighsStatus::kOk);
++      REQUIRE(highs.run() == HighsStatus::kOk);
++      REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++      REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++      REQUIRE(highs.getInfo().mip_gap <= 0.02);
++      if (parallel) {
++        // Even a serial root phase is unsupported if parallel workers may
++        // subsequently be launched: no active goal or instrumentation.
++        REQUIRE(log.find("OuterGap") == std::string::npos);
++      } else {
++        INFO(log);
++        REQUIRE(log.find("OuterGap child: active=1 stop=1 stopped=1") !=
++                std::string::npos);
++        REQUIRE(log.find("OuterGap parent: accepted=1 improved=1") !=
++                std::string::npos);
++        REQUIRE(log.find("offset=400 ") != std::string::npos);
++      }
++      highs.resetGlobalScheduler(true);
++    }
++  }
++}
+diff --git a/highs/lp_data/HighsOptions.h b/highs/lp_data/HighsOptions.h
+index 070af6c3a..869ac99f9 100644
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -498,6 +498,8 @@ struct HighsOptionsStruct {
+   double mip_rel_gap;
+   double mip_abs_gap;
+   double mip_heuristic_effort;
++  bool mip_heuristic_outer_gap;
++  bool mip_heuristic_outer_gap_log;
+   bool mip_heuristic_run_feasibility_jump;
+   bool mip_heuristic_run_rins;
+   bool mip_heuristic_run_rens;
+@@ -664,6 +666,8 @@ struct HighsOptionsStruct {
+         mip_rel_gap(0.0),
+         mip_abs_gap(0.0),
+         mip_heuristic_effort(0.0),
++        mip_heuristic_outer_gap(false),
++        mip_heuristic_outer_gap_log(false),
+         mip_heuristic_run_feasibility_jump(false),
+         mip_heuristic_run_rins(false),
+         mip_heuristic_run_rens(false),
+@@ -1225,6 +1229,18 @@ class HighsOptions : public HighsOptionsStruct {
+         &mip_heuristic_effort, 0.0, 0.05, 1.0);
+     records.push_back(record_double);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_heuristic_outer_gap",
++        "Experimental: return serial heuristic sub-MIPs at the outer MIP gap",
++        advanced, &mip_heuristic_outer_gap, false);
++    records.push_back(record_bool);
++
++    record_bool = new OptionRecordBool(
++        "mip_heuristic_outer_gap_log",
++        "Observe and log heuristic outer-gap goals (also without early return)",
++        advanced, &mip_heuristic_outer_gap_log, false);
++    records.push_back(record_bool);
++
+     record_bool =
+         new OptionRecordBool("mip_heuristic_run_feasibility_jump",
+                              "Use the feasibility jump heuristic", advanced,
+diff --git a/highs/mip/HighsMipSolver.cpp b/highs/mip/HighsMipSolver.cpp
+index 01630b6a7..badef7bfd 100644
+--- a/highs/mip/HighsMipSolver.cpp
++++ b/highs/mip/HighsMipSolver.cpp
+@@ -71,6 +71,26 @@ HighsMipSolver::HighsMipSolver(HighsCallback& callback,
+ 
+ HighsMipSolver::~HighsMipSolver() = default;
+ 
++bool HighsMipSolver::observeOuterGapGoal() {
++  // This state is private to the direct child and is not inherited by nested
++  // sub-MIPs. In particular it must never use the shared terminator.
++  if (!submip || !outer_gap_goal_.active ||
++      !std::isfinite(solution_objective_) ||
++      orig_model_->sense_ != ObjSense::kMinimize || orig_model_->offset_ != 0 ||
++      solution_.size() != static_cast<size_t>(orig_model_->num_col_) ||
++      !(bound_violation_ <= options_mip_->mip_feasibility_tolerance) ||
++      !(integrality_violation_ <= options_mip_->mip_feasibility_tolerance) ||
++      !(row_violation_ <= options_mip_->mip_feasibility_tolerance) ||
++      !outer_gap_goal_.reached(solution_objective_))
++    return false;
++  if (outer_gap_goal_.first_hit_time < 0) {
++    outer_gap_goal_.first_hit_time = timer_.read();
++    outer_gap_goal_.first_hit_objective = solution_objective_;
++  }
++  return true;
++}
++
++
+ template <class F>
+ void HighsMipSolver::runTask(F&& f, highs::parallel::TaskGroup& tg,
+                              bool parallel_lock, bool force_serial,
+diff --git a/highs/mip/HighsMipSolver.h b/highs/mip/HighsMipSolver.h
+index 5e4dd6642..c7202ff2b 100644
+--- a/highs/mip/HighsMipSolver.h
++++ b/highs/mip/HighsMipSolver.h
+@@ -8,6 +8,8 @@
+ #ifndef MIP_HIGHS_MIP_SOLVER_H_
+ #define MIP_HIGHS_MIP_SOLVER_H_
+ 
++#include <cmath>
++
+ #include "Highs.h"
+ #include "lp_data/HighsCallback.h"
+ #include "lp_data/HighsOptions.h"
+@@ -33,6 +35,42 @@ struct HighsTerminator {
+   void report(const HighsLogOptions log_options) const;
+ };
+ 
++// A heuristic scheduling goal, never a bound/proof for the outer MIP.
++// All values use the parent's normalized minimization coordinates. The child
++// original model has the parent's costs and zero offset; child presolve offsets
++// are already included in its postsolved solution_objective_.
++struct HighsMipOuterGapGoal {
++  bool active = false;
++  bool stop = false;
++  bool stopped = false;
++  double lower_bound = -kHighsInf;
++  double offset = 0;
++  double abs_gap = 0;
++  double rel_gap = 0;
++  double first_hit_time = -1;
++  double first_hit_objective = kHighsInf;
++
++  bool reached(double child_objective) const {
++    if (!active || !std::isfinite(child_objective) ||
++        !std::isfinite(lower_bound) || !std::isfinite(offset) ||
++        !std::isfinite(abs_gap) || !std::isfinite(rel_gap) || abs_gap < 0 ||
++        rel_gap < 0 || child_objective < lower_bound)
++      return false;
++    // Do not invert a relative-gap expression into a positive-objective-only
++    // threshold. Extended precision also avoids cancellation of large offsets
++    // in the numerator. Fail closed if arithmetic is not finite.
++    const long double gap =
++        static_cast<long double>(child_objective) - lower_bound;
++    const long double objective =
++        static_cast<long double>(child_objective) + offset;
++    const long double relative_limit = rel_gap * std::fabs(objective);
++    if (!std::isfinite(gap) || !std::isfinite(objective) ||
++        !std::isfinite(relative_limit))
++      return false;
++    return gap <= abs_gap || gap <= relative_limit;
++  }
++};
++
+ class HighsMipSolver {
+  public:
+   HighsCallback* callback_;
+@@ -45,6 +83,8 @@ class HighsMipSolver {
+   double bound_violation_;
+   double integrality_violation_;
+   double row_violation_;
++  HighsMipOuterGapGoal outer_gap_goal_;
++  bool observeOuterGapGoal();
+   // The following are only to return data to HiGHS, and are set in
+   // HighsMipSolver::cleanupSolve
+   double dual_bound_;
+diff --git a/highs/mip/HighsMipSolverData.cpp b/highs/mip/HighsMipSolverData.cpp
+index c26129c1d..fb4c51a55 100644
+--- a/highs/mip/HighsMipSolverData.cpp
++++ b/highs/mip/HighsMipSolverData.cpp
+@@ -1274,6 +1274,7 @@ try_again:
+       mipsolver.integrality_violation_ = integrality_violation_;
+       mipsolver.solution_ = std::move(solution.col_value);
+       mipsolver.solution_objective_ = mipsolver_objective_value;
++      mipsolver.observeOuterGapGoal();
+     } else {
+       bool currentFeasible =
+           mipsolver.solution_objective_ != kHighsInf &&
+@@ -2538,6 +2539,17 @@ bool HighsMipSolverData::checkLimits(int64_t nodeOffset) const {
+   if (terminatorActive())
+     if (this->terminatorTerminated()) return true;
+ 
++  // A direct serial heuristic child may return a good-enough candidate using
++  // a snapshot of the OUTER bound. This only ends this child: the caller still
++  // validates its solution and applies the ordinary outer stopping rules.
++  if (mipsolver.outer_gap_goal_.stop && mipsolver.observeOuterGapGoal()) {
++    if (mipsolver.modelstatus_ == HighsModelStatus::kNotset) {
++      mipsolver.outer_gap_goal_.stopped = true;
++      mipsolver.modelstatus_ = HighsModelStatus::kSolutionLimit;
++    }
++    return true;
++  }
++
+   // Possible user interrupt
+   if (!mipsolver.submip && !parallelLockActive() &&
+       mipsolver.callback_->user_callback) {
+diff --git a/highs/mip/HighsPrimalHeuristics.cpp b/highs/mip/HighsPrimalHeuristics.cpp
+index cb6efd302..9dddc1b7c 100644
+--- a/highs/mip/HighsPrimalHeuristics.cpp
++++ b/highs/mip/HighsPrimalHeuristics.cpp
+@@ -140,6 +140,31 @@ bool HighsPrimalHeuristics::solveSubMip(
+   // Create HighsMipSolver instance for sub-MIP
+   HighsMipSolver submipsolver(*mipsolver.callback_, submipoptions, submip,
+                               solution, true, mipsolver.submip_level + 1);
++  const bool observe_outer_gap =
++      mipsolver.options_mip_->mip_heuristic_outer_gap ||
++      mipsolver.options_mip_->mip_heuristic_outer_gap_log;
++  const bool serial_outer_gap =
++      observe_outer_gap && !mipsolver.submip &&
++      !mipsolver.mipdata_->parallelLockActive() &&
++      mipsolver.getMaxNumWorkers() == 1;
++  const double outer_gap_launch_time =
++      serial_outer_gap ? mipsolver.timer_.read() : 0;
++  // No parallel snapshot or recursive coordinate mapping is assumed here.
++  // Equal costs guard against future heuristic objective modifications.
++  if (serial_outer_gap &&
++      mipsolver.model_->sense_ == ObjSense::kMinimize &&
++      submip.sense_ == ObjSense::kMinimize && submip.offset_ == 0 &&
++      submip.col_cost_ == mipsolver.model_->col_cost_ &&
++      std::isfinite(mipsolver.mipdata_->lower_bound) &&
++      std::isfinite(mipsolver.model_->offset_)) {
++    HighsMipOuterGapGoal& goal = submipsolver.outer_gap_goal_;
++    goal.active = true;
++    goal.stop = mipsolver.options_mip_->mip_heuristic_outer_gap;
++    goal.lower_bound = mipsolver.mipdata_->lower_bound;
++    goal.offset = mipsolver.model_->offset_;
++    goal.abs_gap = mipsolver.options_mip_->mip_abs_gap;
++    goal.rel_gap = mipsolver.options_mip_->mip_rel_gap;
++  }
+   // Initialise termination_status_ and propagate any terminator to
+   // the sub-MIP
+   submipsolver.initialiseTerminator(mipsolver);
+@@ -202,6 +227,21 @@ bool HighsPrimalHeuristics::solveSubMip(
+         "nullptr\n");
+     assert(submipsolver.mipdata_);
+   }
++  if (serial_outer_gap &&
++      mipsolver.options_mip_->mip_heuristic_outer_gap_log) {
++    const HighsMipOuterGapGoal& goal = submipsolver.outer_gap_goal_;
++    highsLogUser(mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++                 "OuterGap child: active=%d stop=%d stopped=%d launch=%.6f "
++                 "elapsed=%.6f first_hit=%.6f first_objective=%.17g "
++                 "returned_objective=%.17g lower=%.17g offset=%.17g "
++                 "abs_gap=%.17g rel_gap=%.17g cutoff=%.17g status=%d\n",
++                 int(goal.active), int(goal.stop), int(goal.stopped),
++                 outer_gap_launch_time, submipsolver.timer_.read(),
++                 goal.first_hit_time, goal.first_hit_objective,
++                 submipsolver.solution_objective_, goal.lower_bound,
++                 goal.offset, goal.abs_gap, goal.rel_gap,
++                 submipoptions.objective_bound, int(submipsolver.modelstatus_));
++  }
+   if (submipsolver.termination_status_ != HighsModelStatus::kNotset) {
+     worker.setHeurTerminationStatus(submipsolver.termination_status_);
+     return false;
+@@ -233,9 +273,22 @@ bool HighsPrimalHeuristics::solveSubMip(
+       submipsolver.modelstatus_ == HighsModelStatus::kInfeasible)
+     return false;
+   double oldUpperLimit = worker.upper_limit;
++  bool accepted = false;
+   if (submipsolver.modelstatus_ != HighsModelStatus::kInfeasible &&
+       !submipsolver.solution_.empty()) {
+-    trySolution(submipsolver.solution_, kSolutionSourceSubMip, worker);
++    accepted =
++        trySolution(submipsolver.solution_, kSolutionSourceSubMip, worker);
++  }
++  if (serial_outer_gap &&
++      mipsolver.options_mip_->mip_heuristic_outer_gap_log) {
++    double lb, ub;
++    const double gap = mipsolver.mipdata_->limitsToGap(
++        mipsolver.mipdata_->lower_bound, mipsolver.mipdata_->upper_bound, lb, ub);
++    highsLogUser(mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++                 "OuterGap parent: accepted=%d improved=%d time=%.6f "
++                 "lower=%.17g upper=%.17g relative_gap=%.17g\n",
++                 int(accepted), int(worker.upper_limit < oldUpperLimit),
++                 mipsolver.timer_.read(), lb, ub, gap);
+   }
+ 
+   if (worker.upper_limit < oldUpperLimit) {

@@ -1,0 +1,127 @@
+{
+  "schema": "portable-early-source-lineage-v1",
+  "files": {
+    "payload/combined_screening_driver/contracts.py": {
+      "upstream_method_sha256": "e8d2cc2cf4af2a180e3d0008280de05b3c6a5a5fe86ca6f0468dad42a396831d",
+      "packaged_sha256": "e8d2cc2cf4af2a180e3d0008280de05b3c6a5a5fe86ca6f0468dad42a396831d",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/policy.py": {
+      "upstream_method_sha256": "36e3cf84dfb828b0e8064fb73a4bfd284a5eece9d5089402c98512fec20ddbe0",
+      "packaged_sha256": "36e3cf84dfb828b0e8064fb73a4bfd284a5eece9d5089402c98512fec20ddbe0",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/cold_screen_pair.py": {
+      "upstream_method_sha256": "063265ed9db222e052a102f86ad4f5c1bf8c60f01b10959ddd7b77bbda52a3b7",
+      "packaged_sha256": "2fc9a9fedb27fe86de07e2c61dfe63355699e92b53db0d1e475a82a390a0de7c",
+      "changes": "Consumer runtime manifest filename; portable binding label/dates only"
+    },
+    "payload/combined_screening_driver/model_stage.py": {
+      "upstream_method_sha256": "8b0210575cee5648c4324973cece5a8e68082f77023c3c34ca2081b578e9f5ff",
+      "packaged_sha256": "8b0210575cee5648c4324973cece5a8e68082f77023c3c34ca2081b578e9f5ff",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/primal_and_bound.py": {
+      "upstream_method_sha256": "2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00",
+      "packaged_sha256": "2409b1b25a39f69e2bfda624656181027ff7413c9bc1a58eb6da300800d9bd00",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/portable_runtime.py": {
+      "upstream_method_sha256": "a2d419a7159cd244d05ffced2b2fc72daaa811ef688d2c4cce3fc35edefb871e",
+      "packaged_sha256": "0a9ca397687c61fb53fb35b6492ff5b2a0ce40f54b0cc1a7d3950a807a76fbca",
+      "changes": "Consumer runtime manifest filename; portable binding label/dates only"
+    },
+    "payload/combined_screening_driver/runtime_inspect.py": {
+      "upstream_method_sha256": "1ee4de292300d0a387432a335b02d263af59f1a2c52830c744978255cbbea9b9",
+      "packaged_sha256": "1ee4de292300d0a387432a335b02d263af59f1a2c52830c744978255cbbea9b9",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/fractional_separator.py": {
+      "upstream_method_sha256": "715a29f2f8fdc89b69dd5851a5c398da5d6254a958b67f6becaea224059393b2",
+      "packaged_sha256": "715a29f2f8fdc89b69dd5851a5c398da5d6254a958b67f6becaea224059393b2",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/pair_codec.py": {
+      "upstream_method_sha256": "7b044d31012b0e3e03dc4b875f9db32255480f5e3911d0f86cf54ac6a78ddf58",
+      "packaged_sha256": "7b044d31012b0e3e03dc4b875f9db32255480f5e3911d0f86cf54ac6a78ddf58",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/witness_store.py": {
+      "upstream_method_sha256": "3d974e276a626ee22658c057e0277804546304a302ef915c1d6b9bdc824a2c32",
+      "packaged_sha256": "3d974e276a626ee22658c057e0277804546304a302ef915c1d6b9bdc824a2c32",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/resource_guard.py": {
+      "upstream_method_sha256": "5caafa95fe40bb27d9935a9df3c6cc1a0fee5e3a5d66ef1c753b353fb612f68f",
+      "packaged_sha256": "5caafa95fe40bb27d9935a9df3c6cc1a0fee5e3a5d66ef1c753b353fb612f68f",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/credit_events.py": {
+      "upstream_method_sha256": "477c74bdf47379ceeba1f24eb94dbad4256a5092cd4c36bd193076e2b0373c0a",
+      "packaged_sha256": "477c74bdf47379ceeba1f24eb94dbad4256a5092cd4c36bd193076e2b0373c0a",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/stage_child.py": {
+      "upstream_method_sha256": "c396fbe9011310879fa8bfb5a2cb66d7e3c56fb3ad29f913d905ebe66bb3f0f7",
+      "packaged_sha256": "8b43a3305f8b7e84881321bc24d74eb044dada4b713aec22604b6aece40f594b",
+      "changes": "Consumer runtime manifest filename; portable binding label/dates only"
+    },
+    "payload/combined_screening_driver/release_gate.py": {
+      "upstream_method_sha256": "8aaecee0a559fbf35b45fda0873985efda0b1f8595d2988e89d30a597855d27c",
+      "packaged_sha256": "f02d2b26321de477ce6e9288be1745af56fc74f217b0dfda7f03614f0141364a",
+      "changes": "Consumer runtime manifest filename; portable binding label/dates only"
+    },
+    "payload/combined_screening_driver/tiny_triangle.json": {
+      "upstream_method_sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48",
+      "packaged_sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48",
+      "changes": "None"
+    },
+    "payload/canonical_mps_export/export_v2.py": {
+      "upstream_method_sha256": "83b7a73d06bfc35571ac446e92b25758967f01197f5ada752446e88f7372ce6b",
+      "packaged_sha256": "83b7a73d06bfc35571ac446e92b25758967f01197f5ada752446e88f7372ce6b",
+      "changes": "None"
+    },
+    "payload/canonical_mps_export/readback.py": {
+      "upstream_method_sha256": "4400ec93e891719348dc3c574c4a5f4e1b3b2c26b00825ae4ecef3c977d52755",
+      "packaged_sha256": "0721722b090506be5c349d1fc9e4ec3493ef49db5f0fe04bc3e08d64998a169a",
+      "changes": "Exact present bound-path I/O diagnostic recognition; raw log/evidence retained; model read, all sixteen fields and provider checks unchanged"
+    },
+    "payload/lp_security_separator_optimized/fractional_separator.py": {
+      "upstream_method_sha256": "6428ccf878e624498e573d5d830057e90b4865b2ed6e01a78e3944d2ff96287c",
+      "packaged_sha256": "6428ccf878e624498e573d5d830057e90b4865b2ed6e01a78e3944d2ff96287c",
+      "changes": "None"
+    },
+    "payload/helpers/slot_envelope.py": {
+      "upstream_method_sha256": "9b6dbeb96f2e6df93a96e0f84ae02bf86529f68fc6f9215ef9574d1745f15055",
+      "packaged_sha256": "9b6dbeb96f2e6df93a96e0f84ae02bf86529f68fc6f9215ef9574d1745f15055",
+      "changes": "None"
+    },
+    "payload/helpers/process_measure.py": {
+      "upstream_method_sha256": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1",
+      "packaged_sha256": "ab256794d750c96fd2b50a83529716feb14a0eb565b7bb432da817794b7b33e1",
+      "changes": "None"
+    },
+    "payload/scuc/check_solution.py": {
+      "upstream_method_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "packaged_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+      "changes": "None"
+    },
+    "payload/scuc/generate.py": {
+      "upstream_method_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+      "packaged_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+      "changes": "None"
+    },
+    "payload/combined_screening_driver/trial_policy.py": {
+      "upstream_method_sha256": "813106d37b2b56e01cb71b11d3d719ef155d64fe496934dd427e77a4db5805b5",
+      "packaged_sha256": "813106d37b2b56e01cb71b11d3d719ef155d64fe496934dd427e77a4db5805b5",
+      "changes": "None; role/options/budget/certificate/loop exactly unchanged"
+    },
+    "payload/combined_screening_driver/early_runtime.py": {
+      "upstream_method_sha256": "1c79e037f749c4b7668e9c5cd4be07a90fdbbc8f18d5de25252ba7a4e617b96d",
+      "packaged_sha256": "d5ae1ce9c2521e8d004ada6c90e4f2c0444c60c035f323287b9e292aa5bf69e4",
+      "changes": "Consumer-local runtime manifest filename; unused historical launcher removed; exact present bound-path I/O adapter before unchanged role report; seeded stage math unchanged"
+    }
+  },
+  "historical_confirmation_binding_sha256": "49c1f3104490ab8ed744104fd2cc38e579fe7924c3ebb704a6a3e0cddc8ae535",
+  "confirmation_result_sha256": "030946df6f7c5e8854f3c9085ff1c48a44aeec1d34e3f5fd6d409b18871186bd"
+}

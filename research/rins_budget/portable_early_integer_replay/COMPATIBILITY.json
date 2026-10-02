@@ -1,0 +1,49 @@
+{
+  "schema": "portable-early-compatibility-v2",
+  "changes": [
+    "Consumer-local source/runtime/seed/output binding",
+    "Runtime manifest filename changed to RUNTIME_MANIFEST.json; no agent approval flow",
+    "Present exact bound model-read/solution-write announcements recognized before unchanged diagnostic/status/point gates",
+    "Exact present solution_file option echo recognized; no solution file existence requirement for this echo"
+  ],
+  "not_changed": [
+    "Role policy and proof-only certificate",
+    "Original generation/row physics/objective/integrality",
+    "All sixteen actual model API fields",
+    "Source/line outage checks and1e-5 tolerance",
+    "Production600actual solver/1800arm budgets and commonAoptions"
+  ],
+  "clean_no_point_discovery_transition_preserved": true,
+  "raw_logs_preserved": true,
+  "ordinary_retained_solver_differential": {
+    "records": 45,
+    "passed": true,
+    "scope": "Exact full solver_report dictionaries before/after known I/O recognition"
+  },
+  "ordinary_retained_readback_differential": {
+    "records": 45,
+    "passed": true,
+    "scope": "Diagnostic extraction unchanged; all original sixteen-field receipts passed"
+  },
+  "fresh_portable_tiny_status": "pending_bounded_local_validation",
+  "solver_calls_during_source_preparation": 0,
+  "prior_portable_attempt": {
+    "package_manifest_sha256": "370efb473290cac7fcc3a4eca321960f94fc7627754aeb98b3dd4bb249e63ad3",
+    "outcome": "Stopped on baseline first Optimal MIP: benign bound solution_file option echo was rejected as definition diagnostic",
+    "actual_solver_seconds": 0.05236582600628026,
+    "containing_validation_seconds": 9.22985172100016,
+    "early_arm": "unrun",
+    "retries": 0,
+    "evidence_preserved": true
+  },
+  "keyword_substitution_differential": {
+    "solver_logs": 45,
+    "readback_logs": 45,
+    "passed": true,
+    "entire_log_replacements": "All occurrences of both bound model and solution paths",
+    "solver_report_comparison": "Exact full dictionary equality",
+    "readback_comparison": "Diagnostic equality and retained sixteen-field pass",
+    "solver_calls": 0,
+    "api_calls": 0
+  }
+}

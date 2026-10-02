@@ -12,8 +12,9 @@ solver-process wall time and 54.85% in arm-process E2E; every pair improved both
 endpoints. The comparator is the cold integer screening loop, not the earlier
 LP bundle. This is scoped evidence on three dates of one network, with no
 change to normal solver defaults. The report preserves every outcome,
-objective/slack check and clock boundary. Portable early-only replay validation
-is a separate deliverable.
+objective/slack check and clock boundary. The [portable early-only replay](portable_early_integer_replay/README.md)
+now includes the runnable workflow; its [separate tiny validation](portable_early_integer_validation/RESULTS.md)
+preserves the two development failures and the artifact-only verifier correction.
 
 The [combined SCUC replay](portable_combined_replay/README.md) includes the full
 LP-screening pipeline, root-child-credit patch recipe, original-model checks and

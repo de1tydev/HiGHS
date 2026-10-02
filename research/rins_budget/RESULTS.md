@@ -21,6 +21,9 @@ and unmeasured.
 
 See [the complete early-integer result](early_integer_results/RESULTS.md) for
 every pair, exact timing boundaries, source/runtime provenance and limitations.
+The [portable early-only replay](portable_early_integer_replay/README.md) has a
+[separate synthetic validation](portable_early_integer_validation/RESULTS.md),
+with no production performance rerun.
 The earlier negative experiments below retain their original conclusions.
 
 ## Initial RINS decision

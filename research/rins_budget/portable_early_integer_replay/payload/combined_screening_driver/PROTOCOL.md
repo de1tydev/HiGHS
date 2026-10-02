@@ -1,0 +1,3 @@
+# Fixed early-only method
+
+Baseline: empty-pair cold integer loop. Early: one first integer discovery with mip_max_improving_sols=1 and mip_rel_gap=.01, then fresh cold proof. Only independently checked original rows persist. No discovery U/L, starts, basis, solver state, repair, LP screening or constructive screening enter proof. All original source/matrix/outage checks and conservative numerical-bound certificate policy remain fixed. Production budget600 actual solver seconds/1800 containing-arm seconds; tiny correctness budget10 actual solver seconds per arm. No external approval file is part of the consumer flow.

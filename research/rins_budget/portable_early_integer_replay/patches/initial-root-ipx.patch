@@ -1,0 +1,520 @@
+diff --git a/check/CMakeLists.txt b/check/CMakeLists.txt
+index 6f019a7a5..70010ee1c 100644
+--- a/check/CMakeLists.txt
++++ b/check/CMakeLists.txt
+@@ -64,6 +64,7 @@ if ((NOT FAST_BUILD OR ALL_TESTS) AND NOT (BUILD_EXTRA_UNIT_ONLY))
+       TestLpValidation.cpp
+       TestMain.cpp
+       TestMipSolver.cpp
++      TestMipInitialRootIpx.cpp
+       TestModelProperties.cpp
+       TestMultiObjective.cpp
+       TestNames.cpp
+diff --git a/check/TestMipInitialRootIpx.cpp b/check/TestMipInitialRootIpx.cpp
+new file mode 100644
+index 000000000..3d5532c46
+--- /dev/null
++++ b/check/TestMipInitialRootIpx.cpp
+@@ -0,0 +1,377 @@
++#include "HCheckConfig.h"
++#include "Highs.h"
++#include "catch.hpp"
++#include "mip/HighsLpRelaxation.h"
++#include "mip/HighsMipSolverData.h"
++#include "mip/HighsMipWorker.h"
++
++namespace {
++
++HighsLp initialRootIpxModel() {
++  HighsLp lp;
++  lp.num_col_ = 2;
++  lp.num_row_ = 1;
++  lp.col_cost_ = {1, 1.1};
++  lp.col_lower_ = {0, 0};
++  lp.col_upper_ = {1, 1};
++  lp.row_lower_ = {3};
++  lp.row_upper_ = {kHighsInf};
++  lp.integrality_ = {HighsVarType::kInteger, HighsVarType::kInteger};
++  lp.a_matrix_.format_ = MatrixFormat::kColwise;
++  lp.a_matrix_.num_col_ = 2;
++  lp.a_matrix_.num_row_ = 1;
++  lp.a_matrix_.start_ = {0, 1, 2};
++  lp.a_matrix_.index_ = {0, 0};
++  lp.a_matrix_.value_ = {2, 2};
++  return lp;
++}
++
++// Exercise the real relaxation entry point without unrelated MIP presolve,
++// propagation or heuristics removing a deliberately small root fixture.
++struct InitialRootIpxFixture {
++  HighsOptions options;
++  HighsLp model = initialRootIpxModel();
++  HighsCallback callback{nullptr};
++  HighsSolution solution;
++  HighsTimer timer;
++  HighsProfiling profiling;
++  HighsMipSolver mip;
++
++  InitialRootIpxFixture(bool enabled = true, bool submip = false)
++      : mip(callback, options, model, solution, submip, submip ? 1 : 0) {
++    options.output_flag = false;
++    options.mip_initial_root_ipx = enabled;
++    options.mip_lp_solver = kHighsChooseString;
++    highs::parallel::initialize_scheduler(1);
++    profiling.multi_threaded = false;
++    profiling.initialize(timer, false, false);
++    mip.setProfiling(&profiling);
++    mip.timer_.start();
++    mip.mipdata_.reset(new HighsMipSolverData(mip));
++    mip.mipdata_->feastol = options.mip_feasibility_tolerance;
++    lp().setProfiling(&profiling);
++    lp().loadModel();
++    lp().setSolvedFirstLp(false);
++    REQUIRE(lp().getLpSolver().setOptionValue("presolve", kHighsOffString) ==
++            HighsStatus::kOk);
++  }
++
++  HighsLpRelaxation& lp() { return mip.mipdata_->getLp(); }
++  HighsInt selections() const {
++    return mip.mipdata_->initial_root_ipx_selections;
++  }
++
++  void addWorkers() {
++    auto& data = *mip.mipdata_;
++    for (int i = 0; i < 2; ++i)
++      data.workers.emplace_back(mip, &lp(), &data.getDomain(),
++                                &data.getCutPool(), &data.getConflictPool(),
++                                &data.getPseudoCost());
++    data.parallel_lock = true;
++    REQUIRE(data.parallelLockActive());
++  }
++};
++
++size_t occurrences(const std::string& log, const std::string& token) {
++  size_t count = 0;
++  size_t pos = 0;
++  while ((pos = log.find(token, pos)) != std::string::npos) {
++    ++count;
++    pos += token.size();
++  }
++  return count;
++}
++
++void captureInitialRootLog(Highs& highs, std::string& log) {
++  REQUIRE(highs.setOptionValue("output_flag", true) == HighsStatus::kOk);
++  REQUIRE(highs.setOptionValue("log_to_console", false) == HighsStatus::kOk);
++  highs.setCallback(
++      [&](int type, const std::string& message, const HighsCallbackOutput*,
++          HighsCallbackInput*, void*) {
++        if (type == kCallbackLogging) log += message;
++      }, nullptr);
++  REQUIRE(highs.startCallback(kCallbackLogging) == HighsStatus::kOk);
++}
++
++}  // namespace
++
++TEST_CASE("MIP-initial-root-ipx-option", "[highs_test_mip_solver][root_ipx]") {
++  Highs highs;
++  highs.setOptionValue("output_flag", false);
++  bool enabled = true;
++  REQUIRE(highs.getOptionValue("mip_initial_root_ipx", enabled) ==
++          HighsStatus::kOk);
++  REQUIRE(!enabled);
++  for (const auto* record : highs.getOptions().records)
++    if (record->name == "mip_initial_root_ipx") REQUIRE(record->advanced);
++  REQUIRE(highs.setOptionValue("mip_initial_root_ipx", true) == HighsStatus::kOk);
++  REQUIRE(highs.getOptions().mip_initial_root_ipx);
++  REQUIRE(highs.getOptions().mip_lp_solver == kHighsChooseString);
++  REQUIRE(highs.getOptions().mip_ipm_solver == kHighsChooseString);
++  REQUIRE(highs.setOptionValue("mip_initial_root_ipx", "invalid") ==
++          HighsStatus::kError);
++  highs.resetOptions();
++  REQUIRE(!highs.getOptions().mip_initial_root_ipx);
++}
++
++TEST_CASE("MIP-initial-root-ipx-selection", "[highs_test_mip_solver][root_ipx]") {
++  for (bool enabled : {false, true}) {
++    InitialRootIpxFixture f(enabled);
++    std::string prior_solver;
++    f.lp().getLpSolver().getOptionValue("solver", prior_solver);
++    REQUIRE(!f.lp().getLpSolver().getBasis().valid);
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == (enabled ? 1 : 0));
++    REQUIRE(f.lp().getLpSolver().getBasis().valid);
++    REQUIRE(f.lp().getSolverInfo().objective_function_value == Approx(1.55));
++    REQUIRE(f.options.mip_lp_solver == kHighsChooseString);
++    REQUIRE(f.options.mip_ipm_solver == kHighsChooseString);
++    REQUIRE(f.lp().getLpSolver().getOptions().solver == prior_solver);
++    if (enabled) {
++      REQUIRE(f.lp().getSolverInfo().ipm_iteration_count > 0);
++    } else {
++      REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++    }
++
++    // A later solve, even after loss of the basis, uses the ordinary setting.
++    REQUIRE(f.lp().getLpSolver().clearSolver() == HighsStatus::kOk);
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == (enabled ? 1 : 0));
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++    REQUIRE(f.lp().getLpSolver().getOptions().solver == prior_solver);
++  }
++  Highs::resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-initial-root-ipx-skips", "[highs_test_mip_solver][root_ipx]") {
++  SECTION("valid initial basis consumes initial solve") {
++    InitialRootIpxFixture f;
++    HighsBasis basis;
++    basis.col_status.assign(2, HighsBasisStatus::kLower);
++    basis.row_status.assign(1, HighsBasisStatus::kBasic);
++    REQUIRE(f.lp().getLpSolver().setBasis(basis) == HighsStatus::kOk);
++    REQUIRE(f.lp().getLpSolver().getBasis().valid);
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 0);
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++    f.lp().getLpSolver().clearSolver();
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 0);
++  }
++  SECTION("restarts reset first-LP flag but must not reselect") {
++    InitialRootIpxFixture f;
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 1);
++    f.lp().getLpSolver().clearSolver();
++    f.lp().setSolvedFirstLp(false);
++    f.mip.mipdata_->numRestarts = 1;
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 1);
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++  }
++  SECTION("copied heuristic LP is not the primary LP") {
++    InitialRootIpxFixture f;
++    HighsLpRelaxation copy(f.lp());
++    copy.setProfiling(&f.profiling);
++    copy.setSolvedFirstLp(false);
++    copy.getLpSolver().clearSolver();
++    REQUIRE(copy.run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 0);
++    REQUIRE(copy.getSolverInfo().ipm_iteration_count == 0);
++  }
++  SECTION("worker LP is not the primary LP") {
++    InitialRootIpxFixture f;
++    f.mip.mipdata_->lps.emplace_back(f.lp());
++    auto& worker_lp = f.mip.mipdata_->lps.back();
++    worker_lp.setProfiling(&f.profiling);
++    worker_lp.setSolvedFirstLp(false);
++    REQUIRE(worker_lp.run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 0);
++  }
++  SECTION("nested MIP is excluded even with a cold first LP") {
++    InitialRootIpxFixture f(true, true);
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 0);
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++  }
++  SECTION("primary LP is excluded while parallel workers are active") {
++    InitialRootIpxFixture f;
++    f.addWorkers();
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 0);
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++  }
++  Highs::resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-initial-root-ipx-preserves-explicit-engine",
++          "[highs_test_mip_solver][root_ipx]") {
++  InitialRootIpxFixture f;
++  f.options.mip_lp_solver = kIpxString;
++  f.mip.mipdata_->numRestarts = 1;
++  REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++  REQUIRE(f.selections() == 0);
++  REQUIRE(f.lp().getSolverInfo().ipm_iteration_count > 0);
++  REQUIRE(f.options.mip_lp_solver == kIpxString);
++  Highs::resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-initial-root-ipx-shortcuts", "[highs_test_mip_solver][root_ipx]") {
++  SECTION("LP presolve may finish before IPX executes") {
++    InitialRootIpxFixture f;
++    f.lp().getLpSolver().setOptionValue("presolve", kHighsOnString);
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 1);
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++    REQUIRE(f.lp().getLpSolver().getBasis().valid);
++  }
++  SECTION("an exhausted limit consumes the one initial selection") {
++    InitialRootIpxFixture f;
++    const auto prior_solver = f.lp().getLpSolver().getOptions().solver;
++    f.options.time_limit = 0;
++    REQUIRE(f.lp().run(false) == HighsLpRelaxation::Status::kError);
++    REQUIRE(f.selections() == 1);
++    REQUIRE(f.lp().getLpSolver().getModelStatus() == HighsModelStatus::kTimeLimit);
++    REQUIRE(f.lp().getLpSolver().getOptions().solver == prior_solver);
++    f.options.time_limit = kHighsInf;
++    f.lp().getLpSolver().clearSolver();
++    REQUIRE(f.lp().run() == HighsLpRelaxation::Status::kOptimal);
++    REQUIRE(f.selections() == 1);
++    REQUIRE(f.lp().getSolverInfo().ipm_iteration_count == 0);
++  }
++  Highs::resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-initial-root-ipx-integration", "[highs_test_mip_solver][root_ipx]") {
++  for (bool enabled : {false, true}) {
++    for (bool maximize : {false, true}) {
++      for (const std::string presolve : {kHighsOnString, kHighsOffString}) {
++        Highs highs;
++        highs.setOptionValue("output_flag", false);
++        REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps")
++                == HighsStatus::kOk);
++        HighsLp lp = highs.getLp();
++        lp.offset_ = 123;
++        if (maximize) {
++          for (double& cost : lp.col_cost_) cost = -cost;
++          lp.offset_ = -lp.offset_;
++          lp.sense_ = ObjSense::kMaximize;
++        }
++        REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++        REQUIRE(highs.setOptionValue("presolve", presolve) == HighsStatus::kOk);
++        REQUIRE(highs.setOptionValue("mip_initial_root_ipx", enabled) ==
++                HighsStatus::kOk);
++        REQUIRE(highs.setOptionValue("parallel", kHighsOffString) ==
++                HighsStatus::kOk);
++        std::string log;
++        captureInitialRootLog(highs, log);
++        REQUIRE(highs.run() == HighsStatus::kOk);
++        INFO(log);
++        REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++        REQUIRE(highs.getInfo().objective_function_value ==
++                Approx((maximize ? -1 : 1) * 205.2));
++        REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++        REQUIRE(highs.getInfo().max_integrality_violation <=
++                highs.getOptions().mip_feasibility_tolerance);
++        REQUIRE(highs.getOptions().mip_lp_solver == kHighsChooseString);
++        REQUIRE(highs.getOptions().mip_ipm_solver == kHighsChooseString);
++        REQUIRE(occurrences(log, "InitialRootIPX select:") == (enabled ? 1 : 0));
++        REQUIRE(occurrences(log, "InitialRootIPX result:") == (enabled ? 1 : 0));
++        REQUIRE(occurrences(log, "InitialRootIPX complete:") == (enabled ? 1 : 0));
++        if (enabled) {
++          REQUIRE(log.find("count=1 requested_solver=ipx ipx_iterations=0 ") ==
++                  std::string::npos);
++          REQUIRE(log.find("count=1 fallback_simplex=0 basis_valid=1") !=
++                  std::string::npos);
++        }
++        highs.resetGlobalScheduler(true);
++      }
++    }
++  }
++}
++
++TEST_CASE("MIP-initial-root-ipx-early-status", "[highs_test_mip_solver][root_ipx]") {
++  for (bool enabled : {false, true}) {
++    for (const std::string presolve : {kHighsOnString, kHighsOffString}) {
++      Highs highs;
++      highs.setOptionValue("output_flag", false);
++      highs.setOptionValue("mip_initial_root_ipx", enabled);
++      highs.setOptionValue("presolve", presolve);
++      REQUIRE(highs.run() == HighsStatus::kOk);
++      REQUIRE(highs.getModelStatus() == HighsModelStatus::kModelEmpty);
++      auto lp = initialRootIpxModel();
++      lp.num_col_ = -1;
++      REQUIRE(highs.passModel(lp) == HighsStatus::kError);
++      lp = initialRootIpxModel();
++      lp.row_lower_[0] = 5;
++      REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++      REQUIRE(highs.run() == HighsStatus::kOk);
++      REQUIRE(highs.getModelStatus() == HighsModelStatus::kInfeasible);
++      lp = initialRootIpxModel();
++      REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++      REQUIRE(highs.run() == HighsStatus::kOk);
++      REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++      REQUIRE(highs.getInfo().objective_function_value == Approx(2.1));
++      REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps")
++              == HighsStatus::kOk);
++      REQUIRE(highs.setOptionValue("time_limit", 0.0) == HighsStatus::kOk);
++      highs.clearSolver();
++      REQUIRE(highs.run() == HighsStatus::kWarning);
++      REQUIRE(highs.getModelStatus() == HighsModelStatus::kTimeLimit);
++      highs.resetGlobalScheduler(true);
++    }
++  }
++}
++
++TEST_CASE("MIP-initial-root-ipx-parallel-enabled",
++          "[highs_test_mip_solver][root_ipx]") {
++  Highs::resetGlobalScheduler(true);
++  Highs highs;
++  highs.setOptionValue("output_flag", false);
++  REQUIRE(highs.readModel(std::string(HIGHS_DIR) + "/check/instances/rgn.mps") ==
++          HighsStatus::kOk);
++  REQUIRE(highs.setOptionValue("threads", 2) == HighsStatus::kOk);
++  REQUIRE(highs.setOptionValue("parallel", kHighsOnString) == HighsStatus::kOk);
++  REQUIRE(highs.setOptionValue("mip_initial_root_ipx", true) == HighsStatus::kOk);
++  std::string log;
++  captureInitialRootLog(highs, log);
++  const auto status = highs.run();
++  INFO(log);
++  REQUIRE(status == HighsStatus::kOk);
++  REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++  REQUIRE(highs.getInfo().objective_function_value == Approx(82.2));
++  REQUIRE(highs.getInfo().primal_solution_status == kSolutionStatusFeasible);
++  REQUIRE(log.find("Thread count 2 ") != std::string::npos);
++  REQUIRE(log.find("Using 4 max workers.") != std::string::npos);
++  // The first primary LP is still serial; later worker LPs cannot select.
++  REQUIRE(occurrences(log, "InitialRootIPX select:") == 1);
++  REQUIRE(occurrences(log, "InitialRootIPX complete:") == 1);
++  highs.resetGlobalScheduler(true);
++}
++
++TEST_CASE("MIP-initial-root-ipx-unbounded", "[highs_test_mip_solver][root_ipx]") {
++  for (bool enabled : {false, true}) {
++    for (const std::string presolve : {kHighsOnString, kHighsOffString}) {
++      Highs highs;
++      highs.setOptionValue("output_flag", false);
++      highs.setOptionValue("mip_initial_root_ipx", enabled);
++      highs.setOptionValue("presolve", presolve);
++      // Same known rowless fixture as MIP-unbounded in TestMipSolver.cpp.
++      HighsLp lp;
++      lp.num_col_ = 1;
++      lp.num_row_ = 0;
++      lp.col_cost_ = {-1};
++      lp.col_lower_ = {0};
++      lp.col_upper_ = {kHighsInf};
++      lp.integrality_ = {HighsVarType::kInteger};
++      REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++      REQUIRE(highs.run() == HighsStatus::kOk);
++      REQUIRE(highs.getModelStatus() ==
++              (presolve == kHighsOnString
++                   ? HighsModelStatus::kUnboundedOrInfeasible
++                   : HighsModelStatus::kUnbounded));
++      REQUIRE(highs.getOptions().mip_lp_solver == kHighsChooseString);
++      highs.resetGlobalScheduler(true);
++    }
++  }
++}
+diff --git a/check/meson.build b/check/meson.build
+index 3feeccc1f..371955aa4 100644
+--- a/check/meson.build
++++ b/check/meson.build
+@@ -49,6 +49,7 @@ test_array = [
+   ['test_TestLpValidation', 'TestLpValidation.cpp'],
+   ['test_TestMain', 'TestMain.cpp'],
+   ['test_TestMipSolver', 'TestMipSolver.cpp'],
++  ['test_TestMipInitialRootIpx', 'TestMipInitialRootIpx.cpp'],
+   ['test_TestModelProperties', 'TestModelProperties.cpp'],
+   ['test_TestMultiObjective', 'TestMultiObjective.cpp'],
+   ['test_TestNames', 'TestNames.cpp'],
+diff --git a/highs/lp_data/HighsOptions.h b/highs/lp_data/HighsOptions.h
+index 869ac99f9..028328f43 100644
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -507,6 +507,7 @@ struct HighsOptionsStruct {
+   bool mip_heuristic_run_zi_round;
+   bool mip_heuristic_run_shifting;
+   double mip_min_logging_interval;
++  bool mip_initial_root_ipx;
+   std::string mip_lp_solver;
+   std::string mip_ipm_solver;
+ #ifdef HIGHS_DEBUGSOL
+@@ -675,6 +676,7 @@ struct HighsOptionsStruct {
+         mip_heuristic_run_zi_round(false),
+         mip_heuristic_run_shifting(false),
+         mip_min_logging_interval(0.0),
++        mip_initial_root_ipx(false),
+         mip_lp_solver(""),
+         mip_ipm_solver(""),
+ #ifdef HIGHS_DEBUGSOL
+@@ -1298,6 +1300,12 @@ class HighsOptions : public HighsOptionsStruct {
+         &mip_min_logging_interval, 0, 5, kHighsInf);
+     records.push_back(record_double);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_initial_root_ipx",
++        "Use IPX for the initial cold main-MIP root LP only (experimental)",
++        now_advanced, &mip_initial_root_ipx, false);
++    records.push_back(record_bool);
++
+     record_string =
+         new OptionRecordString(kMipLpSolverString,
+                                "MIP LP solver: \"choose\", \"simplex\", "
+diff --git a/highs/mip/HighsLpRelaxation.cpp b/highs/mip/HighsLpRelaxation.cpp
+index 77b2b0f98..b585c2eb8 100644
+--- a/highs/mip/HighsLpRelaxation.cpp
++++ b/highs/mip/HighsLpRelaxation.cpp
+@@ -1159,6 +1159,25 @@ HighsLpRelaxation::Status HighsLpRelaxation::run(bool resolve_on_error) {
+       use_solver = kSimplexString;
+     }
+   }
++  // This override is local to the first cold solve of the main root LP.
++  // runSetup resets solved_first_lp on restart, so the restart guard is
++  // essential. Copies and parallel workers must not acquire this override.
++  const bool initial_root_ipx =
++      mipsolver.options_mip_->mip_initial_root_ipx && !mipsolver.submip &&
++      !solved_first_lp && !valid_basis &&
++      !mipsolver.mipdata_->parallelLockActive() &&
++      mipsolver.mipdata_->numRestarts == 0 &&
++      this == &mipsolver.mipdata_->getLp();
++  if (initial_root_ipx) {
++    use_solver = kIpxString;
++    ++mipsolver.mipdata_->initial_root_ipx_selections;
++    assert(mipsolver.mipdata_->initial_root_ipx_selections == 1);
++    highsLogUser(
++        mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++        "InitialRootIPX select: count=%d solver=%s elapsed=%.6f\n",
++        int(mipsolver.mipdata_->initial_root_ipx_selections),
++        use_solver.c_str(), mipsolver.timer_.read());
++  }
+   HighsStatus callstatus;
+   // Now allowing the use of IPM at the root node
+   lpsolver.setOptionValue("solver", use_solver);
+@@ -1191,6 +1210,20 @@ HighsLpRelaxation::Status HighsLpRelaxation::run(bool resolve_on_error) {
+     }
+     mipsolver.profiling_->solveCall("LP1", mipsolver.submip);
+     callstatus = lpsolver.optimizeLp();
++    if (initial_root_ipx) {
++      // Positive IPM iterations prove IPX executed. A zero count can mean
++      // presolve/empty-model/early-limit handling, not an IPX solve.
++      highsLogUser(
++          mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++          "InitialRootIPX result: count=%d requested_solver=%s "
++          "ipx_iterations=%d crossover_iterations=%d basis_valid=%d "
++          "call_status=%d model_status=%d elapsed=%.6f\n",
++          int(mipsolver.mipdata_->initial_root_ipx_selections),
++          use_solver.c_str(), int(info.ipm_iteration_count),
++          int(info.crossover_iteration_count), int(lpsolver.getBasis().valid),
++          int(callstatus), int(lpsolver.getModelStatus()),
++          mipsolver.timer_.read());
++    }
+     if (ipm_logging) lpsolver.setOptionValue("output_flag", false);
+     if (callstatus == HighsStatus::kError) {
+       highsLogDev(
+@@ -1214,6 +1247,15 @@ HighsLpRelaxation::Status HighsLpRelaxation::run(bool resolve_on_error) {
+     mipsolver.profiling_->solveCall("LP2", mipsolver.submip);
+     callstatus = lpsolver.optimizeLp();
+   }
++  if (initial_root_ipx) {
++    highsLogUser(
++        mipsolver.options_mip_->log_options, HighsLogType::kInfo,
++        "InitialRootIPX complete: count=%d fallback_simplex=%d "
++        "basis_valid=%d call_status=%d model_status=%d elapsed=%.6f\n",
++        int(mipsolver.mipdata_->initial_root_ipx_selections), int(use_simplex),
++        int(lpsolver.getBasis().valid), int(callstatus),
++        int(lpsolver.getModelStatus()), mipsolver.timer_.read());
++  }
+   // Revert the value of lpsolver.options_.solver
+   lpsolver.setOptionValue("solver", solver);
+   if (mipsolver.profiling_->mip_ && !mipsolver.submip &&
+diff --git a/highs/mip/HighsMipSolverData.h b/highs/mip/HighsMipSolverData.h
+index 12a235147..b52b8fa8b 100644
+--- a/highs/mip/HighsMipSolverData.h
++++ b/highs/mip/HighsMipSolverData.h
+@@ -91,6 +91,8 @@ struct HighsMipSolverData {
+   bool analyticCenterComputed;
+   HighsModelStatus analyticCenterStatus;
+   bool detectSymmetries;
++  // Experimental initial-root selection count; deliberately survives restarts.
++  HighsInt initial_root_ipx_selections = 0;
+   HighsInt numRestarts;
+   HighsInt numRestartsRoot;
+   HighsInt numCliqueEntriesAfterPresolve;
