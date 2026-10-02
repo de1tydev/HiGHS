@@ -1,0 +1,77 @@
+{
+  "schema": "corrected-early-integer-replay-kit-v1",
+  "kind": "additive_exact_overlay_and_source_recipe",
+  "files": {
+    "README.md": "232e8fb1dff73443b4254305a51ef7e76e40c8553e32987c4fe91306bd455d76",
+    "overlay/CORRECTED_REFERENCE_PROPOSAL.json": "261bebea8a47a4a8bab631c512522f6187bee4d8960e526a96d640df5488992e",
+    "overlay/PACKAGE_MANIFEST.json": "79e6c0c9832d5322a2406545b855f86d6eab15ed93c6980d7f4cf9894f0eb34f",
+    "overlay/SOURCE_TREE.sha256": "dba407bb01e868fa4711cb1664590f4fe4250000b5ebab63323d88c72f5a469b",
+    "overlay/prepare_replay.py": "12740b6cf29bcb42f8e7ee137873ebf3350724408c6c6d2a11d29ccc5b888184",
+    "patches/incumbent-repair-3181-backport.patch": "8e97b21e94c6e16be82adcbeb350b5eebc7d7dc8cccaa1d7b60a9df5abfdf40e",
+    "patches/pathcut-3179-backport.patch": "167bffa99b2a805fef38469a2636a132ee1af68c92b0c82ce04d64f393d21285"
+  },
+  "historical_package": {
+    "repository": "https://github.com/de1tydev/HiGHS",
+    "commit": "3ed0d24b76ccf87c7e075a19772a76e696c5493c",
+    "path": "research/rins_budget/portable_early_integer_replay",
+    "manifest_sha256": "62c97392d77cd0af2eb8056ea1167222ad969c82e9efa59c0196dcb5ebaa9743",
+    "files": 48
+  },
+  "reconstructed_package": {
+    "manifest_sha256": "79e6c0c9832d5322a2406545b855f86d6eab15ed93c6980d7f4cf9894f0eb34f",
+    "files": 49,
+    "payload_files": 33,
+    "payload_changed": false,
+    "source_inventory_sha256": "dba407bb01e868fa4711cb1664590f4fe4250000b5ebab63323d88c72f5a469b",
+    "source_files": 984
+  },
+  "source": {
+    "repository": "https://github.com/ERGO-Code/HiGHS",
+    "base_commit": "73cac48c5340d775a477087198611862559be250",
+    "patch_order": [
+      {
+        "location": "reconstructed_package/patches/outer-gap-heuristic.patch",
+        "sha256": "e1d1c2df245c9723f80bdd2d1a5c5cb817bae2d9c474795bd97c2892170990ae"
+      },
+      {
+        "location": "reconstructed_package/patches/initial-root-ipx.patch",
+        "sha256": "533cc510f73fba3ce49bafdad585a3a9b1a3e3ad6a76a79da2b2123393d64e24"
+      },
+      {
+        "location": "reconstructed_package/patches/root-child-credit.patch",
+        "sha256": "03041fda1e20fcf0a3fcae6489c7cbb1a8d03769377567ab7ac2ae64fa3ad9c1"
+      },
+      {
+        "location": "patches/pathcut-3179-backport.patch",
+        "sha256": "167bffa99b2a805fef38469a2636a132ee1af68c92b0c82ce04d64f393d21285",
+        "upstream_pr": "https://github.com/ERGO-Code/HiGHS/pull/3179",
+        "upstream_merge": "28339ce4b57bf8858036cbb36f4fc66d97fedd06",
+        "adaptation": "Production changes, test body and fixture unchanged; test insertion context adapted to pinned baseline",
+        "fixture_sha256": "f6b8ab304d1c4d5b87e9f8fd5f9f80a09312053e422290fbcc0ac1145a561a90"
+      },
+      {
+        "location": "patches/incumbent-repair-3181-backport.patch",
+        "sha256": "8e97b21e94c6e16be82adcbeb350b5eebc7d7dc8cccaa1d7b60a9df5abfdf40e",
+        "upstream_pr": "https://github.com/ERGO-Code/HiGHS/pull/3181",
+        "upstream_merge": "ae53450f395cf0a278858868b64813ea99bb4767",
+        "adaptation": "Exact official one-file production patch; eight additions; no checked-in regression added"
+      }
+    ]
+  },
+  "validation_scope": {
+    "existing_corrected_source_build_runtime_and_tiny": "Validated locally on the recorded clean Linux/glibc runtime",
+    "reference_ctest_passed": 168,
+    "reference_ctest_total": 168,
+    "known_3179_regression_passed": true,
+    "repair_3180_compatibility_passed": true,
+    "repair_3181_dynamic_coverage_established": false,
+    "all_four_3180_repair_lp_counts": 0,
+    "independent_optimality_proof": false,
+    "public_export_overlay_recipe": "Historical local export and four-overlay assembly executed in fresh directories; exact49-file package and33 payload parity passed. Local official source object plus five patches reproduced exact984-file inventory. Network clone/install/rebuild/full fresh-consumer setup not re-executed.",
+    "new_dependency_installer_provided": false,
+    "performance_claim_included": false
+  },
+  "historical_metadata_note": "Embedded README/compatibility/proposal records retain creation-time bytes. The external kit README supplies corrected instructions; no approval service is part of consumer replay.",
+  "historical_advisory": "../CORRECTNESS_ADVISORY.md",
+  "license_note": "Preserve included HiGHS/package notices and original UnitCommitment/MATPOWER CC BY4.0 data attribution. No PG89 input datasets or binaries; the #3179 patch embeds its small official MPS regression fixture."
+}

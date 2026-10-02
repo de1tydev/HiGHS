@@ -56,6 +56,25 @@ SCUC results, and no historical timing has been adjusted.
 
 ## Current status
 
+**Update after corrected revalidation — 2026-10-02:** The isolated official
+#3179 and [#3181](https://github.com/ERGO-Code/HiGHS/commit/ae53450f395cf0a278858868b64813ea99bb4767)
+backports passed the combined reference's 168 configured tests. Fresh matched
+PG89 runs passed all nine fixed pairs and their independent terminal audit:
+median reductions were 66.05% in solver-process time and 56.19% in arm time.
+All 18 arms reached the unchanged 1% numerical endpoint with independently
+checked primals and zero shedding, shared overflow and reserve shortfall.
+The [corrected report](corrected_pg89_results/RESULTS.md) and
+[additive replay kit](portable_early_integer_corrected_replay_v1/README.md)
+retain the complete outcome, quality and scope disclosures.
+
+This supports a new result on the corrected custom reference. It does not
+establish which old runs, if any, triggered the defect, repair historical
+lower-bound evidence, or provide an exact independent dual proof. The #3181
+attachment checks established compatibility but did not execute its repair
+branch. Larger-case acceleration and production readiness remain unproven.
+
+### Status when this advisory was first published
+
 New performance runs are paused. The separate original-space incumbent-repair
 correction in [PR #3181](https://github.com/ERGO-Code/HiGHS/pull/3181) is also
 being assessed before selecting the reference for resumed work. Passing the

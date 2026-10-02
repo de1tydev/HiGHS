@@ -1,0 +1,22 @@
+{
+  "schema": "pg89-corrected-source-overlay-v1",
+  "status": "source_proposal_only",
+  "published_manifest_sha256": "62c97392d77cd0af2eb8056ea1167222ad969c82e9efa59c0196dcb5ebaa9743",
+  "source_inventory_sha256": "dba407bb01e868fa4711cb1664590f4fe4250000b5ebab63323d88c72f5a469b",
+  "source_delta": [
+    "check/TestMipSolver.cpp",
+    "check/instances/issue-3171.mps",
+    "highs/mip/HighsMipSolverData.cpp",
+    "highs/mip/HighsPathSeparator.cpp",
+    "highs/mip/HighsTransformedLp.cpp",
+    "highs/mip/HighsTransformedLp.h"
+  ],
+  "official_corrections": [
+    3179,
+    3181
+  ],
+  "payload_changed": false,
+  "runtime_bound": false,
+  "numerical_launch_authorized": false,
+  "limitation": "Custom combined-corrected reference; source bytes require final independent review"
+}

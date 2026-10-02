@@ -2,12 +2,21 @@
 
 **Correctness advisory — 2026-10-02:** The pinned solver reproduced an incorrect optimality claim on an official upstream fixture. Historical 1% gap and time-to-1% acceleration claims below are provisional pending corrected-reference revalidation; historical SCUC impact is unknown. Original results remain archived. [Read the evidence and current limitations](CORRECTNESS_ADVISORY.md) before using this research.
 
+**Corrected-reference update — 2026-10-02:** Fresh matched PG89 revalidation
+with the isolated official #3179 and #3181 fixes passed all nine fixed pairs.
+Median reductions were 66.05% in solver-process time and 56.19% in arm end-to-end
+time. All 18 arms met the original 1% endpoint with zero shedding, overflow and
+reserve shortfall. See the [new report and every outcome](corrected_pg89_results/RESULTS.md)
+and the [additive corrected replay kit](portable_early_integer_corrected_replay_v1/README.md).
+These new measurements do not revise the historical numbers or establish
+general MILP or larger-case acceleration.
+
 This directory is an opt-in research package. It does not change the production
 solver, its build, or its defaults. All solver checkouts below are pinned to
 HiGHS commit `73cac48c5340d775a477087198611862559be250` (source version 1.15.1).
 The patches are separate artifacts, not an enabled solver optimization.
 
-The latest [early-integer discovery confirmation](early_integer_results/RESULTS.md)
+The historical [early-integer discovery confirmation](early_integer_results/RESULTS.md)
 passed its fixed nine-pair PG89 gate: all 18 arms obtained independently checked
 original-source 1% numerical certificates. Median reductions were 65.52% in
 solver-process wall time and 54.85% in arm-process E2E; every pair improved both
