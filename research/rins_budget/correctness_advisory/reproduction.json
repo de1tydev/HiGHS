@@ -1,0 +1,64 @@
+{
+  "advisory_date_utc": "2026-10-02",
+  "upstream_base_commit": "73cac48c5340d775a477087198611862559be250",
+  "official_issue": "https://github.com/ERGO-Code/HiGHS/issues/3171",
+  "official_fix_pr": "https://github.com/ERGO-Code/HiGHS/pull/3179",
+  "official_fix_commit": "28339ce4b57bf8858036cbb36f4fc66d97fedd06",
+  "official_fixture_sha256": "f6b8ab304d1c4d5b87e9f8fd5f9f80a09312053e422290fbcc0ac1145a561a90",
+  "backport_patch_sha256": "167bffa99b2a805fef38469a2636a132ee1af68c92b0c82ce04d64f393d21285",
+  "fixture_dimensions": {
+    "rows": 85,
+    "columns": 99,
+    "binary_columns": 49
+  },
+  "matched_options": {
+    "presolve": "on",
+    "random_seed": 0,
+    "threads": 1,
+    "parallel": "off",
+    "published_research_switches": "all three off"
+  },
+  "old": {
+    "reported_status": "Optimal",
+    "reported_primal": "42332.2356068",
+    "reported_lower": "42332.2356068",
+    "decimal_recomputed_feasible_objective": "42332.235606780",
+    "binary_sha256": "85d0ad3d448733cc4771d4a31b4b7ca943c86399dcd64e2ada53d2ceea816bec",
+    "loaded_libhighs_sha256": "7df384b8a186a00d8b88294540bf522f544efff705c113cff8e6354b507991ef"
+  },
+  "corrected": {
+    "reported_status": "Optimal",
+    "reported_primal": "42215.5250005",
+    "official_regression_oracle": "42215.5250005",
+    "decimal_recomputed_feasible_objective": "42215.525000540",
+    "binary_sha256": "7f629c91b0e667d25682eef57df53c0114e72dd70197cd142cf6016f076d5d12",
+    "loaded_libhighs_sha256": "e4fe9a497d6057e6a960727a96ee031abecdf1034a3199d970ea9777f4862344"
+  },
+  "independent_primal_check": {
+    "method": "Original MPS text and complete saved vectors; 80-digit Decimal arithmetic; no solver/model API",
+    "both_feasible": true,
+    "max_row_bound_integrality_residual": "0",
+    "better_feasible_objective_difference": "116.710606240",
+    "independent_dual_proof": false
+  },
+  "tests": {
+    "focused_cases": 1,
+    "focused_assertions": 6,
+    "ctest_passed": 168,
+    "ctest_total": 168,
+    "unit_cases": 353,
+    "unit_assertions": 1259994
+  },
+  "historical_SCUC_trigger": "unknown",
+  "historical_1_percent_and_acceleration_claims": "provisional pending corrected-reference revalidation",
+  "reference_scope": "Pinned source plus preserved initial-root-ipx/outer-gap-heuristic/root-child-credit default-off patches and isolated official #3179 correction; #3181 disposition pending",
+  "source_and_runtime_preserved": true,
+  "validation_evidence_manifest_sha256": "fc70d4880ca65a24ba7423e158adf5965a86b818f580edc8cd9716139282cd6e",
+  "documentation_amendment": {
+    "path": "research/rins_budget/combined_results/COMBINED_SCUC_RESULTS.md",
+    "prior_document_sha256": "72ed8b12d907103b8e31ba78b6fd83a5c20c13d77b73682ef19d644e2acddbd2",
+    "amended_document_sha256": "19ddbb19e4a0703555ecef78e9eb55c2ab6ca4337f429d41ad2d8dae1171edac",
+    "change": "Dated advisory paragraph only; corresponding published document checksum updated; original result table and all numeric evidence unchanged",
+    "historical_commit": "3ed0d24b76ccf87c7e075a19772a76e696c5493c"
+  }
+}

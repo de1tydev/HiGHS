@@ -1,5 +1,7 @@
 # Early integer discovery: PG89 confirmation
 
+**Correctness advisory — 2026-10-02:** The pinned solver reproduced an incorrect optimality claim on an official upstream fixture. Historical 1% gap and time-to-1% acceleration claims below are provisional pending corrected-reference revalidation; historical SCUC impact is unknown. Original results remain archived. [Read the evidence and current limitations](../CORRECTNESS_ADVISORY.md) before using this research.
+
 The fixed early-only method passed the predeclared confirmation rule: all 18 arms obtained valid original-source 1% numerical certificates, and the candidate was strictly faster on both measured endpoints in all nine pairs. Each date also exceeded the required 30% median paired reduction on both endpoints.
 
 | Date | Eligible pairs | Median solver-wall reduction | Median arm-E2E reduction | Date gate |

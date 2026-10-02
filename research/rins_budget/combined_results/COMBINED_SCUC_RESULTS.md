@@ -1,5 +1,7 @@
 # Combined SCUC screening: all nine pairs improve, final consistency gate fails
 
+**Correctness advisory — 2026-10-02:** The pinned solver reproduced an incorrect optimality claim on an official upstream fixture. Historical 1% gap and time-to-1% acceleration claims below are provisional pending corrected-reference revalidation; historical SCUC impact is unknown. Original results remain archived. [Read the evidence and current limitations](../CORRECTNESS_ADVISORY.md) before using this research.
+
 Completed historical measurements, 2026-10-02. Publication does not constitute a new benchmark.
 
 The combined candidate reduced solver-process time and complete standalone-equivalent end-to-end (E2E) time in **all nine confirmation pairs**. The median paired reductions across those observations were **45.7012% solver** and **34.5375% E2E**. All 18 arms completed with valid one-percent numerical certificates, with no timeout, regression, dropped or replaced case.

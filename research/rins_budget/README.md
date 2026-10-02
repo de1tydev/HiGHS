@@ -1,5 +1,7 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Correctness advisory — 2026-10-02:** The pinned solver reproduced an incorrect optimality claim on an official upstream fixture. Historical 1% gap and time-to-1% acceleration claims below are provisional pending corrected-reference revalidation; historical SCUC impact is unknown. Original results remain archived. [Read the evidence and current limitations](CORRECTNESS_ADVISORY.md) before using this research.
+
 This directory is an opt-in research package. It does not change the production
 solver, its build, or its defaults. All solver checkouts below are pinned to
 HiGHS commit `73cac48c5340d775a477087198611862559be250` (source version 1.15.1).

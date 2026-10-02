@@ -1,5 +1,7 @@
 # Recorded research results (2026-10-01–02)
 
+**Correctness advisory — 2026-10-02:** The pinned solver reproduced an incorrect optimality claim on an official upstream fixture. Historical 1% gap and time-to-1% acceleration claims below are provisional pending corrected-reference revalidation; historical SCUC impact is unknown. Original results remain archived. [Read the evidence and current limitations](CORRECTNESS_ADVISORY.md) before using this research.
+
 ## Latest result: early-integer discovery passes scoped confirmation
 
 The fixed early-only SCUC workflow passed all nine reserved PG89 confirmation
