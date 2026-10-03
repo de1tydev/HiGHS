@@ -1,0 +1,184 @@
+{
+  "arms": {
+    "A": {
+      "arm_e2e_seconds": 13.646461295997142,
+      "checked_pair_hours": 4,
+      "checked_upper": 660.0,
+      "cleanup_verified": true,
+      "complete": true,
+      "numerical_lower": 659.9999899995,
+      "outage_count": 1,
+      "proof_only_certificate": true,
+      "relative_gap": 1.515227268100716e-08,
+      "solver_process_seconds": 0.10368112400465179,
+      "stages": [
+        {
+          "api_fields": 16,
+          "columns": 48,
+          "nonzeros": 168,
+          "objective": 120.0,
+          "rows": 70,
+          "solver_wall": 0.05201545100135263,
+          "source_secure": false,
+          "stage": "01_integer_proof"
+        },
+        {
+          "api_fields": 16,
+          "columns": 48,
+          "nonzeros": 192,
+          "objective": 660.0,
+          "rows": 78,
+          "solver_wall": 0.05166567300329916,
+          "source_secure": true,
+          "stage": "02_integer_proof"
+        }
+      ]
+    },
+    "early_candidate": {
+      "arm_e2e_seconds": 13.487980559002608,
+      "checked_pair_hours": 4,
+      "checked_upper": 660.0,
+      "cleanup_verified": true,
+      "complete": true,
+      "numerical_lower": 659.9999899995,
+      "outage_count": 1,
+      "proof_only_certificate": true,
+      "relative_gap": 1.515227268100716e-08,
+      "solver_process_seconds": 0.10554314499313477,
+      "stages": [
+        {
+          "api_fields": 16,
+          "columns": 48,
+          "nonzeros": 168,
+          "objective": 120.0,
+          "rows": 70,
+          "solver_wall": 0.053353326991782524,
+          "source_secure": false,
+          "stage": "01_integer_discovery"
+        },
+        {
+          "api_fields": 16,
+          "columns": 48,
+          "nonzeros": 192,
+          "objective": 660.0,
+          "rows": 78,
+          "solver_wall": 0.05218981800135225,
+          "source_secure": true,
+          "stage": "02_integer_proof"
+        }
+      ]
+    }
+  },
+  "artifact_sha256": {
+    "pristine-public-tiny-validation-v3/PLAN.json": "cbfcdc8f2621a399a8b92a28e476d86554510c9ee1a7c5c4b6873605ee6e7850",
+    "pristine-public-tiny-validation-v3/SUMMARY.json": "cec4534de1e46bb83652e3b4e15c48df6b01a5788bcf6ecfe3f5dee0d4bad042",
+    "pristine-public-tiny-validation-v3/preflight/native.receipt.json": "0f743e581edb42dd3d3b5bc5769b1e13662918b4e83c49002e78c1d45359a833",
+    "pristine-public-tiny-validation-v3/prepare/native.receipt.json": "f9b1e7767ac73926a8c04033a5cefffab7be7adc19b20fb0696c085dff5c783f",
+    "pristine-public-tiny-validation-v3/run/native.receipt.json": "9931102aed0ae5ac836e9ee0ff3ad0fde9b247bca671a6a34a9d869981a3925c",
+    "pristine-public-tiny-validation-v3/verify/native.log": "dc776ac6d4682c1f29516190687e615d8ed2544d01a7fe63016adfc85350644a",
+    "pristine-public-tiny-validation-v3/verify/native.receipt.json": "c9fa823539248e533d0605d411f4f2a80aa4efcb82de8fa62f84e5d99da52404",
+    "pristine-public-work-v3/materialization_receipt.json": "b3c7ab8222bd263ffa319415ee1cb8358c12f57f5d23497ed2ce0f0c5efd802d",
+    "pristine-public-work-v3/preflight_receipt.json": "7f9f71d5eda3ed035c4d421ebe62494ed560d928a14cbac96fe23d71f692c159",
+    "pristine-public-work-v3/replay/combined_screening_driver/BINDINGS.json": "923ead50a0f50434b451575e506614b123c8273254b0621677c013c94c2bbace",
+    "pristine-public-work-v3/replay/combined_screening_driver/RUNTIME_MANIFEST.json": "a243fbe0263a169df07f2a6022856330aa95e938196f49867c7668a8de011c6e",
+    "pristine-public-work-v3/runs/tiny_warning_error/A.outer.json": "698cdda12bb16f735f89774d44a426b2e792fc61bd2773d0e5d8d39a8830dddc",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/01_integer_proof/check.json": "2c73bcf6700301ed08e4d69ee6c69f379c212dc09223d0df00346ea1bc642c75",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/01_integer_proof/master.mps.readback.json": "3e33250bddd92c7d151afe57efb250c0b3cada32c466965265cc1b9f86e94931",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/01_integer_proof/measurement.json": "722166d4e6ae8065deb2079c85a72574208aa635b4bc3d77d9ab393d634c403c",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/01_integer_proof/record.before_solve.json": "ffc705f6e81b7e0ab20b3303cff0bb1588d8ed8ffed6d64bdaa1065b0ae9eab9",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/01_integer_proof/record.json": "ede3a1c32b8b5d48d41229da449ee50f1fba163092f47d455f49c9783a2e1ff3",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/01_integer_proof/solver.log": "7dcf3970d1b72cfca45dc79ee760d442640e849150d305b096838bb2d420c972",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/02_integer_proof/check.json": "be206b281f101aa773b9f122f6b57e4da6ef702e166c45c0f527ae96b8e5ac5d",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/02_integer_proof/master.mps.readback.json": "65073f9a65a1d5627d64a96e3a78dab98e43d71751cd8f1739e9b7481cc93caa",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/02_integer_proof/measurement.json": "2883f4cb149541662bd62aaa99a2fe9bd82f3b9b4f5948981a07f1c37c55ca72",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/02_integer_proof/record.before_solve.json": "0f3fd2341f35c15c24584f3b78a84bb65d6dd0fe8cc08f9dbcbc3c6ab21b4387",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/02_integer_proof/record.json": "bb7bfa645dd2d1fc42066934fda5ab0f760682665361139f184a6d5e303d24dc",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/02_integer_proof/solver.log": "c943bbebc1b44c9b06573bdf42e7ad6876ca89662aed9087d4ad9786d08c19d4",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/completion_receipt.json": "17502d66931b563197d1e70c8f6ac3a22f9fb7af5e2610917aee10e1bde4d2ba",
+    "pristine-public-work-v3/runs/tiny_warning_error/A/summary.json": "db9160bdcd7d5c79a34d8ecbb8b6a87faf08cfe7018c33df276730491b8ed355",
+    "pristine-public-work-v3/runs/tiny_warning_error/PLAN.json": "5cecfb6f6f9fdfa3314ec4b0258a620fc3fc515e67e217a68ee490f29c1143fa",
+    "pristine-public-work-v3/runs/tiny_warning_error/RESULT.json": "99dc65caa8e5b634fac945bf482828d158689040d6eb1e420f79bf443b89ef52",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate.outer.json": "af565f8ef5742631e456c4da91c4ef0e3b541a7296a6cc17340b71613ff1b90b",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/01_integer_discovery/check.json": "c83f72bdf23e5712eb49ff9f5b11dc8b5e5166e4f5710932e81575a0c5c4bb2b",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/01_integer_discovery/master.mps.readback.json": "70d633d3d94b048b00cf467a85faaae7804c41048669bb9d645993e07b4dc75d",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/01_integer_discovery/measurement.json": "f7f1ee54666d7bf23d14638f844f5f2084011072a19ed22dadd8207144677f35",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/01_integer_discovery/record.before_solve.json": "ba5c0ad92f04425702fe2e0677edef60af6aeda9fc685de0b370d982192bbe0d",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/01_integer_discovery/record.json": "4425711f121e4820979f245edbf585f767a4902a6cc343ec781c58415b815d60",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/01_integer_discovery/solver.log": "2e7a41b81bdb1e2090b49f896c6e17a6c9c401f0bb45ecc55896a1b0a67e74b0",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/02_integer_proof/check.json": "05c30e84c9bd3794a9202874384b0cbb6c935d08530474297c9b178d22158b25",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/02_integer_proof/master.mps.readback.json": "5384fabce931f7225534189adb0f8395ebd55f775898b2ae7c728dfd25cd408a",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/02_integer_proof/measurement.json": "8b671deda0ae05cd53a34845f31d2854b77961b1c6b7dfbb8b141d0d7e1484d0",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/02_integer_proof/record.before_solve.json": "2b18217fae0410665c3c35a3cb63b480728af67b7ea52d39f00faecb5b20b9b5",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/02_integer_proof/record.json": "a9178d3be2358d52799548eebfd8289c7b99f6fec81a90939372ba0cece85d2c",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/02_integer_proof/solver.log": "c78f29a7d27441652f48582eac355ebc09759bbec71a57a30e6ff6d449f555f0",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/completion_receipt.json": "171cf6b911a9f153085233712deff3624ffadefeddcb918b39bca46ce95bb74b",
+    "pristine-public-work-v3/runs/tiny_warning_error/early_candidate/summary.json": "04d469d6f6c7507eb5c0420a4836d223ea33754ff3ef109ff1cbc0a5ba9d76f0"
+  },
+  "elapsed_seconds": 34.18405883699597,
+  "limitations": {
+    "exact_independent_dual_proof": false,
+    "fresh_consumer_clone_install_rebuild_performed": false,
+    "full_unit_suite": "399/400; AffinityReducedCoreCount remains failed",
+    "performance_inference": false
+  },
+  "measured_runtime_binding_package_sha256": "f48ac4f80167e2eb677ad5167864fde02c8208334ef5a7e2c6c3c5ffee28daec",
+  "native_binding_sha256": "e562058877be68fcc7a5dc2ae995e23d1539f91ac9ce8e8c135977f0aaa56816",
+  "offline_verifier": {
+    "all_requested_arms_certified": true,
+    "arms": {
+      "A": {
+        "actual_solver_process_seconds": 0.10368112400465179,
+        "certificate_complete": true,
+        "discovery_calls": 0,
+        "proof_reports": 2
+      },
+      "early_candidate": {
+        "actual_solver_process_seconds": 0.10554314499313477,
+        "certificate_complete": true,
+        "discovery_calls": 1,
+        "proof_reports": 1
+      }
+    },
+    "checked_arms": [
+      "A",
+      "early_candidate"
+    ],
+    "scope": "Retained artifact/provenance/debit/numerical-certificate consistency; no independent exact dual proof and no new source model/API/solve",
+    "verified": true
+  },
+  "passed": true,
+  "path_hash_references_verified": 50,
+  "phases": {
+    "preflight": {
+      "cleanup_verified": true,
+      "max_tree_rss_bytes": 81207296,
+      "min_available_bytes": 8544415744,
+      "stage_wall_seconds": 2.710318918005214
+    },
+    "prepare": {
+      "cleanup_verified": true,
+      "max_tree_rss_bytes": 30957568,
+      "min_available_bytes": 8583180288,
+      "stage_wall_seconds": 1.6614728150016163
+    },
+    "run": {
+      "cleanup_verified": true,
+      "max_tree_rss_bytes": 111149056,
+      "min_available_bytes": 8501927936,
+      "stage_wall_seconds": 28.309024551999755
+    },
+    "verify": {
+      "cleanup_verified": true,
+      "max_tree_rss_bytes": 22958080,
+      "min_available_bytes": 8542281728,
+      "stage_wall_seconds": 0.9339776929991785
+    }
+  },
+  "public_package_manifest_sha256": "13d4857ffae6b6565c66d27c2190d8b8829ff1236d79230787c8d2fa50178373",
+  "runtime_artifact_pins_verified": 2786,
+  "schema": "public-package-tiny-terminal-audit-v1",
+  "scope": "Independent retained-artifact and source audit; no solver, model API, scientific import or checker rerun",
+  "source_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "source_files_verified": 1006,
+  "wrapper_sha256": "1ad44c3bbc8fb88ee36b30aa41b1741c0853aa79b4e0ec6e95a998f93af33743"
+}

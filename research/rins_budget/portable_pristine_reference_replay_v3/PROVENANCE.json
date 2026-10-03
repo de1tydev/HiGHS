@@ -1,0 +1,147 @@
+{
+  "code_license": "MIT; see LICENSE.txt and retained per-file notices",
+  "data": {
+    "case89pegase/2017-05-01": {
+      "compressed_sha256": "a13b8da591278afec5d14ef7c787bfd7c0c6a3f91c526511bfee051294c9be4c",
+      "decompressed_sha256": "1b00f8b3efd27e777e6cf888690ffcc0e9d28f2a6559699b82b3822c890c61eb",
+      "dimensions": {
+        "Buses": 89,
+        "Generators": 12,
+        "Transmission lines": 210
+      },
+      "filename": "case89pegase_2017-05-01.json.gz",
+      "hours": 36,
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-05-01.json.gz"
+    },
+    "case89pegase/2017-06-01": {
+      "compressed_sha256": "65730d0a6ca7ded7947af1e682761aead3cf709f43e657ec6662c403580a123d",
+      "decompressed_sha256": "07928e23761360da6a8019557bd96431168585d278762bbfc2c8815dd0e373c6",
+      "dimensions": {
+        "Buses": 89,
+        "Generators": 12,
+        "Transmission lines": 210
+      },
+      "filename": "case89pegase_2017-06-01.json.gz",
+      "hours": 36,
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-06-01.json.gz"
+    },
+    "case89pegase/2017-09-01": {
+      "compressed_sha256": "727fda066143f885c6924ffbc0518121689d7175eca16acb2aee7e8237ae91a8",
+      "decompressed_sha256": "6485a38649752470c149b0e06109c498c27671c0dfe9850c0d7ea0f96f5ff0ab",
+      "dimensions": {
+        "Buses": 89,
+        "Generators": 12,
+        "Transmission lines": 210
+      },
+      "filename": "case89pegase_2017-09-01.json.gz",
+      "hours": 36,
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-09-01.json.gz"
+    }
+  },
+  "historical_correctness_advisory": "https://github.com/de1tydev/HiGHS/blob/ff204bb95d5acb8b1c6dfe08f299002a5aa6620e/research/rins_budget/CORRECTNESS_ADVISORY.md",
+  "official_source": {
+    "acquisition_manifest_sha256": "4f2192656a0e0d955de68aeea1cd129f245bcce782c9b4769f420406ffa09b59",
+    "commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "file_count": 1006,
+    "inventory_sha256": "efe7df3ad01442deb3be411ea903d24b073db219f62b9d6abe15981e1a0a7cc5",
+    "release_tag": null,
+    "repository": "https://github.com/ERGO-Code/HiGHS",
+    "research_patches": [],
+    "tree": "788b41e141fa455509c71593e1718b7b71168320"
+  },
+  "reference_build": {
+    "binary_reproducibility_claim": false,
+    "build_parallel_jobs": 2,
+    "c_compiler": "GNU 14.2.0",
+    "cmake_version": "4.4.3",
+    "cxx_compiler": "GNU 14.2.0",
+    "flags": {
+      "ALL_TESTS": "ON",
+      "BUILD_CXX": "ON",
+      "BUILD_CXX_EXE": "ON",
+      "BUILD_SHARED_EXTRAS_LIB": "ON",
+      "BUILD_SHARED_LIBS": "ON",
+      "BUILD_TESTING": "ON",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "CMAKE_C_FLAGS": "",
+      "CMAKE_C_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "CMAKE_EXE_LINKER_FLAGS": "-flto=2",
+      "CMAKE_SHARED_LINKER_FLAGS": "-flto=2",
+      "FAST_BUILD": "ON",
+      "HIGHSINT64": "OFF",
+      "HIPO": "OFF"
+    },
+    "generator": "Ninja",
+    "ninja_version": "1.13.2.git.kitware.jobserver-pipe-1",
+    "numpy_version": "2.3.5",
+    "original_runtime_sha256": {
+      "cli": "966820bd4341d414371a7afea4a5d66e65e11d8af1a6aa32bb34c2c3b72475f2",
+      "extras_library": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+      "main_library": "79e9e3f7a01eff3b46ff956c666c72a1d8d6583880587d702ce515eef2cc3387"
+    },
+    "python_version": "3.12.14",
+    "scipy_version": "1.17.0",
+    "type": "Release"
+  },
+  "replay": {
+    "changed_payload_file": "payload/combined_screening_driver/cold_screen_pair.py",
+    "directory": "replay",
+    "documentation_equivalence": "EXECUTABLE_EQUIVALENCE.json",
+    "file_count": 45,
+    "historical_common_outer_gap_was_on": true,
+    "historical_timings_comparable": false,
+    "measured_package_manifest_sha256": "f48ac4f80167e2eb677ad5167864fde02c8208334ef5a7e2c6c3c5ffee28daec",
+    "package_manifest_sha256": "13d4857ffae6b6565c66d27c2190d8b8829ff1236d79230787c8d2fa50178373",
+    "payload_files": 33,
+    "prior_corrected_package_manifest_sha256": "79e6c0c9832d5322a2406545b855f86d6eab15ed93c6980d7f4cf9894f0eb34f",
+    "prior_two_pure_tests_byte_identical": true,
+    "public_copy_native_execution": "passed_separate_tiny_preparation_preflight_pair_and_offline_verification",
+    "public_documentation_changes": [
+      "README.md",
+      "SOURCE_LINEAGE.json",
+      "VALIDATION_PLAN.md"
+    ],
+    "source_and_build_adapter": "prepare_replay.py",
+    "standard_options_only": true,
+    "unchanged_files_from_measured_package": 41,
+    "unchanged_payload_files_from_corrected_reference": 32
+  },
+  "schema": "pristine-highs-replay-provenance-v1",
+  "validation": {
+    "dynamic_3181_retry_coverage_established": false,
+    "exact_dual_proof": false,
+    "fresh_full_study_report": {
+      "executable_bytes_identical": true,
+      "measured_package_manifest_sha256": "f48ac4f80167e2eb677ad5167864fde02c8208334ef5a7e2c6c3c5ffee28daec",
+      "original_measurement_bindings_preserved": true,
+      "public_package_manifest_sha256": "13d4857ffae6b6565c66d27c2190d8b8829ff1236d79230787c8d2fa50178373",
+      "url": "https://github.com/de1tydev/HiGHS/blob/fc0e7087d05f3b521eb44ebc77714b7596e6debd/research/rins_budget/pristine_pg89_results/RESULTS.md"
+    },
+    "frozen_pre_execution_status_records": [
+      "replay/README.md",
+      "replay/SOURCE_LINEAGE.json",
+      "EXECUTABLE_EQUIVALENCE.json"
+    ],
+    "full_unit_suite_pass": false,
+    "performance_conclusion": null,
+    "public_tiny": {
+      "all_stage_cleanup_verified": true,
+      "checked_upper_by_arm": {
+        "A": 660.0,
+        "early_candidate": 660.0
+      },
+      "elapsed_seconds": 34.18405883699597,
+      "fresh_consumer_clone_install_rebuild_performed": false,
+      "offline_verifier_passed": true,
+      "passed": true,
+      "performance_inference": false,
+      "public_package_manifest_sha256": "13d4857ffae6b6565c66d27c2190d8b8829ff1236d79230787c8d2fa50178373"
+    },
+    "public_tiny_audit": "evidence/pristine-public-tiny-terminal-audit.json",
+    "public_tiny_audit_sha256": "d9fbb2095567e189bb60d9c950d5fa18b287c95dc4890b2c0c3b0896b24db6d3",
+    "summary": "VALIDATION.md",
+    "tiny_audit": "evidence/tiny-terminal-audit.json",
+    "tiny_audit_sha256": "21e23a5a03ddcb5d3e83ee86baa33bd1afb6e2b7135e00a4c94503cd3ae1864d"
+  }
+}

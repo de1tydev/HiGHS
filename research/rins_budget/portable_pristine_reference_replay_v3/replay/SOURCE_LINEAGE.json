@@ -1,0 +1,28 @@
+{
+  "adapter_revision": "v3a",
+  "changed_executable_sources_relative_to_prior_corrected_package": [
+    "prepare_replay.py",
+    "payload/combined_screening_driver/cold_screen_pair.py"
+  ],
+  "executable_equivalence_record": "../EXECUTABLE_EQUIVALENCE.json",
+  "measured_package_manifest_sha256": "f48ac4f80167e2eb677ad5167864fde02c8208334ef5a7e2c6c3c5ffee28daec",
+  "measured_validation_record": "../VALIDATION.md",
+  "new_standard_options_only": true,
+  "old_common_outer_gap_enabled": true,
+  "previous_package_manifest_sha256": "79e6c0c9832d5322a2406545b855f86d6eab15ed93c6980d7f4cf9894f0eb34f",
+  "prior_adapter_manifest_sha256": "80a5b32dc675f6a976bf6d4089bb780b57d04c43e5b49c9844bf637f6f4a330f",
+  "pristine_official": true,
+  "public_documentation_changes": [
+    "README.md",
+    "SOURCE_LINEAGE.json",
+    "VALIDATION_PLAN.md"
+  ],
+  "public_documentation_copy_native_execution": "not_performed",
+  "publication_revision": "documentation-only-v1",
+  "revision_reason": "Require two-job LTO linker flags and reject other overrides; publication revision changes documentation only",
+  "source_acquisition_manifest_sha256": "4f2192656a0e0d955de68aeea1cd129f245bcce782c9b4769f420406ffa09b59",
+  "source_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "source_files": 1006,
+  "source_tree": "788b41e141fa455509c71593e1718b7b71168320",
+  "timings_comparable_to_historical": false
+}

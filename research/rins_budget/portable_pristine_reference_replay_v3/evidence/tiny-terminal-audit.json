@@ -1,0 +1,120 @@
+{
+  "passed": true,
+  "scope": "Independent read-only terminal evidence audit; no solver/API/checker rerun",
+  "runtime_artifact_pins_verified": 2786,
+  "source_files_verified": 1006,
+  "path_hash_references_verified": 354,
+  "phases": {
+    "prepare": {
+      "stage_wall_seconds": 2.0092118629981996,
+      "max_tree_rss_bytes": 30543872,
+      "min_available_bytes": 8584704000,
+      "cleanup_verified": true
+    },
+    "preflight": {
+      "stage_wall_seconds": 2.8040465939993737,
+      "max_tree_rss_bytes": 81387520,
+      "min_available_bytes": 8560685056,
+      "cleanup_verified": true
+    },
+    "run": {
+      "stage_wall_seconds": 29.730649124991032,
+      "max_tree_rss_bytes": 110870528,
+      "min_available_bytes": 8519839744,
+      "cleanup_verified": true
+    },
+    "verify": {
+      "stage_wall_seconds": 0.7869001929939259,
+      "max_tree_rss_bytes": 23130112,
+      "min_available_bytes": 8552886272,
+      "cleanup_verified": true
+    }
+  },
+  "arms": {
+    "A": {
+      "stages": [
+        {
+          "stage": "01_integer_proof",
+          "api_fields": 16,
+          "columns": 48,
+          "rows": 70,
+          "nonzeros": 168,
+          "objective": 120.0,
+          "source_secure": false,
+          "solver_wall": 0.052477684992481954
+        },
+        {
+          "stage": "02_integer_proof",
+          "api_fields": 16,
+          "columns": 48,
+          "rows": 78,
+          "nonzeros": 192,
+          "objective": 660.0,
+          "source_secure": true,
+          "solver_wall": 0.05184544199437369
+        }
+      ],
+      "solver_seconds": 0.10432312698685564,
+      "complete": true,
+      "source_objective": 660,
+      "proof_only_certificate": true,
+      "outage_count": 1,
+      "pair_hours": 4
+    },
+    "early_candidate": {
+      "stages": [
+        {
+          "stage": "01_integer_discovery",
+          "api_fields": 16,
+          "columns": 48,
+          "rows": 70,
+          "nonzeros": 168,
+          "objective": 120.0,
+          "source_secure": false,
+          "solver_wall": 0.05267728499893565
+        },
+        {
+          "stage": "02_integer_proof",
+          "api_fields": 16,
+          "columns": 48,
+          "rows": 78,
+          "nonzeros": 192,
+          "objective": 660.0,
+          "source_secure": true,
+          "solver_wall": 0.051870819996111095
+        }
+      ],
+      "solver_seconds": 0.10454810499504674,
+      "complete": true,
+      "source_objective": 660,
+      "proof_only_certificate": true,
+      "outage_count": 1,
+      "pair_hours": 4
+    }
+  },
+  "offline_verifier": {
+    "verified": true,
+    "checked_arms": [
+      "A",
+      "early_candidate"
+    ],
+    "arms": {
+      "A": {
+        "certificate_complete": true,
+        "actual_solver_process_seconds": 0.10432312698685564,
+        "proof_reports": 2,
+        "discovery_calls": 0
+      },
+      "early_candidate": {
+        "certificate_complete": true,
+        "actual_solver_process_seconds": 0.10454810499504674,
+        "proof_reports": 1,
+        "discovery_calls": 1
+      }
+    },
+    "all_requested_arms_certified": true,
+    "scope": "Retained artifact/provenance/debit/numerical-certificate consistency; no independent exact dual proof and no new source model/API/solve"
+  },
+  "full_unit_caveat": "399/400, AffinityReducedCoreCount still failed",
+  "performance_inference": false
+}
