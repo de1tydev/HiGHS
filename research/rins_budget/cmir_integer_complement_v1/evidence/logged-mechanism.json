@@ -1,0 +1,143 @@
+{
+  "schema": "cmir-public-logged-mechanism-v1",
+  "completed_audit_utc": "2026-10-03T10:08:18.048125+00:00",
+  "design": {
+    "fresh_process_arms": 4,
+    "same_candidate_binary": true,
+    "seed": 17,
+    "execution_order": [
+      "air04/off",
+      "air04/on",
+      "neos-950242/on",
+      "neos-950242/off"
+    ],
+    "logging_on_for_all_arms": true,
+    "exposure": "Fixed previously exposed development cases"
+  },
+  "audit_passed": true,
+  "actual_options_and_loaded_runtime_verified": true,
+  "original_mps_gmp_primal_checks": {
+    "passed": 4,
+    "total": 4,
+    "linear_integrality_and_objective_tolerance": "1/1000000"
+  },
+  "paired_solution_bytes_equal": {
+    "air04": true,
+    "neos-950242": true
+  },
+  "rows": [
+    {
+      "model": "air04",
+      "arm": "off",
+      "source_summaries": 2579,
+      "counts": {
+        "eligible_trials": 612021,
+        "integer_identity_trials": 612021,
+        "skipped_trials": 0,
+        "complement_row_evaluations": 612021,
+        "integer_identity_row_evaluations": 612021,
+        "complement_row_terms": 749113704
+      },
+      "local_loop_seconds": "3.143686540",
+      "checked_primal": "56148",
+      "numerical_global_bound": "55667",
+      "relative_gap": "481/56148",
+      "nodes": 1,
+      "simplex_iterations": 14814,
+      "all_13_primal_flags": true,
+      "solver_on_time": true,
+      "invocation_on_time": true,
+      "cleanup_complete": true,
+      "solution_sha256": "bd8f5c757103b145d04c14a83a906d13e6bf0d892e2c1878c7850ce5aecc83f3",
+      "seed": 17,
+      "numerical_one_percent_endpoint_passed": true
+    },
+    {
+      "model": "air04",
+      "arm": "on",
+      "source_summaries": 2579,
+      "counts": {
+        "eligible_trials": 612021,
+        "integer_identity_trials": 612021,
+        "skipped_trials": 612021,
+        "complement_row_evaluations": 0,
+        "integer_identity_row_evaluations": 0,
+        "complement_row_terms": 0
+      },
+      "local_loop_seconds": "0.017490755",
+      "checked_primal": "56148",
+      "numerical_global_bound": "55667",
+      "relative_gap": "481/56148",
+      "nodes": 1,
+      "simplex_iterations": 14814,
+      "all_13_primal_flags": true,
+      "solver_on_time": true,
+      "invocation_on_time": true,
+      "cleanup_complete": true,
+      "solution_sha256": "bd8f5c757103b145d04c14a83a906d13e6bf0d892e2c1878c7850ce5aecc83f3",
+      "seed": 17,
+      "numerical_one_percent_endpoint_passed": true
+    },
+    {
+      "model": "neos-950242",
+      "arm": "on",
+      "source_summaries": 84,
+      "counts": {
+        "eligible_trials": 1553,
+        "integer_identity_trials": 1501,
+        "skipped_trials": 1501,
+        "complement_row_evaluations": 32,
+        "integer_identity_row_evaluations": 0,
+        "complement_row_terms": 1013
+      },
+      "local_loop_seconds": "0.000049347",
+      "checked_primal": "4",
+      "numerical_global_bound": "4",
+      "relative_gap": "0",
+      "nodes": 1,
+      "simplex_iterations": 8837,
+      "all_13_primal_flags": true,
+      "solver_on_time": true,
+      "invocation_on_time": true,
+      "cleanup_complete": true,
+      "solution_sha256": "54666d6f0c7807cb7387683a3350e442ff0630cfadbe36a1239f00957d937332",
+      "seed": 17,
+      "numerical_one_percent_endpoint_passed": true
+    },
+    {
+      "model": "neos-950242",
+      "arm": "off",
+      "source_summaries": 84,
+      "counts": {
+        "eligible_trials": 1553,
+        "integer_identity_trials": 1501,
+        "skipped_trials": 0,
+        "complement_row_evaluations": 1533,
+        "integer_identity_row_evaluations": 1501,
+        "complement_row_terms": 242473
+      },
+      "local_loop_seconds": "0.001466991",
+      "checked_primal": "4",
+      "numerical_global_bound": "4",
+      "relative_gap": "0",
+      "nodes": 1,
+      "simplex_iterations": 8837,
+      "all_13_primal_flags": true,
+      "solver_on_time": true,
+      "invocation_on_time": true,
+      "cleanup_complete": true,
+      "solution_sha256": "54666d6f0c7807cb7387683a3350e442ff0630cfadbe36a1239f00957d937332",
+      "seed": 17,
+      "numerical_one_percent_endpoint_passed": true
+    }
+  ],
+  "timing_scope": "Measured local complement loop; excludes diagnostic line printing. Logging can perturb solve behavior and time.",
+  "claims": {
+    "mechanism_demonstrated": true,
+    "clean_speed_ratio": null,
+    "general_stable_speed_claim": false,
+    "independent_dual_bound_proof": false,
+    "old_failed_mixed_panel_gate_changed": false,
+    "holdout_released": false
+  }
+}

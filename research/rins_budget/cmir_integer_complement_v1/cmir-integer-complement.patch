@@ -1,0 +1,290 @@
+--- a/check/CMakeLists.txt
++++ b/check/CMakeLists.txt
+@@ -33,6 +33,7 @@
+       TestBasisSolves.cpp
+       TestCallbacks.cpp
+       TestCheckSolution.cpp
++      TestCmirComplement.cpp
+       TestCrossover.cpp
+       TestDualize.cpp
+       TestEkk.cpp
+--- a/check/TestCmirComplement.cpp
++++ b/check/TestCmirComplement.cpp
+@@ -0,0 +1,93 @@
++#include <cmath>
++#include <limits>
++
++#include "Highs.h"
++#include "catch.hpp"
++#include "mip/HighsCmirComplement.h"
++
++TEST_CASE("CMIR-integer-complement-scale", "[cmir_integer_complement]") {
++  const auto guard = highsCmirIntegerComplementScale;
++  for (int exponent : {0, 1, 10, 52, 512, 1023}) {
++    const double delta = std::ldexp(1.0, -exponent);
++    const double scale = std::ldexp(1.0, exponent);
++    REQUIRE(guard(delta, scale));
++    REQUIRE(!guard(delta, std::nextafter(scale, 0.0)));
++    REQUIRE(!guard(delta, std::nextafter(scale, INFINITY)));
++    REQUIRE(!guard(std::nextafter(delta, 0.0), scale));
++    REQUIRE(!guard(std::nextafter(delta, INFINITY), scale));
++  }
++  for (double bad : {0.0, -1.0, 2.0, 0.3,
++                     std::numeric_limits<double>::denorm_min(),
++                     std::numeric_limits<double>::infinity(),
++                     -std::numeric_limits<double>::infinity(),
++                     std::numeric_limits<double>::quiet_NaN()})
++    REQUIRE(!guard(bad, 1.0 / bad));
++  REQUIRE(!guard(0.5, 4.0));
++  REQUIRE(!guard(0.5, -2.0));
++}
++
++TEST_CASE("CMIR-integer-complement-domain", "[cmir_integer_complement]") {
++  const auto guard = highsCmirIntegerComplementIdentity;
++  constexpr double limit = 4503599627370496.0;
++  for (double q : {-8.0, -1.0, 0.0, 1.0, 8.0}) {
++    for (double upper : {0.0, 1.0, 7.0}) {
++      REQUIRE(guard(q, upper, 1.0, 1.0));
++      REQUIRE(guard(q / 8.0, upper, 0.125, 8.0));
++      REQUIRE(!guard(std::nextafter(q, -INFINITY), upper, 1.0, 1.0));
++      REQUIRE(!guard(std::nextafter(q, INFINITY), upper, 1.0, 1.0));
++    }
++    for (double upper : {-1.0, 0.5, std::nextafter(1.0, 0.0),
++                         std::nextafter(1.0, INFINITY)})
++      REQUIRE(!guard(q, upper, 1.0, 1.0));
++  }
++  for (double bad : {std::numeric_limits<double>::infinity(),
++                     -std::numeric_limits<double>::infinity(),
++                     std::numeric_limits<double>::quiet_NaN()}) {
++    REQUIRE(!guard(bad, 1.0, 1.0, 1.0));
++    REQUIRE(!guard(1.0, bad, 1.0, 1.0));
++  }
++  REQUIRE(guard(limit, 1.0, 1.0, 1.0));
++  REQUIRE(guard(-limit, 1.0, 1.0, 1.0));
++  REQUIRE(guard(1.0, limit, 1.0, 1.0));
++  REQUIRE(guard(limit / 2.0, 2.0, 1.0, 1.0));
++  REQUIRE(guard(limit / 2.0 - 1.0, 2.0, 1.0, 1.0));
++  REQUIRE(!guard(limit + 1.0, 1.0, 1.0, 1.0));
++  REQUIRE(!guard(-limit - 1.0, 1.0, 1.0, 1.0));
++  REQUIRE(!guard(1.0, limit + 1.0, 1.0, 1.0));
++  REQUIRE(!guard(limit / 2.0 + 1.0, 2.0, 1.0, 1.0));
++  REQUIRE(!guard(-limit / 2.0 - 1.0, 2.0, 1.0, 1.0));
++  REQUIRE(!guard(std::numeric_limits<double>::max(), 1.0, 0.5, 2.0));
++  // A rounded integral product is insufficient without a reversible scale.
++  REQUIRE(!guard(1.0 / 3.0, 1.0, 0.25, 3.0));
++}
++
++TEST_CASE("CMIR-integer-complement-options", "[cmir_integer_complement]") {
++  Highs highs;
++  highs.setOptionValue("output_flag", false);
++  for (const char* name : {"mip_modk_skip_integer_complements",
++                           "mip_modk_integer_complement_log"}) {
++    bool value = true;
++    bool defaultValue = true;
++    REQUIRE(highs.getBoolOptionValues(name, &value, &defaultValue) ==
++            HighsStatus::kOk);
++    REQUIRE(!value);
++    REQUIRE(!defaultValue);
++    REQUIRE(highs.setOptionValue(name, true) == HighsStatus::kOk);
++  }
++  HighsOptions copied(highs.getOptions());
++  HighsOptions assigned;
++  assigned = copied;
++  Highs receiver;
++  REQUIRE(receiver.passOptions(assigned) == HighsStatus::kOk);
++  for (const char* name : {"mip_modk_skip_integer_complements",
++                           "mip_modk_integer_complement_log"}) {
++    bool value = false;
++    REQUIRE(receiver.getOptionValue(name, value) == HighsStatus::kOk);
++    REQUIRE(value);
++    REQUIRE(receiver.setOptionValue(name, false) == HighsStatus::kOk);
++    REQUIRE(highs.getOptionValue(name, value) == HighsStatus::kOk);
++    REQUIRE(value);
++  }
++  REQUIRE(copied.mip_modk_skip_integer_complements);
++  REQUIRE(copied.mip_modk_integer_complement_log);
++}
+--- a/check/meson.build
++++ b/check/meson.build
+@@ -18,6 +18,7 @@
+   ['test_TestBasisSolves', 'TestBasisSolves.cpp'],
+   ['test_TestCallbacks', 'TestCallbacks.cpp'],
+   ['test_TestCheckSolution', 'TestCheckSolution.cpp'],
++  ['test_TestCmirComplement', 'TestCmirComplement.cpp'],
+   ['test_TestCrossover', 'TestCrossover.cpp'],
+   ['test_TestDualize', 'TestDualize.cpp'],
+   ['test_TestEkk', 'TestEkk.cpp'],
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -504,6 +504,7 @@
+     mip/HighsCliqueTable.h
+     mip/HighsConflictPool.h
+     mip/HighsCutGeneration.h
++    mip/HighsCmirComplement.h
+     mip/HighsCutPool.h
+     mip/HighsDebugSol.h
+     mip/HighsDomain.h
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -502,6 +502,8 @@
+   bool mip_heuristic_outer_gap_log;
+   bool mip_heuristic_near_target_root_budget;
+   bool mip_heuristic_near_target_root_budget_log;
++  bool mip_modk_skip_integer_complements;
++  bool mip_modk_integer_complement_log;
+   bool mip_heuristic_run_feasibility_jump;
+   bool mip_heuristic_run_rins;
+   bool mip_heuristic_run_rens;
+@@ -673,6 +675,8 @@
+         mip_heuristic_outer_gap_log(false),
+         mip_heuristic_near_target_root_budget(false),
+         mip_heuristic_near_target_root_budget_log(false),
++        mip_modk_skip_integer_complements(false),
++        mip_modk_integer_complement_log(false),
+         mip_heuristic_run_feasibility_jump(false),
+         mip_heuristic_run_rins(false),
+         mip_heuristic_run_rens(false),
+@@ -1259,6 +1263,18 @@
+         advanced, &mip_heuristic_near_target_root_budget_log, false);
+     records.push_back(record_bool);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_modk_skip_integer_complements",
++        "Experimental: skip exact integer CMIR complement trials at the initial scale",
++        advanced, &mip_modk_skip_integer_complements, false);
++    records.push_back(record_bool);
++
++    record_bool = new OptionRecordBool(
++        "mip_modk_integer_complement_log",
++        "Log local CMIR integer complement trial counts",
++        advanced, &mip_modk_integer_complement_log, false);
++    records.push_back(record_bool);
++
+     record_bool =
+         new OptionRecordBool("mip_heuristic_run_feasibility_jump",
+                              "Use the feasibility jump heuristic", advanced,
+--- a/highs/mip/HighsCmirComplement.h
++++ b/highs/mip/HighsCmirComplement.h
+@@ -0,0 +1,31 @@
++#ifndef MIP_HIGHS_CMIR_COMPLEMENT_H_
++#define MIP_HIGHS_CMIR_COMPLEMENT_H_
++
++#include <cmath>
++
++// Conservative domain for the exact-arithmetic integer-complement identity.
++// These checks do not promise identical floating-point efficacy decisions.
++inline bool highsCmirIntegerComplementScale(double delta, double scale) {
++  if (!std::isfinite(delta) || delta <= 0.0 || delta > 1.0 ||
++      !std::isfinite(scale) || scale <= 0.0)
++    return false;
++  int exponent;
++  return std::frexp(scale, &exponent) == 0.5 && delta * scale == 1.0;
++}
++
++// Call only after highsCmirIntegerComplementScale(delta, scale) succeeds.
++inline bool highsCmirIntegerComplementIdentity(double coefficient, double upper,
++                                               double delta, double scale) {
++  constexpr double maxExactInteger = 4503599627370496.0;  // 2^52
++  if (!std::isfinite(coefficient) || !std::isfinite(upper) || upper < 0.0 ||
++      upper > maxExactInteger || std::floor(upper) != upper)
++    return false;
++  const double normalized = coefficient * scale;
++  if (!std::isfinite(normalized) || std::abs(normalized) > maxExactInteger ||
++      std::floor(normalized) != normalized || normalized * delta != coefficient)
++    return false;
++  const double product = normalized * upper;
++  return std::isfinite(product) && std::abs(product) <= maxExactInteger;
++}
++
++#endif
+--- a/highs/mip/HighsCutGeneration.cpp
++++ b/highs/mip/HighsCutGeneration.cpp
+@@ -8,6 +8,7 @@
+ #include "mip/HighsCutGeneration.h"
+ 
+ #include "../extern/pdqsort/pdqsort.h"
++#include "mip/HighsCmirComplement.h"
+ #include "mip/HighsDomain.h"
+ #include "mip/HighsMipSolverData.h"
+ #include "mip/HighsTransformedLp.h"
+@@ -643,11 +644,43 @@
+ 
+   assert(bestdelta != -1);
+ 
++  const auto& mip = lpRelaxation.getMipSolver();
++  const bool complementLog =
++      onlyInitialCMIRScale && mip.options_mip_->mip_modk_integer_complement_log;
++  const bool skipIntegerComplements =
++      onlyInitialCMIRScale && mip.options_mip_->mip_modk_skip_integer_complements;
++  const bool checkIntegerComplements =
++      onlyInitialCMIRScale && (skipIntegerComplements || complementLog);
++  const double complementScale = checkIntegerComplements ? 1.0 / bestdelta : 0.0;
++  const bool integerComplementScale =
++      checkIntegerComplements &&
++      highsCmirIntegerComplementScale(bestdelta, complementScale);
++  uint64_t eligibleTrials = 0;
++  uint64_t integerIdentityTrials = 0;
++  uint64_t skippedTrials = 0;
++  uint64_t rowEvaluations = 0;
++  uint64_t integerIdentityRowEvaluations = 0;
++  uint64_t rowTerms = 0;
++  const double complementStart = complementLog ? mip.timer_.getWallTime() : 0.0;
++
+   // try to flip complementation of integers to increase efficacy
+   for (HighsInt k : integerinds) {
+     if (upper[k] == kHighsInf) continue;
+     if (solval[k] <= feastol) continue;
+ 
++    if (complementLog) ++eligibleTrials;
++    const bool integerIdentity =
++        integerComplementScale && highsCmirIntegerComplementIdentity(
++                                      vals[k], upper[k], bestdelta,
++                                      complementScale);
++    if (integerIdentity) {
++      if (complementLog) ++integerIdentityTrials;
++      if (skipIntegerComplements) {
++        if (complementLog) ++skippedTrials;
++        continue;
++      }
++    }
++
+     flipComplementation(k);
+ 
+     double delta = bestdelta;
+@@ -671,6 +704,11 @@
+     double sqrnorm = contscale * contscale * continuoussqrnorm;
+     double viol = contscale * continuouscontribution - downrhs;
+ 
++    if (complementLog) {
++      ++rowEvaluations;
++      if (integerIdentity) ++integerIdentityRowEvaluations;
++      rowTerms += integerinds.size();
++    }
+     for (HighsInt j : integerinds) {
+       double scalaj = vals[j] * scale;
+       double downaj = fast_floor(scalaj + kHighsTiny);
+@@ -685,6 +723,24 @@
+     } else {
+       flipComplementation(k);
+     }
++  }
++
++  if (complementLog) {
++    const double complementSeconds = mip.timer_.getWallTime() - complementStart;
++    highsLogUser(
++        mip.options_mip_->log_options, HighsLogType::kInfo,
++        "CMIR_INTEGER_COMPLEMENT only_initial=%d enabled=%d submip=%d "
++        "submip_level=%d eligible_trials=%llu integer_identity_trials=%llu "
++        "skipped_trials=%llu complement_row_evaluations=%llu "
++        "integer_identity_row_evaluations=%llu complement_row_terms=%llu "
++        "complement_seconds=%.9f\n",
++        int(onlyInitialCMIRScale), int(skipIntegerComplements), int(mip.submip),
++        int(mip.submip_level), static_cast<unsigned long long>(eligibleTrials),
++        static_cast<unsigned long long>(integerIdentityTrials),
++        static_cast<unsigned long long>(skippedTrials),
++        static_cast<unsigned long long>(rowEvaluations),
++        static_cast<unsigned long long>(integerIdentityRowEvaluations),
++        static_cast<unsigned long long>(rowTerms), complementSeconds);
+   }
+ 
+   HighsCDouble scale = 1.0 / HighsCDouble(bestdelta);

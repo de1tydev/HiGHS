@@ -1,0 +1,77 @@
+{
+  "schema": "cmir-public-checkpoint-provenance-v1",
+  "as_of_utc": "2026-10-03",
+  "publication_base_commit": "71c88ae1f091e1a1af1cbce18a6a992408ce20b6",
+  "source_lineage": {
+    "official_base_commit": "73cac48c5340d775a477087198611862559be250",
+    "existing_research_patches_in_order": [
+      "outer-gap-heuristic",
+      "initial-root-ipx",
+      "root-child-credit"
+    ],
+    "correctness_merges_in_order": [
+      {
+        "pr": 3179,
+        "commit": "28339ce4b57bf8858036cbb36f4fc66d97fedd06"
+      },
+      {
+        "pr": 3181,
+        "commit": "ae53450f395cf0a278858868b64813ea99bb4767"
+      }
+    ],
+    "corrected_reference_inventory_files": 984,
+    "corrected_reference_inventory_sha256": "dba407bb01e868fa4711cb1664590f4fe4250000b5ebab63323d88c72f5a469b",
+    "candidate_inventory_files": 986,
+    "cmir_patch_sha256": "abb786e47f9069897ed89e5bbcf3771745301800a4ccf00849ee4cf7e7497720",
+    "profiling_overlays_included": false
+  },
+  "archived_evidence_sha256": {
+    "source_validation": "30ebfbc61dc1d9389e4dc3767557a277f1a008e545bc4454b72f02b02e6d1c31",
+    "source_runtime": "fec73ab6ad2e9f93c2065fee4eb92375aa96b43afeac52d2ecf19e1201de9b96",
+    "logged_mechanism_result": "d37d0a09b0bb12efc40064f8670437a011f8d80a9e820b7ef68537eec3a540b0",
+    "logged_mechanism_audit": "f906c41c674aa2ca2fc71f5ad2cb0158e13c72fe24d90cd63eeeeb15ad2ce5d3",
+    "saved_point_recovery": "262e229018186ee74a15f33eadb652a362f0c03475708ea913cd4f59cd8dcd17",
+    "corrected_1354_audit": "62fbea71faba98b528a2b8bc1a816eef9c42f0bcf3968ac8d7d49ae99e60e614",
+    "corrected_1354_original_invocation": "449ec8392f03a349197ef15d2b18f8d5aed569e3bf32c862e9fd8ac13c39c4a5",
+    "corrected_1354_original_profile": "c2d57f16942321890762a1744b940af3056627626586e1db0565af8e7d1d6f13",
+    "corrected_1354_input_design": "04f95daf06301b1412f83e3430d76cba779c57426d455fe0e8ac8a56fd8aab0d"
+  },
+  "source_receipt_notice": "Digest references identify archived evidence, which is not redistributed here; these projections are not complete raw logs or independently executable certificates.",
+  "observed_candidate_artifact_sha256": {
+    "build/bin/highs": "bf272e6d0ec9ca94d49fd64498a1d18d5227986c3cc85533863e9d40df291169",
+    "build/bin/unit_tests": "c3e33c27d705a7112a89095a6fd10f6c8a447520ba3a5f26fce36bea32838f1d",
+    "build/lib/libhighs.so": "ced1883c890884df90c3073738f9a31c92eb60edf4d12b41db282bcf6c71ddf6",
+    "bin/milp_reporter": "729f5e4a9467d8af030dc9fe3e8ebc956a1e7733f3fd6909ab3430c5dc50c8ed",
+    "check_rational_identity.py": "75974e9cdc0b7fee0fef6ee16afe63e69b66c4bf291d04aa0ec3b8ef9186061b"
+  },
+  "miplib_inputs": [
+    {
+      "model": "air04",
+      "page_url": "https://miplib.zib.de/instance_details_air04.html",
+      "gzip_url": "https://miplib.zib.de/WebData/instances/air04.mps.gz",
+      "gzip_sha256": "54f5958f9d3395c45b7dfe70507117777ad914f42f4cd07d50d291bdb6a324a6",
+      "original_mps_sha256": "8d0956b998dcaef9b8527bb480a8b96c24aaa8895beaa11491d671973490893e"
+    },
+    {
+      "model": "binkar10_1",
+      "page_url": "https://miplib.zib.de/instance_details_binkar10_1.html",
+      "gzip_url": "https://miplib.zib.de/WebData/instances/binkar10_1.mps.gz",
+      "gzip_sha256": "94282c38edd6c83bb6c2d788d823fd82f218218e8e07c98d1d1ab42c1e91039e",
+      "original_mps_sha256": "71dc18a14f1d26f39473eaf64b81c12691a0c0d4ab00dec43679071ed7f3e09c"
+    },
+    {
+      "model": "neos-950242",
+      "page_url": "https://miplib.zib.de/instance_details_neos-950242.html",
+      "gzip_url": "https://miplib.zib.de/WebData/instances/neos-950242.mps.gz",
+      "gzip_sha256": "9bd6761fb5f4948a1dbfd22daad64108f76441493a4c731c2325c2d813b41368",
+      "original_mps_sha256": "a9bd9b5c759a0e05458e45311f84ab184d0705e01280eb0310afd99695a1c658"
+    }
+  ],
+  "distribution": {
+    "patch_bytes_unchanged": true,
+    "rational_script_bytes_unchanged": true,
+    "highs_mit_license_retained": true,
+    "model_solution_or_binary_payloads_included": false,
+    "new_portable_runner_validated": false
+  }
+}

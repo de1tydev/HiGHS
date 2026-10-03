@@ -1,0 +1,124 @@
+{
+  "schema": "cmir-public-corrected-1354-bridge-v1",
+  "completed_audit_utc": "2026-10-03T10:53:37.547461+00:00",
+  "scope": "Single corrected-runtime OFF plus logging profile of a retained June 1354-bus integer master; conditional attribution only",
+  "input": {
+    "source_case": "case1354pegase_2017-06-01",
+    "source_gzip_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "master_sha256": "0154c5d9ff00234b9a082b31dc06eda74c064e8412ecdc1bc588ce1f42c4cee4",
+    "solution_sha256": "dcd68ecf5d7eb0bf5592aac686857e255e5eb0bb985d55c5f93aaa4dbf127563",
+    "hours": 36,
+    "seed": 0,
+    "dimensions": {
+      "rows": 381412,
+      "columns": 313776,
+      "binaries": 28080,
+      "nonzeros": 1232939,
+      "fixed_binaries": 0,
+      "mps_bytes": 63967068
+    },
+    "retained_learned_security_pairs": 2,
+    "historical_discovery_and_generation_excluded_from_profile_cost": true,
+    "historical_bound_or_incumbent_carried": false
+  },
+  "options": {
+    "threads": 2,
+    "random_seed": 0,
+    "time_limit": 600,
+    "mip_rel_gap": 0.01,
+    "mip_abs_gap": 0,
+    "mip_modk_skip_integer_complements": false,
+    "mip_modk_integer_complement_log": true,
+    "mip_heuristic_outer_gap": false,
+    "mip_heuristic_near_target_root_budget": false,
+    "mip_initial_root_ipx": false
+  },
+  "evidence_audit_passed": true,
+  "original_invocation": {
+    "exit_code": 1,
+    "valid_diagnostic": false,
+    "on_time": false,
+    "checker_failed_before_point_read": true,
+    "error": "ValueError: not allowed to raise maximum limit",
+    "native_status": "Time limit reached",
+    "native_returncode": 0,
+    "native_wall_seconds": 606.4990504359885,
+    "native_internal_limit_seconds": 600,
+    "native_emergency_seconds": 660,
+    "native_overshoot_seconds": 6.499050435988465,
+    "invocation_seconds": 616.7954908810061,
+    "no_remaining_descendants": true,
+    "original_failed_gate_reclassified": false,
+    "checker_failure_cause": "Attempted 4 GiB RLIMIT_FSIZE against inherited 1 GiB hard limit; failed before reading the saved point"
+  },
+  "printed_solve_timing_seconds": {
+    "main_mip": 479.73,
+    "submip": 111.28,
+    "main_presolve": 8.83,
+    "submip_presolve": 3.86,
+    "scope": "Rounded solver log counters, not additional process-wall debits"
+  },
+  "separate_checker_only_recovery": {
+    "exit_code": 0,
+    "checker_completed": true,
+    "checker_wall_seconds": 161.74384182400536,
+    "whole_recovery_seconds": 165.1688651840086,
+    "helper_cap_seconds": 600,
+    "whole_cap_seconds": 1800,
+    "address_space_limit_bytes": 7516192768,
+    "file_size_limit_bytes": 1073741824,
+    "no_limits_relaxed": true,
+    "no_solve_rerun": true,
+    "no_remaining_descendants": true,
+    "serial_stage_order_verified": true
+  },
+  "printed_master_evidence": {
+    "raw_primal": "13872855.3705",
+    "raw_dual": "13616258.4018",
+    "raw_gap": "1.85% (tolerance: 1%)",
+    "finite_and_ordered": true,
+    "display_gap_consistent": true,
+    "display_gap_above_one_percent": true,
+    "exact_bound_available": false,
+    "independent_bound_proof": false,
+    "certificate_evaluated": false
+  },
+  "saved_point_checks": {
+    "exact_saved_bytes_verified": true,
+    "arithmetic": "Existing floating-point matrix/source/outage checker; not an exact-rational or GMP feasibility proof",
+    "tolerance": 1e-05,
+    "master_point_valid": true,
+    "matrix_residuals": {
+      "row": 1.1894343288076925e-08,
+      "lower_bound": 5.87e-11,
+      "upper_bound": 4.547473508864641e-13,
+      "integrality": 4e-13
+    },
+    "full_source_primal_valid": false,
+    "outages_checked": 1288,
+    "checked_pair_hours": 66360168,
+    "violated_pairs": 2,
+    "violated_line_hours": 4,
+    "max_violation_after_shared_slack_MW": 3.660719979204714,
+    "shed_MWh": 2e-13,
+    "shared_overflow_MW": 0.0,
+    "source_violations": {
+      "emergency_line_limit": 4
+    },
+    "full_source_upper_bound": null
+  },
+  "mechanism": {
+    "visible_complement_loop_summaries": 0,
+    "coverage": "Top-level solver output only; sub-MIPs use output_flag=false and early CMIR returns precede the marker. Zero visible summaries cannot establish zero child work or zero callbacks.",
+    "submip_output_suppression_source_verified": true,
+    "corrected1354_shortcut_applicability_established": false
+  },
+  "claims": {
+    "full_scuc_one_percent_accepted": false,
+    "certificate_evaluated": false,
+    "cold_scuc_speed_claim": false,
+    "clean_speed_claim": false,
+    "old_failed_mixed_panel_gate_changed": false
+  },
+  "earlier_hourly_trials_are_corrected_results": false
+}

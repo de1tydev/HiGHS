@@ -1,0 +1,82 @@
+{
+  "schema": "cmir-public-source-validation-v1",
+  "completed_utc": "2026-10-03T09:49:40.705818+00:00",
+  "evidence_scope": "Projection of completed validation; not a rerun or portable-runner certification",
+  "source_patch_sha256": "abb786e47f9069897ed89e5bbcf3771745301800a4ccf00849ee4cf7e7497720",
+  "registered_new_defaults": {
+    "mip_modk_skip_integer_complements": false,
+    "mip_modk_integer_complement_log": false
+  },
+  "existing_registered_defaults_unchanged": true,
+  "source_integrity": {
+    "candidate_source_unchanged": true,
+    "reference_source_unchanged": true
+  },
+  "focused_guard_options_tests": {
+    "cases": 3,
+    "assertions": 159,
+    "passes": true
+  },
+  "rational_identity": {
+    "cases": 90318,
+    "passes": true,
+    "claim": "exact rational MIR identity only; no floating-point efficacy or search identity"
+  },
+  "full_ctest": {
+    "passed": 168,
+    "total": 168,
+    "catch_test_cases": 356,
+    "catch_assertions": 1260159
+  },
+  "default_off_parity": {
+    "fixture": "rgn",
+    "passes": true,
+    "solution_bytes_equal": true,
+    "parity_keys": [
+      "run_status",
+      "model_status",
+      "primal_solution_status",
+      "value_valid",
+      "sense",
+      "offset_hex",
+      "rows",
+      "columns",
+      "nonzeros",
+      "objective_hex",
+      "global_bound_hex",
+      "reported_gap",
+      "nodes",
+      "simplex_iterations"
+    ],
+    "scope": "no activation required; reporter headers/library matched per arm"
+  },
+  "binkar_inactive_integration": {
+    "fixture": "binkar10_1",
+    "original_mps_sha256": "71dc18a14f1d26f39473eaf64b81c12691a0c0d4ab00dec43679071ed7f3e09c",
+    "both_original_primal_checks_passed": true,
+    "both_numerical_one_percent_endpoints_passed": true,
+    "diagnostic_summaries_per_arm": [
+      0,
+      0
+    ],
+    "skipped_trials_per_arm": [
+      0,
+      0
+    ],
+    "interpretation": "Inactive integration coverage only; no positive activation on this fixture"
+  },
+  "all_integration_original_primal_checks": {
+    "passed": 4,
+    "total": 4,
+    "checker": "frozen GMP checker",
+    "binary_sha256": "d48bc55e49c15470cc92b000e43d1ec7437279d7d7f0fa34cbe14763d154b848"
+  },
+  "independent_global_bound_proof": false,
+  "limits": [
+    "Exact rational identity does not promise identical floating-point efficacy, cuts, or search.",
+    "Ordinary cut-generation and proof paths remain; no feasibility or integrality tolerance is changed.",
+    "Exclusion of onlyInitialCMIRScale=false was checked in source, not dynamically covered.",
+    "The original rational-check wrapper failed before a child launch; its fresh-label retry passed.",
+    "This validation preceded the separate logged positive-mechanism experiment."
+  ]
+}
