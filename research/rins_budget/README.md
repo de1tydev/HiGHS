@@ -1,5 +1,16 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Pristine-reference revalidation — 2026-10-03:** A fresh matched study on
+pinned official development commit `d547a3ad` passed all nine fixed pairs,
+with median reductions of **63.85% solver time and 54.03% full-arm time**.
+All 18 final points passed the original source checks with zero shedding,
+overflow and reserve shortfall. Every date passed the fixed median criterion;
+the worst individual full-arm reduction was 28.32%. See the
+[new report and all outcomes](pristine_pg89_results/RESULTS.md).
+This is a new lineage without private solver patches, not a repair of historical
+bounds or a larger-case/general-MILP claim. The known affinity test limitation
+and the numerical-bound qualification are retained.
+
 **Additional correctness advisory — 2026-10-03:** The two-fix reference used
 for the PG89 revalidation below also reproduces the official #3270 continuous-LP presolve
 failure. Its SCUC trigger is unknown. The primal checks and recorded timings

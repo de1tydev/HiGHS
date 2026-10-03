@@ -1,5 +1,17 @@
 # Correctness advisory — 2026-10-02
 
+**New-reference update — 2026-10-03:** The fresh pristine official development
+reference at [`d547a3ad`](https://github.com/ERGO-Code/HiGHS/commit/d547a3ad8af5399651187fb0e133cf0e42615b82)
+resolves both reproduced official counterexamples and passed the new fixed
+nine-pair PG89 study: median reductions of 63.85% solver and 54.03% full-arm time,
+with all 18 numerical 1% endpoints and original-source primal checks accepted.
+[The new report](pristine_pg89_results/RESULTS.md) retains all outcomes, objective
+quality, the 399/400 unit-platform limitation and unestablished #3181 retry
+coverage. These are new same-reference measurements; no historical SCUC trigger
+is established and no old result is rewritten. The dated warnings below remain
+applicable to the earlier references. This is still research evidence, not
+universal solver correctness or production readiness.
+
 Historical 1% gap and time-to-1% acceleration claims in this research directory
 are **provisional pending revalidation on a corrected reference**. Do not use
 the current research packages for production dispatch or planning decisions.
