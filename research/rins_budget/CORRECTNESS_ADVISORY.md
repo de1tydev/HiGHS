@@ -6,6 +6,48 @@ the current research packages for production dispatch or planning decisions.
 Original result tables, timings, source identities and archived packages are
 preserved; this advisory does not silently replace their evidence.
 
+## Additional presolve counterexample — 2026-10-03
+
+The custom reference containing both official #3179 and #3181 backports also
+reproduces the continuous-LP failure fixed in [PR #3270](https://github.com/ERGO-Code/HiGHS/pull/3270),
+[commit 4e53e2bc](https://github.com/ERGO-Code/HiGHS/commit/4e53e2bcae3fafb3492b231545ade6a59b4ca488).
+The exact `dual-bound-relaxation-unbounded` regression is in the official
+[TestPresolve.cpp](https://github.com/ERGO-Code/HiGHS/blob/4e53e2bcae3fafb3492b231545ade6a59b4ca488/check/TestPresolve.cpp).
+No experimental signed-clique modification was involved.
+
+The model minimizes `-5*x1`, with `x0,x1 >= 0`, `0 <= x2 <= 1`, and rows
+`x0-x1-x2 <= 0` and `-x0+x1+x2 <= 1`. Every point `(t,t,0)`, for `t >= 0`,
+is feasible and has objective `-5*t`. This is an exact unbounded ray, so the
+model cannot be infeasible.
+
+Two fresh processes loaded the same pinned library and exact model through the
+public C API. The integer ABI, dimensions, costs, bounds, matrix, objective sense
+and offset were checked through model readback before either solve. The only
+solver-option difference was presolve on/off. Both API calls returned Ok and
+exited cleanly within their limits:
+
+| Presolve | Observed status | Mathematical assessment |
+|---|---|---|
+| On | Infeasible | Incorrect; the explicit ray proves feasibility and unboundedness |
+| Off | Unbounded | Consistent with the exact ray |
+
+The independent audit verified the source and library hashes, literal official
+data, model readback, logs, statuses and cleanup. A compact record with the model
+and exact identities is [available here](correctness_advisory/presolve_3270.json).
+This establishes a baseline counterexample on this continuous LP. It does not
+establish a MIP-path trigger or show that any reported SCUC instance triggered
+it. The internal stale-cache transition was examined in source, not traced by
+these two runs.
+
+Performance experiments are paused while a coherent official reference and its
+correctness validation are selected. The PG89 tables remain historical measured
+outcomes. Their independent source/primal/objective/outage checks remain useful,
+but those checks do not independently prove HiGHS's lower bounds. Therefore the
+reported 1% endpoints and time-to-1% acceleration interpretation on the two-fix
+reference are **again provisional pending revalidation**. This is not a blanket
+claim that those SCUC objectives or schedules are wrong. No result table,
+timing, old package, model or saved point has been replaced.
+
 ## Confirmed failure on an official regression model
 
 The pinned HiGHS source, `73cac48c5340d775a477087198611862559be250`, lacks the
@@ -54,7 +96,7 @@ time to a valid 1% solution, and the associated acceleration claims, require
 revalidation. No fixture-specific objective difference has been applied to
 SCUC results, and no historical timing has been adjusted.
 
-## Current status
+## Earlier revalidation update (superseded by the 2026-10-03 caution)
 
 **Update after corrected revalidation — 2026-10-02:** The isolated official
 #3179 and [#3181](https://github.com/ERGO-Code/HiGHS/commit/ae53450f395cf0a278858868b64813ea99bb4767)

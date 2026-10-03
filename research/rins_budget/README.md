@@ -1,5 +1,11 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Additional correctness advisory — 2026-10-03:** The two-fix reference used
+for the PG89 revalidation below also reproduces the official #3270 continuous-LP presolve
+failure. Its SCUC trigger is unknown. The primal checks and recorded timings
+remain evidence, but the 1% endpoint and time-to-1% interpretation are provisional
+pending a new reference and revalidation. [Read the new evidence and limits](CORRECTNESS_ADVISORY.md#additional-presolve-counterexample--2026-10-03).
+
 **Correctness advisory — 2026-10-02:** The pinned solver reproduced an incorrect optimality claim on an official upstream fixture. Historical 1% gap and time-to-1% acceleration claims below are provisional pending corrected-reference revalidation; historical SCUC impact is unknown. Original results remain archived. [Read the evidence and current limitations](CORRECTNESS_ADVISORY.md) before using this research.
 
 **Corrected-reference update — 2026-10-02:** Fresh matched PG89 revalidation

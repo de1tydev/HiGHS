@@ -1,5 +1,11 @@
 # Corrected-reference PG89 revalidation — 2026-10-02
 
+**Additional correctness advisory — 2026-10-03:** The two-fix reference used
+for this revalidation also reproduces the official #3270 continuous-LP presolve
+failure. Its SCUC trigger is unknown. The primal checks and recorded timings
+remain evidence, but the 1% endpoint and time-to-1% interpretation are provisional
+pending a new reference and revalidation. [Read the new evidence and limits](../CORRECTNESS_ADVISORY.md#additional-presolve-counterexample--2026-10-03).
+
 The fixed nine-pair revalidation passed on a reference containing the two
 official correctness fixes. Early integer cut discovery reduced median solver
 process time by **66.05%** and median arm end-to-end time by **56.19%**. All nine

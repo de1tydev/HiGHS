@@ -1,0 +1,136 @@
+{
+  "advisory_date_utc": "2026-10-03",
+  "base_commit": "73cac48c5340d775a477087198611862559be250",
+  "included_official_fixes": [
+    "28339ce4b57bf8858036cbb36f4fc66d97fedd06",
+    "ae53450f395cf0a278858868b64813ea99bb4767"
+  ],
+  "preserved_research_patches": [
+    "outer-gap-heuristic",
+    "initial-root-ipx",
+    "root-child-credit"
+  ],
+  "official_fix_pr": "https://github.com/ERGO-Code/HiGHS/pull/3270",
+  "official_fix_commit": "4e53e2bcae3fafb3492b231545ade6a59b4ca488",
+  "official_test": "dual-bound-relaxation-unbounded",
+  "library_sha256": "55db9d52a2522fe90bdee53b4f6c51dca998400dfdb7d4e25dadef7980f5887f",
+  "probe_sha256": "db34ffd84af03422e78dafabe9ecc7a8a4c455b797fbb7c6f922ab759dfe654a",
+  "runner_sha256": "05741f1e31c973bf8526cf61a71b7ee6ce2af48486b2c30141344639ada219d9",
+  "fixture_data_sha256": "a913f665c7b78684c0706e7d1f4128577dddecff2750655d77660847045a6ca6",
+  "model": {
+    "sense": "minimize",
+    "offset": 0,
+    "costs": [
+      0,
+      -5,
+      0
+    ],
+    "lower": [
+      0,
+      0,
+      0
+    ],
+    "upper": [
+      "+inf",
+      "+inf",
+      1
+    ],
+    "row_lower": [
+      "-inf",
+      "-inf"
+    ],
+    "row_upper": [
+      0,
+      1
+    ],
+    "matrix_by_rows": [
+      [
+        1,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        1,
+        1
+      ]
+    ],
+    "integrality": "continuous"
+  },
+  "independent_ray": {
+    "direction": [
+      1,
+      1,
+      0
+    ],
+    "t_lower": 0,
+    "objective_slope": -5,
+    "exact_result": "Unbounded"
+  },
+  "common_options": {
+    "threads": 1,
+    "parallel": "off",
+    "random_seed": 0,
+    "time_limit": 1
+  },
+  "containment": {
+    "process_seconds": 5,
+    "active_seconds": 4,
+    "cleanup_seconds": 1,
+    "address_space_and_sampled_rss_bytes": 536870912,
+    "available_memory_floor_bytes": 2147483648
+  },
+  "arms": {
+    "on": {
+      "artifact_sha256": {
+        "PLAN.json": "9365b2fb373fd32c3560f7dfc7d26d22f6ee2a287622de2eefe7b42482072484",
+        "RESULT.json": "88f1783cd5078841b3106c875a5e53d12cb0b47c9cf0013de95e0f7cc8f63bc0",
+        "native.receipt.json": "fb6a30bcc50a7cf8d08aceca71ae281b2b6849cb3c588f4b62570c22b2d4625d",
+        "native.log": "88ab4d52c8180a3cd60643f884ecf62c9412d9e1d0daef782a2b6b47bf08f912"
+      },
+      "observed_model_status": 8,
+      "call_status": 0,
+      "stage_wall_seconds": 0.08535178999591153,
+      "cleanup_seconds": 0.00026780400366988033,
+      "max_tree_rss_bytes": 17039360,
+      "wait4_peak_rss_KiB": 17536,
+      "clean": true
+    },
+    "off": {
+      "artifact_sha256": {
+        "PLAN.json": "aa2090defb04979ac3be96e8333ad4cc6f0546bf63b34eb07d9ef4e5d6359bd2",
+        "RESULT.json": "a4fdd43d72493fcd0aa5508afd20df514a63faafc3b9ef71d74e260968772a7d",
+        "native.receipt.json": "423140bcc011b2d96f3443f100df28be7cfe499e6d6a0f0d65282109b3f9d57d",
+        "native.log": "c399538109f464d5b68e2c38b8924a1413dd88cf7b8a11b6a0ef2f7d383eecee"
+      },
+      "observed_model_status": 10,
+      "call_status": 0,
+      "stage_wall_seconds": 0.06395383599738125,
+      "cleanup_seconds": 0.0002816760097630322,
+      "max_tree_rss_bytes": 16297984,
+      "wait4_peak_rss_KiB": 17536,
+      "clean": true
+    }
+  },
+  "api_readback_exact": true,
+  "independent_audit_passed": true,
+  "audit_sha256": "697aa3bf6c24d7484a07565fe8994c2eb358b2b7bd4a54130150310975c31f56",
+  "limits": [
+    "No candidate patch was involved",
+    "No SCUC trigger or historical SCUC invalidity established",
+    "No MIP-path trigger established",
+    "Underlying cache transition was source-reviewed but not instrumented in this execution",
+    "No full dependency closure or repair validated"
+  ],
+  "performance_paused": true,
+  "historical_scuc_trigger": "unknown",
+  "bound_dependent_claims": "provisional pending coherent-reference revalidation",
+  "transitive_dso_inventory": "not separately recorded in this tiny probe; principal library loaded by absolute path and hashed",
+  "documentation_amendment": {
+    "historical_commit": "24f516b72c8242003d925eff9adf8d7202accb5f",
+    "report": "research/rins_budget/corrected_pg89_results/RESULTS.md",
+    "prior_sha256": "5474ae75430dccd97a2adf6df471abc736d6f11e4703d5f1d2e7002b80baadc7",
+    "amended_sha256": "0956bbe964d8af276d446d2c8729a5cdc3c33bda496871a03b62eb2f8a060db0",
+    "change": "Dated caution paragraph only; old report remains byte-identical after removing that paragraph; report checksum updated; result.json and frozen replay packages unchanged"
+  }
+}
