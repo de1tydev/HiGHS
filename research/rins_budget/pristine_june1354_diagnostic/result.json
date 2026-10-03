@@ -1,0 +1,145 @@
+{
+  "schema": "pristine-june-public-diagnostic-v1",
+  "classification": {
+    "valid_diagnostic": true,
+    "on_time": false,
+    "full_scuc_certificate": false,
+    "solver_status": "Time limit reached",
+    "native_calls": 1,
+    "speed_ratio": null
+  },
+  "scope": {
+    "case": "case1354pegase/2017-06-01",
+    "data_date": "2017-06-01",
+    "native_started_utc": "2026-10-03T21:40:57.861316+00:00",
+    "model": "retained original integer empty-pair first master",
+    "hours": 36,
+    "seed": 0,
+    "active_security_pairs": 0,
+    "dimensions": {
+      "binaries": 28080,
+      "buses": 1354,
+      "columns": 313776,
+      "generators": 260,
+      "lines": 1991,
+      "nonzeros": 1232507,
+      "rows": 381268
+    },
+    "warm_state_reused": false,
+    "cold_full_loop_benchmark": false
+  },
+  "options": {
+    "threads": 2,
+    "parallel": "off",
+    "presolve": "on",
+    "write_solution_to_file": true,
+    "write_solution_style": 0,
+    "log_dev_level": 1,
+    "highs_analysis_level": 128,
+    "mip_rel_gap": 0.01,
+    "mip_improving_solution_save": false,
+    "mip_lp_solver": "choose",
+    "mip_ipm_solver": "choose",
+    "private_options": false
+  },
+  "timing": {
+    "requested_native_seconds": 600,
+    "actual_native_process_seconds": 604.3308834820054,
+    "native_process_overshoot_seconds": 4.330883482005447,
+    "whole_arm_seconds": 795.2188502909994,
+    "checker_stage_seconds": 170.550562067001,
+    "native_reported_seconds": 601.55
+  },
+  "point": {
+    "original_matrix_primal_pass": true,
+    "tolerance": 1e-05,
+    "independently_recomputed_matrix_objective": 13800283.938632872,
+    "original_matrix_max_residual": {
+      "row": 5.997897289944376e-09,
+      "lower_bound": 4.014e-10,
+      "upper_bound": 4.547473508864641e-13,
+      "integrality": 2e-13
+    },
+    "true_source_cost": 13800283.938632818,
+    "source_checker_linear_cost": 13800283.938632919,
+    "objective_overpayment": 1.0058283805847168e-07,
+    "shedding_MWh": 2e-13,
+    "shared_overflow_MW_hours": 0.0,
+    "reserve_shortfall_MW_hours": 0.0
+  },
+  "security": {
+    "full_source_primal_pass": false,
+    "checked_outages": 1288,
+    "checked_pair_hours": 66360168,
+    "violating_pairs": 3,
+    "violating_line_hours": 24,
+    "max_unrelaxed_overload_MW": 272.47338756793556,
+    "max_violation_after_shared_slack_MW": 272.47338756793556,
+    "checked_full_source_upper_bound": null
+  },
+  "numerical_master_bound": {
+    "displayed_lower_token": "13603318.4557",
+    "rounding_allowance": 0.000186033184557,
+    "adjusted_lower": 13603318.455513967,
+    "relative_gap": 0.014272567433740583,
+    "independent_dual_or_rational_proof": false
+  },
+  "profile": {
+    "top_level_sub_mip_envelope_seconds": 175.84,
+    "displayed_incumbent_improvement_percent_approx": 8.81,
+    "late_interval_start_displayed_seconds": 392.3,
+    "late_interval_end_displayed_seconds": 425.5,
+    "late_interval_displayed_bound_gain": 8.48008,
+    "processed_nodes": 0,
+    "clock_limits": "Milestones retain rounded native tokens and order. Nested/per-thread times overlap; no additive elapsed-time or causal speedup claim.",
+    "interpretation": "Late root separation showed diminishing displayed bound gains; the subsequent Sub-MIP improved the incumbent. This does not establish that shortening separation preserves the incumbent or bound."
+  },
+  "validation": {
+    "terminal_audit_passed": true,
+    "terminal_audit_frozen_files_checked": 3856,
+    "terminal_audit_run_artifacts_checked": 25,
+    "terminal_audit_scope": "Retained identity, receipt and source-checker evidence audit plus independent original-matrix primal/objective arithmetic; no solver or source/topology-checker rerun and no independent dual proof.",
+    "reviewed_developer_warning": "Inconsistent max bound violation: the displayed 5.998e-09 discrepancy agrees with the independently recovered row residual and is below 1e-5; the TimeLimit warning return is expected."
+  },
+  "reference_admission": {
+    "recorded_utc": "2026-10-03T20:41:50.439846+00:00",
+    "ctest_passed": 168,
+    "ctest_total": 169,
+    "unit_passed": 399,
+    "unit_total": 400,
+    "full_suite_pass": false,
+    "unmet_test": "AffinityReducedCoreCount",
+    "affinity_caveat": "AffinityReducedCoreCount observed 5 cores instead of 1. Missing CPU topology triggers a fallback that ignores affinity; the test does not check sched_setaffinity success. Explicit threads=2 bypasses automatic core selection. The suite remains failed; all other CTest entries passed across the initial and resumed runs."
+  },
+  "identity": {
+    "official_source_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "official_source_git_tree": "788b41e141fa455509c71593e1718b7b71168320",
+    "development_not_release": true,
+    "private_patches": false,
+    "source_manifest_sha256": "4f2192656a0e0d955de68aeea1cd129f245bcce782c9b4769f420406ffa09b59",
+    "runtime_binding_sha256": "e562058877be68fcc7a5dc2ae995e23d1539f91ac9ce8e8c135977f0aaa56816",
+    "runtime_sha256": {
+      "cli": "966820bd4341d414371a7afea4a5d66e65e11d8af1a6aa32bb34c2c3b72475f2",
+      "main": "79e9e3f7a01eff3b46ff956c666c72a1d8d6583880587d702ce515eef2cc3387",
+      "extras": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+    },
+    "source_input_gzip_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "retained_master_mps_sha256": "1ed299a2ea2d79c8f1d2b38d77376aafc239f45473a997065106ed2b82e266ff",
+    "expected_matrix_sha256": "bc5d1cf62e07a4d90d3b1cec0de589010d7704ebea154e3476ac4db78a030dd6",
+    "options_file_sha256": "c674241f1baabb0f00fdbcebc1799c53bb29015d941cd6f1cd4e3cbaccde812a",
+    "native_log_sha256": "042c2ef891d23af1fa433b1c526bbfaa9bb6a62d55ad62fce11d6df7bfcdc928",
+    "complete_solution_file_sha256": "fd00cb869939c2949c49c94cfc5603b293aed52cf8d2e207f0d17d9372eaae2d",
+    "canonical_source_data_sha256": "6386c57b6d57b4fed908af13511affccdc9d9bf63bec6907124e05e984b5c863",
+    "complete_point_sha256": "cbb451f2278fb0b78b8af7c61e3215ed52299661337c973ab14df5597bdcf291",
+    "freeze_sha256": "ab3cf5d89262ab279bc0378dbd4cea1e432bc06d82fa2c2b572e6c122ff75b25",
+    "summary_sha256": "60533482eeb9b8882ebe9e34aedc681fb636b6b1a76b50685a9594bc84f92956",
+    "audit_sha256": "479e749670e4cc672c22c3ee3f0f8a80ce83481226e188a28bdb044fb670df10",
+    "report_sha256": "fffa94e3cc5646ca2e36b7b10ee5cd08ba50b8941867426b6a36374ef1d8ffc1",
+    "admission_sha256": "bf89daed7a709de584d540a7c9c026d6d781c45cd4124a935ff5fb5d121b248f"
+  },
+  "links": {
+    "official_source": "https://github.com/ERGO-Code/HiGHS/tree/d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "pristine_pg89_report": "https://github.com/de1tydev/HiGHS/blob/fc0e7087d05f3b521eb44ebc77714b7596e6debd/research/rins_budget/pristine_pg89_results/RESULTS.md",
+    "pristine_replay": "https://github.com/de1tydev/HiGHS/blob/4dfbe79059174156572a918562403b3365d14aeb/research/rins_budget/portable_pristine_reference_replay_v3/README.md"
+  }
+}
