@@ -1,0 +1,161 @@
+{
+  "schema": "chronological-cache-v41-negative-checkpoint",
+  "reference_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "runtime_lineage": "fresh cloud restoration 2026-10-04",
+  "source_manifest_sha256": "be9225526bef42e719e2f1a6e7c5bfde69d526f5f8610f0767ead638a6db54a0",
+  "source_archive_sha256": "2345f874248055d034c608b07d14059c2c25bb94598693d48575cfd11c5bfb21",
+  "source_scope": "custom 36-hour preventive DC model;1288 specified outages;original source soft slacks;not UC.jl default formulation parity",
+  "source_inputs": {
+    "May_gzip_sha256": "42d2acf8a9adf569686977e38547f3ee4c6c2b16c036ec54c39492c30baee4a4",
+    "June_gzip_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c"
+  },
+  "comparison": {
+    "claim_scope": "First restored pair: completion and quality under fixed actual solver budget; combined cache and discovery scheduling policy",
+    "clean_end_to_end_acceleration_evidence": false,
+    "benefit_demonstrated": false,
+    "acquisition_charged_count": 1,
+    "acquisition_seconds": 481.06320611799947,
+    "raw_arm_end_to_end_seconds": {
+      "E": 1069.2331939229998,
+      "W": 842.9683676169989
+    },
+    "completion": {
+      "E": false,
+      "W": false
+    },
+    "warm_single_use_total_seconds": 1324.0315737349983,
+    "timing_rule": "Raw wall includes all measured archival pauses. No subtraction and no historical-arm mixing."
+  },
+  "total_actual_solver_seconds_including_training": 1400.5235833389997,
+  "total_raw_episode_seconds_including_training": 2394.2601291349993,
+  "may": {
+    "actual_solver_seconds": 205.3822683339995,
+    "raw_episode_seconds": 481.06320611799947,
+    "archive_boundary_seconds": 152.60797889399873,
+    "pair_count": 2,
+    "cache_sha256": "6474296a384e881a7f121a005dfeb6a8a836205f08d203699bc35f49158bf545",
+    "episode_sha256": "3e8b57815d7bec27233bcf265f9db9c625a806b4a570d23c62904312dc695b10",
+    "point_role": "primal-only original-row selection; no eligible upper/lower bound or state transfer"
+  },
+  "arms": {
+    "E": {
+      "complete": false,
+      "on_time": true,
+      "raw_end_to_end_seconds": 1069.2331939229998,
+      "actual_solver_seconds": 598.014189352999,
+      "archive_boundary_seconds": 123.11274224799854,
+      "native_status": "Time limit reached",
+      "checked_upper": 15474465.04351685,
+      "full_source_primal_pass": true,
+      "new_security_pairs": 0,
+      "violating_pair_hours": 0,
+      "maximum_emergency_violation_MW": 2.22235030378215e-09,
+      "source_cost": 15474465.043516662,
+      "load_shedding_MWh": 1479.0441367624076,
+      "shared_overflow_MW": 0.0,
+      "outages_checked": 1288,
+      "pair_hours_checked": 66360168,
+      "maximum_matrix_row_residual": 1.1574491300000001e-07,
+      "source_model_sha256": "0154c5d9ff00234b9a082b31dc06eda74c064e8412ecdc1bc588ce1f42c4cee4",
+      "solution_sha256": "b9b37b5ba375024a625bc82dc7c235ab3210a19c2f00b5c68465c608bb190573",
+      "checker_result_sha256": "40266b1eefbcca87c5f2f2ede7d5ca303fbb19a55ce4275a5608088debd50893",
+      "summary_sha256": "11a7b6b6d8e95a5b23d02889571f175b38b4cd41feccd9d62194cfb6f23106df",
+      "certificate": {
+        "valid": true,
+        "complete": false,
+        "reason": "checked source/matrix integer primal and original-master numerical bound",
+        "upper": 15474465.04351685,
+        "lower": 13616258.803613838,
+        "gap": 0.12008209877869236,
+        "target_met": false,
+        "budget_valid": true,
+        "lp_policy_valid": true,
+        "lower_provenance": {
+          "scope": "original_security_master_mip",
+          "status": "Time limit reached",
+          "raw_lower_token": "13616258.8038",
+          "printed_lower": 13616258.8038,
+          "lower_rounding_allowance": 0.000186162588038,
+          "lower_rounding_allowance_reason": "half of 12-significant-digit display unit plus max(1e-5,abs(raw)*1e-11)",
+          "global_lower": 13616258.803613838,
+          "role": "integer_proof",
+          "verified_native_hashes": {
+            "highs": "46437643f469aab7ada837b257ec13273d932e7a099033ffda4491abab682ebd",
+            "libhighs": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3",
+            "libhighs_extras": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+          }
+        }
+      },
+      "diagnostic_master_primal_printed": "15474465.0435",
+      "diagnostic_master_lower_printed": "13616258.8038",
+      "diagnostic_master_gap_percent": 12.01
+    },
+    "W": {
+      "complete": false,
+      "on_time": true,
+      "raw_end_to_end_seconds": 842.9683676169989,
+      "actual_solver_seconds": 597.1271256520013,
+      "archive_boundary_seconds": 63.21107215200209,
+      "native_status": "Time limit reached",
+      "checked_upper": null,
+      "full_source_primal_pass": false,
+      "new_security_pairs": 3,
+      "violating_pair_hours": 5,
+      "maximum_emergency_violation_MW": 24.70705253695087,
+      "source_cost": 13880877.36469879,
+      "load_shedding_MWh": 2e-13,
+      "shared_overflow_MW": 0.0,
+      "outages_checked": 1288,
+      "pair_hours_checked": 66360168,
+      "maximum_matrix_row_residual": 4.1721711999999996e-08,
+      "source_model_sha256": "0154c5d9ff00234b9a082b31dc06eda74c064e8412ecdc1bc588ce1f42c4cee4",
+      "solution_sha256": "7d95e057e54551022298a7e99f97b7787cccd63423e6a51ca4fd94299fe68df2",
+      "checker_result_sha256": "6469134d7df8443df062fd9f68c59cb189e7b66cdbfd62af6ef4c5267c3115b1",
+      "summary_sha256": "3fa8f41766fe919ede71d3368d9462ebcec025169418d9affea58e1e7f4315e9",
+      "certificate": {
+        "valid": false,
+        "complete": false,
+        "reason": "No source-and-matrix checked integer upper bound",
+        "gap": null
+      },
+      "diagnostic_master_primal_printed": "13880877.3647",
+      "diagnostic_master_lower_printed": "13616258.8038",
+      "diagnostic_master_gap_percent": 1.91
+    }
+  },
+  "evidence": [
+    {
+      "archive": "primal-cache-replay-v4.1-source-20261004.tar.gz",
+      "sha256": "2345f874248055d034c608b07d14059c2c25bb94598693d48575cfd11c5bfb21",
+      "bytes": 157176,
+      "retention": "owner-controlled durable storage; upload/readback verified; not a public download mirror"
+    },
+    {
+      "archive": "v41-May1354-prelaunch-20261004.tar.gz",
+      "sha256": "5f3fee7b98179316dd2f249401c8e3296da6354275022abdd211f624e35068a8",
+      "bytes": 1003619,
+      "retention": "owner-controlled durable storage; upload/readback verified; not a public download mirror"
+    },
+    {
+      "archive": "v41-May1354-training-01-terminal-capsule.tar.gz",
+      "sha256": "a91b2f68851adee8d31fa08794bdf425a92cb4534113c1a478d3e7a9d9e3aabf",
+      "bytes": 482910,
+      "retention": "owner-controlled durable storage; upload/readback verified; not a public download mirror"
+    },
+    {
+      "archive": "v41-June1354-pair-prelaunch-20261004.tar.gz",
+      "sha256": "6461d34cd7283e3b6b6f0ef1e4158eae6706965b6e79322980ba3f0f7d6db51c",
+      "bytes": 339526,
+      "retention": "owner-controlled durable storage; upload/readback verified; not a public download mirror"
+    },
+    {
+      "archive": "v41-June1354-pair-01-terminal-capsule.tar.gz",
+      "sha256": "4f649f675633ea1eb848e0bfefcba990beb7600b0cd0c03d73286f1a3089062a",
+      "bytes": 937366,
+      "retention": "owner-controlled durable storage; upload/readback verified; not a public download mirror"
+    }
+  ],
+  "pair_episode_sha256": "d56a62caa2d1d52775729cdbfb4f34becb14a54b79e8a5eee497cbe3cb83830a",
+  "full_terminal_audit_sha256": "3973db44e10f1e44456a4f40a83da09d4134b6743a5dac4f993085cc76eca1b7",
+  "proof_model_bytes_identical": true
+}
