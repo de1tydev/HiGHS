@@ -1,0 +1,278 @@
+{
+  "schema": "network-projection-first-start-public-evidence-v1",
+  "recorded_date": "2026-10-05",
+  "publication_scope": "Evidence-only checkpoint; published aggregate source and fixed tiny replay unchanged",
+  "source": {
+    "case": "case1354pegase_2017-06-01",
+    "case_compressed_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "hours": 36,
+    "generators": 260,
+    "original_binary_count": 28080,
+    "monitored_lines": 1432,
+    "listed_outages_checked": 1288,
+    "source_line_count": 1991,
+    "all_source_line_outages_claimed": false,
+    "full_scope_identity_sha256": "88d5f0be6b7ad9b8653136a08bfab88c3916fded6333e116618d82f481a829eb",
+    "generator_source_sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3",
+    "binary_authority_sha256": "953789350e2fd684d0962e13b2c0f1711c643abaf713dc20d5c299018e9053ec"
+  },
+  "runtime": {
+    "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "source_tree_sha1": "788b41e141fa455509c71593e1718b7b71168320",
+    "native_library_sha256": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3",
+    "native_extras_sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+    "versions": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "qualification": "Recovered exact archived official native build; new runtime cohort on 2026-10-05",
+    "full_historical_test_suite_rerun": false,
+    "cross_cohort_timing_comparison_claimed": false,
+    "qualification_sha256": "8b1ea5f5c0dfd9a0e9e47ad21f02bfd6650cc2d38e290db71a07a8024adbb306",
+    "configuration_sha256": "f9ddfb1581b900ec7807d29eeb8f700a2b3a4797a6cff1aa5782ec108c4158f1"
+  },
+  "baseline": {
+    "certified_lower_down": 13474893.024913887,
+    "retained_checked_upper": 13831712.357075134,
+    "unresolved_interval": 356819.33216124773,
+    "advancement_fraction": 0.25,
+    "advancement_uplift_threshold": 89204.83304031193,
+    "one_percent_lower_target": 13693395.233504383,
+    "arithmetic": "Exact rational differences of the recorded downward binary64 lower endpoints; interval comparison uses the retained numerical upper",
+    "matrix_json_sha256": "151789f8b1dc6e0cdd33e382047d1119e52d8bb13acef6b6b873cab4f987624d",
+    "matrix_npz_sha256": "2e5420bfe19ead27803d3df5cd5e7fa80f595a552da871ea53c39dcd00b92784",
+    "certificate_sha256": "547894d2cc6d8ef1449ecab11ebf918e3c8aa59c50eb34bc5e13bb184be71806"
+  },
+  "retained_upper": {
+    "objective": 13831712.357075134,
+    "numerical_physical_witness": true,
+    "original_binary_source_objective_and_listed_outage_checks_passed": true,
+    "all_complete_family_rows_satisfied_exactly": 5148,
+    "load_shedding_MWh": 0.0,
+    "reserve_shortfall_MWh": 0.0,
+    "shared_overflow_MWh": 1.2199093362141868e-06,
+    "physical_scan_repeated": false,
+    "historical_acquisition_counted_in_current_clock": false,
+    "solution_sha256": "4a850a80ec306574c066669016f23e139bd295adc3f462f1f403ec9bd60edd85",
+    "physical_result_sha256": "272b55154ec3a5f7983a80c534798cbbd78b7763a0cd04f55f5bd4dbdb1b1a78",
+    "physical_checker_sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024",
+    "direct_separator_sha256": "715a29f2f8fdc89b69dd5851a5c398da5d6254a958b67f6becaea224059393b2"
+  },
+  "inequality": {
+    "formula": "sum(sc[g,s], s=0..t) - C[g]*u[g,t] >= 0",
+    "eligibility": "initially off, elapsed initial off duration >= longest startup delay",
+    "coefficient": "C[g] is the unchanged literal binary64 longest-delay startup cost",
+    "source_requirements": [
+      "original binary status/start/stop domains",
+      "literal transition and start/stop exclusivity rows",
+      "literal startup epigraph/history rows",
+      "nonnegative startup-cost columns",
+      "finite nonnegative monotone startup costs and increasing integral delays"
+    ],
+    "eligible_units": 143,
+    "prefixes_per_unit": 36,
+    "proof_test_schedules": 109440,
+    "proof_test_parameter_cases": 1600,
+    "proof_test_passed": true,
+    "proof_test_results_sha256": "9161fd35452307fa31352523b2aee782e600efb5ebb938c3e76ae1c87ee7217c",
+    "proof_test_source_sha256": "be9c97267777860bff62ec4b22028519badf2280b5b96b5aac88581f541ebc20",
+    "prior_startup_epigraph_formula_overlap": "unresolved; historical formula was not recovered"
+  },
+  "runs": {
+    "ten_row": {
+      "diagnostic_admitted": true,
+      "added_rows": 10,
+      "added_nonzeros": 292,
+      "added_columns": 0,
+      "dimensions": {
+        "columns": 141878,
+        "rows": 157809,
+        "nonzeros": 658634
+      },
+      "all_old_slices_unchanged": true,
+      "selection": "One greatest-deficit prefix per eligible unit from frozen baseline LP; earliest exact ties; deficit > 1/100000",
+      "native_calls": 1,
+      "native_model_status": 7,
+      "native_run_status": 0,
+      "native_objective": 13504534.273023734,
+      "certified_lower_down": 13504534.26736893,
+      "exact_lower_rational": [
+        "205592697324489370998171943278836392405617742106078095",
+        "15223975388863573754822517311767150117020237824"
+      ],
+      "uplift_from_original_lower": 29641.2424550429,
+      "uplift_exact": [
+        "3978380217413",
+        "134217728"
+      ],
+      "fraction_original_interval_closed": 0.08307073015216544,
+      "advancement_gate_passed": false,
+      "numerical_one_percent_reached": false,
+      "remaining_numerical_interval_fraction_of_retained_upper": 0.023654199947185005,
+      "quality": {
+        "raw_quality_passed": false,
+        "raw_failures": [
+          "independent stationarity residual"
+        ],
+        "independent_tolerance": 1e-05,
+        "max_primal_row_violation": 1.3095981087217646e-10,
+        "max_primal_bound_violation": 8.47633685463478e-11,
+        "max_raw_stationarity": 0.005636384529680072,
+        "primal_checks_passed": true,
+        "stationarity_only_exact_certificate_substitution_used": true,
+        "certificate_loss_from_native_objective": 0.0056548044085502625
+      },
+      "certificate": {
+        "passed": true,
+        "row_dual_sha256": "461355d6ff34e59107f03333e5ed48364c1312896319644935312a04d5c9a624",
+        "selected_contraction_rational": [
+          "9007199254740992",
+          "9007199254740993"
+        ],
+        "uncontracted_unsupported_columns": 5,
+        "final_negative_infinity_columns": 0,
+        "terminal_rational_consistency_checked": true,
+        "terminal_certifier_rerun": false
+      },
+      "timing_seconds": {
+        "preparation_through_native_readback": 6.766706261999843,
+        "native_cumulative": 11.037585496902466,
+        "native_call_wall": 11.056525962999785,
+        "worker_launch_through_reap": 12.94151863299976,
+        "certificate_gate_export_readback": 2.6435222039999644,
+        "phase_including_archive": 33.266409095999734,
+        "outer_launch_through_reap": 33.312158380000255
+      },
+      "fixed_caps_seconds": {
+        "preparation": 30,
+        "native_cumulative": 45,
+        "worker_launch_through_reap": 60,
+        "certificate": 30,
+        "whole_phase": 150
+      },
+      "fixed_caps_and_clean_reap_passed": true,
+      "provenance": {
+        "source_manifest_sha256": "f2f7d5a38468e0106e8ffa41e998db2dc818a72f45156160f42efc6388ab41e3",
+        "matrix_json_sha256": "109cd73e1b746ec72ac01c721042ee22fdb8c00c8ce003c1c26877090c525815",
+        "matrix_npz_sha256": "9a5fa2e01cf778aacf9f240243af01936a8da729a095d41f1055742cd595e492",
+        "solution_json_sha256": "eabc56b08257d5e9182fa4c8709bfdb240d277e11d45e6b78cd387b852671511",
+        "solution_npz_sha256": "8ab44fb3a7bc59e2ea24753a9197e473c1c973e4e7b766e6675d7c30d7b9dc8d",
+        "certificate_json_sha256": "f35b74169502a153839e65dd25634419ab485e047626844d96b04c9712a9cc59",
+        "quality_json_sha256": "e48350bcb7023b9202484cda5c90db223e8284ea94a1893a197d4f69e4057865",
+        "preparation_json_sha256": "3601533c51a880bc18a9059808b94b1c0a20f18c79105ca43483b55ed4612aee",
+        "native_log_sha256": "ede8841f85fc6cca8c372b49b121b0c9259ed89aa6bc4ce4d942710faf67ca4a",
+        "result_sha256": "5de4fdf243bf19303589c69a088fc138335db9c28462f6b86c5d6847fe73c46f",
+        "independent_terminal_audit_sha256": "08418d4cfd75c7302d51686c5f3f41b1efc9765bb1bacd4c0d6c55cc64b825b8",
+        "raw_stage_archive_sha256": "08e88b8e15669b9fb41a9752071c7bcf10e2f858c784bfe9d8ca9c972f71d0a4",
+        "final_terminal_capsule_sha256": "2da295f7ca242936f675be960a5783fbd3243809bccbb5bd4438ac860745015c",
+        "capsule_final_process_and_archive_accounting_complete": true
+      }
+    },
+    "complete_family": {
+      "diagnostic_admitted": true,
+      "added_rows": 5148,
+      "added_nonzeros": 100386,
+      "added_columns": 0,
+      "dimensions": {
+        "columns": 141878,
+        "rows": 162947,
+        "nonzeros": 758728
+      },
+      "all_old_slices_unchanged": true,
+      "selection": "all source-eligible units, then every prefix in increasing order; no point input",
+      "native_calls": 1,
+      "native_model_status": 7,
+      "native_run_status": 0,
+      "native_objective": 13736286.33566539,
+      "certified_lower_down": 13736286.335665341,
+      "exact_lower_rational": [
+        "40151209940842023524540960913686096368678331068222039771",
+        "2923003274661806444879657774982678757729403666432"
+      ],
+      "uplift_from_original_lower": 261393.3107514549,
+      "uplift_exact": [
+        "140334465133833",
+        "536870912"
+      ],
+      "fraction_original_interval_closed": 0.7325648786129404,
+      "advancement_gate_passed": true,
+      "numerical_one_percent_reached": true,
+      "remaining_numerical_interval_fraction_of_retained_upper": 0.006899075034695971,
+      "quality": {
+        "raw_quality_passed": true,
+        "raw_failures": [],
+        "independent_tolerance": 1e-05,
+        "max_primal_row_violation": 5.572877125524885e-10,
+        "max_primal_bound_violation": 9.094947017729282e-13,
+        "max_raw_stationarity": 2.9103830456733704e-10,
+        "primal_checks_passed": true,
+        "stationarity_only_exact_certificate_substitution_used": false,
+        "certificate_loss_from_native_objective": 4.842877388000488e-08
+      },
+      "certificate": {
+        "passed": true,
+        "row_dual_sha256": "202c0024d787018f0ca76d34d4b8d4d39797be0fc1f0705eeca87f245e7eb935",
+        "selected_contraction_rational": [
+          "72057594037927936",
+          "72057594037927951"
+        ],
+        "uncontracted_unsupported_columns": 73,
+        "final_negative_infinity_columns": 0,
+        "terminal_rational_consistency_checked": true,
+        "terminal_certifier_rerun": false
+      },
+      "timing_seconds": {
+        "preparation_through_native_readback": 6.981925545000195,
+        "native_cumulative": 8.477261304855347,
+        "native_call_wall": 8.497314798000843,
+        "worker_launch_through_reap": 10.46203481700013,
+        "certificate_gate_export_readback": 2.8367851940001856,
+        "phase_including_archive": 28.884124221999627,
+        "outer_launch_through_reap": 28.93437827499929
+      },
+      "fixed_caps_seconds": {
+        "preparation": 30,
+        "native_cumulative": 45,
+        "worker_launch_through_reap": 60,
+        "certificate": 30,
+        "whole_phase": 150
+      },
+      "fixed_caps_and_clean_reap_passed": true,
+      "provenance": {
+        "source_manifest_sha256": "914d3037ff31e806c367349118c8f55d67a48f6cc59f58400395e97c1e2f41d5",
+        "matrix_json_sha256": "194fab753cb4572f8e3f344a8dc2a945c308d838c83b451fc4e0379ada7b1a29",
+        "matrix_npz_sha256": "ea36d1246af1d37383ea43543b9b50fa89094b2a65950dff2718351827ff8485",
+        "solution_json_sha256": "9214e9c2cf0468bfbf3f2de62772cb20ce08db2897f08a061d3e95e2956e9449",
+        "solution_npz_sha256": "a787eb327980c67df0a83be68f44f48dc59d496aa83905ea3e21af32c129b28a",
+        "certificate_json_sha256": "799fcdffe064532cfba77001398cb44141c04d841c77acd0936e0568a1714e30",
+        "quality_json_sha256": "29643dcd304ab0a7704b3af11945786890d644df4c73c3aab766b25bc7cd277f",
+        "preparation_json_sha256": "acdd02289ada7acba59317e052e28a3af26d2a56f4469c4ad5902a05cb9e3259",
+        "native_log_sha256": "d81445282a26fe63842340a2e79c93b2786300122d1450ac42dfd0b64527ab27",
+        "result_sha256": "53ccb6bcfa68c5916eec16cd8c4b85b805f211e267550a578f205ffbab9f00e0",
+        "independent_terminal_audit_sha256": "7af5eca88a8afb13fa0b879e240f7ec8b8579bd07c55d50cc350b12d51625cbb",
+        "raw_stage_archive_sha256": "19485191784a648867c3765613c5d6399cb800aa21581457ebe27400ea8e1bba",
+        "final_terminal_capsule_sha256": "be82bfffcb870ad8cccf10ee24fee41cb4e06de9b65865764c091fa429422aea",
+        "capsule_final_process_and_archive_accounting_complete": true
+      },
+      "increment_versus_ten_row": 231752.068296412
+    }
+  },
+  "audit_limits": {
+    "terminal_certifier_rerun": false,
+    "terminal_audit_scope": "Matrix/dual identities, recorded exact rational enclosures/contraction/bound sum, fixed gates, raw QA, retained-upper scope, and final process/archive accounting",
+    "complete_family_source_and_append_review_sha256": "26f8a87a9a54dc9eef7820badc136b820dd28c1020249267f1b84008e687003f",
+    "raw_artifacts_bundled_in_public_update": false,
+    "capsule_hash_role": "Provenance commitments to retained audit capsules, not a portable replay package"
+  },
+  "claim_limits": {
+    "lower_scope": "Exact rational interpretation of the supplied literal binary64 continuous projected/LODF matrix strengthened with source-valid original-binary inequalities",
+    "exact_physical_dc_lower_bound_certified": false,
+    "fresh_integer_solve_performed": false,
+    "fresh_600_second_time_to_one_percent_claimed": false,
+    "speed_ratio_claimed": false,
+    "portable_complete_family_replay_validated": false,
+    "default_solver_change": false
+  }
+}

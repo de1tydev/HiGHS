@@ -4,6 +4,13 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The [first-start cumulative checkpoint](FIRST_START_RESULTS.md) records a
+continuous bound milestone: 5,148 source-valid prefix rows close 73.2565% of
+the original unresolved interval, giving a 0.6899075% numerical interval against
+a retained historical upper. It also preserves the ten-row negative. This is
+an evidence-only update; no fresh integer timing result or portable
+complete-family replay is claimed.
+
 The [adaptive per-line checkpoint](ADAPTIVE_LINE_RESULTS.md) records passing
 offline/continuous scopes and a completed integer negative result: 2.5436247449%
 gap with full source/physical quality checks. It adds measured research evidence
