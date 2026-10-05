@@ -1,0 +1,479 @@
+{
+  "schema": "network-projection-public-adaptive-line-v1",
+  "instance": {
+    "case": "PEGASE1354",
+    "source_date": "2017-06-01",
+    "hours": 36
+  },
+  "outcome": {
+    "outcome": "checked_open_interval",
+    "passed": false,
+    "advancement_qualified": false,
+    "quality_failed": false,
+    "final_upper_admitted": true,
+    "mechanism_failed": false,
+    "mechanism_status": "actual_feasible_start_admitted",
+    "mechanism_tested": true,
+    "negligible_slack_guard": true,
+    "result_complete": true,
+    "source_soft_model_complete": false,
+    "terminal_archive_acknowledged": true
+  },
+  "interval": {
+    "gap": 0.025436247449143082,
+    "lower": 13479885.498915201,
+    "lower_domain": "source_literal_lodf_integer",
+    "passed": true,
+    "physical_dc_lower_bound_certified": false,
+    "qualified": false,
+    "target": 0.01,
+    "upper": 13831712.357075134,
+    "exact_mip_certificate": false,
+    "binary64_literal_lodf_domain": true,
+    "upper_is_checked_physical_witness": true,
+    "relative_gap_percent": 2.5436247449143083
+  },
+  "method": {
+    "application_layer": true,
+    "official_cpp_modified": false,
+    "official_defaults_modified": false,
+    "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "parallel": "off",
+    "threads": 2,
+    "first_discovery_only": true,
+    "historical_optimization_state_used": false,
+    "basis_or_search_tree_transferred": false,
+    "fresh_seed_lp_calls": 2,
+    "discovery_mip_calls": 1,
+    "proof_mip_calls": 2,
+    "discovery_mip_max_improving_sols": 1,
+    "proof_mip_max_improving_sols": 2147483647,
+    "adaptive_line_hour_eta_columns": true,
+    "seed_second_support_promoted_without_extra_solve": true,
+    "LP2_exact_certificate_retains_one_batch_snapshot": true,
+    "source_manifest_v2_sha256": "3fd5e85ee0e56d901cfcb978da6217397ac523b780b2de8209ac73ba1c59c887"
+  },
+  "preceding_offline_gate": {
+    "audit_passed": true,
+    "scope": "Saved-data literal binary64 LODF support and bank arithmetic",
+    "targets": 30,
+    "banks": 39,
+    "emissions": 589,
+    "sparse_nonzeros": 518909,
+    "row_checks": 17670,
+    "bank_checks": 1170,
+    "maximum_anchor_gap_dollars": 0.009762433901708618,
+    "maximum_selected_slot_gap_dollars": 0.0008069538306832239,
+    "maximum_cross_query_debit_dollars": 0.00976234647171756,
+    "other_29_targets_maximum_actual_gain_dollars": 0.0,
+    "actual_installed_bank_reprice_dollars": 14249565.926249204,
+    "prior_checked_carry_upper": 14140755.779285314,
+    "reprice_excess_dollars": 108810.14696388991,
+    "original_gate_seconds": 139.1372663200018,
+    "audit_admin_seconds_outside_original_gate": 46.524339552008314,
+    "earlier_run_preserved_without_rescoring": true,
+    "limitations": [
+      "Serialized sparse entries and certificate arithmetic were verified; every entry was not independently regenerated from a retained full LODF array.",
+      "Saved flow/enclosure endpoints were hash-bound and algebraically checked; no new full physical scan was performed.",
+      "No LP closure, MIP endpoint, performance result, new physical upper or exact lower certificate is established.",
+      "Original operation counts are supported by receipts, not independent process tracing."
+    ],
+    "audit_sha256": "d876d494fd307f783cea202502e8ba8270b5f5e2a1b30ab447ce2db1e4ff0360"
+  },
+  "preceding_continuous_lp": {
+    "audit_passed": true,
+    "audit_checks_passed": 49,
+    "monitors": 1432,
+    "source_listed_outages": 1288,
+    "hours": 36,
+    "solves": 2,
+    "installed_batches": 1,
+    "active_lines": 2,
+    "new_eta_columns": 72,
+    "new_rows": 19,
+    "cut_nonzeros": 16739,
+    "exact_current_matrix_lower": 13474893.024913887,
+    "numerical_full_scope_upper": 13474893.031143501,
+    "absolute_gap": 0.0062296148389577866,
+    "generic_lp_qa_passed": false,
+    "stationarity_residual": 3.519913479976822e-05,
+    "generic_stationarity_tolerance": 1e-05,
+    "exact_current_matrix_certificate_substitution": true,
+    "both_exact_lower_certificates_independently_reproduced": true,
+    "source_bound_maximum_residual": 1.0499878250312498e-11,
+    "source_row_maximum_residual": 3.3622402639821303e-09,
+    "source_violations_over_tolerance": 0,
+    "integer_feasibility_certified": false,
+    "physical_dc_lower_bound_certified": false,
+    "timing": {
+      "archival_seconds": 110.83612313801132,
+      "charged_seconds": 74.47087340899452,
+      "native_cumulative_seconds": 13.752224206924438,
+      "phase_internal_seconds": 185.30895678199886,
+      "process_seconds": 73.48521420700126,
+      "whole_outer_seconds": 185.33939657500014
+    },
+    "archive_qualification": "Stage archive has pre-acknowledgment STATE; final terminal records require its separate terminal archive.",
+    "audit_sha256": "fabcab2793b64963acb1155c57ab65c8cf65108fa048c8b0c535dbe0b435dff7"
+  },
+  "tiny_history": {
+    "tiny05": {
+      "passed": false,
+      "error": "TypeError: object of type 'ElementaryAdjoints' has no len()",
+      "failure_preserved": true,
+      "result_sha256": "95e20f317b2ba3aa4c009c395ddcd6e45dc751225aebaf4ea18ecae37faf205b"
+    },
+    "v2_correction": "Rename RequestBudget private backing field to _cache so the existing cache protocol exposes the dictionary used by receipts; numerical policy and fixture unchanged.",
+    "tiny06": {
+      "passed": true,
+      "full_integer_reference_objective": 1540.5,
+      "candidate_interval": {
+        "gap": 9.003436677726123e-15,
+        "lower": 1540.4999999999932,
+        "lower_domain": "source_literal_lodf_integer",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": true,
+        "target": 0.01,
+        "upper": 1540.500000000007
+      },
+      "candidate_stopped_naturally": true,
+      "original_binary_count": 12,
+      "empty_to_active_columns_created": 4,
+      "adaptive_new_line_carry_exercised": true,
+      "original_and_physical_checks_passed": true,
+      "separate_changed_master_component": true,
+      "component_contributes_candidate_endpoint": false,
+      "component_exact_current_master_check_passed": true,
+      "component_actual_cli_start_admitted": true,
+      "discovery_stop_activated": false,
+      "result_sha256": "acf98d451076eb3c50ef35d42a95777572f3198432f8c03e26388ca264260211",
+      "independent_review_sha256": "98a48da6b7821236c84eac3c328d8baa05e1b6b9e53b1e079356b0ed7b34c066"
+    },
+    "source_check_history": "An earlier broad source-check attempt included synthetic direct-DC factorizations; it is not described as pure or factorization-free."
+  },
+  "integer_counts": {
+    "MIP_solves": 3,
+    "combined_elementary_requests_actual": 99,
+    "cut_nnz": 70480,
+    "final_active_lines": [
+      1201,
+      1378,
+      1377
+    ],
+    "final_eta_columns": 108,
+    "installed_batches": 4,
+    "request_tally_qualification": "Top-level field stops updating after the last installed batch; final trace evaluation reports seed37+parent62=99 and remains within1440 cap.",
+    "seed_LP_solves": 2,
+    "top_level_installed_state_request_tally": 80,
+    "total_point_evaluations": 5
+  },
+  "master_outcomes": [
+    {
+      "active_line_count": 2,
+      "active_lines": [
+        1201,
+        1378
+      ],
+      "adjusted_numerical_bound": null,
+      "bound_allowance": 0.00018474893024999998,
+      "call": 1,
+      "checked_original_provisional_upper": 17045017.68432276,
+      "columns": 141878,
+      "combined_elementary_requests": 61,
+      "cut_batches": 2,
+      "eta_columns": 72,
+      "mps_bytes": 33704201,
+      "nonzeros": 674200,
+      "printed_bound": 13474893.025,
+      "process_seconds": 16.814608004002366,
+      "projected_native_objective": 14033147.062303314,
+      "role": "discovery",
+      "rows": 157817,
+      "status": "Solution limit reached"
+    },
+    {
+      "active_line_count": 3,
+      "active_lines": [
+        1201,
+        1378,
+        1377
+      ],
+      "adjusted_numerical_bound": 13476702.484815232,
+      "bound_allowance": 0.00018476702484999998,
+      "call": 2,
+      "checked_original_provisional_upper": 13851493.473746186,
+      "columns": 141914,
+      "combined_elementary_requests": 80,
+      "cut_batches": 3,
+      "eta_columns": 108,
+      "mps_bytes": 34714980,
+      "nonzeros": 695344,
+      "printed_bound": 13476702.485,
+      "process_seconds": 121.12008686899208,
+      "projected_native_objective": 13851493.46734359,
+      "role": "proof",
+      "rows": 157841,
+      "status": "Time limit reached"
+    },
+    {
+      "active_line_count": 3,
+      "active_lines": [
+        1201,
+        1378,
+        1377
+      ],
+      "adjusted_numerical_bound": 13479885.498915201,
+      "bound_allowance": 0.000184798854991,
+      "call": 3,
+      "checked_original_provisional_upper": 13831712.357075075,
+      "columns": 141914,
+      "combined_elementary_requests": 99,
+      "cut_batches": 4,
+      "eta_columns": 108,
+      "mps_bytes": 35512828,
+      "nonzeros": 712083,
+      "printed_bound": 13479885.4991,
+      "process_seconds": 299.5648902620014,
+      "projected_native_objective": 13831712.350975528,
+      "role": "proof",
+      "rows": 157860,
+      "status": "Time limit reached"
+    }
+  ],
+  "carry": [
+    {
+      "active_line_count": 3,
+      "active_rounding_excess_exact": [
+        "0",
+        "1"
+      ],
+      "actual_CLI_admission_passed": true,
+      "eta_values_checked": 108,
+      "exact_and_native_current_master_passed": true,
+      "inactive_penalty_exact": [
+        "0",
+        "1"
+      ],
+      "projected_start_objective": 17045017.68432276,
+      "retained_bits_rechecked": 141804,
+      "source_call": 1,
+      "target_call": 2
+    },
+    {
+      "active_line_count": 3,
+      "active_rounding_excess_exact": [
+        "0",
+        "1"
+      ],
+      "actual_CLI_admission_passed": true,
+      "eta_values_checked": 108,
+      "exact_and_native_current_master_passed": true,
+      "inactive_penalty_exact": [
+        "0",
+        "1"
+      ],
+      "projected_start_objective": 13851493.473746186,
+      "retained_bits_rechecked": 141804,
+      "source_call": 2,
+      "target_call": 3
+    }
+  ],
+  "selection": {
+    "selected_final_call": 3,
+    "rule": "Minimum current-run original provisional cost, then independent source and direct-DC checks"
+  },
+  "lower_provenance": {
+    "LP2_snapshot_scope_preserved": true,
+    "best_exact_seed_LP_bound": 13474893.024913887,
+    "first_discovery_bound_excluded": true,
+    "records": [
+      {
+        "certificate_relabels_promoted_matrix": false,
+        "cut_batches": 0,
+        "kind": "exactLP",
+        "lower": 13469833.690384515
+      },
+      {
+        "certificate_relabels_promoted_matrix": false,
+        "cut_batches": 1,
+        "kind": "exactLP",
+        "lower": 13474893.024913887
+      },
+      {
+        "allowance": 0.00018476702484999998,
+        "cut_batches": 3,
+        "exact_certificate": false,
+        "kind": "numericalMIP",
+        "lower": 13476702.484815232
+      },
+      {
+        "allowance": 0.000184798854991,
+        "cut_batches": 4,
+        "exact_certificate": false,
+        "kind": "numericalMIP",
+        "lower": 13479885.498915201
+      }
+    ],
+    "selected_final_bound_is_exact_certificate": false,
+    "selected_final_bound_kind": "numericalMIP"
+  },
+  "final_checks": {
+    "all_original_source_literal_direct_checks_passed": true,
+    "binary_maximum_residual": 0,
+    "checked_upper": 13831712.357075134,
+    "negligible_slack_guard": true,
+    "original_binaries": 28080,
+    "outages_checked": 1288,
+    "pair_hours_checked": 66360168,
+    "physical_DC_lower_bound_certified": false,
+    "positive_slack_totals_MWh": {
+      "load_shedding": 0.0,
+      "reserve_shortfall": 0.0,
+      "shared_overflow": 1.2199093362141868e-06
+    },
+    "violated_pairs": 0,
+    "binary_rounding_performed": false,
+    "unlisted_outages_excluded": 703
+  },
+  "diagnostics": {
+    "master_statuses": [
+      "Solution limit reached",
+      "Time limit reached",
+      "Time limit reached"
+    ],
+    "native_warning_returns_calls": [
+      1,
+      2,
+      3
+    ],
+    "native_return_diagnostic": "callSolveMip return of HighsStatus::Warning",
+    "no_warnings_claim": false,
+    "warnings_preserved": true,
+    "source_soft_model_complete_interpretation": "Equals interval qualification; false records the open 1% interval despite passing source and physical checks.",
+    "final_request_count_interpretation": "99 requests in final trace; top-level 80 stops at the earlier installed state.",
+    "final_bound_is_numerical_not_exact": true
+  },
+  "accounting": {
+    "ledger": {
+      "calls": [
+        {
+          "actual": 73.01103693099867,
+          "allocation": 180.0,
+          "overrun": 0.0,
+          "stage": "seed",
+          "within_allocation": true
+        },
+        {
+          "actual": 16.814608004002366,
+          "allocation": 180.0,
+          "overrun": 0.0,
+          "stage": "mip",
+          "within_allocation": true
+        },
+        {
+          "actual": 14.699039882005309,
+          "allocation": 30.0,
+          "overrun": 0.0,
+          "stage": "carry",
+          "within_allocation": true
+        },
+        {
+          "actual": 121.12008686899208,
+          "allocation": 180.0,
+          "overrun": 0.0,
+          "stage": "mip",
+          "within_allocation": true
+        },
+        {
+          "actual": 16.17967993899947,
+          "allocation": 30.0,
+          "overrun": 0.0,
+          "stage": "carry",
+          "within_allocation": true
+        },
+        {
+          "actual": 299.5648902620014,
+          "allocation": 358.1755483750021,
+          "overrun": 0.0,
+          "stage": "mip",
+          "within_allocation": true
+        }
+      ],
+      "ceiling_seconds": 600.0,
+      "in_budget": true,
+      "remaining": 58.61065811300068,
+      "solver_process_wall_seconds": 541.3893418869993
+    },
+    "phase_wall_seconds": 1046.7180666299973,
+    "whole_invocation_seconds": 1053.7303618150036,
+    "whole_cap_seconds": 1800.0,
+    "whole_includes_checks_archival_and_cleanup": true,
+    "whole_is_pure_highs_time": false,
+    "child_returncode": 2,
+    "outer_wrapper_returncode": 1,
+    "returncode_meaning": "completed negative advancement result, not a numerical-quality or resource failure",
+    "resource_error": null,
+    "hard_watchdog_killed": false,
+    "surviving_descendants_count": 0,
+    "peak_sampled_tree_rss_bytes": 2702315520,
+    "rss_sampling_note": "Sampled process-tree sums may double-count shared pages and do not establish an absolute peak.",
+    "native_profile_times_additive": false,
+    "performance_ratio_claimed": false
+  },
+  "audit": {
+    "terminal_audit_passed": true,
+    "source_pins_matched": 828,
+    "loaded_runtime_hashes_matched": 303,
+    "unique_files_rehashed": 1287,
+    "archive_cleanup_chains_matched": 9,
+    "all_stages_acknowledged": true,
+    "all_stage_cleanup_completed": true,
+    "new_solver_or_physical_checker_run": false
+  },
+  "durable_evidence": {
+    "raw_base": {
+      "sha256": "4710baa3414b5778468133875f45182c8e4dc132eb90c691d4bdfd4e9620fa88",
+      "bytes": 93197151,
+      "raw_artifacts": 134,
+      "immutable_raw_artifacts_hash_matched": 133,
+      "manifest_sha256": "725b0fca99837f49af6aa88411bd13206dc5622de6e766cc0f5bbe0f35e47e60",
+      "contains_pre_acknowledgment_state": true,
+      "raw_models_points_checks_covered": true
+    },
+    "final_supplement": {
+      "sha256": "3cf18ff618495e003538ef5d6c8f04f130deacb1ffafbdb78497689cbd81f6f6",
+      "bytes": 8176579,
+      "members": 95,
+      "readback_verified": true,
+      "terminal_state_after_acknowledgment": true,
+      "complements_raw_base": true
+    }
+  },
+  "provenance_sha256": {
+    "terminal_audit": "95f857a80376ef72558473a520f4e6f3aed4b780d250ed2559d375ed89032a6a",
+    "final_result": "ff3f29e93b458a5483af0f1d0184124029c50e2f67b1c099f295d9f4463689a0",
+    "final_state": "ff3f29e93b458a5483af0f1d0184124029c50e2f67b1c099f295d9f4463689a0",
+    "outer_receipt": "886fd28b784f79eef1d6d11fb203a3521748b07122a18e98babb8657ffbd2703",
+    "terminal_supplement_receipt": "118429b1e427072efd2b5bbf459c4285a2773f09a54203c91f59a65c37d8216b",
+    "source_manifest_v2": "3fd5e85ee0e56d901cfcb978da6217397ac523b780b2de8209ac73ba1c59c887",
+    "integer_target": "5af2e52f19f47d3c57e4cf7ee205b8984f36b2f2c1b35e3a9ad84f36c9fd85cf",
+    "full_literal_network_scope": "88d5f0be6b7ad9b8653136a08bfab88c3916fded6333e116618d82f481a829eb",
+    "selected_stored_lift_binary64": "7ba8dc1e2016b9bd56db44a051f5b87fb69d68e1b7b4d3265512f991dd5d52f5"
+  },
+  "publication_scope": {
+    "compact_evidence_only": true,
+    "large_archives_bundled": false,
+    "published_replay_formulation": "earlier aggregate formulation",
+    "adaptive_source_published_in_this_delta": false,
+    "newly_validated_portable_adaptive_replay": false,
+    "portable_36_hour_entrypoint_published": false,
+    "new_solver_code": false,
+    "new_benchmark_or_test_run": false,
+    "new_ci_result": false,
+    "accepted_speed_ratio": null,
+    "held_out_result": false,
+    "historical_reports_preserved": true,
+    "checkpoint_checks": "JSON parsing, file hashes and privacy readback only"
+  }
+}

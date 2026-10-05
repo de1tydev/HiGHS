@@ -4,6 +4,12 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The [adaptive per-line checkpoint](ADAPTIVE_LINE_RESULTS.md) records passing
+offline/continuous scopes and a completed integer negative result: 2.5436247449%
+gap with full source/physical quality checks. It adds measured research evidence
+only; the published source and fixed tiny replay below remain the earlier
+aggregate formulation, with no newly validated portable adaptive replay.
+
 The [four-thread first-discovery checkpoint](PARALLEL_MIP_RESULTS.md) records
 a completed negative result: 4.573752009% gap, material shared overflow and
 verified main-MIP thread activation, without a speedup claim.
