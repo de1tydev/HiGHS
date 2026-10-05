@@ -4,7 +4,11 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
-The latest [unified-discovery addendum](UNIFIED_DISCOVERY_RESULTS.md) records a
+The [four-thread first-discovery checkpoint](PARALLEL_MIP_RESULTS.md) records
+a completed negative result: 4.573752009% gap, material shared overflow and
+verified main-MIP thread activation, without a speedup claim.
+
+The historical [unified-discovery addendum](UNIFIED_DISCOVERY_RESULTS.md) records a
 completed negative result: 3.137885621% gap against the 1% target, with checked
 final witness and disclosed controller recovery. It adds no portable replay
 claim; earlier result reports remain historical.

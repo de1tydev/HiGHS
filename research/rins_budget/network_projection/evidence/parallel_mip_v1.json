@@ -1,0 +1,378 @@
+{
+  "schema": "network-projection-public-parallel-mip-v1",
+  "instance": {
+    "case": "PEGASE1354",
+    "source_date": "2017-06-01",
+    "hours": 36
+  },
+  "outcome": {
+    "status": "checked_open_interval",
+    "advancement_qualified": false,
+    "final_upper_admitted": true,
+    "mechanism_failed": false,
+    "mechanism_status": "actual_feasible_start_admitted",
+    "mechanism_tested": true,
+    "negligible_slack_guard": false,
+    "passed": false,
+    "quality_failed": false,
+    "result_complete": true,
+    "source_soft_model_complete": false,
+    "terminal_archive_acknowledged": true,
+    "quality_failed_interpretation": "Numerical QA only; not secure benchmark qualification",
+    "secure_benchmark_target_passed": false,
+    "accepted_speed_ratio": null,
+    "held_out_result": false
+  },
+  "interval": {
+    "gap": 0.045737520091938266,
+    "lower": 13493992.67771506,
+    "lower_domain": "source_literal_lodf_integer",
+    "passed": true,
+    "physical_dc_lower_bound_certified": false,
+    "qualified": false,
+    "target": 0.01,
+    "upper": 14140755.779285314,
+    "relative_gap_percent": 4.573752009193827,
+    "absolute_gap": 646763.1015702542,
+    "exact_mip_certificate": false,
+    "binary64_literal_lodf_domain": true
+  },
+  "method": {
+    "application_layer": true,
+    "official_cpp_modified": false,
+    "official_highs_version": "1.15.1",
+    "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "first_discovery_only": true,
+    "production_algorithm_option_changes": {
+      "parallel": [
+        "off",
+        "on"
+      ],
+      "threads": [
+        2,
+        4
+      ]
+    },
+    "mip_search_simulate_concurrency": false,
+    "historical_optimization_state_used": false,
+    "basis_or_search_tree_transferred": false,
+    "seed_lp_calls": 2,
+    "seed_retained_cut_batches": 2,
+    "seed_lower_master_cut_batches": 1,
+    "seed_exact_lp_lower": 13474893.024853207,
+    "total_cut_batches": 4,
+    "midtrial_controller_amendment": false
+  },
+  "preceding_gates": {
+    "audit_passed": true,
+    "tiny": [
+      {
+        "arm": "off2_control",
+        "reference_objective": 1540.5,
+        "checked_upper": 1540.500000000007,
+        "passed": true,
+        "full_physical_scope_passed": true,
+        "current_complete_points_rechecked": true,
+        "status_sequence": [
+          "Optimal",
+          "Optimal"
+        ]
+      },
+      {
+        "arm": "on4_candidate",
+        "reference_objective": 1540.5,
+        "checked_upper": 1540.500000000007,
+        "passed": true,
+        "full_physical_scope_passed": true,
+        "current_complete_points_rechecked": true,
+        "status_sequence": [
+          "Optimal",
+          "Optimal"
+        ]
+      }
+    ],
+    "bell5": [
+      {
+        "arm": "off2_control",
+        "status": "Optimal",
+        "objective": 8966406.49152,
+        "main_simplex_thread_ids": [
+          0
+        ],
+        "integer_count": 58,
+        "passed": true,
+        "point_rounded": false,
+        "maximum_integrality_residual": 9.992007221626409e-14
+      },
+      {
+        "arm": "on4_candidate",
+        "status": "Optimal",
+        "objective": 8966406.49152,
+        "main_simplex_thread_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "integer_count": 58,
+        "passed": true,
+        "point_rounded": false,
+        "maximum_integrality_residual": 9.947598300641403e-14
+      }
+    ]
+  },
+  "master_outcomes": [
+    {
+      "call": 1,
+      "role": "discovery",
+      "status": "Solution limit reached",
+      "process_seconds": 15.847671338007785,
+      "projected_objective": 14033147.062303314,
+      "original_provisional_upper": 17045017.68432276,
+      "admitted_numerical_mip_lower": null,
+      "raw_bound_token": "13474893.025",
+      "bound_rounding_allowance": 0.00018474893024999998,
+      "raw_master_numerical_qa_passed": true,
+      "checked_start_admitted": null,
+      "cut_batches": 2,
+      "mip_max_improving_sols": 1,
+      "nodes": 0,
+      "lp_iterations": 22899,
+      "main_mip_simplex_scheduler_ids": [
+        0
+      ],
+      "real_main_tree_thread_work": false,
+      "solver_log_sha256": "cbeaacff60ee44f4588a588fed1bb90b90b3909ae5def27920643cbf14392649"
+    },
+    {
+      "call": 2,
+      "role": "proof",
+      "status": "Time limit reached",
+      "process_seconds": 121.13320207000652,
+      "projected_objective": 13952454.44034285,
+      "original_provisional_upper": 14140755.779285235,
+      "admitted_numerical_mip_lower": 13476719.781615233,
+      "raw_bound_token": "13476719.7818",
+      "bound_rounding_allowance": 0.00018476719781799998,
+      "raw_master_numerical_qa_passed": true,
+      "checked_start_admitted": true,
+      "cut_batches": 3,
+      "mip_max_improving_sols": 2147483647,
+      "nodes": 0,
+      "lp_iterations": 76146,
+      "main_mip_simplex_scheduler_ids": [
+        0
+      ],
+      "real_main_tree_thread_work": false,
+      "solver_log_sha256": "eed75e32df3936e575ddb9aeaf1f97b998a99238a14415145cf3d1d8821f8bf0"
+    },
+    {
+      "call": 3,
+      "role": "proof",
+      "status": "Time limit reached",
+      "process_seconds": 325.30231740399904,
+      "projected_objective": 13910534.633444283,
+      "original_provisional_upper": 14793922.395080075,
+      "admitted_numerical_mip_lower": 13493992.67771506,
+      "raw_bound_token": "13493992.6779",
+      "bound_rounding_allowance": 0.000184939926779,
+      "raw_master_numerical_qa_passed": true,
+      "checked_start_admitted": true,
+      "cut_batches": 4,
+      "mip_max_improving_sols": 2147483647,
+      "nodes": 115,
+      "lp_iterations": 298754,
+      "main_mip_simplex_scheduler_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "real_main_tree_thread_work": true,
+      "solver_log_sha256": "33846bfbc0b86a4919b1a78b1b48499784ce3f585320c16b131a9a9fb3a3e3ff"
+    }
+  ],
+  "selection": {
+    "selected_final_call": 2,
+    "rule": "Minimum current-run original provisional cost, earliest exact tie; then independent source and direct-DC soft-model checks",
+    "call3_projected_objective": 13910534.633444283,
+    "call3_original_provisional_upper": 14793922.395080075,
+    "call3_original_minus_projected": 883387.7616357915,
+    "selected_retained_hash_matches_physical": true
+  },
+  "final_checks": {
+    "binary_count": 28080,
+    "maximum_integrality_residual": 0.0,
+    "binary_rounding_performed": false,
+    "binary_types_and_bounds_verified": true,
+    "original_matrix_passed": true,
+    "literal_rows_passed": true,
+    "source_checker_passed": true,
+    "direct_dc_passed": true,
+    "source_listed_outages": 1288,
+    "nonself_pair_hours": 66360168,
+    "signed_normal_rows": 103104,
+    "signed_security_rows": 132720336,
+    "direct_violated_pairs_after_slack": 0,
+    "maximum_direct_dc_post_slack_violation_MW": 0.0,
+    "maximum_original_row_residual": 3.730065145646222e-10,
+    "maximum_original_bound_residual": 2.25e-11,
+    "negligible_slack_guard_passed": false,
+    "slack_metrics": {
+      "load_shedding": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "reserve_shortfall": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "shared_overflow": {
+        "cost": 188301.3389423866,
+        "max_MW": 21.94818813973075,
+        "positive_sum_MWh": 37.66026778847732,
+        "sum_MWh": 37.66026778847732
+      }
+    }
+  },
+  "parallel_activation": {
+    "activation_demonstrated_on_call": 3,
+    "main_simplex_scheduler_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "temporal_overlap_measured": false,
+    "speedup_claimed": false,
+    "nonsimulated_dispatch_verified": true,
+    "analytic_center_and_submip_profiles_excluded": true,
+    "nested_profile_clocks_additive": false
+  },
+  "diagnostics": {
+    "final_native_status": "Time limit reached",
+    "final_native_return_diagnostic": "callSolveMip return of HighsStatus::Warning",
+    "final_inconsistent_bound_difference": 2.276e-11,
+    "admitted_by_frozen_policy": true,
+    "no_warnings_claim": false,
+    "numerical_thresholds_changed": false,
+    "raw_master_and_original_qa_passed": true,
+    "scaling_advice_preserved": true
+  },
+  "accounting": {
+    "ledger": {
+      "calls": [
+        {
+          "actual": 59.88993278500857,
+          "allocation": 180.0,
+          "overrun": 0.0,
+          "stage": "seed",
+          "within_allocation": true
+        },
+        {
+          "actual": 15.847671338007785,
+          "allocation": 180.0,
+          "overrun": 0.0,
+          "stage": "mip",
+          "within_allocation": true
+        },
+        {
+          "actual": 9.40161505099968,
+          "allocation": 30.0,
+          "overrun": 0.0,
+          "stage": "carry",
+          "within_allocation": true
+        },
+        {
+          "actual": 121.13320207000652,
+          "allocation": 180.0,
+          "overrun": 0.0,
+          "stage": "mip",
+          "within_allocation": true
+        },
+        {
+          "actual": 10.640479269990465,
+          "allocation": 30.0,
+          "overrun": 0.0,
+          "stage": "carry",
+          "within_allocation": true
+        },
+        {
+          "actual": 325.30231740399904,
+          "allocation": 383.087099485987,
+          "overrun": 0.0,
+          "stage": "mip",
+          "within_allocation": true
+        }
+      ],
+      "ceiling_seconds": 600.0,
+      "in_budget": true,
+      "remaining": 57.78478208198794,
+      "solver_process_wall_seconds": 542.2152179180121
+    },
+    "whole_invocation_seconds": 1055.9335038169957,
+    "whole_cap_seconds": 1800.0,
+    "whole_includes_checks_archival_and_cleanup": true,
+    "whole_is_pure_highs_time": false,
+    "runner_returncode": 2,
+    "intentional_failed_advancement_exit": true,
+    "clean_reap": true,
+    "hard_watchdog_killed": false,
+    "health_check_error": null,
+    "surviving_descendants_count": 0,
+    "outer_peak_sampled_tree_rss_bytes": 3362156544,
+    "largest_separate_stage_peak_sampled_tree_rss_bytes": 3362230272,
+    "rss_sampling_note": "Independent sampling instants; sums may double-count shared pages; no guaranteed absolute peak"
+  },
+  "audit": {
+    "terminal_audit_passed": true,
+    "source_pins_matched": 793,
+    "loaded_runtime_hashes_matched": 303,
+    "archive_cleanup_chains_matched": 9,
+    "stable_terminal_artifacts_checked": 137,
+    "solver_api_or_physical_checker_rerun": false,
+    "rejected_packaging_v1_preserved": true,
+    "packaging_v2_metadata_only_before_numerics": true
+  },
+  "final_raw_capsule": {
+    "sha256": "cbb1c08adb32704ce3919bc7696f083e3acef53aca1bd1ccc4588d22086333d8",
+    "bytes": 81922582,
+    "members": 232,
+    "readback_verified": true,
+    "final_result_after_all_stage_ack_included": true,
+    "manifest_sha256": "2e40ebba08bbeabcfaba9aed5d98a446773cf904d8915f051b2f1fb56e19fc09"
+  },
+  "provenance_sha256": {
+    "final_result": "683fe7dc3098d007798bef65c6b1ee5dfa1e440fbad353c36434602d78ebb58e",
+    "outer_receipt": "4b090c2638cd8638499a5cd5aa186e1d1f23ce383c7dfe089c956aee355a053e",
+    "terminal_audit": "eaf33cafd7f04e2d9f5a344b4ddf56cc44e400a76241119ee1224538458c986a",
+    "gates_audit": "f4ead6f0afd6c2745d459bad1afea07a1927255ab58ae5b0fbca44819fdf5be7",
+    "bell5_result": "e28a067c25a307164f514cfc92035c36aa1f79d704bd4562b62c1096bd3b9fc8",
+    "tiny_off2_result": "390e77bf569760f05b44c2030e6b1adbcba234ee051dc61d20257f3084bda409",
+    "tiny_on4_result": "5b2a0fa397105f545999bd3680dc392880893c8a9c95389d64f00f457e135c94",
+    "source_delta": "0406f94068b772802cf0788f76942fa52e4c82f990303296464d0b7493b4df05",
+    "source_manifest_v2": "04aa4e4fd3b73cd2f9e6d69127be374384a28a68651193294bec102dc3dacf43",
+    "arm_manifest": "b883d27302c71e718408b3460ff11312d85bb274cdf96a0b5641473d17fac786",
+    "original_coordinator": "246323b51876021e1f5c12e60545b013c996c81b076325fbd7574a146ee33205",
+    "diagnostic_policy": "b6dd32d6938f0ed47f15ca71a7f80f4bbbd80b301453fde03cdfbb80d03271f2",
+    "official_library": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3",
+    "source_overlay_v2": "26e8646fb6a60101a0776606fa83c6238faf659d63dbcef940795f0695e0a79d",
+    "gates_archive": "96f7eb7f45d7ef8f075ee310374911795e7ac34972b4e32288c22f042b5ddc20",
+    "integer_target": "5af2e52f19f47d3c57e4cf7ee205b8984f36b2f2c1b35e3a9ad84f36c9fd85cf",
+    "full_literal_network_scope": "88d5f0be6b7ad9b8653136a08bfab88c3916fded6333e116618d82f481a829eb",
+    "selected_stored_lift_binary64": "9d76bec733662d221fe92b18daa3abfc3c3aef619723f37ce00a7978265ace2b"
+  },
+  "publication_scope": {
+    "compact_evidence_only": true,
+    "large_archives_bundled": false,
+    "new_solver_code": false,
+    "new_benchmark_or_test_run": false,
+    "new_ci_result": false,
+    "portable_36_hour_entrypoint_published": false,
+    "historical_reports_preserved": true
+  }
+}
