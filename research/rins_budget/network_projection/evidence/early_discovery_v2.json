@@ -1,0 +1,333 @@
+{
+  "schema": "network-projection-public-early-discovery-v2",
+  "instance": {
+    "case": "PEGASE1354",
+    "source_date": "2017-06-01",
+    "hours": 36,
+    "trial": 2
+  },
+  "outcome": {
+    "status": "checked_open_interval",
+    "result_complete": true,
+    "advancement_qualified": false,
+    "source_soft_model_complete": false,
+    "quality_failed": false,
+    "mechanism_failed": false,
+    "mechanism_status": "actual_feasible_start_admitted",
+    "final_upper_admitted": true,
+    "accepted_speed_ratio": null,
+    "held_out_result": null
+  },
+  "interval": {
+    "original_upper": 13843098.438742805,
+    "numerical_mip_lower": 13479628.416815203,
+    "relative_gap": 0.026256406651733094,
+    "relative_gap_percent": 2.6256406651733095,
+    "target_relative_gap": 0.01,
+    "target_met": false,
+    "lower_domain": "source_literal_lodf_integer",
+    "exact_tree_proof": false,
+    "physical_dc_lower_bound_certified": false,
+    "absolute_gap": 363470.0219276026,
+    "final_projected_objective": 13843098.432787996,
+    "upper_minus_final_projected_objective": 0.005954809486865997
+  },
+  "method": {
+    "application_layer": true,
+    "official_cpp_modified": false,
+    "historical_optimization_state_used": false,
+    "call_roles": [
+      "discovery",
+      "proof",
+      "proof"
+    ],
+    "mip_max_improving_sols": [
+      1,
+      2147483647,
+      2147483647
+    ],
+    "heuristic_child_option_inheritance": true,
+    "child_improving_counters_independent": true,
+    "option_getters_same_as_solving_handle": false,
+    "actual_solve_logs_preserved": true,
+    "discovery_raw_bound_admitted": false,
+    "discovery_raw_objective_admitted_as_original_upper": false,
+    "seed_lp_calls": 2,
+    "seed_native_seconds": 9.16786503791809,
+    "seed_exact_lp_lower": 13474893.024853207,
+    "seed_cut_batches": 2,
+    "between_master_cut_batches": 2,
+    "total_cut_batches": 4,
+    "cut_nonzeros": 71424,
+    "basis_or_search_tree_transferred": false
+  },
+  "master_outcomes": [
+    {
+      "call": 1,
+      "role": "discovery",
+      "status": "Solution limit reached",
+      "process_seconds": 13.633291377002024,
+      "native_limit_seconds": 120.0,
+      "cut_batches": 2,
+      "projected_objective": 14033147.062303314,
+      "raw_printed_lower": 13474893.025,
+      "eligible_numerical_mip_lower": null,
+      "printed_lower_allowance": 0.00018474893024999998,
+      "provisional_original_cost": 17045017.68432276,
+      "provisional_lower": 13474893.024853207,
+      "provisional_relative_gap": 0.20945268145736173,
+      "original_binary_check_passed": true,
+      "original_matrix_check_passed": true,
+      "full_literal_network_check_passed": true,
+      "maximum_integrality_residual": 0.0,
+      "load_shedding_MWh": 0.0,
+      "reserve_shortfall_MWh": 0.0,
+      "shared_overflow_MWh": 602.3741244038889,
+      "shared_overflow_cost": 3011870.6220194446,
+      "final_direct_physical_check_run": false
+    },
+    {
+      "call": 2,
+      "role": "proof",
+      "status": "Time limit reached",
+      "process_seconds": 121.19682913100405,
+      "native_limit_seconds": 120.0,
+      "cut_batches": 3,
+      "projected_objective": 13952454.44034285,
+      "raw_printed_lower": 13476719.7818,
+      "eligible_numerical_mip_lower": 13476719.781615233,
+      "printed_lower_allowance": 0.00018476719781799998,
+      "provisional_original_cost": 14140755.779285235,
+      "provisional_lower": 13476719.781615233,
+      "provisional_relative_gap": 0.046959017469401974,
+      "original_binary_check_passed": true,
+      "original_matrix_check_passed": true,
+      "full_literal_network_check_passed": true,
+      "maximum_integrality_residual": 0.0,
+      "load_shedding_MWh": 0.0,
+      "reserve_shortfall_MWh": 0.0,
+      "shared_overflow_MWh": 37.66026778847732,
+      "shared_overflow_cost": 188301.3389423866,
+      "final_direct_physical_check_run": false
+    },
+    {
+      "call": 3,
+      "role": "proof",
+      "status": "Time limit reached",
+      "process_seconds": 326.91896261900547,
+      "native_limit_seconds": 325.77684531699924,
+      "cut_batches": 4,
+      "projected_objective": 13843098.432787996,
+      "raw_printed_lower": 13479628.417,
+      "eligible_numerical_mip_lower": 13479628.416815203,
+      "printed_lower_allowance": 0.00018479628417,
+      "provisional_original_cost": 13843098.43874275,
+      "provisional_lower": 13479628.416815203,
+      "provisional_relative_gap": 0.026256406651729163,
+      "original_binary_check_passed": true,
+      "original_matrix_check_passed": true,
+      "full_literal_network_check_passed": true,
+      "maximum_integrality_residual": 0.0,
+      "load_shedding_MWh": 0.0,
+      "reserve_shortfall_MWh": 0.0,
+      "shared_overflow_MWh": 1.1909507975360614e-06,
+      "shared_overflow_cost": 0.005954753987680307,
+      "final_direct_physical_check_run": true
+    }
+  ],
+  "carry_preparations": [
+    {
+      "source_call": 1,
+      "target_call": 2,
+      "process_seconds": 9.479009931004839,
+      "selected_original_provisional_cost": 17045017.68432276,
+      "exact_current_master_check_passed": true,
+      "native_feasible": true,
+      "native_point_bits_equal": true,
+      "actual_solver_log_start_admitted": true,
+      "optimizer_calls": 0,
+      "full_network_scans": 0,
+      "topology_factorizations": 0
+    },
+    {
+      "source_call": 2,
+      "target_call": 3,
+      "process_seconds": 10.108870858995942,
+      "selected_original_provisional_cost": 14140755.779285235,
+      "exact_current_master_check_passed": true,
+      "native_feasible": true,
+      "native_point_bits_equal": true,
+      "actual_solver_log_start_admitted": true,
+      "optimizer_calls": 0,
+      "full_network_scans": 0,
+      "topology_factorizations": 0
+    }
+  ],
+  "final_checks": {
+    "selected_call": 3,
+    "binary_count": 28080,
+    "maximum_integrality_residual": 0.0,
+    "binary_types_and_bounds_verified": true,
+    "binary_rounding_performed": false,
+    "original_matrix_passed": true,
+    "literal_rows_passed": true,
+    "independent_source_checker_passed": true,
+    "direct_dc_passed": true,
+    "optimization_called": false,
+    "source_listed_outages": 1288,
+    "excluded_unlisted_outages": 703,
+    "nonself_pair_hours": 66360168,
+    "signed_normal_rows": 103104,
+    "signed_security_rows": 132720336,
+    "direct_violated_pairs": 0,
+    "maximum_direct_dc_post_slack_violation_MW": 0.0,
+    "maximum_original_row_residual": 4.297078248782782e-10,
+    "maximum_original_bound_residual": 2.154e-10,
+    "slack_positive_sum_guard_MWh": 1e-05,
+    "negligible_slack_guard_passed": true,
+    "slack_metrics": {
+      "load_shedding": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "reserve_shortfall": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "shared_overflow": {
+        "cost": 0.005954753987680307,
+        "max_MW": 9.814220902626404e-08,
+        "positive_sum_MWh": 1.1909507975360614e-06,
+        "sum_MWh": 1.1909507975360614e-06
+      }
+    }
+  },
+  "accounting": {
+    "ledger_ceiling_seconds": 600.0,
+    "charged_process_seconds": 541.1421173020062,
+    "remaining_process_seconds": 58.85788269799377,
+    "within_ledger": true,
+    "stages": [
+      {
+        "stage": "fresh_lp_seed",
+        "actual_seconds": 59.8051533849939,
+        "allocation_seconds": 180.0,
+        "within_allocation": true
+      },
+      {
+        "stage": "discovery_call_1",
+        "actual_seconds": 13.633291377002024,
+        "allocation_seconds": 180.0,
+        "within_allocation": true
+      },
+      {
+        "stage": "carry_into_call_2",
+        "actual_seconds": 9.479009931004839,
+        "allocation_seconds": 30.0,
+        "within_allocation": true
+      },
+      {
+        "stage": "proof_call_2",
+        "actual_seconds": 121.19682913100405,
+        "allocation_seconds": 180.0,
+        "within_allocation": true
+      },
+      {
+        "stage": "carry_into_call_3",
+        "actual_seconds": 10.108870858995942,
+        "allocation_seconds": 30.0,
+        "within_allocation": true
+      },
+      {
+        "stage": "proof_call_3",
+        "actual_seconds": 326.91896261900547,
+        "allocation_seconds": 385.77684531699924,
+        "within_allocation": true
+      }
+    ],
+    "whole_invocation_seconds": 1040.6119579140068,
+    "whole_cap_seconds": 1800.0,
+    "whole_includes_checks_archival_and_cleanup": true,
+    "whole_is_pure_highs_time": false,
+    "final_physical_worker_seconds": 154.34283715000493,
+    "runner_returncode": 2,
+    "hard_watchdog_killed": false,
+    "health_check_error": null,
+    "surviving_descendants_count": 0,
+    "peak_sampled_tree_rss_bytes": 2611490816,
+    "minimum_sampled_free_disk_bytes": 11805196288,
+    "python_per_file_limit_bytes": 536870912,
+    "native_per_file_limit_bytes": 67108864,
+    "disk_headroom_floor_bytes": 2147483648,
+    "duplicate_archive_readback_cleanup_after_verified_ack": true,
+    "resource_policy_differs_from_historical_trials": true
+  },
+  "earlier_failed_trials": [
+    {
+      "trial": "carry_v1",
+      "invocation_accepted": false,
+      "failure": "disk_headroom_during_final_archive_sealing",
+      "saved_original_upper": 13905013.80804948,
+      "saved_numerical_lower": 13488527.574015114,
+      "saved_relative_gap": 0.02995223448057744,
+      "charged_process_seconds": 541.1660702470108,
+      "whole_seconds": 979.3386542490043,
+      "minimum_free_disk_bytes": 1826082816,
+      "disk_headroom_floor_bytes": 2147483648,
+      "runner_returncode": -9,
+      "terminal_result_present": false,
+      "terminal_archive_acknowledged": false,
+      "rescored": false,
+      "speed_ratio_denominator": false
+    },
+    {
+      "trial": "early_discovery_attempt_01",
+      "invocation_accepted": false,
+      "failure": "storage_admission_before_carry_into_call_2_and_final_physical_check",
+      "status": "failed_or_incomplete",
+      "charged_process_seconds": 73.29557318499428,
+      "whole_seconds": 205.30155145999743,
+      "final_upper_admitted": false,
+      "carry_workers_run": 0,
+      "final_physical_check_run": false,
+      "rescored": false,
+      "speed_ratio_denominator": false
+    }
+  ],
+  "audit": {
+    "local_evidence_audit_passed": true,
+    "checks_passed": 1103,
+    "failed_check_count": 0,
+    "unique_local_files_hashed": 910,
+    "source_files_checked": 742,
+    "stage_receipt_chains_checked": 9,
+    "historical_archives_redownloaded_by_audit": false,
+    "solver_or_physics_rerun_by_audit": false,
+    "pristine_tracked_source_clean": true
+  },
+  "publication_scope": {
+    "compact_evidence_only": true,
+    "large_archives_bundled": false,
+    "existing_core_tiny_recipe_scope_unchanged": true,
+    "portable_36_hour_entrypoint_published": false
+  },
+  "provenance_sha256": {
+    "source_manifest_v4": "b69caa83e70bfc126e04bec61e0ac06f5461c33fbb801eb8730cc0b394e9d9c8",
+    "arm_manifest": "af4ff03270e80e7c8a5e5c9ef4d9a810a05fa72ff1b83aaf6ff905f8afd29f61",
+    "source_overlay_v4": "6f0540ce32734b12f6546baf7bee47aefb11615618e48fdeb5cebb0932a8f13d",
+    "complete_terminal_archive_v2": "eead5fe1d13667ed9326748b1c077a90c4c30889e5ca6802b4cb06a19d7b1d44",
+    "final_result": "14b291f1533b095fe4bec4a337e58e0da661ffe59e1d64f2b7a0163f015121ed",
+    "outer_receipt": "33f18439985bbe8ea815729f636b896950a6ca750b7739d23c5d02bb9f715098",
+    "completed_local_audit": "f7278b543c40a6c7e61985b16a8be698004094cf6dd96bdc776d52de7c7b3d9e",
+    "completed_local_auditor": "57b433a53cafceece380b99360a3e17ab12c03f0754a8f4533d0b213b75806c8",
+    "source_instance_gzip": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "integer_target": "5af2e52f19f47d3c57e4cf7ee205b8984f36b2f2c1b35e3a9ad84f36c9fd85cf",
+    "full_literal_network_scope": "88d5f0be6b7ad9b8653136a08bfab88c3916fded6333e116618d82f481a829eb",
+    "final_stored_lift_binary64": "bcb4cfaf08a780b6754900426fa08ebd76717fa46e1f8530d017a5808feecf6b"
+  },
+  "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82"
+}

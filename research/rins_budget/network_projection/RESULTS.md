@@ -1,5 +1,14 @@
 # Network projection checkpoint — 2026-10-05
 
+**Latest completed trial:** the [early-discovery checkpoint](EARLY_DISCOVERY_RESULTS.md)
+has a checked original upper of **$13,843,098.438742805** and a numerical
+literal-LODF integer lower of **$13,479,628.416815203**: **2.625640665%**, still
+above the 1% target. It charged **541.142117 seconds** to the 600-second process
+ledger and **1,040.611958 seconds** to the whole invocation. There is no accepted
+speed ratio or held-out result. The earlier component results below remain
+historical; [compact evidence](evidence/early_discovery_v2.json) records the
+latest trial and its distinct resource policy.
+
 The full listed-outage continuous relaxation closed to **$0.006291721** in
 **59.249878 charged seconds**. The subsequent integer candidate produced a
 checked witness but **missed the 1% target: 2.932266553%** after

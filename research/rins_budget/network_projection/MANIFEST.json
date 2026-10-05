@@ -1,11 +1,13 @@
 {
   "files": {
+    "EARLY_DISCOVERY_RESULTS.md": "8c108ff4ed71006d5f9b7752523cd1f36b175afabf962f1f100d45e2e77c356b",
     "LICENSE.txt": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7",
     "README.md": "dc5cb0bbb9aa820635fcae82df07da0175ed4b2a34a2c63f98f91cd219dd6ab9",
-    "RESULTS.md": "8a639f5b33d1124188d0d4f48c4a335b8ef6b49b637e76b7e83d9ba69f1555fa",
+    "RESULTS.md": "c194e967975f8bda0b9c84651769605e1ff351f28e39f45bd4a13810c548301a",
     "SOURCE_LINEAGE.json": "e931dcbf289aba19156585d27b87cf42b817131991d74b7868c9559c27890965",
     "VALIDATION.json": "8f6fbcaaeddcb822813553c46853507dd0f806b20583730e867988c2dc8452e3",
     "evidence/definition_preflight.json": "0bbe86d4b884d0dfc634ec6698c5494441c65e2a1924f9c2b89a10d459724122",
+    "evidence/early_discovery_v2.json": "513c0df6b9eb3801c1b0bd5c3153bef9ede945519ee2a28b273da5c957bb3917",
     "evidence/full_continuous.json": "a9d819df8c5eda118f976c9c2b3b5811a16d2df890cdf045a2d8499b77e3fd7a",
     "evidence/integer_v2.json": "f00f9cd7e9a445b317d4fba34567f1479c7e05f24f912d45310f31c1181bee10",
     "evidence/prior_outcomes.json": "d8e07b519588230ac1a3478c00ba7054c3cc2c19e8f2be593f751b12cc200ffa",
