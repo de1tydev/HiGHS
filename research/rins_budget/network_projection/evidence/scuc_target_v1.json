@@ -1,0 +1,185 @@
+{
+  "schema": "network-projection-scuc-target-public-evidence-v1",
+  "recorded_date": "2026-10-05",
+  "publication_scope": "Evidence checkpoint only; current method has no published validated portable entrypoint",
+  "case": {
+    "name": "case1354pegase_2017-06-01",
+    "hours": 36,
+    "development_sample_count": 1,
+    "exposed_development_case": true,
+    "compressed_source_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "serialized_original_mps_sha256": "0154c5d9ff00234b9a082b31dc06eda74c064e8412ecdc1bc588ce1f42c4cee4"
+  },
+  "runtime": {
+    "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "solver_source_optimization_patch": false,
+    "native_library_sha256": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3"
+  },
+  "target": {
+    "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+    "only_target_change": "Strictly positive original shedding upper bounds become zero; all other model fields unchanged",
+    "shedding_upper_bounds_changed_to_zero": 22356,
+    "shedding_upper_bounds_already_zero": 26388,
+    "reserve_shortfall_already_fixed_zero": true,
+    "shared_overflow_bounds_unchanged": true,
+    "subset_identity_sha256": "80f031df7d8491fce9e90a88480c2722b445d1864027498a9ee3e9c76d192f73",
+    "exact_changed_bound_records_sha256": "750dfa1f85030fb29518775859a748ec5ff518e38ceb98657ce813ac3291b6fd",
+    "integer_target_identity_sha256": "793d08aaf671c8fe15f2fce2a76dccf684309bb5f6b4f3c4487d6f2edbcd493a",
+    "old_soft_optimum_bound_claimed": false,
+    "larger_negligible_shedding_domain_bound_claimed": false,
+    "physical_dc_lower_bound_certified": false
+  },
+  "result": {
+    "outcome": "checked_one_percent_integer_interval",
+    "passed": true,
+    "gap_target_fraction": 0.01,
+    "checked_original_upper": 13779019.591303479,
+    "gap_formula": "(upper - lower) / upper",
+    "numerical_mip": {
+      "allowance": 0.000187416899735,
+      "exact_certificate": false,
+      "gap_fraction": 0.0027091635760831925,
+      "gap_percent": 0.2709163576083193,
+      "lower": 13741689.973312583,
+      "raw_token": "13741689.9735",
+      "discovery_lower_discarded": true
+    },
+    "fresh_exact_projected_lp": {
+      "certificate_matrix_matches_seed_snapshot": true,
+      "certificate_sha256": "a0beeaf838b17858001386f53dfdf2f2ceb08d60d8f570232bbd2c40307f8a02",
+      "gap_fraction": 0.003101328348856978,
+      "gap_percent": 0.3101328348856978,
+      "lower": 13736286.327225514,
+      "promoted_matrix_relabelled": false,
+      "solved_installed_batches": 1,
+      "exact_lower_rational": [
+        "20075604958086205393719298119541199179216417265013996773",
+        "1461501637330904462439800398242487055421068541952"
+      ],
+      "certificate_scope": "Exact rational interpretation of the supplied binary64 continuous projected matrix",
+      "matrix_document_sha256": "067d2a88e0fa30c931c3a1bac1b96bd34f8811a6f18ded8379bc8ce9dee71081",
+      "matrix_arrays_sha256": "d061edb6a1a2f269607cb0f9cfd168b9187faa17d3d56c05e2330e051e1c49fd",
+      "row_dual_sha256": "72f79a7e4a039d3540dccc67c93d2d612bb4fa45b963557adf83948d77cb0ed3"
+    }
+  },
+  "checks": {
+    "binaries": 28080,
+    "binary_residual": 0,
+    "checked_upper": 13779019.591303479,
+    "feasibility": "numerical at inherited tolerances",
+    "original_linear_cost": 13779019.591303479,
+    "original_source_cost": 13779019.591303416,
+    "outages": 1288,
+    "pair_hours": 66360168,
+    "passed": true,
+    "positive_slack_totals_MWh": {
+      "load_shedding": 0.0,
+      "reserve_shortfall": 0.0,
+      "shared_overflow": 9.483655958320015e-07
+    },
+    "rounding": false,
+    "source_objective_overpayment": 6.332993507385254e-08,
+    "violated_pairs": 0,
+    "source_listed_outages_only": true,
+    "all_source_lines_as_outages_claimed": false,
+    "source_line_count": 1991,
+    "positive_sum_guard_per_slack_category_MWh": 1e-05,
+    "literal_network_passed": true,
+    "direct_dc_passed": true
+  },
+  "method": {
+    "layer": "Application and formulation",
+    "complete_source_valid_first_start_rows": 5148,
+    "adaptive_per_line_network_value_cuts": true,
+    "carry_preparations": 1,
+    "continuation_outcome": "provisional_target_met",
+    "current_run_evidence_hashes_checked_before_terminal": 35,
+    "discovery_calls": 1,
+    "installed_batches": 2,
+    "point_evaluations": 4,
+    "proof_calls": 1,
+    "same_master_and_current_start_verified": true,
+    "seed_lp_calls": 2,
+    "transition_consumed_once": true,
+    "discovery_native_lower_used": false,
+    "third_mip_or_unchanged_failed_proof_retry": false,
+    "historical_solver_points_bounds_or_support_bank_used": false,
+    "initial_support_bank_empty": true,
+    "all_original_network_security_rows_removed": true,
+    "historical_security_pairs_in_original_mps": 2,
+    "historical_security_rows_in_original_mps": 144,
+    "historical_pairs_retained_as_candidate_cuts": false
+  },
+  "timing_seconds": {
+    "contained_process_ledger": 143.4028476359981,
+    "contained_cap": 600.0,
+    "contained_components": {
+      "seed_worker": 73.55280369100001,
+      "discovery_process": 10.854620913998588,
+      "start_preparation": 17.80655720700088,
+      "proof_process": 41.18886582399864
+    },
+    "contained_ledger_is_native_solver_only": false,
+    "whole_invocation": 555.9379164309994,
+    "whole_cap": 1800.0,
+    "whole_includes_checks_and_stage_archives": true,
+    "native_lp_cumulative": 6.895392179489136,
+    "native_mip_log_reported": [
+      9.69,
+      39.9
+    ],
+    "final_physical_validation": 158.76581206700212,
+    "input_boundary": "Pinned serialized original MPS and source data",
+    "outside_invocation": [
+      "Earlier original-model export",
+      "Environment recovery",
+      "Build",
+      "Later independent terminal review and consolidated checkpoint publication"
+    ],
+    "fresh_projection_and_all_run_specific_work_inside_invocation": true
+  },
+  "completion": {
+    "runner_returncode": 0,
+    "survivors": 0,
+    "watchdog_fired": false,
+    "acknowledged_stages": 7,
+    "final_archive_readback_verified": true,
+    "independent_terminal_review_passed": true,
+    "raw_solver_diagnostics_preserved": true,
+    "acceptance_tolerances_relaxed": false
+  },
+  "prior_closed_negative": {
+    "outcome": "checked_open_interval",
+    "passed": false,
+    "checked_upper": 14320683.423559552,
+    "gap_fraction": 0.040807905534216496,
+    "contained_ledger_seconds": 81.70197935499891,
+    "whole_invocation_seconds": 378.7481402020003,
+    "stop_reason": "Policy exhaustion after no new violated support; budget not exhausted",
+    "historical_result_unchanged": true,
+    "result_sha256": "80ba9efd0a8c2301faf752c1864cb16ab1464af7bff8bbf663627d51efbd10cb"
+  },
+  "provenance_sha256": {
+    "final_raw_result": "504be2843898824bb6cf1d98e87764434b556194966832913907b7a6d452a802",
+    "terminal_summary": "fb1d31c5e9be9adeec9f0a9e28bd3cc0ba7b140f963cd7e60ac74deb5e54658c",
+    "independent_terminal_review": "f0a1e0938fe37b01640cdca6c03eb3732f7dafd0f9b2185b52e7c334120bb163",
+    "terminal_manifest": "00c207aba0edaa999d962c4b7af48f542daad316c2f3042f8b74631780428752",
+    "current_source_manifest": "89a1c8c27cb0ecfe0c0a24314aab55fc1986716f3388737aaf78249e5afe1f49",
+    "current_source_archive": "1d20d29fbfb044424dde3c5950d4573af29a98819134b5c28ee20c211a84d245",
+    "final_terminal_archive": "7f0ab7d31778361712616f82c46069d4d7dd59f5f925a442e919fc1d5cacf80f",
+    "outer_receipt": "8a93b54a148be929a69e321085895ac1e98bb839891024d775f913316abcb169",
+    "discovery_log": "2ffcc5b7459ffe1ef302827eb1f79fd3f7aa3a9e72d6d42470f13aea91834f9d",
+    "proof_log": "8474b1339c15f229f9f72a65bdcd50d42d2d0b65c486495bda71c3aaa2b84841"
+  },
+  "claim_limits": {
+    "matched_speed_ratio_claimed": false,
+    "stable_acceleration_claimed": false,
+    "multiple_case_claimed": false,
+    "fresh_confirmation_cases_completed": false,
+    "current_method_portable_entrypoint_published_and_validated": false,
+    "public_fixed_tiny_replay_unchanged": true,
+    "full_raw_artifacts_bundled": false,
+    "hash_role": "Commitments to retained evidence; not public artifact retrieval links or a portable replay package",
+    "review_for_this_checkpoint": "Readback, arithmetic and SHA-256 checks only; no optimizer or new numerical test run"
+  }
+}

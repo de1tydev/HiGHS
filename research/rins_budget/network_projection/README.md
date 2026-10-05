@@ -4,6 +4,16 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The [fresh hard-zero SCUC checkpoint](SCUC_TARGET_RESULTS.md) records one
+exposed June1354 development sample that passed the 1% integer target:
+0.270916% numerical MIP interval and 0.310133% using a separate fresh exact
+projected-LP certificate, with all original/source and listed-outage direct-DC
+checks passed. The contained-process ledger is 143.402847636 seconds; the whole
+invocation including checks and stage archives is 555.937916431 seconds. This
+is an evidence-only update with no speed ratio or multiple-case claim. The
+current method has no published, validated portable entrypoint; the source and
+fixed tiny replay documented below remain the earlier aggregate formulation.
+
 The [first-start cumulative checkpoint](FIRST_START_RESULTS.md) records a
 continuous bound milestone: 5,148 source-valid prefix rows close 73.2565% of
 the original unresolved interval, giving a 0.6899075% numerical interval against
