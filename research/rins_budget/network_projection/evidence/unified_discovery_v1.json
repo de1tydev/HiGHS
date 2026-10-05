@@ -1,0 +1,407 @@
+{
+  "schema": "network-projection-public-unified-discovery-v1",
+  "instance": {
+    "case": "PEGASE1354",
+    "source_date": "2017-06-01",
+    "hours": 36,
+    "trial": 1
+  },
+  "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "official_highs_version": "1.15.1",
+  "outcome": {
+    "status": "checked_open_interval",
+    "result_complete": true,
+    "advancement_qualified": false,
+    "source_soft_model_complete": false,
+    "quality_failed": false,
+    "mechanism_failed": false,
+    "mechanism_status": "actual_feasible_start_admitted",
+    "final_upper_admitted": true,
+    "accepted_speed_ratio": null,
+    "held_out_result": null
+  },
+  "interval": {
+    "original_upper": 13916348.591578348,
+    "numerical_mip_lower": 13479669.490115203,
+    "relative_gap": 0.03137885621285791,
+    "target_relative_gap": 0.01,
+    "target_met": false,
+    "lower_domain": "source_literal_lodf_integer",
+    "physical_dc_lower_bound_certified": false,
+    "exact_tree_proof": false,
+    "relative_gap_percent": 3.1378856212857906,
+    "absolute_gap": 436679.10146314465,
+    "final_projected_objective": 13916348.585182693,
+    "upper_minus_final_projected_objective": 0.0063956547528505325
+  },
+  "method": {
+    "application_layer": true,
+    "official_cpp_modified": false,
+    "historical_optimization_state_used": false,
+    "call_roles": [
+      "discovery",
+      "discovery",
+      "proof"
+    ],
+    "mip_max_improving_sols": [
+      1,
+      1,
+      2147483647
+    ],
+    "discovery_bounds_quarantined": true,
+    "seed_lp_calls": 2,
+    "seed_exact_lp_lower": 13474893.024853207,
+    "seed_cut_batches": 2,
+    "between_master_cut_batches": 2,
+    "total_cut_batches": 4,
+    "cut_nonzeros": 70544,
+    "basis_or_search_tree_transferred": false
+  },
+  "master_outcomes": [
+    {
+      "call": 1,
+      "role": "discovery",
+      "status": "Solution limit reached",
+      "process_seconds": 17.908128698996734,
+      "native_limit_seconds": 120.0,
+      "projected_objective": 14033147.062303314,
+      "raw_printed_lower": 13474893.025,
+      "eligible_numerical_mip_lower": null,
+      "printed_lower_allowance": 0.00018474893024999998,
+      "provisional_original_cost": 17045017.68432276,
+      "provisional_lower": 13474893.024853207,
+      "provisional_relative_gap": 0.20945268145736173,
+      "original_binary_check_passed": true,
+      "original_matrix_check_passed": true,
+      "full_literal_network_check_passed": true,
+      "load_shedding_MWh": 0.0,
+      "reserve_shortfall_MWh": 0.0,
+      "shared_overflow_MWh": 602.3741244038889,
+      "raw_master_objective_admitted_as_original_upper": false,
+      "native_improving_solution_limit": 1,
+      "support": {
+        "candidate_batch_subset_selected": false,
+        "candidate_support_rows": 36,
+        "duplicate_policy": "exact rational positive-scale indexed coefficient/RHS identity; ignore row names/order",
+        "existing_support_rows": 72,
+        "new_distinct_supports": 6,
+        "new_violated_supports": 5,
+        "passed": true,
+        "redundancy_detection_claimed": false,
+        "requested": true,
+        "tolerance": 1e-05
+      },
+      "novelty": {
+        "applicable": false,
+        "passed": null,
+        "reason": "cold_discovery_no_supplied_start"
+      },
+      "solver_log_sha256": "24a63213c27a4c3cd01ce4e6653003369fe22a5158ed1ba5ee1601eedf6845d7",
+      "options_readback_sha256": "aa3d854d0751d09c30bc81c3d7a8fe341ab1bb5112d53aacdd8b2aeb04991975",
+      "final_direct_physical_check_run": false
+    },
+    {
+      "call": 2,
+      "role": "discovery",
+      "status": "Solution limit reached",
+      "process_seconds": 13.122803157006274,
+      "native_limit_seconds": 120.0,
+      "projected_objective": 14980802.323070528,
+      "raw_printed_lower": 13474893.025,
+      "eligible_numerical_mip_lower": null,
+      "printed_lower_allowance": 0.00018474893024999998,
+      "provisional_original_cost": 15196732.376662644,
+      "provisional_lower": 13474893.024853207,
+      "provisional_relative_gap": 0.11330326211795604,
+      "original_binary_check_passed": true,
+      "original_matrix_check_passed": true,
+      "full_literal_network_check_passed": true,
+      "load_shedding_MWh": 848.8796525412347,
+      "reserve_shortfall_MWh": 0.0,
+      "shared_overflow_MWh": 43.186010718422956,
+      "raw_master_objective_admitted_as_original_upper": false,
+      "native_improving_solution_limit": 1,
+      "support": {
+        "candidate_batch_subset_selected": false,
+        "candidate_support_rows": 36,
+        "duplicate_policy": "exact rational positive-scale indexed coefficient/RHS identity; ignore row names/order",
+        "existing_support_rows": 108,
+        "new_distinct_supports": 2,
+        "new_violated_supports": 2,
+        "passed": true,
+        "redundancy_detection_claimed": false,
+        "requested": true,
+        "tolerance": 1e-05
+      },
+      "novelty": {
+        "applicable": true,
+        "binary_tolerance": 1e-06,
+        "changed_columns": 550,
+        "changed_retained_columns": 545,
+        "comparison": "same_loaded_destination_master",
+        "continuous_tolerance": 1e-05,
+        "first_genuine_native_event_claimed": false,
+        "full_point_changed": true,
+        "master_objective_improvement": 2064215.3612522315,
+        "maximum_column_difference": 91154.03,
+        "objective_allowance": 0.0017045017684322761,
+        "passed": true,
+        "retained_point_changed": true,
+        "returned_master_objective": 14980802.323070528,
+        "start_master_objective": 17045017.68432276,
+        "strict_checked_improvement": true,
+        "supplied_start_sha256": "ff1292609cc588c5b026c668453f9a9c068da816c85161233d8c0d50bf55240f"
+      },
+      "solver_log_sha256": "68a6e14ccfcd15e3f99851e5b535641f6fecdd4d66d03ff3de1afb6247e3875f",
+      "options_readback_sha256": "6713dad4561395909ef4a0b5c20c305ab19fa93689b2a9e74f3ccdf7816c1ce8",
+      "final_direct_physical_check_run": false,
+      "actual_start_admission_passed": true
+    },
+    {
+      "call": 3,
+      "role": "proof",
+      "status": "Time limit reached",
+      "process_seconds": 422.7422760390036,
+      "native_limit_seconds": 421.48584682200453,
+      "projected_objective": 13916348.585182693,
+      "raw_printed_lower": 13479669.4903,
+      "eligible_numerical_mip_lower": 13479669.490115203,
+      "printed_lower_allowance": 0.00018479669490299998,
+      "provisional_original_cost": 13916348.591578256,
+      "provisional_lower": 13479669.490115203,
+      "provisional_relative_gap": 0.03137885621285156,
+      "original_binary_check_passed": true,
+      "original_matrix_check_passed": true,
+      "full_literal_network_check_passed": true,
+      "load_shedding_MWh": 0.0,
+      "reserve_shortfall_MWh": 0.0,
+      "shared_overflow_MWh": 1.2791126664524202e-06,
+      "raw_master_objective_admitted_as_original_upper": false,
+      "native_improving_solution_limit": 2147483647,
+      "support": {
+        "passed": null,
+        "reason": "final_proof_no_continuation",
+        "requested": false
+      },
+      "novelty": {
+        "applicable": false,
+        "passed": null,
+        "reason": "default_proof_need_not_improve_start"
+      },
+      "solver_log_sha256": "83beee5553b96b39c2c75906f26781ead5820499a8fdcf0d3b80204ce37e0665",
+      "options_readback_sha256": "83719d5e9e21df9c5ca34277394a138523b033730079ca291ce2982e3d8492a0",
+      "final_direct_physical_check_run": true,
+      "actual_start_admission_passed": true
+    }
+  ],
+  "carry_preparations": [
+    {
+      "source_call": 1,
+      "target_call": 2,
+      "eligible_calls": [
+        1
+      ],
+      "best_current_run_carry_verified": true,
+      "binary_count": 28080,
+      "exact_current_master_check_passed": true,
+      "selected_original_provisional_cost": 17045017.68432276,
+      "process_seconds": 9.479708841987303,
+      "native_point_bits_equal": true,
+      "optimizer_calls": 0,
+      "full_network_scans": 0,
+      "topology_factorizations": 0,
+      "nested_helper_charged_once_in_parent_process_wall": true,
+      "actual_solver_log_start_admitted": true
+    },
+    {
+      "source_call": 2,
+      "target_call": 3,
+      "eligible_calls": [
+        1,
+        2
+      ],
+      "best_current_run_carry_verified": true,
+      "binary_count": 28080,
+      "exact_current_master_check_passed": true,
+      "selected_original_provisional_cost": 15196732.376662644,
+      "process_seconds": 10.058675275009591,
+      "native_point_bits_equal": true,
+      "optimizer_calls": 0,
+      "full_network_scans": 0,
+      "topology_factorizations": 0,
+      "nested_helper_charged_once_in_parent_process_wall": true,
+      "actual_solver_log_start_admitted": true
+    }
+  ],
+  "final_checks": {
+    "selected_call": 3,
+    "binary_count": 28080,
+    "maximum_integrality_residual": 0.0,
+    "binary_types_and_bounds_verified": true,
+    "binary_rounding_performed": false,
+    "original_matrix_passed": true,
+    "literal_rows_passed": true,
+    "independent_source_checker_passed": true,
+    "direct_dc_passed": true,
+    "optimization_called": false,
+    "source_listed_outages": 1288,
+    "nonself_pair_hours": 66360168,
+    "signed_normal_rows": 103104,
+    "signed_security_rows": 132720336,
+    "direct_violated_pairs": 0,
+    "maximum_direct_dc_post_slack_violation_MW": 0.0,
+    "maximum_original_row_residual": 3.8846792449476197e-10,
+    "maximum_original_bound_residual": 4.547473508864641e-13,
+    "negligible_slack_guard_passed": true,
+    "slack_metrics": {
+      "load_shedding": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "reserve_shortfall": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "shared_overflow": {
+        "cost": 0.006395563332262101,
+        "max_MW": 9.801556188904216e-08,
+        "positive_sum_MWh": 1.2791126664524202e-06,
+        "sum_MWh": 1.2791126664524202e-06
+      }
+    },
+    "excluded_unlisted_outages": 703,
+    "slack_positive_sum_guard_MWh": 1e-05
+  },
+  "accounting": {
+    "ledger_ceiling_seconds": 600.0,
+    "charged_process_seconds": 541.2564292169991,
+    "remaining_process_seconds": 58.743570783000905,
+    "within_ledger": true,
+    "stages": [
+      {
+        "actual": 67.94483720499557,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "stage": "seed",
+        "within_allocation": true
+      },
+      {
+        "actual": 17.908128698996734,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "stage": "mip",
+        "within_allocation": true
+      },
+      {
+        "actual": 9.479708841987303,
+        "allocation": 30.0,
+        "overrun": 0.0,
+        "stage": "carry",
+        "within_allocation": true
+      },
+      {
+        "actual": 13.122803157006274,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "stage": "mip",
+        "within_allocation": true
+      },
+      {
+        "actual": 10.058675275009591,
+        "allocation": 30.0,
+        "overrun": 0.0,
+        "stage": "carry",
+        "within_allocation": true
+      },
+      {
+        "actual": 422.7422760390036,
+        "allocation": 481.48584682200453,
+        "overrun": 0.0,
+        "stage": "mip",
+        "within_allocation": true
+      }
+    ],
+    "whole_invocation_seconds": 1102.960181973991,
+    "whole_cap_seconds": 1800.0,
+    "runner_returncode": 2,
+    "hard_watchdog_killed": false,
+    "health_check_error": null,
+    "peak_sampled_tree_rss_bytes": 2593603584,
+    "minimum_sampled_free_disk_bytes": 12845162496,
+    "python_per_file_limit_bytes": 536870912,
+    "disk_headroom_floor_bytes": 2147483648,
+    "surviving_descendants_count": 0,
+    "whole_includes_checks_stage_persistence_cleanup_and_recovery": true,
+    "whole_is_pure_highs_time": false,
+    "native_per_file_limit_bytes": 67108864,
+    "terminal_capsule_administration_after_invocation": true,
+    "final_physical_process_seconds": 157.5651131640043
+  },
+  "recovery": {
+    "frozen_numerical_files_changed": false,
+    "clocks_deadlines_ack_windows_reset": false,
+    "all_pauses_charged_to_whole": true,
+    "full_executed_controller_frozen_before_launch_claimed": false,
+    "change": "Old directory-family guard replaced by exact approved run-directory equality; no other executed-body change.",
+    "execution_provenance": "Recorded execution-body hash independently reconstructed from the exact guard substitution; controller execution not replayed.",
+    "saved_script_has_one_extra_trailing_blank_line": true
+  },
+  "tiny_history": {
+    "initial_setup_failure_preserved": true,
+    "initial_phase_returncode": 1,
+    "corrected_limited_expected_exhaustion_valid": true,
+    "corrected_tiny_proof_call_3_exercised": false,
+    "full_trial_proof_call_3_observed": true,
+    "initial_failure": "Copied carry helper rejected the new output-directory family before the second MIP; not rescored."
+  },
+  "audit": {
+    "passed_with_disclosed_controller_recovery": true,
+    "frozen_source_pins_match": true,
+    "source_files_checked": 839,
+    "stage_receipt_chains_checked": 9,
+    "all_stage_chains_verified": true,
+    "retained_unique_raw_files": 137,
+    "raw_hash_mismatches_except_expected_state_updates": 0,
+    "historical_archive_readback_verification_receipt_based_after_cleanup": true,
+    "solver_or_physics_rerun_by_audit": false,
+    "final_files_written_after_stage_ack": true,
+    "final_result_absent_from_ninth_stage": true,
+    "final_result_and_state_equal": true,
+    "final_result_after_all_stage_ack_in_terminal_capsule": true,
+    "terminal_capsule_readback_verified": true,
+    "terminal_capsule_members_verified": 233
+  },
+  "publication_scope": {
+    "compact_evidence_only": true,
+    "large_archives_bundled": false,
+    "full_trial_harness_published": false,
+    "existing_core_tiny_recipe_scope_unchanged": true,
+    "portable_36_hour_entrypoint_published": false,
+    "earlier_trials_rescored": false,
+    "matched_performance_comparison": false,
+    "parallel_method_measured": false
+  },
+  "provenance_sha256": {
+    "source_manifest_v2": "a11fb81a8354dbad142d594e5ab41cd11ed8b10346877f4630c19ca007e9f5b8",
+    "arm_manifest": "125f347c6dcfdfe735831e7193311fb7ece66f603b592575f5c6e58274c94eee",
+    "source_overlay_v2": "143e4f336ac8c2cbb47733e4241dd3290da9bcbc360665b9fe514b4dda4051ce",
+    "complete_terminal_archive_v1": "21f86ebea4698c2d20c5dd96e1f231528bda00dc2a290f49354e2237d9a2344d",
+    "terminal_manifest": "e07eead747f9bbb044f3b594bda6d84d1ec97d40c51cd60d33d0e9cd512300ee",
+    "original_controller": "246323b51876021e1f5c12e60545b013c996c81b076325fbd7574a146ee33205",
+    "executed_controller_body": "a8a8ee2967da5b4b69c09e234885598ca058195584ce35146cbcb13b7afd808b",
+    "saved_recovered_controller": "0dc10a5e1939b209e56b3f3808dd21c720eeb5d16232c2520a70d65e62415fcf",
+    "native_highs_library": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3",
+    "source_data": "6386c57b6d57b4fed908af13511affccdc9d9bf63bec6907124e05e984b5c863",
+    "integer_target": "5af2e52f19f47d3c57e4cf7ee205b8984f36b2f2c1b35e3a9ad84f36c9fd85cf",
+    "full_literal_network_scope": "88d5f0be6b7ad9b8653136a08bfab88c3916fded6333e116618d82f481a829eb",
+    "final_stored_lift_binary64": "aaa81e064b3bba4e19ad3a88c60e37380c8f6443747640745c4a656f6c328a7d",
+    "source_instance_gzip": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "final_result": "7170209b4df96463d10fdf5bb544e87fc58a45cca6b584e2b13fc5cc6ae70857",
+    "outer_receipt": "0fe4f2eb84b3d593126c751dcbed2210e7107a1caeefef677fdb3f0e8e17d79f",
+    "completed_local_audit": "6bc73eebe04a5e78450529989d18bcf9a6bc41fc58ed98e7a222c1fba8a517bc"
+  }
+}

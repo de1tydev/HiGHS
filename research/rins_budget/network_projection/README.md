@@ -4,6 +4,11 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The latest [unified-discovery addendum](UNIFIED_DISCOVERY_RESULTS.md) records a
+completed negative result: 3.137885621% gap against the 1% target, with checked
+final witness and disclosed controller recovery. It adds no portable replay
+claim; earlier result reports remain historical.
+
 **Fixed tiny integration passed.** The audited `--mode both` run completed in
 1.769846 seconds from launch through cleanup: four projected LP calls (two
 seeds plus two continuation calls), three row additions, and two distinct
