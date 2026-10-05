@@ -1,0 +1,374 @@
+{
+  "schema": "network-projection-scuc-reference-public-evidence-v1",
+  "recorded_date": "2026-10-05",
+  "publication_status": "reviewed_completion_comparison_with_verified_terminal_capsules",
+  "publication_scope": "Completion comparison only; current methods have no published validated portable entrypoint",
+  "base_publication": {
+    "repository": "de1tydev/HiGHS",
+    "branch": "saber/milp-rins-budget-20261001",
+    "commit": "7c11a244e651bc78a18c41e90f4c0d94cc7a7140",
+    "target_report_unchanged": true,
+    "target_evidence_sha256": "d103b180fd54a1446397e729214ac4e46e6643eab88392fc702f1b2fabf290df"
+  },
+  "common": {
+    "case": {
+      "name": "case1354pegase_2017-06-01",
+      "hours": 36,
+      "development_sample_count": 1,
+      "exposed_development_case": true,
+      "compressed_source_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+      "serialized_original_mps_sha256": "0154c5d9ff00234b9a082b31dc06eda74c064e8412ecdc1bc588ce1f42c4cee4"
+    },
+    "runtime": {
+      "official_highs_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+      "solver_source_optimization_patch": false,
+      "native_library_sha256": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3"
+    },
+    "random_seed": 0,
+    "configured_threads": 2,
+    "parallel": "off",
+    "presolve": "on",
+    "gap_target_fraction": 0.01,
+    "target": {
+      "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+      "only_target_change": "Strictly positive original shedding upper bounds become zero; all other model fields unchanged",
+      "shedding_upper_bounds_changed_to_zero": 22356,
+      "shedding_upper_bounds_already_zero": 26388,
+      "reserve_shortfall_already_fixed_zero": true,
+      "shared_overflow_bounds_unchanged": true,
+      "subset_identity_sha256": "80f031df7d8491fce9e90a88480c2722b445d1864027498a9ee3e9c76d192f73",
+      "exact_changed_bound_records_sha256": "750dfa1f85030fb29518775859a748ec5ff518e38ceb98657ce813ac3291b6fd",
+      "old_soft_optimum_bound_claimed": false,
+      "larger_negligible_shedding_domain_bound_claimed": false,
+      "physical_dc_lower_bound_certified": false
+    },
+    "binaries": 28080,
+    "source_listed_outages": 1288,
+    "source_lines": 1991,
+    "unsigned_security_pair_hours": 66360168,
+    "all_source_lines_as_outages_claimed": false,
+    "primal_tolerance": 1e-05,
+    "integrality_tolerance": 1e-06,
+    "positive_sum_guard_per_slack_category_MWh": 1e-05,
+    "input_boundary": "Pinned serialized original MPS and source data; earlier acquisition/export, environment recovery and build outside both clocks",
+    "whole_clocks_include": "All fresh run-specific transformations, factor preparation, export/readback, checks, raw stage archival and cleanup",
+    "later_administration_excluded": [
+      "independent terminal audit",
+      "consolidated checkpoint publication"
+    ],
+    "historical_points_bounds_or_search_state_imported": false,
+    "initial_support_or_pair_bank_empty": true,
+    "comparison_unit": "Application/formulation and allocation policy bundle; not an isolated HiGHS internal patch or mechanism"
+  },
+  "candidate": {
+    "run_label": "no-shedding-transition-01",
+    "passed": true,
+    "checked_original_upper": 13779019.591303479,
+    "numerical_mip": {
+      "allowance": 0.000187416899735,
+      "exact_certificate": false,
+      "gap_fraction": 0.0027091635760831925,
+      "gap_percent": 0.2709163576083193,
+      "lower": 13741689.973312583,
+      "raw_token": "13741689.9735",
+      "discovery_lower_discarded": true
+    },
+    "fresh_exact_projected_lp": {
+      "certificate_matrix_matches_seed_snapshot": true,
+      "certificate_sha256": "a0beeaf838b17858001386f53dfdf2f2ceb08d60d8f570232bbd2c40307f8a02",
+      "gap_fraction": 0.003101328348856978,
+      "gap_percent": 0.3101328348856978,
+      "lower": 13736286.327225514,
+      "promoted_matrix_relabelled": false,
+      "solved_installed_batches": 1,
+      "exact_lower_rational": [
+        "20075604958086205393719298119541199179216417265013996773",
+        "1461501637330904462439800398242487055421068541952"
+      ],
+      "certificate_scope": "Exact rational interpretation of the supplied binary64 continuous projected matrix",
+      "matrix_document_sha256": "067d2a88e0fa30c931c3a1bac1b96bd34f8811a6f18ded8379bc8ce9dee71081",
+      "matrix_arrays_sha256": "d061edb6a1a2f269607cb0f9cfd168b9187faa17d3d56c05e2330e051e1c49fd",
+      "row_dual_sha256": "72f79a7e4a039d3540dccc67c93d2d612bb4fa45b963557adf83948d77cb0ed3"
+    },
+    "checks": {
+      "binaries": 28080,
+      "binary_residual": 0,
+      "checked_upper": 13779019.591303479,
+      "feasibility": "numerical at inherited tolerances",
+      "original_linear_cost": 13779019.591303479,
+      "original_source_cost": 13779019.591303416,
+      "outages": 1288,
+      "pair_hours": 66360168,
+      "passed": true,
+      "positive_slack_totals_MWh": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 9.483655958320015e-07
+      },
+      "rounding": false,
+      "source_objective_overpayment": 6.332993507385254e-08,
+      "violated_pairs": 0,
+      "source_listed_outages_only": true,
+      "all_source_lines_as_outages_claimed": false,
+      "source_line_count": 1991,
+      "positive_sum_guard_per_slack_category_MWh": 1e-05,
+      "literal_network_passed": true,
+      "direct_dc_passed": true
+    },
+    "method": {
+      "complete_source_valid_first_start_rows": 5148,
+      "adaptive_per_line_network_value_cuts": true,
+      "carry_preparations": 1,
+      "discovery_calls": 1,
+      "proof_calls": 1,
+      "seed_lp_calls": 2,
+      "same_master_and_current_start_verified": true,
+      "transition_consumed_once": true,
+      "discovery_native_lower_used": false
+    },
+    "timing_seconds": {
+      "contained_process_ledger": 143.4028476359981,
+      "contained_cap": 600.0,
+      "contained_components": {
+        "seed_worker": 73.55280369100001,
+        "discovery_process": 10.854620913998588,
+        "start_preparation": 17.80655720700088,
+        "proof_process": 41.18886582399864
+      },
+      "contained_ledger_is_native_solver_only": false,
+      "whole_invocation": 555.9379164309994,
+      "whole_cap": 1800.0,
+      "whole_includes_checks_and_stage_archives": true,
+      "native_lp_cumulative": 6.895392179489136,
+      "native_mip_log_reported": [
+        9.69,
+        39.9
+      ],
+      "final_physical_validation": 158.76581206700212,
+      "input_boundary": "Pinned serialized original MPS and source data",
+      "outside_invocation": [
+        "Earlier original-model export",
+        "Environment recovery",
+        "Build",
+        "Later independent terminal review and consolidated checkpoint publication"
+      ],
+      "fresh_projection_and_all_run_specific_work_inside_invocation": true
+    },
+    "completion": {
+      "runner_returncode": 0,
+      "survivors": 0,
+      "watchdog_fired": false,
+      "acknowledged_stages": 7,
+      "final_archive_readback_verified": true,
+      "independent_terminal_review_passed": true,
+      "raw_solver_diagnostics_preserved": true,
+      "acceptance_tolerances_relaxed": false
+    },
+    "provenance_sha256": {
+      "final_raw_result": "504be2843898824bb6cf1d98e87764434b556194966832913907b7a6d452a802",
+      "terminal_summary": "fb1d31c5e9be9adeec9f0a9e28bd3cc0ba7b140f963cd7e60ac74deb5e54658c",
+      "independent_terminal_review": "f0a1e0938fe37b01640cdca6c03eb3732f7dafd0f9b2185b52e7c334120bb163",
+      "terminal_manifest": "00c207aba0edaa999d962c4b7af48f542daad316c2f3042f8b74631780428752",
+      "current_source_manifest": "89a1c8c27cb0ecfe0c0a24314aab55fc1986716f3388737aaf78249e5afe1f49",
+      "current_source_archive": "1d20d29fbfb044424dde3c5950d4573af29a98819134b5c28ee20c211a84d245",
+      "final_terminal_archive": "7f0ab7d31778361712616f82c46069d4d7dd59f5f925a442e919fc1d5cacf80f",
+      "outer_receipt": "8a93b54a148be929a69e321085895ac1e98bb839891024d775f913316abcb169",
+      "discovery_log": "2ffcc5b7459ffe1ef302827eb1f79fd3f7aa3a9e72d6d42470f13aea91834f9d",
+      "proof_log": "8474b1339c15f229f9f72a65bdcd50d42d2d0b65c486495bda71c3aaa2b84841"
+    },
+    "terminal_capsule": {
+      "archive_sha256": "7f0ab7d31778361712616f82c46069d4d7dd59f5f925a442e919fc1d5cacf80f",
+      "actual_readback_verified": true
+    }
+  },
+  "conventional": {
+    "run_label": "conventional-zero-direct-zero-01",
+    "passed": false,
+    "result_complete": true,
+    "raw_outcome": "actual_or_whole_time_censoring",
+    "classification": "clean_solver_budget_limited_target_not_reached",
+    "returned_current_master_objective": 13790007.905913303,
+    "master_reported_gap_percent": 1.36,
+    "master_gap_is_full_target_interval": false,
+    "native_status": "Time limit reached",
+    "native_solution_status": "feasible",
+    "numerical_mip": {
+      "lower": 13603099.016513968,
+      "raw_token": "13603099.0167",
+      "allowance": 0.000186030990167,
+      "exact_certificate": false,
+      "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+      "admitted_by_terminal_audit": true
+    },
+    "full_target_upper": null,
+    "full_target_gap": null,
+    "time_to_checked_target": null,
+    "method": {
+      "initial_security_pairs": 0,
+      "historical_security_rows_removed": 144,
+      "explicit_original_dc_angles_and_flows_retained": true,
+      "ordinary_proof_calls": 1,
+      "max_proof_calls": 3,
+      "discovery_calls": 0,
+      "lp_seed_calls": 0,
+      "first_start_rows": 0,
+      "projection_performed": false,
+      "carry_workers": 0,
+      "incumbent_input": null,
+      "basis_or_search_state_input": false,
+      "continuation_requires_all_new_witnessed_original_pairs": true,
+      "unchanged_master_retry": false
+    },
+    "checks": {
+      "current_master_passed": true,
+      "binary_count": 28080,
+      "maximum_integrality_residual": 2.106e-10,
+      "point_rounded": false,
+      "maximum_current_master_row_residual": 7.16945119e-07,
+      "hard_zero_passed": true,
+      "fixed_zero_columns_checked": 48780,
+      "positive_slack_guard_passed": true,
+      "positive_slack_totals_MWh": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 0.0
+      },
+      "full_literal_passed": false,
+      "full_literal_coverage_complete": true,
+      "unsigned_security_pair_hours": 66360168,
+      "new_violated_pair_count": 2,
+      "maximum_conservative_literal_violation_MW": 272.1136523157682,
+      "original_security_rows_appended": 144,
+      "next_changed_master_solve_launched": false,
+      "independent_final_source_and_direct_dc_run": false,
+      "final_physical_check_not_run_reason": "No full-target eligible upper",
+      "point_repaired": false,
+      "separate_exact_material_witness_MW": 97.09189214266924,
+      "separate_witness_is_global_maximum": false
+    },
+    "diagnostics": {
+      "inconsistent_max_bound_violation": 7.171e-07,
+      "raw_warning_preserved": true,
+      "expected_time_limit_warning_preserved": true,
+      "tolerances_relaxed": false,
+      "admission_verified_by_terminal_audit": true,
+      "frozen_diagnostic_rules_sha256": "5f4e32941e473dc2df75a2849fefc3436abc1308a75aac90a0a54a85de8a7ddc"
+    },
+    "timing_seconds": {
+      "native_limit_requested": 595.0,
+      "native_log_reported": 595.35,
+      "contained_process_ledger": 597.6080625639988,
+      "contained_cap": 600.0,
+      "contained_remaining": 2.3919374360011716,
+      "minimum_launch_margin": 5,
+      "whole_invocation": 695.8837423469995,
+      "whole_cap": 1800.0,
+      "whole_limit_exhausted": false,
+      "contained_ledger_is_native_solver_only": false
+    },
+    "completion": {
+      "runner_returncode": 2,
+      "native_returncode": 0,
+      "all_processes_clean": true,
+      "survivors": 0,
+      "watchdog_killed": false,
+      "acknowledged_stages": 3,
+      "terminal_archive_acknowledged": true,
+      "independent_terminal_audit_passed": true
+    },
+    "stage_archives": [
+      {
+        "stage_id": "post_full_check-1791234307205235541-4c966b4dc6fb8b07",
+        "archive_sha256": "b89475b10e5c7f2fe54e29b293997103acac249c22daf32ae9109efd8a0db7be",
+        "readback_verified": true,
+        "ack_sha256": "800adebebed0f5325ff3c89c1dca91eefda95f504de7dc107b34810d922cef21",
+        "receipt_sha256": "a1bea406cc5e6eda83ebc5402f6ed2337a26453d1b232f9f9f7a994c61f4af73"
+      },
+      {
+        "stage_id": "post_full_check-1791234328810700024-6b865e0e29131b85",
+        "archive_sha256": "c45bc0f317730b35790715ef90ea96377598af94e684aba27ce7d3e1bb5951d6",
+        "readback_verified": true,
+        "ack_sha256": "8f212381fe2b0dc9c9c0ed3fc24003b5baada92bc6a9dcaa17baf419ebc8eb7b",
+        "receipt_sha256": "bc414680e5e6156f904ce2202bb670dfba362056ff2973e4eb06ded2af48f087"
+      },
+      {
+        "stage_id": "post_native_solve-1791234274845050547-1fac764a694bae0c",
+        "archive_sha256": "f67aae71844401ba5c079fee3c1899299f0391a510206fcc58b739b5407a0746",
+        "readback_verified": true,
+        "ack_sha256": "6f28f17532a935f059203e2ce6502033ebee2aff4b97825c3a30c24b35d144b2",
+        "receipt_sha256": "cc3b5937e73e2bf6805354e601445f67cd0c61944451503adb367ff91318114a"
+      }
+    ],
+    "provenance_sha256": {
+      "final_raw_result": "1e01adedc295dbce164ee86713b9ee50b757d6a2de228de2edc63448499fb604",
+      "completion": "e80110ffa693e60ddda9e712b29a0000e745ff4325f7b6683b2cd43ba312124c",
+      "outer_receipt": "c22a4e37e799f7b7245f0aafb81e0882b5ef3e0b6334d534fb79f99228404801",
+      "process_receipt": "1c09bf9db9f499aa50b0f9e22f1945c6547a3b5ee57896926cc088244c680c6b",
+      "raw_solver_log": "9ea40fac315dea7bc53122fc8309283092fdf03b86a6508d859cd394c40e0f0a",
+      "native_solver_log": "32f6baf0d706b2e1cc9ac8b3d7f8da4da76058b79c71b2f4a7a1f4d4a8c7ba20",
+      "point_check": "de054a1c1c8b7ca0fe9037368ee9301b0cfdbdfa6672321089e813ae152821bd",
+      "solution": "590476b3844b4e275dcca56e623a67b46f14add6b86ecda881e98dae1030c67f",
+      "persisted_point_document": "b2fe37c9ac577d3b8c0f24e4896761d5691da9c8dc0e5b8fcb759d1c74e6a018",
+      "persisted_point_arrays": "b27675766fe0c1f9efbe74f6d07a0cbad8cff5e6d7d23cafb601bff7d848b3eb",
+      "initial_master_readback": "71f71e9fdb55707b4773704332ed7ac509ea55ddbe883d10d7e788908997f1a2",
+      "installed_security_batch": "f6448a094b39e823fb388d4ac7a2ad2d6339c5f6fae3cb42241de2012063f82e",
+      "source_manifest": "520805facb08a4468f0ae34e3e21410b23031a6de62deb5deedf1893115f836d",
+      "source_reference": "a4b9d838984f3a37493de20baecc278b3698f523bffda571eb0baff272b67c1e",
+      "effective_schedule": "3cfab7ae60003099ae0fdba43fb9f46868f538a2437aa4dcedad883b919863ee",
+      "source_review": "37ffdf1d7759c70b26351eb9d1ceb8cae4f03fea06217e5b785d8f430bd61c03",
+      "tiny_audit": "8defdbdf6db84780f395147b0fa5ab320fc55580c072b9f7a28cccee95e4cd33",
+      "terminal_audit": "5ec8304665e47106dea32af90697938fb6c94cc05bc12525390d794a475161e9",
+      "final_terminal_archive": "e3d000aafedae06f211e5898476a2d4988e1490827929a39d050d4221ebe3558",
+      "terminal_readback_receipt": "3416d80636d7bd2e0e7579776abc33dc54d4978692ea4be26219d5f9f39f77c8"
+    },
+    "source_archive_sha256": "3220bdce23534cdd00dce42d5ba5f3752582452cc5c421c2f02b2f3a2360b620",
+    "terminal_audit": {
+      "sha256": "5ec8304665e47106dea32af90697938fb6c94cc05bc12525390d794a475161e9",
+      "audit_completed": true,
+      "audit_passed": true,
+      "experiment_passed": false,
+      "classification": "clean_solver_budget_limited_target_not_reached",
+      "remaining_blockers": [],
+      "reviewer_new_numerical_calls": 0,
+      "infrastructure_censored": false,
+      "infeasibility_proved": false
+    },
+    "terminal_capsule": {
+      "archive_sha256": "e3d000aafedae06f211e5898476a2d4988e1490827929a39d050d4221ebe3558",
+      "file_size_bytes": 1015944,
+      "members": 38,
+      "actual_readback_verified": true
+    }
+  },
+  "prior_infrastructure_censored_attempt": {
+    "run_label": "conventional-zero-01",
+    "classification": "infrastructure_censored_baseline",
+    "native_process_seconds": 298.49010633999933,
+    "native_log_seconds": 296.39,
+    "ack_window_seconds": 120,
+    "stage_outcome": "ack_timeout",
+    "eligible_upper": null,
+    "eligible_lower": null,
+    "rescored": false,
+    "performance_inference": false,
+    "audit_sha256": "8c9372bac47c18e6580d8d7ae1a1f2951a8d7fbf421187b9c4f7e67d2a83b361",
+    "terminal_capsule": {
+      "archive_sha256": "a37cf3f622e5a72a9a53749df0aaae98b13508477d1c10f94c2133734ffd52e3",
+      "actual_readback_verified": true
+    }
+  },
+  "claim_limits": {
+    "completion_contrast_only": true,
+    "speed_ratio": null,
+    "timeout_speedup_claimed": false,
+    "stable_acceleration_claimed": false,
+    "multiple_case_or_seed_claimed": false,
+    "fresh_confirmation_cases_completed": false,
+    "different_allocation_policies_explicit": true,
+    "current_methods_portable_entrypoint_published_and_validated": false,
+    "public_source_and_fixed_tiny_replay_unchanged": true,
+    "full_raw_artifacts_bundled": false,
+    "hash_role": "Commitments to retained evidence; not public artifact retrieval links or a portable replay package",
+    "review_for_this_publication": "Saved-file readback, arithmetic and SHA-256 checks only; no optimizer, checker, native API or model run"
+  }
+}

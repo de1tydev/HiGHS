@@ -4,6 +4,12 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The [conventional June1354 comparison](SCUC_REFERENCE_RESULTS.md) records a
+completion contrast on that same exposed case: the projected candidate passed,
+while ordinary proof returned no full-target feasible upper within the
+600-second contained-process budget. The methods use different formulations
+and allocation policies. No speed ratio or general acceleration is claimed.
+
 The [fresh hard-zero SCUC checkpoint](SCUC_TARGET_RESULTS.md) records one
 exposed June1354 development sample that passed the 1% integer target:
 0.270916% numerical MIP interval and 0.310133% using a separate fresh exact
