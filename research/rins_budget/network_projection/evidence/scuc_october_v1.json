@@ -1,0 +1,380 @@
+{
+  "candidate": {
+    "archive_audit_scope": "Independent content binding of retained bytes to recorded upload/readback evidence; auditor did not repeat remote transfers or optimization",
+    "archives_sha256": {
+      "checkpoint-01": "4f664ec0705a96e544b863e2e6f180f6979c5fe2a91b532a7494c30391cb0311",
+      "checkpoint-02": "468441055da118b1b02e92dfd675d33db335a36489706d2d81f69080d334fce0",
+      "checkpoint-03": "58f92a13a19d639d7510a14fd8f25053f8a7aeec9ecb642cfeda036221d78180",
+      "checkpoint-04": "5cd70b8b4dcfad4f626132aecb8b0800e865b52ede2553bfb69bbc386724c1d7",
+      "checkpoint-05": "7a49382159a4b55dea713e8da70c5838a3e2da1db72466f7c441654ad41bb001",
+      "terminal": "c74fcb345aedce1febfca9d0c2116a6ac37a3327f152238cb1643de476c155e6"
+    },
+    "audit_assertions_passed": 2177,
+    "audited_numerical_target_passed": true,
+    "carry_execution_tested": false,
+    "checks": {
+      "all_original_source_binaries_passed": true,
+      "binary_count": 28080,
+      "binary_max_residual": 0.0,
+      "direct_DC_outages_per_checker": 1288,
+      "direct_DC_pair_hours_per_checker": 66360168,
+      "direct_DC_passed": true,
+      "literal_signed_normal_rows": 103104,
+      "literal_signed_security_rows": 132720336,
+      "original_source_cost_and_feasibility_passed": true,
+      "slack_metrics": {
+        "load_shedding": {
+          "cost": 0.0,
+          "max_MW": 0.0,
+          "positive_sum_MWh": 0.0,
+          "sum_MWh": 0.0
+        },
+        "reserve_shortfall": {
+          "cost": 0.0,
+          "max_MW": 0.0,
+          "positive_sum_MWh": 0.0,
+          "sum_MWh": 0.0
+        },
+        "shared_overflow": {
+          "cost": 0.0008275389973277927,
+          "max_MW": 5.714809958590195e-08,
+          "positive_sum_MWh": 1.6550779946555852e-07,
+          "sum_MWh": 1.6550779946555852e-07
+        }
+      }
+    },
+    "clean_process_exit": true,
+    "cold_discovery_MIP_calls": 1,
+    "completion_sha256": "18bc5799e929252c6fbbaf775de680060273d212019bb0d53d4536d1e05ad77f",
+    "discovery_solver_bound_admitted": false,
+    "final_lower_installed_cut_batches": 1,
+    "first_start": {
+      "amendment_manifest_sha256": "83a6f63efb00c8cdb6d73d20291ba10e183ea84a537a3b59ea2b46fc7bdafab1",
+      "amendment_proposal_sha256": "a414c8f5dd658d327a2026c1a55e074760f0a37efde100fa557cdcbdca8c1991",
+      "identity_sha256": "12362411a0432a776c8f06b29cf40eea15bde95912974675ca3bfb975176c1e1",
+      "implementation_sha256": "c6eeca821641d5b512f0ba4cc4301ba36aa4fd0622f8b949e7a65d0001578e70",
+      "nonzeros": 108810,
+      "proof_manifest_sha256": "e9f2619089f65a6b3faf559a6d66b6ca760676d7461c7f2b7b480bc48255183a",
+      "row_count": 5580,
+      "selection_uses_point": false,
+      "zero_new_columns": true
+    },
+    "fresh_exact_LP_lower": 11732175.309109941,
+    "fresh_promoted_cut_batches": 2,
+    "incumbent_basis_or_search_state_input": false,
+    "logical_first_start_prefixes": 5616,
+    "lower_scope": "Exact weak-duality certificate for the stored binary64 hard-zero literal LODF model; not an exact physical-DC certificate",
+    "physical_result_sha256": "41c435a1b167579b60da198d8c4d288a9d7ea11f7c53c3d6e0bdfa3e12cb5edc",
+    "post_exit_archive_audit_passed": true,
+    "relative_gap": 0.0003447303120754405,
+    "result_sha256": "2f400633e7d06771fb856c8969bba9ced1327be349969f67902e9df38b290947",
+    "terminal_local_audit_passed": true,
+    "timing_seconds": {
+      "contained_solver_process_total": 97.68588413599355,
+      "first_cold_MIP_process": 13.261265937995631,
+      "physical_check_process_included_in_whole": 156.39907309800037,
+      "post_exit_archive_administration_separate": 136.83591891499964,
+      "seed_process": 84.42461819799792,
+      "whole_compute_validation_local_checkpoint": 328.4079281919985
+    },
+    "two_seed_LP_lowers": [
+      11729989.726960156,
+      11732175.309109941
+    ],
+    "upper": 11736221.140286218,
+    "upper_scope": "Unrounded current-run point checked numerically against original/source, full literal and independent direct-DC constraints",
+    "zero_cost_prefixes_omitted_by_bound_certificate": 36
+  },
+  "case": {
+    "December_opened": false,
+    "classification": "case-exposed validation",
+    "date": "2017-10-01",
+    "hours": 36,
+    "seed": 0,
+    "system": "case1354pegase"
+  },
+  "conventional": {
+    "archive_audit_scope": "Independent content binding of retained bytes to recorded upload/readback evidence; auditor did not repeat remote transfers or optimization",
+    "archives_sha256": {
+      "checkpoint-01": "5c7edff90360306c99c3f99362a83e11b3bb68c6a5cf707dbc14f1325182bcba",
+      "checkpoint-02": "3895d4ef04ced36fe538e1f42be21390b8a240994fe3829ec8ea6e9d5abc0feb",
+      "checkpoint-03": "c5fdf395ee5fae89a83cd1257d3cb5e652354cea2bf9a382d605bd6af3c6bd8e",
+      "terminal": "174abf00ac599895e543e98cf3a1af71ae46ebe06e2fa9a86b421f9207fc537f"
+    },
+    "audit_assertions_passed": 4352,
+    "binding_limit": "contained_solver_process_budget",
+    "checks": {
+      "binary_count": 28080,
+      "conservative_maximum_literal_violation_MW": 72.83990428152744,
+      "current_master_passed": true,
+      "final_source_direct_DC_not_run_reason": "Returned control point failed complete literal feasibility",
+      "fixed_zero_columns_checked": 48780,
+      "fixed_zero_maximum_absolute_value": 0.0,
+      "full_literal_coverage_complete": true,
+      "full_literal_passed": false,
+      "independent_source_or_direct_DC_called": false,
+      "maximum_integrality_residual": 1.000310945187266e-13,
+      "new_pair_indices_zero_based": {
+        "monitored": 1201,
+        "outage": 830
+      },
+      "point_rounded": false,
+      "positive_slack_totals_MWh": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 0.0
+      },
+      "signed_normal_rows": 103104,
+      "signed_security_rows": 132720336,
+      "unsigned_security_pair_hours": 66360168,
+      "worst_hour_zero_based": 34,
+      "worst_line_id": "l1202"
+    },
+    "cold_proof_calls": 1,
+    "completion_sha256": "e3650344209ff94fbb633bc0b602579975f46335a45e14bfe32045c6905c0634",
+    "diagnostics": {
+      "bound_violation_difference": 1.27e-08,
+      "current_master_primal_tolerance": 1e-05,
+      "numerical_thresholds_changed": false,
+      "raw_log_preserved": true,
+      "raw_native_log_sha256": "1f28a4262686683892c6ab9a38eea4d254e052f0bf88a760ebd9222fd328e3af",
+      "unchanged_current_master_row_maximum_residual": 1.2703580409834103e-08,
+      "warning_free_execution_claimed": false
+    },
+    "frozen_source_files_verified": 921,
+    "inherited_candidate_source_files_unchanged": 906,
+    "lower": 11576857.067234231,
+    "master_incumbent_diagnostic_only": 11897581.748871416,
+    "method": "ordinary original-DC proof from empty security cache; no first-start family, projected cuts, seed LPs, carry or historical numerical inputs",
+    "native_reported_seconds_diagnostic_only": 595.35,
+    "native_status": "Time limit reached",
+    "new_security_pairs": 1,
+    "new_security_rows_appended": 72,
+    "no_second_call_reason": "Remaining process budget below the frozen 5-second launch margin",
+    "numerical_MIP_lower": {
+      "domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+      "exact_certificate": false,
+      "printed_raw": 11576857.0674,
+      "rounding_allowance": 0.00016576857067399997,
+      "value": 11576857.067234231
+    },
+    "owner_archive_status": "verified",
+    "owner_receipt_sha256": "fb7beb87bb51aaaafe3af397b739b6202d54bda1ef6e0d315ddd6afcccb6d40c",
+    "point_binary64_sha256": "1c5151fc0b2edc5a738c798299897ebce6c41ac0bc83a916c3836cd5e399938c",
+    "point_check_sha256": "8774e9efcf778fc7bba9fc2c668da3439954e2075686494c04e9877e4e7d37e0",
+    "policy": {
+      "aggregate_actual_process_seconds": 600,
+      "first_full_native_seconds": 595,
+      "first_full_process_seconds": 600,
+      "maximum_MIP_calls": 3,
+      "next_call_requires_new_witnessed_original_rows": true,
+      "same_master_retry": false,
+      "whole_seconds": 1800
+    },
+    "post_exit_archive_audit_passed": true,
+    "printed_master_gap_percent_diagnostic_only": 2.7,
+    "process": {
+      "controller_target_miss_returncode": 2,
+      "hard_watchdog_killed": false,
+      "native_returncode": 0,
+      "owner_error": null,
+      "surviving_descendants_count": 0
+    },
+    "publication_ready": true,
+    "raw_outcome": "actual_or_whole_time_censoring",
+    "relative_gap": null,
+    "result_sha256": "fc9be7a57140fc29d484f9df2dc0afe9393c4f014c05cf2b662ff03731f2ed74",
+    "scientific_target_passed": false,
+    "second_proof_call_launched": false,
+    "source_difference": "Control-only seven-stage disk admission and explicit completed-candidate binding preserve the previously frozen conventional formulation and solve policy. Both arms target the same declared hard-zero problem; their formulations and allocation policies differ.",
+    "status": "audited_terminal_target_miss_archival_verified",
+    "target_passed": false,
+    "terminal_audit_passed": true,
+    "timing_seconds": {
+      "contained_solver_process_remaining": 2.153253078002308,
+      "contained_solver_process_total": 597.8467469219977,
+      "post_exit_archive_administration_separate": 138.50997929400182,
+      "whole_compute_validation_local_checkpoint": 648.9999947089964
+    },
+    "upper": null
+  },
+  "evidence_commitments_sha256": {
+    "candidate_arm_manifest": "ff020a77ab3ecb7fb4fac2e5de4800934fdc341e717923758fe34ef7cb915835",
+    "candidate_cloud_audit_addendum": "0270fdbd74e7c7e420b985970f5cd5b34e2cba7b1d6732cc82ee17229c443b57",
+    "candidate_local_audit": "ccf325412af5fcb64f97b119b03624d6af7216845ae3d63f197c2813545c39f2",
+    "candidate_owner_receipt": "a75cc0dd6ff8ad200b2bfc818b5ac584ab023fffbbd564faa8310ee6c3c06898",
+    "candidate_result": "2f400633e7d06771fb856c8969bba9ced1327be349969f67902e9df38b290947",
+    "candidate_source_manifest": "4e6e20299d36a5104470c530b0ca77135f68bc82296452e168ce5afd6e7f8ee3",
+    "case_binding": "3b8ab9ed85f481c0fc4edaaa80427ecaf2eab6126e49f9cbef4c73c06a57bc72",
+    "control_arm_manifest": "1a729e52f21d9451d94807d74ba13d7fe14d180143649fa79d0c7e7b0f410af4",
+    "control_cloud_audit_addendum": "b6409b252c81ab0d3b8f44a442469e1c765df958b63ddc3eec53bc79ebbc40d1",
+    "control_final_archive_pointer": "dc3d52f1e07fcda9ec058f06f20439524b1868b337bc635834e7b99c5148e182",
+    "control_local_audit": "a0b8f269337366f77c8cf6df9f6d1ed41d7711e31e2d9f6abefe4703c3e4ff25",
+    "control_owner_receipt": "fb7beb87bb51aaaafe3af397b739b6202d54bda1ef6e0d315ddd6afcccb6d40c",
+    "control_result": "fc9be7a57140fc29d484f9df2dc0afe9393c4f014c05cf2b662ff03731f2ed74",
+    "control_source_delta": "1057f4c6ad3ee45a1455e0953c4ce2ded126f5aba59baa16a069e3153cc9eefa",
+    "control_source_manifest": "4d0e0837cfcd735a66707a015606d09bc265bb2bed47c62ee7483662214e28fa",
+    "earlier_interrupted_candidate_result": "5ce7647ae0e5a4f63f433ed21d8ec7a8761697b2997f9c87e48bd61beeaf9c00",
+    "preparation_receipt": "05f4f9d098f65165ef998eed899a5f3545959b41d9cbb7a4b8d27ca15ec6b535",
+    "zero_cost_prefix_certificate": "0e5fa14ccba3ecd588113eb3c90696191d6febbcf39eac95d2fe5cef6714b91d"
+  },
+  "history": [
+    "October was preselected. A generic zero-cost first-start omission amendment was made before optimization.",
+    "An earlier attempt failed its original 120-second remote acknowledgement deadline despite on-time bytes; its failed outcome is retained.",
+    "A saved-point diagnosis exposed the October result before the fresh operational revision. The present case is therefore case-exposed validation, not untouched heldout evidence.",
+    "The fresh revision counts local checkpoint work inside the whole limit and measures remote archival after exit separately.",
+    "December remains unopened. Historical June and other published checkpoint outcomes are preserved."
+  ],
+  "input_identity": {
+    "candidate_current_master_hashes": {
+      "a_index": "c9f8830012021d0697d34fcde1b3d44038c4c5b7345b838c1f1e138986ab0d03",
+      "a_start": "70b0e15c9a94de7ed94491f20e853623208b41f10ec2cc729be692aa4f75f38f",
+      "a_value": "c86211b38b512da7af3556ec8b4981556a8acc42d086cccfe7be34d5ae766234",
+      "col_cost": "6cf8246d8a52018f19eae1df782e9b176304d6db80929ca2cc92432d30ad27d3",
+      "col_lower": "ad6f8ccc7f268f8edd5849d6372293f93e94ebc46c0fbbbe63428db7b532a0c9",
+      "col_names": "6318dc77c2289618dc78252e3eee8b6db78c20af7a3552952fad935145d82456",
+      "col_upper": "afdb964840c79f51e28e560eca68f581c9591311f6c8b11781f5ba3d0480b543",
+      "integrality": "26a3ee6229beb7a5677672528b1ef17a2ddaeae446515fd4044e9f9c2b18395d",
+      "num_col": 141842,
+      "num_nz": 753978,
+      "num_row": 163150,
+      "offset": 0.0,
+      "row_lower": "8a5394dcd272835903e3d241fffad7b4c2152d65021ef2afb34124881cd2bb0d",
+      "row_names": "6e0cef135d53a1676aca6f940a570960bc816e82317677ccf0ed4981839723a3",
+      "row_upper": "0c44bdc3d76976e90abe3260fad4824add0aa4663c6f9979f25b1eef58b4082f",
+      "sense": 1
+    },
+    "case_binding_sha256": "3b8ab9ed85f481c0fc4edaaa80427ecaf2eab6126e49f9cbef4c73c06a57bc72",
+    "historical_numerical_inputs_used": false,
+    "integer_target_identity_sha256": "0d294cb1d037fec151451df273e9a225fd03deec93eaf7a9643139004a8136f4",
+    "model_artifact_sha256": {
+      "expected": "049d092268c84d32f88021db1d6f04e94c4ca2fef538038d8f973cd1f80e4228",
+      "metadata": "d58d5a6237c4576e84dcf62a1f40acfb5bdb867d189f732bbcba5cbf399f3daa",
+      "mps": "7b9f6e8f20d3a3aa8a86e99cb52a2d1a340b4679e6d931b70a1b3c3ecfdc857a",
+      "pairs": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "readback": "47f07ca98e20f3f252f16faa0f11bb823e83305d15dd63407ceeaf1bb7c41fda",
+      "retained_expected": "e1eab14ab3509397b996de52dace291bc027b89531d72bbbea85f22ec9bbb1f8",
+      "retained_mps": "2334a8e58c46601a884e801b86bef60355d22c2b1965d794770c34d2203e4aa7",
+      "retained_readback": "9edf53cea2f96cae455e28ea1df8ef8fb58bd970df1163e9ea70075d4a5405a6",
+      "zero_certificate": "0e5fa14ccba3ecd588113eb3c90696191d6febbcf39eac95d2fe5cef6714b91d"
+    },
+    "network_oracle_identity_sha256": "35a68ae5b5c4480ff45d956a247a25d440dce5ea27760d3929845bd6ebc6a389",
+    "original_model_hashes": {
+      "a_index": "4f8acfc31097abe407a6bc8beb76401e65efbff6885bf316715d5e28590d5f00",
+      "a_start": "b2d7df48182a59abb489e24a6e9f9c6d67e5206c8409e90dd227138ea8a442be",
+      "a_value": "68bc791856481f4c3e4f2a69c4f37d99a7ed52726d9e8be67d5437101c12e814",
+      "col_cost": "eebe649776aa2df55bc30ec3adb23706c0a82e535a4efa0297c3357889dfa7b2",
+      "col_lower": "0abef470a8167015a7626fec62211f2ddde34ad5e050bb16f50d540b29e75d56",
+      "col_names": "28d6aa0760108d05015cc2b97f49ef42f3b5070987e8ff6d54afd8e0739250bc",
+      "col_upper": "e45de45eb333306e08f8270b7fd874bc861b2bdc71c1e5c55425c2b04479af78",
+      "integrality": "8c393160513b22d6fbf4ba5b1e0cbcd7d5fdd8a6fce05d52cccfe3ec1b9f3cec",
+      "num_col": 313776,
+      "num_nz": 1230786,
+      "num_row": 381052,
+      "offset": 0.0,
+      "row_lower": "0bb73cc941916417c87d061795a4c863423ae2f78ba8dc150e0093cc256fde02",
+      "row_names": "229f5b96843becbba31d7b5df0e5e2788514d74fdd7bcf10ce9fe10100fa9a1c",
+      "row_upper": "5834d0bd9b292efc4d3bbfdfb31d528b89d84c68283fd72785c0bc471b1af4ed",
+      "sense": 1
+    },
+    "retained_model_hashes": {
+      "a_index": "d58fb016b5a01f16594ecf564e976d2aae159fccdff55dd588f6bd176ad8a15a",
+      "a_start": "cae7c064379ce384dcd01f4c3dac41760f671363aa85deda7c4da84cfa23f402",
+      "a_value": "384fe72c3fcb59aecac3c28d4c981171ad7d2ac980727b52e060d17999f54c6d",
+      "col_cost": "11e782fdf24dd6790baced941d7ac5995839aeab0dbfa48d58ec32a2e3e25407",
+      "col_lower": "47922c4b8929a4c726ef09783c1615716f1506d4bbd709d559d324ea8c5e985c",
+      "col_names": "ca85d330d28e7d5c78b6fe2681693f6a89fdde15a9c266a36880e1d275f270ba",
+      "col_upper": "db450babab534cc8cb68aecc94ad606bc208fd8000d9ddcc5ee65c595681e61a",
+      "integrality": "a7eb58fb29046bbb39b36834436153f17d04f34d1f43a392c6e9796e7e615b66",
+      "num_col": 141806,
+      "num_nz": 639882,
+      "num_row": 157564,
+      "offset": 0.0,
+      "row_lower": "40b31250f69925d5fe8ed2094985de855f5eeb4d514d0d218190db40631d054e",
+      "row_names": "0064d1138f397fa6da551faf60c914f616f24f7fa37d98aeade77dce8f645041",
+      "row_upper": "19b23ee530c8f842a4302c098bfbf679cf8e59548bb1ec19432f4f056715eb2a",
+      "sense": 1
+    }
+  },
+  "limitations": [
+    "This is a completion contrast on one case-exposed validation sample: the candidate passed, while the conventional returned point failed full literal checking and no full-target upper was admitted. No successful-completion speed ratio is supported.",
+    "This evaluates a network-projection plus complete first-start valid-cut and allocation-policy bundle on an explicit hard-zero subset; it does not isolate a solver-kernel change or single mechanism.",
+    "The exact numerical LODF lower and numerical physical upper have different certification scopes; no exact physical-DC lower bound is established.",
+    "Carry execution and start admission were not exercised because the first MIP point met the target.",
+    "No stable MILP acceleration, repeatability or multi-case performance conclusion is established.",
+    "The current full bundle has no published validated portable entrypoint. The older public source and fixed tiny replay support the earlier aggregate formulation.",
+    "Hashes identify retained evidence; they are not public retrieval links. Full matrices, vectors and current runners are not bundled.",
+    "Existing published correctness advisories and historical negative or interrupted outcomes remain applicable."
+  ],
+  "public_base_commit": "38c9d7ff0260136db4f86542714f5ea4df7c5ad1",
+  "publication_ready": true,
+  "recorded_date_utc": "2026-10-05",
+  "schema": "network-projection-public-october-validation-v1",
+  "sources": {
+    "dataset": {
+      "sha256": "b64be5dcaec762356291b8ee353ee242869e2a8a0c68859aa477a4431dc1d9d6",
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-10-01.json.gz"
+    },
+    "official_solver": {
+      "commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+      "kernel_modified": false,
+      "url": "https://github.com/ERGO-Code/HiGHS/commit/d547a3ad8af5399651187fb0e133cf0e42615b82"
+    },
+    "previous_public_checkpoint_url": "https://github.com/de1tydev/HiGHS/tree/38c9d7ff0260136db4f86542714f5ea4df7c5ad1/research/rins_budget/network_projection"
+  },
+  "status": "audited_case_exposed_completion_contrast",
+  "target": {
+    "hard_zero": {
+      "already_zero_shed_columns": 26388,
+      "changed_shed_upper_bounds": 22356,
+      "exact_changed_upper_bound_records_sha256": "b128858dac4499830b698502f1231ff49ba8ef52b8817b6b9655946ae4915be0",
+      "reserve_inventory_sha256": "ee5934e7520dff03bf027084cab64ce48ca8340e13ed4debe59605c10ae2db45",
+      "reserve_shortfall_already_fixed_zero": true,
+      "reserve_shortfall_columns": 36,
+      "shed_columns": 48744,
+      "shed_inventory_sha256": "06b2c6d9e0e13b927c3ef3df8893397b8de35fcfb726797fcfd35080e2c3b83c"
+    },
+    "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+    "original_binary_count": 28080,
+    "original_soft_optimum_lower_bound_claimed": false,
+    "physical_dc_lower_bound_certified": false,
+    "positive_slack_sum_MWh_limit_per_category": 1e-05,
+    "relative_gap_target": 0.01,
+    "scope": {
+      "allowed_pairs_per_hour": 1843338,
+      "buses": 1354,
+      "distinct_listed_single_line_outages": 1288,
+      "finite_rated_lines": 1432,
+      "generators": 260,
+      "hours": 36,
+      "lines": 1991,
+      "rated_outage_intersection": 1078,
+      "signed_normal_rows": 103104,
+      "signed_security_rows": 132720336,
+      "signed_soft_rows": 132823440,
+      "unsigned_security_pair_hours": 66360168,
+      "virtual_full_rows": 133101388
+    }
+  },
+  "timing_protocol": {
+    "contained_solver_process_cap_seconds": 600,
+    "old_and_new_timing_records_combined": false,
+    "post_exit_administration_measurement_endpoint": "Recorded elapsed time before final archive-pointer fsync",
+    "post_exit_archive_administration_counted_separately": true,
+    "preparation_outside_both_arm_clocks": {
+      "candidate_rebuilds_fresh_projection_in_timed_run": true,
+      "candidate_specific_api_readback_seconds": 2.5619384229976276,
+      "candidate_specific_projection_serialization_seconds": 7.830856825999945,
+      "common_original_api_readback_seconds": 5.76205081399894,
+      "common_original_generation_seconds": 26.21596623000005,
+      "components_are_not_an_exhaustive_sum": true,
+      "optimization_or_presolve_called": false,
+      "retained_prevalidation_artifacts_not_timed_solver_inputs": true,
+      "total_process_seconds": 52.06711011600055
+    },
+    "same_revised_boundary_for_both_arms": true,
+    "speed_ratio": null,
+    "whole_boundary": "Immediately before process launch through exact reap, including input loading, transformation, checks, local checkpoint writes, synchronization, shutdown and cleanup",
+    "whole_compute_validation_local_checkpoint_cap_seconds": 1800
+  }
+}

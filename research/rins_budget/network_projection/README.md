@@ -4,6 +4,15 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The [October1354 case-exposed validation](SCUC_OCTOBER_RESULTS.md) records a
+fresh candidate pass: 0.0344730312% interval from a fresh exact projected-LP
+lower, with all original/source and listed-outage direct-DC checks passed.
+The conventional run admitted no full-target upper in its budget; terminal
+and archive evidence audits passed while the scientific target remained unmet.
+The revised whole-run boundary includes local checkpoints, with post-exit
+archive administration measured separately. This is a completion contrast,
+with no speed ratio, untouched heldout status or current portable-replay claim.
+
 The [conventional June1354 comparison](SCUC_REFERENCE_RESULTS.md) records a
 completion contrast on that same exposed case: the projected candidate passed,
 while ordinary proof returned no full-target feasible upper within the
