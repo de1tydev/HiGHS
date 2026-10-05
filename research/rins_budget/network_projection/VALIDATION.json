@@ -1,0 +1,117 @@
+{
+  "artifact_sha256": {
+    "outer_receipt": "2969678ca1807294874a067b4b2fbb65d82106d70f76be6ceb85959f35f40a2b",
+    "sanitized_terminal_summary": "3c8c3f87bdb01996286750d44c36189f5ab2aa5ea0dd056c4ed7272a8c04ba1c",
+    "source_review": "7e31e47172ae5ea7a9d76a5aab9ce1d65cf3b43627990e8f41f0f8d2df680968",
+    "terminal_audit": "979ef3a23a5e5d8cfc081c6635653ebaf9a763c3a2bc07b1b51cbeb67f755151",
+    "tiny_result": "4c82a38c1bf139d228bac49941e1cc718f847af502b07d4c6c88a75ef75b87f9"
+  },
+  "audit": {
+    "independent_tree_cut_max_post_slack_violation_MW": 0.0,
+    "independent_tree_cut_pair_hours": 8,
+    "limits": "Retained certificate rational components/current-model receipt identities and stored primal arrays were checked; full exact matrix contraction was not recomputed because raw dual vectors are not bundled. No optimization, model generation, factorization or rerun occurred.",
+    "passed": true,
+    "stored_lifts_independently_rechecked": 6
+  },
+  "checks": {
+    "all_native_input_readbacks_passed": true,
+    "arithmetic_tests_passed": 28,
+    "controller_regression_passed": true,
+    "definition_only_preflight_passed": true,
+    "proof_and_stored_lift_checks_passed": true,
+    "retained_mathematical_definitions_ast_equal": 96
+  },
+  "code_unchanged_after_test": true,
+  "containment": {
+    "address_space_limit_bytes": 7516192768,
+    "hard_watchdog_killed": false,
+    "health_check_error": null,
+    "internal_seconds_before_final_serialization": 1.708296798999072,
+    "outer_launch_through_reap_seconds": 1.7698455389909213,
+    "outer_wall_limit_seconds": 180.0,
+    "peak_sampled_tree_rss_bytes": 67055616,
+    "returncode": 0,
+    "sampled_tree_rss_limit_bytes": 6442450944,
+    "surviving_descendants": []
+  },
+  "continuous": {
+    "continuation_lp_calls": 2,
+    "explicit_full_reference_lp_calls": 1,
+    "integer_seed_unchanged": true,
+    "lower": 1540.499999999997,
+    "passed": true,
+    "projected_lp_calls": 4,
+    "projected_row_additions": 3,
+    "reference_objective": 1540.5000000000005,
+    "seed_lp_calls": 2,
+    "upper": 1540.5000000000366
+  },
+  "full_36_hour_portable_replay_validated": false,
+  "integer": {
+    "adapter": "Fresh public C API; does not exercise the recorded 36-hour CLI TimeLimit parser",
+    "cold_projected_mip_calls": 2,
+    "explicit_full_reference_mip_calls": 1,
+    "final_interval": {
+      "gap": 2.6272323420249478e-14,
+      "lower": 1540.499999999997,
+      "upper": 1540.5000000000375
+    },
+    "first_interval": {
+      "gap": 0.38796782453509565,
+      "lower": 1478.9374999999957,
+      "upper": 2416.437500000034
+    },
+    "original_binary_count": 12,
+    "passed": true,
+    "reference_objective": 1540.5000000000005,
+    "second_master_changed": true,
+    "seed_batches": 2
+  },
+  "native_tiny_passed": true,
+  "performance_sample": false,
+  "physical": {
+    "hours": 2,
+    "listed_outages_checked": 3,
+    "max_post_slack_security_violation_MW": 0,
+    "maximum_shared_overflow_MW": 2.2204460492503135e-15,
+    "passed": true,
+    "scope": "Numerical soft-constraint fixture feasibility; not a zero-shedding operating point",
+    "signed_normal_rows": 8,
+    "signed_security_rows": 16,
+    "synthetic_load_shedding_MWh": 1.4999999999999971,
+    "unsigned_pair_hours": 8
+  },
+  "physical_dc_lower_bound_certified": false,
+  "pre_run_corrections": [
+    {
+      "first_native_or_model_execution_occurred": false,
+      "reason": "Static review found missing hashlib import in extracted integer_bridge.object_hash; added before any numerical run",
+      "superseded_manifest_sha256": "2b38634ad68a8f4d36a50d230d0c75a0948c0edec0ec9a0fa400d0a05971b526"
+    },
+    {
+      "first_native_or_model_execution_occurred": false,
+      "reason": "Known fixed-fixture seed bounds do not imply closure; added separate bounded continuous continuation and isolated exactly-two-batch integer seed, plus unique per-lineage cut indices",
+      "superseded_manifest_sha256": "346dad89013adaba5b30ae35d80f193ae9f58fcba062a66f7ddfbaeb3211fdf8"
+    }
+  ],
+  "publication_changes": "Validation/status prose only; current MANIFEST.json identifies the published package",
+  "runtime": {
+    "loaded_library_sha256": {
+      "libhighs.so.1.15.1": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3",
+      "libhighs_extras.so": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+    },
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "scipy": "1.17.0",
+    "source": {
+      "base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+      "exact_tree_verified": true,
+      "inventory_sha256": "efe7df3ad01442deb3be411ea903d24b073db219f62b9d6abe15981e1a0a7cc5",
+      "source_files": 1006
+    },
+    "threadpoolctl": "3.6.0"
+  },
+  "schema": "network-projection-public-validation-v2",
+  "status": "native_fixed_tiny_passed",
+  "tested_package_manifest_sha256": "cd388d9b22352ea19fbe93833013b3c4ac2b14b63ea628411a64e947b6512c82"
+}

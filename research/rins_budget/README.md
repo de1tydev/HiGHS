@@ -1,5 +1,15 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Network-projection checkpoint — 2026-10-05:** The June PEGASE1354
+continuous relaxation covering all source-listed outages closed to $0.006292
+in 59.249878 charged seconds, but retained 601 fractional binary values.
+A fresh integer candidate produced a physically checked witness with zero
+shedding/reserve shortfall and negligible overflow. It used 541.000663 charged
+solver-process seconds and 978.461844 whole-invocation seconds; its 2.9323%
+numerical gap missed the 1% target. No acceleration ratio or held-out release
+follows. See the [audited results and preserved failures](network_projection/RESULTS.md)
+and [core source with validated fixed synthetic replay](network_projection/README.md).
+
 **Pristine-reference revalidation — 2026-10-03:** A fresh matched study on
 pinned official development commit `d547a3ad` passed all nine fixed pairs,
 with median reductions of **63.85% solver time and 54.03% full-arm time**.

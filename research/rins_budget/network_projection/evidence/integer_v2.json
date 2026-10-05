@@ -1,0 +1,203 @@
+{
+  "base_solver_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "binary_check": {
+    "all_original_types_and_bounds_verified": true,
+    "authority_sha256": "953789350e2fd684d0962e13b2c0f1711c643abaf713dc20d5c299018e9053ec",
+    "count": 28080,
+    "counts_by_kind": {
+      "u": 9360,
+      "y": 9360,
+      "z": 9360
+    },
+    "fixed_binaries_included": true,
+    "maximum_residual": 1e-13,
+    "passed": true,
+    "rounding_performed": false,
+    "tolerance": 1e-06
+  },
+  "both_direct_physical_checkers_passed": true,
+  "candidate_gate_passed": false,
+  "cleanup_verified": true,
+  "comparison_or_holdout_run": false,
+  "cut_batches": 4,
+  "cut_nnz": 68784,
+  "final_slack_metrics": {
+    "load_shedding": {
+      "cost": 0.0,
+      "max_MW": 0.0,
+      "sum_MWh": 0.0
+    },
+    "reserve_shortfall": {
+      "cost": 0.0,
+      "max_MW": 0.0,
+      "sum_MWh": 0.0
+    },
+    "shared_overflow": {
+      "cost": 0.005109874336994836,
+      "max_MW": 9.78748175839428e-08,
+      "sum_MWh": 1.0219748673989672e-06
+    }
+  },
+  "final_upper_admitted": true,
+  "hours": 36,
+  "independent_advancement": {
+    "guard_sha256": "12beb88a0c8edcbdd6373b8b3fe8ad8ad90b26c242e9caca149f4b746c19d5c0",
+    "material_categories": [],
+    "original_witness_sha256": "9bce1888baba348bc14673e4304ee5db97e109a7b2c2bdf0ae7cc7ce90307f8e",
+    "passed": false,
+    "positive_slack_sum_MWh_ceiling_each": 1e-05,
+    "positive_slack_sums_MWh": {
+      "load_shedding": 0.0,
+      "reserve_shortfall": 0.0,
+      "shared_overflow": 1.0219748673989672e-06
+    },
+    "reason": "Source-model interval/terminal admission incomplete",
+    "source_soft_model_completed": false
+  },
+  "independent_audit_sha256": "045fa837974262f362ac889e791a797d4a719a2c71c2036b9c9d97166352b311",
+  "interval": {
+    "gap": 0.029322665529744735,
+    "lower": 13480331.407815196,
+    "lower_domain": "source_literal_lodf_integer",
+    "passed": true,
+    "physical_dc_lower_bound_certified": false,
+    "qualified": false,
+    "target": 0.01,
+    "upper": 13887551.433527654
+  },
+  "listed_outages": 1288,
+  "masters": [
+    {
+      "call": 1,
+      "native_request_seconds": 120.0,
+      "process_seconds": 121.19626186799724,
+      "provisional_interval": {
+        "gap": 0.03680075347347014,
+        "lower": 13476683.259515233,
+        "lower_domain": "source_literal_lodf_integer",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": false,
+        "target": 0.01,
+        "upper": 13991584.096555913
+      },
+      "source_components": {
+        "available": true,
+        "source_reserve_shortfall_cost_sum": 0.0,
+        "source_reserve_shortfall_mw_sum": 0.0,
+        "source_shared_overflow_cost_sum": 97936.66117840532,
+        "source_shared_overflow_mw_sum": 19.587332235681064,
+        "source_shedding_cost_sum": 0.0,
+        "source_shedding_mw_sum": 0.0
+      },
+      "status": "Time limit reached",
+      "time_limit_compatibility": [
+        "callSolveMip return of HighsStatus::Warning"
+      ]
+    },
+    {
+      "call": 2,
+      "native_request_seconds": 120.0,
+      "process_seconds": 121.25600079599826,
+      "provisional_interval": {
+        "gap": 0.0933273628531489,
+        "lower": 13476683.259515233,
+        "lower_domain": "source_literal_lodf_integer",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": false,
+        "target": 0.01,
+        "upper": 14863891.009134375
+      },
+      "source_components": {
+        "available": true,
+        "source_reserve_shortfall_cost_sum": 0.0,
+        "source_reserve_shortfall_mw_sum": 0.0,
+        "source_shared_overflow_cost_sum": 934537.7597021583,
+        "source_shared_overflow_mw_sum": 186.90755194043166,
+        "source_shedding_cost_sum": 0.0,
+        "source_shedding_mw_sum": 0.0
+      },
+      "status": "Time limit reached",
+      "time_limit_compatibility": [
+        "callSolveMip return of HighsStatus::Warning"
+      ]
+    },
+    {
+      "call": 3,
+      "native_request_seconds": 239.38057096599368,
+      "process_seconds": 240.38123406100203,
+      "provisional_interval": {
+        "gap": 0.02932266552974096,
+        "lower": 13480331.407815196,
+        "lower_domain": "source_literal_lodf_integer",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": false,
+        "target": 0.01,
+        "upper": 13887551.4335276
+      },
+      "source_components": {
+        "available": true,
+        "source_reserve_shortfall_cost_sum": 0.0,
+        "source_reserve_shortfall_mw_sum": 0.0,
+        "source_shared_overflow_cost_sum": 0.005109874336994836,
+        "source_shared_overflow_mw_sum": 1.0219748673989672e-06,
+        "source_shedding_cost_sum": 0.0,
+        "source_shedding_mw_sum": 0.0
+      },
+      "status": "Time limit reached",
+      "time_limit_compatibility": [
+        "callSolveMip return of HighsStatus::Warning"
+      ]
+    }
+  ],
+  "numerical_quality_failed": false,
+  "one_percent_target_met": false,
+  "outcome": "checked_open_interval",
+  "outer_whole_seconds": 978.4618443839863,
+  "peak_sampled_tree_rss_bytes": 2548023296,
+  "phase_before_final_serialization_seconds": 974.7526657260023,
+  "physical_dc_lower_bound_certified": false,
+  "record_type": "sanitized_recorded_summary",
+  "schema": "integer-network-projection-terminal-summary-v2",
+  "solver_ledger": {
+    "calls": [
+      {
+        "actual": 58.16716637001082,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "stage": "seed",
+        "within_allocation": true
+      },
+      {
+        "actual": 121.19626186799724,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "stage": "mip",
+        "within_allocation": true
+      },
+      {
+        "actual": 121.25600079599826,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "stage": "mip",
+        "within_allocation": true
+      },
+      {
+        "actual": 240.38123406100203,
+        "allocation": 299.3805709659937,
+        "overrun": 0.0,
+        "stage": "mip",
+        "within_allocation": true
+      }
+    ],
+    "ceiling_seconds": 600.0,
+    "in_budget": true,
+    "remaining": 58.99933690499165,
+    "solver_process_wall_seconds": 541.0006630950083
+  },
+  "source_manifest_sha256": "6b58332c46e6ae0b08741254d6ca0685d3f2c1f1989bc43c9c5498fd640da6c5",
+  "total_source_lines": 1991,
+  "unsigned_security_pair_hours": 66360168
+}

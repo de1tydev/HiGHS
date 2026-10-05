@@ -1,0 +1,45 @@
+{
+  "all_original_binaries": 28080,
+  "audit_seconds": 4.054043091004132,
+  "binary_maximum_residual": 1.999511667349907e-13,
+  "checked_outages": 1288,
+  "checked_pair_hours": 66360168,
+  "diagnostic_only": true,
+  "gap_computed": false,
+  "objective_overpayment": 8.568167686462402e-08,
+  "original_linear_cost": 13991584.09655599,
+  "outer_receipt_sha256": "0b6f9d756d872615355d0b5881c5241e6c6e407f5039c3656591a198b5515a6e",
+  "outer_wall_seconds": 189.59601849400497,
+  "parsed_retained_values_bit_identity": true,
+  "passed": true,
+  "phase_rescored": false,
+  "physical_dc_lower_bound_certified": false,
+  "physical_process_wall_seconds": 155.6238658420043,
+  "record_type": "sanitized_recorded_summary",
+  "result_sha256": "cc39dba4af86947b5b07e689f1633be3a909551ff192a766f1f76bd5e79753f8",
+  "saved_master_objective": 13893647.435377507,
+  "schema": "integer-network-saved-point-diagnostic-terminal-audit-v1",
+  "slack_metrics": {
+    "load_shedding": {
+      "cost": 0.0,
+      "max_MW": 0.0,
+      "sum_MWh": 0.0
+    },
+    "reserve_shortfall": {
+      "cost": 0.0,
+      "max_MW": 0.0,
+      "sum_MWh": 0.0
+    },
+    "shared_overflow": {
+      "cost": 97936.66117840532,
+      "max_MW": 19.587331033294507,
+      "sum_MWh": 19.587332235681064
+    }
+  },
+  "source_checker_mode": "n1",
+  "true_source_cost": 13991584.096555904,
+  "unchanged_original_phase_result_sha256": "226d27769fd9a514a332d27fcc85648ecb1e7dcc326ac5f4561a60590bdf4bcb",
+  "unrelaxed_normal_overload_MW": 0.0,
+  "unrelaxed_security_overload_MW": 19.587331030480527,
+  "worst_post_slack_physical_violation_MW": 0.0
+}

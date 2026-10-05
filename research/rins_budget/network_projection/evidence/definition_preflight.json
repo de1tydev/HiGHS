@@ -1,0 +1,27 @@
+{
+  "extras_library_sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+  "factors_constructed": 0,
+  "functions_global_resolution_checked": 158,
+  "kind": "definition_only_complete_runtime_preflight",
+  "loaded_modules": 21,
+  "main_library_sha256": "a3bbbf553c3590769eb289d56e82b8cad8bb2b84aa8f7f6aabfa7eecb9c7ffa3",
+  "metadata_serializer_empty_object_passed": true,
+  "models_generated": 0,
+  "native_calls": 0,
+  "passed": true,
+  "seconds": 0.5401298369979486,
+  "solves": 0,
+  "source_inventory": {
+    "base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "exact_tree_verified": true,
+    "inventory_sha256": "efe7df3ad01442deb3be411ea903d24b073db219f62b9d6abe15981e1a0a7cc5",
+    "source_files": 1006
+  },
+  "unresolved_globals": [],
+  "versions": {
+    "numpy": "2.3.5",
+    "python": "3.12.14",
+    "scipy": "1.17.0",
+    "threadpoolctl": "3.6.0"
+  }
+}

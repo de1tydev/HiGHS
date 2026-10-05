@@ -1,0 +1,258 @@
+{
+  "base_solver_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "continuous_source_manifest_sha256": "0635a57a4abdf233f50ff3708d68b68b8378dfa2991fa93de7c5be1f009ab45a",
+  "files": [
+    {
+      "adaptation": "Byte-identical source",
+      "original_source_sha256": "04b48cc9090b2f71c5d6c506032b663c3d34ac8ee73d1227ab327fb1a03dc8f5",
+      "public_path": "src/network-projection-lp-core-v1/model.py",
+      "public_sha256": "04b48cc9090b2f71c5d6c506032b663c3d34ac8ee73d1227ab327fb1a03dc8f5"
+    },
+    {
+      "adaptation": "Byte-identical source",
+      "original_source_sha256": "dfae12af398a4165dfadce87e49a9e8e0e347b4b2589d4823dec336f51c802ca",
+      "public_path": "src/network-projection-lp-core-v1/projection.py",
+      "public_sha256": "dfae12af398a4165dfadce87e49a9e8e0e347b4b2589d4823dec336f51c802ca"
+    },
+    {
+      "adaptation": "Byte-identical source",
+      "original_source_sha256": "604ffd775e44a5f6c611579291465f07f2f86d81e3d08e423e4a2e7dfee27293",
+      "public_path": "src/network-projection-lp-core-v1/qa.py",
+      "public_sha256": "604ffd775e44a5f6c611579291465f07f2f86d81e3d08e423e4a2e7dfee27293"
+    },
+    {
+      "adaptation": "Byte-identical source",
+      "original_source_sha256": "d1a158c3034a5fc5a9d4551328548c0a63759e10f55d4a7604be3a88216aac52",
+      "public_path": "src/network-projection-certified-lower-v2/certified_lower.py",
+      "public_sha256": "d1a158c3034a5fc5a9d4551328548c0a63759e10f55d4a7604be3a88216aac52"
+    },
+    {
+      "adaptation": "Removed historical input pins and unused historical command-line runner; retained oracle arithmetic",
+      "original_source_sha256": "dba075d270bb7dcb8b757828df6f0693c9b788e63d2400597bc0ffcf134ec3c5",
+      "public_path": "src/network-value-oracle-v2/oracle.py",
+      "public_sha256": "bd7027c995cea91ef7c87c027c739faa92174193721215304bf0e670c4050772"
+    },
+    {
+      "adaptation": "Updated dependency hash for extracted oracle; documentation only otherwise",
+      "original_source_sha256": "07d1618f849f3e44e58ecd1ccd1363b671c5ecd81163dea3b27046db976d5f2d",
+      "public_path": "src/network-projection-scope-oracle-v1/oracle.py",
+      "public_sha256": "fa7d1467f93e8e4c1d9244032001145a08338f9a9fc2ea548ccff511115d7ce1"
+    },
+    {
+      "adaptation": "Documentation-only edit",
+      "original_source_sha256": "9e8c7fa7dcc645f5cadfd37920e0c22a3e5a1d0d1746e448c083192cf0da22df",
+      "public_path": "src/network-projection-full-oracle-v1/full_projection.py",
+      "public_sha256": "7c845ba4168f0eab286a0428de0ef3b3c5f5e99f5589a7f1ca54abc9b971d8f2"
+    },
+    {
+      "adaptation": "Updated dependency hash and documentation; retained oracle arithmetic",
+      "original_source_sha256": "44fa7457c26dd8a932ff314737796e3dea2ac3cbb95079f95cfef65036fcc54e",
+      "public_path": "src/network-projection-full-oracle-v1/oracle.py",
+      "public_sha256": "dc4db23a579f79822f2b0015a170fee74656d8bd423fc016bdee2ac0d7fd8589"
+    },
+    {
+      "adaptation": "Explicit verified local source/DSO/helper binding replaces historical machine paths and binary hash; numerical/native API methods retained",
+      "original_source_sha256": "aa4bdf122b6e83e28746f9a52a9d50fc590b45322d017ba62669d2921bb8a2e4",
+      "public_path": "src/network-projection-lp-core-v1/capi.py",
+      "public_sha256": "f5352273f329a83027af685668b47fda881f92dece7b8392e580da2835d1422b"
+    },
+    {
+      "adaptation": "Extracted unchanged source-authority/restoration/value-check functions; public model and QA imports replace historical loader",
+      "original_source_sha256": "e7c7e57d7b5a04bd40195350325185cfa9faaf9d974609cba57a85a3707060f4",
+      "public_path": "src/integer_bridge.py",
+      "public_sha256": "a19fd24e4f483105b504ffecebabf5ea4eec9d1a54539d95259294931d6c4af4"
+    },
+    {
+      "adaptation": "Extracted unchanged admission/cut mapping functions; campaign driver omitted",
+      "original_source_sha256": "b723c8a273dc393a5e0cf0b7c62fb3b3c71ccde2891d821d95261611842c1e11",
+      "public_path": "src/gates.py",
+      "public_sha256": "25575a0a477cd8858e713cc2eb2f313c0c2f57525cce82abd6a51695ec2b056f"
+    },
+    {
+      "adaptation": "Extracted unchanged synthetic source fixture and explicit pair set",
+      "original_source_sha256": "a67316f51aacabc3a5de5c90cd78c7145bf4bf45958198d082bc28f17910f1d6",
+      "public_path": "src/fixture.py",
+      "public_sha256": "942afd695cfea5bade46a7e58b7f2775f42a8dc289fec106d361e8d303741385"
+    }
+  ],
+  "integer_source_manifest_sha256": "6b58332c46e6ae0b08741254d6ca0685d3f2c1f1989bc43c9c5498fd640da6c5",
+  "new_tiny_adapter": "replay_tiny.py and src/tiny_mip.py are new code and require separate bounded integration validation",
+  "retained_function_ast_comparison": [
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-lp-core-v1/model.py",
+      "unchanged_definitions": [
+        "require",
+        "sha256",
+        "digest",
+        "validate_model",
+        "load_expected",
+        "matrix",
+        "model_hashes",
+        "compare_models",
+        "append_rows"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-lp-core-v1/projection.py",
+      "unchanged_definitions": [
+        "exact",
+        "up",
+        "rat",
+        "at",
+        "transform_expected",
+        "restore_retained"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-lp-core-v1/qa.py",
+      "unchanged_definitions": [
+        "_maximum",
+        "check_primal",
+        "check_solution"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-certified-lower-v2/certified_lower.py",
+      "unchanged_definitions": [
+        "CertificateError",
+        "_rat",
+        "_enclosure",
+        "_require",
+        "_validate",
+        "_array_hash",
+        "_model_hashes",
+        "_bound_counts",
+        "certify"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-value-oracle-v2/oracle.py",
+      "unchanged_definitions": [
+        "require",
+        "exact",
+        "up",
+        "down",
+        "rat",
+        "sha",
+        "check_finite_source",
+        "source_names",
+        "geometry",
+        "balanced_probe",
+        "certificate_bound",
+        "incidence_transpose",
+        "forward_certificate",
+        "row_scan",
+        "selected_terms",
+        "retained_network_rows",
+        "verify_retained_rows",
+        "validate_multipliers",
+        "cut_certificate"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-scope-oracle-v1/oracle.py",
+      "unchanged_definitions": [
+        "_digest",
+        "_readonly",
+        "_at",
+        "validate_pairs",
+        "row_scan",
+        "selected_terms",
+        "_row_signature",
+        "verify_scope_rows",
+        "_exact_overflow",
+        "PreparedOracle",
+        "prepare"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-full-oracle-v1/full_projection.py",
+      "unchanged_definitions": [
+        "require",
+        "deadline_check",
+        "exact",
+        "up",
+        "rat",
+        "_json_hash",
+        "_array_hash",
+        "_at",
+        "source_scope_arrays",
+        "coverage_records",
+        "build_full_scope",
+        "verify_full_scope",
+        "full_eta_caps",
+        "_core",
+        "transform_expected",
+        "restore_retained"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/network-projection-full-oracle-v1/oracle.py",
+      "unchanged_definitions": [
+        "_load",
+        "PreparedOracle",
+        "prepare"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [
+        "helpers"
+      ],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/integer_bridge.py",
+      "unchanged_definitions": [
+        "require",
+        "json_value",
+        "object_hash",
+        "source_binary_authority",
+        "_indices",
+        "_same",
+        "restore_integrality",
+        "_check_values",
+        "check_integer_values"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/gates.py",
+      "unchanged_definitions": [
+        "require",
+        "finite",
+        "mapped_cuts",
+        "verify_retained",
+        "certificate_gate",
+        "valid_full_scope",
+        "full_lift_gate",
+        "projected_quality_gate",
+        "exact_enclosure",
+        "lower_certificate_gate"
+      ]
+    },
+    {
+      "adapted_loader_definitions": [],
+      "changed_mathematical_definitions": [],
+      "public_path": "src/fixture.py",
+      "unchanged_definitions": [
+        "fixture"
+      ]
+    }
+  ],
+  "schema": "network-projection-public-source-lineage-v1"
+}

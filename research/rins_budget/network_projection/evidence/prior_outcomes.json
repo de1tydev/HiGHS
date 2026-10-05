@@ -1,0 +1,39 @@
+{
+  "continuous_v1": {
+    "calls": 2,
+    "charged_seconds": 26.805964,
+    "cut_batches": 1,
+    "no_accepted_final_lower": true,
+    "no_control": true,
+    "outcome": "rejected_stationarity_gate",
+    "source_report_sha256": "52dbb3e17d87322f15db131ed024a3aa96ceff472d7aff7c4f47eab481543fc1",
+    "stationarity_residual": 7.247591446457591e-05,
+    "threshold": 1e-05,
+    "whole_seconds": 38.15826
+  },
+  "continuous_v2": {
+    "candidate_charged_seconds": 38.586295,
+    "candidate_gap": 0.006291657686,
+    "candidate_lower": 13474893.024853207,
+    "candidate_upper": 13474893.031144865,
+    "control_charged_seconds": 58.71077,
+    "control_stationarity_residual": 0.0011857424287882168,
+    "control_threshold": 1e-05,
+    "paired_phase_passed": false,
+    "scope": "normal rows plus exactly two literal LODF pairs",
+    "source_report_sha256": "8594174ee5e7c12b284311a905ce6fe6cf2e9042d994add4b571c332d6871622",
+    "speed_ratio_claimed": false
+  },
+  "integer_v1": {
+    "charged_process_seconds": 183.116893051,
+    "mip_calls": 1,
+    "mip_process_seconds": 121.233323835,
+    "original_upper_admitted": false,
+    "outcome": "parser_rejected_TimeLimit_return_warning",
+    "phase_rescored": false,
+    "seed_process_seconds": 61.883569216,
+    "source_report_sha256": "a804807f1c3c11ac160441070ef8d1477530c8618a7cb68140512c7295765937",
+    "whole_seconds": 262.268134284
+  },
+  "record_type": "transcribed_recorded_milestones"
+}
