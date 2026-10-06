@@ -1,0 +1,26 @@
+{
+  "advancement_threshold_met": false,
+  "default_pipeline_changed": false,
+  "files": {
+    "README.md": {
+      "bytes": 4782,
+      "sha256": "6dbab594a1d1b729ba235a665203a0082946b2c2364b98b9188f37132ddfbf90"
+    },
+    "RESULTS.public.json": {
+      "bytes": 8211,
+      "sha256": "6c5737249a300c105729641df3a74d65dc3a84026d17b42e249a1ecf94f1d53b"
+    },
+    "SOURCE_DELTA.patch": {
+      "bytes": 3534,
+      "sha256": "bd4552ebc2ddee2b1404919021318fbe6752c20e506dcd726c743b18256a803e"
+    }
+  },
+  "manifest_self_excluded": true,
+  "original_patch_matches_verified_frozen_A_B": true,
+  "publication_validation": "Static hash/source-diff equality, recorded JSON evidence and private-path screening only",
+  "reference_candidate_runtime_unchanged": true,
+  "remote_write_performed": false,
+  "repository_directory": "research/rins_budget/serial_rating_preparation_20261006",
+  "schema": "serial-rating-preparation-publication-manifest/v1",
+  "scientific_parity_passed": true
+}

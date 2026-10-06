@@ -1,0 +1,185 @@
+{
+  "advancement_threshold_met": false,
+  "all_actual_checker_paths_sequential": true,
+  "all_exact_reaps_verified": true,
+  "all_native_pools_one": true,
+  "all_remaining_owned_process_lists_empty": true,
+  "artifact_bytes_equal": {
+    "direct-witnesses/spill.sqlite3": {
+      "bytes": 8192,
+      "sha256": "6b0772b1520b26d29fd53b23cb7598e2317a24c24c1ab78195ad3f27393f9b33"
+    },
+    "direct-witnesses/violated_pairs.bin": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "direct-witnesses/witnesses.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mapping-pairs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "original.sol": {
+      "bytes": 14180934,
+      "sha256": "b764d988ea955e416c013deb239cb77b950b76dffeeb2e4669e7db0c1124088e"
+    }
+  },
+  "authenticated_direct_separator_sha256_by_arm": {
+    "A": "2f458f8fce43a4f3fb6ef0a1c5bb651a9752278184576c6041fa00c9c9953891",
+    "B": "75411eb51199acc79bfc647e283dd2058e17b0877e85d7df13476f28727910ab"
+  },
+  "caps_seconds": {
+    "full": 660.0,
+    "full_arm": 300.0,
+    "qualification": 300.0,
+    "subset_arm": 90.0,
+    "tiny": 60.0
+  },
+  "checked_upper": 11738459.752050288,
+  "coverage": {
+    "all_source_residual_categories_equal": true,
+    "base_residual_categories": 7,
+    "dense_array_parity_claimed": false,
+    "eligible_pair_hours": 66360168,
+    "hours": 36,
+    "ordered_outage_residual_records": 1288,
+    "outages": 1288,
+    "topologies_per_checker": 1289,
+    "violated_line_hours": 0,
+    "violated_pairs": 0
+  },
+  "cpu_accounting": {
+    "A_single_wait4_subtree_seconds": 169.074605,
+    "A_wait4_pid": 7,
+    "B_single_wait4_subtree_seconds": 144.60145599999998,
+    "B_wait4_pid": 9,
+    "basis": "Fresh WaitObserver per arm with exactly one wait4 record; total is only that PID subtree user+system. Both physical paths are original sequential workers.",
+    "no_A_carryover": true,
+    "no_child_or_phase_double_addition": true
+  },
+  "disposition": "Stop further checker optimization and whole-CLI work. Retain this one checker-stage observation; no post-hoc promotion, rerun, sweep or production integration.",
+  "evidence_sha256": {
+    "candidate_source_manifest": "533c329d9bfda808fc97b7009713550020f30b71c272ac706b251741e7ac2c1b",
+    "full_outer_receipt": "491967d6abdd0e65c7c43bdc5bf7284e4c9795255700aae70bc8e29fba38d27d",
+    "full_owner_result": "219833133ffae9d05987da2aaa6217248605e9ffd728fdbebd495c892508ddd7",
+    "full_phase_result": "302b66b19d4e276aa4b7f72543434dcba1af688f29eb38338156ab3ade327dfd",
+    "full_review": "9c3ba2dd4f83af6df2bab889decee3bebb2b82267763ce9b5feaf5e3826943b6",
+    "proposal": "74c687eeb9c447f81d76465c13b00dd8e0334e040b3835bcd915d6d92836988b",
+    "qualification_review": "cfc81167a5b42b28f5dd90d6fed626032c1d5b3525a83f69e9ec3a74e8cd2971",
+    "reference_source_manifest": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+    "source_delta": "bd4552ebc2ddee2b1404919021318fbe6752c20e506dcd726c743b18256a803e",
+    "source_freeze": "4835df0f8794b836ef580967ffa3054b7b40345fae2a2399168efc783d11a9cf",
+    "source_review": "4f140d1c3f123f138b031c0538e4461bd75a7b043be0c8876804c66a141bd612",
+    "unchanged_sequential_physical": "029cfece11b982c9b8ec5126ce6b63888ce6638514c871b1046ad3b9d2fd6ce4",
+    "unchanged_source_checker": "4ec9e509c1db0129a9dcf69acc0ee719800dc6e2977a54e4e30ab922e3d97084"
+  },
+  "exact_binary64_float_fields_compared": 2673,
+  "exact_json_path_exceptions": [
+    "$.direct_separator_seconds",
+    "$.independent_source_checker_seconds",
+    "$.physical_worker_seconds",
+    "$.separation.per_pair_worst.path",
+    "$.separation.violated_pairs.path",
+    "$.direct_separator_sha256"
+  ],
+  "measurement": {
+    "A_contained_process_seconds": 169.11593278000146,
+    "A_physical_worker_seconds": 163.9838591459993,
+    "A_total_cpu_seconds": 169.074605,
+    "A_tree_peak_rss_bytes": 433729536,
+    "B_contained_process_seconds": 144.63583569100228,
+    "B_physical_worker_seconds": 139.83843117500146,
+    "B_total_cpu_seconds": 144.60145599999998,
+    "B_tree_peak_rss_bytes": 428290048,
+    "cpu_increase_fraction": -0.14474763374428712,
+    "scope": "One exposed October checker-only A then B; clocks nested, never additive; no whole-CLI gain claim",
+    "separate_whole_cli_trial_proposal_threshold_met": false,
+    "wall_reduction_fraction": 0.14475334574681797
+  },
+  "memory_observation": {
+    "A_sampled_tree_peak_rss_bytes": 433729536,
+    "B_sampled_tree_peak_rss_bytes": 428290048,
+    "interpretation": "Observed sampled summed RSS, not a guarantee of unique physical memory or an unsampled peak."
+  },
+  "native_runtime_files_verified": 303,
+  "native_runtime_reports_verified": 4,
+  "new_mathematical_algorithm_claim": false,
+  "only_new_identity_difference": "direct_separator_sha256 authenticated to frozen A/B implementations",
+  "other_exact_scalar_fields_compared": 9133,
+  "patch_validation": {
+    "candidate_runtime_modified_for_publication": false,
+    "exact_verified_A_B_diff": true,
+    "original_patch_bytes_unchanged": true
+  },
+  "portable_runtime_claim": false,
+  "prior_engineering_source_anchors": [
+    {
+      "repository_path": "research/rins_budget/portable_early_integer_replay/payload/lp_security_separator_optimized/fractional_separator.py",
+      "sha256": "6428ccf878e624498e573d5d830057e90b4865b2ed6e01a78e3944d2ff96287c"
+    },
+    {
+      "repository_path": "research/rins_budget/portable_combined_replay/payload/lp_security_separator_optimized/fractional_separator.py",
+      "sha256": "1833d1f645507495daac922fbeb58ba0eb5fe3f2c25e98d331b7a56fbd436293"
+    }
+  ],
+  "prior_qualification": {
+    "passed": true,
+    "rating_control_result_sha256": {
+      "A": "1828d82045565210599ebc62147e37750c235cc175816e86f30ac38007568696",
+      "B": "bbfa8eb4261d4bb4f332a95e68800d42f085784b1fcde6c0843689237027530a"
+    },
+    "rating_controls": {
+      "candidate_tuple_storage_assertions_passed": true,
+      "changed_source_used_on_fresh_call": true,
+      "declared_cases_per_arm": 22,
+      "exact_evidence_parity": true,
+      "exact_exception_and_rating_call_order": true,
+      "fresh_call_states_per_arm": 3,
+      "pure_control_factorizations": 0,
+      "signed_zero_and_infinity_bits_verified": true,
+      "subsequent_NaN_fails_at_first_emergency_value": true
+    },
+    "tiny_and_subset_scientific_and_artifact_parity": true
+  },
+  "publication_execution": "Source/hash/JSON inspection and documentation only; no tests, builds, numerical checkers or optimizer reruns",
+  "schema": "serial-rating-preparation-negative-public-checkpoint/v1",
+  "scientific_parity_passed": true,
+  "source_findings": {
+    "all_other_function_ASTs_identical": true,
+    "cache_rebuilt_per_invocation": true,
+    "changed_existing_functions": [
+      "source_scope",
+      "_separate"
+    ],
+    "exact_prior_port_except_package_imports_and_immutable_outer_tuple": true,
+    "math_isfinite_and_both_finite_calls_retained": true,
+    "no_overlap_helper": true,
+    "prepared_values_are_original_at_outputs": true,
+    "public_scope_descriptor_unchanged": true,
+    "scalar_arithmetic_loop_witness_and_coverage_order_preserved": true,
+    "sequential_physical_and_source_checker_unchanged": true,
+    "source_list_aliasing_avoided": true,
+    "validation_order_and_exception_text_preserved": true
+  },
+  "stage_diagnostic_seconds": {
+    "A": {
+      "direct_separator_seconds": 93.55816040799982,
+      "independent_source_checker_seconds": 61.92651108899736,
+      "physical_worker_seconds": 163.9838591459993
+    },
+    "B": {
+      "direct_separator_seconds": 71.06899386700024,
+      "independent_source_checker_seconds": 60.73235825900338,
+      "physical_worker_seconds": 139.83843117500146
+    }
+  },
+  "status": "Scientific equality PASS; advancement FAILED below fixed wall-reduction threshold",
+  "threshold": {
+    "changed_after_result": false,
+    "maximum_total_subtree_cpu_increase_fraction": 0.2,
+    "minimum_contained_wall_reduction_fraction": 0.2
+  },
+  "whole_cli_gain_claim": false
+}

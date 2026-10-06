@@ -1,0 +1,66 @@
+--- a/current_scuc/core/driver/fractional_separator.py
++++ b/current_scuc/core/driver/fractional_separator.py
+@@ -132,6 +132,13 @@
+     a model, factor a topology or optimize. Production case counts belong to
+     the driver's frozen case manifest, allowing independent tiny fixtures here.
+     """
++    return _source_scope_and_emergency_ratings(data, hours, source_sha256=source_sha256)[0]
++
++
++def _source_scope_and_emergency_ratings(data, hours, *, source_sha256=None):
++    # Retain the already validated floats for this invocation only. Tuples do
++    # not alias source rating lists; the public scope and its schema stay exact.
++    emergency_ratings = []
+     _mapping(data, "source", nonempty=True)
+     params = _mapping(data.get("Parameters"), "parameters", nonempty=True)
+     if (params.get("Version") != "0.3" or params.get("Time step (min)", 60) != 60 or
+@@ -164,15 +171,18 @@
+         _finite(line.get("Susceptance (S)"), f"susceptance {name}")
+         any_normal = False
+         finite_hours[index] = []
++        line_emergency_ratings = []
+         for hour in range(hours):
+             normal = _at(line.get("Normal flow limit (MW)", math.inf), hour,
+                          f"normal rating {name}", rating=True)
+             emergency = _at(line.get("Emergency flow limit (MW)", math.inf), hour,
+                             f"emergency rating {name}", rating=True)
++            line_emergency_ratings.append(emergency)
+             any_normal |= math.isfinite(normal)
+             if math.isfinite(emergency):
+                 finite_hours[index].append(hour)
+             _at(line.get("Flow limit penalty ($/MW)", 5000), hour, f"overflow penalty {name}")
++        emergency_ratings.append(tuple(line_emergency_ratings))
+         if finite_hours[index]:
+             emergency_rated.append(index)
+         if any_normal or finite_hours[index]:
+@@ -216,7 +226,7 @@
+             "source_data_sha256": source_data_sha256(data),
+             "finite_emergency_line_hours": sum(len(v) for v in finite_hours.values())}
+     if source_sha256 is not None: scope["source_sha256"]=source_sha256
+-    return descriptor(scope, finite_hours)
++    return descriptor(scope, finite_hours), tuple(emergency_ratings)
+ 
+ 
+ def expected_column_names(data, hours, scope=None):
+@@ -365,7 +375,7 @@
+     tolerance = _finite(tolerance, "separation tolerance")
+     if tolerance <= 0 or tolerance > 1e-5:
+         raise SeparationError("Separation tolerance must be positive and no weaker than 1e-5")
+-    scope = source_scope(data, hours, source_sha256=identity.get("source_sha256") if identity else None)
++    scope, emergency_ratings = _source_scope_and_emergency_ratings(data, hours, source_sha256=identity.get("source_sha256") if identity else None)
+     universe = Universe(scope)
+     active = _pairs(active_pairs, scope)
+     x, matrix_report = _matrix_gate(data, values, hours, active, identity, tolerance, integrality_scope, scope)
+@@ -443,10 +453,9 @@
+         for monitored, name in enumerate(lines):
+             if monitored == outage:
+                 continue
+-            line, worst = data["Transmission lines"][name], None
++            worst = None
+             for hour in range(hours):
+-                limit = _at(line.get("Emergency flow limit (MW)", math.inf), hour,
+-                            f"emergency rating {name}", rating=True)
++                limit = emergency_ratings[monitored][hour]
+                 if not math.isfinite(limit):
+                     continue
+                 checked_hours += 1
