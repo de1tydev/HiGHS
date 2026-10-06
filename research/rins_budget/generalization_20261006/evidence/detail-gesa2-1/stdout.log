@@ -1,0 +1,136 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+readMPS: Trying to open file /workspace/scuc-native-source/check/instances/gesa2.mps
+readMPS: Read NAME    OK
+readMPS: Read ROWS    OK
+readMPS: Read COLUMNS OK
+readMPS: Read RHS     OK
+Number of BV entries in BOUNDS section is 240
+Number of UI entries in BOUNDS section is 168
+readMPS: Read BOUNDS  OK
+MIP       : gesa2
+Rows      : 1392
+Cols      : 1224
+Nonzeros  : 5064
+Integer   : 408 (240 binary)
+Coefficient ranges:
+  Matrix  [7e-02, 1e+02]
+  Cost    [2e+03, 2e+06]
+  Bound   [1e+00, 4e+00] (continuous)
+  Bound   [1e+00, 4e+00] (non-continuous)
+  RHS     [1e+00, 5e+02]
+WARNING: Problem has some excessively large costs
+WARNING:    Consider scaling the objective by 1e-1, or setting the user_objective_scale option to -1
+WARNING: Problem is badly scaled, which may compromise the speed, accuracy and reliability of solvers in HiGHS
+Scheduler initialized: 2 threads (physical cores: 5)
+Permitted suppression of presolve rules via presolve_rule_off option:
+ * Rule  0 (set bit  0 =       1): Empty row
+ * Rule  1 (set bit  1 =       2): Singleton row
+ * Rule  2 (set bit  2 =       4): Redundant row
+ * Rule  3 (set bit  3 =       8): Empty column
+ * Rule  4 (set bit  4 =      16): Fixed column
+   Rule  6 (set bit  6 =      64): Forcing row
+   Rule  7 (set bit  7 =     128): Forcing col
+   Rule  8 (set bit  8 =     256): Free col substitution
+   Rule  9 (set bit  9 =     512): Doubleton equation
+   Rule 10 (set bit 10 =    1024): Dependent equations
+   Rule 11 (set bit 11 =    2048): Dependent free columns
+   Rule 12 (set bit 12 =    4096): Aggregator
+   Rule 13 (set bit 13 =    8192): Parallel rows and columns
+   Rule 14 (set bit 14 =   16384): Sparsify
+   Rule 15 (set bit 15 =   32768): Probing
+   Rule 16 (set bit 16 =   65536): Enumeration
+   Rule 17 (set bit 17 =  131072): Dual fixing
+   Rule 18 (set bit 18 =  262144): Zero cost singleton
+   Rule 19 (set bit 19 =  524288): Col stuffing
+   Rule 20 (set bit 20 = 1048576): Initial sweep
+   Rule 21 (set bit 21 = 2097152): Fourier-Motzkin
+   Rule 22 (set bit 22 = 4194304): Weakly dominated col
+ * Only in initial sweep
+Presolving model
+1392 rows, 1224 cols, 5064 nonzeros 0s
+Strengthened 55 coefficients
+80 probing evaluations: 0 deleted rows, 0 deleted columns, 0 lifted nonzeros
+1344 rows, 1176 cols, 4968 nonzeros 0s
+Presolve reductions: rows 1344(-48); columns 1176(-48); nonzeros 4968(-96) 
+MIP-Timing:       0.013 - completed presolve
+MIP-Timing:       0.013 - starting  setup
+
+Solving MIP model with:
+   1344 rows
+   1176 cols (248 binary, 160 integer, 312 implied int., 456 continuous, 0 domain fixed)
+   4968 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+MIP-Timing:       0.013 - completed setup
+Feasibility Jump: starting solve. weightUpdateDecay=1, relaxContinuous=0  
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+ J       0       0         0   0.00%   -inf            52100746.57293     Large        0      0      0         0     0.0s
+MIP-Timing:       0.026 - starting evaluate root node
+MIP-Timing:       0.028 - starting analytic centre calculation
+MIP-Timing:       0.028 - start first LP solve (without basis)
+MIP-Timing:       0.038 - finish first LP solve
+MIP-Timing:       0.041 - starting  separation
+         0       0         0   0.00%   25494782.27515  52100746.57293    51.07%        0      0      0       463     0.0s
+MIP-Timing:        0.11 - starting  analytic centre synch
+MIP-Timing:        0.11 - completed analytic centre synch
+ C       0       0         0   0.00%   25763643.85386  26686733.7387      3.46%     1157     94      0       712     0.1s
+MIP-Timing:        0.32 - completed separation
+HighsProfiling::start SubMipSolve on thread  0 with submip = F
+
+HighsPrimalHeuristics::solveSubMip Before run() for     MIP at depth  0 on thread  0
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for     MIP at depth  0 on thread  0
+
+ L       0       0         0   0.00%   25778853.85211  25779856.3717      0.00%     2534    164      0       923     0.7s
+MIP-Timing:        0.75 - completed evaluate root node
+         1       0         1 100.00%   25778989.96333  25779856.3717      0.00%     2534    164      0      1954     0.8s
+
+Solving report
+  Model             gesa2
+  Status            Optimal
+  Primal bound      25779856.3717
+  Dual bound        25778989.9633
+  Gap               0.00336% (tolerance: 0.01%)
+  P-D integral      0.0700955929345
+  Solution status   feasible
+                    25779856.3717 (objective)
+                    8.881784197e-16 (integrality violation)
+  Timing            0.75
+                    0.03 (Presolve)
+                        MIP    time [calls] = 0.01 [1]
+                        subMIP time [calls] = 0.02 [4]
+                    0.72 (Solve)
+                        MIP    time [calls] = 0.31 [1]
+                        subMIP time [calls] = 0.41 [4]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [4]
+  Max sub-MIP depth 8
+  Nodes             1
+  Repair LPs        0
+  LP iterations     1954
+                    0 (strong br.)
+                    460 (separation)
+                    1025 (heuristics)
+getKktFailures:: cost norm = 1.55e+06; bound norm =      393
+getKktFailures:                      LP  (abs / rel)         Col (abs / rel)         Row (abs / rel)
+getKktFailures: primal infeasibility 2.84e-14 / 7.21e-17     4.44e-16 / 1.13e-18     2.84e-14 / 7.21e-17

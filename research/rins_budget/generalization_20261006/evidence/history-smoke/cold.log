@@ -1,0 +1,43 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+MIP target has 3 rows; 4 cols; 6 nonzeros; 4 integer variables (4 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 3e+00]
+  Cost    [3e+00, 5e+00]
+  Bound   [1e+00, 1e+00]
+  RHS     [3e+00, 4e+00]
+Presolving model
+3 rows, 4 cols, 6 nonzeros 0s
+0 rows, 0 cols, 0 nonzeros 0s
+Presolve reductions: rows 0(-3); columns 0(-4); nonzeros 0(-6) - Reduced to empty
+Presolve: Optimal
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   13              13                 0.00%        0      0      0         0     0.0s
+
+Solving report
+  Model             target
+  Status            Optimal
+  Primal bound      13
+  Dual bound        13
+  Gap               0%
+  P-D integral      0
+  Solution status   feasible
+                    13 (objective)
+  Timing            0.00
+                    0.00 (Presolve)
+                    0.00 (Solve)
+                    0.00 (Postsolve)
+  Max sub-MIP depth 0
+  Nodes             0
+  Repair LPs        0
+  LP iterations     0
+Writing the solution to /workspace/scuc-campaign/history-smoke/cold.sol
+UNRESTRICTED_MODEL_BOUNDS_PRESERVED
