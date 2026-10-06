@@ -1,0 +1,128 @@
+{
+  "approved_proposal_manifest_sha256": "8ff582d669e04a4887bf2b87be59ef291235f4eb93015eb530d1ad7d7b2c0c09",
+  "approved_proposal_sha256": "481e3246fe4572c73bcecfc5264ef5bd9d5e21cad71a59e1fc5d8bf3a04405d1",
+  "base_publication_commit": "63fa6688f2fcccaeae03fd57c52ed40b9039eb81",
+  "base_source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "changed_package_files": [
+    {
+      "after_sha256": "f83f45e629e259747709d709efa3df3100bffc2b51fee51a691cbf5c729980aa",
+      "before_sha256": "eafa69970257ef2c581f0c1bb8473b12235d279d50b46f02cb7a14c1e6ef59e2",
+      "path": "current_scuc/PROTOCOL.json"
+    },
+    {
+      "after_sha256": "cde55ee481b7e80742ba5e6e6fc34db779eae4c9d57aa116c4a5a76f666e5259",
+      "before_sha256": "727dee98bbfe3cfc057f824ae4b8e4858a22ec56abfa9b2b8651837e11f3ff70",
+      "path": "current_scuc/__main__.py"
+    },
+    {
+      "after_sha256": "8b1250c786e4b34f0cd781daff4e1b5e3d3ffafcd92635711ece7accd59468a3",
+      "before_sha256": "25a27bb0d690f7387799295bbf71db8913a90985f68ad86f9f90edea05cc39c7",
+      "path": "current_scuc/carry.py"
+    },
+    {
+      "after_sha256": "9cd737410705f77788c4b62192bd92ef95d8c255ce45f2460337f3fe4de80d20",
+      "before_sha256": "20abf8b5b213338a4ca645844b45d2f12d6dd2e00620db779a531fc02642bc81",
+      "path": "current_scuc/case.py"
+    },
+    {
+      "after_sha256": "43ce85fcf022eff392d8d3a040d9b5fd24a31f08423406dc8bdc12af0ecef646",
+      "before_sha256": "82f4912fa22a475dff3a76856ef45b9386552cde5e0178315834cd0eab9873ac",
+      "path": "current_scuc/heldout.py"
+    },
+    {
+      "after_sha256": "84f6627d17ca52b779e15480dc3f37c505c660539bb7444d508ffec54ff87c90",
+      "before_sha256": "f9aff75b055ddd1905ee2d1aea236fd8dd3fe4ffbaabed05ba5d6825f3d29fc8",
+      "path": "current_scuc/native_exec.py"
+    },
+    {
+      "after_sha256": "86e24ec2426da2d4c2d41d0f5cdbe804a7996df3c0a7bbd2760c317693215ba6",
+      "before_sha256": "c81e82bd0aaf12af132030e9de032515d652c200439a7a495973ade5494765d9",
+      "path": "current_scuc/options.py"
+    },
+    {
+      "after_sha256": "8a03b62c28a77a5a1244cbd22e7d1c02e472311c2975b7079d84f65b4f55466e",
+      "before_sha256": "5a08505896c9a00a028134e4017fac29964e87293149e39543d592814359fd57",
+      "path": "current_scuc/phase.py"
+    },
+    {
+      "after_sha256": "eacff6d9619eddd678fa5f472720848aa60f5d97b53fc320fd9cc24796e70ae8",
+      "before_sha256": "785e412d1661c2cd4a858273adeb3896fc5ad2cd4fc0d479ae33d90d74721fc6",
+      "path": "current_scuc/science/capi.py"
+    },
+    {
+      "after_sha256": "e1c3439ce20d96ba1eec93e33f13dc34a8f160c82a315de01070b26ac9b32af0",
+      "before_sha256": "6c5d61e92d8bfb4b0cc42d74c3947c519b70985e7226d34c929ede3a3b37d0d2",
+      "path": "current_scuc/science/native.py"
+    },
+    {
+      "after_sha256": "2b6d8b7d8c57e35e9d42d86829a614ead15f0e8e07827330e0e400b30bd1adc3",
+      "before_sha256": "a0375762fc9eea020cedb0564ef17001350b0d4998e15c468a9b2b9275d716af",
+      "path": "current_scuc/seed.py"
+    }
+  ],
+  "historical_attribution_files_unchanged": [
+    "SOURCE_PROVENANCE.json",
+    "BINDING_REVIEW.md",
+    "PUBLICATION_PROJECTION.json",
+    "RESOURCE_REVISION.json",
+    "RESOURCE_REVISION.md"
+  ],
+  "legacy_changed_master": "Explicit seed-0 provenance compatibility only; native execution untested and outside release gate",
+  "native_rebuilt": false,
+  "native_runtime_manifest": {
+    "bytes": 268529,
+    "receipt_name": "runtime-manifest.json",
+    "sha256": "f1fb247d5bde3b6795096448601893ab85f3435e607a089736f752548cb7b361"
+  },
+  "nonseed_options_and_budgets_unchanged": true,
+  "publication_projection": {
+    "original_record": {
+      "bytes": 5249,
+      "name": "SEED_REVISION.json",
+      "sha256": "a346af15943a5e75235b1137b640d8ba25fc5b9877478e32a5d009e6cb9c119c"
+    },
+    "transformation": "Private receipt paths replaced by receipt names; original values, sizes and SHA-256 hashes retained. This annotation and record_scope added."
+  },
+  "published": false,
+  "python_hash_seed": 0,
+  "record_scope": "Historical implementation/prelaunch seed-v3 record. The published/native/panel flags describe that point in time; current observations are in VALIDATION.md and SEED_PANEL.md.",
+  "release_launches": "Owner scheduled separately after final review; exact commands in external RUN-COMMANDS.md",
+  "schema": "current-scuc-portable-seed-revision/v3",
+  "solver_random_seed_bounds": [
+    0,
+    2147483647
+  ],
+  "solver_random_seed_default": 0,
+  "source_manifest_sha256": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+  "unchanged_package_members": 59,
+  "validation": {
+    "empty_native_qualification_executed": false,
+    "focused_seed_tests_passed": 28,
+    "production_panel_executed": false,
+    "pure_tests_passed": 90,
+    "sqlite_checks_passed": 71,
+    "transition_tiny_executed": false
+  },
+  "validation_receipts": [
+    {
+      "bytes": 13582,
+      "receipt_name": "pure-final.log",
+      "sha256": "76409e17cada4637847476cd8d93d0e0fb45ce49ec9c2effe3c6cbaeb5ffbca4"
+    },
+    {
+      "bytes": 111,
+      "receipt_name": "sqlite-tests.log",
+      "sha256": "8c0e89ecb85ee6dd5b9d0e4c2ec1db5aaf84c6b6cdb38a2ffe94c7554d4e78bb"
+    },
+    {
+      "bytes": 34539,
+      "receipt_name": "sqlite-test-results.json",
+      "sha256": "d15b130dea7d69319cfdafe9a055892084ab2f56a0c8cfc1a83131b528cf5261"
+    },
+    {
+      "bytes": 4727,
+      "receipt_name": "source-delta-verification.json",
+      "sha256": "aa76c8356f97154061e213be942db42c0a799488f03689bc9477ac4483d45cb3"
+    }
+  ]
+}

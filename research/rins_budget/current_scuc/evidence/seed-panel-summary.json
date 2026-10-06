@@ -1,0 +1,74 @@
+{
+  "audited_runs": 6,
+  "claim": "Descriptive fixed two-seed sensitivity on three already exposed dates; no same-seed repeatability, statistical reliability or unseen-case guarantee.",
+  "clock_semantics": {
+    "aggregation": "nested/overlapping clocks, never additive",
+    "outer_start_through_reap": "complete external CLI invocation including interpreter startup, final CLI write/output, process exit and verified cleanup",
+    "post_exit_administration": "after process exit; does not extend the scientific invocation clock",
+    "reported_cli": "main() entry through elapsed sampling, immediately before final RESULT.json write and stdout output",
+    "seed_mip_carry_ledger": "actual seed/MIP/carry child process wall; includes their in-process work and is not a full invocation clock"
+  },
+  "complete": true,
+  "final_audit_evidence": "evidence/seed-panel-final-audit-summary.json",
+  "frozen": true,
+  "panel_gate_passed": true,
+  "physical_dc_lower_bound_certified": false,
+  "planned_runs": 6,
+  "post_exit_administration_evidence": "evidence/seed-panel-administration.json",
+  "post_exit_archive_administration": "Separately reported measured assembly/readback plus explicitly filesystem-derived closure spans; excluded from all scientific invocation clocks.",
+  "rows": [
+    {
+      "audit_status": "terminal audit passed",
+      "classification": "PASS",
+      "date": "2017-06-01",
+      "evidence": "evidence/seed-panel-run01-june-seed1.json",
+      "index": 1,
+      "solver_random_seed": 1
+    },
+    {
+      "audit_status": "terminal audit passed",
+      "classification": "PASS",
+      "date": "2017-10-01",
+      "evidence": "evidence/seed-panel-run02-october-seed1.json",
+      "index": 2,
+      "solver_random_seed": 1
+    },
+    {
+      "audit_status": "terminal audit passed",
+      "classification": "PASS",
+      "date": "2017-12-01",
+      "evidence": "evidence/seed-panel-run03-december-seed1.json",
+      "index": 3,
+      "solver_random_seed": 1
+    },
+    {
+      "audit_status": "terminal audit passed",
+      "classification": "PASS",
+      "date": "2017-12-01",
+      "evidence": "evidence/seed-panel-run04-december-seed2.json",
+      "index": 4,
+      "solver_random_seed": 2
+    },
+    {
+      "audit_status": "terminal audit passed",
+      "classification": "PASS",
+      "date": "2017-10-01",
+      "evidence": "evidence/seed-panel-run05-october-seed2.json",
+      "index": 5,
+      "solver_random_seed": 2
+    },
+    {
+      "audit_status": "terminal audit passed",
+      "classification": "PASS",
+      "date": "2017-06-01",
+      "evidence": "evidence/seed-panel-run06-june-seed2.json",
+      "index": 6,
+      "solver_random_seed": 2
+    }
+  ],
+  "schema": "current-scuc-seed-panel-public-summary/v1",
+  "scientific_pass_count": 6,
+  "source_manifest_sha256": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+  "status": "complete; six scientific passes and six durable terminal/closure readbacks",
+  "summary_basis": "All six individually hash-bound terminal audits and the final independent descriptive audit."
+}

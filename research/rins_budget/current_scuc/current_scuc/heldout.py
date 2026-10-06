@@ -178,6 +178,8 @@ def check_native_minimum(columns, rows):
     require(base['num_col'] <= columns and base['num_row'] <= rows, 'Held-out production adaptive minimum dimensions')
 
 def check_manifest(manifest):
+    from .native_exec import validate_solver_random_seed
+    validate_solver_random_seed(manifest['solver_random_seed'])
     value = case()
     expected = dict(hours=value['case']['hours'], subset_mapping_pairs=[],
         virtual_security_scope='all_source_listed_nonself_outages', original_binary_count=value['shapes']['binary_count'],

@@ -1,0 +1,329 @@
+{
+  "observations": {
+    "audit_passed": {
+      "json_pointer": "/audit_passed",
+      "value": true
+    },
+    "audited_at_utc": {
+      "json_pointer": "/audited_at_utc",
+      "value": "2026-10-06T04:43:28.192379+00:00"
+    },
+    "campaign_manifest_sha256": {
+      "json_pointer": "/campaign_manifest_sha256",
+      "value": "e363550678ebd6f9be073902389d0b329ecd556d6c240416818048c8a150cb69"
+    },
+    "candidate_completion_sha256": {
+      "json_pointer": "/candidate_completion_sha256",
+      "value": "a08a310d2f050c36ea5cf76d7555f99c68cef3520a02eee94ea49e5d04241241"
+    },
+    "candidate_result_sha256": {
+      "json_pointer": "/candidate_result_sha256",
+      "value": "a3ad1cf031a0b4961d548e39e8600107167827e994af4d82460e5621c26a4247"
+    },
+    "checks_passed": {
+      "json_pointer": "/checks_passed",
+      "value": [
+        "full CLI and all existing worker result/completion byte bindings; return 2 retained for clean scientific NONPASS",
+        "70 frozen source files, launch files, native artifact pins, runtime pins, fresh case/preparation bindings",
+        "all local checkpoint chains, inventories, source identities, immutable file identities, and byte hashes",
+        "persisted original full matrix, all 28080 binary, all 1288 listed outage, direct DC, independent source, hard-zero, and negligible-slack QA scope",
+        "master/API/options/native command, checked point/lift, exact-LP certificate artifacts, and selected allowance-adjusted numerical-MIP bound bindings",
+        "actual carry preparations, exact point checks, feasible CLI start admissions, and any discovery-to-proof transition",
+        "selected seed 1/2 at public CLI, hashed arm, candidate, both LP native calls, every typed MIP option readback and native argv, carry and transition",
+        "all process cleanup and classified returns, actual seed/MIP/carry 600-second ledger, preparation/worker/candidate/outer clocks, resource limits, and output size budgets"
+      ]
+    },
+    "classification": {
+      "json_pointer": "/classification",
+      "value": "PASS"
+    },
+    "clocks_seconds": {
+      "json_pointer": "/clocks_seconds",
+      "value": {
+        "candidate_internal_before_terminal_writes": 322.87804435900034,
+        "candidate_start_through_reap": 324.2713933980049,
+        "full_cli": 377.4903390640029,
+        "ledger_calls": [
+          {
+            "actual": 82.12492741100141,
+            "allocation": 180.0,
+            "overrun": 0.0,
+            "stage": "seed",
+            "within_allocation": true
+          },
+          {
+            "actual": 12.262529917003121,
+            "allocation": 180.0,
+            "overrun": 0.0,
+            "stage": "mip",
+            "within_allocation": true
+          }
+        ],
+        "outer_start_through_reap": 377.5400041850007,
+        "physical_start_through_reap": 159.22564588199748,
+        "physical_worker": 155.7195973190028,
+        "preparation_cli_observed": 50.930780403003155,
+        "preparation_internal": 50.92993533799745,
+        "preparation_workers": [
+          {
+            "actual_start_through_reap_seconds": 33.85259920599492,
+            "effective_allocation_seconds": 300.0,
+            "exit_code": 0,
+            "kind": "generate",
+            "worker_ceiling_seconds": 300
+          },
+          {
+            "actual_start_through_reap_seconds": 10.079169226999511,
+            "effective_allocation_seconds": 300.0,
+            "exit_code": 0,
+            "kind": "readback",
+            "worker_ceiling_seconds": 300
+          },
+          {
+            "actual_start_through_reap_seconds": 6.181724130998191,
+            "effective_allocation_seconds": 300.0,
+            "exit_code": 0,
+            "kind": "finalize",
+            "worker_ceiling_seconds": 300
+          }
+        ],
+        "seed_mip_carry_ledger": 94.38745732800453
+      }
+    },
+    "coverage": {
+      "json_pointer": "/coverage",
+      "value": {
+        "binary_maximum_residual": 0.0,
+        "direct_factorizations": 1289,
+        "direct_violated_pair_count": 0,
+        "full_literal_violation_upper": 0.0,
+        "hours": 36,
+        "listed_outages": 1288,
+        "original_binaries": 28080,
+        "original_columns": 313776,
+        "original_matrix_max_row_residual": 3.9179326449811924e-10,
+        "original_rows": 381052,
+        "physical_qa_completed": true,
+        "unsigned_security_pair_hours": 66360168
+      }
+    },
+    "date": {
+      "json_pointer": "/date",
+      "value": "october"
+    },
+    "full_result_sha256": {
+      "json_pointer": "/full_result_sha256",
+      "value": "2b59763df15ffa64b3edd1f489647cd0d3967e6be43522b23fb71f715b079872"
+    },
+    "index": {
+      "json_pointer": "/index",
+      "value": 5
+    },
+    "interval": {
+      "json_pointer": "/interval",
+      "value": {
+        "gap": 0.0005518003503300339,
+        "lower": 11732175.309109941,
+        "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": true,
+        "target": 0.01,
+        "upper": 11738652.701783188
+      }
+    },
+    "limitations": {
+      "json_pointer": "/limitations",
+      "value": [
+        "Small fixed seed-sensitivity panel on already exposed dates; no statistical guarantees, same-seed repeatability or unseen-case generalization.",
+        "No conventional comparator, performance ratio or outcome-driven tuning/retries.",
+        "Numerical MIP and exact seed LP lowers describe the hard-zero integer full literal serialized-LODF subset.",
+        "Physical U is a numerically checked witness; physical DC lower-bound certification is false.",
+        "Saved QA and byte bindings audited; no fresh scientific recomputation."
+      ]
+    },
+    "local_checkpoints": {
+      "json_pointer": "/local_checkpoints",
+      "value": [
+        {
+          "artifacts": 37,
+          "index": 1,
+          "kind": "post_native_solve",
+          "point_id": "seed",
+          "raw_bytes": 123062638,
+          "receipt_sha256": "04e3a1a8967221fe7e4429b8f44b47c406c20f796df5566f2ef14f97c28b68f5",
+          "state": "unvalidated"
+        },
+        {
+          "artifacts": 38,
+          "index": 2,
+          "kind": "post_full_check",
+          "point_id": "seed",
+          "raw_bytes": 128529576,
+          "receipt_sha256": "4b1031649d43490ac2e1001c142bce5794ed0bfb67ef46b877e5c167eb41c657",
+          "state": "validated"
+        },
+        {
+          "artifacts": 52,
+          "index": 3,
+          "kind": "post_native_solve",
+          "point_id": "mip-01",
+          "raw_bytes": 234491199,
+          "receipt_sha256": "26807eb36086226e4020474cc9b651bca329c146b1a7ac48bd830afac1afac4b",
+          "state": "unvalidated"
+        },
+        {
+          "artifacts": 61,
+          "index": 4,
+          "kind": "post_full_check",
+          "point_id": "mip-01",
+          "raw_bytes": 275993377,
+          "receipt_sha256": "9edf7d2800d191f4b791766416c604afad49b11759622da5a9e92e237948c4ad",
+          "state": "validated"
+        },
+        {
+          "artifacts": 72,
+          "index": 5,
+          "kind": "post_full_check",
+          "point_id": "terminal",
+          "raw_bytes": 308402024,
+          "receipt_sha256": "b4e6966d8c3fc107ea249f746bd766bdfaccbd8a541d5abf73d6a3c668aa467f",
+          "state": "validated"
+        }
+      ]
+    },
+    "mechanism": {
+      "json_pointer": "/mechanism",
+      "value": {
+        "carry_preparations": 0,
+        "changed_master_or_new_line_carry_tested": false,
+        "discovery_proof_transition_tested": false,
+        "feasible_initial_cli_start_admitted": false,
+        "mip_calls": 1,
+        "third_mip_call_exercised": false,
+        "two_lp_seed_solves": true,
+        "unchanged_master_carry_tested": false
+      }
+    },
+    "method": {
+      "json_pointer": "/method",
+      "value": "Read persisted receipts and pinned source; recompute file hashes and receipt metadata/bindings only. No optimizer, rebuild, scientific checker rerun, tests, source edits or external writes."
+    },
+    "native_artifacts_verified": {
+      "json_pointer": "/native_artifacts_verified",
+      "value": 10
+    },
+    "numerical_mip_display_allowance": {
+      "json_pointer": "/numerical_mip_display_allowance",
+      "value": null
+    },
+    "numerical_mip_lower": {
+      "json_pointer": "/numerical_mip_lower",
+      "value": null
+    },
+    "numerical_mip_lower_exact_certificate": {
+      "json_pointer": "/numerical_mip_lower_exact_certificate",
+      "value": false
+    },
+    "numerical_mip_printed_token": {
+      "json_pointer": "/numerical_mip_printed_token",
+      "value": null
+    },
+    "outcome": {
+      "json_pointer": "/outcome",
+      "value": "checked_one_percent_integer_interval"
+    },
+    "outer_receipt_sha256": {
+      "json_pointer": "/outer_receipt_sha256",
+      "value": "7ed38f8ed43fe35841d3387159015757f7dbe4de26f2dc8541f7cfe95288d160"
+    },
+    "physical_result_sha256": {
+      "json_pointer": "/physical_result_sha256",
+      "value": "9461b0015847c99c4eae55f8414cccd4472a2b082272a6b80d3786904ec30140"
+    },
+    "positive_slack_totals_MWh": {
+      "json_pointer": "/positive_slack_totals_MWh",
+      "value": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 1.6548119674553166e-07
+      }
+    },
+    "resources": {
+      "json_pointer": "/resources",
+      "value": {
+        "all_process_receipts_clean": true,
+        "cpu_scope": "wait4 child-subtree cumulative usage; outer and stage usage must never be summed",
+        "largest_output_bytes": 65608449,
+        "minimum_sampled_disk_bytes": 20529897472,
+        "minimum_sampled_memory_bytes": 7758618624,
+        "output_file_bytes": 535610567,
+        "output_files": 116,
+        "owner_peak_rss_KiB": 933712,
+        "owner_peak_sampled_tree_rss_bytes": 1437024256,
+        "owner_system_cpu_seconds": 8.249089,
+        "owner_user_cpu_seconds": 376.689771
+      }
+    },
+    "runtime_pins_verified": {
+      "json_pointer": "/runtime_pins_verified",
+      "value": 2361
+    },
+    "safe_to_continue_campaign": {
+      "json_pointer": "/safe_to_continue_campaign",
+      "value": true
+    },
+    "schema": {
+      "json_pointer": "/schema",
+      "value": "fixed-six-scuc-seed-panel-terminal-audit/v1"
+    },
+    "scientific_passed": {
+      "json_pointer": "/scientific_passed",
+      "value": true
+    },
+    "selected_lower_kind": {
+      "json_pointer": "/selected_lower_kind",
+      "value": "exactLP"
+    },
+    "separate_exact_seed_lp_gap_percent": {
+      "json_pointer": "/separate_exact_seed_lp_gap_percent",
+      "value": 0.055180035033003394
+    },
+    "separate_exact_seed_lp_lower": {
+      "json_pointer": "/separate_exact_seed_lp_lower",
+      "value": 11732175.309109941
+    },
+    "solver_random_seed": {
+      "json_pointer": "/solver_random_seed",
+      "value": 2
+    },
+    "source_files_verified": {
+      "json_pointer": "/source_files_verified",
+      "value": 70
+    },
+    "source_manifest_sha256": {
+      "json_pointer": "/source_manifest_sha256",
+      "value": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5"
+    },
+    "unique_checkpoint_artifacts_verified": {
+      "json_pointer": "/unique_checkpoint_artifacts_verified",
+      "value": 72
+    }
+  },
+  "omitted_private_fields": [
+    "/run_directory",
+    "/owner_directory"
+  ],
+  "post_exit_archive_administration": {
+    "evidence": "seed-panel-administration.json",
+    "included_in_scientific_clocks": false,
+    "json_pointer": "/rows/4"
+  },
+  "schema": "current-scuc-seed-panel-public-result/v1",
+  "scope": "Selected saved terminal audit fields. No scientific recomputation or execution repeated.",
+  "source_record": {
+    "bytes": 8234,
+    "name": "run05-october-seed2/AUDIT.json",
+    "sha256": "179f4c4cfa3f9eb66aa444777004fe76f901bf3aff467b9fe1f981c41fe4ccad"
+  }
+}

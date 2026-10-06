@@ -1,0 +1,36 @@
+{
+  "all_scanned_files_utf8_without_nul": true,
+  "current_validation_status": "full June CLI pass; independent read-only terminal audit passed",
+  "distribution_inventory": "ARTIFACT_MANIFEST.json",
+  "distribution_inventory_status": "Current public file inventory regenerated after terminal audit and narrative review",
+  "documented_cli_preinterpreter_resource_limits": {
+    "AS": [
+      7516192768,
+      7516192768
+    ],
+    "CORE": [
+      0,
+      0
+    ],
+    "FSIZE": [
+      536870912,
+      536870912
+    ]
+  },
+  "expected_external_sibling_link": "../network_projection/",
+  "external_outer_owner_distinguished_from_example_command": true,
+  "new_document_relative_links_verified": true,
+  "nonruntime_historical_resource_record_unchanged_after_prelaunch_projection": true,
+  "private_path_or_private_identifier_findings": [],
+  "protected_files_verified": 106,
+  "resource_record_original_values_preserved_except_receipt_locations": true,
+  "schema": "current-scuc-resource-publication-static-checks/v1",
+  "scope": "Static copy, hash, UTF-8 and publication-privacy checks only; no package imports or execution.",
+  "source_files_changed_during_projection": [],
+  "source_manifest_entries_verified": 70,
+  "source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "source_trees_unchanged": true,
+  "symlinks_or_binary_payloads_included": false,
+  "terminal_audit_original_receipt_sha256": "0990ae3fe0320e2070adb6d003f6fc446ea24675def5f15284526aae14261e53",
+  "terminal_projection_fields_verified_against_saved_records": true
+}

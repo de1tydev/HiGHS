@@ -126,6 +126,8 @@ def main(argv=None):
     freeze = Path(a.source_manifest).resolve()
     common.verify_source_freeze(freeze, a.source_manifest_sha256)
     require(b.sha(a.arm_manifest) == a.arm_manifest_sha256, 'Candidate manifest changed')
+    from current_scuc.native_exec import validate_solver_random_seed
+    solver_random_seed = validate_solver_random_seed(b.read(a.arm_manifest)['solver_random_seed'])
     reference = local.validate_source_reference(b.read(a.source_reference))
     require(reference['source_manifest_sha256'] == a.source_manifest_sha256, 'Wrong local source binding')
     import current_scuc.heldout as heldout
@@ -144,7 +146,7 @@ def main(argv=None):
     require(whole_admission['block_bytes']==4096,'Whole storage bound requires reviewed 4-KiB filesystem')
     out.mkdir()
     checkpoints = local.Checkpoints(out, reference, deadline)
-    state = dict(schema='adaptive-line-integer-phase/v1', run_directory=str(out), passed=False, outcome='running',
+    state = dict(schema='adaptive-line-integer-phase/v1', solver_random_seed=solver_random_seed, run_directory=str(out), passed=False, outcome='running',
         quality_failed=False, final_upper_admitted=False, physical_dc_lower_bound_certified=False,
         lower_domain=no_shedding.DOMAIN, comparator_authorized=False, trace=[], lower_records=[],
         carry_preparations=[],mechanism_tested=False,mechanism_failed=False,subset_model_complete=False,advancement_qualified=False,
@@ -185,6 +187,8 @@ def main(argv=None):
         with Path(cfg['numerical_lock']).open('a+') as lock:
             fcntl.flock(lock.fileno(), fcntl.LOCK_EX|fcntl.LOCK_NB)
             manifest,paths,identities = verify_manifest(a.arm_manifest,a.arm_manifest_sha256,deadline)
+            require(validate_solver_random_seed(manifest['solver_random_seed']) == solver_random_seed,
+                'Arm solver seed changed')
             alloc = ledger.allocation('seed',0,deadline-time.monotonic())
             require(alloc > 1, 'No seed process window')
             seedout = out/'seed'
@@ -204,6 +208,9 @@ def main(argv=None):
             seed = read_complete(seedout)
             seed_eligible(seed)
             require(seed['verified_manifest_sha256'] == a.arm_manifest_sha256,'Seed binding mismatch')
+            require(validate_solver_random_seed(seed['solver_random_seed']) == solver_random_seed and
+                validate_solver_random_seed(seed['native_options']['random_seed']) == solver_random_seed,
+                'Seed worker solver seed mismatch')
             state['seed'] = seed
             state['seed_checked_archive'] = archive('seed','post_full_check',True)
             # Deliberately repeat factors in this process; saved factors never enter.
@@ -301,15 +308,15 @@ def main(argv=None):
                 if alloc <= PROCESS_RESERVE:
                     state['outcome'] = 'window_exhausted_after_export'; break
                 native = alloc-PROCESS_RESERVE
-                probe = options.probe(cfg,optpath,native,start=start,role=role)
+                probe = options.probe(cfg,optpath,native,start=start,role=role,solver_random_seed=solver_random_seed)
                 if ledger.allocation('mip',call,deadline-time.monotonic()) < alloc:
                     state['outcome'] = 'window_exhausted_after_options'; break
                 b.write(rd/'options-readback.json',probe,fresh=True)
                 if call==2 and 'discovery_proof_transition' in state:
                     carry.verify_transition_proof(state,exported['identity'],probe,start)
                 solution = rd/'solution.sol'
-                command = options.command(cfg,rd/'master.mps',optpath,solution,native,start=start,role=role)
-                row = dict(call=call,role=role,cut_batches=state['cut_batches'],native_limit_seconds=native,
+                command = options.command(cfg,rd/'master.mps',optpath,solution,native,start=start,role=role,solver_random_seed=solver_random_seed)
+                row = dict(call=call,role=role,solver_random_seed=solver_random_seed,cut_batches=state['cut_batches'],native_limit_seconds=native,
                     allocation_seconds=alloc,incumbent_input=(str(start) if start else None),no_basis_or_search_state_input=True,master_identity=exported['identity'],command=command,
                     options_artifacts=dict(options_path=str(optpath),options_sha256=f.sha256(optpath),
                         readback_path=str(rd/'options-readback.json'),readback_sha256=f.sha256(rd/'options-readback.json')))

@@ -1,12 +1,3 @@
-# Historical resource-v2 revision
-
-The record below describes resource revision v2 and its separate seed-0 June
-invocation. Its statements about unchanged solver options/source and its
-historical hashes apply to that revision. The current seed-v3 delta and fixed
-six-run panel are described in [SEED_REVISION.md](SEED_REVISION.md) and
-[SEED_PANEL.md](SEED_PANEL.md). The unmodified published v2 text is preserved at
-[provenance/RESOURCE_V2_PUBLISHED_REVISION.md](provenance/RESOURCE_V2_PUBLISHED_REVISION.md).
-
 # Portable resource revision v2
 
 Base publication commit: cf0fc39cf63bf382f91e0ac0530e512b32223df5.

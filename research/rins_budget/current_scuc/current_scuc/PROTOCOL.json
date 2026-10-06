@@ -21,5 +21,17 @@
   "cli_storage_required_bytes": 17179869184,
   "resource_revision": "portable-resource-v2",
   "sqlite_temporary_storage": "MEMORY, qualified TEMP_STORE=1",
-  "rlimit_core_bytes": 0
+  "rlimit_core_bytes": 0,
+  "seed_revision": "portable-seed-v3",
+  "solver_random_seed": {
+    "cli_option": "--seed",
+    "default": 0,
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 2147483647,
+    "scope": "both LP solves on one fresh handle and every discovery/proof MIP",
+    "worker_provenance": "required hash-bound arm manifest; no worker fallback or environment override",
+    "python_hash_seed": 0,
+    "native_private_child_seed_policy": "unchanged official solver handling"
+  }
 }

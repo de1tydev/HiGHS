@@ -28,6 +28,7 @@ from current_scuc.seed import run_seed
 from tests import fixed_triangle as fixture_module
 from tests import fixed_triangle as tiny_harness
 from current_scuc import binding as b, process_runner as process
+from current_scuc.native_exec import parse_solver_random_seed
 
 
 def main(argv=None):
@@ -35,6 +36,7 @@ def main(argv=None):
     ap.add_argument('--out',required=True)
     ap.add_argument('--worker-source-sha256', required=True)
     ap.add_argument('--fixture-source-sha256', required=True)
+    ap.add_argument('--seed', type=parse_solver_random_seed, choices=(0, 1), default=0)
     a=ap.parse_args(argv)
     require(sys.dont_write_bytecode and __debug__,'Run tiny Python -B with assertions')
     for key in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'):
@@ -56,7 +58,8 @@ def main(argv=None):
         'Fresh bounded tiny output outside the package required')
     out.mkdir()
     status=dict(passed=False,fixture_fixed_before_outcomes=True,production_result=False,
-        production_comparator_authorized=False,real_case_constructed=False,trace=[],source_freeze=frozen)
+        production_comparator_authorized=False,real_case_constructed=False,trace=[],source_freeze=frozen,
+        solver_random_seed=a.seed)
     try:
         with Path(cfg['numerical_lock']).open('a+') as lock:
             fcntl.flock(lock.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -86,6 +89,8 @@ def main(argv=None):
             oracle.source_data=data
             projected,metadata,_=adaptive.make_base(original,data,2,pairs,oracle.lodf,
                 oracle.pins['source_sha256'],oracle.full_scope)
+            require(len(metadata['retained_original_columns']) == 30 and sum(original['integrality']) == 12,
+                'Tiny original retained-column or binary inventory changed')
             require((metadata['first_start_family']['row_count'],metadata['fixed_family_nnz']) == (4,10),
                     'Tiny complete-family rows not exercised')
             status['first_start_family']=metadata['first_start_family']
@@ -94,20 +99,23 @@ def main(argv=None):
                 metadata['hard_zero_subset']['reserve_shortfall_columns'] == 0, 'Tiny hard-zero inventory')
             metadata['source_binary_authority']=master.source_binary_authority(data,2)
             seedout=out/'seed';seedout.mkdir()
-            with GuardedLP(capi.PersistentLP,cfg['library'],seedout/'native.log') as lp:
+            with GuardedLP(capi.PersistentLP,cfg['library'],seedout/'native.log',a.seed) as lp:
                 lp.pass_model(projected)
                 seeded=run_seed(lp,oracle,original,metadata,seedout,deadline,model=model,projection=projection,qa=qa)
                 require(seeded['calls']==2 and seeded['retained_batches']==2 and seeded['oracle_evaluations']==2,
                     'Tiny seed schedule changed')
+                require(type(lp.options.get('random_seed')) is int and lp.options['random_seed'] == a.seed,
+                    'Tiny LP effective solver seed disagrees with launch')
+                seeded.update(solver_random_seed=a.seed, native_options=dict(lp.options))
                 status['seed']=seeded
             seeded.update(projection_artifact=f.bundle(seedout,'projection',metadata,{}),
                 original_model_hashes=model.model_hashes(original))
             f.write_json(seedout,'result.json',seeded,{})
-            tiny_arm={'inputs':{role:{'path':str(path),'sha256':f.sha256(path)} for role,path in
+            tiny_arm={'solver_random_seed':a.seed,'inputs':{role:{'path':str(path),'sha256':f.sha256(path)} for role,path in
                 [('source',source),('expected',expected_path),('library',Path(cfg['library']))]}}
             tiny_arm_path=out/'tiny-arm.json';f.write_json(out,'tiny-arm.json',tiny_arm,{})
             state=dict(run_directory=str(out),source_manifest_sha256=b.sha(__file__),
-                arm_manifest_sha256=f.sha256(tiny_arm_path),seed=seeded,trace=[],
+                arm_manifest_sha256=f.sha256(tiny_arm_path),solver_random_seed=a.seed,seed=seeded,trace=[],
                 quality_failed=False,mechanism_failed=False,carry_preparations=[],cut_batches=2)
             cut_prefix=[dict(source='seed',artifact=seeded['batches_artifact'])]
             from current_scuc.common import read_bundle
@@ -127,11 +135,15 @@ def main(argv=None):
             def solve(expected,path,tag,start=None,prepared=None,role=options.PROOF_ROLE,
                       *,transition_state=None,target_identity=None,carry_request=None):
                 rd=path.parent; solution=rd/'solution.sol';opt=rd/'solver.options';opt.write_text(options.option_text(role))
-                probe=options.probe(cfg,opt,20.,start=start,role=role)
+                probe=options.probe(cfg,opt,20.,start=start,role=role,solver_random_seed=a.seed)
+                require(type(probe['options'].get('random_seed')) is int
+                    and probe['options']['random_seed'] == a.seed
+                    and type(probe.get('solver_random_seed')) is int and probe['solver_random_seed'] == a.seed,
+                    'Tiny MIP effective solver seed disagrees with launch')
                 b.write(rd/'options-readback.json',probe,fresh=True)
                 if transition_state is not None:
                     carry.verify_transition_proof(transition_state,target_identity,probe,start,production=False)
-                command=options.command(cfg,path,opt,solution,20.,start=start,role=role)
+                command=options.command(cfg,path,opt,solution,20.,start=start,role=role,solver_random_seed=a.seed)
                 b.verify_freeze()
                 require(b.sha(fixture_module.__file__)==a.fixture_source_sha256,'Tiny fixture changed')
                 if prepared is not None:
@@ -169,7 +181,7 @@ def main(argv=None):
                 require(parsed['status']==report['status'],'Tiny point/report status mismatch')
                 checked=master.check_integer_point(expected,parsed,role=role)
                 require(checked['passed'],'Tiny integer point failed')
-                return checked.pop('x'),dict(tag=tag,role=role,report=report,point_check=checked,master_quality=checked,process=receipt,
+                return checked.pop('x'),dict(tag=tag,role=role,solver_random_seed=a.seed,report=report,point_check=checked,master_quality=checked,process=receipt,
                     options_readback=probe,io_filter=io_receipt,advisory_filter=advisory,start_admission=start_admission,
                     incumbent_input=(str(start) if start else None),no_basis_or_search_state_input=True,
                     native_limit_seconds=20.,allocation_seconds=80.,command=command,
@@ -329,6 +341,7 @@ def main(argv=None):
             status.update(test_passed=True, test_outcome='expected_candidate_nonpass_components_passed',
                 runtime_qualification=runtime_qualification, discovery_bound_excluded=True,discovery_stop_activated=True,event_stop_claim='activated',
                 physical=physical_result,passed=True,genuine_second_master=False,exact_original_binary_count=12,
+                exact_original_retained_column_count=30,
                 adaptive_new_line_carry_exercised=False,unchanged_master_production_transition_exercised=True,
                 candidate_stopped_naturally=True,production_advancement_qualified=False,
                 fixture_stop_rule='exactly discovery then one production transition/proof, full reference, and known overflow failure',

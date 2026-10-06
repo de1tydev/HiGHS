@@ -19,6 +19,29 @@ HELPER_SOURCE_SHA256 = 'b7cd24d5852080cde20e2d0e269783090bfc004fa2f82fb30f92c9b3
 SCHEMA = 'adaptive-line-incumbent-carry/v1'
 
 
+def checked_solver_random_seed(state, arm=None):
+    """Bind typed worker, LP and every recorded native call to one run seed."""
+    from current_scuc.native_exec import validate_solver_random_seed, parse_solver_random_seed
+    selected=validate_solver_random_seed(state['solver_random_seed'])
+    seed=state['seed']
+    require(validate_solver_random_seed(seed['solver_random_seed'])==selected and
+        validate_solver_random_seed(seed['native_options']['random_seed'])==selected,
+        'carry state/LP solver seed mismatch')
+    if arm is not None:
+        require(validate_solver_random_seed(arm['solver_random_seed'])==selected,
+            'carry arm/state solver seed mismatch')
+    for row in state['trace']:
+        require(validate_solver_random_seed(row['solver_random_seed'])==selected,
+            'carry trace solver seed mismatch')
+        command=row['command']
+        require(command.count('--random_seed')==1 and
+            parse_solver_random_seed(command[command.index('--random_seed')+1])==selected,
+            'carry command solver seed mismatch')
+        require(row['native_limit_request']['argv']==command,
+            'carry native request/command mismatch')
+    return selected
+
+
 def same_transition_master(source, destination):
     """Only fresh export metadata and one non-installed evaluation may differ."""
     fields=('master_hashes','canonical_master_hashes','model_sha256','expected_sha256',
@@ -36,6 +59,7 @@ def transition_evidence(state, *, production=True, checked=None):
     """Revalidate the checked discovery source, including its actual saved bytes."""
     module('binding',ROOT/'binding.py')
     import current_scuc.options as options; import current_scuc.process_runner as process_runner; import current_scuc.no_shedding as no_shedding
+    solver_random_seed=checked_solver_random_seed(state)
     run=Path(state['run_directory']).resolve();row=state['trace'][0];rd=run/'mip-01'
     require(state.get('quality_failed') is False and state.get('mechanism_failed') is False,
         'transition after quality/mechanism failure')
@@ -84,8 +108,11 @@ def transition_evidence(state, *, production=True, checked=None):
     require(opt==rd/'solver.options' and readback==rd/'options-readback.json' and
         opt.read_text()==options.option_text('discovery'),'transition source option path/bytes')
     probe=g.strict(readback)
-    expected=options.expected_options('discovery',row['native_limit_seconds'],start=None)
-    require(probe.get('passed') is True and probe.get('role')=='discovery' and
+    expected=options.expected_options('discovery',row['native_limit_seconds'],start=None,solver_random_seed=solver_random_seed)
+    from current_scuc.native_exec import validate_solver_random_seed
+    require(validate_solver_random_seed(probe['solver_random_seed'])==solver_random_seed and
+        validate_solver_random_seed(probe['options']['random_seed'])==solver_random_seed and
+        probe.get('passed') is True and probe.get('role')=='discovery' and
         probe['options_sha256']==binding['options_sha256'] and
         probe['options']=={k:v for values in expected.values() for k,v in values.items()},'transition discovery readback changed')
     native_path=rd/'native-exec.json';read(native_path,g.sha(native_path))
@@ -108,6 +135,7 @@ def transition_evidence(state, *, production=True, checked=None):
             Path(row['checked_archive']).resolve()==Path(stage['path']).resolve(),'transition tiny checked-point path')
         read(stage['path'],stage['sha256'])
     return dict(source_call=1,destination_call=2,source_role='discovery',destination_role='proof',
+        solver_random_seed=solver_random_seed,
         source_manifest_sha256=state['source_manifest_sha256'],arm_manifest_sha256=state['arm_manifest_sha256'],
         source_row_sha256=no_shedding.digest(row),source_master_identity=copy.deepcopy(identity),
         installed_cut_prefix=[dict(source='seed',artifact=copy.deepcopy(state['seed']['batches_artifact']))],
@@ -184,9 +212,15 @@ def verify_transition_proof(state, identity, probe, start, *, production=True):
     prepared=state['carry_preparations'][0]['preparation']
     require(prepared['passed'] is True and Path(start).resolve()==Path(prepared['start']['path']).resolve(),
         'transition actual proof start differs from preparation')
-    expected=options.expected_options('proof',probe['options']['time_limit'],start=start)
+    solver_random_seed=checked_solver_random_seed(state)
+    from current_scuc.native_exec import validate_solver_random_seed
+    require(validate_solver_random_seed(prepared['solver_random_seed'])==solver_random_seed,
+        'transition prepared solver seed mismatch')
+    expected=options.expected_options('proof',probe['options']['time_limit'],start=start,solver_random_seed=solver_random_seed)
     rd=Path(identity['model_path']).parent;opt=rd/'solver.options';readback=rd/'options-readback.json'
-    require(probe.get('passed') is True and probe.get('role')=='proof' and
+    require(validate_solver_random_seed(probe['solver_random_seed'])==solver_random_seed and
+        validate_solver_random_seed(probe['options']['random_seed'])==solver_random_seed and
+        probe.get('passed') is True and probe.get('role')=='proof' and
         probe['options']=={k:v for values in expected.values() for k,v in values.items()} and
         opt.read_text()==options.option_text('proof') and g.sha(opt)==probe['options_sha256'] and
         g.strict(readback)==probe,'transition proof option/readback mismatch')
@@ -269,6 +303,13 @@ def verify_prepared(record, request_path, request_sha256, identity):
     require(g.sha(request_path)==request_sha256 and record['request_sha256']==request_sha256,'carry request changed')
     require(record['passed'] is True and record['result_complete'] is True,'incomplete carry preparation')
     require(record['target_master_identity']==identity,'carry destination changed')
+    request=g.strict(Path(request_path))
+    arm_path=Path(request['arm_manifest_path'])
+    require(g.sha(arm_path)==request['arm_manifest_sha256'],'carry arm changed')
+    from current_scuc.native_exec import validate_solver_random_seed
+    require(validate_solver_random_seed(record['solver_random_seed'])==
+        validate_solver_random_seed(g.strict(arm_path)['solver_random_seed']),
+        'prepared carry solver seed mismatch')
     for path,digest in {**record['consumed_files_sha256'],**record['evidence_files_sha256']}.items():
         require(g.sha(path)==digest,'carry consumed artifact changed: '+path)
     require(g.sha(record['start']['path'])==record['start']['sha256'],'prepared start changed')
@@ -363,6 +404,7 @@ def prepare(request, out, deadline, *, production=True):
         state['arm_manifest_sha256']==request['arm_manifest_sha256'],'fresh state/source identity')
     checked(request['source_manifest_path'],request['source_manifest_sha256'])
     arm=g.strict(checked(request['arm_manifest_path'],request['arm_manifest_sha256']))
+    solver_random_seed=checked_solver_random_seed(state,arm)
     pending=state['pending_master'];target_call=request['target_call']
     require(pending==request['pending_master'] and pending['call']==target_call,'pending target identity')
     selected=select_point(state,target_call);source_call=selected['call'];ev=selected['evaluation']
@@ -453,7 +495,8 @@ def prepare(request, out, deadline, *, production=True):
     require(g.sha(start)==start_record['sha256'],'start changed during assessment')
     require(time.monotonic()<deadline,'carry preparation deadline exceeded')
     for path,digest in consumed.items():require(g.sha(path)==digest,'carry source changed during preparation')
-    return dict(schema=SCHEMA,passed=True,result_complete=True,run_directory=str(run),source_call=source_call,
+    return dict(schema=SCHEMA,passed=True,result_complete=True,solver_random_seed=solver_random_seed,
+        run_directory=str(run),source_call=source_call,
         target_call=target_call,selected_original_provisional_upper=ev['provisional_upper'],
         eligible_calls=[r['call'] for r in state['trace'] if 'evaluation' in r],selection_rule='minimum checked original provisional_upper among target-valid starts; earliest exact tie',
         production_quality_eligible=ev['negligible_slack_quality']['passed'],

@@ -3,6 +3,7 @@ from current_scuc._paths import ROOT as PACKAGE_ROOT, source_path, source_sha, m
 from pathlib import Path
 import hashlib
 import re
+from current_scuc.native_exec import validate_solver_random_seed
 from current_scuc.common import ROOT, helpers, module, require, finite
 
 PROOF = ('threads = 2\nparallel = off\npresolve = on\nwrite_solution_to_file = true\n'
@@ -98,10 +99,11 @@ def option_text(role=PROOF_ROLE):
     return PROOF + ('mip_max_improving_sols = 1\n' if role == DISCOVERY else '')
 
 
-def expected_options(role, native_limit, *, start):
+def expected_options(role, native_limit, *, start, solver_random_seed=0):
     require(role in ROLES, 'Unknown MIP role')
     require(role != DISCOVERY or start is None, 'Discovery must be cold')
     expected = {kind: dict(items) for kind, items in EXPECTED.items()}
+    expected['Int']['random_seed'] = validate_solver_random_seed(solver_random_seed)
     expected['Int']['mip_max_improving_sols'] = 1 if role == DISCOVERY else 2147483647
     expected['Double']['time_limit'] = native_limit
     expected['String']['read_solution_file'] = str(Path(start).resolve()) if start is not None else ''
@@ -110,11 +112,12 @@ def expected_options(role, native_limit, *, start):
 
 
 
-def command(cfg, model, option_path, solution, native_limit, start=None, *, role=PROOF_ROLE):
+def command(cfg, model, option_path, solution, native_limit, start=None, *, role=PROOF_ROLE, solver_random_seed=0):
     require(role in ROLES and (role != DISCOVERY or start is None), 'Invalid/carry discovery role')
     require(finite(native_limit) and native_limit > 0, 'No native request window')
+    solver_random_seed = validate_solver_random_seed(solver_random_seed)
     result = [str(Path(cfg['binary']).resolve()), str(Path(model).resolve()), '--options_file', str(Path(option_path).resolve()), '--time_limit',
-        format(native_limit, '.17g'), '--random_seed', '0', '--solution_file', str(Path(solution).resolve())]
+        format(native_limit, '.17g'), '--random_seed', str(solver_random_seed), '--solution_file', str(Path(solution).resolve())]
     if start is not None:
         require(Path(start).resolve()!=Path(solution).resolve(),'start input must differ from output')
         require(Path(start).is_file(),'start input missing')
@@ -122,18 +125,21 @@ def command(cfg, model, option_path, solution, native_limit, start=None, *, role
     return result
 
 
-def probe(cfg, option_path, native_limit, start=None, *, role=PROOF_ROLE):
+def probe(cfg, option_path, native_limit, start=None, *, role=PROOF_ROLE, solver_random_seed=0):
     """Production profile stays exact; fixture callers cannot change it."""
     require(Path(option_path).read_text() == option_text(role), 'Unsupported option bytes')
-    expected = expected_options(role, native_limit, start=start)
+    expected = expected_options(role, native_limit, start=start, solver_random_seed=solver_random_seed)
     from current_scuc.common import native_call_guard
     with native_call_guard('production option readback') as guard:
-        result = _probe_checked(cfg, option_path, native_limit, start, role, expected)
+        result = _probe_checked(cfg, option_path, native_limit, start, role, expected, solver_random_seed)
     return dict(result,native_output_limit=guard)
 
 
-def _probe_checked(cfg, option_path, native_limit, start, role, expected):
+def _probe_checked(cfg, option_path, native_limit, start, role, expected, solver_random_seed=0):
     """Private readback shared with the separately pinned rgn fixture profile."""
+    solver_random_seed = validate_solver_random_seed(solver_random_seed)
+    require(type(expected['Int']['random_seed']) is int and expected['Int']['random_seed'] == solver_random_seed,
+        'Option reference seed/profile mismatch')
     import ctypes as C
     f = helpers()
     base = module('_integer_frozen_option_identity', ROOT/'option_probe.py')
@@ -166,7 +172,7 @@ def _probe_checked(cfg, option_path, native_limit, start, role, expected):
             'Option probe runtime mismatch')
         require(lib.Highs_setBoolOptionValue(h,b'output_flag',0) == 0, 'Cannot quiet option probe')
         require(lib.Highs_readOptions(h,str(option_path).encode()) == 0, 'Cannot parse proof options')
-        require(lib.Highs_setIntOptionValue(h,b'random_seed',0) == 0 and
+        require(lib.Highs_setIntOptionValue(h,b'random_seed',solver_random_seed) == 0 and
             lib.Highs_setDoubleOptionValue(h,b'time_limit',native_limit) == 0, 'CLI option probe failed')
         if start is not None:
             require(Path(start).is_file(),'start input missing at option probe')
@@ -196,7 +202,7 @@ def _probe_checked(cfg, option_path, native_limit, start, role, expected):
             failure=ValueError('; '.join(failures))
             failure.evidence=dict(option_inventory=inventory,typed_option_readback=typed_reads,compiled_out_option=conditional,failures=failures)
             raise failure
-        return dict(passed=True, role=role, identity=identity, loaded_symbol_provenance=symbols,
+        return dict(passed=True, role=role, solver_random_seed=solver_random_seed, identity=identity, loaded_symbol_provenance=symbols,
             option_inventory=inventory,typed_option_readback=typed_reads,compiled_out_option=conditional,
             options=actual, options_sha256=f.sha256(option_path),
             same_live_solving_handle=False, model_read_called=False, optimization_or_presolve_called=False)

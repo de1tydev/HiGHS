@@ -1,0 +1,151 @@
+{
+  "durable_source_readback": {
+    "json_pointer": "/source_archive",
+    "omitted_fields": [
+      "returned_path",
+      "library_file_id",
+      "version"
+    ],
+    "value": {
+      "ack_sha256": "2b32ffbc086d7c45485bfb8a2731410b2cf1d7c1aec6327745f4bc887df0e053",
+      "all_returned_member_hashes_and_current_paths_verified": true,
+      "embedded_manifest_members": 1,
+      "members": 320,
+      "regular_source_members": 317,
+      "sha256": "3399a7777516de1ca5b5a0e8c28d43fd0bdb6c4c7efcc2bced77f943b5b69e11",
+      "symlink_members": 2
+    }
+  },
+  "observations": {
+    "artifact_manifest_sha256": {
+      "json_pointer": "/artifact_manifest_sha256",
+      "value": "96f657ad51ee94e9cb2fa3f6f242fa1e9daba7000bedf61c13d4fcca6d7844b0"
+    },
+    "empty_qualification": {
+      "json_pointer": "/empty_qualification",
+      "value": {
+        "actual_seeds": [
+          0,
+          1,
+          2
+        ],
+        "cleanup_verified": true,
+        "contained_wall_seconds": 0.18268652800179552,
+        "envelope_sha256": "6ef22154bfb6816e5011422bd41aa3394cf66492f5808fd6d060c94498b9bfd9",
+        "handles_destroyed": 3,
+        "limits_satisfied": true,
+        "model_calls": 0,
+        "optimizer_calls": 0,
+        "passed": true,
+        "presolve_calls": 0,
+        "qualification_sha256": "ec1596b18b25c2dc38c42aceb267b2945d2681e1bd1951fed3665fb8beb8531d"
+      }
+    },
+    "passed": {
+      "json_pointer": "/passed",
+      "value": true
+    },
+    "retained_evidence_files_rehashed": {
+      "json_pointer": "/retained_evidence_files_rehashed",
+      "value": 119
+    },
+    "reviewer_native_or_optimizer_calls": {
+      "json_pointer": "/reviewer_native_or_optimizer_calls",
+      "value": 0
+    },
+    "schema": {
+      "json_pointer": "/schema",
+      "value": "independent-seed-release-gate-review/v1"
+    },
+    "source_manifest_sha256": {
+      "json_pointer": "/source_manifest_sha256",
+      "value": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5"
+    },
+    "source_review_manifest_sha256": {
+      "json_pointer": "/source_review_manifest_sha256",
+      "value": "3af3ad2091c5f3ff5030bb1666a426bb5bf9e5780cd98eeec1bef9eeacb17843"
+    },
+    "tiny": {
+      "json_pointer": "/tiny",
+      "value": {
+        "LP_calls": 2,
+        "LP_native_cumulative_seconds": 0.001043558120727539,
+        "MIP_calls": 3,
+        "actual_start_admission_passed": true,
+        "candidate_interval": {
+          "gap": 8.889111296598134e-10,
+          "lower": 11305.99998995,
+          "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+          "passed": true,
+          "physical_dc_lower_bound_certified": false,
+          "qualified": true,
+          "target": 0.01,
+          "upper": 11306.00000000003
+        },
+        "candidate_passed": false,
+        "carry_exact_and_native_checks_passed": true,
+        "changed_master_exercised": false,
+        "cleanup_verified": true,
+        "component_calls": 0,
+        "contained_wall_seconds": 12.910000969000976,
+        "exact_seed_LP_lower": 7557.499999999971,
+        "expected_nonpass": true,
+        "full_launcher_seconds": 13.47554628799844,
+        "limits_satisfied": true,
+        "mips": [
+          {
+            "global_lower": null,
+            "log_sha256": "c719a02383ada390d6341a77d9dd187ab9da6b57ac931c479328becc1ec2fcc2",
+            "native_receipt_sha256": "c30300c84eecade209c765b3884fc0f3062ed9919ab617bbb6e9cde18c64630c",
+            "seed": 1,
+            "stage": "mip-01",
+            "status": "Solution limit reached",
+            "wall_seconds": 0.04398268699878827
+          },
+          {
+            "global_lower": 11305.99998995,
+            "log_sha256": "ecdccb6aadb3f360d882065d4d38485c24b7ab8bd97315479ace2887896646b4",
+            "native_receipt_sha256": "cede08bff6eda0a49891be9a23ace3c85ea607bf9e4f21c9518285a3e286d818",
+            "seed": 1,
+            "stage": "mip-02",
+            "status": "Optimal",
+            "wall_seconds": 0.04624731199874077
+          },
+          {
+            "global_lower": 11304.99998995,
+            "log_sha256": "774a438d8fe62090ec858f63baf88b6804d698f79417874241057ccfe01aa548",
+            "native_receipt_sha256": "b6af0ba5c51600f77278048597da79ca88b97427547e27b39844f6ef0831d023",
+            "seed": 1,
+            "stage": "full-integer-reference",
+            "status": "Optimal",
+            "wall_seconds": 0.04684671499853721
+          }
+        ],
+        "original_binaries": 12,
+        "original_checked_upper": 11306.00000000003,
+        "original_source_and_direct_DC_checks_passed": true,
+        "reference_objective": 11306.0,
+        "result_sha256": "cc6196c9765ad13c04f32f84d759eb15688105b86f3f1a9236f615ff2798423e",
+        "retained_original_columns": 30,
+        "seed": 1,
+        "shared_overflow_MWh": 2.2500000000000058,
+        "test_passed": true,
+        "test_result_sha256": "bc9983c6485f32901e9122d46dd8ab96b28bff83323274eee0b82021b710ef67",
+        "worker_before_serialization_seconds": 12.838678647000052,
+        "worker_process_sha256": "d16a806c16f9190f3edc30e961d0e711b1b6df0830f9a7ace4a939f38b2ae7e1"
+      }
+    }
+  },
+  "original_remaining_before_panel": {
+    "json_pointer": "/remaining_before_panel",
+    "scope": "Historical at gate-review time; later run audits report actual panel progress.",
+    "value": "Owner archives/readbacks terminal gate evidence and rechecks fixed per-run admission before each serial panel invocation."
+  },
+  "schema": "current-scuc-seed-release-gates-public/v1",
+  "scope": "Independent read-only audit of already completed native-option and fixed seed-1 tiny receipts; no repeated execution.",
+  "source_record": {
+    "bytes": 4403,
+    "name": "REVIEW.json",
+    "sha256": "fed24f83241074c6feb9eccf739f60098b4af0648f887836fa507d1cc39cffef"
+  }
+}

@@ -16,8 +16,8 @@ require, NativeError = adapter.require, core.NativeError
 
 
 class PersistentLP(core.PersistentLP):
-    def __init__(self, library_path, log_path):
-        super().__init__(library_path, log_path)
+    def __init__(self, library_path, log_path, solver_random_seed=0):
+        super().__init__(library_path, log_path, solver_random_seed)
         self._adaptive_binding = None
         self.partial_edit_failure = None
         try:

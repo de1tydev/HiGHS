@@ -20,7 +20,9 @@ def bind_case(case_path):
     return value
 
 
-def create_arm_manifest(case_path,source_manifest_path,out_path):
+def create_arm_manifest(case_path,source_manifest_path,out_path, *, solver_random_seed=0):
+    from .native_exec import validate_solver_random_seed
+    solver_random_seed=validate_solver_random_seed(solver_random_seed)
     value=bind_case(case_path)
     source_manifest_path=Path(source_manifest_path).resolve()
     binding.verify_package_source(source_manifest_path,cb.sha(source_manifest_path))
@@ -34,6 +36,7 @@ def create_arm_manifest(case_path,source_manifest_path,out_path):
     files.update(cfg.get('runtime_library_pins',{}));files.update(cfg.get('build_pins',{}))
     files[str(Path(cfg['runtime_manifest']).resolve())]=cfg['runtime_manifest_sha256']
     manifest=dict(schema='current-scuc-arm-manifest/v1',root=str(cb.ROOT),
+        solver_random_seed=solver_random_seed,
         case_binding=cb.record(case_path),source_manifest=cb.record(source_manifest_path),
         scope=dict(hours=value['case']['hours'],subset_mapping_pairs=[],
             virtual_security_scope='all_source_listed_nonself_outages',original_binary_count=value['shapes']['binary_count'],

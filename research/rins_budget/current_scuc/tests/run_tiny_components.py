@@ -12,6 +12,7 @@ import sys
 import time
 
 from tests.fixed_triangle import write_source
+from current_scuc.native_exec import parse_solver_random_seed
 
 
 def main(argv=None):
@@ -20,7 +21,11 @@ def main(argv=None):
     parser.add_argument('--runtime-manifest', type=Path)
     parser.add_argument('--workdir', type=Path, required=True)
     parser.add_argument('--suite', choices=('changed-master', 'transition'), default='changed-master')
+    parser.add_argument('--seed', type=parse_solver_random_seed, choices=(0, 1), default=0,
+                        help='Solver seed for the fixed transition tiny; changed-master remains legacy seed 0')
     args = parser.parse_args(argv)
+    if args.suite != 'transition' and args.seed != 0:
+        parser.error('--seed 1 is supported only for the fixed transition tiny')
     started = time.monotonic()
     if not sys.dont_write_bytecode or not __debug__:
         parser.error('Run Python -B with assertions enabled')
@@ -34,7 +39,7 @@ def main(argv=None):
     work = binding.fresh_directory(args.workdir)
     outcome = dict(schema='current-scuc-tiny-component-test/v1', test_passed=False,
                    candidate_passed=False, production_result=False, work_directory=str(work),
-                   suite=args.suite, whole_storage_admission=admission)
+                   suite=args.suite, solver_random_seed=args.seed, whole_storage_admission=admission)
     code = 2
     try:
         installed = runtime.discover_runtime(args.highs, args.runtime_manifest)
@@ -54,6 +59,8 @@ def main(argv=None):
                    '--out', str(work/'run'), '--worker-source-sha256',
                    source_files[str(worker)], '--fixture-source-sha256',
                    source_files[str(tests/'fixed_triangle.py')]]
+        if args.suite == 'transition':
+            command.extend(['--seed', str(args.seed)])
         log = work/'tiny-worker.log'
         storage_budget.admit_phase(work, phase='tiny component worker', writes=[
             storage_budget.WriteBound(log, storage_budget.PYTHON_FILE_LIMIT,
@@ -69,6 +76,10 @@ def main(argv=None):
         binding.verify(source_files)
         result_path = work/'run/result.json'
         result = binding.read(result_path)
+        if args.suite == 'transition':
+            binding.require(type(result.get('solver_random_seed')) is int
+                            and result['solver_random_seed'] == args.seed,
+                            'Tiny result solver seed disagrees with launch')
         binding.require(result.get('test_passed') is True
                         and result.get('candidate_passed') is False
                         and result.get('candidate_expected_nonpass_verified') is True

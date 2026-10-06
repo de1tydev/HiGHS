@@ -25,7 +25,13 @@ def run_seed(lp, oracle, original, metadata, out, deadline, *, model, projection
         certified_lower = module('_integer_exact_lower', f.ROOT/'science/certified_lower.py')
     require(lp.expected['sense'] == 1 and lp.expected['offset'] == 0, 'Wrong seed objective')
     require(not any(lp.expected['integrality']), 'Seed must be continuous')
+    from current_scuc.native_exec import validate_solver_random_seed
+    solver_random_seed=validate_solver_random_seed(lp.solver_random_seed)
+    if record is not None and 'solver_random_seed' in record:
+        require(validate_solver_random_seed(record['solver_random_seed'])==solver_random_seed,
+            'LP seed result/handle solver seed mismatch')
     initial = dict(schema='adaptive-line-integer-seed/v1', passed=False, result_complete=False,
+        solver_random_seed=solver_random_seed,
         calls=0, cut_batches=0, retained_batches=0, oracle_evaluations=0, full_scope_scans=0,
         cut_nnz=0, balance_nnz=int(metadata['balance_nonzeros']), rounds=[], exact_lp_lowers=[],
         actual_stage_costs={}, certificate_attempts=0, full_scope=metadata['full_scope'],
@@ -128,9 +134,11 @@ def main(argv=None):
     lp = None
     try:
         manifest, paths, identities = verify_manifest(args.manifest, args.manifest_sha256, deadline)
+        from current_scuc.native_exec import validate_solver_random_seed
+        result['solver_random_seed'] = validate_solver_random_seed(manifest['solver_random_seed'])
         model, projection, capi, qa, oracle, original, intended, metadata, data = prepare(paths, manifest, deadline)
         result['runtime'] = f.verify_loaded_runtime(identities)
-        lp = GuardedLP(capi.PersistentLP,paths['library'], out/'native.log')
+        lp = GuardedLP(capi.PersistentLP,paths['library'], out/'native.log',result['solver_random_seed'])
         result['projection_artifact']=f.bundle(out,'projection',metadata,{})
         readback = lp.pass_model(intended)
         run_seed(lp, oracle, original, metadata, out, deadline, model=model, projection=projection, qa=qa, record=result)

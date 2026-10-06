@@ -11,6 +11,8 @@ from pathlib import Path
 import re
 import sys
 import time
+from types import MappingProxyType
+from current_scuc.native_exec import validate_solver_random_seed
 import numpy as np
 from current_scuc.science.model import require, sha256, validate_model, compare_models, append_rows
 
@@ -62,7 +64,9 @@ def classify_diagnostics(text, *, source_guard, model_path=None):
 
 
 class PersistentLP:
-    def __init__(self, library_path, log_path):
+    def __init__(self, library_path, log_path, solver_random_seed=0):
+        self.solver_random_seed=validate_solver_random_seed(solver_random_seed)
+        self.fixed_options=MappingProxyType(dict(OPTIONS,random_seed=self.solver_random_seed))
         self.handle=None;self.expected=None;self.model_path=None;self.last_run=None;self.version=0;self.events=[];self.run_records=[]
         self.library_path=Path(library_path).resolve();self.log_path=Path(log_path).resolve()
         require(not self.log_path.exists(),'Native log must be a fresh output path')
@@ -103,11 +107,11 @@ class PersistentLP:
             self.identity['highs_int_bytes']=width
             self.set_option('log_to_console',False);self.set_option('output_flag',True);self.set_option('log_file',str(self.log_path))
             # Confirm defaults first: assigning them cannot conceal a mismatching native default.
-            self.defaults={k:self.get_option(k,type(v)) for k,v in OPTIONS.items() if k.endswith('_tolerance')}
+            self.defaults={k:self.get_option(k,type(v)) for k,v in self.fixed_options.items() if k.endswith('_tolerance')}
             require(all(v==1e-7 for v in self.defaults.values()),'Pinned default tolerance changed')
-            for name,value in OPTIONS.items():self.set_option(name,value)
-            self.options={name:self.get_option(name,type(value)) for name,value in OPTIONS.items()}
-            require(self.options==OPTIONS,'Fixed option readback mismatch')
+            for name,value in self.fixed_options.items():self.set_option(name,value)
+            self.options={name:self.get_option(name,type(value)) for name,value in self.fixed_options.items()}
+            require(self.options==self.fixed_options,'Fixed option readback mismatch')
         except BaseException:
             self.destroy();raise
 
@@ -122,7 +126,10 @@ class PersistentLP:
     def set_option(self,name,value):
         self._alive();kind='Bool' if type(value) is bool else 'Int' if type(value) is int else 'Double' if type(value) is float else 'String' if type(value) is str else None
         require(kind is not None,'Unsupported option type')
-        if self.run_records and name in OPTIONS:require(value==OPTIONS[name],'Cannot change frozen options after solving')
+        if name == 'random_seed':validate_solver_random_seed(value)
+        if self.run_records and name in self.fixed_options:
+            require(type(value) is type(self.fixed_options[name]) and value==self.fixed_options[name],
+                'Cannot change frozen options after solving')
         self._call('Highs_set'+kind+'OptionValue',name.encode(),value.encode() if kind=='String' else value)
         require(self.get_option(name,type(value))==value,'Option readback mismatch '+name)
 
@@ -198,7 +205,7 @@ class PersistentLP:
         """deadline is absolute monotonic wall; hard kill remains the parent's duty."""
         self._alive();require(self.expected is not None,'No loaded continuous model')
         require(math.isfinite(deadline) and math.isfinite(native_total_cap) and 0<native_total_cap<=240 and math.isfinite(reserve_seconds) and reserve_seconds>=0,'Invalid cumulative budget')
-        require(all(self.get_option(k,type(v))==v for k,v in OPTIONS.items()),'Frozen option drift')
+        require(all(self.get_option(k,type(v))==v for k,v in self.fixed_options.items()),'Frozen option drift')
         require(np.count_nonzero(self.expected['integrality'])==0,'Integrality not cleared')
         before=self.get_runtime();remaining=deadline-time.monotonic()-reserve_seconds
         limit=min(native_total_cap,before+remaining)
@@ -206,7 +213,7 @@ class PersistentLP:
         self.set_option('time_limit',float(limit));start=time.monotonic()
         status=int(self.lib.Highs_run(self.handle));end=time.monotonic();after=self.get_runtime()
         require(after>=before,'Cumulative runtime decreased')
-        result={'run_status':status,'model_status':int(self.lib.Highs_getModelStatus(self.handle)),'version':self.version,
+        result={'solver_random_seed':self.solver_random_seed,'run_status':status,'model_status':int(self.lib.Highs_getModelStatus(self.handle)),'version':self.version,
                 'monotonic_start':start,'monotonic_end':end,'actual_call_wall_seconds':end-start,'cumulative_before':before,'cumulative_after':after,
                 'native_increment':after-before,'requested_cumulative_limit':limit,'native_total_cap':native_total_cap,
                 'declared_final_reserve_seconds':reserve_seconds,'remaining_wall_before_reserve':remaining+reserve_seconds,

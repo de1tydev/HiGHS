@@ -1,0 +1,256 @@
+{
+  "audited_input_identities": [
+    {
+      "name": "run01-june-seed1/AUDIT.json",
+      "sha256": "e1915b2fef56e8432e5f78714e54c2e86059d548e04433cc5a74e0b735ea3141"
+    },
+    {
+      "name": "run01-june-seed1/AUDIT_MANIFEST.json",
+      "sha256": "acd774c9708cbca724ebcbb54b355cbd5d0d805884ad3e7c20a2ffb84e0ebe59"
+    },
+    {
+      "name": "run02-october-seed1/AUDIT.json",
+      "sha256": "8253d4b3ddd5ad457705862a9ac2f865ff15987e99c070800b6468bf4cd05ed8"
+    },
+    {
+      "name": "run02-october-seed1/AUDIT_MANIFEST.json",
+      "sha256": "474f931bf49f4cf1172b0aed5ead6834beeef9d56997fd30036586b8d835f0fe"
+    },
+    {
+      "name": "run03-december-seed1/AUDIT.json",
+      "sha256": "b82fe0bf1096498434a321408cd162ac49518f3eaa961a44cb38f68fe7f0e8da"
+    },
+    {
+      "name": "run03-december-seed1/AUDIT_MANIFEST.json",
+      "sha256": "abd035a0f1c055b1167686dc89964e643bb35fbb41116916d3f9020bce19daa4"
+    },
+    {
+      "name": "run04-december-seed2/AUDIT.json",
+      "sha256": "0e5cfcd84791a0510652ba80bfe68a0350d66ad7d8e84c72053a7453a4af2f57"
+    },
+    {
+      "name": "run04-december-seed2/AUDIT_MANIFEST.json",
+      "sha256": "60de1756112c893e18bba6da7dc3472b446c63e1e08d3aa7ac44e5aa1773d4ea"
+    },
+    {
+      "name": "run05-october-seed2/AUDIT.json",
+      "sha256": "179f4c4cfa3f9eb66aa444777004fe76f901bf3aff467b9fe1f981c41fe4ccad"
+    },
+    {
+      "name": "run05-october-seed2/AUDIT_MANIFEST.json",
+      "sha256": "2f34a583730d512ea797df2c6a1af93fdcdad35c72179637c2521590315768b0"
+    },
+    {
+      "name": "run06-june-seed2/AUDIT.json",
+      "sha256": "74aae3eb72deaab2b3bb2727fc07efb24572cb3342f59b42c266e171b1377c65"
+    },
+    {
+      "name": "run06-june-seed2/AUDIT_MANIFEST.json",
+      "sha256": "08cfd4507fcfe54dc5bee075f09bf9b758b4aeca581b58e9d9d00835568e3420"
+    }
+  ],
+  "final_audit_manifest": {
+    "bytes": 1679,
+    "name": "FINAL_MANIFEST.json",
+    "sha256": "39224bff1293f0765d25a95293dc35c9ee4524e723dbad4bfa98899ccf45e2fa"
+  },
+  "input_identity_mapping": "Original /audited_inputs_sha256 keys are private absolute paths; public names retain only the audit directory and file name. Hash values unchanged.",
+  "observations": {
+    "clock_descriptive_statistics_seconds": {
+      "json_pointer": "/clock_descriptive_statistics_seconds",
+      "value": {
+        "candidate_start_through_reap": {
+          "count": 6,
+          "maximum": 453.95280624900624,
+          "median": 330.08302409250246,
+          "minimum": 315.80770966099954
+        },
+        "full_cli": {
+          "count": 6,
+          "maximum": 509.36312051599816,
+          "median": 383.2161518590001,
+          "minimum": 370.8546966299982
+        },
+        "outer_start_through_reap": {
+          "count": 6,
+          "maximum": 509.43347337800515,
+          "median": 383.2629445845014,
+          "minimum": 370.8984334019988
+        },
+        "physical_start_through_reap": {
+          "count": 6,
+          "maximum": 160.8691591780007,
+          "median": 159.3776890199988,
+          "minimum": 154.49355878699862
+        },
+        "preparation_cli_observed": {
+          "count": 6,
+          "maximum": 52.88687950800522,
+          "median": 51.8271488265018,
+          "minimum": 50.891723599001125
+        },
+        "seed_mip_carry_ledger": {
+          "count": 6,
+          "maximum": 153.0934577070002,
+          "median": 99.00068510600249,
+          "minimum": 89.01977509899734
+        }
+      }
+    },
+    "coverage": {
+      "json_pointer": "/coverage",
+      "value": {
+        "all_cleanup_and_resource_gates_passed": true,
+        "all_source_native_seed_model_point_certificate_bindings_passed": true,
+        "carry_preparations": 2,
+        "changed_master_row_growth_runs": [
+          6
+        ],
+        "each_pass": {
+          "binary_rounding_performed": false,
+          "direct_factorizations": 1289,
+          "hours": 36,
+          "listed_outages": 1288,
+          "load_shedding_and_reserve_shortfall_MWh": 0,
+          "original_binaries": 28080,
+          "original_source_direct_dc_checks_passed": true,
+          "signed_security_rows": 132720336,
+          "unsigned_security_pair_hours": 66360168
+        },
+        "local_checkpoint_counts": [
+          7,
+          5,
+          5,
+          5,
+          5,
+          7
+        ],
+        "lp_solves": 12,
+        "mip_solves": 8,
+        "new_line_or_column_growth_carry_observed": false,
+        "production_invocations": 6,
+        "run06_row_growth": {
+          "carried_source_direct_dc_previously_admitted": false,
+          "carried_source_production_quality_eligible": false,
+          "changed_master_fields": [
+            "a_index",
+            "a_start",
+            "a_value",
+            "num_nz",
+            "num_row",
+            "row_lower",
+            "row_names",
+            "row_upper"
+          ],
+          "columns": 141878,
+          "exact_carry_binaries_checked": 28080,
+          "exact_carry_columns_checked": 141878,
+          "exact_carry_rows_checked": 162954,
+          "map_hash_unchanged": true,
+          "native_point_bits_equal": true,
+          "native_start_admitted_feasible": true,
+          "original_lift_binary64_hash_bound_to_selected_source": true,
+          "retained_point_binary64_hash_bound_to_selected_source": true,
+          "source_nonzeros": 762252,
+          "source_rows": 162951,
+          "target_nonzeros": 764895,
+          "target_rows": 162954,
+          "unchanged_active_lines": [
+            1201,
+            1378
+          ]
+        },
+        "third_mip_call_observed": false,
+        "unchanged_master_discovery_to_proof_runs": [
+          1
+        ]
+      }
+    },
+    "exact_seed_lp_gap_percent_statistics": {
+      "json_pointer": "/exact_seed_lp_gap_percent_statistics",
+      "value": {
+        "count": 6,
+        "maximum": 0.29971928072441867,
+        "median": 0.054358618649442844,
+        "minimum": 0.0068678972131179985
+      }
+    },
+    "interpretation": {
+      "json_pointer": "/interpretation",
+      "value": [
+        "All six predeclared invocations passed the unchanged one-percent/full-QA/budget gate; no outcome was removed or replaced.",
+        "These medians and extrema summarize the fixed six observations across three different exposed dates and two solver seeds. They do not estimate same-seed repeatability, independence, failure probability, reliability or unseen-case generalization.",
+        "Complete invocation uses the outer start-through-reap receipt and includes CLI cleanup. The CLI-reported elapsed clock is a separate, nested quantity. Post-exit audit, cloud archival/readback and duplicate cleanup are administration outside these numerical clocks.",
+        "Selected numerical-MIP lowers exist only for the two June rows. October and December select exact seed-LP lowers; no eligible numerical-MIP lower is inferred for those four rows.",
+        "Both lower families are scoped to the hard-zero integer full literal serialized-LODF subset. U is a numerically checked physical witness; physical DC lower-bound certification remains false.",
+        "June seed2 carried a target-feasible diagnostic source point before final physical QA. Its carried source had material overflow and was not production-quality eligible; the later selected endpoint passed the complete quality gate.",
+        "No conventional comparator, historical timing ratio, outcome-driven option change, replacement run, optimizer/checker rerun, forced new-line growth or third MIP was added."
+      ]
+    },
+    "overflow_MWh_statistics": {
+      "json_pointer": "/overflow_MWh_statistics",
+      "value": {
+        "count": 6,
+        "maximum": 1.0226174254057698e-06,
+        "median": 9.491003538641963e-07,
+        "minimum": 1.6539866010134577e-07
+      }
+    },
+    "panel_gate_passed": {
+      "json_pointer": "/panel_gate_passed",
+      "value": true
+    },
+    "passed_invocations": {
+      "json_pointer": "/passed_invocations",
+      "value": 6
+    },
+    "resource_statistics_bytes": {
+      "json_pointer": "/resource_statistics_bytes",
+      "value": {
+        "minimum_sampled_disk_bytes": {
+          "count": 6,
+          "maximum": 22695743488,
+          "median": 21342234624.0,
+          "minimum": 19619000320
+        },
+        "minimum_sampled_memory_bytes": {
+          "count": 6,
+          "maximum": 7758618624,
+          "median": 7723771904.0,
+          "minimum": 7430471680
+        },
+        "owner_peak_sampled_tree_rss_bytes": {
+          "count": 6,
+          "maximum": 1698381824,
+          "median": 1518884864.0,
+          "minimum": 1437024256
+        }
+      }
+    },
+    "run06_result_sha256": {
+      "json_pointer": "/run06_result_sha256",
+      "value": "c6c7054d27ba3d2a3213edc8a506c0b6d7c159f00ada1433cda8ffaf5ad29660"
+    },
+    "schema": {
+      "json_pointer": "/schema",
+      "value": "fixed-six-scuc-seed-panel-final-descriptive-summary/v1"
+    },
+    "selected_endpoint_gap_percent_statistics": {
+      "json_pointer": "/selected_endpoint_gap_percent_statistics",
+      "value": {
+        "count": 6,
+        "maximum": 0.26130500451296274,
+        "median": 0.05435861864944284,
+        "minimum": 0.006867897213117998
+      }
+    }
+  },
+  "row_mapping": "Original /rows/0 through /rows/5 are represented by the six linked per-run audit projections in seed-panel-summary.json.",
+  "schema": "current-scuc-seed-panel-final-audit-public/v1",
+  "scope": "Field-mapped final independent descriptive audit; no new execution or scientific recomputation.",
+  "source_record": {
+    "bytes": 27134,
+    "name": "FINAL_PANEL_SUMMARY.json",
+    "sha256": "206886cfd108f3d9a6abc8d19655bb19c4c41b10a623beac3a243d52091ddaea"
+  }
+}

@@ -1,73 +1,20 @@
 # Extraction and binding review scope
 
-This is the original baseline extraction review, retained below for attribution.
-Its source-segment/AST counts and original portable hashes describe the baseline
-identified by source manifest
-`b2bcc4dc84d77eb1e5f5491bfbc1e15947f886720c439ee7595ec0ba0b6aa164`.
-They apply to the resource revision only where the relevant bytes remain
-unchanged; they do not assert that the six edited resource files retain their
-baseline hashes. The original file is preserved byte-for-byte at
+The original baseline extraction review is preserved byte-for-byte at
 [provenance/BASE_BINDING_REVIEW.md](provenance/BASE_BINDING_REVIEW.md).
+[SOURCE_PROVENANCE.json](SOURCE_PROVENANCE.json) retains its baseline source,
+segment and AST attribution. Its old hashes and counts apply only where those
+bytes remain unchanged; they do not identify the later resource or seed edits.
 
-The current delta and identities are documented in
-[RESOURCE_REVISION.md](RESOURCE_REVISION.md),
-[RESOURCE_REVISION.json](RESOURCE_REVISION.json), and the historical
-[prelaunch source-delta receipt](evidence/prelaunch-source-delta-verification.json).
-The runtime source manifest verifies all 70 current entries, 64 identical to
-baseline. Publication itself makes no executable or test changes.
+The historical six-file resource delta remains in
+[RESOURCE_REVISION.md](RESOURCE_REVISION.md) and
+[RESOURCE_REVISION.json](RESOURCE_REVISION.json). The current approved seed
+change spans ten runtime Python files and PROTOCOL.json, documented in
+[SEED_REVISION.md](SEED_REVISION.md), [SEED_REVISION.json](SEED_REVISION.json), and
+[evidence/seed-source-review.json](evidence/seed-source-review.json).
 
-The following review is historical and does not establish later execution
-coverage or production readiness.
-
----
-
-# Extraction and binding changes
-
-This port preserves the current candidate mathematics and numerical policy.
-`SOURCE_PROVENANCE.json` compares the actual original files against the approved
-scope inventory and records original/new file, source-segment and AST hashes.
-There are 59 original-to-portable mappings and 594 matching named definitions;
-469 have exactly identical ASTs. Counts include attributed replacements of
-historical binding/receipt modules, so they are not a claim that every retained
-function is untouched.
-
-The directed lower certificate, primal/dual QA, original SCUC generator,
-independent source checker, core projection transform, line-support arithmetic,
-per-line model edits, and retained original binary authority retain their
-mathematical bodies. Function differences elsewhere are inspectable in the
-per-function hashes and fall into these explicit groups:
-
-- Canonical package imports replace path insertion and dynamically named duplicate
-  modules. Every scientific loader resolves within this package and checks its
-  local source manifest. Source hashes now identify the extracted local files
-- Historical date, checkout, release, Library, proof-file and archive-reference
-  prerequisites become fresh source-derived case identities, local source/runtime
-  manifests, and explicitly retained proof attribution identifiers
-- Native source guard hashes still match the exact official upstream commit.
-  Rebuilt binaries and generated build files use their own validated local hashes;
-  runtime checks establish actual symbols, version/githash, ABI, extras, typed
-  options, and loaded libraries. The preparation readback worker performs explicit
-  empty-handle runtime qualification before the independent matrix readbacks
-- Preparation keeps independent original and retained generation/readback and the
-  complete source/shape/zero-omission guards. The original preparation-only
-  adapter remains separate from the candidate adapter. Input reads support both
-  JSON and gzip JSON
-- Local stage receipts bind fsynced, immutable existing artifacts plus a distinct
-  state snapshot. They retain current-point/call/source identity checks without
-  archive duplication or remote references. Candidate output may live in any
-  fresh directory outside the installed source package
-- The same process-tree watchdog, native-only file cap and wait4/reap checks are
-  retained. Address-space and sampled RSS constants are represented separately
-  as 7 GiB and 6 GiB. Startup-directory identities and the inherited no-hook
-  check are required rather than allowed to default to an empty inventory
-
-No production family, horizon, line/batch/evaluation cap, certificate threshold,
-solver option, seed/MIP schedule, slack threshold, objective comparison, physical
-check, or exact-lower scope was loosened. The main runner has no test-scope flag.
-The synthetic tests call existing component APIs under their explicit tiny scope.
-Their expected 2.25 MWh overflow remains a candidate nonpass.
-
-The earlier aggregate `network_projection` package is not used as a runtime
-fallback. Optional archival belongs outside the candidate window and package.
-Native binaries, datasets, historical numerical artifacts and environments are
-excluded from this source deliverable.
+The current runtime source manifest verifies 70 members, with 59 identical to resource
+v2. Scientific bodies and all nonseed policies remain unchanged as documented
+by that independent review. Publication itself changes no executable, test,
+native-build, license or runtime-manifest bytes. Historical extraction claims
+are not new execution coverage or production-readiness claims.

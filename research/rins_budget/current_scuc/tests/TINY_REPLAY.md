@@ -1,3 +1,15 @@
+# Seed revision addendum
+
+The seed-v3 release gate uses only the existing transition suite with `--seed 1`.
+The optional transition-test seed defaults to 0 and accepts only 0 or 1. The
+legacy changed-master suite accepts only its existing seed 0 and has no new
+scientific component or call. It is not part of this release execution gate.
+All original timing, fixture, exact map/value, binary and known-overflow checks
+are retained. No seed-v3 tiny has been executed during source implementation.
+
+The historical description below belongs to the base release; current resource
+gates are unchanged from resource v2 and are authoritative in PROTOCOL.json.
+
 # Fixed tiny replay: execution coverage
 
 These are test-only runners. The production `current_scuc run` interface still

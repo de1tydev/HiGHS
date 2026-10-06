@@ -1,8 +1,11 @@
 {
+  "administration_field_mappings_verified": 171,
+  "administration_rows_verified": 6,
   "all_scanned_files_utf8_without_nul": true,
-  "current_validation_status": "full June CLI pass; independent read-only terminal audit passed",
+  "deferred_inventory_links": [],
   "distribution_inventory": "ARTIFACT_MANIFEST.json",
-  "distribution_inventory_status": "Current public file inventory regenerated after terminal audit and narrative review",
+  "distribution_inventory_status": "Final public inventory generated after scientific audit, all six closure receipts and parent narrative review; every listed byte hash read back.",
+  "document_relative_links_verified": true,
   "documented_cli_preinterpreter_resource_limits": {
     "AS": [
       7516192768,
@@ -19,18 +22,107 @@
   },
   "expected_external_sibling_link": "../network_projection/",
   "external_outer_owner_distinguished_from_example_command": true,
-  "new_document_relative_links_verified": true,
-  "nonruntime_historical_resource_record_unchanged_after_prelaunch_projection": true,
+  "external_publication_performed": false,
+  "field_mapped_observations_verified": 278,
+  "final_administration_readbacks_verified": true,
+  "final_panel_gate_passed": true,
+  "final_scientific_audit_manifest_reverified": true,
+  "historical_resource_record_unchanged_from_prior_public_projection": true,
+  "inventory_readback_verified": true,
+  "markdown_table_dimensions_verified": true,
+  "nonterminal_run_outputs_read": false,
+  "prior_publication_artifact_members_reverified": 126,
   "private_path_or_private_identifier_findings": [],
-  "protected_files_verified": 106,
-  "resource_record_original_values_preserved_except_receipt_locations": true,
-  "schema": "current-scuc-resource-publication-static-checks/v1",
-  "scope": "Static copy, hash, UTF-8 and publication-privacy checks only; no package imports or execution.",
+  "protected_files_verified": 107,
+  "runtime_manifest_byte_hash_reverified": true,
+  "schema": "current-scuc-seed-publication-static-checks/v1",
+  "scope": "Static copy, file hashing, JSON field mapping, link, UTF-8 and privacy checks only; no package imports, tests, builds, native/optimizer calls or scientific QA.",
+  "seed_record_original_values_preserved_except_receipt_locations": true,
+  "source_delta_from_resource_v2": [
+    {
+      "after_sha256": "f83f45e629e259747709d709efa3df3100bffc2b51fee51a691cbf5c729980aa",
+      "before_sha256": "eafa69970257ef2c581f0c1bb8473b12235d279d50b46f02cb7a14c1e6ef59e2",
+      "path": "current_scuc/PROTOCOL.json"
+    },
+    {
+      "after_sha256": "cde55ee481b7e80742ba5e6e6fc34db779eae4c9d57aa116c4a5a76f666e5259",
+      "before_sha256": "727dee98bbfe3cfc057f824ae4b8e4858a22ec56abfa9b2b8651837e11f3ff70",
+      "path": "current_scuc/__main__.py"
+    },
+    {
+      "after_sha256": "8b1250c786e4b34f0cd781daff4e1b5e3d3ffafcd92635711ece7accd59468a3",
+      "before_sha256": "25a27bb0d690f7387799295bbf71db8913a90985f68ad86f9f90edea05cc39c7",
+      "path": "current_scuc/carry.py"
+    },
+    {
+      "after_sha256": "9cd737410705f77788c4b62192bd92ef95d8c255ce45f2460337f3fe4de80d20",
+      "before_sha256": "20abf8b5b213338a4ca645844b45d2f12d6dd2e00620db779a531fc02642bc81",
+      "path": "current_scuc/case.py"
+    },
+    {
+      "after_sha256": "43ce85fcf022eff392d8d3a040d9b5fd24a31f08423406dc8bdc12af0ecef646",
+      "before_sha256": "82f4912fa22a475dff3a76856ef45b9386552cde5e0178315834cd0eab9873ac",
+      "path": "current_scuc/heldout.py"
+    },
+    {
+      "after_sha256": "84f6627d17ca52b779e15480dc3f37c505c660539bb7444d508ffec54ff87c90",
+      "before_sha256": "f9aff75b055ddd1905ee2d1aea236fd8dd3fe4ffbaabed05ba5d6825f3d29fc8",
+      "path": "current_scuc/native_exec.py"
+    },
+    {
+      "after_sha256": "86e24ec2426da2d4c2d41d0f5cdbe804a7996df3c0a7bbd2760c317693215ba6",
+      "before_sha256": "c81e82bd0aaf12af132030e9de032515d652c200439a7a495973ade5494765d9",
+      "path": "current_scuc/options.py"
+    },
+    {
+      "after_sha256": "8a03b62c28a77a5a1244cbd22e7d1c02e472311c2975b7079d84f65b4f55466e",
+      "before_sha256": "5a08505896c9a00a028134e4017fac29964e87293149e39543d592814359fd57",
+      "path": "current_scuc/phase.py"
+    },
+    {
+      "after_sha256": "eacff6d9619eddd678fa5f472720848aa60f5d97b53fc320fd9cc24796e70ae8",
+      "before_sha256": "785e412d1661c2cd4a858273adeb3896fc5ad2cd4fc0d479ae33d90d74721fc6",
+      "path": "current_scuc/science/capi.py"
+    },
+    {
+      "after_sha256": "e1c3439ce20d96ba1eec93e33f13dc34a8f160c82a315de01070b26ac9b32af0",
+      "before_sha256": "6c5d61e92d8bfb4b0cc42d74c3947c519b70985e7226d34c929ede3a3b37d0d2",
+      "path": "current_scuc/science/native.py"
+    },
+    {
+      "after_sha256": "2b6d8b7d8c57e35e9d42d86829a614ead15f0e8e07827330e0e400b30bd1adc3",
+      "before_sha256": "a0375762fc9eea020cedb0564ef17001350b0d4998e15c468a9b2b9275d716af",
+      "path": "current_scuc/seed.py"
+    }
+  ],
   "source_files_changed_during_projection": [],
   "source_manifest_entries_verified": 70,
-  "source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "source_manifest_sha256": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
   "source_trees_unchanged": true,
+  "status": "Final six-run publication static readback passed",
   "symlinks_or_binary_payloads_included": false,
-  "terminal_audit_original_receipt_sha256": "0990ae3fe0320e2070adb6d003f6fc446ea24675def5f15284526aae14261e53",
-  "terminal_projection_fields_verified_against_saved_records": true
+  "terminal_audits_projected": 6,
+  "test_support_delta_from_resource_v2": [
+    {
+      "after_sha256": "6e05a9e5686ed9799083930f2f73bef99296fc95520ef27d2d4561ca2f1d58dc",
+      "before_sha256": "77148b6e14918d0051aea22de09f4aef95ce15df10fb3b1b9d2725faa4345f1c",
+      "path": "tests/replay_tiny_components.py"
+    },
+    {
+      "after_sha256": "8cc367b65f2487a7fefecb5425a46cf3a45a590c2aa6a66fc95f5170b50ddb01",
+      "before_sha256": "740d06f4b2659d50ab7db047459627bef647dde6df85e5ec5b58583367de14da",
+      "path": "tests/replay_tiny_transition.py"
+    },
+    {
+      "after_sha256": "ec8df2536cc0aaefdb9b7fb623f3a561d03f1a0aa9f648d84025a296323d01e2",
+      "before_sha256": "85ea8661449eacf0d04b9ce1474babb6c1429ba5b2854693198f705850c171e4",
+      "path": "tests/run_tiny_components.py"
+    },
+    {
+      "after_sha256": "375cdf053eee6780467dc58314fa2dc8cc64139a6011183211159c989bee91fa",
+      "before_sha256": null,
+      "path": "tests/test_solver_seed.py"
+    }
+  ],
+  "tested_source_artifact_members_reverified": 121
 }

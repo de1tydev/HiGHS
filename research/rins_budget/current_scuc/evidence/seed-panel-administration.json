@@ -1,0 +1,1226 @@
+{
+  "all_raw_originals_retained": true,
+  "all_six_terminal_and_closure_readbacks_verified": true,
+  "interpretation": [
+    "Assembly/verification and terminal readback verification seconds are separately measured saved values; no uniform upload duration was recorded.",
+    "The outer-receipt filesystem-mtime-to-closure-verification span includes interruptions and waiting, and must not be added to the scientific clocks or described as transfer time.",
+    "Run01 had a large post-exit pause after completed solver/QA work; the pause does not alter the invocation clock.",
+    "All six terminal and closure archives passed actual byte/member readback verification. Only recorded recoverable duplicates were removed; raw originals remain."
+  ],
+  "private_fields_omitted": "Private absolute paths, upload file IDs, Library IDs, directory IDs and per-user storage metadata are not projected. Original receipt hashes remain.",
+  "rows": [
+    {
+      "date": "2017-06-01",
+      "derived": {
+        "outer_receipt_mtime_to_closure_seconds": {
+          "expression": "closure#/verified_at as Unix seconds - outer_receipt.filesystem_mtime_ns / 1000000000",
+          "scope": "Filesystem-derived wall span after invocation; includes pauses, waiting, administration and interruptions. Not a monotonic duration or transfer/compute measurement.",
+          "value": 2808.580862045288
+        },
+        "removed_recoverable_duplicate_count": {
+          "expression": "len(cleanup#/deleted_exact_paths)",
+          "scope": "Private duplicate paths omitted; original raw files retained.",
+          "value": 3
+        }
+      },
+      "index": 1,
+      "observations": {
+        "assembly": {
+          "all_local_members_verified": {
+            "json_pointer": "/all_local_members_verified",
+            "record": "assembly",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "assembly",
+            "value": 93764757
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "assembly",
+            "value": "76795f954c18e3f9c38c2890b2608466b947098ff2424b224070ee76fb351467"
+          },
+          "manifest_sha256": {
+            "json_pointer": "/manifest_sha256",
+            "record": "assembly",
+            "value": "afd670f3ed70028742ecf55cf1950829db0e959be6f6173e0b207379e83b03a6"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "assembly",
+            "value": 157
+          },
+          "postexit_assembly_verification_seconds": {
+            "json_pointer": "/postexit_assembly_verification_seconds",
+            "record": "assembly",
+            "value": 16.95033408299787
+          },
+          "raw_bytes": {
+            "json_pointer": "/raw_bytes",
+            "record": "assembly",
+            "value": 947628790
+          }
+        },
+        "cleanup": {
+          "all_raw_originals_retained": {
+            "json_pointer": "/all_raw_originals_retained",
+            "record": "cleanup",
+            "value": true
+          },
+          "completed_at": {
+            "json_pointer": "/completed_at",
+            "record": "cleanup",
+            "value": "2026-10-06T04:05:45.428681+00:00"
+          },
+          "free_after": {
+            "json_pointer": "/free_after",
+            "record": "cleanup",
+            "value": 22696607744
+          },
+          "free_before": {
+            "json_pointer": "/free_before",
+            "record": "cleanup",
+            "value": 22415306752
+          },
+          "index": {
+            "json_pointer": "/index",
+            "record": "cleanup",
+            "value": 1
+          },
+          "plan_sha256": {
+            "json_pointer": "/plan_sha256",
+            "record": "cleanup",
+            "value": "386d3ff0f06da72824be580639f50195dd392c06149c51e9fa1b9328f786cf27"
+          }
+        },
+        "closure": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "closure",
+            "value": true
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "closure",
+            "value": "2d25bce93ed3f2eb09a1a40298fc4bbf03e2f6b4452124ff37066d4a451095ff"
+          },
+          "file_size_bytes": {
+            "json_pointer": "/file_size_bytes",
+            "record": "closure",
+            "value": 159888
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "closure",
+            "value": 12
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "closure",
+            "value": "succeeded"
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "closure",
+            "value": "2026-10-06T04:06:22.331540+00:00"
+          }
+        },
+        "terminal": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "all_members_verified": {
+            "json_pointer": "/all_members_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "terminal",
+            "value": 93764757
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "terminal",
+            "value": "76795f954c18e3f9c38c2890b2608466b947098ff2424b224070ee76fb351467"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "terminal",
+            "value": 157
+          },
+          "raw_originals_preserved": {
+            "json_pointer": "/raw_originals_preserved",
+            "record": "terminal",
+            "value": true
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "terminal",
+            "value": "succeeded"
+          },
+          "verification_seconds": {
+            "json_pointer": "/verification_seconds",
+            "record": "terminal",
+            "value": 4.142914853000548
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "terminal",
+            "value": "2026-10-06T04:04:34.020114+00:00"
+          }
+        }
+      },
+      "outer_receipt": {
+        "bytes": 4951,
+        "filesystem_mtime_ns": 1791256773750677996,
+        "filesystem_mtime_utc": "2026-10-06T03:19:33.750678+00:00",
+        "name": "run01-june-seed1-owner/envelope-receipt.json",
+        "sha256": "319b6033ee6e8f9c958d9165892ab7441c6b5d57fe2a97e51a972b3bb9275cc5"
+      },
+      "solver_random_seed": 1,
+      "source_records": {
+        "assembly": {
+          "bytes": 505,
+          "name": "run01/LOCAL_RECEIPT.json",
+          "sha256": "7a57db931a55d23b2df24c4c2e8e515871b61063e08a4e9d6c7163d83e3a5f19"
+        },
+        "cleanup": {
+          "bytes": 744,
+          "name": "run01/CLEANUP_VERIFIED.json",
+          "sha256": "b7a5f023fd7191d68e81b883114ff5609c509bae707f25da3f3e0d45096f9f51"
+        },
+        "closure": {
+          "bytes": 898,
+          "name": "run01/CLOSURE_VERIFIED.json",
+          "sha256": "39764c525f923180b858795519b942771679283c71cbb07c23b95b2cba2c316e"
+        },
+        "terminal": {
+          "bytes": 1139,
+          "name": "run01/TERMINAL_VERIFIED.json",
+          "sha256": "5c1f57093d93680090c5e7fd17b83a5e1f6ac4e8242dae744caa02adc368f19d"
+        }
+      },
+      "upload_transfer_seconds": null,
+      "upload_transfer_timing_scope": "Not uniformly recorded; unavailable, not inferred."
+    },
+    {
+      "date": "2017-10-01",
+      "derived": {
+        "outer_receipt_mtime_to_closure_seconds": {
+          "expression": "closure#/verified_at as Unix seconds - outer_receipt.filesystem_mtime_ns / 1000000000",
+          "scope": "Filesystem-derived wall span after invocation; includes pauses, waiting, administration and interruptions. Not a monotonic duration or transfer/compute measurement.",
+          "value": 332.78320717811584
+        },
+        "removed_recoverable_duplicate_count": {
+          "expression": "len(cleanup#/deleted_exact_paths)",
+          "scope": "Private duplicate paths omitted; original raw files retained.",
+          "value": 3
+        }
+      },
+      "index": 2,
+      "observations": {
+        "assembly": {
+          "all_local_members_verified": {
+            "json_pointer": "/all_local_members_verified",
+            "record": "assembly",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "assembly",
+            "value": 62939290
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "assembly",
+            "value": "5c26399fb6716d67f7c2f5afecdc369fb8ee47a86821a2498a3c94e8c24ae485"
+          },
+          "manifest_sha256": {
+            "json_pointer": "/manifest_sha256",
+            "record": "assembly",
+            "value": "761b21ca0baefeb7a6e6f43ecb261cc8756353d4d8702d4e26bc28e246999923"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "assembly",
+            "value": 118
+          },
+          "postexit_assembly_verification_seconds": {
+            "json_pointer": "/postexit_assembly_verification_seconds",
+            "record": "assembly",
+            "value": 10.227675358997658
+          },
+          "raw_bytes": {
+            "json_pointer": "/raw_bytes",
+            "record": "assembly",
+            "value": 535659010
+          }
+        },
+        "cleanup": {
+          "all_raw_originals_retained": {
+            "json_pointer": "/all_raw_originals_retained",
+            "record": "cleanup",
+            "value": true
+          },
+          "completed_at": {
+            "json_pointer": "/completed_at",
+            "record": "cleanup",
+            "value": "2026-10-06T04:17:16.490233+00:00"
+          },
+          "free_after": {
+            "json_pointer": "/free_after",
+            "record": "cleanup",
+            "value": 22157119488
+          },
+          "free_before": {
+            "json_pointer": "/free_before",
+            "record": "cleanup",
+            "value": 21968285696
+          },
+          "index": {
+            "json_pointer": "/index",
+            "record": "cleanup",
+            "value": 2
+          },
+          "plan_sha256": {
+            "json_pointer": "/plan_sha256",
+            "record": "cleanup",
+            "value": "9dee162fdc9f8a0266f11a38d6110a15485b933f692037e031f9772609d134e4"
+          }
+        },
+        "closure": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "closure",
+            "value": true
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "closure",
+            "value": "5706a2698965c818fd91b719cfdddbfefaf12a4cca1480eb922cfd99bbd4a48a"
+          },
+          "file_size_bytes": {
+            "json_pointer": "/file_size_bytes",
+            "record": "closure",
+            "value": 156156
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "closure",
+            "value": 12
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "closure",
+            "value": "succeeded"
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "closure",
+            "value": "2026-10-06T04:18:24.477239+00:00"
+          }
+        },
+        "terminal": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "all_members_verified": {
+            "json_pointer": "/all_members_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "terminal",
+            "value": 62939290
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "terminal",
+            "value": "5c26399fb6716d67f7c2f5afecdc369fb8ee47a86821a2498a3c94e8c24ae485"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "terminal",
+            "value": 118
+          },
+          "raw_originals_preserved": {
+            "json_pointer": "/raw_originals_preserved",
+            "record": "terminal",
+            "value": true
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "terminal",
+            "value": "succeeded"
+          },
+          "verification_seconds": {
+            "json_pointer": "/verification_seconds",
+            "record": "terminal",
+            "value": 2.921133149997331
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "terminal",
+            "value": "2026-10-06T04:15:47.334728+00:00"
+          }
+        }
+      },
+      "outer_receipt": {
+        "bytes": 4969,
+        "filesystem_mtime_ns": 1791259971694031727,
+        "filesystem_mtime_utc": "2026-10-06T04:12:51.694032+00:00",
+        "name": "run02-october-seed1-owner/envelope-receipt.json",
+        "sha256": "c1c3524349059100ff7a90c45f37d0108fe6bc2f1fa31f7146e045255378c667"
+      },
+      "solver_random_seed": 1,
+      "source_records": {
+        "assembly": {
+          "bytes": 506,
+          "name": "run02/LOCAL_RECEIPT.json",
+          "sha256": "72e46f5a1231f6d3bf93a3fcf7898a5976bf8c81d5304683813befabbc3e24b8"
+        },
+        "cleanup": {
+          "bytes": 744,
+          "name": "run02/CLEANUP_VERIFIED.json",
+          "sha256": "56bb0fbbf56685f4b345a12bb28306b7f1c8f57346a84ef013f0cac4c55e6c76"
+        },
+        "closure": {
+          "bytes": 898,
+          "name": "run02/CLOSURE_VERIFIED.json",
+          "sha256": "17d17c2c216192c0976172be87e3328e43786ef71227656db11e1a7e68456856"
+        },
+        "terminal": {
+          "bytes": 1139,
+          "name": "run02/TERMINAL_VERIFIED.json",
+          "sha256": "2c9a207fd7dbe70ef53ea8da56c09d023ac5bb33e9450870047b68552dab9459"
+        }
+      },
+      "upload_transfer_seconds": null,
+      "upload_transfer_timing_scope": "Not uniformly recorded; unavailable, not inferred."
+    },
+    {
+      "date": "2017-12-01",
+      "derived": {
+        "outer_receipt_mtime_to_closure_seconds": {
+          "expression": "closure#/verified_at as Unix seconds - outer_receipt.filesystem_mtime_ns / 1000000000",
+          "scope": "Filesystem-derived wall span after invocation; includes pauses, waiting, administration and interruptions. Not a monotonic duration or transfer/compute measurement.",
+          "value": 199.2006492614746
+        },
+        "removed_recoverable_duplicate_count": {
+          "expression": "len(cleanup#/deleted_exact_paths)",
+          "scope": "Private duplicate paths omitted; original raw files retained.",
+          "value": 3
+        }
+      },
+      "index": 3,
+      "observations": {
+        "assembly": {
+          "all_local_members_verified": {
+            "json_pointer": "/all_local_members_verified",
+            "record": "assembly",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "assembly",
+            "value": 64222275
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "assembly",
+            "value": "a61625b0dc87db39003cc2f701107b4e64939285d51476df9cda19ffde83456a"
+          },
+          "manifest_sha256": {
+            "json_pointer": "/manifest_sha256",
+            "record": "assembly",
+            "value": "67e0ffbb5f8762da5785885075c697af71767387f762fba5ad48c750651cd94f"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "assembly",
+            "value": 118
+          },
+          "postexit_assembly_verification_seconds": {
+            "json_pointer": "/postexit_assembly_verification_seconds",
+            "record": "assembly",
+            "value": 10.502041003994236
+          },
+          "raw_bytes": {
+            "json_pointer": "/raw_bytes",
+            "record": "assembly",
+            "value": 542642776
+          }
+        },
+        "cleanup": {
+          "all_raw_originals_retained": {
+            "json_pointer": "/all_raw_originals_retained",
+            "record": "cleanup",
+            "value": true
+          },
+          "completed_at": {
+            "json_pointer": "/completed_at",
+            "record": "cleanup",
+            "value": "2026-10-06T04:26:54.975460+00:00"
+          },
+          "free_after": {
+            "json_pointer": "/free_after",
+            "record": "cleanup",
+            "value": 21612544000
+          },
+          "free_before": {
+            "json_pointer": "/free_before",
+            "record": "cleanup",
+            "value": 21419864064
+          },
+          "index": {
+            "json_pointer": "/index",
+            "record": "cleanup",
+            "value": 3
+          },
+          "plan_sha256": {
+            "json_pointer": "/plan_sha256",
+            "record": "cleanup",
+            "value": "4fae4530757fc9608eb750e179fef2c1fcd998445b790e6334ec329fb47c29e5"
+          }
+        },
+        "closure": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "closure",
+            "value": true
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "closure",
+            "value": "5c0686601f96f3ee9cf40dcc2bc0dd67d70cba2c50a47e6ac8a676b1ba579b7d"
+          },
+          "file_size_bytes": {
+            "json_pointer": "/file_size_bytes",
+            "record": "closure",
+            "value": 156196
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "closure",
+            "value": 12
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "closure",
+            "value": "succeeded"
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "closure",
+            "value": "2026-10-06T04:27:58.717992+00:00"
+          }
+        },
+        "terminal": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "all_members_verified": {
+            "json_pointer": "/all_members_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "terminal",
+            "value": 64222275
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "terminal",
+            "value": "a61625b0dc87db39003cc2f701107b4e64939285d51476df9cda19ffde83456a"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "terminal",
+            "value": 118
+          },
+          "raw_originals_preserved": {
+            "json_pointer": "/raw_originals_preserved",
+            "record": "terminal",
+            "value": true
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "terminal",
+            "value": "succeeded"
+          },
+          "verification_seconds": {
+            "json_pointer": "/verification_seconds",
+            "record": "terminal",
+            "value": 2.7104775089974282
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "terminal",
+            "value": "2026-10-06T04:26:19.101633+00:00"
+          }
+        }
+      },
+      "outer_receipt": {
+        "bytes": 4988,
+        "filesystem_mtime_ns": 1791260679517342753,
+        "filesystem_mtime_utc": "2026-10-06T04:24:39.517343+00:00",
+        "name": "run03-december-seed1-owner/envelope-receipt.json",
+        "sha256": "67ed74ad5589eb7a50a362f8fbf145a9a1bc61f525d0fc3f2db203edc658078b"
+      },
+      "solver_random_seed": 1,
+      "source_records": {
+        "assembly": {
+          "bytes": 506,
+          "name": "run03/LOCAL_RECEIPT.json",
+          "sha256": "5673f3da3b5ac7da0775fe1167eedfc472134dc3d5c4ebd3b27f8cc8a669d752"
+        },
+        "cleanup": {
+          "bytes": 744,
+          "name": "run03/CLEANUP_VERIFIED.json",
+          "sha256": "5da54805b3656a178985443720a96277d413a4f95ca1a3cb9f86e1766601ca9a"
+        },
+        "closure": {
+          "bytes": 898,
+          "name": "run03/CLOSURE_VERIFIED.json",
+          "sha256": "2692dd278ad359b935159238860405430ef88da659b9f9c52f3d6e9c84788de5"
+        },
+        "terminal": {
+          "bytes": 1140,
+          "name": "run03/TERMINAL_VERIFIED.json",
+          "sha256": "4c256775e92128ff30c30e26113312e62d28e1cd5af27855cd5705478c9a8a1e"
+        }
+      },
+      "upload_transfer_seconds": null,
+      "upload_transfer_timing_scope": "Not uniformly recorded; unavailable, not inferred."
+    },
+    {
+      "date": "2017-12-01",
+      "derived": {
+        "outer_receipt_mtime_to_closure_seconds": {
+          "expression": "closure#/verified_at as Unix seconds - outer_receipt.filesystem_mtime_ns / 1000000000",
+          "scope": "Filesystem-derived wall span after invocation; includes pauses, waiting, administration and interruptions. Not a monotonic duration or transfer/compute measurement.",
+          "value": 146.33316326141357
+        },
+        "removed_recoverable_duplicate_count": {
+          "expression": "len(cleanup#/deleted_exact_paths)",
+          "scope": "Private duplicate paths omitted; original raw files retained.",
+          "value": 3
+        }
+      },
+      "index": 4,
+      "observations": {
+        "assembly": {
+          "all_local_members_verified": {
+            "json_pointer": "/all_local_members_verified",
+            "record": "assembly",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "assembly",
+            "value": 64179978
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "assembly",
+            "value": "3c486e71e6b214c990de33783862c30383af28fdcc9da0cde36fbd1342eeba44"
+          },
+          "manifest_sha256": {
+            "json_pointer": "/manifest_sha256",
+            "record": "assembly",
+            "value": "824e9675131010bc3665fad961239a676b24719484096f76da90a30965cc458b"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "assembly",
+            "value": 118
+          },
+          "postexit_assembly_verification_seconds": {
+            "json_pointer": "/postexit_assembly_verification_seconds",
+            "record": "assembly",
+            "value": 10.616686617999221
+          },
+          "raw_bytes": {
+            "json_pointer": "/raw_bytes",
+            "record": "assembly",
+            "value": 542652166
+          }
+        },
+        "cleanup": {
+          "all_raw_originals_retained": {
+            "json_pointer": "/all_raw_originals_retained",
+            "record": "cleanup",
+            "value": true
+          },
+          "completed_at": {
+            "json_pointer": "/completed_at",
+            "record": "cleanup",
+            "value": "2026-10-06T04:35:43.990044+00:00"
+          },
+          "free_after": {
+            "json_pointer": "/free_after",
+            "record": "cleanup",
+            "value": 21068812288
+          },
+          "free_before": {
+            "json_pointer": "/free_before",
+            "record": "cleanup",
+            "value": 20876267520
+          },
+          "index": {
+            "json_pointer": "/index",
+            "record": "cleanup",
+            "value": 4
+          },
+          "plan_sha256": {
+            "json_pointer": "/plan_sha256",
+            "record": "cleanup",
+            "value": "8706bf063be4ebdc5b2c99597490d774ea132c87cad95e55670de2e39410b5b4"
+          }
+        },
+        "closure": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "closure",
+            "value": true
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "closure",
+            "value": "b742562425b1def92a6ed0bdda327327cca9cd48f6ee52253d52307aefdd8e34"
+          },
+          "file_size_bytes": {
+            "json_pointer": "/file_size_bytes",
+            "record": "closure",
+            "value": 156188
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "closure",
+            "value": 12
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "closure",
+            "value": "succeeded"
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "closure",
+            "value": "2026-10-06T04:36:36.314601+00:00"
+          }
+        },
+        "terminal": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "all_members_verified": {
+            "json_pointer": "/all_members_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "terminal",
+            "value": 64179978
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "terminal",
+            "value": "3c486e71e6b214c990de33783862c30383af28fdcc9da0cde36fbd1342eeba44"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "terminal",
+            "value": 118
+          },
+          "raw_originals_preserved": {
+            "json_pointer": "/raw_originals_preserved",
+            "record": "terminal",
+            "value": true
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "terminal",
+            "value": "succeeded"
+          },
+          "verification_seconds": {
+            "json_pointer": "/verification_seconds",
+            "record": "terminal",
+            "value": 2.935377375004464
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "terminal",
+            "value": "2026-10-06T04:35:37.199108+00:00"
+          }
+        }
+      },
+      "outer_receipt": {
+        "bytes": 4988,
+        "filesystem_mtime_ns": 1791261249981437794,
+        "filesystem_mtime_utc": "2026-10-06T04:34:09.981438+00:00",
+        "name": "run04-december-seed2-owner/envelope-receipt.json",
+        "sha256": "1434ae55964755cd3ab43461a0671a810aaa7d92864b592caaeaad187c65c8a5"
+      },
+      "solver_random_seed": 2,
+      "source_records": {
+        "assembly": {
+          "bytes": 506,
+          "name": "run04/LOCAL_RECEIPT.json",
+          "sha256": "e6ff4e20568b9878b0c14b2ff128fe5d92955dab42e20cdd87492a4414b57e62"
+        },
+        "cleanup": {
+          "bytes": 744,
+          "name": "run04/CLEANUP_VERIFIED.json",
+          "sha256": "af71f887ba9ccc5b47f93003274b4649bb8933b866ae61567b5f08ed1dd6dbff"
+        },
+        "closure": {
+          "bytes": 898,
+          "name": "run04/CLOSURE_VERIFIED.json",
+          "sha256": "46b156a1324e0fd5f6675ca0b921c14f1f03558947353a71ac08b9ea33175143"
+        },
+        "terminal": {
+          "bytes": 1139,
+          "name": "run04/TERMINAL_VERIFIED.json",
+          "sha256": "83272f3a4396f5ae09f752e65d1cde9e09018ff522db0c0db113a2b8e85ee086"
+        }
+      },
+      "upload_transfer_seconds": null,
+      "upload_transfer_timing_scope": "Not uniformly recorded; unavailable, not inferred."
+    },
+    {
+      "date": "2017-10-01",
+      "derived": {
+        "outer_receipt_mtime_to_closure_seconds": {
+          "expression": "closure#/verified_at as Unix seconds - outer_receipt.filesystem_mtime_ns / 1000000000",
+          "scope": "Filesystem-derived wall span after invocation; includes pauses, waiting, administration and interruptions. Not a monotonic duration or transfer/compute measurement.",
+          "value": 197.03423595428467
+        },
+        "removed_recoverable_duplicate_count": {
+          "expression": "len(cleanup#/deleted_exact_paths)",
+          "scope": "Private duplicate paths omitted; original raw files retained.",
+          "value": 3
+        }
+      },
+      "index": 5,
+      "observations": {
+        "assembly": {
+          "all_local_members_verified": {
+            "json_pointer": "/all_local_members_verified",
+            "record": "assembly",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "assembly",
+            "value": 62856423
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "assembly",
+            "value": "3443f8c676cac5c0808df543d591bb8fcde9ee4b8afa7975f443d2e3a5b1efb1"
+          },
+          "manifest_sha256": {
+            "json_pointer": "/manifest_sha256",
+            "record": "assembly",
+            "value": "19e355a0a49cf238f7adacd2a8e95ab002df326597d9946560ac5df610ff9e4c"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "assembly",
+            "value": 118
+          },
+          "postexit_assembly_verification_seconds": {
+            "json_pointer": "/postexit_assembly_verification_seconds",
+            "record": "assembly",
+            "value": 10.4406385580005
+          },
+          "raw_bytes": {
+            "json_pointer": "/raw_bytes",
+            "record": "assembly",
+            "value": 535612090
+          }
+        },
+        "cleanup": {
+          "all_raw_originals_retained": {
+            "json_pointer": "/all_raw_originals_retained",
+            "record": "cleanup",
+            "value": true
+          },
+          "completed_at": {
+            "json_pointer": "/completed_at",
+            "record": "cleanup",
+            "value": "2026-10-06T04:45:51.669593+00:00"
+          },
+          "free_after": {
+            "json_pointer": "/free_after",
+            "record": "cleanup",
+            "value": 20529094656
+          },
+          "free_before": {
+            "json_pointer": "/free_before",
+            "record": "cleanup",
+            "value": 20340518912
+          },
+          "index": {
+            "json_pointer": "/index",
+            "record": "cleanup",
+            "value": 5
+          },
+          "plan_sha256": {
+            "json_pointer": "/plan_sha256",
+            "record": "cleanup",
+            "value": "59934a967cae8f7fff2fc32e5cd85740bef62bef73c476213d6f51fe043e2187"
+          }
+        },
+        "closure": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "closure",
+            "value": true
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "closure",
+            "value": "fe0422c8b0c71dab4c7b884092429eba2f232884ec670d496080894d82d43257"
+          },
+          "file_size_bytes": {
+            "json_pointer": "/file_size_bytes",
+            "record": "closure",
+            "value": 156186
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "closure",
+            "value": 12
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "closure",
+            "value": "succeeded"
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "closure",
+            "value": "2026-10-06T04:46:11.226023+00:00"
+          }
+        },
+        "terminal": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "all_members_verified": {
+            "json_pointer": "/all_members_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "terminal",
+            "value": 62856423
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "terminal",
+            "value": "3443f8c676cac5c0808df543d591bb8fcde9ee4b8afa7975f443d2e3a5b1efb1"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "terminal",
+            "value": 118
+          },
+          "raw_originals_preserved": {
+            "json_pointer": "/raw_originals_preserved",
+            "record": "terminal",
+            "value": true
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "terminal",
+            "value": "succeeded"
+          },
+          "verification_seconds": {
+            "json_pointer": "/verification_seconds",
+            "record": "terminal",
+            "value": 2.5512740220001433
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "terminal",
+            "value": "2026-10-06T04:44:54.549933+00:00"
+          }
+        }
+      },
+      "outer_receipt": {
+        "bytes": 4967,
+        "filesystem_mtime_ns": 1791261774191787041,
+        "filesystem_mtime_utc": "2026-10-06T04:42:54.191787+00:00",
+        "name": "run05-october-seed2-owner/envelope-receipt.json",
+        "sha256": "7ed38f8ed43fe35841d3387159015757f7dbe4de26f2dc8541f7cfe95288d160"
+      },
+      "solver_random_seed": 2,
+      "source_records": {
+        "assembly": {
+          "bytes": 504,
+          "name": "run05/LOCAL_RECEIPT.json",
+          "sha256": "4e9d4672e090122fb2afda8f639c737bda78e5fa9ea3508dda777b03ec278682"
+        },
+        "cleanup": {
+          "bytes": 744,
+          "name": "run05/CLEANUP_VERIFIED.json",
+          "sha256": "8f4b5742843f251465e07078fb1df066bc76683e86b03fc580fd0ea7c36e03d0"
+        },
+        "closure": {
+          "bytes": 898,
+          "name": "run05/CLOSURE_VERIFIED.json",
+          "sha256": "871e5aeda6885d46b2c0136a0c27815e6e6231fe31770c3e8676f2ae95a59a84"
+        },
+        "terminal": {
+          "bytes": 1140,
+          "name": "run05/TERMINAL_VERIFIED.json",
+          "sha256": "a4a12a0f58d46c7f7a226eb78e91314220b54c1026afa810f1043171e3061956"
+        }
+      },
+      "upload_transfer_seconds": null,
+      "upload_transfer_timing_scope": "Not uniformly recorded; unavailable, not inferred."
+    },
+    {
+      "date": "2017-06-01",
+      "derived": {
+        "outer_receipt_mtime_to_closure_seconds": {
+          "expression": "closure#/verified_at as Unix seconds - outer_receipt.filesystem_mtime_ns / 1000000000",
+          "scope": "Filesystem-derived wall span after invocation; includes pauses, waiting, administration and interruptions. Not a monotonic duration or transfer/compute measurement.",
+          "value": 518.6341435909271
+        },
+        "removed_recoverable_duplicate_count": {
+          "expression": "len(cleanup#/deleted_exact_paths)",
+          "scope": "Private duplicate paths omitted; original raw files retained.",
+          "value": 3
+        }
+      },
+      "index": 6,
+      "observations": {
+        "assembly": {
+          "all_local_members_verified": {
+            "json_pointer": "/all_local_members_verified",
+            "record": "assembly",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "assembly",
+            "value": 92145062
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "assembly",
+            "value": "a968d61340185f9aff1a16f85ee1ce44eac45aca9556a7eb4508fe50e47be80e"
+          },
+          "manifest_sha256": {
+            "json_pointer": "/manifest_sha256",
+            "record": "assembly",
+            "value": "0ad156c6317bcdef50fcd6195535e3a285020ab8dcd536323d792bf77b4860a9"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "assembly",
+            "value": 157
+          },
+          "postexit_assembly_verification_seconds": {
+            "json_pointer": "/postexit_assembly_verification_seconds",
+            "record": "assembly",
+            "value": 15.059568684999249
+          },
+          "raw_bytes": {
+            "json_pointer": "/raw_bytes",
+            "record": "assembly",
+            "value": 909288809
+          }
+        },
+        "cleanup": {
+          "all_raw_originals_retained": {
+            "json_pointer": "/all_raw_originals_retained",
+            "record": "cleanup",
+            "value": true
+          },
+          "completed_at": {
+            "json_pointer": "/completed_at",
+            "record": "cleanup",
+            "value": "2026-10-06T05:02:48.821894+00:00"
+          },
+          "free_after": {
+            "json_pointer": "/free_after",
+            "record": "cleanup",
+            "value": 19618140160
+          },
+          "free_before": {
+            "json_pointer": "/free_before",
+            "record": "cleanup",
+            "value": 19341692928
+          },
+          "index": {
+            "json_pointer": "/index",
+            "record": "cleanup",
+            "value": 6
+          },
+          "plan_sha256": {
+            "json_pointer": "/plan_sha256",
+            "record": "cleanup",
+            "value": "986e2f28e49222329d0bf6dd785702250b47e1a8fad9f5791b096705e50778b6"
+          }
+        },
+        "closure": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "closure",
+            "value": true
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "closure",
+            "value": "779f7853b03cb044e881eaed55b28aed43a041cebe01a17700e5adaf849ac478"
+          },
+          "file_size_bytes": {
+            "json_pointer": "/file_size_bytes",
+            "record": "closure",
+            "value": 160255
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "closure",
+            "value": 12
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "closure",
+            "value": "succeeded"
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "closure",
+            "value": "2026-10-06T05:03:09.738115+00:00"
+          }
+        },
+        "terminal": {
+          "actual_readback_verified": {
+            "json_pointer": "/actual_readback_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "all_members_verified": {
+            "json_pointer": "/all_members_verified",
+            "record": "terminal",
+            "value": true
+          },
+          "archive_bytes": {
+            "json_pointer": "/archive_bytes",
+            "record": "terminal",
+            "value": 92145062
+          },
+          "archive_sha256": {
+            "json_pointer": "/archive_sha256",
+            "record": "terminal",
+            "value": "a968d61340185f9aff1a16f85ee1ce44eac45aca9556a7eb4508fe50e47be80e"
+          },
+          "members": {
+            "json_pointer": "/members",
+            "record": "terminal",
+            "value": 157
+          },
+          "raw_originals_preserved": {
+            "json_pointer": "/raw_originals_preserved",
+            "record": "terminal",
+            "value": true
+          },
+          "status": {
+            "json_pointer": "/status",
+            "record": "terminal",
+            "value": "succeeded"
+          },
+          "verification_seconds": {
+            "json_pointer": "/verification_seconds",
+            "record": "terminal",
+            "value": 4.364485188001709
+          },
+          "verified_at": {
+            "json_pointer": "/verified_at",
+            "record": "terminal",
+            "value": "2026-10-06T05:02:37.786201+00:00"
+          }
+        },
+        "transfer_attempt1": {
+          "error_code": {
+            "json_pointer": "/results/0/error_code",
+            "record": "transfer_attempt1",
+            "value": "transfer_failed"
+          },
+          "message": {
+            "json_pointer": "/results/0/message",
+            "record": "transfer_attempt1",
+            "value": "file transfer failed"
+          },
+          "status": {
+            "json_pointer": "/results/0/status",
+            "record": "transfer_attempt1",
+            "value": "failed"
+          }
+        }
+      },
+      "outer_receipt": {
+        "bytes": 4951,
+        "filesystem_mtime_ns": 1791262471103971480,
+        "filesystem_mtime_utc": "2026-10-06T04:54:31.103971+00:00",
+        "name": "run06-june-seed2-owner/envelope-receipt.json",
+        "sha256": "ba9f6bf81dfcac4fd666e93f65c5bc6ef1a4ec11ac57d5716b3eca682232cfc1"
+      },
+      "solver_random_seed": 2,
+      "source_records": {
+        "assembly": {
+          "bytes": 506,
+          "name": "run06/LOCAL_RECEIPT.json",
+          "sha256": "0a808e1f536578722a56d7d0605b87558485915b6c1244c5ad383c68f9a9e461"
+        },
+        "cleanup": {
+          "bytes": 744,
+          "name": "run06/CLEANUP_VERIFIED.json",
+          "sha256": "b47ebc054ab919dc9c467dd268df70126714b480fd870594f2cec279fe4377f3"
+        },
+        "closure": {
+          "bytes": 898,
+          "name": "run06/CLOSURE_VERIFIED.json",
+          "sha256": "175ada05c24f90b395983b625d0833d350e06385a1a6f711d41d0514dd26e54b"
+        },
+        "terminal": {
+          "bytes": 1139,
+          "name": "run06/TERMINAL_VERIFIED.json",
+          "sha256": "2081c8c423239fadff2c83edcbdfad48db9646b8600d391aa8a3fbf0486dd5fa"
+        },
+        "transfer_attempt1": {
+          "bytes": 295,
+          "name": "run06/UPLOAD_RESULT.transfer-failed-attempt1.json",
+          "sha256": "720ca7a1d060e6dc895564bc95612d0835f1ec16ef66ca163486ca428cd75971"
+        }
+      },
+      "transfer_retry_scope": "One explicit transfer_failed occurred before finalization. A retry through the same helper succeeded; actual terminal and closure readbacks are separately recorded. No scientific invocation was repeated and no transfer duration is inferred.",
+      "upload_transfer_seconds": null,
+      "upload_transfer_timing_scope": "Not uniformly recorded; unavailable, not inferred."
+    }
+  ],
+  "schema": "current-scuc-seed-panel-public-administration/v1",
+  "scope": "Separate post-exit administration. Original saved receipt fields and hashes, plus explicitly filesystem-derived spans; not solver, candidate or complete-invocation time."
+}

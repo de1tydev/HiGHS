@@ -20,6 +20,9 @@ def main(argv=None):
     run.add_argument('--highs', required=True, type=Path, help='Official qualified HiGHS 1.15.1 CLI')
     run.add_argument('--workdir', required=True, type=Path, help='Fresh directory outside the installed source package')
     run.add_argument('--runtime-manifest', type=Path, help='Optional explicit native runtime manifest')
+    from .native_exec import parse_solver_random_seed
+    run.add_argument('--seed', type=parse_solver_random_seed, default=0,
+        help='HiGHS random seed for both LPs and every MIP (default: 0)')
     args = parser.parse_args(argv)
     if not sys.dont_write_bytecode or not __debug__:
         parser.error('Run with Python -B and assertions enabled')
@@ -32,7 +35,8 @@ def main(argv=None):
     work = binding.fresh_directory(args.workdir)
     summary = dict(schema='current-scuc-cli-result/v1', passed=False, result_complete=False,
         work_directory=str(work), production_result=False, performance_comparison_claim=False,
-        physical_dc_lower_bound_certified=False, native_executions_started=False)
+        physical_dc_lower_bound_certified=False, native_executions_started=False,
+        solver_random_seed=args.seed)
     exit_code = 2
     try:
         binding.verify_package_source(binding.FREEZE, binding.sha(binding.FREEZE))
@@ -46,7 +50,8 @@ def main(argv=None):
         summary['case'] = case_binding.record(descriptor)
         case.bind_case(descriptor)
         cfg = binding.config()
-        arm = case.create_arm_manifest(descriptor, binding.FREEZE, work/'candidate-manifest.json')
+        arm = case.create_arm_manifest(descriptor, binding.FREEZE, work/'candidate-manifest.json',
+            solver_random_seed=args.seed)
         reference = case.create_source_reference(binding.FREEZE, work/'source-reference.json')
         command = [cfg['python'], '-B', '-s', '-m', 'current_scuc.phase',
             '--out', str(work/'candidate'), '--source-manifest', str(binding.FREEZE),
@@ -62,6 +67,9 @@ def main(argv=None):
         completion_path = work/'candidate/completion.json'
         result = binding.read(result_path)
         completion = binding.read(completion_path)
+        from .native_exec import validate_solver_random_seed
+        binding.require(validate_solver_random_seed(result['solver_random_seed']) == args.seed,
+            'Candidate solver seed differs from CLI request')
         binding.require(completion.get('result_sha256') == binding.sha(result_path)
             and completion.get('passed') is result.get('passed') and result.get('result_complete') is True,
             'Candidate result/completion binding failed')

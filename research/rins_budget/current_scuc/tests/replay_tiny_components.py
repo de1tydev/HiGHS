@@ -56,7 +56,7 @@ def main(argv=None):
     out.mkdir()
     status=dict(passed=False,fixture_fixed_before_outcomes=True,production_result=False,
         production_comparator_authorized=False,real_case_constructed=False,trace=[],source_freeze=frozen,
-        runtime_qualification=runtime_qualification)
+        runtime_qualification=runtime_qualification,solver_random_seed=0)
     try:
         with Path(cfg['numerical_lock']).open('a+') as lock:
             fcntl.flock(lock.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -98,15 +98,16 @@ def main(argv=None):
                 lp.pass_model(projected)
                 seeded=run_seed(lp,oracle,original,metadata,seedout,deadline,model=model,projection=projection,qa=qa)
                 require(seeded['calls']==2 and seeded['retained_batches']==2,'Tiny seed schedule changed')
+                seeded.update(solver_random_seed=0,native_options=dict(lp.options))
                 status['seed']=seeded
             seeded.update(projection_artifact=f.bundle(seedout,'projection',metadata,{}),
                 original_model_hashes=model.model_hashes(original))
             f.write_json(seedout,'result.json',seeded,{})
-            tiny_arm={'inputs':{role:{'path':str(path),'sha256':f.sha256(path)} for role,path in
+            tiny_arm={'solver_random_seed':0,'inputs':{role:{'path':str(path),'sha256':f.sha256(path)} for role,path in
                 [('source',source),('expected',expected_path),('library',Path(cfg['library']))]}}
             tiny_arm_path=out/'tiny-arm.json';f.write_json(out,'tiny-arm.json',tiny_arm,{})
             state=dict(run_directory=str(out),source_manifest_sha256=f.sha256(__file__),
-                arm_manifest_sha256=f.sha256(tiny_arm_path),seed=seeded,trace=[])
+                arm_manifest_sha256=f.sha256(tiny_arm_path),solver_random_seed=0,seed=seeded,trace=[])
             cut_prefix=[dict(source='seed',artifact=seeded['batches_artifact'])]
             from current_scuc.common import read_bundle
             batches=read_bundle(seedout,seeded['batches_artifact'])
@@ -156,7 +157,8 @@ def main(argv=None):
                 require(parsed['status']==report['status'],'Tiny point/report status mismatch')
                 checked=master.check_integer_point(expected,parsed,role=role)
                 require(checked['passed'],'Tiny integer point failed')
-                return checked.pop('x'),dict(tag=tag,role=role,report=report,point_check=checked,process=receipt,
+                return checked.pop('x'),dict(tag=tag,role=role,solver_random_seed=0,report=report,point_check=checked,process=receipt,
+                    command=command,native_limit_request=limit_evidence,
                     options_readback=probe,io_filter=io_receipt,advisory_filter=advisory,start_admission=start_admission,
                     initial_start_objective=(prepared['exact_check']['projected_objective'] if prepared else None))
 

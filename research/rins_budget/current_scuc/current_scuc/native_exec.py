@@ -19,6 +19,22 @@ CAP = 64 * 1024 ** 2
 PYTHON_CAP = 512 * 1024 ** 2
 
 
+def validate_solver_random_seed(value):
+    """Validate Python/JSON provenance without bool or numeric coercion."""
+    if type(value) is not int or not 0 <= value <= 2147483647:
+        raise ValueError('solver_random_seed must be an integer from 0 through 2147483647')
+    return value
+
+
+def parse_solver_random_seed(value):
+    """Accept only the canonical bounded ASCII decimal native/CLI spelling."""
+    if (type(value) is not str or not value or len(value) > 10 or
+            not value.isascii() or not value.isdecimal() or
+            (len(value) > 1 and value[0] == '0')):
+        raise ValueError('solver seed must be a canonical nonnegative decimal integer')
+    return validate_solver_random_seed(int(value))
+
+
 def sha(path):
     digest = hashlib.sha256()
     with open(path, 'rb') as stream:
@@ -63,8 +79,7 @@ def _validate_argv(argv, solver=None):
             if key in flags:
                 _absolute(value)
             elif key == '--random_seed':
-                if value != '0':
-                    raise ValueError('native random seed must stay zero')
+                parse_solver_random_seed(value)
             elif not math.isfinite(float(value)) or float(value) <= 0:
                 raise ValueError('native time limit must be finite positive')
         else:

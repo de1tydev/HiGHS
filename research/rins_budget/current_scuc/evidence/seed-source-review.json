@@ -1,0 +1,397 @@
+{
+  "input_identities": [
+    {
+      "bytes": 204336,
+      "name": "case1354pegase_2017-06-01.json.gz",
+      "sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c"
+    },
+    {
+      "bytes": 204029,
+      "name": "case1354pegase_2017-10-01.json.gz",
+      "sha256": "b64be5dcaec762356291b8ee353ee242869e2a8a0c68859aa477a4431dc1d9d6"
+    },
+    {
+      "bytes": 204562,
+      "name": "case1354pegase_2017-12-01.json.gz",
+      "sha256": "f31e2596eeee8cd865f6f7de0914727e6e3d87ed3b7dccf855ae08753edbc391"
+    }
+  ],
+  "input_identity_mapping": "source_record#/raw_input_identities_verified/*; only private path fields omitted",
+  "launch_review": {
+    "observations": {
+      "all_run_and_owner_directories_fresh_at_review": {
+        "json_pointer": "/all_run_and_owner_directories_fresh_at_review",
+        "value": true
+      },
+      "base_owner_sha256": {
+        "json_pointer": "/base_owner_sha256",
+        "value": "f2c7e03ca484e320279d91d646efb0e01b29f57972e1d7233224d60ffce0daa3"
+      },
+      "campaign_manifest_sha256": {
+        "json_pointer": "/campaign_manifest_sha256",
+        "value": "e363550678ebd6f9be073902389d0b329ecd556d6c240416818048c8a150cb69"
+      },
+      "empty_qualification": {
+        "json_pointer": "/empty_qualification",
+        "value": {
+          "budget_seconds": 20,
+          "model_optimizer_or_presolve_calls": 0,
+          "native_API_calls": [
+            "Highs_create",
+            "Highs_destroy",
+            "Highs_getIntOptionValue",
+            "Highs_getNumCol",
+            "Highs_getNumRow",
+            "Highs_getSizeofHighsInt",
+            "Highs_setIntOptionValue"
+          ],
+          "python_hash_seed_zero_checked": true,
+          "safe_path_checked": true,
+          "script_sha256": "74aeb451fd81f48f3bbac2bd12677f4bcc29f23f8917099063e119c002c100fc",
+          "seeds": [
+            0,
+            1,
+            2
+          ],
+          "shell_sha256": "6f81ef4db4d0192e5059fabf6280d01b0af8cc01a24d2198e0230ce25b3f77e2"
+        }
+      },
+      "generator_sha256": {
+        "json_pointer": "/generator_sha256",
+        "value": "683d812caf5259217946505cd316479e47d894bae5faa528fa69cfa89ae088a0"
+      },
+      "native_or_optimizer_executions_by_reviewer": {
+        "json_pointer": "/native_or_optimizer_executions_by_reviewer",
+        "value": 0
+      },
+      "owners": {
+        "json_pointer": "/owners",
+        "value": [
+          {
+            "all_launch_hashes_verified": true,
+            "date": "june",
+            "index": 1,
+            "only_authorized_owner_AST_changes": true,
+            "owner_sha256": "e2a95386fa1b5ca4eb719f88bcba067f7befe8d6d9f8c3b90efcb45f3ddec504",
+            "shell_only_source_and_owner_paths_changed": true,
+            "solver_random_seed": 1,
+            "startup_only_source_directory_changed": true
+          },
+          {
+            "all_launch_hashes_verified": true,
+            "date": "october",
+            "index": 2,
+            "only_authorized_owner_AST_changes": true,
+            "owner_sha256": "c8d789cb80807c80f51693b145e2054b1b348d1e6b03128492fce157cf1142c9",
+            "shell_only_source_and_owner_paths_changed": true,
+            "solver_random_seed": 1,
+            "startup_only_source_directory_changed": true
+          },
+          {
+            "all_launch_hashes_verified": true,
+            "date": "december",
+            "index": 3,
+            "only_authorized_owner_AST_changes": true,
+            "owner_sha256": "e660843145411ba2dbca027da76e40d09778c512ade2efacc44121facd16f5be",
+            "shell_only_source_and_owner_paths_changed": true,
+            "solver_random_seed": 1,
+            "startup_only_source_directory_changed": true
+          },
+          {
+            "all_launch_hashes_verified": true,
+            "date": "december",
+            "index": 4,
+            "only_authorized_owner_AST_changes": true,
+            "owner_sha256": "342fe3048121e13630376a9e9b497ae2129e17bb46c162f92b06365a228c0a60",
+            "shell_only_source_and_owner_paths_changed": true,
+            "solver_random_seed": 2,
+            "startup_only_source_directory_changed": true
+          },
+          {
+            "all_launch_hashes_verified": true,
+            "date": "october",
+            "index": 5,
+            "only_authorized_owner_AST_changes": true,
+            "owner_sha256": "90db93efe7d850accc0686d69da2981edf22b0ed5cefc3f0105c203297cfc71d",
+            "shell_only_source_and_owner_paths_changed": true,
+            "solver_random_seed": 2,
+            "startup_only_source_directory_changed": true
+          },
+          {
+            "all_launch_hashes_verified": true,
+            "date": "june",
+            "index": 6,
+            "only_authorized_owner_AST_changes": true,
+            "owner_sha256": "8335f1c1791643800bfd19a56f36f490de3e078008fd7699af6d262e41c0c9be",
+            "shell_only_source_and_owner_paths_changed": true,
+            "solver_random_seed": 2,
+            "startup_only_source_directory_changed": true
+          }
+        ]
+      },
+      "passed": {
+        "json_pointer": "/passed",
+        "value": true
+      },
+      "per_run_limits_seconds": {
+        "json_pointer": "/per_run_limits_seconds",
+        "value": {
+          "candidate": 1800,
+          "outer": 2460,
+          "preparation": 600,
+          "solver_process": 600
+        }
+      },
+      "release_commands_sha256": {
+        "json_pointer": "/release_commands_sha256",
+        "value": "74d7bf18bcc7b5366428a88384900c4a3e23e3f462812d7aae44a051b6fc8e97"
+      },
+      "schema": {
+        "json_pointer": "/schema",
+        "value": "independent-seed-launch-review/v1"
+      },
+      "source_manifest_sha256": {
+        "json_pointer": "/source_manifest_sha256",
+        "value": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5"
+      },
+      "tiny_scope": {
+        "json_pointer": "/tiny_scope",
+        "value": {
+          "LP_calls": 2,
+          "LP_native_total_seconds": 60,
+          "MIP_calls": 3,
+          "binary_columns": 12,
+          "candidate_pass_expected": false,
+          "contained_worker_seconds": 180,
+          "expected_shared_overflow_MWh": 2.25,
+          "native_MIP_seconds": 20,
+          "retained_original_columns": 30,
+          "seed": 1,
+          "worker_seconds": 170
+        }
+      },
+      "tiny_source_hashes": {
+        "json_pointer": "/tiny_source_hashes",
+        "value": {
+          "fixed_triangle.py": "457cfa37c7aa821067fb0b09f31d3dad49ae6b09205941b990095da622a1c4f8",
+          "replay_tiny_transition.py": "8cc367b65f2487a7fefecb5425a46cf3a45a590c2aa6a66fc95f5170b50ddb01",
+          "run_tiny_components.py": "ec8df2536cc0aaefdb9b7fb623f3a561d03f1a0aa9f648d84025a296323d01e2"
+        }
+      }
+    },
+    "source_record": {
+      "bytes": 4349,
+      "name": "launch-review.json",
+      "sha256": "df66acf08e1507376a45c45ec032aa4564ded865f30c3d3d70c895db353d332a"
+    }
+  },
+  "observations": {
+    "all_preexisting_protocol_values_unchanged": {
+      "json_pointer": "/all_preexisting_protocol_values_unchanged",
+      "value": true
+    },
+    "artifact_manifest_sha256": {
+      "json_pointer": "/artifact_manifest_sha256",
+      "value": "96f657ad51ee94e9cb2fa3f6f242fa1e9daba7000bedf61c13d4fcca6d7844b0"
+    },
+    "artifact_members_verified": {
+      "json_pointer": "/artifact_members_verified",
+      "value": 121
+    },
+    "base_source_manifest_sha256": {
+      "json_pointer": "/base_source_manifest_sha256",
+      "value": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0"
+    },
+    "changed_package_members": {
+      "json_pointer": "/changed_package_members",
+      "value": [
+        {
+          "after": "f83f45e629e259747709d709efa3df3100bffc2b51fee51a691cbf5c729980aa",
+          "before": "eafa69970257ef2c581f0c1bb8473b12235d279d50b46f02cb7a14c1e6ef59e2",
+          "path": "PROTOCOL.json"
+        },
+        {
+          "after": "cde55ee481b7e80742ba5e6e6fc34db779eae4c9d57aa116c4a5a76f666e5259",
+          "before": "727dee98bbfe3cfc057f824ae4b8e4858a22ec56abfa9b2b8651837e11f3ff70",
+          "path": "__main__.py"
+        },
+        {
+          "after": "8b1250c786e4b34f0cd781daff4e1b5e3d3ffafcd92635711ece7accd59468a3",
+          "before": "25a27bb0d690f7387799295bbf71db8913a90985f68ad86f9f90edea05cc39c7",
+          "path": "carry.py"
+        },
+        {
+          "after": "9cd737410705f77788c4b62192bd92ef95d8c255ce45f2460337f3fe4de80d20",
+          "before": "20abf8b5b213338a4ca645844b45d2f12d6dd2e00620db779a531fc02642bc81",
+          "path": "case.py"
+        },
+        {
+          "after": "43ce85fcf022eff392d8d3a040d9b5fd24a31f08423406dc8bdc12af0ecef646",
+          "before": "82f4912fa22a475dff3a76856ef45b9386552cde5e0178315834cd0eab9873ac",
+          "path": "heldout.py"
+        },
+        {
+          "after": "84f6627d17ca52b779e15480dc3f37c505c660539bb7444d508ffec54ff87c90",
+          "before": "f9aff75b055ddd1905ee2d1aea236fd8dd3fe4ffbaabed05ba5d6825f3d29fc8",
+          "path": "native_exec.py"
+        },
+        {
+          "after": "86e24ec2426da2d4c2d41d0f5cdbe804a7996df3c0a7bbd2760c317693215ba6",
+          "before": "c81e82bd0aaf12af132030e9de032515d652c200439a7a495973ade5494765d9",
+          "path": "options.py"
+        },
+        {
+          "after": "8a03b62c28a77a5a1244cbd22e7d1c02e472311c2975b7079d84f65b4f55466e",
+          "before": "5a08505896c9a00a028134e4017fac29964e87293149e39543d592814359fd57",
+          "path": "phase.py"
+        },
+        {
+          "after": "eacff6d9619eddd678fa5f472720848aa60f5d97b53fc320fd9cc24796e70ae8",
+          "before": "785e412d1661c2cd4a858273adeb3896fc5ad2cd4fc0d479ae33d90d74721fc6",
+          "path": "science/capi.py"
+        },
+        {
+          "after": "e1c3439ce20d96ba1eec93e33f13dc34a8f160c82a315de01070b26ac9b32af0",
+          "before": "6c5d61e92d8bfb4b0cc42d74c3947c519b70985e7226d34c929ede3a3b37d0d2",
+          "path": "science/native.py"
+        },
+        {
+          "after": "2b6d8b7d8c57e35e9d42d86829a614ead15f0e8e07827330e0e400b30bd1adc3",
+          "before": "a0375762fc9eea020cedb0564ef17001350b0d4998e15c468a9b2b9275d716af",
+          "path": "seed.py"
+        }
+      ]
+    },
+    "critical_static_call_counts_unchanged": {
+      "json_pointer": "/critical_static_call_counts_unchanged",
+      "value": {
+        "current_scuc/carry.py": {
+          "assess": 1
+        },
+        "current_scuc/phase.py": {
+          "options.command": 1,
+          "options.probe": 1,
+          "process.run": 4
+        },
+        "current_scuc/science/capi.py": {
+          "self.lib.Highs_run": 1
+        },
+        "current_scuc/seed.py": {
+          "lp.run_with_cumulative_limit": 1,
+          "run_seed": 1
+        },
+        "tests/replay_tiny_components.py": {
+          "generator.build": 2,
+          "local_runtime.qualify_capi": 1,
+          "options.command": 1,
+          "options.probe": 1,
+          "process.run": 1,
+          "run_seed": 1,
+          "solve": 3
+        },
+        "tests/replay_tiny_transition.py": {
+          "generator.build": 2,
+          "local_runtime.qualify_capi": 1,
+          "options.command": 1,
+          "options.probe": 1,
+          "process.run": 1,
+          "run_seed": 1,
+          "solve": 2
+        },
+        "tests/run_tiny_components.py": {}
+      }
+    },
+    "native_or_optimizer_executions_by_reviewer": {
+      "json_pointer": "/native_or_optimizer_executions_by_reviewer",
+      "value": 0
+    },
+    "package_members_verified": {
+      "json_pointer": "/package_members_verified",
+      "value": 70
+    },
+    "passed": {
+      "json_pointer": "/passed",
+      "value": true
+    },
+    "proposal_sha256": {
+      "json_pointer": "/proposal_sha256",
+      "value": "481e3246fe4572c73bcecfc5264ef5bd9d5e21cad71a59e1fc5d8bf3a04405d1"
+    },
+    "pure_tests": {
+      "json_pointer": "/pure_tests",
+      "value": {
+        "focused_test_source_sha256": "375cdf053eee6780467dc58314fa2dc8cc64139a6011183211159c989bee91fa",
+        "log_sha256": "9b1eaacf4ba5e91f14b5070adb84fb4e0e618fab225d8b3ad84c8fc6c5d7a5be",
+        "passed": 90,
+        "skipped": 0
+      }
+    },
+    "qualifications": {
+      "json_pointer": "/qualifications",
+      "value": [
+        "Static call-count equality complements manual call-path review; it is not runtime execution coverage.",
+        "The native qualifier, single transition tiny and six-run panel remain owner-controlled gates."
+      ]
+    },
+    "schema": {
+      "json_pointer": "/schema",
+      "value": "independent-seed-source-review/v1"
+    },
+    "source_manifest_sha256": {
+      "json_pointer": "/source_manifest_sha256",
+      "value": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5"
+    },
+    "unchanged_module_constants": {
+      "json_pointer": "/unchanged_module_constants",
+      "value": {
+        "current_scuc/options.py": [
+          "BUILD_OPTION_PINS",
+          "COMPILED_OUT_OPTION",
+          "DISCOVERY",
+          "EXPECTED",
+          "OPTION_TYPES",
+          "PROOF",
+          "PROOF_ROLE",
+          "ROLES"
+        ],
+        "current_scuc/phase.py": [
+          "BASE",
+          "FINAL_RESERVE",
+          "MAX_CALLS",
+          "PROCESS_RESERVE",
+          "SOLVER_CAP",
+          "START",
+          "WHOLE_CAP",
+          "WHOLE_STORAGE_REQUIRED"
+        ],
+        "current_scuc/science/capi.py": [
+          "ADVISORY_SOURCE_SHA",
+          "DOUBLE_INFO",
+          "EXPORT_SHA",
+          "HEADER_SHA",
+          "INT_INFO",
+          "OPTIONS",
+          "READBACK_SHA",
+          "ROOT"
+        ],
+        "current_scuc/seed.py": [
+          "FINAL_RESERVE",
+          "NATIVE_TOTAL_CAP",
+          "SEED_PROCESS_CAP",
+          "START"
+        ]
+      }
+    },
+    "unchanged_package_members": {
+      "json_pointer": "/unchanged_package_members",
+      "value": 59
+    }
+  },
+  "record_scope": "Completed independent source/pure review; prospective native/panel wording in original qualifications remains historical.",
+  "schema": "current-scuc-seed-source-review-public/v1",
+  "source_record": {
+    "bytes": 6130,
+    "name": "source-review.json",
+    "sha256": "76430beabe0e308fce2c8aa530338c9b12baeb910bafc45c319dfdbeb2ee9d58"
+  }
+}
