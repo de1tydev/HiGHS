@@ -44,3 +44,36 @@ reserve budget for unrestricted full-problem fallback. Restricted repair bounds
 are never global lower bounds. Count feature/prediction/repair overhead and all
 solver process wall. Freeze any follow-on evaluation before running it; use a
 new calendar test panel if results informed implementation choices.
+
+## Additional user-directed tracks (before scientific runs)
+
+Annual rolling experiments must use past-only labels available before each
+forecast horizon, with a 36-hour embargo to avoid overlapping labels. The
+three exposed 2017 dates above are potential implementation-development data,
+NOT permitted future labels for January/April/July 2017. A separate prospective
+chronological learning panel is required; do not reuse the frozen-generalization
+panel to claim annual learned speedups. Report cross-season/load/renewable
+strata, label solves, training, feature generation, repair, fallback, checking
+and total cumulative runtime over all attempted horizons. No random splitting.
+
+Kernel track remains independent of formulation/learning. Next experiment:
+profile the pristine official binary on a retained SCUC master after successful
+frozen validation and on bundled general-MILP models (egout, flugpl, p0033),
+seed 1, two threads, parallel off, 60 seconds each, serially. Record presolve,
+root/node LP, separation and heuristic timings using native analysis support
+in a separate diagnostic invocation, not a retiming of the frozen panel.
+Before proposing a default-off core patch, require a measured hotspot and
+read prior NEGATIVE_TRANSFER.md, INITIAL_ROOT_IPX.md, ROOT_CHILD_CREDIT.md and
+RINS records. No repeated RINS toggles or unsupported root-LP switches.
+A kernel patch must preserve numeric/global-bound semantics, have an explicit
+switch, and use paired original/patch runs on the entire fixed panel; retain
+all slower/failing/timed-out cases. Profiling/parameter changes are not kernel
+code acceleration. Lack of a justified patch is reported as such.
+
+Kernel input inventory before profiling: p0033 is absent from the official
+checkout and will be recorded missing, not replaced. Add a separate diagnostic
+panel of bundled dcmulti and gesa2 (chosen by known model identity, before any
+run), seeds 1 and 2, 60 native seconds each, with profiling off/on in alternating
+order. Retain the original egout/flugpl seed-1 diagnostics. Compare outcomes and
+instrumentation overhead only; this is not a core optimization claim. Use 75
+seconds outer per call, 7 GiB AS, one serial process and bounded logs.
