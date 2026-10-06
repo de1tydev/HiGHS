@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/workspace/scuc-campaign/profile_detail",
+    "/workspace/scuc-native-source/check/instances/gesa2.mps",
+    "1",
+    "/workspace/scuc-campaign/detail-gesa2-1.tsv"
+  ],
+  "runner_returncode": 0,
+  "runner_launched": true,
+  "total_slot_elapsed_seconds": 0.7766132890000108,
+  "total_slot_within_timeout": true,
+  "health_check_error": null,
+  "hard_watchdog_killed": false,
+  "interruption": null,
+  "error": null,
+  "adopted_checks_killed_and_reaped": [],
+  "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+  "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+}

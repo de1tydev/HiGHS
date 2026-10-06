@@ -1,0 +1,37 @@
+scope	thread	clock	calls	seconds
+mip	0	Presolve	1	0.012242317199707031
+mip	0	Solve	1	0.31179165840148926
+mip	0	Postsolve	1	2.384185791015625e-07
+mip	0	MIP	1	0.75085330009460449
+mip	0	Du simplex (basis)	23	0.04723668098449707
+mip	0	Du simplex (no basis)	2	0.0073487758636474609
+mip	0	Sub-MIP	1	0.42644333839416504
+mip	0	Initialise	1	9.2983245849609375e-06
+mip	0	Run presolve	1	0.012232780456542969
+mip	0	Run setup	1	0.00079846382141113281
+mip	0	Feasibility jump	1	0.012803316116333008
+mip	0	Trivial heuristics	1	9.5367431640625e-07
+mip	0	Evaluate root node	1	0.72400712966918945
+mip	0	Perform aging 0	1	0.00057935714721679688
+mip	0	Probing - presolve	1	0.0036175251007080078
+mip	0	Enumeration - presolve	1	0.0020351409912109375
+mip	0	Start symmetry detection	1	0.0016660690307617188
+mip	0	A-centre - start	1	2.8371810913085938e-05
+mip	0	Evaluate root LP	4	0.012042522430419922
+mip	0	Randomized rounding	1	0.0020670890808105469
+mip	0	Root separation	1	0.278900146484375
+mip	0	Root heuristics reduced cost	1	0.42910575866699219
+mip	0	kMipClockEvaluateRootNode0	1	0.29326081275939941
+mip	0	kMipClockEvaluateRootNode1	1	0.43074345588684082
+mip	0	Separation	19	0.27257490158081055
+mip	0	A-centre - finish	1	2.3126602172851562e-05
+mip	0	Central rounding	1	0.0052464008331298828
+mip	0	Evaluate root LP	1	0.0008544921875
+mip	0		1	0.42649292945861816
+mip	0	Probing - implications	62	0.00057530403137207031
+mip	1	IPX (AC)	5	0.027851104736328125
+submip	0	Presolve	4	0.019307613372802734
+submip	0	Solve	4	0.40617084503173828
+submip	0	Postsolve	4	1.1920928955078125e-06
+submip	0	Du simplex (basis)	400	0.17490291595458984
+submip	0	Du simplex (no basis)	11	0.0027124881744384766

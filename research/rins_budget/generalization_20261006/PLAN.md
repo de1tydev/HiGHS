@@ -77,3 +77,10 @@ run), seeds 1 and 2, 60 native seconds each, with profiling off/on in alternatin
 order. Retain the original egout/flugpl seed-1 diagnostics. Compare outcomes and
 instrumentation overhead only; this is not a core optimization claim. Use 75
 seconds outer per call, 7 GiB AS, one serial process and bounded logs.
+
+Post-profile diagnostic extension: the completed dcmulti seed-1 native log
+attributes 75.5% of parent solver time to sub-MIPs. Before considering a patch,
+retain all internal profiling clocks for dcmulti and gesa2 at seeds 1,2 with the
+same 60/75 second limits. This four-run diagnostic exposes existing timers via
+a standalone C++ client; it changes no solver algorithm. Nested clocks must
+not be summed. It is prompted by development data, not a held-out evaluation.

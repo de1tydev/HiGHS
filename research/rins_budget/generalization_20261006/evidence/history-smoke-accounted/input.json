@@ -1,0 +1,112 @@
+{
+  "history": [
+    {
+      "id": "train1",
+      "end": "2017-01-02T12:00:00Z",
+      "label_available": "2017-01-02T13:00:00Z",
+      "feature": [
+        2,
+        2
+      ],
+      "columns": [
+        "u0",
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "topology": "synthetic-two-period",
+      "u": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "checked": true
+    },
+    {
+      "id": "train2",
+      "end": "2017-01-03T12:00:00Z",
+      "label_available": "2017-01-03T13:00:00Z",
+      "feature": [
+        3,
+        3
+      ],
+      "columns": [
+        "u0",
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "topology": "synthetic-two-period",
+      "u": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "checked": true
+    },
+    {
+      "id": "train3",
+      "end": "2017-01-04T12:00:00Z",
+      "label_available": "2017-01-04T13:00:00Z",
+      "feature": [
+        4,
+        4
+      ],
+      "columns": [
+        "u0",
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "topology": "synthetic-two-period",
+      "u": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "checked": true
+    },
+    {
+      "id": "future",
+      "end": "2017-01-07T12:00:00Z",
+      "label_available": "2017-01-02T13:00:00Z",
+      "feature": [
+        2,
+        2
+      ],
+      "columns": [
+        "u0",
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "topology": "synthetic-two-period",
+      "u": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "checked": true
+    }
+  ],
+  "query": {
+    "start": "2017-01-06T00:00:00Z",
+    "feature": [
+      3,
+      4
+    ],
+    "columns": [
+      "u0",
+      "u1",
+      "u2",
+      "u3"
+    ],
+    "topology": "synthetic-two-period"
+  },
+  "label_generation_seconds": 3.771900003357587e-05,
+  "label_method": "exhaustive synthetic enumeration, not a production SCUC label"
+}

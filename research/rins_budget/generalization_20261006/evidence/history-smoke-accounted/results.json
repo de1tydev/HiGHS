@@ -1,0 +1,268 @@
+[
+  {
+    "method": "cold",
+    "passed": true,
+    "prediction": null,
+    "suggestions": {},
+    "process": {
+      "command": [
+        "/workspace/scuc-campaign/sparse_start",
+        "/workspace/scuc-campaign/history-smoke-accounted/target.lp",
+        "-",
+        "/workspace/scuc-campaign/history-smoke-accounted/cold.sol",
+        "10"
+      ],
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.014946002999977281,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "end_to_end_seconds": 0.015342215000032411,
+    "independent_cost": 13.0,
+    "enumerated_global_optimum": 13,
+    "synthetic_only": true
+  },
+  {
+    "method": "previous",
+    "passed": true,
+    "prediction": {
+      "method": "previous",
+      "k": 2,
+      "neighbors": [
+        {
+          "id": "train3",
+          "distance": 0.7071067811865476
+        }
+      ],
+      "excluded": [
+        {
+          "id": "future",
+          "reason": "future_or_overlapping_label"
+        }
+      ],
+      "suggestions": {
+        "u0": 1,
+        "u1": 1,
+        "u2": 1,
+        "u3": 1
+      },
+      "vote_fraction": {
+        "u0": 1.0,
+        "u1": 1.0,
+        "u2": 1.0,
+        "u3": 1.0
+      },
+      "prediction_seconds": 5.683099993802898e-05,
+      "full_problem_required": true,
+      "hard_fixings_applied": false,
+      "feasibility_certified": false,
+      "lower_bound": null
+    },
+    "suggestions": {
+      "u0": 1,
+      "u1": 1,
+      "u2": 1,
+      "u3": 1
+    },
+    "process": {
+      "command": [
+        "/workspace/scuc-campaign/sparse_start",
+        "/workspace/scuc-campaign/history-smoke-accounted/target.lp",
+        "/workspace/scuc-campaign/history-smoke-accounted/previous.start",
+        "/workspace/scuc-campaign/history-smoke-accounted/previous.sol",
+        "10"
+      ],
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.0072369060000028185,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "end_to_end_seconds": 0.010654243999965729,
+    "independent_cost": 13.0,
+    "enumerated_global_optimum": 13,
+    "synthetic_only": true
+  },
+  {
+    "method": "nearest",
+    "passed": true,
+    "prediction": {
+      "method": "nearest",
+      "k": 2,
+      "neighbors": [
+        {
+          "id": "train2",
+          "distance": 0.7071067811865476
+        }
+      ],
+      "excluded": [
+        {
+          "id": "future",
+          "reason": "future_or_overlapping_label"
+        }
+      ],
+      "suggestions": {
+        "u0": 0,
+        "u1": 1,
+        "u2": 0,
+        "u3": 1
+      },
+      "vote_fraction": {
+        "u0": 1.0,
+        "u1": 1.0,
+        "u2": 1.0,
+        "u3": 1.0
+      },
+      "prediction_seconds": 3.976599998622987e-05,
+      "full_problem_required": true,
+      "hard_fixings_applied": false,
+      "feasibility_certified": false,
+      "lower_bound": null
+    },
+    "suggestions": {
+      "u0": 0,
+      "u1": 1,
+      "u2": 0,
+      "u3": 1
+    },
+    "process": {
+      "command": [
+        "/workspace/scuc-campaign/sparse_start",
+        "/workspace/scuc-campaign/history-smoke-accounted/target.lp",
+        "/workspace/scuc-campaign/history-smoke-accounted/nearest.start",
+        "/workspace/scuc-campaign/history-smoke-accounted/nearest.sol",
+        "10"
+      ],
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.00623381299999437,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "end_to_end_seconds": 0.006539546999988488,
+    "independent_cost": 13.0,
+    "enumerated_global_optimum": 13,
+    "synthetic_only": true
+  },
+  {
+    "method": "consensus",
+    "passed": true,
+    "prediction": {
+      "method": "consensus",
+      "k": 2,
+      "neighbors": [
+        {
+          "id": "train2",
+          "distance": 0.7071067811865476
+        },
+        {
+          "id": "train3",
+          "distance": 0.7071067811865476
+        }
+      ],
+      "excluded": [
+        {
+          "id": "future",
+          "reason": "future_or_overlapping_label"
+        }
+      ],
+      "suggestions": {
+        "u1": 1,
+        "u3": 1
+      },
+      "vote_fraction": {
+        "u0": 0.5,
+        "u1": 1.0,
+        "u2": 0.5,
+        "u3": 1.0
+      },
+      "prediction_seconds": 3.7334000012378965e-05,
+      "full_problem_required": true,
+      "hard_fixings_applied": false,
+      "feasibility_certified": false,
+      "lower_bound": null
+    },
+    "suggestions": {
+      "u1": 1,
+      "u3": 1
+    },
+    "process": {
+      "command": [
+        "/workspace/scuc-campaign/sparse_start",
+        "/workspace/scuc-campaign/history-smoke-accounted/target.lp",
+        "/workspace/scuc-campaign/history-smoke-accounted/consensus.start",
+        "/workspace/scuc-campaign/history-smoke-accounted/consensus.sol",
+        "10"
+      ],
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.009182546000033653,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "end_to_end_seconds": 0.00952082200001314,
+    "independent_cost": 13.0,
+    "enumerated_global_optimum": 13,
+    "synthetic_only": true
+  },
+  {
+    "method": "infeasible_start",
+    "passed": true,
+    "prediction": null,
+    "suggestions": {
+      "u0": 0,
+      "u1": 0,
+      "u2": 0,
+      "u3": 0
+    },
+    "process": {
+      "command": [
+        "/workspace/scuc-campaign/sparse_start",
+        "/workspace/scuc-campaign/history-smoke-accounted/target.lp",
+        "/workspace/scuc-campaign/history-smoke-accounted/infeasible_start.start",
+        "/workspace/scuc-campaign/history-smoke-accounted/infeasible_start.sol",
+        "10"
+      ],
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.007532590999971944,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "end_to_end_seconds": 0.007819258999916201,
+    "independent_cost": 13.0,
+    "enumerated_global_optimum": 13,
+    "synthetic_only": true
+  }
+]

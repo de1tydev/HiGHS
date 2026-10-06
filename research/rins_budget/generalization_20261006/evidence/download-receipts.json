@@ -1,0 +1,23 @@
+[
+  {
+    "date": "2017-01-15",
+    "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-01-15.json.gz",
+    "downloaded": false,
+    "error": "URLError(OSError('Tunnel connection failed: 403 Forbidden'))",
+    "elapsed_seconds": 0.030984416999984887
+  },
+  {
+    "date": "2017-04-15",
+    "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-04-15.json.gz",
+    "downloaded": false,
+    "error": "URLError(OSError('Tunnel connection failed: 403 Forbidden'))",
+    "elapsed_seconds": 0.0049703230000091025
+  },
+  {
+    "date": "2017-07-15",
+    "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-07-15.json.gz",
+    "downloaded": false,
+    "error": "URLError(OSError('Tunnel connection failed: 403 Forbidden'))",
+    "elapsed_seconds": 0.00619623599999386
+  }
+]

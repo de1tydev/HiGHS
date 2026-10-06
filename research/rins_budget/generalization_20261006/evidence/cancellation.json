@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/.venvs/highs-tools/bin/python",
+    "-c",
+    "import os,signal,time; os.kill(os.getppid(),signal.SIGTERM); time.sleep(30)"
+  ],
+  "runner_returncode": -15,
+  "runner_launched": true,
+  "total_slot_elapsed_seconds": 0.016733307999970748,
+  "total_slot_within_timeout": true,
+  "health_check_error": null,
+  "hard_watchdog_killed": false,
+  "interruption": "termination signal 15",
+  "error": null,
+  "adopted_checks_killed_and_reaped": [],
+  "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+  "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+}

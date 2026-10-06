@@ -1,0 +1,50 @@
+scope	thread	clock	calls	seconds
+mip	0	Presolve	1	0.0078825950622558594
+mip	0	Solve	1	0.40471339225769043
+mip	0	Postsolve	1	0
+mip	0	MIP	1	2.2149200439453125
+mip	0	Du simplex (basis)	133	0.16900944709777832
+mip	0	Du simplex (no basis)	1	0.0049529075622558594
+mip	0	Sub-MIP	3	1.8019809722900391
+mip	0	Initialise	1	7.62939453125e-06
+mip	0	Run presolve	1	0.0078747272491455078
+mip	0	Run setup	1	0.00018382072448730469
+mip	0	Feasibility jump	1	0.0058808326721191406
+mip	0	Trivial heuristics	1	7.152557373046875e-07
+mip	0	Evaluate root node	1	1.2969295978546143
+mip	0	Perform aging 0	1	0.00015664100646972656
+mip	0	Search	1	0.90346026420593262
+mip	0	Probing - presolve	1	0.0019762516021728516
+mip	0	Enumeration - presolve	1	0.0015420913696289062
+mip	0	Open nodes to queue 0	2	3.910064697265625e-05
+mip	0	Domain propagate	2	4.76837158203125e-07
+mip	0	Prune infeasible nodes	2	5.5551528930664062e-05
+mip	0	Update local domain	1	7.82012939453125e-05
+mip	0	Start symmetry detection	1	0.00037050247192382812
+mip	0	A-centre - start	1	2.2649765014648438e-05
+mip	0	Evaluate root LP	6	0.012148857116699219
+mip	0	Randomized rounding	1	0.00019574165344238281
+mip	0	Root separation	1	0.21933889389038086
+mip	0	Root heuristics reduced cost	1	0.2903742790222168
+mip	0	Root heuristics RENS	1	0.77382588386535645
+mip	0	kMipClockEvaluateRootNode0	1	0.23220205307006836
+mip	0	kMipClockEvaluateRootNode1	1	1.0642061233520508
+mip	0	kMipClockEvaluateRootNode2	1	0.00051712989807128906
+mip	0	Evaluate node	1	0.00027990341186523438
+mip	0	Dive primal heuristics	1	0.75419974327087402
+mip	0	The dive	2	0.13069033622741699
+mip	0	Dive RINS	1	0.75419950485229492
+mip	0	Pruned loop search	1	2.384185791015625e-07
+mip	0	Evaluate node 1	1	0.0037205219268798828
+mip	0	Node search separation	1	0.01386713981628418
+mip	0	Separation	16	0.21482110023498535
+mip	0	A-centre - finish	1	1.5735626220703125e-05
+mip	0	Central rounding	1	0.0044090747833251953
+mip	0	Evaluate root LP	1	4.76837158203125e-07
+mip	0		3	1.8020274639129639
+mip	0	Probing - implications	60	0.0013577938079833984
+mip	1	IPX (AC)	24	0.27423191070556641
+submip	0	Presolve	20	0.091941356658935547
+submip	0	Solve	20	1.70591139793396
+submip	0	Postsolve	20	2.6226043701171875e-06
+submip	0	Du simplex (basis)	896	0.69689631462097168
