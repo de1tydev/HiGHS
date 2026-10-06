@@ -1,0 +1,74 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Command line parsed using CLI11 2.5.0: Copyright (c) 2017-2025 University of Cincinnati
+Set option parallel to "off"
+Set option threads to 2
+Set option time_limit to 60
+Set option random_seed to 2
+Set option write_solution_to_file to true
+Set option solution_file to "/workspace/scuc-campaign/cache-panel-v2/egout-s2-candidate/point.sol"
+Set option mip_cmir_cache_coefficients to true
+MIP egout has 98 rows; 141 cols; 282 nonzeros; 55 integer variables (55 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 1e+02]
+  Cost    [1e-03, 4e+01]
+  Bound   [7e-02, 2e+01] (continuous)
+  Bound   [1e+00, 1e+00] (non-continuous)
+  RHS     [0e+00, 0e+00]
+Presolving model
+98 rows, 141 cols, 282 nonzeros 0s
+78 rows, 90 cols, 180 nonzeros 0s
+35 rows, 47 cols, 100 nonzeros 0s
+31 rows, 42 cols, 91 nonzeros 0s
+Presolve reductions: rows 31(-67); columns 42(-99); nonzeros 91(-191) 
+
+Solving MIP model with:
+   31 rows
+   42 cols (28 binary, 0 integer, 0 implied int., 14 continuous, 0 domain fixed)
+   91 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+ J       0       0         0   0.00%   -inf            651.63129          Large        0      0      0         0     0.0s
+ S       0       0         0   0.00%   382.17769       625.31921         38.88%        0      0      0         0     0.0s
+         0       0         0   0.00%   509.0413941     625.31921         18.59%        0      0      0        14     0.0s
+ S       0       0         0   0.00%   509.0413941     623.1083875       18.31%       50      8      0        14     0.0s
+ S       0       0         0   0.00%   548.2608543     613.2231148       10.59%       69     12      0        24     0.0s
+ S       0       0         0   0.00%   559.7465826     595.904576         6.07%       95     13      0        31     0.0s
+ L       0       0         0 100.00%   568.1007        568.1007           0.00%      109     15      2        38     0.0s
+         1       0         1 100.00%   568.1007        568.1007           0.00%      109     15      2        38     0.0s
+
+Solving report
+  Model             egout
+  Status            Optimal
+  Primal bound      568.1007
+  Dual bound        568.1007
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      0.00144410123283
+  Solution status   feasible
+                    568.1007 (objective)
+  Timing            0.02
+                    0.00 (Presolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [1]
+                    0.02 (Solve)
+                        MIP    time [calls] = 0.01 [1]
+                        subMIP time [calls] = 0.01 [1]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [1]
+  Max sub-MIP depth 2
+  Nodes             1
+  Repair LPs        0
+  LP iterations     38
+                    0 (strong br.)
+                    24 (separation)
+                    0 (heuristics)
+Writing the solution to /workspace/scuc-campaign/cache-panel-v2/egout-s2-candidate/point.sol

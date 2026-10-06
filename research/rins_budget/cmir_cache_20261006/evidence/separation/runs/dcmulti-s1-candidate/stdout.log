@@ -1,0 +1,1508 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Command line parsed using CLI11 2.5.0: Copyright (c) 2017-2025 University of Cincinnati
+Set option parallel to "off"
+Set option threads to 2
+Set option time_limit to 60
+Set option random_seed to 1
+Set option write_solution_to_file to true
+Set option solution_file to "/workspace/scuc-campaign/separation-profile/dcmulti-s1-candidate/point.sol"
+readMPS: Trying to open file /workspace/scuc-native-source/check/instances/dcmulti.mps
+readMPS: Read NAME    OK
+readMPS: Read ROWS    OK
+readMPS: Read COLUMNS OK
+readMPS: Read RHS     OK
+readMPS: Read BOUNDS  OK
+MIP       : dcmulti
+Rows      : 290
+Cols      : 548
+Nonzeros  : 1315
+Integer   : 75 (75 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 6e+02]
+  Cost    [4e-01, 2e+03]
+  Bound   [0e+00, 0e+00] (continuous)
+  Bound   [1e+00, 1e+00] (non-continuous)
+  RHS     [1e+00, 3e+02]
+Scheduler initialized: 2 threads (physical cores: 5)
+Running with 2 thread(s)
+Permitted suppression of presolve rules via presolve_rule_off option:
+ * Rule  0 (set bit  0 =       1): Empty row
+ * Rule  1 (set bit  1 =       2): Singleton row
+ * Rule  2 (set bit  2 =       4): Redundant row
+ * Rule  3 (set bit  3 =       8): Empty column
+ * Rule  4 (set bit  4 =      16): Fixed column
+   Rule  6 (set bit  6 =      64): Forcing row
+   Rule  7 (set bit  7 =     128): Forcing col
+   Rule  8 (set bit  8 =     256): Free col substitution
+   Rule  9 (set bit  9 =     512): Doubleton equation
+   Rule 10 (set bit 10 =    1024): Dependent equations
+   Rule 11 (set bit 11 =    2048): Dependent free columns
+   Rule 12 (set bit 12 =    4096): Aggregator
+   Rule 13 (set bit 13 =    8192): Parallel rows and columns
+   Rule 14 (set bit 14 =   16384): Sparsify
+   Rule 15 (set bit 15 =   32768): Probing
+   Rule 16 (set bit 16 =   65536): Enumeration
+   Rule 17 (set bit 17 =  131072): Dual fixing
+   Rule 18 (set bit 18 =  262144): Zero cost singleton
+   Rule 19 (set bit 19 =  524288): Col stuffing
+   Rule 20 (set bit 20 = 1048576): Initial sweep
+   Rule 21 (set bit 21 = 2097152): Fourier-Motzkin
+   Rule 22 (set bit 22 = 4194304): Weakly dominated col
+ * Only in initial sweep
+Presolving model
+290 rows, 548 cols, 1315 nonzeros 0s
+Enumeration presolve: 0 deleted columns, 290 tightened bounds, 0 substitutions, 0 deleted rows, 0 lifted nonzeros
+72 probing evaluations: 0 deleted rows, 0 deleted columns, 0 lifted nonzeros
+224 rows, 500 cols, 1324 nonzeros 0s
+Presolve reductions: rows 224(-66); columns 500(-48); nonzeros 1324(+9) 
+
+Solving MIP model with:
+   224 rows
+   500 cols (72 binary, 0 integer, 0 implied int., 428 continuous, 0 domain fixed)
+   1324 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+Feasibility Jump: starting solve. weightUpdateDecay=1, relaxContinuous=0  
+Feasibility Jump:        step  violations     good    bumps       effort (per step)          Objective
+          0          54        0        0         3664         0                   0
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -6800           inf                  inf        0      0      0         0     0.0s
+         0       0         0   0.00%   183975.539693   inf                  inf        0      0      2       320     0.0s
+SEP_COST name=implied submip=0 depth=0 seconds=0.00077643000000000005 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00021772600000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0020193089999999999 pool_delta=73 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.003324984 pool_delta=232 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=0.000107008 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.2167999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.00030466400000000001 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=35
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0040639090000000001 pool_delta=0 lp_iterations=50
+SEP_COST name=implied submip=0 depth=0 seconds=2.5465000000000001e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000101871 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0028201350000000001 pool_delta=58 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.011007751 pool_delta=89 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.1170999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=4.8999999999999997e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=9
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0015532740000000001 pool_delta=0 lp_iterations=23
+SEP_COST name=implied submip=0 depth=0 seconds=3.1569999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00052904799999999995 pool_delta=5 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0033803000000000001 pool_delta=40 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0071445399999999996 pool_delta=115 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=0.000100068 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=4.7700000000000005e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=12
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001409448 pool_delta=0 lp_iterations=28
+SEP_COST name=implied submip=0 depth=0 seconds=1.0226e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00010492699999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.001742997 pool_delta=46 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0054943730000000003 pool_delta=39 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.8067999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.48e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=7
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0012920449999999999 pool_delta=0 lp_iterations=22
+SEP_COST name=implied submip=0 depth=0 seconds=0.000280938 pool_delta=3 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=9.1003999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.001685693 pool_delta=51 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0048062189999999996 pool_delta=131 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=9.7526000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=3.7800000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=10
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0014564490000000001 pool_delta=0 lp_iterations=29
+ C       0       0         0   0.00%   185417.344502   193222.7           4.04%      887     73     27       472     0.1s
+SEP_COST name=implied submip=0 depth=0 seconds=3.6588000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000121476 pool_delta=2 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.003485934 pool_delta=70 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0071503260000000003 pool_delta=126 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.4567000000000005e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=3.1399999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=15
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001254544 pool_delta=0 lp_iterations=28
+SEP_COST name=implied submip=0 depth=0 seconds=1.6699999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000107042 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.002822902 pool_delta=58 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0062746369999999996 pool_delta=91 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.8032e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.4900000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=10
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0014396999999999999 pool_delta=0 lp_iterations=24
+SEP_COST name=implied submip=0 depth=0 seconds=1.6586e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000116185 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0026017039999999998 pool_delta=50 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0074064600000000001 pool_delta=110 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=9.3513999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=3.0800000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=10
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0016562790000000001 pool_delta=0 lp_iterations=23
+SEP_COST name=implied submip=0 depth=0 seconds=1.5716e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00023177500000000001 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.010359958000000001 pool_delta=70 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0085991639999999994 pool_delta=93 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.7771999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=4.3500000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=15
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0020971779999999999 pool_delta=0 lp_iterations=22
+SEP_COST name=implied submip=0 depth=0 seconds=1.6971000000000001e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=9.4435e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0020842880000000001 pool_delta=37 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0075682350000000004 pool_delta=51 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.1864000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.7799999999999997e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=10
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.002747017 pool_delta=0 lp_iterations=42
+SEP_COST name=implied submip=0 depth=0 seconds=1.5557e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00010283199999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0011728000000000001 pool_delta=11 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.008113795 pool_delta=63 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=0.000109212 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.9499999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=11
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.002959419 pool_delta=0 lp_iterations=43
+SEP_COST name=implied submip=0 depth=0 seconds=0.00029550699999999997 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=8.9648000000000006e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.003592249 pool_delta=52 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0069065949999999997 pool_delta=48 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.9317e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.7500000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=8
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0026579080000000001 pool_delta=0 lp_iterations=43
+SEP_COST name=implied submip=0 depth=0 seconds=0.00014690600000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00011003299999999999 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0022461349999999998 pool_delta=44 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0096906869999999999 pool_delta=37 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.5459999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.8199999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=8
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0018310010000000001 pool_delta=0 lp_iterations=22
+SEP_COST name=implied submip=0 depth=0 seconds=1.2764e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000107932 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00089970299999999996 pool_delta=3 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0066348809999999996 pool_delta=23 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.4636999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.4499999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=6
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001655412 pool_delta=0 lp_iterations=14
+SEP_COST name=implied submip=0 depth=0 seconds=1.5998000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=8.5093000000000007e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00020968199999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0080399449999999997 pool_delta=9 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.9992000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.3300000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=6
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0020879760000000001 pool_delta=0 lp_iterations=33
+SEP_COST name=implied submip=0 depth=0 seconds=0.000219218 pool_delta=3 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00010341299999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0090647190000000006 pool_delta=65 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0088576420000000006 pool_delta=61 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=0.000102303 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.1e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=8
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.003276962 pool_delta=0 lp_iterations=12
+
+HighsPrimalHeuristics::solveSubMip Before run() for     MIP at depth  0 on thread  0
+SEP_COST name=implied submip=1 depth=1 seconds=0.00025609800000000001 pool_delta=1 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.7849999999999999e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00079062399999999997 pool_delta=58 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0028039599999999999 pool_delta=178 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.3757000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.089e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00014926300000000001 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=33
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00080696100000000003 pool_delta=0 lp_iterations=44
+SEP_COST name=implied submip=1 depth=1 seconds=9.815e-06 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.1469000000000001e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00070457199999999999 pool_delta=45 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0042972180000000002 pool_delta=43 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.2849000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=1.85e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=11
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.001006533 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=1 depth=1 seconds=9.9930000000000007e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=1.9457999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00034748800000000002 pool_delta=20 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0050905580000000002 pool_delta=77 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=6.3844999999999996e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=2.4200000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=9
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.001348197 pool_delta=0 lp_iterations=31
+SEP_COST name=implied submip=1 depth=1 seconds=8.0925000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=3.4554000000000002e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.0022608089999999999 pool_delta=32 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0053401869999999997 pool_delta=80 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=6.2568000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=2.17e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00017712399999999999 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=11
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0013840250000000001 pool_delta=0 lp_iterations=23
+SEP_COST name=implied submip=1 depth=1 seconds=1.1911e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.4947e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00069689600000000002 pool_delta=22 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0050277500000000001 pool_delta=42 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.0599999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=1.6899999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=8
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.001269159 pool_delta=0 lp_iterations=26
+HighsPrimalHeuristics::solveSubMip After  run() for     MIP at depth  0 on thread  0
+
+ L       0       0         0   0.00%   187443.628718   188182             0.39%     2067    161     27       778     0.4s
+SEP_COST name=implied submip=0 depth=0 seconds=2.2592e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000101133 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0015685720000000001 pool_delta=32 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0070893759999999997 pool_delta=13 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.7828000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=4.4700000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=2
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001582553 pool_delta=0 lp_iterations=10
+
+HighsPrimalHeuristics::solveSubMip Before run() for     MIP at depth  0 on thread  0
+SEP_COST name=implied submip=1 depth=1 seconds=0.000144411 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.2773e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00065751399999999999 pool_delta=22 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.00465637 pool_delta=3 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.5444000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.3419999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=1
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00070528799999999999 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=1 seconds=4.5719999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=1.2164000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.000754633 pool_delta=16 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0040154919999999998 pool_delta=5 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=6.0856999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.3599999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=3
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0015684270000000001 pool_delta=0 lp_iterations=14
+SEP_COST name=implied submip=1 depth=1 seconds=1.9004e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=1.2683999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00060779499999999995 pool_delta=18 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0057986189999999996 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.8248999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.7300000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=1
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0010960939999999999 pool_delta=0 lp_iterations=19
+SEP_COST name=implied submip=1 depth=1 seconds=0.00033294999999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.9249999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00181548 pool_delta=42 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0055116200000000001 pool_delta=12 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=3.9495e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=4.0600000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=2
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00076728099999999997 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=1 seconds=1.1970000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.6120999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.001302346 pool_delta=40 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0053786989999999998 pool_delta=7 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.1903000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=4.15e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=1
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0015509199999999999 pool_delta=0 lp_iterations=24
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.00013815100000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=6.8140000000000003e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00045721299999999999 pool_delta=18 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0041148740000000001 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.4457e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.3680000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=3
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00060997099999999995 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=2 seconds=3.799e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.3749999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00027081000000000002 pool_delta=9 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.003121474 pool_delta=17 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.0794000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.27e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00051588199999999995 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=2 seconds=3.4570000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=6.8430000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00017417299999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0030535720000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.0619999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.5200000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00067765700000000002 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=1 depth=2 seconds=3.281e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.0869999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00040418000000000002 pool_delta=18 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0040720310000000003 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=9.2359999999999993e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.7700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=3
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00101249 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=2 seconds=2.9720000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.1279999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00026440699999999998 pool_delta=14 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0045465469999999997 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=1.117e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.72e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00050965199999999998 pool_delta=0 lp_iterations=3
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=7.0092000000000006e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.1879999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00020552299999999999 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0037692810000000002 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.1406999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.1429999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00050758300000000004 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=2.1289999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.9040000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00016074500000000001 pool_delta=7 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0033798859999999999 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.878e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.1e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00042116400000000002 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=3 seconds=2.2010000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.9900000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000176226 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0032548759999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.8990000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.5200000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00059007299999999999 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=3 seconds=1.9259999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.1559999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000201005 pool_delta=8 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0030797519999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.3899999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.5200000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00062121500000000005 pool_delta=0 lp_iterations=4
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+SEP_COST name=implied submip=1 depth=4 seconds=9.3009999999999995e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=7.1399999999999996e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=0.00012640000000000001 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0020957979999999998 pool_delta=21 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.6930000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=2.1770000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=2
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00053334599999999997 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=4 seconds=8.3099999999999996e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=6.2399999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=6.9809999999999997e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.002277252 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.4650000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=1.6400000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=2
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00051008100000000001 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+SEP_COST name=implied submip=1 depth=4 seconds=8.2870000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=5.8400000000000004e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=5.4790000000000002e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0023249479999999999 pool_delta=21 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.9009999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=1.877e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=2
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00044730600000000002 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=4 seconds=8.5000000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=6.3e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=0.00012602699999999999 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0023043339999999999 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.5600000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=1.4700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=2
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00080891999999999997 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=7.3100000000000003e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=4.7800000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00015925499999999999 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.002850638 pool_delta=29 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=5.8309999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.367e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=3
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00040198099999999999 pool_delta=0 lp_iterations=6
+SEP_COST name=implied submip=1 depth=3 seconds=1.0869999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=6.4300000000000003e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=3.3049999999999997e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.002805793 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.212e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.3699999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00037651900000000002 pool_delta=0 lp_iterations=4
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=6.6565999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.9059999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00019063899999999999 pool_delta=9 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0028657579999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=7.1069999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.075e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00053538499999999998 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=1.86e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.6479999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000216849 pool_delta=9 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0029035749999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.5760000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.1300000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00043254799999999999 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=3 seconds=1.807e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.914e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00015139799999999999 pool_delta=9 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.003210577 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.9829999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.3799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00043866 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=1.9190000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.5940000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00030620499999999999 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0033721110000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=7.3350000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.8099999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00052370900000000002 pool_delta=0 lp_iterations=6
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+SEP_COST name=implied submip=1 depth=4 seconds=6.4150000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=5.9500000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=0.000235694 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.002793402 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=6.0619999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=2.1610000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=1
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00039733999999999999 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=4 seconds=9.8299999999999995e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=7.7100000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=4.5785000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0030286890000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.5500000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=1.6299999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=1
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00057084499999999995 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+SEP_COST name=implied submip=1 depth=4 seconds=6.1109999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=6.7100000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=4.8109000000000003e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0026366599999999999 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.66e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=2.1560000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=1
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00034142200000000003 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=4 seconds=5.4099999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=5.4199999999999996e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=7.3615000000000006e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0025200769999999999 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=4.7310000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=6.1000000000000004e-08 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=1
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00033914299999999997 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.000306843 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.413e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.001286035 pool_delta=15 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0077856039999999998 pool_delta=11 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=6.6403999999999996e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.8779999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=3
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00080643700000000002 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=2 seconds=9.6479999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.3424000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.0012011249999999999 pool_delta=31 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0046540920000000003 pool_delta=11 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.8498000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.72e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00092586899999999995 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=2 seconds=9.4579999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.3633e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.0016256689999999999 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.005672285 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.9254000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.68e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.001175068 pool_delta=0 lp_iterations=24
+SEP_COST name=implied submip=1 depth=2 seconds=9.0389999999999993e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.3943e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.001376831 pool_delta=27 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.007497821 pool_delta=21 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.9257e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.8099999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=5
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.001814654 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=2 seconds=1.0243e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.5221999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.000701164 pool_delta=12 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0065901479999999997 pool_delta=23 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.8723999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.0699999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=5
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.000945283 pool_delta=0 lp_iterations=9
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=4.3031999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=7.4399999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=4.7280999999999997e-05 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0019390550000000001 pool_delta=8 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=4.9130000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.849e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.000413533 pool_delta=0 lp_iterations=5
+SEP_COST name=implied submip=1 depth=3 seconds=7.2500000000000005e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.3068999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=4.9487999999999998e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0025121150000000001 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.4189999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.6100000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=4
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.000397217 pool_delta=0 lp_iterations=7
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=0.00019163599999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.6359999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00018131899999999999 pool_delta=8 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.003631497 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=7.6299999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.3489999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00057881899999999995 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=3 seconds=3.2969999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.4870000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00040825600000000002 pool_delta=12 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0030018169999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=7.3180000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.4700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=5
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.000560196 pool_delta=0 lp_iterations=8
+SEP_COST name=implied submip=1 depth=3 seconds=3.366e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.5759999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000168302 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.003714261 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.6486999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.0900000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00050116699999999995 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=3.0750000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.3009999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00015546200000000001 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0056101969999999999 pool_delta=3 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=9.4360000000000008e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.67e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.002730269 pool_delta=0 lp_iterations=6
+SEP_COST name=implied submip=1 depth=3 seconds=3.072e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.8340000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00035695600000000002 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0046227769999999998 pool_delta=20 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=9.2969999999999992e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.72e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=3
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00052728300000000003 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=3.3519999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=4.9389999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00027638599999999999 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0046601780000000001 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=9.3270000000000007e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.29e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00068085900000000002 pool_delta=0 lp_iterations=7
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for     MIP at depth  0 on thread  0
+
+
+1.4% inactive integer columns, restarting
+Sparsify removed 3.9% of nonzeros
+55 probing evaluations: 0 deleted rows, 0 deleted columns, 0 lifted nonzeros
+Model after restart has 224 rows, 499 cols (71 bin., 0 int., 0 impl., 428 cont., 0 dom.fix.), and 1321 nonzeros
+
+         0       0         0   0.00%   187444.564024   188182             0.39%      110      0      0      3960     1.0s
+         0       0         0   0.00%   187444.564024   188182             0.39%      110    101      2      4123     1.0s
+SEP_COST name=implied submip=0 depth=0 seconds=0.00035118699999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=7.2787999999999995e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0022547309999999998 pool_delta=22 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.0068309770000000002 pool_delta=18 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=9.9110000000000005e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=3.3050000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=2
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001561532 pool_delta=0 lp_iterations=12
+SEP_COST name=implied submip=0 depth=0 seconds=0.000147324 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=7.8034999999999994e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.001266842 pool_delta=8 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.011983943 pool_delta=7 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.4517000000000005e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.73e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=4
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0012516579999999999 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=0 depth=0 seconds=1.153e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=7.8416000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.000785193 pool_delta=5 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.013284603000000001 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.2469e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.2100000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=2
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0011779710000000001 pool_delta=0 lp_iterations=5
+SEP_COST name=implied submip=0 depth=0 seconds=0.00021005899999999999 pool_delta=4 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=9.0991999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0041398229999999999 pool_delta=31 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.018071325999999999 pool_delta=57 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=0.000114559 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.7599999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=9
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0018466789999999999 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=0 depth=0 seconds=6.3699000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=7.9837000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.004826861 pool_delta=32 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.012824617 pool_delta=4 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.1668999999999994e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.1899999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=3
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0015156740000000001 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=0 depth=0 seconds=1.1707e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=7.8354000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0027204070000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.011240498999999999 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.3059000000000006e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.8300000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=2
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0025649959999999999 pool_delta=0 lp_iterations=43
+SEP_COST name=implied submip=0 depth=0 seconds=3.1812e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=8.8580999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00080870900000000001 pool_delta=3 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.016417021 pool_delta=24 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.3428000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.8799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=5
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0018960229999999999 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=0 depth=0 seconds=0.00021489299999999999 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000174036 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.002178419 pool_delta=21 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.021506665000000001 pool_delta=65 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=0.00034205100000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.8799999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=11
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001794903 pool_delta=0 lp_iterations=10
+SEP_COST name=implied submip=0 depth=0 seconds=1.5092000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00010039600000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0036724539999999999 pool_delta=50 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.018506699000000001 pool_delta=14 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.0319000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.04e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=3
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0016580519999999999 pool_delta=0 lp_iterations=13
+SEP_COST name=implied submip=0 depth=0 seconds=1.6351e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=9.5985999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00018805800000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.015511336000000001 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=9.9523000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.3099999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=3
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001440336 pool_delta=0 lp_iterations=5
+SEP_COST name=implied submip=0 depth=0 seconds=1.5085999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=8.7082000000000004e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.0026127149999999998 pool_delta=21 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.015712141999999998 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=8.0488000000000006e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=1.74e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=1
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001833192 pool_delta=0 lp_iterations=20
+SEP_COST name=implied submip=0 depth=0 seconds=1.4277000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=9.3434e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00024945099999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.01905306 pool_delta=3 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.3975999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.65e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=1
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0017033300000000001 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=0 depth=0 seconds=1.4960000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00012018099999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00016401600000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.018960243000000002 pool_delta=3 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=9.6980999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=2.2700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=3
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0020478440000000001 pool_delta=0 lp_iterations=22
+SEP_COST name=implied submip=0 depth=0 seconds=4.5293000000000002e-05 pool_delta=3 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.000117915 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00069649000000000002 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.028669077000000001 pool_delta=25 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=6.9277999999999996e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=3.3599999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=6
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0016060720000000001 pool_delta=0 lp_iterations=8
+SEP_COST name=implied submip=0 depth=0 seconds=1.4355999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=0.00010128099999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00040606699999999997 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.025871590999999999 pool_delta=7 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=9.2180000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=4.0900000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=2
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.001467882 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=0 depth=0 seconds=1.4608e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=0 depth=0 seconds=9.6747000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=0 depth=0 seconds=0.00018386300000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=0 depth=0 seconds=0.025590675 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=0 depth=0 seconds=7.4247999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=0 depth=0 seconds=3.77e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=0 depth=0 count=3
+SEP_COST name=lp_resolve submip=0 depth=0 seconds=0.0015778980000000001 pool_delta=0 lp_iterations=9
+
+HighsPrimalHeuristics::solveSubMip Before run() for     MIP at depth  0 on thread  0
+SEP_COST name=implied submip=1 depth=1 seconds=0.00067720200000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00030782900000000002 pool_delta=0 lp_iterations=2
+SEP_COST name=clique submip=1 depth=1 seconds=6.4802999999999996e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.001610974 pool_delta=57 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.003326992 pool_delta=171 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.3037000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.0029999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00017878300000000001 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=26
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0011803079999999999 pool_delta=0 lp_iterations=40
+SEP_COST name=implied submip=1 depth=1 seconds=0.00021743399999999999 pool_delta=3 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=3.3120999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.001508779 pool_delta=37 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0034379290000000002 pool_delta=92 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.6549999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.4799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=8
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00079826099999999998 pool_delta=0 lp_iterations=21
+SEP_COST name=implied submip=1 depth=1 seconds=0.000117225 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=3.9938999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00045605400000000001 pool_delta=26 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0041211579999999998 pool_delta=101 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.2472000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=2.04e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=10
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0010352149999999999 pool_delta=0 lp_iterations=25
+SEP_COST name=implied submip=1 depth=1 seconds=2.6531000000000001e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.1458000000000002e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00079285499999999997 pool_delta=28 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0044161649999999997 pool_delta=87 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.4500000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=2.1799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=7
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00093917100000000004 pool_delta=0 lp_iterations=20
+SEP_COST name=implied submip=1 depth=1 seconds=2.3606000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.1369000000000003e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00051110399999999996 pool_delta=11 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0043531910000000002 pool_delta=52 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.5736999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=1.9600000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=10
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.001120748 pool_delta=0 lp_iterations=30
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=6.0268e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=3.8079999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00026078599999999999 pool_delta=12 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0022691529999999999 pool_delta=20 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=6.314e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.1909999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=5
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00048614200000000001 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=1 depth=2 seconds=3.6758000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.6839999999999996e-06 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00021804600000000001 pool_delta=16 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0021349419999999999 pool_delta=26 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.4335999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.2700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=5
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00047311899999999998 pool_delta=0 lp_iterations=8
+SEP_COST name=implied submip=1 depth=2 seconds=2.058e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=3.467e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.000213518 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0022025629999999998 pool_delta=7 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=6.2829999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=6.1000000000000004e-08 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00043270299999999999 pool_delta=0 lp_iterations=8
+SEP_COST name=implied submip=1 depth=2 seconds=2.3199999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=3.574e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00028006299999999999 pool_delta=18 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.002464922 pool_delta=14 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=6.9070000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.74e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.000515589 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=2 seconds=2.0810000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=3.692e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00018222 pool_delta=14 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0024746149999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=9.2640999999999996e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.4499999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00048718999999999998 pool_delta=0 lp_iterations=4
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.000620833 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.4321999999999999e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.0012754649999999999 pool_delta=27 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.00594072 pool_delta=68 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.3489999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.3649999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=12
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0010895950000000001 pool_delta=0 lp_iterations=21
+SEP_COST name=implied submip=1 depth=2 seconds=2.7282000000000001e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.3044000000000002e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.0016278219999999999 pool_delta=26 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.004266504 pool_delta=77 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.9945999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.04e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=11
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00092152900000000003 pool_delta=0 lp_iterations=18
+SEP_COST name=implied submip=1 depth=2 seconds=2.1532e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.3980000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.0010458080000000001 pool_delta=27 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0047783950000000004 pool_delta=59 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.2681e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.8400000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=7
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00094103899999999996 pool_delta=0 lp_iterations=20
+SEP_COST name=implied submip=1 depth=2 seconds=1.9298000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.1365999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.001777294 pool_delta=45 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0081924760000000006 pool_delta=15 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.2759999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.0100000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=5
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00088112499999999996 pool_delta=0 lp_iterations=9
+SEP_COST name=implied submip=1 depth=2 seconds=1.7615e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.4658e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.001158594 pool_delta=40 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.004517086 pool_delta=32 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.7239e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.1799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=8
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.001029896 pool_delta=0 lp_iterations=15
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=7.3289999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.565e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00018155499999999999 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0032809050000000002 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.0843e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.8909999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.001013732 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=3 seconds=2.7999999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.349e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000255271 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.003558014 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.3204e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.8599999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=3
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00071911499999999999 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=1 depth=3 seconds=2.3080000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.6169999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00015757 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0023351940000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=9.7720000000000006e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=4.3599999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00059626600000000003 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=1.8029999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.3890000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=7.5716999999999994e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0036613969999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.0641e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.6199999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00050487999999999998 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=3 seconds=2.3420000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.7280000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00063428300000000003 pool_delta=5 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0073016879999999998 pool_delta=18 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.1591e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.0599999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00096620899999999999 pool_delta=0 lp_iterations=9
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=7.5099999999999996e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=2.633e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00017393199999999999 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0024696660000000001 pool_delta=11 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.8836999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.168e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=4
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00055394400000000001 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=1 depth=3 seconds=1.8169999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.145e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000136892 pool_delta=10 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0028470169999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.1005000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.9499999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00050216699999999998 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=1.99e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.4929999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=8.1909000000000005e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0027773849999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.1015999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.7700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00053531399999999995 pool_delta=0 lp_iterations=5
+SEP_COST name=implied submip=1 depth=3 seconds=1.72e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.6600000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=6.0680999999999997e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0025515899999999998 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=1.0379e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.11e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00053691199999999996 pool_delta=0 lp_iterations=12
+SEP_COST name=implied submip=1 depth=3 seconds=2.3470000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=3.2219999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00021144800000000001 pool_delta=12 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0025139860000000002 pool_delta=5 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=8.0059999999999992e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.8199999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00045844199999999999 pool_delta=0 lp_iterations=3
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for     MIP at depth  0 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for     MIP at depth  0 on thread  0
+SEP_COST name=implied submip=1 depth=1 seconds=0.00069275800000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=3.8015000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00095793899999999999 pool_delta=22 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.014760455 pool_delta=17 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.2762000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=4.4170000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=4
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0022614779999999999 pool_delta=0 lp_iterations=23
+SEP_COST name=implied submip=1 depth=1 seconds=4.2009999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.5352999999999998e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00035618200000000003 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.020997165000000002 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.7574000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=5.4600000000000005e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=2
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0012628909999999999 pool_delta=0 lp_iterations=9
+SEP_COST name=implied submip=1 depth=1 seconds=1.2140000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.0961999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.000745771 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.021978794999999999 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.0136000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.5499999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=2
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0012196500000000001 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=1 seconds=1.2847000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.0095000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00026768400000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.021260121999999999 pool_delta=17 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.3098e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.58e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=5
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0012856510000000001 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=1 seconds=1.2712e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=3.9208999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.000358246 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.020983616 pool_delta=5 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.4206999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.53e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=1
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.001838576 pool_delta=0 lp_iterations=2
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.00020438499999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.7330000000000003e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00065877299999999998 pool_delta=16 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0037293309999999998 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.5616999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.039e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.000782521 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=2 seconds=3.0410000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.4379999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00059359699999999996 pool_delta=17 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0033694100000000002 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.2541e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.3799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00063881599999999995 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=2 seconds=3.0769999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.5989999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00043046600000000001 pool_delta=11 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0068114120000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.4239e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.3200000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00066193000000000003 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=2 seconds=2.7219999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.3640000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00073861300000000005 pool_delta=15 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0062463830000000003 pool_delta=4 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.3413000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.53e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00064440099999999996 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=2 seconds=1.694e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=7.216e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00049418200000000002 pool_delta=17 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0068614669999999996 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=2.4695999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.6699999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00068881300000000003 pool_delta=0 lp_iterations=7
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=8.6589999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=6.5799999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=4.6736000000000001e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0028576750000000001 pool_delta=11 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.2870000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.757e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00058973599999999999 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=7.1189999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.6300000000000005e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000153709 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0021042610000000001 pool_delta=11 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.1349999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.1900000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00056492100000000002 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.000671004 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.1727999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00023275300000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.017419191000000001 pool_delta=7 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.1786999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.255e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0010561419999999999 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=2 seconds=1.452e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.1662999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.000210793 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.020319437999999999 pool_delta=15 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.2018000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.8099999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=4
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.001727585 pool_delta=0 lp_iterations=8
+SEP_COST name=implied submip=1 depth=2 seconds=1.7515000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.2802e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00043093299999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.020995454 pool_delta=29 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.1916999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.84e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=5
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0020625489999999999 pool_delta=0 lp_iterations=9
+SEP_COST name=implied submip=1 depth=2 seconds=1.7178000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.3992e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.000444058 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.013517418999999999 pool_delta=14 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.0043999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.5100000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=3
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0010039560000000001 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=2 seconds=1.6371e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=2.3107000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00067759899999999997 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.013758424 pool_delta=3 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=0.00037749300000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=4.4999999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=2
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0015620670000000001 pool_delta=0 lp_iterations=7
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=0.00018754500000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=8.6309999999999992e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00031998900000000002 pool_delta=7 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0066339340000000002 pool_delta=16 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.5853000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.1099999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00070580899999999995 pool_delta=0 lp_iterations=5
+SEP_COST name=implied submip=1 depth=3 seconds=4.8470000000000003e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=9.3600000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00065174999999999999 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0069519819999999998 pool_delta=11 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.4939e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=5.0299999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.0021768899999999999 pool_delta=0 lp_iterations=6
+SEP_COST name=implied submip=1 depth=3 seconds=4.6800000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=9.1500000000000005e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000283052 pool_delta=13 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0064776790000000001 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=3.7363000000000001e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.55e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00085240999999999995 pool_delta=0 lp_iterations=13
+SEP_COST name=implied submip=1 depth=3 seconds=3.7620000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=8.3620000000000006e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.00058908400000000003 pool_delta=8 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0065359670000000002 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.4116000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.73e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00055634599999999999 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=3 seconds=4.2560000000000004e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=7.8329999999999994e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=2.7370000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.014416767 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=2.4618e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.8300000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00057766499999999999 pool_delta=0 lp_iterations=2
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+SEP_COST name=implied submip=1 depth=4 seconds=7.3520000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=5.5700000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=4.6252999999999999e-05 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0046917599999999997 pool_delta=8 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.8769999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=2.4990000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=1
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.00038995399999999997 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+SEP_COST name=implied submip=1 depth=3 seconds=5.1869999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=5.7819999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000234582 pool_delta=8 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0040874550000000003 pool_delta=18 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=9.3139999999999993e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.8900000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=3
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00083229799999999998 pool_delta=0 lp_iterations=7
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  3 on thread  0
+SEP_COST name=implied submip=1 depth=4 seconds=9.0170000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=4 seconds=6.3600000000000003e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=4 seconds=0.000232451 pool_delta=4 lp_iterations=0
+SEP_COST name=path submip=1 depth=4 seconds=0.0019565369999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=4 seconds=5.242e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=4 seconds=2.1019999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=4 count=1
+SEP_COST name=lp_resolve submip=1 depth=4 seconds=0.000331694 pool_delta=0 lp_iterations=1
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  3 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for     MIP at depth  0 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for     MIP at depth  0 on thread  0
+SEP_COST name=implied submip=1 depth=1 seconds=0.00021552600000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=2.6291999999999998e-05 pool_delta=1 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00053538900000000005 pool_delta=18 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.0191238 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=5.2481000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.253e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=3
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0018799229999999999 pool_delta=0 lp_iterations=45
+SEP_COST name=implied submip=1 depth=1 seconds=0.00035391200000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=3.4722999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.000206109 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.019338678000000002 pool_delta=6 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.2444000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.0899999999999997e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=2
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0013741929999999999 pool_delta=0 lp_iterations=16
+SEP_COST name=implied submip=1 depth=1 seconds=2.4025000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.1134000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00037518600000000001 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.022025166999999998 pool_delta=13 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.4440000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=5.0900000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=3
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0017625010000000001 pool_delta=0 lp_iterations=14
+SEP_COST name=implied submip=1 depth=1 seconds=1.4713e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.3677000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.000498264 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.020942780000000001 pool_delta=8 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.1257999999999997e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.8299999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=2
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.00114817 pool_delta=0 lp_iterations=10
+SEP_COST name=implied submip=1 depth=1 seconds=1.4881e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=1 seconds=4.2580000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=1 seconds=0.00051318200000000005 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=1 seconds=0.015070834 pool_delta=13 lp_iterations=0
+SEP_COST name=modk submip=1 depth=1 seconds=4.2734000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=1 seconds=3.15e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=1 count=3
+SEP_COST name=lp_resolve submip=1 depth=1 seconds=0.0010938090000000001 pool_delta=0 lp_iterations=6
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.000134406 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.1449999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00072001900000000002 pool_delta=17 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0042756850000000004 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=1.7782e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.9809999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.001316815 pool_delta=0 lp_iterations=25
+SEP_COST name=implied submip=1 depth=2 seconds=0.00011342500000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.925e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.0014242460000000001 pool_delta=17 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0048023470000000002 pool_delta=14 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=9.2310000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.2000000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=4
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00070191399999999999 pool_delta=0 lp_iterations=6
+SEP_COST name=implied submip=1 depth=2 seconds=3.9840000000000003e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.5770000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00056143999999999996 pool_delta=18 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0041799109999999997 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=8.9439999999999994e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.2399999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0011198860000000001 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=2 seconds=4.0879999999999997e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.8969999999999996e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.000670136 pool_delta=20 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0043005090000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=1.0223e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.7700000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00073835999999999997 pool_delta=0 lp_iterations=6
+SEP_COST name=implied submip=1 depth=2 seconds=3.6600000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=5.4240000000000001e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00069389400000000002 pool_delta=23 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.0045037549999999999 pool_delta=4 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=1.5136e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=1.68e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.00065912499999999999 pool_delta=0 lp_iterations=6
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=2.6333999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=8.47e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000135267 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0025583569999999998 pool_delta=23 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=5.4199999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.2290000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00054129700000000005 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=1.195e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=9.0400000000000005e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=9.3739000000000005e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.002845373 pool_delta=14 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=5.7869999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.97e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.000390555 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=3 seconds=1.204e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=9.0500000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=9.7201000000000007e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0028647519999999999 pool_delta=13 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=5.626e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.9500000000000001e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.000538333 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=2.7331e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=8.1999999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000103003 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0022085770000000002 pool_delta=23 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=5.3970000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.198e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=2
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.00042699300000000002 pool_delta=0 lp_iterations=2
+SEP_COST name=implied submip=1 depth=3 seconds=1.031e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=9.8599999999999996e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=8.9413999999999995e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0031768069999999998 pool_delta=14 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.5259999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=2.2399999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.0027536129999999998 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=3 seconds=1.2249999999999999e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=9.879999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=9.6447999999999995e-05 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0034827479999999999 pool_delta=13 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=6.071e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=1.8199999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.001616389 pool_delta=0 lp_iterations=2
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  1 on thread  0
+SEP_COST name=implied submip=1 depth=2 seconds=0.0036954190000000001 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.7065e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00024591100000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.020883448999999998 pool_delta=10 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.8770000000000003e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.525e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0044358219999999999 pool_delta=0 lp_iterations=3
+SEP_COST name=implied submip=1 depth=2 seconds=2.0018e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.7554000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.000199039 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.031735504999999997 pool_delta=5 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.7351000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.8500000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0012162609999999999 pool_delta=0 lp_iterations=4
+SEP_COST name=implied submip=1 depth=2 seconds=1.8601e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.6291999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00019366500000000001 pool_delta=1 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.031436838000000002 pool_delta=2 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.2586000000000002e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.8700000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=4
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.001192086 pool_delta=0 lp_iterations=7
+SEP_COST name=implied submip=1 depth=2 seconds=1.8269000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.7575999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00013072999999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.028108676999999999 pool_delta=5 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=4.0769999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=2.8700000000000002e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0033153200000000001 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=2 seconds=1.9556999999999999e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=2 seconds=1.7363999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=2 seconds=0.00020207499999999999 pool_delta=2 lp_iterations=0
+SEP_COST name=path submip=1 depth=2 seconds=0.021425303999999999 pool_delta=1 lp_iterations=0
+SEP_COST name=modk submip=1 depth=2 seconds=3.9768999999999998e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=2 seconds=3.15e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=2 count=1
+SEP_COST name=lp_resolve submip=1 depth=2 seconds=0.0010473839999999999 pool_delta=0 lp_iterations=7
+
+HighsPrimalHeuristics::solveSubMip Before run() for sub-MIP at depth  2 on thread  0
+SEP_COST name=implied submip=1 depth=3 seconds=2.9436000000000001e-05 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=7.4099999999999998e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.000148837 pool_delta=6 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0059174589999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=7.5569999999999998e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.2210000000000002e-06 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.002355523 pool_delta=0 lp_iterations=1
+SEP_COST name=implied submip=1 depth=3 seconds=1.164e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=clique submip=1 depth=3 seconds=7.3e-07 pool_delta=0 lp_iterations=0
+SEP_COST name=tableau submip=1 depth=3 seconds=0.0014099239999999999 pool_delta=0 lp_iterations=0
+SEP_COST name=path submip=1 depth=3 seconds=0.0061358239999999998 pool_delta=0 lp_iterations=0
+SEP_COST name=modk submip=1 depth=3 seconds=8.0299999999999994e-06 pool_delta=0 lp_iterations=0
+SEP_COST name=machine submip=1 depth=3 seconds=3.6699999999999999e-07 pool_delta=0 lp_iterations=0
+SEP_SELECTED submip=1 depth=3 count=1
+SEP_COST name=lp_resolve submip=1 depth=3 seconds=0.001635432 pool_delta=0 lp_iterations=13
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  2 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for sub-MIP at depth  1 on thread  0
+
+HighsPrimalHeuristics::solveSubMip After  run() for     MIP at depth  0 on thread  0
+
+         3       0         1 100.00%   188165.733226   188182             0.01%      566    118     26     11461     3.2s
+
+Solving report
+  Model             dcmulti
+  Status            Optimal
+  Primal bound      188182
+  Dual bound        188165.733226
+  Gap               0.00864% (tolerance: 0.01%)
+  P-D integral      0.0201806159497
+  Solution status   feasible
+                    188182 (objective)
+  Timing            3.22
+                    0.12 (Presolve)
+                        MIP    time [calls] = 0.01 [1]
+                        subMIP time [calls] = 0.11 [32]
+                    3.09 (Solve)
+                        MIP    time [calls] = 0.74 [1]
+                        subMIP time [calls] = 2.35 [32]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [32]
+  Max sub-MIP depth 8
+  Nodes             3
+  Repair LPs        0
+  LP iterations     11461
+                    1008 (strong br.)
+                    647 (separation)
+                    9091 (heuristics)
+getKktFailures:: cost norm =  1.8e+03; bound norm =      230
+getKktFailures:                      LP  (abs / rel)         Col (abs / rel)         Row (abs / rel)
+getKktFailures: primal infeasibility 2.84e-14 / 1.23e-16            0 /        0     2.84e-14 / 1.23e-16
+
+MIP sub-solver profiling: number of threads used = 2
+
+Thread 0
+Solver                    Calls    Time       Time/call      MIP%
+MIP                           1  3.2170e+00  3.2170e+00
+Du simplex (basis)          159  1.6772e-01  1.0549e-03       5.2
+Du simplex (no basis)         1  6.6135e-03  6.6135e-03       0.2
+Sub-MIP                       5  2.4738e+00  4.9477e-01      76.9
+TOTAL                            2.6482e+00                  82.3
+
+Thread 1
+Solver                    Calls    Time       Time/call      MIP%
+IPX (AC)                     44  2.5976e-01  5.9035e-03       8.1
+TOTAL                            2.5976e-01                   8.1
+
+Sub-MIP sub-solver profiling
+
+Thread 0
+Solver                    Calls    Time       Time/call  Sub-MIP%
+Du simplex (basis)         1338  8.6398e-01  6.4572e-04      34.9
+TOTAL                            8.6398e-01                  34.9
+
+Percent (sub-)MIP time by thread
+
+MIP sub-solver            0     1
+Du simplex (basis)      5.2      
+Du simplex (no basis)   0.2      
+IPX (AC)                      8.1
+Sub-MIP                76.9      
+=================================
+Total                  82.3   8.1
+=================================
+
+Sub-MIP sub-solver        0     1
+Du simplex (basis)     34.9      
+=================================
+Total                  34.9      
+=================================
+Writing the solution to /workspace/scuc-campaign/separation-profile/dcmulti-s1-candidate/point.sol

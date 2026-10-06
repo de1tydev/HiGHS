@@ -1,0 +1,137 @@
+[1/227] Building CXX object highs/CMakeFiles/highs.dir/io/Filereader.cpp.o
+[2/227] Building CXX object highs/CMakeFiles/highs.dir/interfaces/highs_c_api.cpp.o
+[3/227] Building CXX object highs/CMakeFiles/highs.dir/io/FilereaderLp.cpp.o
+[4/227] Building CXX object highs/CMakeFiles/highs.dir/io/FilereaderMps.cpp.o
+[5/227] Building CXX object highs/CMakeFiles/highs.dir/io/HighsIO.cpp.o
+[6/227] Building CXX object highs/CMakeFiles/highs.dir/io/HMPSIO.cpp.o
+[7/227] Building CXX object highs/CMakeFiles/highs.dir/io/HMpsFF.cpp.o
+[8/227] Building CXX object highs/CMakeFiles/highs.dir/io/LoadOptions.cpp.o
+[9/227] Building CXX object highs/CMakeFiles/highs.dir/io/filereaderlp/reader.cpp.o
+[10/227] Building CXX object highs/CMakeFiles/highs.dir/ipm/IpxWrapper.cpp.o
+[11/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsCallback.cpp.o
+[12/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsDebug.cpp.o
+[13/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsIis.cpp.o
+[14/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/Highs.cpp.o
+[15/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsInfo.cpp.o
+[16/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsInfoDebug.cpp.o
+[17/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsDeprecated.cpp.o
+[18/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsLp.cpp.o
+[19/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsLpUtils.cpp.o
+[20/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsInterface.cpp.o
+[21/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsOptions.cpp.o
+[22/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsModelUtils.cpp.o
+[23/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsRunData.cpp.o
+[24/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsRanging.cpp.o
+[25/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsSolutionDebug.cpp.o
+[26/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsSolution.cpp.o
+[27/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsStatus.cpp.o
+[28/227] Building CXX object highs/CMakeFiles/highs.dir/lp_data/HighsSolve.cpp.o
+[29/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsConflictPool.cpp.o
+[30/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsCliqueTable.cpp.o
+[31/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsCutGeneration.cpp.o
+[32/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsCutPool.cpp.o
+[33/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsDebugSol.cpp.o
+[34/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsDynamicRowMatrix.cpp.o
+[35/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsDomain.cpp.o
+[36/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsFeasibilityJump.cpp.o
+[37/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsGFkSolve.cpp.o
+[38/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsLpAggregator.cpp.o
+[39/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsImplications.cpp.o
+[40/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsLpRelaxation.cpp.o
+[41/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsMachineSchedSeparator.cpp.o
+[42/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsMipSolver.cpp.o
+[43/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsMipSolverData.cpp.o
+[44/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsMipWorker.cpp.o
+[45/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsModkSeparator.cpp.o
+[46/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsNodeQueue.cpp.o
+[47/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsObjectiveFunction.cpp.o
+[48/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsPathSeparator.cpp.o
+[49/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsPseudocost.cpp.o
+[50/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsPrimalHeuristics.cpp.o
+[51/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsRedcostFixing.cpp.o
+[52/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsSearch.cpp.o
+[53/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsSeparation.cpp.o
+FAILED: [code=1] highs/CMakeFiles/highs.dir/mip/HighsSeparation.cpp.o 
+/usr/bin/g++ -DNDEBUG -Dhighs_EXPORTS -I/workspace/scuc-separation-source/extern -I/workspace/scuc-separation-source/highs -I/workspace/scuc-separation-source/highs/interfaces -I/workspace/scuc-separation-source/highs/io -I/workspace/scuc-separation-source/highs/io/filereader -I/workspace/scuc-separation-source/highs/ipm -I/workspace/scuc-separation-source/highs/ipm/ipx -I/workspace/scuc-separation-source/highs/ipm/basiclu -I/workspace/scuc-separation-source/highs/lp_data -I/workspace/scuc-separation-source/highs/mip -I/workspace/scuc-separation-source/highs/model -I/workspace/scuc-separation-source/highs/parallel -I/workspace/scuc-separation-source/highs/pdlp -I/workspace/scuc-separation-source/highs/pdlp/cupdlp -I/workspace/scuc-separation-source/highs/pdlp/hipdlp -I/workspace/scuc-separation-source/highs/presolve -I/workspace/scuc-separation-source/highs/qpsolver -I/workspace/scuc-separation-source/highs/simplex -I/workspace/scuc-separation-source/highs/util -I/workspace/scuc-separation-build -I/workspace/scuc-separation-source/highs/hipo -I/workspace/scuc-separation-source/highs/hipo/auxiliary -I/workspace/scuc-separation-source/highs/hipo/factorhighs -I/workspace/scuc-separation-source/highs/hipo/ipm -I/workspace/scuc-separation-source/extern/zstr -std=c++11 -O3 -DNDEBUG -std=c++11 -flto=auto -fno-fat-lto-objects -fPIC -mpopcnt -Wall -Wreturn-type -Wmissing-declarations -Wno-unused-variable -Wno-unused-const-variable -Wno-unused-but-set-variable -Wno-comment -Wno-unused-label -Wno-invalid-offsetof -MD -MT highs/CMakeFiles/highs.dir/mip/HighsSeparation.cpp.o -MF highs/CMakeFiles/highs.dir/mip/HighsSeparation.cpp.o.d -o highs/CMakeFiles/highs.dir/mip/HighsSeparation.cpp.o -c /workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp: In member function ‘HighsInt HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)’:
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:38: error: use of ‘auto’ in lambda parameter declaration only available with ‘-std=c++14’ or ‘-std=gnu++14’
+   54 |   auto timed = [&](const char* name, auto&& operation) {
+      |                                      ^~~~
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp: In lambda function:
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:55:32: error: expression cannot be used as a function
+   55 |     if (!traceCost) { operation(); return; }
+      |                       ~~~~~~~~~^~
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:59:14: error: expression cannot be used as a function
+   59 |     operation();
+      |     ~~~~~~~~~^~
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp: In lambda function:
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:97:12: error: no match for call to ‘(HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>) (const char [11], HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>::<lambda()>)’
+   97 |       timed("lp_resolve", [&]() { status = lp->resolveLp(&propdomain); });
+      |       ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note: candidate: ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>’
+   54 |   auto timed = [&](const char* name, auto&& operation) {
+      |                ^
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note:   no known conversion for argument 2 from ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>::<lambda()>’ to ‘int&&’
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp: In member function ‘HighsInt HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)’:
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:114:8: error: no match for call to ‘(HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>) (const char [8], HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>)’
+  114 |   timed("implied", [&]() {
+      |   ~~~~~^~~~~~~~~~~~~~~~~~~
+  115 |   mipdata.implications.separateImpliedBounds(
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  116 |       *lp, lp->getSolution().col_value, mipworker_.getCutPool(),
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  117 |       mipdata.feastol, mipworker_.getGlobalDomain(),
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  118 |       mipdata.parallelLockActive());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  119 |   });
+      |   ~~    
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note: candidate: ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>’
+   54 |   auto timed = [&](const char* name, auto&& operation) {
+      |                ^
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note:   no known conversion for argument 2 from ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>’ to ‘int&&’
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:132:8: error: no match for call to ‘(HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>) (const char [7], HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>)’
+  132 |   timed("clique", [&]() {
+      |   ~~~~~^~~~~~~~~~~~~~~~~~
+  133 |   mipdata.cliquetable.separateCliques(
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  134 |       lp->getMipSolver(), sol.col_value, mipworker_.getCutPool(),
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  135 |       mipdata.feastol,
+      |       ~~~~~~~~~~~~~~~~
+  136 |       mipdata.parallelLockActive() ? mipworker_.randgen
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  137 |                                    : mipdata.cliquetable.getRandgen(),
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  138 |       mipdata.parallelLockActive()
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  139 |           ? mipworker_.getNumNeighbourhoodQueries()
+      |           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  140 |           : mipdata.cliquetable.getNumNeighbourhoodQueries());
+      |           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  141 |   });
+      |   ~~    
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note: candidate: ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>’
+   54 |   auto timed = [&](const char* name, auto&& operation) {
+      |                ^
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note:   no known conversion for argument 2 from ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>’ to ‘int&&’
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:168:10: error: no match for call to ‘(HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>) (const char*&, HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>)’
+  168 |     timed(separatorNames[separatorIndex++], [&]() {
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  169 |       separator->run(*lp, lpAggregator, transLp, mipworker_.getCutPool());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  170 |     });
+      |     ~~    
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note: candidate: ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>’
+   54 |   auto timed = [&](const char* name, auto&& operation) {
+      |                ^
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note:   no known conversion for argument 2 from ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>’ to ‘int&&’
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:198:10: error: no match for call to ‘(HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>) (const char [11], HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>)’
+  198 |     timed("lp_resolve", [&]() { status = lp->resolveLp(&propdomain); });
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note: candidate: ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda(const char*, int&&)>’
+   54 |   auto timed = [&](const char* name, auto&& operation) {
+      |                ^
+/workspace/scuc-separation-source/highs/mip/HighsSeparation.cpp:54:16: note:   no known conversion for argument 2 from ‘HighsSeparation::separationRound(HighsDomain&, HighsLpRelaxation::Status&)::<lambda()>’ to ‘int&&’
+[54/227] Building CXX object highs/CMakeFiles/highs.dir/mip/HighsSeparator.cpp.o
+ninja: build stopped: subcommand failed.

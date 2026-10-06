@@ -1,0 +1,59 @@
+[
+  {
+    "model": "gesa2",
+    "seed": 1,
+    "arm": "candidate",
+    "enabled": true,
+    "stage": "mechanism",
+    "model_sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+    "matrix_sha256": "e3a21f05939b4189025a7dfef13862c84ec06a96395d0caf0bb7c31d0e678628",
+    "process": {
+      "command": [
+        "/workspace/scuc-kernel-v2-build/bin/highs",
+        "/workspace/scuc-native-source/check/instances/gesa2.mps",
+        "--options_file",
+        "/workspace/scuc-campaign/cache-v2-mechanism/gesa2-s1-candidate/options.txt"
+      ],
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.7018319459998565,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "binary_sha256": "810f989cbf03f6ee584ab0e7f49295c30f93da40a406fb9dac1d088d10801ad9",
+    "library_sha256": "54456f0596f96b3b6d2bf08df386080f93d9dd36f2c7a291d9eecabc12ab0b62",
+    "log_sha256": "837d261b6940aae5f3aeb5782b522823dcccb8c9881c0a0876db093049746212",
+    "status": "Optimal",
+    "primal": "25779856.3717",
+    "dual": "25778989.9633",
+    "gap": "0.00336% (tolerance: 0.01%)",
+    "nodes": "1",
+    "iterations": "1954",
+    "cache_work": {
+      "calls": 2245,
+      "queries": 170943,
+      "computations": 45724
+    },
+    "solution_sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+    "check": {
+      "passed": true,
+      "cost": 25779856.371697918,
+      "bound_violation": 0.0,
+      "integrality_violation": 0.0,
+      "row_violation": 1.1368683772161603e-13,
+      "objective_error": 3.725290298461914e-09,
+      "primal_tolerance": 1e-06,
+      "columns": 1224,
+      "rows": 1392,
+      "dual_proof": false
+    },
+    "outcome": "completed",
+    "whole_arm_seconds": 0.7637174399997093
+  }
+]

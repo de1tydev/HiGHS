@@ -1,0 +1,554 @@
+[
+  {
+    "model": "dcmulti",
+    "seed": 1,
+    "outcome": "completed",
+    "primal_checked": true,
+    "groups": {
+      "main/implied": {
+        "calls": 33,
+        "seconds": 0.0031479660000000003,
+        "pool_delta": 20,
+        "lp_iterations": 0
+      },
+      "main/clique": {
+        "calls": 33,
+        "seconds": 0.003969634,
+        "pool_delta": 10,
+        "lp_iterations": 0
+      },
+      "main/tableau": {
+        "calls": 33,
+        "seconds": 0.07891117900000001,
+        "pool_delta": 956,
+        "lp_iterations": 0
+      },
+      "main/path": {
+        "calls": 33,
+        "seconds": 0.4041440839999999,
+        "pool_delta": 1568,
+        "lp_iterations": 0
+      },
+      "main/modk": {
+        "calls": 33,
+        "seconds": 0.003096193999999999,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/machine": {
+        "calls": 33,
+        "seconds": 2.4208e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/lp_resolve": {
+        "calls": 34,
+        "seconds": 0.06226978,
+        "pool_delta": 0,
+        "lp_iterations": 647
+      },
+      "submip/implied": {
+        "calls": 119,
+        "seconds": 0.010582919,
+        "pool_delta": 21,
+        "lp_iterations": 0
+      },
+      "submip/clique": {
+        "calls": 119,
+        "seconds": 0.0015270469999999995,
+        "pool_delta": 16,
+        "lp_iterations": 0
+      },
+      "submip/tableau": {
+        "calls": 119,
+        "seconds": 0.056338662000000005,
+        "pool_delta": 1378,
+        "lp_iterations": 0
+      },
+      "submip/path": {
+        "calls": 119,
+        "seconds": 0.823453113,
+        "pool_delta": 1971,
+        "lp_iterations": 0
+      },
+      "submip/modk": {
+        "calls": 119,
+        "seconds": 0.003380853999999999,
+        "pool_delta": 1,
+        "lp_iterations": 0
+      },
+      "submip/machine": {
+        "calls": 119,
+        "seconds": 0.00010777700000000002,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/lp_resolve": {
+        "calls": 123,
+        "seconds": 0.11474849399999998,
+        "pool_delta": 0,
+        "lp_iterations": 1038
+      }
+    }
+  },
+  {
+    "model": "dcmulti",
+    "seed": 2,
+    "outcome": "completed",
+    "primal_checked": true,
+    "groups": {
+      "main/implied": {
+        "calls": 18,
+        "seconds": 0.0015582499999999995,
+        "pool_delta": 7,
+        "lp_iterations": 0
+      },
+      "main/clique": {
+        "calls": 18,
+        "seconds": 0.0016885770000000001,
+        "pool_delta": 7,
+        "lp_iterations": 0
+      },
+      "main/tableau": {
+        "calls": 18,
+        "seconds": 0.030400483000000002,
+        "pool_delta": 644,
+        "lp_iterations": 0
+      },
+      "main/path": {
+        "calls": 18,
+        "seconds": 0.109522893,
+        "pool_delta": 1192,
+        "lp_iterations": 0
+      },
+      "main/modk": {
+        "calls": 18,
+        "seconds": 0.001560776,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/machine": {
+        "calls": 18,
+        "seconds": 1.4027e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/lp_resolve": {
+        "calls": 19,
+        "seconds": 0.029918522999999995,
+        "pool_delta": 0,
+        "lp_iterations": 478
+      },
+      "submip/implied": {
+        "calls": 78,
+        "seconds": 0.0072667109999999995,
+        "pool_delta": 20,
+        "lp_iterations": 0
+      },
+      "submip/lp_resolve": {
+        "calls": 82,
+        "seconds": 0.063451301,
+        "pool_delta": 0,
+        "lp_iterations": 740
+      },
+      "submip/clique": {
+        "calls": 78,
+        "seconds": 0.0010572060000000004,
+        "pool_delta": 8,
+        "lp_iterations": 0
+      },
+      "submip/tableau": {
+        "calls": 78,
+        "seconds": 0.052205417000000004,
+        "pool_delta": 1163,
+        "lp_iterations": 0
+      },
+      "submip/path": {
+        "calls": 78,
+        "seconds": 0.406526516,
+        "pool_delta": 1023,
+        "lp_iterations": 0
+      },
+      "submip/modk": {
+        "calls": 78,
+        "seconds": 0.004021378999999999,
+        "pool_delta": 2,
+        "lp_iterations": 0
+      },
+      "submip/machine": {
+        "calls": 78,
+        "seconds": 6.510599999999996e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      }
+    }
+  },
+  {
+    "model": "dcmulti",
+    "seed": 3,
+    "outcome": "completed",
+    "primal_checked": true,
+    "groups": {
+      "main/implied": {
+        "calls": 16,
+        "seconds": 0.0009478770000000001,
+        "pool_delta": 8,
+        "lp_iterations": 0
+      },
+      "main/clique": {
+        "calls": 16,
+        "seconds": 0.0019172990000000001,
+        "pool_delta": 6,
+        "lp_iterations": 0
+      },
+      "main/tableau": {
+        "calls": 16,
+        "seconds": 0.036550008999999994,
+        "pool_delta": 744,
+        "lp_iterations": 0
+      },
+      "main/path": {
+        "calls": 16,
+        "seconds": 0.11074182599999999,
+        "pool_delta": 1295,
+        "lp_iterations": 0
+      },
+      "main/modk": {
+        "calls": 16,
+        "seconds": 0.0014541519999999998,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/machine": {
+        "calls": 16,
+        "seconds": 9.129e-06,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/lp_resolve": {
+        "calls": 18,
+        "seconds": 0.025493459,
+        "pool_delta": 0,
+        "lp_iterations": 412
+      },
+      "submip/implied": {
+        "calls": 69,
+        "seconds": 0.002759058,
+        "pool_delta": 16,
+        "lp_iterations": 0
+      },
+      "submip/clique": {
+        "calls": 69,
+        "seconds": 0.001181820000000001,
+        "pool_delta": 17,
+        "lp_iterations": 0
+      },
+      "submip/tableau": {
+        "calls": 69,
+        "seconds": 0.037916788,
+        "pool_delta": 919,
+        "lp_iterations": 0
+      },
+      "submip/path": {
+        "calls": 69,
+        "seconds": 0.27100354300000007,
+        "pool_delta": 1106,
+        "lp_iterations": 0
+      },
+      "submip/modk": {
+        "calls": 69,
+        "seconds": 0.001548489,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/machine": {
+        "calls": 69,
+        "seconds": 6.409500000000002e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/lp_resolve": {
+        "calls": 71,
+        "seconds": 0.059112436,
+        "pool_delta": 0,
+        "lp_iterations": 664
+      }
+    }
+  },
+  {
+    "model": "gesa2",
+    "seed": 1,
+    "outcome": "completed",
+    "primal_checked": true,
+    "groups": {
+      "main/implied": {
+        "calls": 19,
+        "seconds": 0.0008769209999999999,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/clique": {
+        "calls": 19,
+        "seconds": 0.001562887,
+        "pool_delta": 3,
+        "lp_iterations": 0
+      },
+      "main/tableau": {
+        "calls": 19,
+        "seconds": 0.041658311,
+        "pool_delta": 1281,
+        "lp_iterations": 0
+      },
+      "main/path": {
+        "calls": 19,
+        "seconds": 0.11572854000000002,
+        "pool_delta": 1250,
+        "lp_iterations": 0
+      },
+      "main/modk": {
+        "calls": 19,
+        "seconds": 0.005858030000000001,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/machine": {
+        "calls": 19,
+        "seconds": 1.2916e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/lp_resolve": {
+        "calls": 19,
+        "seconds": 0.04340991899999999,
+        "pool_delta": 0,
+        "lp_iterations": 460
+      },
+      "submip/implied": {
+        "calls": 18,
+        "seconds": 0.0004923900000000001,
+        "pool_delta": 12,
+        "lp_iterations": 0
+      },
+      "submip/lp_resolve": {
+        "calls": 20,
+        "seconds": 0.015572792000000004,
+        "pool_delta": 0,
+        "lp_iterations": 326
+      },
+      "submip/clique": {
+        "calls": 18,
+        "seconds": 0.0005069429999999999,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/tableau": {
+        "calls": 18,
+        "seconds": 0.017683038,
+        "pool_delta": 1206,
+        "lp_iterations": 0
+      },
+      "submip/path": {
+        "calls": 18,
+        "seconds": 0.034220673,
+        "pool_delta": 768,
+        "lp_iterations": 0
+      },
+      "submip/modk": {
+        "calls": 18,
+        "seconds": 0.0016823139999999999,
+        "pool_delta": 4,
+        "lp_iterations": 0
+      },
+      "submip/machine": {
+        "calls": 18,
+        "seconds": 2.5327000000000007e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      }
+    }
+  },
+  {
+    "model": "gesa2",
+    "seed": 2,
+    "outcome": "completed",
+    "primal_checked": true,
+    "groups": {
+      "main/implied": {
+        "calls": 24,
+        "seconds": 0.0007995479999999999,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/clique": {
+        "calls": 24,
+        "seconds": 0.001832161,
+        "pool_delta": 3,
+        "lp_iterations": 0
+      },
+      "main/tableau": {
+        "calls": 24,
+        "seconds": 0.043951163,
+        "pool_delta": 1475,
+        "lp_iterations": 0
+      },
+      "main/path": {
+        "calls": 24,
+        "seconds": 0.16540495,
+        "pool_delta": 1258,
+        "lp_iterations": 0
+      },
+      "main/modk": {
+        "calls": 24,
+        "seconds": 0.0058493209999999985,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/machine": {
+        "calls": 24,
+        "seconds": 1.4206000000000001e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/lp_resolve": {
+        "calls": 24,
+        "seconds": 0.06016283100000001,
+        "pool_delta": 0,
+        "lp_iterations": 523
+      },
+      "submip/implied": {
+        "calls": 22,
+        "seconds": 0.000518992,
+        "pool_delta": 7,
+        "lp_iterations": 0
+      },
+      "submip/clique": {
+        "calls": 22,
+        "seconds": 0.00024501,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/tableau": {
+        "calls": 22,
+        "seconds": 0.018854218,
+        "pool_delta": 1264,
+        "lp_iterations": 0
+      },
+      "submip/path": {
+        "calls": 22,
+        "seconds": 0.035578384000000005,
+        "pool_delta": 840,
+        "lp_iterations": 0
+      },
+      "submip/modk": {
+        "calls": 22,
+        "seconds": 0.0014052469999999999,
+        "pool_delta": 1,
+        "lp_iterations": 0
+      },
+      "submip/machine": {
+        "calls": 22,
+        "seconds": 2.2505e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/lp_resolve": {
+        "calls": 23,
+        "seconds": 0.016333496999999995,
+        "pool_delta": 0,
+        "lp_iterations": 360
+      }
+    }
+  },
+  {
+    "model": "gesa2",
+    "seed": 3,
+    "outcome": "completed",
+    "primal_checked": true,
+    "groups": {
+      "main/implied": {
+        "calls": 19,
+        "seconds": 0.0010147980000000003,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/clique": {
+        "calls": 19,
+        "seconds": 0.0016098010000000001,
+        "pool_delta": 3,
+        "lp_iterations": 0
+      },
+      "main/tableau": {
+        "calls": 19,
+        "seconds": 0.05105387300000001,
+        "pool_delta": 1542,
+        "lp_iterations": 0
+      },
+      "main/path": {
+        "calls": 19,
+        "seconds": 0.126779947,
+        "pool_delta": 1215,
+        "lp_iterations": 0
+      },
+      "main/modk": {
+        "calls": 19,
+        "seconds": 0.0045478470000000016,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/machine": {
+        "calls": 19,
+        "seconds": 1.2859e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "main/lp_resolve": {
+        "calls": 19,
+        "seconds": 0.045374661999999996,
+        "pool_delta": 0,
+        "lp_iterations": 502
+      },
+      "submip/implied": {
+        "calls": 18,
+        "seconds": 0.000771547,
+        "pool_delta": 10,
+        "lp_iterations": 0
+      },
+      "submip/lp_resolve": {
+        "calls": 20,
+        "seconds": 0.016156238000000003,
+        "pool_delta": 0,
+        "lp_iterations": 351
+      },
+      "submip/clique": {
+        "calls": 18,
+        "seconds": 0.00024085899999999998,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      },
+      "submip/tableau": {
+        "calls": 18,
+        "seconds": 0.021183327999999998,
+        "pool_delta": 1398,
+        "lp_iterations": 0
+      },
+      "submip/path": {
+        "calls": 18,
+        "seconds": 0.03663381999999999,
+        "pool_delta": 862,
+        "lp_iterations": 0
+      },
+      "submip/modk": {
+        "calls": 18,
+        "seconds": 0.001637944,
+        "pool_delta": 3,
+        "lp_iterations": 0
+      },
+      "submip/machine": {
+        "calls": 18,
+        "seconds": 2.0112000000000003e-05,
+        "pool_delta": 0,
+        "lp_iterations": 0
+      }
+    }
+  }
+]

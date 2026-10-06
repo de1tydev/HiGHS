@@ -1,0 +1,66 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Command line parsed using CLI11 2.5.0: Copyright (c) 2017-2025 University of Cincinnati
+Set option parallel to "off"
+Set option threads to 2
+Set option time_limit to 60
+Set option random_seed to 1
+Set option write_solution_to_file to true
+Set option solution_file to "/workspace/scuc-campaign/cache-panel-v1/triangle-s1-candidate/point.sol"
+Set option mip_cmir_cache_coefficients to true
+Number of MI entries in BOUNDS section is 10
+Number of BV entries in BOUNDS section is 12
+MIP original-subset has 74 rows; 46 cols; 188 nonzeros; 12 integer variables (12 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 6e+00]
+  Cost    [1e+00, 5e+03]
+  Bound   [1e+00, 6e+00] (continuous)
+  Bound   [1e+00, 1e+00] (non-continuous)
+  RHS     [1e-01, 1e+00]
+Presolving model
+74 rows, 46 cols, 188 nonzeros 0s
+44 rows, 20 cols, 138 nonzeros 0s
+26 rows, 18 cols, 92 nonzeros 0s
+24 rows, 16 cols, 82 nonzeros 0s
+Presolve reductions: rows 24(-50); columns 16(-30); nonzeros 82(-106) 
+
+Solving MIP model with:
+   24 rows
+   16 cols (2 binary, 0 integer, 0 implied int., 14 continuous, 0 domain fixed)
+   82 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+ J       0       0         0   0.00%   -inf            4902.828125        Large        0      0      0         0     0.0s
+ S       0       0         0   0.00%   0               1540.5           100.00%        0      0      0         0     0.0s
+         0       0         0   0.00%   1539.25         1540.5             0.08%        0      0      0         8     0.0s
+         1       0         1 100.00%   1540.5          1540.5             0.00%        9      1      1        15     0.0s
+
+Solving report
+  Model             original-subset
+  Status            Optimal
+  Primal bound      1540.5
+  Dual bound        1540.5
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      0.000400226069492
+  Solution status   feasible
+                    1540.5 (objective)
+  Timing            0.00
+                    0.00 (Presolve)
+                    0.00 (Solve)
+                    0.00 (Postsolve)
+  Max sub-MIP depth 0
+  Nodes             1
+  Repair LPs        0
+  LP iterations     15
+                    0 (strong br.)
+                    1 (separation)
+                    6 (heuristics)
+Writing the solution to /workspace/scuc-campaign/cache-panel-v1/triangle-s1-candidate/point.sol

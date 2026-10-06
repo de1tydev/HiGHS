@@ -1,0 +1,9 @@
+time_limit = 60
+threads = 2
+parallel = off
+random_seed = 2
+mip_rel_gap = 0.0001
+write_solution_to_file = true
+solution_file = /workspace/scuc-campaign/cache-panel-v2/dcmulti-s2-candidate/point.sol
+mip_cmir_cache_coefficients = true
+mip_cmir_cache_log = false

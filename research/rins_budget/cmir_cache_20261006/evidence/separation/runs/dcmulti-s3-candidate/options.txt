@@ -1,0 +1,8 @@
+time_limit = 60
+threads = 2
+parallel = off
+random_seed = 3
+mip_rel_gap = 0.0001
+write_solution_to_file = true
+solution_file = /workspace/scuc-campaign/separation-profile/dcmulti-s3-candidate/point.sol
+log_dev_level = 2

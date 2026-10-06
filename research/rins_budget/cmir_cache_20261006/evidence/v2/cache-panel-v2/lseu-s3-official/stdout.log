@@ -1,0 +1,80 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Command line parsed using CLI11 2.5.0: Copyright (c) 2017-2025 University of Cincinnati
+Set option parallel to "off"
+Set option threads to 2
+Set option time_limit to 60
+Set option random_seed to 3
+Set option write_solution_to_file to true
+Set option solution_file to "/workspace/scuc-campaign/cache-panel-v2/lseu-s3-official/point.sol"
+MIP lseu has 28 rows; 89 cols; 309 nonzeros; 89 integer variables (89 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 5e+02]
+  Cost    [6e+00, 5e+02]
+  Bound   [1e+00, 1e+00]
+  RHS     [1e+00, 3e+03]
+Presolving model
+28 rows, 89 cols, 309 nonzeros 0s
+27 rows, 78 cols, 242 nonzeros 0s
+Presolve reductions: rows 27(-1); columns 78(-11); nonzeros 242(-67) 
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   27 rows
+   78 cols (73 binary, 5 integer, 0 implied int., 0 continuous, 0 domain fixed)
+   242 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+ J       0       0         0   0.00%   -inf            1623               Large        0      0      0         0     0.0s
+         0       0         0   0.00%   947.9572368     1623              41.59%        0      0      5        29     0.0s
+ L       0       0         0   0.00%   1103.481081     1145               3.63%      619     25     46       160     0.1s
+ L       0       0         0   0.00%   1103.786713     1120               1.45%      678     26     46       505     0.1s
+
+48.7% inactive integer columns, restarting
+Model after restart has 19 rows, 39 cols (38 bin., 1 int., 0 impl., 0 cont., 0 dom.fix.), and 117 nonzeros
+
+         0       0         0   0.00%   1103.89786      1120               1.44%       15      0      0       526     0.1s
+         0       0         0   0.00%   1103.89786      1120               1.44%       15     13      4       572     0.1s
+
+5.1% inactive integer columns, restarting
+Model after restart has 18 rows, 37 cols (36 bin., 1 int., 0 impl., 0 cont., 0 dom.fix.), and 111 nonzeros
+
+         0       0         0   0.00%   1112.391415     1120               0.68%       17      0      0       852     0.2s
+         0       0         0   0.00%   1112.394689     1120               0.68%       17     16      4       896     0.2s
+        13       0         7 100.00%   1120            1120               0.00%      861     18    160      2707     0.3s
+
+Solving report
+  Model             lseu
+  Status            Optimal
+  Primal bound      1120
+  Dual bound        1120
+  Gap               0% (tolerance: 0.01%)
+  P-D integral      0.0300184884688
+  Solution status   feasible
+                    1120 (objective)
+  Timing            0.30
+                    0.02 (Presolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.02 [29]
+                    0.27 (Solve)
+                        MIP    time [calls] = 0.14 [1]
+                        subMIP time [calls] = 0.14 [15]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [29]
+  Max sub-MIP depth 4
+  Nodes             13
+  Repair LPs        0
+  LP iterations     2707
+                    1121 (strong br.)
+                    376 (separation)
+                    913 (heuristics)
+Writing the solution to /workspace/scuc-campaign/cache-panel-v2/lseu-s3-official/point.sol

@@ -1,0 +1,22 @@
+{
+  "v1": {
+    "endpoints": 42,
+    "all_checks_passed": true,
+    "max_original_row_violation": 1.9895196601282805e-13,
+    "max_original_bound_violation": 1e-13,
+    "max_original_integer_violation": 0.0,
+    "timeout_count": 0,
+    "watchdog_count": 0,
+    "process_failure_count": 0
+  },
+  "v2": {
+    "endpoints": 42,
+    "all_checks_passed": true,
+    "max_original_row_violation": 1.9895196601282805e-13,
+    "max_original_bound_violation": 1e-13,
+    "max_original_integer_violation": 0.0,
+    "timeout_count": 0,
+    "watchdog_count": 0,
+    "process_failure_count": 0
+  }
+}

@@ -1,0 +1,1 @@
+{"stage":"before solver launch","error":"Original exporter compilation failed: function vector collided with a std::vector using declaration in included headers; binary absent on first mechanism launch.","solver_calls":0,"action":"Rename serializer helper to writeVector, build and resume identical predeclared mechanism slot in fresh directory."}

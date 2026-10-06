@@ -1,0 +1,74 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Command line parsed using CLI11 2.5.0: Copyright (c) 2017-2025 University of Cincinnati
+Set option parallel to "off"
+Set option threads to 2
+Set option time_limit to 60
+Set option random_seed to 1
+Set option write_solution_to_file to true
+Set option solution_file to "/workspace/scuc-campaign/cache-v2-default-off/dcmulti-s1-official/point.sol"
+MIP dcmulti has 290 rows; 548 cols; 1315 nonzeros; 75 integer variables (75 binary)
+Coefficient ranges:
+  Matrix  [1e+00, 6e+02]
+  Cost    [4e-01, 2e+03]
+  Bound   [0e+00, 0e+00] (continuous)
+  Bound   [1e+00, 1e+00] (non-continuous)
+  RHS     [1e+00, 3e+02]
+Presolving model
+290 rows, 548 cols, 1315 nonzeros 0s
+224 rows, 500 cols, 1324 nonzeros 0s
+Presolve reductions: rows 224(-66); columns 500(-48); nonzeros 1324(+9) 
+
+Solving MIP model with:
+   224 rows
+   500 cols (72 binary, 0 integer, 0 implied int., 428 continuous, 0 domain fixed)
+   1324 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   -6800           inf                  inf        0      0      0         0     0.0s
+         0       0         0   0.00%   183975.539693   inf                  inf        0      0      2       320     0.0s
+ C       0       0         0   0.00%   185417.344502   193222.7           4.04%      887     73     27       472     0.1s
+ L       0       0         0   0.00%   187443.628718   188182             0.39%     2067    161     27       778     0.4s
+
+1.4% inactive integer columns, restarting
+Model after restart has 224 rows, 499 cols (71 bin., 0 int., 0 impl., 428 cont., 0 dom.fix.), and 1321 nonzeros
+
+         0       0         0   0.00%   187444.564024   188182             0.39%      110      0      0      3960     1.1s
+         0       0         0   0.00%   187444.564024   188182             0.39%      110    101      2      4123     1.1s
+         3       0         1 100.00%   188165.733226   188182             0.01%      566    118     26     11461     3.2s
+
+Solving report
+  Model             dcmulti
+  Status            Optimal
+  Primal bound      188182
+  Dual bound        188165.733226
+  Gap               0.00864% (tolerance: 0.01%)
+  P-D integral      0.0206769698672
+  Solution status   feasible
+                    188182 (objective)
+  Timing            3.17
+                    0.13 (Presolve)
+                        MIP    time [calls] = 0.01 [1]
+                        subMIP time [calls] = 0.12 [32]
+                    3.04 (Solve)
+                        MIP    time [calls] = 0.76 [1]
+                        subMIP time [calls] = 2.28 [32]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [32]
+  Max sub-MIP depth 8
+  Nodes             3
+  Repair LPs        0
+  LP iterations     11461
+                    1008 (strong br.)
+                    647 (separation)
+                    9091 (heuristics)
+Writing the solution to /workspace/scuc-campaign/cache-v2-default-off/dcmulti-s1-official/point.sol

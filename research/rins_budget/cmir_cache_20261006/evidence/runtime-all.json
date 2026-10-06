@@ -1,0 +1,30 @@
+{
+  "official_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "builds": {
+    "official": {
+      "/workspace/scuc-native-build/bin/highs": "e012a68db4af21b653cba8e6ad589aeb523c29dab4bd65dee3882cd97f601ca7",
+      "/workspace/scuc-native-build/lib/libhighs.so": "3102d1d71d70eece0db95ad3eef79416903ee657942c70a9d18393a79c58b57c",
+      "/workspace/scuc-native-build/CMakeCache.txt": "c6d5632cba5655065611b9899dfa2d0a8500c359e5cb3cd039378bacb729a4a6",
+      "/workspace/scuc-native-build/HConfig.h": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf"
+    },
+    "v1": {
+      "/workspace/scuc-kernel-build/bin/highs": "963e100124c705ea7ab70ac1edbcb0ac8b7d1a6f22d74bea79913b28abaf3cac",
+      "/workspace/scuc-kernel-build/lib/libhighs.so": "121bf0f106693c275ec9ab69d3f5bbe1437345968d7cd9f42b2d38bd40969b50",
+      "/workspace/scuc-kernel-build/CMakeCache.txt": "3a923ebfb3c59c698b4a511071433f15485fcbc17ef4926941890d1ad7582d3e",
+      "/workspace/scuc-kernel-build/HConfig.h": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf"
+    },
+    "v2": {
+      "/workspace/scuc-kernel-v2-build/bin/highs": "810f989cbf03f6ee584ab0e7f49295c30f93da40a406fb9dac1d088d10801ad9",
+      "/workspace/scuc-kernel-v2-build/lib/libhighs.so": "54456f0596f96b3b6d2bf08df386080f93d9dd36f2c7a291d9eecabc12ab0b62",
+      "/workspace/scuc-kernel-v2-build/CMakeCache.txt": "a88fbef022c22e7a659e5391c24d5651358676365ec4a35c33b782734b93d3ea",
+      "/workspace/scuc-kernel-v2-build/HConfig.h": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf"
+    },
+    "separator-diagnostic": {
+      "/workspace/scuc-separation-build/bin/highs": "93e3917ac3cc18481b69612880cd875fc6effb5a2a958f1c447ab12036917fe3",
+      "/workspace/scuc-separation-build/lib/libhighs.so": "361ca077ae1bdee370a4d5fec563a847d7c84a3c41eca7a9ca77f3b2ae858de2",
+      "/workspace/scuc-separation-build/CMakeCache.txt": "4cc1a5e09cdce344a1cbbed1df316a90aa142bb846df99fe1f0d2ddc295c45e5",
+      "/workspace/scuc-separation-build/HConfig.h": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf"
+    }
+  }
+}

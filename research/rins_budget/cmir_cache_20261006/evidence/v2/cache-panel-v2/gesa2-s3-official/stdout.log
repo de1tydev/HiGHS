@@ -1,0 +1,73 @@
+Running HiGHS 1.15.1 (git hash: d547a3ad8a): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Command line parsed using CLI11 2.5.0: Copyright (c) 2017-2025 University of Cincinnati
+Set option parallel to "off"
+Set option threads to 2
+Set option time_limit to 60
+Set option random_seed to 3
+Set option write_solution_to_file to true
+Set option solution_file to "/workspace/scuc-campaign/cache-panel-v2/gesa2-s3-official/point.sol"
+Number of BV entries in BOUNDS section is 240
+Number of UI entries in BOUNDS section is 168
+MIP gesa2 has 1392 rows; 1224 cols; 5064 nonzeros; 408 integer variables (240 binary)
+Coefficient ranges:
+  Matrix  [7e-02, 1e+02]
+  Cost    [2e+03, 2e+06]
+  Bound   [1e+00, 4e+00] (continuous)
+  Bound   [1e+00, 4e+00] (non-continuous)
+  RHS     [1e+00, 5e+02]
+WARNING: Problem has some excessively large costs
+WARNING:    Consider scaling the objective by 1e-1, or setting the user_objective_scale option to -1
+WARNING: Problem is badly scaled, which may compromise the speed, accuracy and reliability of solvers in HiGHS
+Presolving model
+1392 rows, 1224 cols, 5064 nonzeros 0s
+1344 rows, 1176 cols, 4968 nonzeros 0s
+Presolve reductions: rows 1344(-48); columns 1176(-48); nonzeros 4968(-96) 
+
+Solving MIP model with:
+   1344 rows
+   1176 cols (248 binary, 160 integer, 312 implied int., 456 continuous, 0 domain fixed)
+   4968 nonzeros
+   Thread count 2 (of 5 threads). Using 1 max workers. Parallel search off
+
+Src: B => Branching; C => Central rounding; F => Feasibility pump; H => Heuristic;
+     I => Shifting; J => Feasibility jump; L => Sub-MIP; P => Empty MIP; R => Randomized rounding;
+     S => Solve LP; T => Evaluate node; U => Unbounded; X => User solution; Y => HiGHS solution;
+     Z => ZI Round; l => Trivial lower; p => Trivial point; u => Trivial upper; z => Trivial zero
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+Src  Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+ J       0       0         0   0.00%   -inf            44667899.96783     Large        0      0      0         0     0.0s
+         0       0         0   0.00%   25494782.27515  44667899.96783    42.92%        0      0      0       460     0.0s
+ C       0       0         0   0.00%   25761962.81499  26686733.7387      3.47%     1135     93      0       688     0.1s
+ L       0       0         0   0.00%   25779585.43455  25779856.3717      0.00%     2760    180      0       962     0.5s
+         1       0         1 100.00%   25779592.89762  25779856.3717      0.00%     2760    180      0      1533     0.5s
+
+Solving report
+  Model             gesa2
+  Status            Optimal
+  Primal bound      25779856.3717
+  Dual bound        25779592.8976
+  Gap               0.00102% (tolerance: 0.01%)
+  P-D integral      0.0494266956672
+  Solution status   feasible
+                    25779856.3717 (objective)
+  Timing            0.53
+                    0.02 (Presolve)
+                        MIP    time [calls] = 0.01 [1]
+                        subMIP time [calls] = 0.01 [3]
+                    0.51 (Solve)
+                        MIP    time [calls] = 0.30 [1]
+                        subMIP time [calls] = 0.21 [3]
+                    0.00 (Postsolve)
+                        MIP    time [calls] = 0.00 [1]
+                        subMIP time [calls] = 0.00 [3]
+  Max sub-MIP depth 6
+  Nodes             1
+  Repair LPs        0
+  LP iterations     1533
+                    0 (strong br.)
+                    502 (separation)
+                    566 (heuristics)
+Writing the solution to /workspace/scuc-campaign/cache-panel-v2/gesa2-s3-official/point.sol
