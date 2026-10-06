@@ -1,0 +1,138 @@
+{
+  "base_publication_commit": "38576af80c16d0bb41d44bff35e7f394fe0f9259",
+  "case_records": [
+    {
+      "candidate": {
+        "contained_process_seconds": 143.4028476359981,
+        "exact_LP_gap_percent": 0.3101328348856978,
+        "fresh_exact_LP_lower": 13736286.327225514,
+        "target_passed": true,
+        "upper": 13779019.591303479,
+        "whole_seconds": 555.9379164309994
+      },
+      "conventional": {
+        "contained_process_seconds": 597.6080625639988,
+        "outcome": "Returned master point failed complete literal security check; insufficient remaining process budget for another call",
+        "target_gap": null,
+        "target_passed": false,
+        "upper": null,
+        "whole_seconds": 695.8837423469995
+      },
+      "date": "2017-06-01",
+      "exposure": "exposed development case",
+      "hours": 36,
+      "seed": 0,
+      "source_evidence": "evidence/scuc_reference_v1.json",
+      "whole_clock": "Includes in-run remote stage acknowledgements"
+    },
+    {
+      "candidate": {
+        "contained_process_seconds": 97.68588413599355,
+        "exact_LP_gap_percent": 0.034473031207544046,
+        "fresh_exact_LP_lower": 11732175.309109941,
+        "target_passed": true,
+        "upper": 11736221.140286218,
+        "whole_seconds": 328.4079281919985
+      },
+      "conventional": {
+        "contained_process_seconds": 597.8467469219977,
+        "outcome": "Returned master point failed complete literal security check; insufficient remaining process budget for another call",
+        "target_gap": null,
+        "target_passed": false,
+        "upper": null,
+        "whole_seconds": 648.9999947089964
+      },
+      "date": "2017-10-01",
+      "exposure": "case-exposed validation after infrastructure failure and saved-point diagnosis",
+      "hours": 36,
+      "seed": 0,
+      "source_evidence": "evidence/scuc_october_v1.json",
+      "whole_clock": "Local checkpoint work inside owner clock; post-exit archive administration separate"
+    },
+    {
+      "candidate": {
+        "contained_process_seconds": 85.00116951399832,
+        "exact_LP_gap_percent": 0.032266783695203916,
+        "fresh_exact_LP_lower": 12015900.154340627,
+        "target_passed": true,
+        "upper": 12019778.55028609,
+        "whole_seconds": 314.6873210479971
+      },
+      "conventional": {
+        "contained_process_seconds": 597.666292955997,
+        "outcome": "Returned master point failed complete literal security check; insufficient remaining process budget for another call",
+        "target_gap": null,
+        "target_passed": false,
+        "upper": null,
+        "whole_seconds": 649.5820694419963
+      },
+      "date": "2017-12-01",
+      "exposure": "first preselected numerical validation evidenced in frozen release; prior source-only metadata and preparation exposure",
+      "hours": 36,
+      "seed": 0,
+      "source_evidence": "evidence/scuc_december_v1.json",
+      "whole_clock": "Local checkpoint work inside owner clock; post-exit archive administration separate"
+    }
+  ],
+  "comparison": "Descriptive one-seed case completion records; no timeout-derived ratios, means, medians, pooled timing statistic or stable acceleration inference",
+  "evidence_source_sha256": {
+    "published_june": "3f85b0d29a0bc5bb096d7ca10b8b97d363791c626660cf480e78d1cb03b1695a",
+    "published_october": "8de4c06ba30c8fced2427d9470d53a7b2fb8db1ce7fb7252a150c99657568b08"
+  },
+  "gap_basis": "All table gaps use fresh exact projected-LP lower and checked original upper; June separately retains its admitted numerical MIP lower",
+  "historical_records_preserved": true,
+  "june_additional_numerical_MIP": {
+    "allowance": 0.000187416899735,
+    "discovery_lower_discarded": true,
+    "exact_certificate": false,
+    "gap_fraction": 0.0027091635760831925,
+    "gap_percent": 0.2709163576083193,
+    "lower": 13741689.973312583,
+    "raw_token": "13741689.9735"
+  },
+  "method_layer": "Application/formulation and allocation-policy bundle on unmodified official HiGHS",
+  "portable_source_review_sha256": "a8b1a5380b3f8a81bb27ca1d76aff267ea22893e2b840af81451caa355266acb",
+  "portable_validation": {
+    "changed_master": {
+      "coverage": "failed_before_carry",
+      "discovery_mip_calls": 1,
+      "error": "ValueError: Tiny no materially violated new network support",
+      "fixture_or_numerical_policy_changed": false,
+      "materially_violated_support_rows": 0,
+      "rerun_performed": false,
+      "result_sha256": "7b178ee39b66aac9eba5bcc577264f6b35f1cfeee48ba887489ddd5c29bbcdbf",
+      "seed_lp_calls": 2,
+      "test_passed": false
+    },
+    "coverage_limits": [
+      "Changed-master carry was not reached; no changed-master or newly-active-line carry claim",
+      "Normal actual process reaping tested; cancellation/kill paths covered only by pure mocked tests",
+      "Shared explicit native prefix and pinned interpreter/distributions; their independent fresh rebuild was not tested",
+      "No production-size run of the portable CLI; no timing comparison or physical-DC exact lower claim"
+    ],
+    "extra_numerical_replays": 0,
+    "independent_source_review_pure_tests": 51,
+    "new_native_build": false,
+    "pure_tests_passed": 52,
+    "relocated_transition": {
+      "actual_proof_start_admission_passed": true,
+      "candidate_outcome": "material_shared_overflow",
+      "candidate_passed": false,
+      "cleanup_verified": true,
+      "positive_slack_totals_MWh": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 2.2500000000000058
+      },
+      "source_layout": "second_unrelated_directory_byte_identical_package",
+      "test_passed": true
+    },
+    "source_review_scope": "Source/math parity and bounded fixed tiny readiness only"
+  },
+  "portable_validation_is_separate_from_full_case_results": true,
+  "portable_validation_source_sha256": "7e0f2c0d14ed39abaa36c3bc871d4146cd40ba7e5161822e44889cf7d3d410f5",
+  "publication_ready": true,
+  "recorded_date_utc": "2026-10-06",
+  "schema": "network-projection-public-three-case-completion-v1",
+  "solver_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82"
+}

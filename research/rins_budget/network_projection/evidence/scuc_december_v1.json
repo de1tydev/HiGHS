@@ -1,0 +1,310 @@
+{
+  "base_publication_commit": "38576af80c16d0bb41d44bff35e7f394fe0f9259",
+  "candidate": {
+    "archives_sha256": {
+      "checkpoint-01": "b3b2c209f39636c005d63b173782d30cb59057d3ccd660db38b1065b6ae0d43c",
+      "checkpoint-02": "575123fdbb302a71250ce7a9b0b311cb70c6b1e82423031b52cd392d40da188b",
+      "checkpoint-03": "15d244f55c2daf5b3125fca0c87e89aa24b5fb2a3ab13fa7d06cd045cb3a6ccf",
+      "checkpoint-04": "792ae96b06b9c391b999ef23f5d379ccaf104e9e536b66ef55a58d6207e1b53c",
+      "checkpoint-05": "44d937f26bdef43403972cfaa49f82f3c6111c55d5b0f0f2730591a5c6818024",
+      "terminal": "960f14df02cbfe3148a2fa159f569502ded5f9feabaca58981f93d3fb9bec0b1"
+    },
+    "arm_manifest_sha256": "d82d113f48acef6adfe687a0cf722f3aa52d47bd3c392fa9619b50c8421356b4",
+    "bound_scope": "Exact weak-duality bound for stored binary64 projected/canonical literal hard-zero subset; numerical physical upper; not an exact physical-DC lower",
+    "carry_execution_tested": false,
+    "cloud_addendum_assertions_in_recorded_total": false,
+    "completion_sha256": "92a82f494d45484d5792d617764a9068c30bf86f1570c5bf30e36e6fcf8f13be",
+    "diagnostics": {
+      "bound_violation_difference": 7.276e-12,
+      "numerical_thresholds_changed": false,
+      "raw_native_log_sha256": "5b10f3faa474945b317a78d70abb85fa287f9bd59725baee8023ffd0ecffd8f3",
+      "warning_free_execution_claimed": false
+    },
+    "direct_DC_outages_per_checker": 1288,
+    "direct_DC_pair_hours_per_checker": 66360168,
+    "direct_DC_passed": true,
+    "discovery_bound_admitted": false,
+    "exact_zero_target_point": {
+      "exactly_zero": true,
+      "fixed_columns_checked": 48780,
+      "maximum_absolute_fixed_value": 0.0,
+      "passed": true,
+      "point_modified": false,
+      "subset_identity_sha256": "27c53531bdb6000c257d861c910ffdd55144bbaf6f54b94d00f38bec10b659cb",
+      "tolerance": 1e-05
+    },
+    "final_cloud_audit_sha256": "2e4197265891c2831702678180198a7fca13f45d175e809b9a2f0708c3bbb8c5",
+    "fresh_exact_LP_certificate": {
+      "certificate_sha256": "f3d2c090116a96be659d7264289e46063689fcd76f603a91e77eee2540940dd8",
+      "original_bound_rational": [
+        "8780628874786745552898085525366603419591346434407430183",
+        "730750818665452030495350469232544234466936094720"
+      ],
+      "promoted_matrix_relabelled": false,
+      "row_dual_sha256": "ff2df421dd34056fcd3069468cdf4de4692b5cee870885a2d9360f63c89c95f8",
+      "snapshot_arrays_sha256": "26183fc77cb70070b67e684b7f01a8b2f4e0e338b7810badd4f2d9d88cf14895",
+      "snapshot_document_sha256": "ad33a0890b6584277eba12c53353e91a94a8a53e6172a4a7b5f8260cfc33924c"
+    },
+    "fresh_exact_LP_lower": 12015900.154340627,
+    "frozen_source_files_verified": 985,
+    "full_literal_passed": true,
+    "maximum_integrality_residual": 0.0,
+    "method": {
+      "cold_discovery_MIP_calls": 1,
+      "complete_positive_family_rows": 5544,
+      "external_incumbent_basis_or_search_state_input": false,
+      "fresh_promoted_cut_batches": 2,
+      "fresh_seed_LP_calls": 2,
+      "logical_first_start_prefixes": 5580,
+      "lower_installed_cut_batches": 1,
+      "new_first_start_columns": 0,
+      "proof_MIP_calls": 0,
+      "zero_cost_prefixes_certified_redundant": 36
+    },
+    "original_binary_count": 28080,
+    "original_point_not_rounded": true,
+    "original_source_passed": true,
+    "outcome": "checked_one_percent_integer_interval",
+    "owner_receipt_sha256": "6de5c761cddc76ec03ad6b219c8a63f841901a6ff671bf6f2f4c8005d3cbd246",
+    "physical_result_sha256": "4d4f8f4ea3a69326d2efbb32caab82d697efb25df019f9add981bc63162a2446",
+    "post_exit_archive_audit_passed": true,
+    "recorded_audit_assertions": 2967,
+    "relative_gap": 0.00032266783695203915,
+    "relative_gap_percent": 0.032266783695203916,
+    "result_sha256": "6c5b8e1b6a05a65e905aa0017bedf741a022b4348c45f61ba9138cfcf9b7d719",
+    "slack_metrics": {
+      "load_shedding": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "reserve_shortfall": {
+        "cost": 0.0,
+        "max_MW": 0.0,
+        "positive_sum_MWh": 0.0,
+        "sum_MWh": 0.0
+      },
+      "shared_overflow": {
+        "cost": 0.005111651262268425,
+        "max_MW": 6.469986146839803e-08,
+        "positive_sum_MWh": 1.022330252453685e-06,
+        "sum_MWh": 1.022330252453685e-06
+      }
+    },
+    "source_manifest_sha256": "057f9abb8f8a34527b3b26ea1eac353fe353204baf904d58d8d350dbcf3deaae",
+    "target_passed": true,
+    "terminal_audit_passed": true,
+    "timing_seconds": {
+      "contained_solver_process_total": 85.00116951399832,
+      "first_cold_MIP_process": 9.734159498999361,
+      "physical_check_process_included_in_whole": 153.9033467249974,
+      "post_exit_archive_administration_separate": 247.98523019099957,
+      "seed_process": 75.26701001499896,
+      "whole_compute_validation_local_checkpoint": 314.6873210479971
+    },
+    "upper": 12019778.55028609
+  },
+  "case": {
+    "classification": "first prospective December numerical validation evidenced by the frozen release; prior source-only metadata and preparation exposure disclosed",
+    "date": "2017-12-01",
+    "hours": 36,
+    "seed": 0,
+    "system": "case1354pegase"
+  },
+  "claim_limits": {
+    "earlier_negative_interrupted_results_and_advisories_preserved": true,
+    "full_matrices_vectors_and_private_archive_identifiers_bundled": false,
+    "full_size_portable_CLI_run_claimed": false,
+    "hashes_are_public_retrieval_links": false,
+    "historical_points_cuts_starts_bounds_or_search_state_used": false,
+    "multiseed_or_repeatability_claimed": false,
+    "old_soft_optimum_bound_claimed": false,
+    "one_seed_per_case": true,
+    "physical_dc_lower_bound_certified": false,
+    "random_seed": 0,
+    "stable_or_general_MILP_acceleration_claimed": false,
+    "successful_completion_speed_ratio_supported": false
+  },
+  "conventional": {
+    "all_recorded_processes_clean_and_reaped": true,
+    "appended_rows_ever_solved": false,
+    "archives_sha256": {
+      "checkpoint-01": "57bc251ac51e4d6ce2d3af62f0171b0be0fbcf26cd3bdd1a087be9f134d6ee99",
+      "checkpoint-02": "c813b2b0bbc6f9f1e2bde7977d087bde6c68baa6eaa82ba2f8b06812ee73aa92",
+      "checkpoint-03": "31838d6fb4736165a6ff7de9682f703dc93446daf93b30061514dc21b35d2dba",
+      "terminal": "8b672f1be7d4b832c4db89dc80c3b71897fbdf2b324875628556340bc2234543"
+    },
+    "arm_manifest_sha256": "ba060c629725301de98ea4108557b57aa93f7dc2301f6b83233fc608f4954cab",
+    "base_audit_assertions": 4462,
+    "cloud_addendum_assertions_in_recorded_total": false,
+    "completion_sha256": "14088fb942f36e84b8ea2d313c8c2e8b79c33609a0813033504d0863c1634365",
+    "diagnostics": {
+      "actual_process_overrun_seconds": 0.0,
+      "bound_violation_difference": 1.095e-08,
+      "native_display_overshoot_seconds": 0.51,
+      "numerical_thresholds_changed": false,
+      "raw_native_log_sha256": "ecd1b74214fe02429c2b48e740ac96265b56e8f990fb5299f6772edb965ecb72",
+      "warning_free_execution_claimed": false
+    },
+    "final_cloud_audit_sha256": "5a9feb3917e0c6e49a89f628762205f7e70cf7866e9bc32a33b4036d78a8e3f3",
+    "frozen_source_files_verified": 1019,
+    "full_literal_passed": false,
+    "hard_zero_columns_checked": 48780,
+    "independent_source_or_direct_DC_called": false,
+    "inherited_candidate_source_files_unchanged": 985,
+    "literal_coverage": {
+      "full_scope_identity_sha256": "81b151db4e2de171a5a1a392406c93c459e57d70d887f3660e44b05769eb433b",
+      "signed_normal_rows": 103104,
+      "signed_security_rows": 132720336,
+      "unsigned_security_pair_hours": 66360168
+    },
+    "literal_failure": {
+      "conservative_violation_upper": 273.48958130256034,
+      "tolerance": 1e-05,
+      "worst_hour": 18,
+      "worst_line": 1201,
+      "worst_line_id": "l1202"
+    },
+    "local_checkpoint_archives_sha256": {
+      "checkpoint-01": "57bc251ac51e4d6ce2d3af62f0171b0be0fbcf26cd3bdd1a087be9f134d6ee99",
+      "checkpoint-02": "c813b2b0bbc6f9f1e2bde7977d087bde6c68baa6eaa82ba2f8b06812ee73aa92",
+      "checkpoint-03": "31838d6fb4736165a6ff7de9682f703dc93446daf93b30061514dc21b35d2dba"
+    },
+    "master_incumbent_diagnostic_only": 12131487.963472161,
+    "maximum_integrality_residual": 1e-13,
+    "method": "Ordinary original-DC proof from empty security cache; no first-start family, projected cuts, LP seed, carry or historical numerical inputs",
+    "native_status": "Time limit reached",
+    "new_pair_indices_zero_based": {
+      "monitored": 1201,
+      "outage": 830
+    },
+    "new_security_pairs": 1,
+    "new_security_rows_appended": 72,
+    "numerical_MIP_lower": {
+      "allowance": 0.00016885856811899998,
+      "exact_certificate": false,
+      "lower": 11885856.811731141,
+      "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+      "raw_token": "11885856.8119"
+    },
+    "original_binary_count": 28080,
+    "owner_receipt_sha256": "f01ffe43da73fd15f433342422bfdd99a51b51a27df9885b7d94d1cfa0fd7176",
+    "point_binary64_sha256": "ae94a6fc0dbcfca8b994778381252d654df0ace5c33b629ecee83bbd61d560bc",
+    "point_check_sha256": "e5fceb3f7eddee23a535b51e950a970e09c04d9d1faaed06050325a4c03da47b",
+    "policy": {
+      "first_native_seconds": 595,
+      "first_process_seconds": 600,
+      "maximum_MIP_calls": 3,
+      "minimum_next_call_launch_margin_seconds": 5,
+      "next_call_requires_new_witnessed_original_rows": true,
+      "same_master_retry": false
+    },
+    "positive_slack_totals_MWh": {
+      "load_shedding": 0.0,
+      "reserve_shortfall": 0.0,
+      "shared_overflow": 0.0
+    },
+    "post_exit_archive_audit_passed": true,
+    "printed_master_gap_percent_diagnostic_only": 2.02,
+    "raw_outcome": "actual_or_whole_time_censoring",
+    "recorded_audit_assertions": 4687,
+    "relative_gap": null,
+    "result_sha256": "d0168b603fa7a133ad3ed7289171e7fc736e2e228fdbecd2d808bf388f177bfc",
+    "source_manifest_sha256": "63fade78d0d18b25bdcbe126be9b95ad6f8e9896aefb217475257b05d72dc14c",
+    "supplementary_audit_status": "complete",
+    "target_passed": false,
+    "terminal_base_audit_passed": true,
+    "time_to_checked_target": null,
+    "timing_seconds": {
+      "contained_solver_process_remaining": 2.3337070440029493,
+      "contained_solver_process_total": 597.666292955997,
+      "native_reported_diagnostic_only": 595.51,
+      "post_exit_archive_administration_separate": 333.9146721299985,
+      "whole_compute_validation_local_checkpoint": 649.5820694419963
+    },
+    "upper": null
+  },
+  "evidence_commitments_sha256": {
+    "candidate_cloud_audit": "f2c30e5b43ed7fcef9705042bce17ca82f517b793afe8dc44f76e904dae64dce",
+    "candidate_domain_review": "0238951a7888f3ca947e94300ae95af54076f560e17fa2fcd826314bffd7dc48",
+    "candidate_exact_certificate": "f3d2c090116a96be659d7264289e46063689fcd76f603a91e77eee2540940dd8",
+    "candidate_local_audit": "a6847afd294ffc212f874867285f523c768cbd9c90c5cc1974d0e0c262e8c145",
+    "candidate_physical": "4d4f8f4ea3a69326d2efbb32caab82d697efb25df019f9add981bc63162a2446",
+    "candidate_result": "6c5b8e1b6a05a65e905aa0017bedf741a022b4348c45f61ba9138cfcf9b7d719",
+    "candidate_seed": "b155b67afcbfbb28f59826f3c99c86ec189012f3274cbecd0a9190a005b0f1f4",
+    "candidate_summary": "26cb208d71cef37c6c2d55c81cd7d30daaaa57d775815d511b19d104f8a42473",
+    "case_binding": "264ecbad0b5300ac07de410207cf44423c1b7d9cbf7e46a1aeaebba08caec155",
+    "reference_cloud_audit": "eb86db536a3caf737d7c6e7f35617c9e2437dc9510ed94a7d90089df727b0701",
+    "reference_local_audit": "bd13e4d9e25533e71bc51ed5c2aa8316399010bd5a1a9a190e0c7e45c42f783f",
+    "reference_result": "d0168b603fa7a133ad3ed7289171e7fc736e2e228fdbecd2d808bf388f177bfc",
+    "reference_summary": "21f049d4886b18ba0abc2a8a37f90a729ff763aa6be2b536abf0bd25c5c215bd"
+  },
+  "input_identity": {
+    "case_binding_sha256": "264ecbad0b5300ac07de410207cf44423c1b7d9cbf7e46a1aeaebba08caec155",
+    "mapping_pairs_initially_empty": true,
+    "model_artifact_sha256": {
+      "expected": "04c8183c960c31443f458387a2fbc740d885ba8e529f1e274f8496d031bc5985",
+      "metadata": "b8122b33f00f106cb8cc8ba6d818ab74ce465b28809202afae72f964bf2f0951",
+      "mps": "946842a69e91a1f86f9e2d4c57f18f01455c7416cd0a8ce250428fc3ed03f435",
+      "pairs": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "readback": "0296d6a49685a0a400669e893b566e5be325bd185dfd789cd138529bd4785801",
+      "retained_expected": "c2e5ece88c468c2d4dc778e887da89801aed35d992f4f3a6dd7f2acbf714f41f",
+      "retained_mps": "892f075dd66e8a03b13e65096bffecfb856e753eff977b68033e448c48718c6b",
+      "retained_readback": "8d15bdd693f27075169dd03c7383614a8f151e32429d1ea2796608658d5fb64a",
+      "zero_certificate": "a5abc8703a5b3c8a581bf04ff4a4b696c5767f70af0ae0ae64b3d7b7d195d568"
+    }
+  },
+  "publication_ready": true,
+  "recorded_date_utc": "2026-10-06",
+  "schema": "network-projection-public-december-validation-v1",
+  "sources": {
+    "dataset": {
+      "sha256": "f31e2596eeee8cd865f6f7de0914727e6e3d87ed3b7dccf855ae08753edbc391",
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case1354pegase/2017-12-01.json.gz"
+    },
+    "official_solver": {
+      "commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+      "kernel_modified": false
+    }
+  },
+  "status": "audited_completion_contrast",
+  "target": {
+    "all_shedding_columns": 48744,
+    "already_zero_shedding_columns": 26388,
+    "changed_shedding_upper_bounds": 22356,
+    "identity_sha256": "27c53531bdb6000c257d861c910ffdd55144bbaf6f54b94d00f38bec10b659cb",
+    "integrality_tolerance": 1e-06,
+    "name": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+    "numerical_primal_tolerance": 1e-05,
+    "positive_sum_guard_per_slack_category_MWh": 1e-05,
+    "relative_gap_target": 0.01,
+    "reserve_shortfall_columns_already_zero": 36,
+    "scope": {
+      "allowed_pairs_per_hour": 1843338,
+      "buses": 1354,
+      "distinct_listed_single_line_outages": 1288,
+      "finite_rated_lines": 1432,
+      "generators": 260,
+      "hours": 36,
+      "lines": 1991,
+      "rated_outage_intersection": 1078,
+      "signed_normal_rows": 103104,
+      "signed_security_rows": 132720336,
+      "signed_soft_rows": 132823440,
+      "unsigned_security_pair_hours": 66360168,
+      "virtual_full_rows": 133101388
+    },
+    "shared_overflow_bounds_and_penalties_unchanged": true
+  },
+  "timing_protocol": {
+    "contained_ledger_is_native_solver_only": false,
+    "contained_solver_process_cap_seconds": 600,
+    "input_boundary": "Pinned original serialized MPS and source data",
+    "post_exit_administration_endpoint": "Recorded elapsed value before final archive-pointer fsync",
+    "preparation_acquisition_build_and_later_audit_excluded": true,
+    "speed_ratio": null,
+    "whole_boundary": "Immediately before owner process launch through exact reap, including fresh preparation, validation and local checkpoint writes; post-exit archive administration measured separately",
+    "whole_compute_validation_local_checkpoint_cap_seconds": 1800
+  }
+}

@@ -4,6 +4,17 @@ This opt-in research package accompanies the [audited checkpoint](RESULTS.md).
 It does not change normal HiGHS builds or defaults. It contains no case dumps,
 solver binaries, stored factors or historical optimization state.
 
+The [December1354 prospective numerical validation](SCUC_DECEMBER_RESULTS.md)
+passed the 1% hard-zero target with a 0.0322667837% interval from a fresh exact
+projected-LP lower; all original/source and listed-outage direct-DC checks passed.
+The conventional reference returned no full-target upper within its budget.
+The [three-case completion comparison](SCUC_THREE_CASE_RESULTS.md) consolidates
+June development, October case-exposed validation and December prospective
+numerical validation, each at seed 0, without timeout ratios or pooled whole-clock
+statistics. The [separate current_scuc research source](../current_scuc/) includes
+its validation limits: the full production CLI has not yet been executed, and
+these full-size records were produced by the original research runner.
+
 The [October1354 case-exposed validation](SCUC_OCTOBER_RESULTS.md) records a
 fresh candidate pass: 0.0344730312% interval from a fresh exact projected-LP
 lower, with all original/source and listed-outage direct-DC checks passed.
@@ -26,8 +37,9 @@ projected-LP certificate, with all original/source and listed-outage direct-DC
 checks passed. The contained-process ledger is 143.402847636 seconds; the whole
 invocation including checks and stage archives is 555.937916431 seconds. This
 is an evidence-only update with no speed ratio or multiple-case claim. The
-current method has no published, validated portable entrypoint; the source and
-fixed tiny replay documented below remain the earlier aggregate formulation.
+current method's experimental source is now published separately, with full
+production CLI validation pending; the source and fixed tiny replay documented
+below remain the earlier aggregate formulation.
 
 The [first-start cumulative checkpoint](FIRST_START_RESULTS.md) records a
 continuous bound milestone: 5,148 source-valid prefix rows close 73.2565% of
@@ -194,3 +206,4 @@ with the repository's [source notices](../scuc/sources/). PEGASE1354 derives
 from [MATPOWER case1354pegase](https://github.com/MATPOWER/matpower/blob/7.1/data/case1354pegase.m),
 whose dataset attribution and CC BY 4.0 terms remain applicable. Code licensing
 does not replace dataset attribution. The bundled triangle is synthetic.
+
