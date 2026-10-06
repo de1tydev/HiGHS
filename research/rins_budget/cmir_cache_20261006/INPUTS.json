@@ -1,0 +1,44 @@
+{
+  "egout": {
+    "path": "/workspace/scuc-native-source/check/instances/egout.mps",
+    "bytes": 17256,
+    "sha256": "351ed046eb56e07662b3c2dba35800f5d2cee3fac18c1bd7fbc8dea4a0dcd8db",
+    "exposed": true
+  },
+  "flugpl": {
+    "path": "/workspace/scuc-native-source/check/instances/flugpl.mps",
+    "bytes": 4161,
+    "sha256": "ed4b1fcb07d26b513027721d61344c2c4371cb506bf66098df328047c183b0c0",
+    "exposed": true
+  },
+  "dcmulti": {
+    "path": "/workspace/scuc-native-source/check/instances/dcmulti.mps",
+    "bytes": 77971,
+    "sha256": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+    "exposed": true
+  },
+  "gesa2": {
+    "path": "/workspace/scuc-native-source/check/instances/gesa2.mps",
+    "bytes": 238477,
+    "sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+    "exposed": true
+  },
+  "lseu": {
+    "path": "/workspace/scuc-native-source/check/instances/lseu.mps",
+    "bytes": 17486,
+    "sha256": "00416576ed4adac15b62b1982cb7be9d7dcb2d6505067dd8396183ff1eac3dab",
+    "exposed": true
+  },
+  "gt2": {
+    "path": "/workspace/scuc-native-source/check/instances/gt2.mps",
+    "bytes": 23772,
+    "sha256": "7dfdce934f95ced966a14e9eaad34023bbe966dc295589a33ac0676d810707dd",
+    "exposed": true
+  },
+  "triangle": {
+    "path": "/workspace/scuc-campaign/tiny-transition/run/original-subset.mps",
+    "bytes": 7102,
+    "sha256": "5a3e510dde343b8e45ef873d7d93abfb0697a455c3171af372a85b9280f427c0",
+    "exposed": true
+  }
+}

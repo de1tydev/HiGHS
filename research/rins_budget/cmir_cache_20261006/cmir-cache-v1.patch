@@ -1,0 +1,164 @@
+diff --git a/cmake/sources.cmake b/cmake/sources.cmake
+index d27af7cce6..2966fcdc74 100644
+--- a/cmake/sources.cmake
++++ b/cmake/sources.cmake
+@@ -511,6 +511,7 @@ set(highs_headers
+     mip/feasibilityjump.hh
+     mip/HighsCliqueTable.h
+     mip/HighsConflictPool.h
++    mip/HighsCmirCoefficientCache.h
+     mip/HighsCutGeneration.h
+     mip/HighsCutPool.h
+     mip/HighsDebugSol.h
+diff --git a/highs/lp_data/HighsOptions.h b/highs/lp_data/HighsOptions.h
+index e0cbc2485f..15aae11067 100644
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -510,6 +510,8 @@ struct HighsOptionsStruct {
+   double mip_feasibility_tolerance;
+   double mip_rel_gap;
+   double mip_abs_gap;
++  bool mip_cmir_cache_coefficients;
++  bool mip_cmir_cache_log;
+   double mip_heuristic_effort;
+   bool mip_heuristic_run_feasibility_jump;
+   bool mip_heuristic_run_rins;
+@@ -682,6 +684,8 @@ struct HighsOptionsStruct {
+         mip_feasibility_tolerance(0.0),
+         mip_rel_gap(0.0),
+         mip_abs_gap(0.0),
++        mip_cmir_cache_coefficients(false),
++        mip_cmir_cache_log(false),
+         mip_heuristic_effort(0.0),
+         mip_heuristic_run_feasibility_jump(false),
+         mip_heuristic_run_rins(false),
+@@ -1239,6 +1243,16 @@ class HighsOptions : public HighsOptionsStruct {
+         kHighsInf);
+     records.push_back(record_double);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_cmir_cache_coefficients",
++        "Experimental: cache fixed-scale CMIR complement coefficient arithmetic",
++        advanced, &mip_cmir_cache_coefficients, false);
++    records.push_back(record_bool);
++    record_bool = new OptionRecordBool(
++        "mip_cmir_cache_log", "Log experimental CMIR coefficient cache work",
++        advanced, &mip_cmir_cache_log, false);
++    records.push_back(record_bool);
++
+     record_double = new OptionRecordDouble(
+         "mip_heuristic_effort", "Effort spent for MIP heuristics", advanced,
+         &mip_heuristic_effort, 0.0, 0.05, 1.0);
+diff --git a/highs/mip/HighsCmirCoefficientCache.h b/highs/mip/HighsCmirCoefficientCache.h
+new file mode 100644
+index 0000000000..aa1c7ef9c8
+--- /dev/null
++++ b/highs/mip/HighsCmirCoefficientCache.h
+@@ -0,0 +1,40 @@
++#ifndef MIP_HIGHS_CMIR_COEFFICIENT_CACHE_H_
++#define MIP_HIGHS_CMIR_COEFFICIENT_CACHE_H_
++#include <cstdint>
++#include <cstring>
++#include <vector>
++#include "lp_data/HConst.h"
++
++// Scope: one complement loop, whose binary64 scale never changes. This caches
++// deterministic scalar arithmetic only; all trials and accumulation order stay.
++class HighsCmirCoefficientCache {
++ public:
++  struct Value {
++    double source = 0;
++    double scaled = 0;
++    double down = 0;
++    double fractional = 0;
++    bool valid = false;
++  };
++  HighsCmirCoefficientCache(size_t size, double scale)
++      : entries_(size), scale_(scale) {}
++  const Value& get(size_t index, double coefficient) {
++    Value& value = entries_[index];
++    if (!value.valid || std::memcmp(&value.source, &coefficient,
++                                    sizeof(double)) != 0) {
++      value.source = coefficient;
++      value.scaled = coefficient * scale_;
++      const double shifted = value.scaled + kHighsTiny;
++      value.down = (int64_t)shifted - (shifted < (int64_t)shifted);
++      value.fractional = value.scaled - value.down;
++      value.valid = true;
++      ++computations;
++    }
++    return value;
++  }
++  uint64_t computations = 0;
++ private:
++  std::vector<Value> entries_;
++  const double scale_;
++};
++#endif
+diff --git a/highs/mip/HighsCutGeneration.cpp b/highs/mip/HighsCutGeneration.cpp
+index 5ae328155e..b6d5ec141d 100644
+--- a/highs/mip/HighsCutGeneration.cpp
++++ b/highs/mip/HighsCutGeneration.cpp
+@@ -8,6 +8,7 @@
+ #include "mip/HighsCutGeneration.h"
+ 
+ #include "../extern/pdqsort/pdqsort.h"
++#include "mip/HighsCmirCoefficientCache.h"
+ #include "mip/HighsDomain.h"
+ #include "mip/HighsMipSolverData.h"
+ #include "mip/HighsTransformedLp.h"
+@@ -643,6 +644,12 @@ bool HighsCutGeneration::cmirCutGenerationHeuristic(double minEfficacy,
+ 
+   assert(bestdelta != -1);
+ 
++  const auto& cacheOptions = *lpRelaxation.getMipSolver().options_mip_;
++  const bool cacheCoefficients = cacheOptions.mip_cmir_cache_coefficients;
++  HighsCmirCoefficientCache coefficientCache(cacheCoefficients ? rowlen : 0,
++                                            1.0 / bestdelta);
++  uint64_t cacheQueries = 0;
++
+   // try to flip complementation of integers to increase efficacy
+   for (HighsInt k : integerinds) {
+     if (upper[k] == kHighsInf) continue;
+@@ -671,12 +678,22 @@ bool HighsCutGeneration::cmirCutGenerationHeuristic(double minEfficacy,
+     double sqrnorm = contscale * contscale * continuoussqrnorm;
+     double viol = contscale * continuouscontribution - downrhs;
+ 
+-    for (HighsInt j : integerinds) {
+-      double scalaj = vals[j] * scale;
+-      double downaj = fast_floor(scalaj + kHighsTiny);
+-      double fj = scalaj - downaj;
+-      double aj = downaj + std::max(0.0, (fj - f0) * oneoveroneminusf0);
+-      updateViolationAndNorm(j, aj, viol, sqrnorm);
++    if (cacheCoefficients) {
++      cacheQueries += integerinds.size();
++      for (HighsInt j : integerinds) {
++        const auto& cached = coefficientCache.get(j, vals[j]);
++        double aj = cached.down +
++                    std::max(0.0, (cached.fractional - f0) * oneoveroneminusf0);
++        updateViolationAndNorm(j, aj, viol, sqrnorm);
++      }
++    } else {
++      for (HighsInt j : integerinds) {
++        double scalaj = vals[j] * scale;
++        double downaj = fast_floor(scalaj + kHighsTiny);
++        double fj = scalaj - downaj;
++        double aj = downaj + std::max(0.0, (fj - f0) * oneoveroneminusf0);
++        updateViolationAndNorm(j, aj, viol, sqrnorm);
++      }
+     }
+ 
+     double efficacy = viol / sqrt(sqrnorm);
+@@ -687,6 +704,12 @@ bool HighsCutGeneration::cmirCutGenerationHeuristic(double minEfficacy,
+     }
+   }
+ 
++  if (cacheCoefficients && cacheOptions.mip_cmir_cache_log)
++    printf("CMIR_CACHE row=%d integer=%zu queries=%llu computations=%llu\n",
++           int(rowlen), integerinds.size(),
++           static_cast<unsigned long long>(cacheQueries),
++           static_cast<unsigned long long>(coefficientCache.computations));
++
+   HighsCDouble scale = 1.0 / HighsCDouble(bestdelta);
+   HighsCDouble scalrhs = rhs * scale;
+   double downrhs = floor(double(scalrhs));
