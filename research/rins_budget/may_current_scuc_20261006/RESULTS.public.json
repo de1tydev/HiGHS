@@ -1,0 +1,343 @@
+{
+  "audit": {
+    "audit_sha256": "ebb0e33f29d310754f9b3b24a6ca70f5a9d5fe3e6f148b25bf525e0a4b9b7c3d",
+    "checked_utc": "2026-10-06T23:04:08.856456+00:00",
+    "checks": 718,
+    "failures": [],
+    "files_hashed": 229,
+    "raw_IO_filtered_advisory_hash_chain_verified": true,
+    "scope": "Independent static receipt, raw-log, stored coverage, artifact hash, checkpoint-linkage and arithmetic audit; no numerical checker or optimizer rerun",
+    "status": "PASS"
+  },
+  "audit_status": "PASS",
+  "claims": {
+    "HiGHS_kernel_speedup": false,
+    "application_pipeline_result": true,
+    "commercial_readiness_established": false,
+    "older_May_timing_comparison": false,
+    "physical_DC_exact_lower_certificate": false,
+    "same_runtime_conventional_May_comparator_run": false,
+    "same_seed_repeatability_established": false,
+    "speed_ratio": null,
+    "statistical_reliability_established": false,
+    "unseen_case_generalization_established": false
+  },
+  "clock_scope": {
+    "CPU": "One outer wait4 child-subtree aggregate; nested child measurements must not be added",
+    "complete_invocation": "Before CLI Popen through exact wait4 reap, including final output, shutdown and cleanup",
+    "excluded_from_complete_invocation": [
+      "owner preflight",
+      "post-exit audit",
+      "external archival and readback"
+    ],
+    "full_CLI_reported": "Main entry to sample before final RESULT write and stdout output",
+    "ledger": "Actual seed, MIP and carry process walls, not an end-to-end elapsed clock",
+    "nested_clocks_additive": false
+  },
+  "cohort": {
+    "buses": 1354,
+    "case": "case1354pegase_2017-05-01",
+    "classification": "single already-exposed development case",
+    "generators": 260,
+    "historical_seed_inputs_used": false,
+    "hours": 36,
+    "lines": 1991,
+    "listed_single_line_outages": 1288,
+    "runs": 1,
+    "solver_random_seed": 0
+  },
+  "context": {
+    "May_belongs_to_earlier_predeclared_panel": false,
+    "earlier_panel": "../current_scuc/SEED_PANEL.md",
+    "earlier_panel_exposed_dates": [
+      "2017-06-01",
+      "2017-10-01",
+      "2017-12-01"
+    ],
+    "earlier_panel_passes": 6,
+    "earlier_panel_runs": 6,
+    "earlier_panel_seeds": [
+      1,
+      2
+    ],
+    "pooled_statistics_claimed": false
+  },
+  "execution": {
+    "carry_native_point_bits_equal": true,
+    "carry_passed": true,
+    "carry_preparations": 1,
+    "exact_carry_binaries_checked": 28080,
+    "exact_carry_rows_checked": 162988,
+    "first_provisional_upper": 14304204.364784367,
+    "integer_processes": 2,
+    "local_checkpoints": 7,
+    "mechanism_status": "actual_feasible_start_admitted",
+    "proof_provisional_upper": 14013064.016813608,
+    "proof_start_admission_passed": true,
+    "seed_LP_calls": 2,
+    "selected_final_call": 2,
+    "trace": [
+      {
+        "call": 1,
+        "cut_batches": 2,
+        "master_mps_sha256": "5869da84872ff68442a7b11dedc083a1e7c1c9f8534f1b99d99c84324af17ba8",
+        "native_bound_diagnostics": [
+          {
+            "acceptance_threshold_added": false,
+            "difference": 7.276e-12,
+            "line": "Inconsistent max bound violation: MIP solver (         0); LP ( 7.276e-12); Difference of  7.276e-12",
+            "lp": 7.276e-12,
+            "mip_solver": 0.0,
+            "qualification": "Diagnostic measurements only; unchanged master/original numerical QA remains mandatory",
+            "source_sha256": "62aeb110a4dcbb26f6e73932fba3b924c546ee5902520f0e1fa3cb42decca0d1"
+          }
+        ],
+        "no_basis_or_search_state_input": true,
+        "numerical_thresholds_changed": false,
+        "process_wall_seconds": 15.404850387996703,
+        "raw_log_preserved": true,
+        "role": "discovery",
+        "status": "Solution limit reached",
+        "unmatched_diagnostics_fatal": true
+      },
+      {
+        "call": 2,
+        "cut_batches": 2,
+        "master_mps_sha256": "5869da84872ff68442a7b11dedc083a1e7c1c9f8534f1b99d99c84324af17ba8",
+        "native_bound_diagnostics": [
+          {
+            "acceptance_threshold_added": false,
+            "difference": 7.276e-12,
+            "line": "Inconsistent max bound violation: MIP solver (         0); LP ( 7.276e-12); Difference of  7.276e-12",
+            "lp": 7.276e-12,
+            "mip_solver": 0.0,
+            "qualification": "Diagnostic measurements only; unchanged master/original numerical QA remains mandatory",
+            "source_sha256": "62aeb110a4dcbb26f6e73932fba3b924c546ee5902520f0e1fa3cb42decca0d1"
+          }
+        ],
+        "no_basis_or_search_state_input": true,
+        "numerical_thresholds_changed": false,
+        "process_wall_seconds": 31.577862396996352,
+        "raw_log_preserved": true,
+        "role": "proof",
+        "status": "Optimal",
+        "unmatched_diagnostics_fatal": true
+      }
+    ]
+  },
+  "matrix_dimensions": {
+    "candidate_row_cap_changed": false,
+    "final_MIP_master": {
+      "columns": 141842,
+      "nonzeros": 763835,
+      "rows": 162988
+    },
+    "final_active_line_indices": [
+      1201
+    ],
+    "final_cut_batches": 2,
+    "final_cut_nonzeros": 21144,
+    "final_master_within_original_row_cap": true,
+    "original": {
+      "num_col": 313776,
+      "num_nz": 1232507,
+      "num_row": 381268
+    },
+    "original_candidate_row_cap": 164080,
+    "projected_base": {
+      "num_col": 141806,
+      "num_nz": 641603,
+      "num_row": 157780
+    },
+    "projected_first_start": {
+      "num_col": 141806,
+      "num_nz": 742691,
+      "num_row": 162964
+    }
+  },
+  "outcome": "checked_one_percent_integer_interval",
+  "provenance": {
+    "HiGHS_upstream_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "HiGHS_upstream_tree": "788b41e141fa455509c71593e1718b7b71168320",
+    "HiGHS_version": "1.15.1",
+    "application_source_changed_for_this_run": false,
+    "application_source_manifest_sha256": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+    "complete_raw_archive": {
+      "bytes": 112621088,
+      "members": 259,
+      "readback_verified": true,
+      "role": "Recoverability fingerprint; raw archive is not included in this public checkpoint",
+      "sha256": "73216a425792896b1567d917d527a44d8a701bbcced34feda74a5c0f665f047f"
+    },
+    "direct_separator_sha256": "2f458f8fce43a4f3fb6ef0a1c5bb651a9752278184576c6041fa00c9c9953891",
+    "exact_seed_LP_certificate_sha256": "d4ce14d0c926ea7fe65e050e15045342afc1878f67b04e436657b371571310d9",
+    "final_master_MPS_sha256": "5869da84872ff68442a7b11dedc083a1e7c1c9f8534f1b99d99c84324af17ba8",
+    "final_original_solution_sha256": "211b6e6885d560f49af3bf82c292e09a98249e3bef4da3f012a280c7c583d042",
+    "full_scope_identity_sha256": "150e427473eb117f9d5ed5bd6342f53df47284aac3467b450b478b454dcc125a",
+    "independent_source_checker_sha256": "4ec9e509c1db0129a9dcf69acc0ee719800dc6e2977a54e4e30ab922e3d97084",
+    "input_filename": "case1354pegase_2017-05-01.json.gz",
+    "input_sha256": "42d2acf8a9adf569686977e38547f3ee4c6c2b16c036ec54c39492c30baee4a4",
+    "integer_target_identity_sha256": "65db1523c7255fdcc6b39908e9125388a9ba161dfd63705bec30a60f6a4b5582",
+    "native_artifact_sha256": {
+      "binary": "a8546ca386821b0953df9c466439191d021d17bdb7965cf115aa6e2bc0da7ab2",
+      "extras": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+      "library": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+      "native_assess": "2a1e3cbf237218463f68edb6879c8b85443840139c87878e6dc4d50b25d0f35e",
+      "native_assess_source": "b7cd24d5852080cde20e2d0e269783090bfc004fa2f82fb30f92c9b3ecc73d4a"
+    },
+    "native_runtime_manifest_sha256": "688b50a8a1da8f5747eb0404def80dd7729cac2a6b4a4446c5a54be22b552e00",
+    "native_source_changed_for_this_run": false,
+    "new_solver_patch": false,
+    "original_MPS_sha256": "28c0e9e1317875aed877d8112dd13b47c82e08efec7aed290bee4daea99f069c",
+    "public_application_package": "../current_scuc/",
+    "public_source_manifest": "../current_scuc/current_scuc/SOURCE_MANIFEST.json",
+    "public_source_manifest_files_verified_equal": 70,
+    "raw_evidence_sha256": {
+      "CLI_result": "124c3a163dd8a479db567e88db6fa6e593eb1a7bade784c25d23ec6503a96ae2",
+      "candidate_result": "f317986324eac915530da5459d20151e9424ee1b93b6b00e117b4483d2e8dfc4",
+      "case_binding": "8d3478f9c67e261a5706b5c7f24ab8b180aadb10fd48f70f69c8417edaa5712b",
+      "discovery_native_log": "e7db98488860b8e889bb3cbda9aca3edc2221d7651be6dcd44901c8b3b3363ef",
+      "owner_receipt": "03cc103f3a414c74e6662294b2d95db915efb62812ec5341aaae0aaece0d4f05",
+      "proof_native_log": "8c8dde93128177e1003d9a6053640f576bc06d0102a223b0a7f0b538c97ec5a3"
+    },
+    "source_object_sha256": "e25c8c0929b3bf0dc89f3b058337c6af81f4e69e6f40a96e465a7a3c36a16afc"
+  },
+  "publication_execution": "Static file/JSON/hash inspection, arithmetic and documentation only; no build, optimizer, scientific checker or test rerun",
+  "quality": {
+    "accurate_original_primal_passed": true,
+    "all_original_binary_check_passed": true,
+    "all_original_binary_count": 28080,
+    "binary_rounding_performed": false,
+    "binary_tolerance": 1e-06,
+    "direct_DC_passed": true,
+    "direct_factorizations": 1289,
+    "direct_violated_line_hours": 0,
+    "direct_violated_pairs": 0,
+    "eligible_pair_hours": 66360168,
+    "full_literal_source_rows_passed": true,
+    "full_original_matrix_passed": true,
+    "hard_zero_subset": {
+      "exactly_zero": true,
+      "fixed_columns_checked": 48780,
+      "maximum_absolute_fixed_value": 0.0,
+      "passed": true,
+      "point_modified": false,
+      "subset_identity_sha256": "b67f045257580b5aca01c9e1b6e5fca4fbaa7aa102edd532ec2621521dcb110e",
+      "tolerance": 1e-05
+    },
+    "independent_source_checker_passed": true,
+    "maximum_binary_residual": 0.0,
+    "negligible_slack_guard_passed": true,
+    "negligible_slack_threshold_MWh": 1e-05,
+    "numerical_physical_witness": true,
+    "original_primal_tolerance": 1e-05,
+    "outages_checked": 1288,
+    "positive_slack_totals_MWh": {
+      "load_shedding": 0.0,
+      "reserve_shortfall": 0.0,
+      "shared_overflow": 1.0682990705390696e-06
+    }
+  },
+  "resource_and_cleanup": {
+    "candidate_budget_seconds": 1800,
+    "candidate_exact_child_reaped": true,
+    "candidate_remaining_owned_pids": [],
+    "ledger_budget_seconds": 600.0,
+    "ledger_in_budget": true,
+    "memory_measurement_caveat": "Sampled summed RSS is not unique physical memory and does not establish an unsampled peak",
+    "minimum_sampled_available_memory_bytes": 7407595520,
+    "minimum_sampled_free_disk_bytes": 28196495360,
+    "owner_allocation_seconds": 2460.0,
+    "owner_cleanup_verified": true,
+    "owner_exact_child_reaped": true,
+    "owner_execution_clean": true,
+    "owner_peak_sampled_tree_RSS_bytes": 1740754944,
+    "owner_remaining_owned_pids": [],
+    "owner_returncode": 0,
+    "owner_system_CPU_seconds": 11.914422,
+    "owner_user_CPU_seconds": 541.069875,
+    "owner_wait4_peak_RSS_KiB": 1074888,
+    "preparation_budget_seconds": 600
+  },
+  "result": {
+    "checked_upper": 14013064.016813794,
+    "exact_seed_LP_also_meets_one_percent": true,
+    "exact_seed_LP_certificate_cut_batches": 1,
+    "exact_seed_LP_certificate_relabels_promoted_matrix": false,
+    "exact_seed_LP_certificate_scope": "Exact rational interpretation of the supplied binary64 continuous projected matrix",
+    "exact_seed_LP_gap_fraction": 0.0016364248197812045,
+    "exact_seed_LP_gap_from_stored_binary64_ratio": [
+      "12311161773226",
+      "7523206458621205"
+    ],
+    "exact_seed_LP_gap_percent": 0.16364248197812045,
+    "exact_seed_LP_lower_down": 13990132.691055497,
+    "gap_formula": "(checked_upper - lower) / checked_upper",
+    "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+    "original_soft_optimum_certified": false,
+    "physical_dc_lower_bound_certified": false,
+    "selected_gap_fraction": 0.0011103103065182782,
+    "selected_gap_percent": 0.11103103065182782,
+    "selected_lower_is_exact_certificate": false,
+    "selected_lower_raw_token": "13997505.1676",
+    "selected_lower_rounding_allowance": 0.00018997505167599998,
+    "selected_numerical_MIP_lower": 13997505.167410025,
+    "target_gap_fraction": 0.01
+  },
+  "schema": "may-current-scuc-public-result/v1",
+  "status": "PASS",
+  "timing_seconds": {
+    "candidate_internal": 461.8447777359979,
+    "candidate_process_spawn_through_reap": 467.01366663200315,
+    "complete_invocation_spawn_through_reap": 524.8657673799971,
+    "direct_DC_separator_internal": 94.4644998779986,
+    "full_CLI_reported": 524.8012089370022,
+    "independent_source_checker_internal": 61.240698706998955,
+    "ledger_stages": [
+      {
+        "actual": 82.11390634599957,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "role": "seed",
+        "stage": "seed",
+        "within_allocation": true
+      },
+      {
+        "actual": 15.404850387996703,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "role": "discovery",
+        "stage": "mip",
+        "within_allocation": true
+      },
+      {
+        "actual": 20.87805458100047,
+        "allocation": 30.0,
+        "overrun": 0.0,
+        "role": "carry",
+        "stage": "carry",
+        "within_allocation": true
+      },
+      {
+        "actual": 31.577862396996352,
+        "allocation": 180.0,
+        "overrun": 0.0,
+        "role": "proof",
+        "stage": "mip",
+        "within_allocation": true
+      }
+    ],
+    "physical_process_spawn_through_reap": 167.54888843699882,
+    "physical_worker_internal": 163.9315598070025,
+    "preparation": 55.13371080800425,
+    "preparation_attribution": {
+      "candidate_specific_retained_api_readback_seconds": 2.5210012199968332,
+      "candidate_specific_retained_projection_serialization_seconds": 8.267610034999961,
+      "common_original_api_readback_seconds": 6.299290035000013,
+      "common_original_generation_seconds": 26.94197741100652,
+      "native_runtime_qualification_seconds": 0.10503262899874244,
+      "setup_elapsed_before_certificate_worker_seconds": 48.90164220100269
+    },
+    "seed_MIP_carry_process_ledger": 149.9746737119931
+  }
+}

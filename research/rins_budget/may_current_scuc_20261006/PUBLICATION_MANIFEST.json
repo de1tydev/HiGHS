@@ -1,0 +1,30 @@
+{
+  "audit_sha256": "ebb0e33f29d310754f9b3b24a6ca70f5a9d5fe3e6f148b25bf525e0a4b9b7c3d",
+  "external_writes_performed": false,
+  "files": {
+    "README.md": {
+      "bytes": 5436,
+      "sha256": "d441d1e016826d46277779157547aae3be6149aef4d9f1661da6b83dc02f3477"
+    },
+    "RESULTS.public.json": {
+      "bytes": 14145,
+      "sha256": "042f7397611050be833933d8002e38bea1d45437d55bbfc7ada6ef78261ae0e4"
+    }
+  },
+  "independent_terminal_audit": "PASS",
+  "manifest_self_excluded": true,
+  "native_source_unchanged": true,
+  "new_solver_patch": false,
+  "schema": "may-current-scuc-publication-manifest/v1",
+  "source_unchanged": true,
+  "status": "PASS",
+  "target_repository_directory": "research/rins_budget/may_current_scuc_20261006",
+  "validation": {
+    "JSON_readback": true,
+    "exact_metric_projection": true,
+    "numerical_or_test_reruns": false,
+    "private_paths_and_tool_URLs_absent": true,
+    "relative_links_target_existing_public_package": true,
+    "source_manifest_file_equality_count": 70
+  }
+}
