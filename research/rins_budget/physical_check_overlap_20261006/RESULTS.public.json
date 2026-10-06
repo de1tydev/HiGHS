@@ -1,0 +1,177 @@
+{
+  "advancement_threshold_met": false,
+  "artifact_bytes_equal": {
+    "direct-witnesses/spill.sqlite3": {
+      "bytes": 8192,
+      "sha256": "6b0772b1520b26d29fd53b23cb7598e2317a24c24c1ab78195ad3f27393f9b33"
+    },
+    "direct-witnesses/violated_pairs.bin": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "direct-witnesses/witnesses.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "mapping-pairs.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "original.sol": {
+      "bytes": 14180934,
+      "sha256": "b764d988ea955e416c013deb239cb77b950b76dffeeb2e4669e7db0c1124088e"
+    }
+  },
+  "caps_seconds": {
+    "full": 660.0,
+    "full_arm": 300.0,
+    "qualification": 300.0,
+    "subset_arm": 90.0,
+    "tiny": 60.0
+  },
+  "checker_internal_seconds": {
+    "A": {
+      "direct_separator_seconds": 90.81928655999945,
+      "independent_source_checker_seconds": 62.14847931899931,
+      "physical_worker_seconds": 161.61913658900085
+    },
+    "B": {
+      "direct_separator_seconds": 114.38754484200035,
+      "independent_source_checker_seconds": 84.94891848100087,
+      "physical_worker_seconds": 122.48809003499991
+    }
+  },
+  "cpu_accounting": {
+    "A_single_wait4_subtree_seconds": 166.860601,
+    "A_wait4_pid": 7,
+    "B_child_diagnostic_seconds_already_included": 86.04986600000001,
+    "B_single_wait4_subtree_seconds": 213.434954,
+    "B_wait4_pid": 9,
+    "basis": "Fresh WaitObserver records per arm; exactly one wait4 result each; user+system from that one PID subtree is used. Source child diagnostic CPU is not added.",
+    "no_A_carryover": true,
+    "no_child_double_addition": true,
+    "source_child_wait4_pid": 11
+  },
+  "disposition": "Stop this version; no sweep, whole-CLI trial, production default change or promotion",
+  "evidence_sha256": {
+    "candidate_source_manifest": "3f32943fa695844a728fb6a951cba19de12b4e30afbdcbfae42c5aeefd30c572",
+    "full_A_scientific_result": "72a8f051c0671ce1dfa445fd725f5f82e53b751545690e83fe6b11528c560019",
+    "full_B_scientific_result": "7b292d4bd61d3d75fd3da6453d35d64b79b9cc12dc19e823464e124dfd783b7b",
+    "full_input_source_freeze": "1b640ff8fd9a82c58893e2dc2cf19c1d5f56d43661a4798193982d92bd0aee45",
+    "full_outer_receipt": "d86fc7dfa07caf884081be17d1a9b50403fa94d489234c1b1c7e52800ed1ae02",
+    "full_owner_result": "380b84c6e637c95353346bbfcc77bd270d33ad0e2df54307456e9eb42d974a48",
+    "full_phase_result": "250e3feee059b3f6172c2da41d72ffba7656288e32e5a6eaa02d4f066a0e934b",
+    "full_review": "9f03b2fc6af577d6cdfd2ed4143cf99ce59bc9afbc8ba93fd12d62b3100b1cf5",
+    "proposal": "0c728c86daef22ab9e7c6b7a644f9277405bef210fce276d954fce35680e2b90",
+    "qualification_review": "f18285f8141d0d6f2da6e914182fbedeaece6fbb8d8b0cdca1846008ebf7acbb",
+    "reference_source_manifest": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+    "source_delta": "006b9a04778eb87a5bd9b7fa2e4d04f75b02ef6632820a45229289ddb5a93322",
+    "source_review": "d4accb6329ccfc345a2e6a8c9d51c8e44570c0e7124cdc4a5cec8bffb356ea8f"
+  },
+  "measurement": {
+    "A_contained_process_seconds": 166.87944969100135,
+    "A_physical_worker_seconds": 161.61913658900085,
+    "A_total_cpu_seconds": 166.860601,
+    "A_tree_peak_rss_bytes": 477306880,
+    "B_contained_process_seconds": 127.40119237899853,
+    "B_physical_worker_seconds": 122.48809003499991,
+    "B_total_cpu_seconds": 213.434954,
+    "B_tree_peak_rss_bytes": 523743232,
+    "cpu_increase_fraction": 0.27912133074481726,
+    "scope": "One exposed October checker-only A then B; clocks nested, never additive; no whole-CLI gain claim",
+    "separate_whole_cli_trial_proposal_threshold_met": false,
+    "wall_reduction_fraction": 0.23656751855966607
+  },
+  "memory_observation": {
+    "A_sampled_tree_peak_rss_bytes": 477306880,
+    "B_sampled_tree_peak_rss_bytes": 523743232,
+    "B_source_child_high_water_KiB": 415316,
+    "B_worker_wait4_high_water_KiB": 486172,
+    "interpretation": "Sampled summed RSS is an observation, not a guarantee of unique physical memory or an unsampled peak. The two computational-process high-water sums are conservative and need not be simultaneous; supervisor processes are separate.",
+    "two_worker_high_water_sum_KiB": 901488
+  },
+  "numerical_checker_bodies_sha256": {
+    "core/driver/fractional_separator.py": "2f458f8fce43a4f3fb6ef0a1c5bb651a9752278184576c6041fa00c9c9953891",
+    "core/scuc/check_solution.py": "4ec9e509c1db0129a9dcf69acc0ee719800dc6e2977a54e4e30ab922e3d97084"
+  },
+  "patch_validation": {
+    "matches_frozen_candidate_files": true,
+    "method": "Byte comparison against an exact unified diff of the verified reference/candidate source files; no patch application to runtime trees",
+    "original_patch_unchanged": true
+  },
+  "portable_runtime_claim": false,
+  "prior_qualification": {
+    "controls": {
+      "cancel": {
+        "exact_reap_verified": true,
+        "expected_failure_verified": true,
+        "remaining_owned_pids": [],
+        "result_sha256": "d6aaff9ff219816815e8ac1bb2f6cb5dc6910479427468e7346f3901f762d22d"
+      },
+      "deadline": {
+        "exact_reap_verified": true,
+        "expected_failure_verified": true,
+        "remaining_owned_pids": [],
+        "result_sha256": "b77f261eb1f4dd9017195d9401b8b7898a53eb27d03380528d3c693896e2c2d4"
+      },
+      "error": {
+        "exact_reap_verified": true,
+        "expected_failure_verified": true,
+        "remaining_owned_pids": [],
+        "result_sha256": "06c009d1943699ee716d599fe9ed84b54b34c75254a7b226a99ae140f30a0b05"
+      }
+    },
+    "passed": true,
+    "tiny_and_subset_numerical_and_artifact_parity": true
+  },
+  "publication_execution": "Source/hash/JSON inspection and documentation only; no checker, numerical, optimizer, test or build rerun",
+  "schema": "physical-check-overlap-negative-public-checkpoint/v1",
+  "scientific": {
+    "actual_checker_overlap_seconds": 84.94883550799932,
+    "all_exact_reaps_verified": true,
+    "all_native_pools_one": true,
+    "all_remaining_owned_process_lists_empty": true,
+    "checked_upper": 11738459.752050288,
+    "coverage": {
+      "all_source_residual_categories_equal": true,
+      "base_residual_categories": 7,
+      "dense_array_parity_claimed": false,
+      "eligible_pair_hours": 66360168,
+      "hours": 36,
+      "ordered_outage_residual_records": 1288,
+      "outages": 1288,
+      "topologies_per_checker": 1289,
+      "violated_line_hours": 0,
+      "violated_pairs": 0
+    },
+    "exact_binary64_float_fields_compared": 2673,
+    "exact_json_path_exceptions": [
+      "$.direct_separator_seconds",
+      "$.independent_source_checker_seconds",
+      "$.physical_worker_seconds",
+      "$.separation.per_pair_worst.path",
+      "$.separation.violated_pairs.path"
+    ],
+    "native_runtime_files_verified": 303,
+    "native_runtime_reports_verified": 6,
+    "other_exact_scalar_fields_compared": 9134,
+    "scientific_parity_passed": true
+  },
+  "source_files": {
+    "current_scuc/physical.py": {
+      "candidate_sha256": "3b26ab68ae88b829c0cbca555cb9a8b30c9bbf1e735dc753030ebe70f3d13604",
+      "reference_sha256": "029cfece11b982c9b8ec5126ce6b63888ce6638514c871b1046ad3b9d2fd6ce4"
+    },
+    "current_scuc/physical_overlap.py": {
+      "candidate_sha256": "bce70dd14776bfe143d19fe4d29229f815b8965aaf03c9489b9694016f8c3744",
+      "reference_sha256": null
+    }
+  },
+  "status": "Scientific equality PASS; advancement FAILED on fixed CPU threshold; version not promoted",
+  "threshold": {
+    "changed_after_result": false,
+    "maximum_total_subtree_cpu_increase_fraction": 0.2,
+    "minimum_contained_wall_reduction_fraction": 0.2
+  },
+  "whole_cli_gain_claim": false
+}

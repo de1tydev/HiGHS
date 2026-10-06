@@ -1,0 +1,437 @@
+--- a/current_scuc/physical.py
++++ b/current_scuc/physical.py
+@@ -130,7 +130,7 @@
+         c.require(descriptor['pins'][role + '_sha256'] == request[role + '_sha256'], 'Full scope pinned ' + role + ' mismatch')
+ 
+ 
+-def write_raw_solution(path, expected, values, activities, objective, checks):
++def write_raw_solution(path, expected, values, activities, objective, checks, *, overlap=False):
+     """17-digit raw primal with every original row activity, then strict readback."""
+     import numpy as np
+     c.require(values.shape == (expected['num_col'],) and activities.shape == (expected['num_row'],), 'Raw primal shape mismatch')
+@@ -140,12 +140,17 @@
+     maximum=sum(len(name.encode())+33 for name in expected['col_names']+expected['row_names'])+65536
+     budget=c.storage()
+     witness = Path(path).parent/'direct-witnesses'
++    extra_bounds = []
++    if overlap:
++        from current_scuc.physical_overlap import output_bounds
++        extra_bounds = output_bounds(Path(path).parent)
+     c.start_output_phase(Path(path).parent,'full original raw point and direct witness outputs',[
+         budget.WriteBound(path,maximum,'complete original .17g columns and rows with finite values','source-derived fixed serializer bound'),
+         *[budget.WriteBound(witness/name,budget.PYTHON_FILE_LIMIT,'single frozen WitnessSink output','prospective512MiB process file limit')
+           for name in ('spill.sqlite3','witnesses.jsonl')],
+         budget.WriteBound(witness/'violated_pairs.bin',32*1024**2,'frozen packed pair output','WitnessSink MAX_PAIR_BYTES'),
+-        budget.WriteBound(witness/'FAILED.json',4096,'frozen bounded witness failure evidence','WitnessSink FAILURE_RESERVE_BYTES')])
++        budget.WriteBound(witness/'FAILED.json',4096,'frozen bounded witness failure evidence','WitnessSink FAILURE_RESERVE_BYTES'),
++        *extra_bounds])
+     with Path(path).open('x') as stream:
+         stream.write('Model status\nFeasible\n# Primal solution values\nFeasible\nObjective ' + format(objective, '.17g') + '\n')
+         stream.write('# Columns ' + str(expected['num_col']) + '\n')
+@@ -267,9 +272,12 @@
+     return max(costs)
+ 
+ 
+-def run(request, out, *, production=True):
++def run(request, out, *, production=True, overlap=False, deadline=None):
+     import numpy as np
+     started = time.monotonic()
++    if overlap:
++        c.require(type(deadline) in (int,float) and math.isfinite(deadline) and deadline > started,
++            'Overlap requires the containing physical-stage deadline')
+     f = c.helpers(); out = Path(out).resolve()
+     c.require(out.is_dir() and not any(out.iterdir()), 'Physical output must be fresh and empty')
+     stage, checks, separator, checker, model, qa, full = modules()
+@@ -320,7 +328,7 @@
+     accurate = qa.check_primal(expected, values, tolerance=TOLERANCE)
+     c.require(accurate['passed'] is True, 'Accurate original rows/bounds failed')
+     raw_path = out/'original.sol'
+-    parsed = write_raw_solution(raw_path, expected, values, accurate.pop('activities'), accurate['objective_recomputed'], checks)
++    parsed = write_raw_solution(raw_path, expected, values, accurate.pop('activities'), accurate['objective_recomputed'], checks, overlap=overlap)
+     pair_path = out/'mapping-pairs.json'
+     if production: c.require(request['mapping_pairs'] == [list(p) for p in f.PAIRS], 'Changed original mapping pairs')
+     c.bounded_write(pair_path,request['mapping_pairs'],fresh=True)
+@@ -333,14 +341,28 @@
+     c.require(matrix['passed'] is True and matrix['max_violation_by_category']['integrality'] <= INTEGER_TOLERANCE, 'Original integer matrix check failed')
+     c.require(checks.objective_consistent(matrix['linear_objective'], parsed['printed_objective']), 'Raw objective mismatch')
+     identity['matrix_check'] = matrix
+-    tick = time.monotonic()
+-    separation = separator.separate_integer_network(data, parsed['values'], hours, active,
+-        tolerance=TOLERANCE, identity=identity, witness_directory=out/'direct-witnesses')
+-    separator_seconds = time.monotonic() - tick
+-    violated = read_pairs(separation['violated_pairs'], scope)
+-    tick = time.monotonic()
+-    source, normalizations = stage.normalize_source_measurements(checker.check(request['source_path'], raw_path, 'n1', hours, TOLERANCE, True))
+-    checker_seconds = time.monotonic() - tick
++    if overlap:
++        from current_scuc.physical_overlap import SourceCheckChild, thread_readback
++        thread_readback()
++        with SourceCheckChild(request, raw_path, out, deadline) as source_child:
++            tick = time.monotonic()
++            separation = separator.separate_integer_network(data, parsed['values'], hours, active,
++                tolerance=TOLERANCE, identity=identity, witness_directory=out/'direct-witnesses')
++            separator_ended = time.monotonic()
++            separator_seconds = separator_ended - tick
++            source_child.record_separator_interval(tick, separator_ended)
++            violated = read_pairs(separation['violated_pairs'], scope)
++            source, normalizations, checker_seconds = source_child.result()
++        thread_readback()
++    else:
++        tick = time.monotonic()
++        separation = separator.separate_integer_network(data, parsed['values'], hours, active,
++            tolerance=TOLERANCE, identity=identity, witness_directory=out/'direct-witnesses')
++        separator_seconds = time.monotonic() - tick
++        violated = read_pairs(separation['violated_pairs'], scope)
++        tick = time.monotonic()
++        source, normalizations = stage.normalize_source_measurements(checker.check(request['source_path'], raw_path, 'n1', hours, TOLERANCE, True))
++        checker_seconds = time.monotonic() - tick
+     source['security']['violated_pairs'] = [list(pair) for pair in source['security']['violated_pairs']]
+     result = dict(schema=SCHEMA, passed=False, numerical_physical_witness=False, upper_bound_eligible=False,
+         physical_dc_lower_bound_certified=False, optimization_called=False, no_binary_rounding=True,
+--- a/current_scuc/physical_overlap.py
++++ b/current_scuc/physical_overlap.py
+@@ -0,0 +1,344 @@
++"""One owned independent source-check child; no numerical work at import.
++
++Only scheduling and evidence transport live here. The frozen source checker and
++normalizer execute unchanged inside the child. CPU in this receipt is diagnostic
++and is already included in the enclosing wait4 subtree measurement.
++"""
++from __future__ import annotations
++import argparse
++import importlib.util
++import json
++import math
++import numbers
++import os
++from pathlib import Path
++import signal
++import subprocess
++import struct
++import sys
++import time
++
++from ._paths import ROOT, module, sha256, source_sha
++from . import common as c
++
++THREAD_KEYS = ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS',
++               'NUMEXPR_NUM_THREADS', 'BLIS_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS')
++CHECKER = 'core/scuc/check_solution.py'
++NORMALIZER = 'core/driver/model_stage.py'
++REQUEST_LIMIT = 64 * 1024
++RESULT_LIMIT = 128 * 1024**2
++LOG_LIMIT = 512 * 1024**2  # Existing inherited RLIMIT_FSIZE, not a post-hoc estimate.
++RECEIPT_LIMIT = 64 * 1024
++
++
++class SourceChildFailure(ValueError):
++    pass
++
++
++class SourceChildCancelled(BaseException):
++    pass
++
++
++def _cancel(signum, frame):
++    raise SourceChildCancelled('Physical source-check owner cancelled: ' + str(signum))
++
++
++def _finite_tree(value):
++    if isinstance(value, dict):
++        for item in value.values(): _finite_tree(item)
++    elif isinstance(value, (list, tuple)):
++        for item in value: _finite_tree(item)
++    elif isinstance(value, float):
++        c.require(math.isfinite(value), 'Nonfinite source-child evidence')
++
++
++def _read(path, limit):
++    c.require(Path(path).is_file() and Path(path).stat().st_size <= limit,
++              'Missing/oversize source-child evidence')
++    def unique(items):
++        result = {}
++        for key, value in items:
++            c.require(key not in result, 'Duplicate source-child JSON key')
++            result[key] = value
++        return result
++    value = json.loads(Path(path).read_text(), object_pairs_hook=unique)
++    _finite_tree(value)
++    return value
++
++
++def output_bounds(out):
++    budget = c.storage(); directory = Path(out) / 'source-check'
++    return [budget.WriteBound(directory / name, limit, 'single owned source-check child',
++                              'fixed scheduling-only proposal writer bound')
++            for name, limit in (('request.json', REQUEST_LIMIT), ('result.json', RESULT_LIMIT),
++                                ('process.json', RECEIPT_LIMIT), ('started.json', RECEIPT_LIMIT),
++                                ('child.log', LOG_LIMIT))]
++
++
++def thread_readback():
++    """Read the installed library thread controls; never change them after import."""
++    from threadpoolctl import threadpool_info
++    info = threadpool_info()
++    c.require(info and all(item.get('num_threads') == 1 for item in info),
++              'Every loaded native thread pool must report one thread')
++    return info
++
++
++def validate_normalizations(source, records):
++    """Authenticate the transported conversion receipt against its measurements."""
++    import numpy as np
++    c.require(type(source) is dict and type(records) is list,
++              'Missing normalized scientific source report')
++    fields = {k: source[k] for k in ('linear_model_cost', 'true_source_cost',
++        'objective_overpayment', 'total_shed_MWh', 'max_overflow_MW', 'base_unrelaxed_overload_MW')}
++    fields.update({'max_violation_by_category.'+k: v
++                   for k, v in source['max_violation_by_category'].items()})
++    fields.update({'security.'+k: source['security'][k]
++                   for k in ('max_violation_after_shared_slack_MW', 'max_unrelaxed_overload_MW')})
++    seen = set()
++    for row in records:
++        c.require(type(row) is dict and set(row) ==
++                  {'field', 'original_type', 'normalized_type', 'value'},
++                  'Malformed scalar conversion receipt')
++        field = row['field']; original = row['original_type']
++        c.require(type(field) is str and field in fields and field not in seen,
++                  'Unknown or duplicate normalized measurement')
++        seen.add(field)
++        c.require(type(original) is str and original.startswith('numpy.'),
++                  'Conversion receipt did not describe a NumPy scalar')
++        name = original[len('numpy.'):]
++        dtype = getattr(np, name, None) if name.isidentifier() else None
++        c.require(isinstance(dtype, type) and issubclass(dtype, np.generic)
++                  and issubclass(dtype, numbers.Real), 'Original conversion type is not a NumPy real')
++        c.require(row['normalized_type'] == 'builtins.float' and type(row['value']) is float
++                  and type(fields[field]) is float and math.isfinite(row['value'])
++                  and struct.pack('<d', row['value']) == struct.pack('<d', fields[field]),
++                  'Scalar conversion receipt differs from normalized measurement')
++
++
++class SourceCheckChild:
++    """Context-owned single exec child; failures always end with an exact reap."""
++    def __init__(self, request, raw_path, out, deadline, *, test_mode=None):
++        c.require(type(deadline) in (int, float) and math.isfinite(deadline)
++                  and deadline > time.monotonic(), 'Missing/expired source-child deadline')
++        c.require(test_mode in (None, 'error', 'wait'), 'Unknown fixed fault injection')
++        self.request = request; self.raw_path = Path(raw_path); self.out = Path(out)
++        self.deadline = deadline; self.test_mode = test_mode
++        self.directory = self.out / 'source-check'
++        self.child = None; self.usage = None; self.handlers = {}; self.started = None
++        self.request_digest = None; self.receipt_written = False; self.log = None
++        self.reservations = None; self.result_value = None; self.stop_reason = None
++        self.separator_times = None
++
++    def record_separator_interval(self, started, ended):
++        c.require(all(type(v) in (int, float) and math.isfinite(v) for v in (started, ended))
++                  and self.started <= started <= ended <= self.deadline,
++                  'Invalid direct separator diagnostic interval')
++        self.separator_times = dict(started_monotonic=started, ended_monotonic=ended)
++
++    def __enter__(self):
++        try:
++            self.directory.mkdir(exist_ok=False)
++            self.reservations = c.storage().active_writer_reservations(output_bounds(self.out))
++            self.reservations.__enter__()
++            c.require(sha256(self.request['source_path']) == self.request['source_sha256'],
++                      'Changed source before child launch')
++            spec = importlib.util.find_spec('threadpoolctl')
++            c.require(spec is not None and spec.origin, 'Missing installed thread-pool reader')
++            self.child_request = dict(schema='physical-source-child-request/v1',
++                source_path=self.request['source_path'], source_sha256=self.request['source_sha256'],
++                solution_path=str(self.raw_path.resolve()), solution_sha256=sha256(self.raw_path),
++                hours=self.request['hours'], tolerance=1e-5, mode='n1', all_security=True,
++                checker_sha256=source_sha(CHECKER), normalizer_sha256=source_sha(NORMALIZER),
++                helper_sha256=source_sha('physical_overlap.py'),
++                source_manifest_sha256=sha256(ROOT/'SOURCE_MANIFEST.json'),
++                threadpoolctl_path=spec.origin, threadpoolctl_sha256=sha256(spec.origin),
++                deadline=self.deadline, test_mode=self.test_mode)
++            path = self.directory/'request.json'
++            c.bounded_write(path, self.child_request, fresh=True, limit=REQUEST_LIMIT)
++            self.request_digest = sha256(path)
++            env = dict(os.environ)
++            env.update({key: '1' for key in THREAD_KEYS})
++            env.update(PYTHONDONTWRITEBYTECODE='1', PYTHONNOUSERSITE='1',
++                       PYTHONHASHSEED='0', PYTHONPATH=str(ROOT.parent))
++            self.command = [sys.executable, '-B', '-s', '-m', 'current_scuc.physical_overlap',
++                            '--request', str(path), '--request-sha256', self.request_digest]
++            self.handlers = {s: signal.signal(s, _cancel) for s in
++                             (signal.SIGTERM, signal.SIGINT, signal.SIGHUP)}
++            self.log = (self.directory/'child.log').open('xb')
++            self.started = time.monotonic()
++            self.child = subprocess.Popen(self.command, env=env, stdout=self.log,
++                                          stderr=subprocess.STDOUT, start_new_session=True)
++            return self
++        except BaseException:
++            self.close('launch failure')
++            raise
++
++    def _reap(self, block=False):
++        if self.child is None or self.usage is not None: return True
++        pid, status, usage = os.wait4(self.child.pid, 0 if block else os.WNOHANG)
++        if not pid: return False
++        c.require(pid == self.child.pid, 'Reaped a different source child')
++        self.child.returncode = os.waitstatus_to_exitcode(status); self.usage = usage
++        return True
++
++    def result(self):
++        c.require(self.child is not None, 'Source child was not launched')
++        while not self._reap():
++            if time.monotonic() >= self.deadline:
++                self.close('deadline')
++                raise SourceChildFailure('Independent source child exceeded the common deadline')
++            time.sleep(min(.02, max(0., self.deadline - time.monotonic())))
++        c.require(self.child.returncode == 0, 'Independent source child failed')
++        result = _read(self.directory/'result.json', RESULT_LIMIT)
++        c.require(result.get('schema') == 'physical-source-child-result/v1'
++                  and result.get('request_sha256') == self.request_digest
++                  and result.get('complete') is True and result.get('passed') is True,
++                  'Incomplete or failed independent source-child result')
++        c.require(result['checker_sha256'] == self.child_request['checker_sha256']
++                  and result['normalizer_sha256'] == self.child_request['normalizer_sha256']
++                  and result['source_sha256'] == self.child_request['source_sha256']
++                  and result['solution_sha256'] == self.child_request['solution_sha256'],
++                  'Changed source-child result binding')
++        for key in ('native_threads_before', 'native_threads_after'):
++            c.require(result[key] and all(v.get('num_threads') == 1 for v in result[key]),
++                      'Invalid source-child native thread readback')
++        validate_normalizations(result['source'], result['normalizations'])
++        c.require(type(result['checker_seconds']) in (int, float)
++                  and 0 <= result['checker_seconds'] <= self.deadline-self.started,
++                  'Invalid source-checker task clock')
++        c.require(all(type(result[k]) in (int, float) for k in
++                      ('checker_started_monotonic', 'checker_ended_monotonic'))
++                  and self.started <= result['checker_started_monotonic']
++                  <= result['checker_ended_monotonic'] <= self.deadline,
++                  'Invalid source-checker diagnostic interval')
++        c.require(result['source']['pass_primal'] is True, 'Independent source primal failed')
++        c.require(sha256(self.raw_path) == self.child_request['solution_sha256']
++                  and sha256(self.request['source_path']) == self.child_request['source_sha256'],
++                  'Independent source-child input changed')
++        self.result_value = result
++        return result['source'], result['normalizations'], result['checker_seconds']
++
++    def close(self, reason=None):
++        if self.receipt_written: return
++        self.stop_reason = self.stop_reason or reason
++        # A second ordinary cancellation cannot interrupt exact child cleanup.
++        # The outer watchdog retains its hard-kill authority over this tree.
++        for signum in self.handlers: signal.signal(signum, signal.SIG_IGN)
++        try:
++            if self.child is not None and not self._reap():
++                from .slot_envelope import kill_group
++                # No source child is permitted to create children. The enclosing
++                # watchdog still owns every descendant if the owner is killed.
++                kill_group(self.child.pid)
++                self._reap(block=True)
++            if self.child is not None:
++                c.require(self.usage is not None, 'Source child was not exactly reaped')
++                group_gone = False
++                try: os.killpg(self.child.pid, 0)
++                except ProcessLookupError: group_gone = True
++                c.require(group_gone, 'Owned source-child process group survived reap')
++                c.require((self.directory/'child.log').stat().st_size <= LOG_LIMIT,
++                          'Source-child log exceeded its declared bound')
++                receipt = dict(schema='physical-source-child-process/v1', command=self.command,
++                    pid=self.child.pid, returncode=self.child.returncode, exact_child_reaped=True,
++                    surviving_owned_pids=[], stop_reason=self.stop_reason,
++                    elapsed_seconds=time.monotonic()-self.started,
++                    user_cpu_seconds=self.usage.ru_utime, system_cpu_seconds=self.usage.ru_stime,
++                    peak_rss_KiB=self.usage.ru_maxrss,
++                    cpu_scope='Diagnostic child usage already contained in outer wait4 subtree; do not add',
++                    separator_interval=self.separator_times,
++                    source_checker_interval=(dict(started_monotonic=self.result_value['checker_started_monotonic'],
++                        ended_monotonic=self.result_value['checker_ended_monotonic']) if self.result_value else None),
++                    request_sha256=self.request_digest,
++                    result_sha256=sha256(self.directory/'result.json')
++                        if (self.directory/'result.json').is_file() else None)
++                c.bounded_write(self.directory/'process.json', receipt, fresh=True, limit=RECEIPT_LIMIT)
++            self.receipt_written = True
++        finally:
++            if self.log is not None: self.log.close(); self.log = None
++            for signum, old in self.handlers.items(): signal.signal(signum, old)
++            self.handlers = {}
++            if self.reservations is not None:
++                self.reservations.__exit__(None, None, None); self.reservations = None
++
++    def __exit__(self, kind, value, traceback):
++        self.close(None if kind is None else kind.__name__)
++        return False
++
++
++def child_main(argv=None):
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('--request', required=True); parser.add_argument('--request-sha256', required=True)
++    args = parser.parse_args(argv); path = Path(args.request)
++    c.require(sys.dont_write_bytecode and __debug__, 'Source child requires Python -B and assertions')
++    c.require(all(os.environ.get(k) == '1' for k in THREAD_KEYS), 'Pre-import thread limits must all be one')
++    c.require(not any(n == 'numpy' or n == 'scipy' or n.startswith(('numpy.', 'scipy.'))
++                      for n in sys.modules), 'Numerical libraries loaded before child admission')
++    from .process_runner import apply_limits
++    apply_limits()
++    c.require(sha256(path) == args.request_sha256, 'Source-child request changed')
++    request = _read(path, REQUEST_LIMIT)
++    result = dict(schema='physical-source-child-result/v1', request_sha256=args.request_sha256,
++                  complete=False, passed=False)
++    try:
++        c.require(request['schema'] == 'physical-source-child-request/v1'
++                  and request['mode'] == 'n1' and request['all_security'] is True
++                  and request['tolerance'] == 1e-5, 'Invalid source-child numerical domain')
++        c.require(time.monotonic() < request['deadline'], 'Expired source-child launch')
++        c.require(sha256(request['source_path']) == request['source_sha256']
++                  and sha256(request['solution_path']) == request['solution_sha256'],
++                  'Source-child input changed before numerical imports')
++        c.require(source_sha(CHECKER) == request['checker_sha256']
++                  and source_sha(NORMALIZER) == request['normalizer_sha256']
++                  and source_sha('physical_overlap.py') == request['helper_sha256']
++                  and sha256(ROOT/'SOURCE_MANIFEST.json') == request['source_manifest_sha256'],
++                  'Source-child implementation changed')
++        c.require(sha256(request['threadpoolctl_path']) == request['threadpoolctl_sha256'],
++                  'Thread-pool reader changed')
++        c.bounded_write(path.parent/'started.json', dict(pid=os.getpid(),
++            request_sha256=args.request_sha256, test_mode=request['test_mode'],
++            thread_environment={k: os.environ[k] for k in THREAD_KEYS}), fresh=True, limit=RECEIPT_LIMIT)
++        if request['test_mode'] == 'error': raise SourceChildFailure('Fixed qualification child error')
++        if request['test_mode'] == 'wait':
++            while True: signal.pause()
++        c.require(request['test_mode'] is None, 'Invalid fixed fault injection')
++        checker = module('_physical_source_child_checker', ROOT/CHECKER)
++        stage = module('_physical_source_child_normalizer', ROOT/NORMALIZER)
++        from .runtime import verify_loaded_runtime
++        from .binding import config
++        identities = config()['python_distribution_files']
++        runtime_before = verify_loaded_runtime(identities)
++        before = runtime_before['threadpools']
++        c.require(before and all(item.get('num_threads') == 1 for item in before),
++                  'Missing/non-single-thread child numerical runtime')
++        tick = time.monotonic()
++        # Normalization MUST precede JSON: its receipt records original NumPy types.
++        raw = checker.check(request['source_path'], request['solution_path'], 'n1', request['hours'], 1e-5, True)
++        checker_ended = time.monotonic()
++        source, normalizations = stage.normalize_source_measurements(raw)
++        seconds = time.monotonic()-tick
++        runtime_after = verify_loaded_runtime(identities)
++        after = runtime_after['threadpools']
++        c.require(after and all(item.get('num_threads') == 1 for item in after),
++                  'Missing/non-single-thread child numerical runtime after check')
++        c.require(time.monotonic() < request['deadline'], 'Source checker exceeded common deadline')
++        c.require(sha256(request['source_path']) == request['source_sha256']
++                  and sha256(request['solution_path']) == request['solution_sha256'],
++                  'Source-child inputs changed during check')
++        result.update(complete=True, passed=source['pass_primal'], source=source,
++            normalizations=normalizations, checker_seconds=seconds, native_threads_before=before,
++            checker_started_monotonic=tick, checker_ended_monotonic=checker_ended,
++            native_threads_after=after, loaded_runtime_before=runtime_before,
++            loaded_runtime_after=runtime_after, source_sha256=request['source_sha256'],
++            solution_sha256=request['solution_sha256'], checker_sha256=request['checker_sha256'],
++            normalizer_sha256=request['normalizer_sha256'])
++    except Exception as exc:
++        result.update(error=type(exc).__name__ + ': ' + str(exc))
++    _finite_tree(result)
++    c.bounded_write(path.parent/'result.json', result, fresh=True, limit=RESULT_LIMIT)
++    return 0 if result['complete'] and result['passed'] else 2
++
++
++if __name__ == '__main__':
++    raise SystemExit(child_main())
