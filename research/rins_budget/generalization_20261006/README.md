@@ -13,7 +13,7 @@ Research baseline `6b2fee0d4c3f5a2b2d595ed6526c3f9e6e9e0eec`; plan registered in
 `d547a3ad8af5399651187fb0e133cf0e42615b82`, tree
 `788b41e141fa455509c71593e1718b7b71168320`, identifying itself as 1.15.1. It is an
 exact development commit, not an assertion of equality to every published
-1.15.1 benchmark executable. Rebuilt with GCC 12.2.0, two build jobs, prescribed
+1.15.1 benchmark executable. Rebuilt with GCC 14.2.0, two build jobs, prescribed
 options and locally generated runtime/helper manifests. Python 3.12.14, NumPy
 2.3.5, SciPy 1.17.0, threadpoolctl 3.6.0. Recovered venv initially lacked numerical
 packages. Its setuptools startup hook was removed to meet the unmodified clean
