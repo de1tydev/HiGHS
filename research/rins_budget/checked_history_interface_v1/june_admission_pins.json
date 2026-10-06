@@ -1,0 +1,68 @@
+{
+  "purpose": "Fixed reviewed June seed1 historical admission pins. Copy as trusted source; never accept replacement pins from an input label. No scientific recomputation is authorized.",
+  "archives": {
+    "highs-current-scuc-seed-panel-run01-20261006.tar.gz": "76795f954c18e3f9c38c2890b2608466b947098ff2424b224070ee76fb351467",
+    "highs-current-scuc-seed-v3-source-20261006.tar.gz": "3399a7777516de1ca5b5a0e8c28d43fd0bdb6c4c7efcc2bced77f943b5b69e11",
+    "highs-current-scuc-seed-panel-run01-closure-20261006.tar.gz": "2d25bce93ed3f2eb09a1a40298fc4bbf03e2f6b4452124ff37066d4a451095ff"
+  },
+  "members": {
+    "selected/run/RESULT.json": "2cbfd5f0a29a666d60aa2b9e234df775eb8552eea6fd92913844fcffad244fe0",
+    "selected/run/candidate/completion.json": "2523c74033102aa3fd61cf6ccf56e88647a412ceee2e07ab79be8d5b158df87a",
+    "selected/run/candidate/physical-request.json": "b37d2dd221e52ec2971694c0460323b4ef6aba08c87fb46ccebe81c379772cd2",
+    "selected/run/candidate/physical/result.json": "1a198091e7143d1c67701f73c31bc209a48d154b617131a6a88f2ef6e9d5ee25",
+    "selected/run/candidate/physical/completion.json": "b43e341ea7964145adc53d225d6377d90a289c50d73445fcd265ac56946df452",
+    "selected/run/candidate/physical/original.sol": "9f33afd80e98e19e7b77735df04db879fc530c902b31b2948ab7c68d272cd0f2",
+    "selected/run/candidate/mip-02/round-03-original-lift.json": "b2fe37c9ac577d3b8c0f24e4896761d5691da9c8dc0e5b8fcb759d1c74e6a018",
+    "selected/run/candidate/mip-02/round-03-original-lift.npz": "7e188a47c0dbf532b0e0dc673a80a4abbc7099dbc683f8ca8d982b46b3778c97",
+    "selected/run/candidate/mip-02/round-03-source-quality.json": "2d6cae5d5a4b0150947a21b4492860a558671dbd3582558ce80e00d9240c1575",
+    "selected/run/candidate/mip-02/round-03-source-quality.npz": "686df86fecb82c3bd210a20c89bc97c8cd42bff26bff20b96b9344ce05beb22f",
+    "selected/run/candidate/mip-02/round-03-full-source-quality.json": "389b91792417fe3551e62f9d62188c239dd574fa65ef0bc16c1cc66d7d209848",
+    "selected/run/candidate/mip-02/master.mps.meta.json": "948e1828771a8e58c3dfb95dc75d893d87e5723f705947d4e5dc5546c619890e",
+    "selected/run/candidate/mip-02/master.mps.readback.json": "6bdf85503004be42c8aea0569a35b4ff1f15afd30614d90f5e3bcebc6c442d6a",
+    "selected/run/candidate/seed/projection.json": "3d5b5f437c54e56107f4a86379cf09fc5c900da6941e0233cecf6329ddf18027",
+    "selected/run/candidate/seed/projection.npz": "08fde84649a700ce9f4ffd69b9f7d4fbcd3f93411237162fd944b0ad4d3f2e87",
+    "selected/run/candidate/durability/checkpoint-07/local-receipt.json": "e5cb93467099a61fc130d10727a90dd7adfa25a2f145ea535d2de8773f1186fc",
+    "selected/run/candidate/durability/checkpoint-07/manifest.json": "2a4d0918b353428582f58893de277a2eda21900210bb69f5dc1734a13fab735f",
+    "source-anchor/input/case1354pegase_2017-06-01.json.gz": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "source-anchor/package/current_scuc/SOURCE_MANIFEST.json": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+    "audit-anchor/audit/run01-june-seed1/AUDIT.json": "e1915b2fef56e8432e5f78714e54c2e86059d548e04433cc5a74e0b735ea3141",
+    "audit-anchor/audit/run01-june-seed1/AUDIT_MANIFEST.json": "acd774c9708cbca724ebcbb54b355cbd5d0d805884ad3e7c20a2ffb84e0ebe59",
+    "audit-anchor/terminal/TERMINAL_VERIFIED.json": "5c1f57093d93680090c5e7fd17b83a5e1f6ac4e8242dae744caa02adc368f19d",
+    "candidate-result-selected-fields.json": "c246901861d17ad775ebd9c56c73f43f6b3a0fc70e17db99896b7c1dce4f0819",
+    "final-evaluation-receipts.json": "dcc94a0c1fedb2e4325736de3597911b653a7bbbcbd396ea1c88838a1dcdd772",
+    "VERIFIED_ENDPOINT.json": "2f4c1336548c599734862fbabb6b4d6e21f1084c097ae1c7bb629a7e8358e66c",
+    "INVENTORY.json": "b4921972c0c5a11cc537d42915bd409044277ed83e89fac5de4cc8473d44871d",
+    "semantic-verification.json": "50d83969458790d59758b94ab7b6e2b76e8f6083dc019cbc8454d29f98476644",
+    "anchor-verification.json": "3b4f11685494c0733b829a83a8187152d12e1e106a9a1346f78c7c01c62679c2",
+    "stage-chain-verification.json": "d34669f7cb1ee894f2b2b2033693f0ea6ea639a0252ab5e15dbf0d23b7fc0d8e",
+    "chronology.json": "bfe49036f83b3528173cfdef7aa906c6e27eccac019129c628e8f2b8e2587db7"
+  },
+  "derived_views": {
+    "candidate-result-selected-fields.json": {
+      "source_archive": "highs-current-scuc-seed-panel-run01-20261006.tar.gz",
+      "source_member": "run/candidate/result.json",
+      "source_member_sha256": "f133d5694d339459fdfb9f24ddbfabdcd6ba43fc8d2cb3e87fa0735e2afbb14c",
+      "selection": "Root scalar fields, interval, physical object, trace identity/checker fields; not original serialized bytes"
+    },
+    "final-evaluation-receipts.json": {
+      "source_archive": "highs-current-scuc-seed-panel-run01-20261006.tar.gz",
+      "source_member": "run/candidate/result.json",
+      "source_member_sha256": "f133d5694d339459fdfb9f24ddbfabdcd6ba43fc8d2cb3e87fa0735e2afbb14c",
+      "selection": "trace entry with call=selected_final_call=2: selected evaluation receipts, checked_stage_binding, master_quality, report"
+    },
+    "VERIFIED_ENDPOINT.json": {
+      "meaning": "Compact verified projection derived from all three pinned archives; exact member identities embedded"
+    },
+    "INVENTORY.json": {
+      "meaning": "Current recovery inventory; this digest pins its finalized version"
+    }
+  },
+  "admission_scope": {
+    "single_known_history": "case1354pegase_2017-06-01 / solver seed 1 / final call 2",
+    "scenario_date_not_label_availability": true,
+    "archived_audit_timestamp": "2026-10-06T03:20:07.965065+00:00",
+    "old_monotonic_deadlines_are_historical_only": true,
+    "no_physical_dc_lower_bound_certification": true,
+    "no_optimizer_or_checker_execution": true
+  }
+}

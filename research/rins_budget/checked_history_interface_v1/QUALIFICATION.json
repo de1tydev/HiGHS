@@ -1,0 +1,122 @@
+{
+  "schema": "checked-history-terminal-thin-audit/v1",
+  "passed": true,
+  "failures": [],
+  "source_review_v2_sha256": "d3f28f71864a303c616d1c84e1d41952b966c2f72f0f5c0616d7643bfa70cc9e",
+  "actual_native_optimizer_processes": 8,
+  "actual_deterministic_helper_processes": 2,
+  "arms": [
+    {
+      "arm": "cold",
+      "native_calls": 1,
+      "helper_calls": 0,
+      "final_start": "cold",
+      "objective": 13,
+      "whole_seconds": 0.6779059959990263,
+      "final_allocation_seconds": 24.945912846000283,
+      "prior_debit_seconds": 0.054087153999716975,
+      "unmarked_allocation_gap_seconds": 5.838002834934741e-06,
+      "probe_outcome": "abstained"
+    },
+    {
+      "arm": "partial",
+      "native_calls": 2,
+      "helper_calls": 0,
+      "final_start": "complete_original_matrix_checked",
+      "objective": 13,
+      "whole_seconds": 0.7235328349997872,
+      "final_allocation_seconds": 24.9058902450015,
+      "prior_debit_seconds": 0.09410975499849883,
+      "unmarked_allocation_gap_seconds": 2.934997610282153e-06,
+      "probe_outcome": "candidate_pending_check"
+    },
+    {
+      "arm": "infeasible_suggestion",
+      "native_calls": 2,
+      "helper_calls": 0,
+      "final_start": "complete_original_matrix_checked",
+      "objective": 13,
+      "whole_seconds": 0.7515670290013077,
+      "final_allocation_seconds": 24.91950970399921,
+      "prior_debit_seconds": 0.08049029600078939,
+      "unmarked_allocation_gap_seconds": 2.1329979063011706e-06,
+      "probe_outcome": "candidate_pending_check"
+    },
+    {
+      "arm": "abstention",
+      "native_calls": 1,
+      "helper_calls": 0,
+      "final_start": "cold",
+      "objective": 13,
+      "whole_seconds": 0.7428230219993566,
+      "final_allocation_seconds": 24.94222603399976,
+      "prior_debit_seconds": 0.05777396600024076,
+      "unmarked_allocation_gap_seconds": 6.6590000642463565e-06,
+      "probe_outcome": "abstained"
+    },
+    {
+      "arm": "timeout",
+      "native_calls": 1,
+      "helper_calls": 1,
+      "final_start": "cold",
+      "objective": 13,
+      "whole_seconds": 4.715877894999721,
+      "final_allocation_seconds": 20.921346691000508,
+      "prior_debit_seconds": 4.078653308999492,
+      "unmarked_allocation_gap_seconds": 1.4120014384388924e-06,
+      "probe_outcome": "timeout"
+    },
+    {
+      "arm": "invalid_point",
+      "native_calls": 1,
+      "helper_calls": 1,
+      "final_start": "cold",
+      "objective": 13,
+      "whole_seconds": 0.8153397200003383,
+      "final_allocation_seconds": 24.882748901000014,
+      "prior_debit_seconds": 0.11725109899998643,
+      "unmarked_allocation_gap_seconds": 2.4339969968423247e-06,
+      "probe_outcome": "candidate_pending_check"
+    }
+  ],
+  "native_process_seconds_total": 0.04660696700375411,
+  "helper_process_seconds_total": 4.033115957001428,
+  "functional_enclosing_seconds": 9.760229961000732,
+  "june_label_count": 9360,
+  "historical_archive_pins_verified": 3,
+  "historical_member_pins_verified": 30,
+  "label_data_only_seconds": 1.7927757789984753,
+  "label_enclosing_seconds": 2.4406516650014964,
+  "build_enclosing_seconds": 2.8887584500007506,
+  "audit_scope": "Receipt/hash/selected archived-point comparisons only. No test, original-matrix arithmetic checker, physics, native C API, build, optimizer, historical admission or retrieval execution repeated. Model fidelity and final QA conclusions are bound retained runtime evidence.",
+  "limits": "Synthetic four-binary qualification only; one genuine historical window admitted separately. No SCUC transfer, generalization, speed or solver-gap proof. Only complete checked point transfer; probe lower/upper and final lower bound remain null. Nested timers are not additive.",
+  "pure_tests": {
+    "methods": 15,
+    "passed": true,
+    "scope": "synthetic contract tests"
+  },
+  "source_review_capsule_sha256": "e26f94e9f2f3bf0214f01a11331678499743ca2c1cfa331486e3c17213ef9b7f",
+  "terminal_capsule_sha256": "dafff37bd782eedad32199351adea89c90fcef3d1bb02d5a0b0f8644eb971aec",
+  "terminal_audit_sha256": "1bce22e9a0084f2cb52e752620ffa6e6ca5f7fdd74d651d4e1f66889421165fe",
+  "runtime": {
+    "official_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "library_sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+    "adapter_sha256": "64fc588e461c918ead65bd55c9c0dbaa9667f3047d0ba95734e41ea9b48944ca",
+    "compiler": "GCC14.2.0",
+    "python": "3.12.14",
+    "platform": "Debian13.6 Linux x86_64",
+    "threads": 2,
+    "parallel": "off",
+    "seed": 1
+  },
+  "genuine_label": {
+    "case": "case1354pegase",
+    "window_start": "2017-06-01T00:00:00+00:00",
+    "window_end": "2017-06-02T12:00:00+00:00",
+    "observed_available_at": "2026-10-06T03:20:07.965065+00:00",
+    "binary_u_count": 9360,
+    "features": 36,
+    "scope": "single archived full-quality original point; no new physical solve/check execution",
+    "source_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c"
+  }
+}

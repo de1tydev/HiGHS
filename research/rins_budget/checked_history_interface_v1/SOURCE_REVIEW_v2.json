@@ -1,0 +1,65 @@
+{
+  "contract_tests_in_source": 15,
+  "executed": [
+    "Python AST parsing",
+    "JSON syntax readback",
+    "whitespace checks"
+  ],
+  "files": {
+    "README.md": {
+      "bytes": 3039,
+      "sha256": "82156b9070bbbb326565f401b1bfc7ac181871474fb686d039e19dcc54a0dd63"
+    },
+    "common.py": {
+      "bytes": 3261,
+      "sha256": "9ad2c9bd9ed7792c80df79389a9c07d3e548ef283646dc8a7d4fedd3d8f67a11"
+    },
+    "driver.py": {
+      "bytes": 11257,
+      "sha256": "7821e98354368d04f4ab933b931e12b61b1f98b815e932b1361f43aeb2e54966"
+    },
+    "history.py": {
+      "bytes": 5159,
+      "sha256": "d164b00c039ff1971914d951dc6d2d662225d49ca210453b788c6c5cadbeba8a"
+    },
+    "june_admission_pins.json": {
+      "bytes": 5715,
+      "sha256": "ee45b622645d52dfcf409879b43aec4cc8893b607916f03dbe03041132578112"
+    },
+    "june_label.py": {
+      "bytes": 9267,
+      "sha256": "e96c4cb64c11d472ad6291944673f7b4a08c1236cac9c8a4ae9dca5766e1ad08"
+    },
+    "run_functional.py": {
+      "bytes": 5467,
+      "sha256": "d5088f490c86ee0c25278b8c6c153e200b727c36c598db0d198cb43fe41418c6"
+    },
+    "sparse_probe.cpp": {
+      "bytes": 12537,
+      "sha256": "1dd90e7da32f73a457b01cb04160870c090b7d2a59410f2bad65587fc22a33bc"
+    },
+    "test_contracts.py": {
+      "bytes": 11885,
+      "sha256": "8d6e7f85bcd4cdc2c8be41a266af2ecd4eb2e35edc16c9e5d031fee8c833cae1"
+    },
+    "test_probe_helper.py": {
+      "bytes": 1321,
+      "sha256": "51c755b0ad7cc0ae45baffaebceaaf09233ace3cf5e9fbf7197c548f31eae167"
+    }
+  },
+  "narrow_changes": [
+    "admission-time canonical record digest and predict-time mutation rejection",
+    "equivalent UTC window-encoding deduplication coverage; canonical UTC grouping already present"
+  ],
+  "not_executed_for_revision_2": [
+    "tests",
+    "native readback",
+    "build",
+    "optimizer",
+    "historical label admission"
+  ],
+  "prior_13_test_result": "Retained unchanged by parent; not rerun in this authoring task",
+  "prior_source_review_sha256": "4cb2a6854d3bd3ba1929f4057f26decebe4506e9fbe4e9eeaf815e144a6f6f7a",
+  "revision": 2,
+  "status": "source_only_ready_for_thin_review"
+}
