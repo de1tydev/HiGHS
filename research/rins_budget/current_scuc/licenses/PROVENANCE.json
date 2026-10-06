@@ -1,0 +1,47 @@
+{
+  "dataset_license_inferred": false,
+  "project_repository_commit": "38c9d7ff0260136db4f86542714f5ea4df7c5ad1",
+  "public_repository_files": [
+    "https://github.com/de1tydev/HiGHS/blob/38c9d7ff0260136db4f86542714f5ea4df7c5ad1/research/rins_budget/network_projection/LICENSE.txt",
+    "https://github.com/de1tydev/HiGHS/blob/38c9d7ff0260136db4f86542714f5ea4df7c5ad1/research/rins_budget/scuc/sources/UCjl_v0.3.0_LICENSE.md"
+  ],
+  "records": [
+    {
+      "bytes": 1062,
+      "path": "LICENSE.txt",
+      "sha256": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7"
+    },
+    {
+      "bytes": 1062,
+      "path": "licenses/HiGHS_LICENSE.txt",
+      "sha256": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7"
+    },
+    {
+      "bytes": 1872,
+      "path": "licenses/CLI11_NOTICE.txt",
+      "sha256": "52eb747df24ee120dbcd952075b6354f1214a5cbab5b3e71d80ffa61df9d59e7"
+    },
+    {
+      "bytes": 1789,
+      "path": "licenses/UCjl_v0.3.0_LICENSE.md",
+      "sha256": "1c50672dd60074aa0d516c1c61834f47fb6002f4d70e707523d57bda5f0f136c"
+    },
+    {
+      "bytes": 874,
+      "path": "licenses/pdqsort_LICENSE.txt",
+      "sha256": "323fc18e35fcf058d69d684022ef844f206cb8fefb2bac1298fa1767e0b9ae38"
+    },
+    {
+      "bytes": 2522,
+      "path": "licenses/HiGHS_THIRD_PARTY_NOTICES.md",
+      "sha256": "a93082ab82d5f0a01c86b48a142ccea2ed2175f7dccb9e95a04770f4e2ae39a2"
+    },
+    {
+      "bytes": 1117,
+      "path": "licenses/zstr_LICENSE.txt",
+      "sha256": "bd61d5fb15992f4c188a0f96dd836b20d449cd080b4e949ab89f9eda3f61c59a"
+    }
+  ],
+  "upstream_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "verified_on": "2026-10-06"
+}

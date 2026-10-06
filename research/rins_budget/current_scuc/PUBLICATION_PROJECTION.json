@@ -1,0 +1,20 @@
+{
+  "changed_documentation": [
+    "README.md",
+    "tests/TINY_REPLAY.md"
+  ],
+  "native_binaries_included": false,
+  "new_documentation": [
+    "VALIDATION.md"
+  ],
+  "numerical_execution_repeated": false,
+  "omitted_measured_evidence": [
+    "validation/native-runtime-manifest.json",
+    "validation/READINESS.json"
+  ],
+  "private_path_or_library_id_scan_passed": true,
+  "python_and_test_source_files_identical": 85,
+  "schema": "current-scuc-publication-projection/v1",
+  "source_manifest_sha256": "b2bcc4dc84d77eb1e5f5491bfbc1e15947f886720c439ee7595ec0ba0b6aa164",
+  "tested_source_capsule_sha256": "2b9b805759bfe5f7a4a5736288b5fff1f6310e743fd02e3bf10cdf961fcc6da3"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "current-scuc-policy/v1",
+  "platform": "Linux x86-64, little endian, binary64, 32-bit HighsInt",
+  "source_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "candidate_only": true,
+  "production_family": "case1354pegase",
+  "hours": 36,
+  "preparation_seconds": 600,
+  "preparation_worker_seconds": 300,
+  "candidate_seconds": 1800,
+  "solver_process_seconds": 600,
+  "whole_storage_required_bytes": 26974885888,
+  "seed_lp_calls": 2,
+  "seed_native_seconds": 60,
+  "mip_calls_at_most": 3,
+  "carry_preparations_at_most": 2,
+  "exact_certificate_attempt_seconds": 20,
+  "exact_certificate_total_seconds": 120,
+  "physical_dc_lower_bound_certified": false,
+  "archive_required": false
+}

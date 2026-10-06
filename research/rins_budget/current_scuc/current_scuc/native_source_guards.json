@@ -1,0 +1,18 @@
+{
+  "CMakeLists.txt": "29ecd20ff02ed171ac56ca9b6433fdaf673534329699060c53602669a47bcf40",
+  "app/RunHighs.cpp": "724b3105716d31b6fe584dfc6e03955de71bb39d1e06aef7ce91fe15d252051f",
+  "highs/Highs.h": "48113595b60211adfcf0200f1f23ae46cea22c21dc64648f70cd389d4f19e89d",
+  "highs/interfaces/highs_c_api.cpp": "fbe75ee7e3e5938f0f04a04caf704ff38ba1bad2b7d252a850018473b6ab8396",
+  "highs/interfaces/highs_c_api.h": "b1ca641440b94750d2a867f1ebc2d1e760ab392da2731072cbd0e297eced814a",
+  "highs/io/HighsIO.cpp": "5ee0815ae7f7eb6900ffd1b5f250a0efe9aa14538372949a838e4e26ea4f38e9",
+  "highs/io/HighsIO.h": "f42eb3fa13aaf169b796e2bf8fcda396c7f9cf63c1caa94e383e8b1e2ee4194d",
+  "highs/lp_data/Highs.cpp": "6f84c2f12277e7bf335b13e0ce63936d3f3c2b9ec95dd4910ffa8de077f899f0",
+  "highs/lp_data/HighsLpUtils.cpp": "5558ae4b4bbaa28200f39087b153aede08ae1cf5962f61ac09fce1b6755e2a82",
+  "highs/lp_data/HighsModelUtils.cpp": "584f18dee538ffcc779d9f5924d27ec40145be54304b4e38e8fdabf4936347ae",
+  "highs/lp_data/HighsOptions.h": "c2a1db98117a9016acf51bf04f7a6e2f801d79b240528e2ef8891e2556f1b410",
+  "highs/lp_data/HighsSolve.cpp": "62aeb110a4dcbb26f6e73932fba3b924c546ee5902520f0e1fa3cb42decca0d1",
+  "highs/lp_data/HighsStatus.cpp": "973cd1932fe6c8d4d96fd1adf6c373ca818721b5df3b0558539bf301049af021",
+  "highs/mip/HighsLpRelaxation.cpp": "328bc4bb67f2a8e89af04f13eb593446e32bee870ca4f3360012308d63144928",
+  "highs/mip/HighsMipSolver.cpp": "470b29456b3e481c38888cf0ccb1285a140586cbd60cf4da7fa62df439255598",
+  "highs/mip/HighsMipSolverData.cpp": "eaafcf91b4653c17807b171720f66828dd6b18737dbf8b9b213cc58c8e022f33"
+}
