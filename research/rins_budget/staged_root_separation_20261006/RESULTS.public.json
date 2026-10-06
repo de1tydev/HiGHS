@@ -1,0 +1,1079 @@
+{
+  "schema": "staged-root-separation-public-results/v1",
+  "status": {
+    "pilot": "completed",
+    "terminal_audit": "complete",
+    "mechanism_gate_passed": true,
+    "cost_gate_passed": false,
+    "disposition": "close_without_promotion_or_further_trials"
+  },
+  "scope": "Four fixed exposed calls on official dcmulti and gesa2 seed 1; no general speed, SCUC or full-application CLI claim.",
+  "provenance": {
+    "base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "candidate_patch_sha256": "4ae6a17525a1d989d12a4bd02b53c6adbc9deb5dc7b6aebe0160779561383973",
+    "official_tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "candidate_executable_sha256": "12fa8fdd762f2b9ec7d55504a50ce7b245b840186bfbe7bc159b0f8ca24c6a65",
+    "candidate_library_sha256": "14edbc6ad116c38e1cce6ec59dc0c851f9d32c42835869562549777eee7accca",
+    "both_arms_same_runtime": true,
+    "source_files": {
+      "check/CMakeLists.txt": {
+        "sha256": "4b17c8ded11eb4097a40367245bbe5be11be280ea090d49633bd270c98f84d4d",
+        "bytes": 19445
+      },
+      "check/TestStagedRootSeparation.cpp": {
+        "sha256": "36825d54bd2092e0f097a1d61645447a92a8e78da77724aab7f6603efa4a0b9a",
+        "bytes": 16041
+      },
+      "highs/lp_data/HighsOptions.h": {
+        "sha256": "bdde7dd045c99781b2dee554e24d52692dc28b9c84b5cf57a7c0314a6c769066",
+        "bytes": 72356
+      },
+      "highs/mip/HighsCutPool.cpp": {
+        "sha256": "d6c360c5c458666f249877f9467750229ad6b550729ab5728e9f351cd24c8383",
+        "bytes": 22933
+      },
+      "highs/mip/HighsCutPool.h": {
+        "sha256": "5c20464954422796ef5aa53398140c21cf29c78524a60aa0ad367bb23887d94e",
+        "bytes": 6125
+      },
+      "highs/mip/HighsLpRelaxation.cpp": {
+        "sha256": "71065b08551148008347026ff54c326bd8fccefc757bfcb1c402d91cb2e3b941",
+        "bytes": 60016
+      },
+      "highs/mip/HighsLpRelaxation.h": {
+        "sha256": "b8bf95870a6ab88d123b1dbf62db15d7687238b9e1c08c95ff8a6738c5d5d667",
+        "bytes": 11141
+      },
+      "highs/mip/HighsMipSolverData.cpp": {
+        "sha256": "2d1c2e1a594c9ec1c860ce398bc94bce5c1864e9dc5b8caad5e0528e294d0b48",
+        "bytes": 124431
+      },
+      "highs/mip/HighsMipSolverData.h": {
+        "sha256": "b7039494238f40cb65404d46b06dcb999b24f73081e331a43c09219b5ea0d25d",
+        "bytes": 11268
+      },
+      "highs/mip/HighsSeparation.cpp": {
+        "sha256": "00dcbb28665ad40f57f4daf33ff85c94c59dfee0b711925bf310116a90ae3531",
+        "bytes": 17845
+      },
+      "highs/mip/HighsSeparation.h": {
+        "sha256": "2bd07e65d110555ca80b6404b9c02c287bc8792ba77cdd5c48a2c80e407e52ae",
+        "bytes": 2657
+      },
+      "highs/mip/HighsSeparator.cpp": {
+        "sha256": "71c9d011406f09f389830ff2b776dfe2e35290fc1ea331d0feca43614f4d2c95",
+        "bytes": 2195
+      },
+      "highs/mip/HighsSeparator.h": {
+        "sha256": "7953cba3af109667071ad4ab7840a7a1c36345cc506e4fd3b73fadbb323e4ad1",
+        "bytes": 2269
+      }
+    },
+    "raw_evidence_sha256": {
+      "pilot_results": "2d71125df59ef2804ae44475c7503b06e2a51df46871c6294ec4c43b84b5a373",
+      "design": "533fd6a4a8ca5cdbb59d1ba698c2d40b454f4aaaf9b5ad78049d8615f6dda31a",
+      "initial_contract": "41c3d449348c92b91932d1e0af7ec8297aa26346a93f7a9bb5d4a3940143f853",
+      "fixed_contract_v2": "b8f7cf7964b947eec8452d53d9bccd0daaee495a4f039ebaf1e4fa070e70262b",
+      "source_manifest": "b23bdcae2e6a5a2ed6c0bc51280c40fd9436248cfe04bfbf17dc37efc619a328",
+      "telemetry_schema": "d1864e792d29fd10c20a19d3c91ec86bbd58871eed713ec6351848067909abec",
+      "pilot_runner": "d20468c88172987219ed1f66b9c5c064b1df3a87e024d543364c85f358f4c09b",
+      "pilot_parser": "445b0b8703ea708c73417e3238bd7e8bab696298d79d84d2acc54b1f6634df8e",
+      "qualification": "091b176cde27f4458ff1a035ec4e983f764d1054ea497edd1fcc3d91bebd5bb9",
+      "source_review": "f1ecdef26b78468339d23e922392916faf090abd89eb14448f2003fdd11094e0",
+      "qualification_review": "0604a61603cd08afcc78ba1210143725d26352711426e0eebda9fa7ced8f2615",
+      "runtime_manifest": "6a6a5a82b4e3353c2ace73db405a1bf6897eab1c6b1eeebaeb7eb3c75cd92fd7",
+      "setup_preflight_record": "e688a006d38ff10602e2155c2a2d02348d8658ce2daf2a3be6e4c42dd30bfe29",
+      "build_guard_review": "61130dddaa2265e2f7667abc21da910d62be12cf7d1256f62cfcde4475e4d95c",
+      "original_primal_checker": "a1f3a15050e7b1b9440d1ac2da9e3396f4172b43117df03e49d407253ae1f66f",
+      "original_matrix_exporter_source": "04b704bf7758e7e99b68b74cabb43f09c814575864b0788830c79c5d254b37d2",
+      "pilot_process_envelope": "a93287d63f1d9fdda0076088f5994feca97a2195aa794c5d5104c12a41faa89b",
+      "pilot_resource_contracts": "77105b974441a6ea25676a62ec45d0271d2d9f4eddd1ac078f0ebe46717d922b",
+      "original_matrix_exporter_binary": "e8f7c514813eba5d0f225e4b5d8d0788532ca59dc99e59252e3b1bb59a52b708",
+      "official_library": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+      "terminal_audit": "7e3dd5a7a2b6a04396699a5af8f1eb340dd838da26ee0d7d33d1334def5aef53"
+    }
+  },
+  "models": {
+    "dcmulti": {
+      "model_sha256": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+      "original_matrix_sha256": "e513ec38a35c7384cd834f3d4ec1bba6f1b81db56999e806603fc213b9e96d72",
+      "export_completed": true
+    },
+    "gesa2": {
+      "model_sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+      "original_matrix_sha256": "e3a21f05939b4189025a7dfef13862c84ec06a96395d0caf0bb7c31d0e678628",
+      "export_completed": true
+    }
+  },
+  "protocol": {
+    "file": "PILOT_CONTRACT_v2.json",
+    "solver_calls_launched": 4,
+    "identical_options_except": "mip_staged_root_separation and fresh output paths",
+    "native_log_dev_level": 2,
+    "default_option": false,
+    "mechanism_gate": "Both models must show an actual useful ordinary integrality or bound-closure skip, excluding errors/limits/unbounded/numerical exits. All correctness/guard/default-off tests pass. Otherwise mechanism failed.",
+    "cost_screen": "For each model, compare measured main+sub path time and additional staging solve/selection/rebuild time, and all LP totals. A promising cost screen additionally requires both ON whole-process times to be at least 10% below OFF, and no ON process-tree CPU total above OFF by more than 10%. This four-call exposed diagnostic is not a stable acceleration claim."
+  },
+  "schedule": [
+    {
+      "slot": 1,
+      "model": "dcmulti",
+      "seed": 1,
+      "enabled": false,
+      "outcome": "completed",
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 2.63831256100093,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": []
+      },
+      "resources": {
+        "user_seconds": 3.200947,
+        "system_seconds": 0.014275,
+        "cpu_seconds": 3.2152220000000002,
+        "sampled_process_tree_rss_bytes": 51376128,
+        "rss_measurement": "Health-sampled process tree; not exact or unique physical peak"
+      },
+      "native_status": {
+        "status": "Optimal",
+        "primal": "188182",
+        "dual": "188165.733226",
+        "gap": "0.00864% (tolerance: 0.01%)",
+        "nodes": "3",
+        "iterations": "11461"
+      },
+      "native_messages": {
+        "errors": [],
+        "warnings": []
+      },
+      "original_matrix_check": {
+        "passed": true,
+        "cost": 188182.0,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 0.0,
+        "objective_error": 0.0,
+        "primal_tolerance": 1e-06,
+        "columns": 548,
+        "rows": 290,
+        "dual_proof": false
+      },
+      "primal_state": "Feasible",
+      "raw_files_sha256": {
+        "stdout.log": "9782d7bd0348294334a34a0f0b152b59256b28898e37437f44aa1936eb6975a2",
+        "native.log": "1cbdcfa2347faa74b24a110e05a2bab25c544fc6d82e6223df5997a05712004a",
+        "options.txt": "d431383373e76e1aa451d619daedaef375a6fc73e5a2f8498ab529b1f87e59f0",
+        "point.sol": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a"
+      },
+      "root_telemetry": {
+        "rounds": 152,
+        "eligible_rounds": 152,
+        "active_rounds": 0,
+        "useful_skips": 0,
+        "totals": {
+          "cheap_cuts": 0,
+          "cheap_nnz": 0,
+          "path_calls": 152,
+          "lp_calls": 165,
+          "lp_iterations": 1685,
+          "lp0_calls": 2,
+          "lp0_iterations": 0,
+          "cheap_lp_calls": 0,
+          "cheap_lp_iterations": 0,
+          "rebuilds": 152,
+          "pool_age_passes": 152,
+          "lp_age_passes": 152,
+          "rows_removed": 22,
+          "domain_changes": 21,
+          "path_seconds": 1.035905747,
+          "lp_seconds": 0.150308419,
+          "lp0_seconds": 0.001008719,
+          "cheap_lp_seconds": 0.0,
+          "pool_seconds": 0.009509183,
+          "rebuild_seconds": 0.006716697
+        },
+        "native_failure_rounds": 0
+      },
+      "root_scope_summary": {
+        "main/depth0": {
+          "rounds": 33,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 33
+          },
+          "path_calls": 33,
+          "path_seconds": 0.358179033,
+          "lp_calls": 34,
+          "lp_iterations": 647,
+          "lp_seconds": 0.056971675,
+          "lp0_calls": 2,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.001008719
+        },
+        "submip/depth1": {
+          "rounds": 25,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 25
+          },
+          "path_calls": 25,
+          "path_seconds": 0.23395471299999998,
+          "lp_calls": 29,
+          "lp_iterations": 481,
+          "lp_seconds": 0.02920712999999999,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth2": {
+          "rounds": 40,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 40
+          },
+          "path_calls": 40,
+          "path_seconds": 0.26776425600000003,
+          "lp_calls": 41,
+          "lp_iterations": 322,
+          "lp_seconds": 0.036055728999999995,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth3": {
+          "rounds": 44,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 44
+          },
+          "path_calls": 44,
+          "path_seconds": 0.139819644,
+          "lp_calls": 48,
+          "lp_iterations": 214,
+          "lp_seconds": 0.023291134999999994,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth4": {
+          "rounds": 10,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 10
+          },
+          "path_calls": 10,
+          "path_seconds": 0.036188101,
+          "lp_calls": 13,
+          "lp_iterations": 21,
+          "lp_seconds": 0.00478275,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        }
+      },
+      "useful_skip_records": []
+    },
+    {
+      "slot": 2,
+      "model": "dcmulti",
+      "seed": 1,
+      "enabled": true,
+      "outcome": "completed",
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 3.4581598519944237,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": []
+      },
+      "resources": {
+        "user_seconds": 4.33867,
+        "system_seconds": 0.023767999999999997,
+        "cpu_seconds": 4.362437999999999,
+        "sampled_process_tree_rss_bytes": 55140352,
+        "rss_measurement": "Health-sampled process tree; not exact or unique physical peak"
+      },
+      "native_status": {
+        "status": "Optimal",
+        "primal": "188182",
+        "dual": "188167.811033",
+        "gap": "0.00754% (tolerance: 0.01%)",
+        "nodes": "7",
+        "iterations": "16057"
+      },
+      "native_messages": {
+        "errors": [],
+        "warnings": []
+      },
+      "original_matrix_check": {
+        "passed": true,
+        "cost": 188182.0,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 1.4e-12,
+        "objective_error": 0.0,
+        "primal_tolerance": 1e-06,
+        "columns": 548,
+        "rows": 290,
+        "dual_proof": false
+      },
+      "primal_state": "Feasible",
+      "raw_files_sha256": {
+        "stdout.log": "b382e8a157954fa2c684f00bbe84f5e5e4c6f6f344e487424f7519cf3532e885",
+        "native.log": "10d57cff58263c463604d35b3d43f5db2c3fa7dc5b4bac510c68dbb48b8bb15d",
+        "options.txt": "ab28fe254191a133e938449d65f0b9c107afd0c2212b76b04e2890ed0c852857",
+        "point.sol": "368d8b4454f0362a43a9c22b2df88cd9fbb1169ff3420cc5f695e392efabfd6b"
+      },
+      "root_telemetry": {
+        "rounds": 189,
+        "eligible_rounds": 189,
+        "active_rounds": 189,
+        "useful_skips": 6,
+        "totals": {
+          "cheap_cuts": 372,
+          "cheap_nnz": 13947,
+          "path_calls": 183,
+          "lp_calls": 337,
+          "lp_iterations": 2823,
+          "lp0_calls": 1,
+          "lp0_iterations": 0,
+          "cheap_lp_calls": 184,
+          "cheap_lp_iterations": 1481,
+          "rebuilds": 372,
+          "pool_age_passes": 182,
+          "lp_age_passes": 179,
+          "rows_removed": 18,
+          "domain_changes": 22,
+          "path_seconds": 1.21873392,
+          "lp_seconds": 0.26678692400000004,
+          "lp0_seconds": 0.000489262,
+          "cheap_lp_seconds": 0.136693855,
+          "pool_seconds": 0.009744188,
+          "rebuild_seconds": 0.01261461
+        },
+        "native_failure_rounds": 0
+      },
+      "root_scope_summary": {
+        "main/depth0": {
+          "rounds": 22,
+          "active_rounds": 22,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 22
+          },
+          "path_calls": 22,
+          "path_seconds": 0.273869992,
+          "lp_calls": 47,
+          "lp_iterations": 784,
+          "lp_seconds": 0.07157270900000003,
+          "lp0_calls": 1,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.000489262
+        },
+        "submip/depth1": {
+          "rounds": 24,
+          "active_rounds": 24,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 24
+          },
+          "path_calls": 24,
+          "path_seconds": 0.252799882,
+          "lp_calls": 47,
+          "lp_iterations": 574,
+          "lp_seconds": 0.051566631000000016,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth2": {
+          "rounds": 35,
+          "active_rounds": 35,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 35
+          },
+          "path_calls": 35,
+          "path_seconds": 0.241459702,
+          "lp_calls": 66,
+          "lp_iterations": 580,
+          "lp_seconds": 0.053043505000000005,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth3": {
+          "rounds": 61,
+          "active_rounds": 61,
+          "useful_skips": 1,
+          "skip_reasons": {
+            "none": 60,
+            "cutoff_hint": 1
+          },
+          "path_calls": 60,
+          "path_seconds": 0.277738738,
+          "lp_calls": 119,
+          "lp_iterations": 560,
+          "lp_seconds": 0.061824527000000004,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth4": {
+          "rounds": 37,
+          "active_rounds": 37,
+          "useful_skips": 5,
+          "skip_reasons": {
+            "none": 32,
+            "integral_hint": 2,
+            "cutoff_hint": 3
+          },
+          "path_calls": 32,
+          "path_seconds": 0.126350877,
+          "lp_calls": 47,
+          "lp_iterations": 262,
+          "lp_seconds": 0.022491269000000008,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth5": {
+          "rounds": 10,
+          "active_rounds": 10,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 10
+          },
+          "path_calls": 10,
+          "path_seconds": 0.046514729,
+          "lp_calls": 11,
+          "lp_iterations": 63,
+          "lp_seconds": 0.006288283,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        }
+      },
+      "useful_skip_records": [
+        {
+          "submip": 1,
+          "depth": 4,
+          "skip": "integral_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 7,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 0,
+          "lower": "178938",
+          "upper": "178938",
+          "limit": "178937.99999899999"
+        },
+        {
+          "submip": 1,
+          "depth": 4,
+          "skip": "cutoff_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 0,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 1,
+          "lower": "177815.82500000001",
+          "upper": "177818",
+          "limit": "177811.99999899999"
+        },
+        {
+          "submip": 1,
+          "depth": 3,
+          "skip": "cutoff_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 0,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 1,
+          "lower": "178435.82500000001",
+          "upper": "178438",
+          "limit": "178431.99999899999"
+        },
+        {
+          "submip": 1,
+          "depth": 4,
+          "skip": "cutoff_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 0,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 2,
+          "lower": "177817.92472344541",
+          "upper": "177833.39999999999",
+          "limit": "177811.99999899999"
+        },
+        {
+          "submip": 1,
+          "depth": 4,
+          "skip": "cutoff_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 0,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 1,
+          "lower": "177817.11055435112",
+          "upper": "177818",
+          "limit": "177811.99999899999"
+        },
+        {
+          "submip": 1,
+          "depth": 4,
+          "skip": "integral_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 7,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 0,
+          "lower": "177817.99999999985",
+          "upper": "177817.99999999985",
+          "limit": "177811.99999899999"
+        }
+      ]
+    },
+    {
+      "slot": 3,
+      "model": "gesa2",
+      "seed": 1,
+      "enabled": true,
+      "outcome": "completed",
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 0.3415976789983688,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": []
+      },
+      "resources": {
+        "user_seconds": 0.377885,
+        "system_seconds": 0.0039889999999999995,
+        "cpu_seconds": 0.38187400000000005,
+        "sampled_process_tree_rss_bytes": 44253184,
+        "rss_measurement": "Health-sampled process tree; not exact or unique physical peak"
+      },
+      "native_status": {
+        "status": "Optimal",
+        "primal": "25779856.3717",
+        "dual": "25777424.0574",
+        "gap": "0.00943% (tolerance: 0.01%)",
+        "nodes": "1",
+        "iterations": "1293"
+      },
+      "native_messages": {
+        "errors": [],
+        "warnings": [
+          "Problem has some excessively large costs",
+          "Consider scaling the objective by 1e-1, or setting the user_objective_scale option to -1",
+          "Problem is badly scaled, which may compromise the speed, accuracy and reliability of solvers in HiGHS"
+        ]
+      },
+      "original_matrix_check": {
+        "passed": true,
+        "cost": 25779856.371697918,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 1.1368683772161603e-13,
+        "objective_error": 3.725290298461914e-09,
+        "primal_tolerance": 1e-06,
+        "columns": 1224,
+        "rows": 1392,
+        "dual_proof": false
+      },
+      "primal_state": "Feasible",
+      "raw_files_sha256": {
+        "stdout.log": "121348c39a984aa69cbbee7e955c3d25b28c2a4cada92f47578e8eaa5f1ff96f",
+        "native.log": "aadf5c7f19add402fe8dfc8f8f13206bb0237493223e4744eb011acf19bd8df2",
+        "options.txt": "ccb117fc7441d68fd0a930973489861a6a820312d4919826ce8b8e48ed9247b4",
+        "point.sol": "345510fcafff5083c448cf398f15c9fb0f02913b3d86e8c63d9fe8482d433f61"
+      },
+      "root_telemetry": {
+        "rounds": 21,
+        "eligible_rounds": 21,
+        "active_rounds": 21,
+        "useful_skips": 1,
+        "totals": {
+          "cheap_cuts": 140,
+          "cheap_nnz": 2144,
+          "path_calls": 20,
+          "lp_calls": 50,
+          "lp_iterations": 756,
+          "lp0_calls": 1,
+          "lp0_iterations": 0,
+          "cheap_lp_calls": 24,
+          "cheap_lp_iterations": 395,
+          "rebuilds": 41,
+          "pool_age_passes": 20,
+          "lp_age_passes": 21,
+          "rows_removed": 77,
+          "domain_changes": 227,
+          "path_seconds": 0.12264768,
+          "lp_seconds": 0.074451667,
+          "lp0_seconds": 0.000692532,
+          "cheap_lp_seconds": 0.03704715099999999,
+          "pool_seconds": 0.00363819,
+          "rebuild_seconds": 0.003259059
+        },
+        "native_failure_rounds": 0
+      },
+      "root_scope_summary": {
+        "main/depth0": {
+          "rounds": 15,
+          "active_rounds": 15,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 15
+          },
+          "path_calls": 15,
+          "path_seconds": 0.110675868,
+          "lp_calls": 31,
+          "lp_iterations": 529,
+          "lp_seconds": 0.061045388000000006,
+          "lp0_calls": 1,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.000692532
+        },
+        "submip/depth1": {
+          "rounds": 6,
+          "active_rounds": 6,
+          "useful_skips": 1,
+          "skip_reasons": {
+            "none": 5,
+            "integral_hint": 1
+          },
+          "path_calls": 5,
+          "path_seconds": 0.011971812,
+          "lp_calls": 19,
+          "lp_iterations": 227,
+          "lp_seconds": 0.013406279000000004,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        }
+      },
+      "useful_skip_records": [
+        {
+          "submip": 1,
+          "depth": 1,
+          "skip": "integral_hint",
+          "status": 1,
+          "eval_status": 2,
+          "closed": 1,
+          "model_status": 7,
+          "lp_model_status": 7,
+          "path_calls": 0,
+          "fractional": 0,
+          "lower": "15941482.816798277",
+          "upper": "15941482.816798277",
+          "limit": "15941481.907474371"
+        }
+      ]
+    },
+    {
+      "slot": 4,
+      "model": "gesa2",
+      "seed": 1,
+      "enabled": false,
+      "outcome": "completed",
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 0.5311434420000296,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": []
+      },
+      "resources": {
+        "user_seconds": 0.5922799999999997,
+        "system_seconds": 0.007824999999999999,
+        "cpu_seconds": 0.6001049999999997,
+        "sampled_process_tree_rss_bytes": 51519488,
+        "rss_measurement": "Health-sampled process tree; not exact or unique physical peak"
+      },
+      "native_status": {
+        "status": "Optimal",
+        "primal": "25779856.3717",
+        "dual": "25778989.9633",
+        "gap": "0.00336% (tolerance: 0.01%)",
+        "nodes": "1",
+        "iterations": "1954"
+      },
+      "native_messages": {
+        "errors": [],
+        "warnings": [
+          "Problem has some excessively large costs",
+          "Consider scaling the objective by 1e-1, or setting the user_objective_scale option to -1",
+          "Problem is badly scaled, which may compromise the speed, accuracy and reliability of solvers in HiGHS"
+        ]
+      },
+      "original_matrix_check": {
+        "passed": true,
+        "cost": 25779856.371697918,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 1.1368683772161603e-13,
+        "objective_error": 3.725290298461914e-09,
+        "primal_tolerance": 1e-06,
+        "columns": 1224,
+        "rows": 1392,
+        "dual_proof": false
+      },
+      "primal_state": "Feasible",
+      "raw_files_sha256": {
+        "stdout.log": "f2502421e284e35705f2f30f47c3059fcc130443ec839149aeebf15973ca58d2",
+        "native.log": "0f19a37967b427594cd327df777a3b1efa03dd5f331d3e54bff69c27c6472ec1",
+        "options.txt": "4cf69be20e6a7432387728aeb3bc1ae343df5b2036a2182d16875eca5847b1ad",
+        "point.sol": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f"
+      },
+      "root_telemetry": {
+        "rounds": 37,
+        "eligible_rounds": 37,
+        "active_rounds": 0,
+        "useful_skips": 0,
+        "totals": {
+          "cheap_cuts": 0,
+          "cheap_nnz": 0,
+          "path_calls": 37,
+          "lp_calls": 45,
+          "lp_iterations": 789,
+          "lp0_calls": 1,
+          "lp0_iterations": 0,
+          "cheap_lp_calls": 0,
+          "cheap_lp_iterations": 0,
+          "rebuilds": 37,
+          "pool_age_passes": 37,
+          "lp_age_passes": 37,
+          "rows_removed": 28,
+          "domain_changes": 8,
+          "path_seconds": 0.131083987,
+          "lp_seconds": 0.052708309999999994,
+          "lp0_seconds": 0.000772791,
+          "cheap_lp_seconds": 0.0,
+          "pool_seconds": 0.005250918,
+          "rebuild_seconds": 0.002733066
+        },
+        "native_failure_rounds": 0
+      },
+      "root_scope_summary": {
+        "main/depth0": {
+          "rounds": 19,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 19
+          },
+          "path_calls": 19,
+          "path_seconds": 0.10319410700000001,
+          "lp_calls": 19,
+          "lp_iterations": 460,
+          "lp_seconds": 0.038032163,
+          "lp0_calls": 1,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.000772791
+        },
+        "submip/depth1": {
+          "rounds": 6,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 6
+          },
+          "path_calls": 6,
+          "path_seconds": 0.01425956,
+          "lp_calls": 8,
+          "lp_iterations": 137,
+          "lp_seconds": 0.006401961,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth2": {
+          "rounds": 7,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 7
+          },
+          "path_calls": 7,
+          "path_seconds": 0.010359573,
+          "lp_calls": 12,
+          "lp_iterations": 149,
+          "lp_seconds": 0.006195718999999999,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        },
+        "submip/depth3": {
+          "rounds": 5,
+          "active_rounds": 0,
+          "useful_skips": 0,
+          "skip_reasons": {
+            "none": 5
+          },
+          "path_calls": 5,
+          "path_seconds": 0.003270747,
+          "lp_calls": 6,
+          "lp_iterations": 43,
+          "lp_seconds": 0.002078467,
+          "lp0_calls": 0,
+          "lp0_iterations": 0,
+          "lp0_seconds": 0.0
+        }
+      },
+      "useful_skip_records": []
+    }
+  ],
+  "screen_by_model": {
+    "dcmulti": {
+      "both_arms_completed": true,
+      "useful_skips": 6,
+      "mechanism_pass": true,
+      "cost_screen_pass": false,
+      "on_over_off_wall": 1.3107468398977176,
+      "on_over_off_cpu": 1.3568077103229572,
+      "on_minus_off_measured_seconds": {
+        "path_seconds": 0.1828281730000001,
+        "lp_seconds": 0.11647850500000004,
+        "lp0_seconds": -0.000519457,
+        "cheap_lp_seconds": 0.136693855,
+        "pool_seconds": 0.00023500500000000167,
+        "rebuild_seconds": 0.005897913
+      },
+      "interpretation": "Six actual child-root skips coexist with increased aggregate root path calls, LP work, nodes and whole-process cost.",
+      "wall_change_percent": 31.074683989771756,
+      "cpu_change_percent": 35.68077103229572
+    },
+    "gesa2": {
+      "both_arms_completed": true,
+      "useful_skips": 1,
+      "mechanism_pass": true,
+      "cost_screen_pass": true,
+      "on_over_off_wall": 0.6431363959085646,
+      "on_over_off_cpu": 0.6363453062380754,
+      "on_minus_off_measured_seconds": {
+        "path_seconds": -0.008436307000000018,
+        "lp_seconds": 0.021743357000000005,
+        "lp0_seconds": -8.025899999999995e-05,
+        "cheap_lp_seconds": 0.03704715099999999,
+        "pool_seconds": -0.0016127280000000003,
+        "rebuild_seconds": 0.0005259929999999998
+      },
+      "interpretation": "One actual child-root skip; the wall reduction cannot be wholly attributed to it because staging changes later cut/LP/search work.",
+      "wall_change_percent": -35.68636040914354,
+      "cpu_change_percent": -36.36546937619246
+    }
+  },
+  "phase": {
+    "wall_seconds": 7.276920361000521,
+    "worker_seconds": 7.207723409999744,
+    "cap_seconds": 240,
+    "returncode": 0,
+    "health_error": null,
+    "hard_watchdog_killed": false,
+    "cleanup_processes": 0
+  },
+  "accounting": {
+    "wall": "Immediately before runner launch through exact reap; startup, campaign writes and cleanup included. Receipt publication is outside the endpoint.",
+    "cpu": "Read RUSAGE_CHILDREN user+system immediately before and after the single serial envelope invocation. Exporter children are fully reaped before this boundary, no concurrent children are launched, and any adopted cleanup rejects the invocation. CPU difference includes this invocation once; never subtract cumulative ru_maxrss. Report only health-sampled process-tree RSS as sampled, not an exact or unique physical peak. Reject negative/nonfinite CPU differences. Whole-process wall remains envelope start through exact reap.",
+    "telemetry": "Main and sub-MIP root observations only. cheap_lp is a subset of lp; aging/removal LP0 solves are separate. Nested timers never add to OS wall or CPU. depth denotes sub-MIP nesting, not branch-and-bound depth.",
+    "rss": "Health-sampled summed process-tree RSS, neither exact nor unique physical peak.",
+    "primal_check": "Original rows, column bounds, integrality and objective including offset at tolerance 1e-6. Does not provide a dual proof.",
+    "cpu_limitation": "Recorded OS user/system CPU deltas sum correctly and the reviewed serial invocation/reaping code supplies the declared RUSAGE_CHILDREN boundary. Raw before/after OS snapshots were not persisted, so the observed deltas cannot be reconstructed independently from snapshots."
+  },
+  "qualification": {
+    "release_prerequisites_passed_with_disclosed_platform_exception": true,
+    "full_native_suite_all_passed": false,
+    "focused": {
+      "cases_passed": 9,
+      "cases_total": 9,
+      "assertions_passed": 289,
+      "assertions_total": 289
+    },
+    "targeted": {
+      "cases_passed": 119,
+      "cases_total": 119,
+      "assertions_passed": 1389,
+      "assertions_total": 1389
+    },
+    "native_full": {
+      "cases_passed": 408,
+      "cases_total": 409,
+      "assertions_passed": 1260340,
+      "assertions_total": 1260341
+    },
+    "selected_ctest": {
+      "passed": 167,
+      "total": 167,
+      "excluded": "unit-test-build and unit_tests_all; native aggregate was separately executed"
+    },
+    "pristine_vs_off": {
+      "passed": true,
+      "result_sha256": "2ad44e0a04d14661d6549bf0275d566281d905a403973877909f115ba4c085e8",
+      "objective": 2,
+      "original_rows_bounds_integrality_residual": 0,
+      "solution_bytes_native_bounds_nodes_iterations_identical": true
+    },
+    "known_platform_exception": {
+      "test": "AffinityReducedCoreCount",
+      "actual": "5 == 1",
+      "same_runtime_reference_receipt_sha256": "26e9c1c354e762fd88a1da9867880ddbd7a575ce5b246a6af29116d85604691d"
+    },
+    "platform_exception_scope": "Preexisting filtered reproduction in this same runtime was bound to the official library. No ABI-incompatible reference rerun was made.",
+    "raw_logs": {
+      "focused": {
+        "sha256": "ac58563ae3349cacb7c1ef4d2f735658d8bc8785190c61cf5b1e22d14ffbdd8c"
+      },
+      "targeted": {
+        "sha256": "64a6ad7f93dbe20117c6f4fe13b25815ede445a716723dc00f5c0ae8ee50e522"
+      },
+      "native-full": {
+        "sha256": "5c44d3582c8319fd2af51f94599a3aa1421ba5f655dcae14cb2f8821a226feb1"
+      },
+      "ctest": {
+        "sha256": "3383611d357ec383994dcf23e321b94129bd3f8f684271909545464bf3056dc2"
+      }
+    },
+    "raw_receipts": {
+      "configure": {
+        "sha256": "9e52344c923ee4eca29200b815a2ab5ba16081e6539db16c4bf6ffe5e3d58988",
+        "rc": 0,
+        "elapsed_seconds": 2.370796965995396,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      },
+      "build": {
+        "sha256": "14c2288b5d05493f72399335ba184e6adb4345bf21ff476e1f134b0a6848f18a",
+        "rc": -9,
+        "elapsed_seconds": 131.6729797049993,
+        "within_cap": false,
+        "health_error": "ProcessLookupError: [Errno 3] No such process",
+        "cleanup_processes": 11
+      },
+      "build-resume": {
+        "sha256": "9cde47bb7bebf7b110930e581ff8c7e4b9bb20fa5da1d88a78219e083a08ad31",
+        "rc": 0,
+        "elapsed_seconds": 100.65749222799786,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      },
+      "focused": {
+        "sha256": "4b08a1a781650f09bce770422a09e2a666d234576c226a8d977bd2379378a37a",
+        "rc": 0,
+        "elapsed_seconds": 0.08353598500252701,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      },
+      "pristine-off": {
+        "sha256": "e209106d01da45c955cf30098aedbf1d3900960972b2bdb66c1682833e6877e3",
+        "rc": 0,
+        "elapsed_seconds": 0.1253026240010513,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      },
+      "targeted": {
+        "sha256": "e7f6522faa89e79ec773c2b086e9cc1c1074565fab03a09b32bce00d9002d604",
+        "rc": 0,
+        "elapsed_seconds": 7.9855595029948745,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      },
+      "native-full": {
+        "sha256": "8c3ee7b2762ee01f7050860f6729b672bf8cd01d3eeaf81f5d37f85790a8f74c",
+        "rc": 1,
+        "elapsed_seconds": 17.627442687997245,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      },
+      "ctest": {
+        "sha256": "d8242ed2b0528b90cfddbbd69b86a82112518f9d3f5091ef5b2763b0b7d9f3ea",
+        "rc": 0,
+        "elapsed_seconds": 25.466039257000375,
+        "within_cap": true,
+        "health_error": null,
+        "cleanup_processes": 0
+      }
+    },
+    "setup_events": [
+      "Initial build stopped safely on a vanished-process ESRCH health-sampling race; the failed receipt remains retained. A narrow build-wrapper guard correction allowed an incremental build from unchanged source.",
+      "A no-solve preflight failed literal ldd-path comparison on bin/../lib; comparison of the exact resolved target corrected it. Neither setup event is a pilot solver failure."
+    ],
+    "coverage_limit_before_pilot": "LP-row deletion/LP0 refresh source-reviewed; focused cases do not force deletion. Controlled injected errors are not observed numerical defects.",
+    "updated_pilot_coverage": [
+      "Both ON runs dynamically execute normal main-root cut-row deletion and LP0 followed by refresh: dcmulti removes 18 rows; gesa2 removes 77. Each event has one aging pass, three ordinary resolve calls and a valid fractional optimal state afterward.",
+      "The observed LP0 optimizations take zero simplex iterations. There is no dedicated standalone LP0 stress test, and these events do not exercise an early-stop aging deletion that reopens a fractional state.",
+      "The known AffinityReducedCoreCount 5 != 1 full-suite platform exception remains disclosed."
+    ]
+  },
+  "changes_after_pilot": "None: no solver source, thresholds, defaults, extra models, seeds, repeats, tuning or promotion.",
+  "artifact_scope": "Exact immutable source patch plus fixed protocol and projected evidence; raw archives, binaries and machine-local harness are not included.",
+  "license": "Root repository MIT license applies.",
+  "terminal_audit": {
+    "verdict": "Terminal artifacts are internally consistent with the frozen source, runtime, order and contract. Mechanism passes; the combined cost screen fails. Keep the experimental option off and close this version without tuning or additional cases.",
+    "verification": {
+      "fixed_input_hashes_verified": 10,
+      "working_source_file_hashes_verified": 13,
+      "source_head_and_tracked_diff_verified": true,
+      "raw_log_options_solution_export_hashes_verified": true,
+      "all_original_primal_check_fields_independently_recomputed": true,
+      "all_raw_telemetry_rows_match_recorded_rows": true,
+      "telemetry_totals_independently_summed": true,
+      "raw_final_native_fields_match": true,
+      "declared_serial_schedule_verified": true,
+      "solver_calls": 4,
+      "phase_seconds": 7.276920361000521,
+      "all_process_receipts_clean_and_within_caps": true
+    },
+    "measurement_limits": [
+      "Recorded OS user/system CPU deltas sum correctly and the reviewed serial invocation/reaping code supplies the declared RUSAGE_CHILDREN boundary. Raw before/after OS snapshots were not persisted, so the observed deltas cannot be reconstructed independently from snapshots.",
+      "Health-sampled process-tree RSS is a sample, not an exact or unique physical peak. Nested telemetry is not added to OS CPU; cheap_lp is already a subset of lp.",
+      "Four exposed calls are not a stable/general speed claim."
+    ],
+    "updated_coverage": [
+      "Both ON runs dynamically execute normal main-root cut-row deletion and LP0 followed by refresh: dcmulti removes 18 rows; gesa2 removes 77. Each event has one aging pass, three ordinary resolve calls and a valid fractional optimal state afterward.",
+      "The observed LP0 optimizations take zero simplex iterations. There is no dedicated standalone LP0 stress test, and these events do not exercise an early-stop aging deletion that reopens a fractional state.",
+      "The known AffinityReducedCoreCount 5 != 1 full-suite platform exception remains disclosed."
+    ]
+  }
+}

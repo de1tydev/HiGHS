@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "declared_before_candidate_build_or_runs": true,
+  "source_base": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "design_sha256": "533fd6a4a8ca5cdbb59d1ba698c2d40b454f4aaaf9b5ad78049d8615f6dda31a",
+  "schedule": [
+    {
+      "model": "dcmulti",
+      "seed": 1,
+      "enabled": false
+    },
+    {
+      "model": "dcmulti",
+      "seed": 1,
+      "enabled": true
+    },
+    {
+      "model": "gesa2",
+      "seed": 1,
+      "enabled": true
+    },
+    {
+      "model": "gesa2",
+      "seed": 1,
+      "enabled": false
+    }
+  ],
+  "limits": {
+    "native_seconds_per_call": 20,
+    "actual_process_seconds_per_call": 30,
+    "phase_seconds_including_exports_and_checks": 240,
+    "AS_bytes": 7516192768,
+    "RSS_tree_bytes": 6442450944,
+    "free_memory_floor_bytes": 2147483648,
+    "free_disk_floor_bytes": 2147483648,
+    "per_file_bytes": 67108864,
+    "core_bytes": 0
+  },
+  "common_options": {
+    "threads": 2,
+    "parallel": "off",
+    "random_seed": 1,
+    "mip_rel_gap": 0.0001,
+    "mip_abs_gap": 0.0
+  },
+  "primal_checker": "unchanged published cmir_cache_20261006/check_primal.py on original official-library model readback; tolerance 1e-6 and original objective including offset",
+  "mechanism_gate": "Both models must show an actual useful ordinary integrality or bound-closure skip, excluding errors/limits/unbounded/numerical exits. All correctness/guard/default-off tests pass. Otherwise mechanism failed.",
+  "cost_screen": "For each model, compare measured main+sub path time and additional staging solve/selection/rebuild time, and all LP totals. A promising cost screen additionally requires both ON whole-process times to be at least 10% below OFF, and no ON process-tree CPU total above OFF by more than 10%. This four-call exposed diagnostic is not a stable acceleration claim.",
+  "cpu_accounting": "Read RUSAGE_CHILDREN user+system immediately before and after the single serial envelope invocation. Exporter children are fully reaped before this boundary, no concurrent children are launched, and any adopted cleanup rejects the invocation. CPU difference includes this invocation once; never subtract cumulative ru_maxrss. Report only health-sampled process-tree RSS as sampled, not an exact or unique physical peak. Reject negative/nonfinite CPU differences. Whole-process wall remains envelope start through exact reap.",
+  "completion": "Require both finite independently checked original primal and native Optimal at requested gap for a completed arm; clean limited outcomes are retained as incomplete.",
+  "stop": "Stop dependent calls on correctness, input, runtime, resource or cleanup failure. Clean scientific no-activation/nonoptimal outcomes remain visible; finish remaining declared slots without tuning. No extra cases, repetitions, ratio from incomplete arms, or larger campaign automatically.",
+  "supersedes_contract_sha256": "41c3d449348c92b91932d1e0af7ec8297aa26346a93f7a9bb5d4a3940143f853",
+  "resource_measurement_amendment": {
+    "declared_utc": "2026-10-06T21:01:30.485664+00:00",
+    "reason": "GNU time executable unavailable; avoid installing a dependency or changing the validated containment helper",
+    "scientific_policy_changed": false
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "staged-root-separation-publication-manifest/v1",
+  "repository_directory": "research/rins_budget/staged_root_separation_20261006",
+  "base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "terminal_audit": "complete",
+  "mechanism_gate_passed": true,
+  "cost_gate_passed": false,
+  "default_kernel_changed": false,
+  "experimental_option_default": false,
+  "immutable_patch_sha256": "4ae6a17525a1d989d12a4bd02b53c6adbc9deb5dc7b6aebe0160779561383973",
+  "patch_matches_frozen_pilot_source": true,
+  "publication_validation": "Static JSON, source patch byte equality, git apply --check against clean pinned official source, evidence hash checks and private-path screening; no build or solver rerun.",
+  "remote_write_performed": false,
+  "manifest_self_excluded": true,
+  "files": {
+    "PILOT_CONTRACT_v2.json": {
+      "bytes": 3224,
+      "sha256": "b8f7cf7964b947eec8452d53d9bccd0daaee495a4f039ebaf1e4fa070e70262b"
+    },
+    "README.md": {
+      "bytes": 9236,
+      "sha256": "ab81e611c9c8c4c127f67a641bd133c25827ce6edc585f4bc58d91fc937285ea"
+    },
+    "RESULTS.public.json": {
+      "bytes": 39845,
+      "sha256": "79071d2e74d96ea62e37e9e820f84d5cc6ada9c044853d2bca2121d3398ae052"
+    },
+    "SOURCE_DELTA.patch": {
+      "bytes": 48839,
+      "sha256": "4ae6a17525a1d989d12a4bd02b53c6adbc9deb5dc7b6aebe0160779561383973"
+    }
+  },
+  "terminal_audit_sha256": "7e3dd5a7a2b6a04396699a5af8f1eb340dd838da26ee0d7d33d1334def5aef53"
+}

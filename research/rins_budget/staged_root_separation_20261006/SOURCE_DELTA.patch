@@ -1,0 +1,1198 @@
+diff --git a/check/CMakeLists.txt b/check/CMakeLists.txt
+index 88d54e0845..1286b63814 100644
+--- a/check/CMakeLists.txt
++++ b/check/CMakeLists.txt
+@@ -80,6 +80,7 @@ if ((NOT FAST_BUILD OR ALL_TESTS) AND NOT (BUILD_EXTRA_UNIT_ONLY))
+       TestSemiVariables.cpp
+       TestSetup.cpp
+       TestSort.cpp
++      TestStagedRootSeparation.cpp
+       TestSpecialLps.cpp
+       TestSymmetry.cpp
+       TestThrow.cpp
+diff --git a/check/TestStagedRootSeparation.cpp b/check/TestStagedRootSeparation.cpp
+new file mode 100644
+index 0000000000..dfe4a70bc5
+--- /dev/null
++++ b/check/TestStagedRootSeparation.cpp
+@@ -0,0 +1,385 @@
++#include "HCheckConfig.h"
++#include "Highs.h"
++#include "catch.hpp"
++#include "mip/HighsMipSolver.h"
++#include "mip/HighsMipSolverData.h"
++#include "mip/HighsSeparation.h"
++
++#include <cmath>
++
++// Only the explicitly labelled controlled-state tests use this access. Public
++// solves and the triangle root test below use actual native LP/MIP states.
++struct HighsStagedRootTestAccess {
++  static void status(HighsLpRelaxation& lp, HighsLpRelaxation::Status status) {
++    lp.status = status;
++    lp.fractionalints.clear();
++  }
++  static bool eligible(const HighsSeparation& sepa, const HighsDomain& domain) {
++    return sepa.rootStagingEligible(domain);
++  }
++};
++
++namespace {
++using LpStatus = HighsLpRelaxation::Status;
++
++HighsLp triangle() {
++  HighsLp lp;
++  lp.num_col_ = 3;
++  lp.num_row_ = 3;
++  lp.col_cost_ = {1, 1, 1};
++  lp.col_lower_ = {0, 0, 0};
++  lp.col_upper_ = {1, 1, 1};
++  lp.integrality_.assign(3, HighsVarType::kInteger);
++  lp.row_lower_ = {1, 1, 1};
++  lp.row_upper_.assign(3, kHighsInf);
++  lp.a_matrix_.format_ = MatrixFormat::kColwise;
++  lp.a_matrix_.start_ = {0, 2, 4, 6};
++  lp.a_matrix_.index_ = {0, 2, 0, 1, 1, 2};
++  lp.a_matrix_.value_.assign(6, 1);
++  return lp;
++}
++
++HighsLp integralCover() {
++  HighsLp lp = triangle();
++  lp.num_col_ = 2;
++  lp.num_row_ = 1;
++  lp.col_cost_ = {1, 1};
++  lp.col_lower_ = {0, 0};
++  lp.col_upper_ = {1, 1};
++  lp.integrality_.assign(2, HighsVarType::kInteger);
++  lp.row_lower_ = {1};
++  lp.row_upper_ = {kHighsInf};
++  lp.a_matrix_.start_ = {0, 1, 2};
++  lp.a_matrix_.index_ = {0, 0};
++  lp.a_matrix_.value_ = {1, 1};
++  return lp;
++}
++
++// Same native initialization stages as HighsMipSolver::run, stopped before
++// root heuristics. This fixture does not manufacture a separation success.
++struct RootFixture {
++  Highs highs;
++  HighsCallback callback;
++  HighsProfiling profiling;
++  std::unique_ptr<HighsMipSolver> mip;
++  explicit RootFixture(const HighsLp& lp = triangle()) : callback(&highs) {
++    REQUIRE(highs.setOptionValue("output_flag", false) == HighsStatus::kOk);
++    REQUIRE(highs.setOptionValue("log_dev_level", 2) == HighsStatus::kOk);
++    REQUIRE(highs.setOptionValue("presolve", "off") == HighsStatus::kOk);
++    REQUIRE(highs.setOptionValue("parallel", "off") == HighsStatus::kOk);
++    REQUIRE(highs.setOptionValue("threads", 1) == HighsStatus::kOk);
++    REQUIRE(highs.setOptionValue("mip_detect_symmetry", false) == HighsStatus::kOk);
++    REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++    HighsTaskExecutor::initialize(1);
++    HighsSolution none;
++    mip.reset(new HighsMipSolver(callback, highs.getOptions(), highs.getLp(), none));
++    // These run-owned fields are not initialized by the MIP constructor.
++    mip->improving_solution_file_ = nullptr;
++    mip->modelstatus_ = HighsModelStatus::kNotset;
++    mip->timer_.start();
++    profiling.initialize(mip->timer_, true, true);
++    mip->setProfiling(&profiling);
++    mip->mipdata_.reset(new HighsMipSolverData(*mip));
++    data().getLp().setProfiling(&profiling);
++    data().init();
++    data().runMipPresolve(kHighsIInf);
++    data().runSetup();
++    REQUIRE_FALSE(data().getDomain().infeasible());
++    data().workers.emplace_back(*mip, &data().getLp(), &data().getDomain(),
++                                &data().getCutPool(), &data().getConflictPool(),
++                                &data().getPseudoCost());
++    data().getLp().setMipWorker(worker());
++    data().getLp().loadModel();
++  }
++  ~RootFixture() {
++    mip.reset();
++    highs.resetGlobalScheduler(true);
++  }
++  HighsMipSolverData& data() { return *mip->mipdata_; }
++  HighsMipWorker& worker() { return data().workers.front(); }
++  HighsSeparation& sepa() { return *worker().sepa_ptr_; }
++  LpStatus solveLp() {
++    return data().getLp().resolveLp(&data().getDomain());
++  }
++};
++}  // namespace
++
++TEST_CASE("staged-root-default-off-parity", "[staged-root-separation]") {
++  std::vector<double> point;
++  HighsInt iterations = -1;
++  int64_t nodes = -1;
++  for (int explicit_off = 0; explicit_off != 2; ++explicit_off) {
++    Highs highs;
++    highs.setOptionValue("output_flag", false);
++    highs.setOptionValue("threads", 1);
++    highs.setOptionValue("parallel", "off");
++    highs.setOptionValue("presolve", "off");
++    bool value = true;
++    REQUIRE(highs.getOptionValue("mip_staged_root_separation", value) == HighsStatus::kOk);
++    REQUIRE_FALSE(value);
++    if (explicit_off) highs.setOptionValue("mip_staged_root_separation", false);
++    REQUIRE(highs.passModel(triangle()) == HighsStatus::kOk);
++    REQUIRE(highs.run() == HighsStatus::kOk);
++    REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++    REQUIRE(highs.getInfo().objective_function_value == Approx(2));
++    if (!explicit_off) {
++      point = highs.getSolution().col_value;
++      iterations = highs.getInfo().simplex_iteration_count;
++      nodes = highs.getInfo().mip_node_count;
++    } else {
++      REQUIRE(highs.getSolution().col_value == point);
++      REQUIRE(highs.getInfo().simplex_iteration_count == iterations);
++      REQUIRE(highs.getInfo().mip_node_count == nodes);
++    }
++    highs.resetGlobalScheduler(true);
++  }
++}
++
++TEST_CASE("staged-root-public-sense-offset-correctness",
++          "[staged-root-separation]") {
++  for (ObjSense sense : {ObjSense::kMinimize, ObjSense::kMaximize}) {
++    for (double offset : {-100.0, 100.0}) {
++      Highs highs;
++      highs.setOptionValue("output_flag", false);
++      highs.setOptionValue("threads", 1);
++      highs.setOptionValue("parallel", "off");
++      highs.setOptionValue("presolve", "off");
++      highs.setOptionValue("mip_rel_gap", 0.0);
++      REQUIRE(highs.setOptionValue("mip_staged_root_separation", true) ==
++              HighsStatus::kOk);
++      HighsLp lp = triangle();
++      lp.sense_ = sense;
++      lp.offset_ = offset;
++      if (sense == ObjSense::kMaximize) lp.col_cost_.assign(3, -1);
++      REQUIRE(highs.passModel(lp) == HighsStatus::kOk);
++      REQUIRE(highs.run() == HighsStatus::kOk);
++      REQUIRE(highs.getModelStatus() == HighsModelStatus::kOptimal);
++      const double expected = offset + (sense == ObjSense::kMinimize ? 2 : -2);
++      REQUIRE(highs.getInfo().objective_function_value == Approx(expected));
++      REQUIRE(highs.getInfo().mip_dual_bound == Approx(expected));
++      const auto& x = highs.getSolution().col_value;
++      REQUIRE(x.size() == 3);
++      for (double v : x) {
++        REQUIRE(std::isfinite(v));
++        REQUIRE(v >= -1e-6);
++        REQUIRE(v <= 1 + 1e-6);
++        REQUIRE(std::abs(v - std::round(v)) <= 1e-6);
++      }
++      REQUIRE(x[0] + x[1] >= 1 - 1e-6);
++      REQUIRE(x[1] + x[2] >= 1 - 1e-6);
++      REQUIRE(x[0] + x[2] >= 1 - 1e-6);
++      REQUIRE(offset + (sense == ObjSense::kMinimize ? 1 : -1) *
++                           (x[0] + x[1] + x[2]) == Approx(expected));
++      highs.resetGlobalScheduler(true);
++    }
++  }
++}
++
++TEST_CASE("staged-root-pool-aging-and-membership", "[staged-root-separation]") {
++  RootFixture f;
++  auto& pool = f.data().getCutPool();
++  pool.setAgeLimit(2);
++  HighsInt inds[] = {0, 1};
++  double vals[] = {1, 1};
++  const HighsInt id = pool.addCut(*f.mip, inds, vals, 2, 1,
++                                 true, false, false);
++  REQUIRE(id >= 0);
++  HighsCutSet cuts;
++  const HighsInt before = pool.getNumCuts();
++  const std::vector<double> unviolated(3, 0);
++  for (int i = 0; i != 3; ++i) {
++    pool.separate(unviolated, f.data().getDomain(), cuts, f.data().feastol,
++                  f.data().cutpools, false, false);
++    REQUIRE(cuts.numCuts() == 0);
++    REQUIRE(pool.getNumCuts() == before);
++  }
++  // Age normally once: suppression above must not have advanced the cut.
++  pool.separate(unviolated, f.data().getDomain(), cuts, f.data().feastol,
++                f.data().cutpools);
++  REQUIRE(pool.getNumCuts() == before);
++  const std::vector<double> violated(3, 1);
++  pool.separate(violated, f.data().getDomain(), cuts, f.data().feastol,
++                f.data().cutpools, false, false);
++  REQUIRE(cuts.numCuts() == 1);
++  REQUIRE(cuts.cutindices.front() == id);
++  REQUIRE(pool.getNumAvailableCuts() == before - 1);
++  cuts.clear();
++  pool.separate(violated, f.data().getDomain(), cuts, f.data().feastol,
++                f.data().cutpools, false, false);
++  REQUIRE(cuts.numCuts() == 0);  // Already marked in the LP, not selected twice.
++  pool.lpCutRemoved(id);
++  REQUIRE(pool.getNumAvailableCuts() == before);
++  pool.resetAge(id);  // lpCutRemoved returns a cut at age one, not zero.
++  pool.separate(unviolated, f.data().getDomain(), cuts, f.data().feastol,
++                f.data().cutpools);
++  REQUIRE(pool.getNumCuts() == before);
++  pool.separate(unviolated, f.data().getDomain(), cuts, f.data().feastol,
++                f.data().cutpools);
++  REQUIRE(pool.getNumCuts() == before - 1);
++}
++
++TEST_CASE("staged-root-real-checkpoint-and-aging", "[staged-root-separation]") {
++  RootFixture f;
++  f.highs.setOptionValue("mip_staged_root_separation", true);
++  LpStatus status = f.solveLp();
++  REQUIRE(status == LpStatus::kOptimal);
++  REQUIRE_FALSE(f.data().getLp().getFractionalIntegers().empty());
++  const auto before = f.data().getLp().getSeparationWork();
++  const int64_t iterations_before = f.data().getLp().getNumLpIterations();
++  HighsSeparation::RootStats stats;
++  f.sepa().separationRoundAtRoot(f.data().getDomain(), status, stats);
++  REQUIRE(stats.eligible);
++  REQUIRE(stats.active);
++  const auto after = f.data().getLp().getSeparationWork();
++  REQUIRE(after.aging_calls - before.aging_calls <= 1);
++  REQUIRE(stats.pool_age_passes <= 1);
++  REQUIRE(stats.rebuilds <= 2);
++  if (stats.cheap_cuts > 0) {
++    REQUIRE(stats.fresh_solve);
++    REQUIRE(stats.cheap_lp_calls >= 1);
++  }
++  if (stats.path_calls && stats.cheap_cuts > 0) REQUIRE(stats.rebuilds == 2);
++  f.data().total_lp_iterations +=
++      f.data().getLp().getNumLpIterations() - iterations_before;
++  status = f.data().evaluateRootLp(f.worker(), stats.fresh_solve);
++  REQUIRE(status != LpStatus::kError);
++  if (!f.mip->solution_.empty()) {
++    const auto& x = f.mip->solution_;
++    REQUIRE(x.size() == 3);
++    REQUIRE(x[0] + x[1] >= 1 - 1e-6);
++    REQUIRE(x[1] + x[2] >= 1 - 1e-6);
++    REQUIRE(x[0] + x[2] >= 1 - 1e-6);
++    for (double v : x) REQUIRE(std::abs(v - std::round(v)) <= 1e-6);
++  }
++}
++
++TEST_CASE("staged-root-fresh-integral-handoff", "[staged-root-separation]") {
++  RootFixture f(integralCover());
++  REQUIRE(f.solveLp() == LpStatus::kOptimal);
++  REQUIRE(f.data().getLp().integerFeasible());
++  const auto before = f.data().getLp().getSeparationWork();
++  const int64_t iterations = f.data().getLp().getNumLpIterations();
++  const int64_t nodes = f.data().num_nodes;
++  const int64_t leaves = f.data().num_leaves;
++  const int64_t accounted = f.data().total_lp_iterations;
++  const auto status = f.data().evaluateRootLp(f.worker(), true);
++  REQUIRE(status == LpStatus::kInfeasible);  // Root closed after normal admission.
++  REQUIRE(f.mip->modelstatus_ == HighsModelStatus::kOptimal);
++  REQUIRE(f.mip->solution_objective_ == Approx(1));
++  REQUIRE(f.data().num_nodes == nodes + 1);
++  REQUIRE(f.data().num_leaves == leaves + 1);
++  REQUIRE(f.data().getLp().getNumLpIterations() == iterations);
++  REQUIRE(f.data().total_lp_iterations == accounted);
++  REQUIRE(f.data().getLp().getSeparationWork().calls == before.calls);
++}
++
++TEST_CASE("staged-root-controlled-exception-handoff", "[staged-root-separation]") {
++  for (LpStatus status : {LpStatus::kError, LpStatus::kUnbounded}) {
++    RootFixture f;
++    REQUIRE(f.solveLp() == LpStatus::kOptimal);
++    const bool have_solution = !f.mip->solution_.empty();
++    // Deliberately injected internal status, not a claimed numerical outcome.
++    HighsStagedRootTestAccess::status(f.data().getLp(), status);
++    const int64_t count = f.data().getLp().getSeparationWork().calls;
++    const double lower = f.data().lower_bound;
++    const auto result = f.data().evaluateRootLp(f.worker(), true);
++    REQUIRE(result == status);
++    REQUIRE(f.data().getLp().getSeparationWork().calls == count);
++    REQUIRE(f.data().lower_bound == lower);
++    if (status == LpStatus::kUnbounded)
++      REQUIRE(f.mip->modelstatus_ ==
++              (have_solution ? HighsModelStatus::kUnbounded
++                             : HighsModelStatus::kUnboundedOrInfeasible));
++    else {
++      REQUIRE(f.mip->modelstatus_ == HighsModelStatus::kNotset);
++      REQUIRE(f.data().num_nodes == 0);
++    }
++  }
++  REQUIRE(HighsMipSolverData::stagedRootFailureStatus(
++              LpStatus::kError, HighsModelStatus::kTimeLimit, false) ==
++          HighsModelStatus::kTimeLimit);
++  REQUIRE(HighsMipSolverData::stagedRootFailureStatus(
++              LpStatus::kError, HighsModelStatus::kInterrupt, false) ==
++          HighsModelStatus::kInterrupt);
++  REQUIRE(HighsMipSolverData::stagedRootFailureStatus(
++              LpStatus::kError, HighsModelStatus::kNotset, false) ==
++          HighsModelStatus::kSolveError);
++  REQUIRE(HighsMipSolverData::stagedRootFailureStatus(
++              LpStatus::kInfeasible, HighsModelStatus::kInfeasible, false) ==
++          HighsModelStatus::kNotset);
++}
++
++TEST_CASE("staged-root-controlled-guards", "[staged-root-separation]") {
++  for (int scenario = 0; scenario != 5; ++scenario) {
++    RootFixture f;
++    f.highs.setOptionValue("mip_staged_root_separation", true);
++    if (scenario == 1) f.highs.setOptionValue("parallel", "on");
++    if (scenario == 2) {
++      // parallelLockActive also requires multiple workers. Construct the
++      // second worker's state but never execute work concurrently.
++      f.data().workers.emplace_back(
++          *f.mip, &f.data().getLp(), &f.data().getDomain(),
++          &f.data().getCutPool(), &f.data().getConflictPool(),
++          &f.data().getPseudoCost());
++      f.mip->setParallelLock(true);
++      REQUIRE(f.data().parallelLockActive());
++    }
++    // Controlled identity/parallel guards, not execution of parallel workers.
++    HighsDomain other_domain(f.data().getDomain());
++    HighsLpRelaxation other_lp(*f.mip);
++    const HighsDomain& domain = scenario == 3 ? other_domain : f.data().getDomain();
++    if (scenario == 4) f.sepa().setLpRelaxation(&other_lp);
++    REQUIRE(HighsStagedRootTestAccess::eligible(f.sepa(), domain) == (scenario == 0));
++    f.sepa().setLpRelaxation(&f.data().getLp());
++    f.mip->setParallelLock(false);
++  }
++}
++
++TEST_CASE("staged-root-controlled-error-exits-before-solution-use",
++          "[staged-root-separation]") {
++  RootFixture f;
++  f.highs.setOptionValue("mip_staged_root_separation", true);
++  REQUIRE(f.solveLp() == LpStatus::kOptimal);
++  HighsStagedRootTestAccess::status(f.data().getLp(), LpStatus::kError);
++  const auto work = f.data().getLp().getSeparationWork();
++  const double lower = f.data().lower_bound;
++  const auto incumbent = f.mip->solution_;
++  const int64_t nodes = f.data().num_nodes;
++  LpStatus status = LpStatus::kError;
++  HighsInt cuts = -1;
++  REQUIRE(f.data().rootSeparationRound(f.worker(), f.sepa(), cuts, status));
++  REQUIRE(status == LpStatus::kError);
++  REQUIRE(f.mip->modelstatus_ == HighsModelStatus::kSolveError);
++  REQUIRE(f.data().lower_bound == lower);
++  REQUIRE(f.mip->solution_ == incumbent);
++  REQUIRE(f.data().num_nodes == nodes);
++  REQUIRE(f.data().getLp().getSeparationWork().calls == work.calls);
++}
++
++TEST_CASE("staged-root-option-does-not-change-nonroot-entry", "[staged-root-separation]") {
++  std::vector<double> point;
++  HighsInt rows = -1;
++  int64_t iterations = -1;
++  HighsInt cuts = -1;
++  LpStatus expected = LpStatus::kNotSet;
++  for (bool enabled : {false, true}) {
++    RootFixture f;
++    f.highs.setOptionValue("mip_staged_root_separation", enabled);
++    LpStatus status = f.solveLp();
++    REQUIRE(status == LpStatus::kOptimal);
++    const HighsInt ncuts = f.sepa().separationRound(f.data().getDomain(), status);
++    if (!enabled) {
++      point = f.data().getLp().getSolution().col_value;
++      rows = f.data().getLp().numRows();
++      iterations = f.data().getLp().getNumLpIterations();
++      cuts = ncuts;
++      expected = status;
++    } else {
++      REQUIRE(f.data().getLp().getSolution().col_value == point);
++      REQUIRE(f.data().getLp().numRows() == rows);
++      REQUIRE(f.data().getLp().getNumLpIterations() == iterations);
++      REQUIRE(ncuts == cuts);
++      REQUIRE(status == expected);
++    }
++  }
++}
+diff --git a/highs/lp_data/HighsOptions.h b/highs/lp_data/HighsOptions.h
+index e0cbc2485f..edff2c2db5 100644
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -494,6 +494,7 @@ struct HighsOptionsStruct {
+   bool icrash_breakpoints;
+ 
+   // Options for MIP solver
++  bool mip_staged_root_separation;
+   bool mip_detect_symmetry;
+   bool mip_allow_restart;
+   HighsInt mip_max_nodes;
+@@ -666,6 +667,7 @@ struct HighsOptionsStruct {
+         icrash_approx_iter(0),
+         icrash_exact(false),
+         icrash_breakpoints(false),
++        mip_staged_root_separation(false),
+         mip_detect_symmetry(false),
+         mip_allow_restart(false),
+         mip_max_nodes(0),
+@@ -1114,6 +1116,12 @@ class HighsOptions : public HighsOptionsStruct {
+         &write_iis_model_file, kHighsFilenameDefault);
+     records.push_back(record_string);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_staged_root_separation",
++        "Experimental staged cut separation at serial MIP roots", advanced,
++        &mip_staged_root_separation, false);
++    records.push_back(record_bool);
++
+     record_bool = new OptionRecordBool(
+         "mip_detect_symmetry", "Whether MIP symmetry should be detected",
+         advanced, &mip_detect_symmetry, true);
+diff --git a/highs/mip/HighsCutPool.cpp b/highs/mip/HighsCutPool.cpp
+index b9011e80b1..9697823ea3 100644
+--- a/highs/mip/HighsCutPool.cpp
++++ b/highs/mip/HighsCutPool.cpp
+@@ -230,7 +230,7 @@ void HighsCutPool::separate(const std::vector<double>& sol,
+                             const HighsDomain& domain, HighsCutSet& cutset,
+                             double feastol,
+                             const std::deque<HighsCutPool>& cutpools,
+-                            bool thread_safe) {
++                            bool thread_safe, bool age_unviolated) {
+   HighsInt nrows = matrix_.getNumRows();
+   const HighsInt* ARindex = matrix_.getARindex();
+   const double* ARvalue = matrix_.getARvalue();
+@@ -266,6 +266,10 @@ void HighsCutPool::separate(const std::vector<double>& sol,
+ 
+     // if the cut is not violated more than feasibility tolerance
+     // we skip it and increase its age, otherwise we reset its age
++    // The first staged root selection leaves nonviolated cuts completely
++    // untouched. In particular, do not remove their propagation/age entries.
++    // Violated cuts still follow the ordinary reset and LP-membership path.
++    if (!age_unviolated && double(viol) <= feastol) continue;
+     bool isPropagated = matrix_.columnsLinked(i);
+     if (!thread_safe) {
+       ageDistribution[ages_[i]] -= 1;
+@@ -662,4 +666,4 @@ void HighsCutPool::syncCutPool(const HighsMipSolver& mipsolver,
+   }
+ 
+   assert((HighsInt)propRows.size() == numPropRows);
+-}
+\ No newline at end of file
++}
+diff --git a/highs/mip/HighsCutPool.h b/highs/mip/HighsCutPool.h
+index e9f988cf30..f91a2492e5 100644
+--- a/highs/mip/HighsCutPool.h
++++ b/highs/mip/HighsCutPool.h
+@@ -155,7 +155,7 @@ class HighsCutPool {
+   void separate(const std::vector<double>& sol, const HighsDomain& domprop,
+                 HighsCutSet& cutset, double feastol,
+                 const std::deque<HighsCutPool>& cutpools,
+-                bool thread_safe = false);
++                bool thread_safe = false, bool age_unviolated = true);
+ 
+   void separateLpCutsAfterRestart(HighsCutSet& cutset);
+ 
+diff --git a/highs/mip/HighsLpRelaxation.cpp b/highs/mip/HighsLpRelaxation.cpp
+index c727e79a74..18bbeae705 100644
+--- a/highs/mip/HighsLpRelaxation.cpp
++++ b/highs/mip/HighsLpRelaxation.cpp
+@@ -8,6 +8,7 @@
+ #include "mip/HighsLpRelaxation.h"
+ 
+ #include <algorithm>
++#include <chrono>
+ 
+ #include "lp_data/HighsSolve.h"  // For useIpm()
+ #include "mip/HighsCutPool.h"
+@@ -20,6 +21,23 @@
+ #include "util/HighsCDouble.h"
+ #include "util/HighsHash.h"
+ 
++namespace {
++// No clock reads at ordinary log levels. Root-stage diagnostics in both arms
++// include all resolveLp exits, including errors and domain infeasibility.
++struct SeparationWallClock {
++  double* seconds;
++  std::chrono::steady_clock::time_point start;
++  explicit SeparationWallClock(double* value) : seconds(value) {
++    if (seconds) start = std::chrono::steady_clock::now();
++  }
++  ~SeparationWallClock() {
++    if (seconds)
++      *seconds += std::chrono::duration<double>(
++                      std::chrono::steady_clock::now() - start).count();
++  }
++};
++}  // namespace
++
+ void HighsLpRelaxation::setProfiling(HighsProfiling* profiling) {
+   assert(profiling);
+   lpsolver.setProfiling(profiling);
+@@ -604,7 +622,15 @@ void HighsLpRelaxation::removeCuts(HighsInt ndelcuts,
+     basis.debug_origin_name = "HighsLpRelaxation::removeCuts";
+     lpsolver.setBasis(basis);
+     mipsolver.profiling_->solveCall("LP0", mipsolver.submip);
++    const bool observe = mipsolver.options_mip_->log_dev_level >= 2;
++    SeparationWallClock clock(observe ? &separation_work_.lp0_seconds : nullptr);
+     lpsolver.optimizeLp();
++    if (observe) {
++      ++separation_work_.lp0_calls;
++      separation_work_.lp0_iterations += std::max(
++          HighsInt{0}, lpsolver.getInfo().simplex_iteration_count);
++      separation_work_.rows_removed += ndelcuts;
++    }
+   }
+ }
+ 
+@@ -636,6 +662,9 @@ void HighsLpRelaxation::performAging(bool deleteRows) {
+       !lpsolver.getSolution().dual_valid)
+     return;
+ 
++  if (deleteRows && mipsolver.options_mip_->log_dev_level >= 2)
++    ++separation_work_.aging_calls;
++
+   if (deleteRows) {
+     agelimit = mipsolver.options_mip_->mip_lp_age_limit;
+ 
+@@ -1439,6 +1468,9 @@ HighsLpRelaxation::Status HighsLpRelaxation::run(bool resolve_on_error) {
+ }
+ 
+ HighsLpRelaxation::Status HighsLpRelaxation::resolveLp(HighsDomain* domain) {
++  const bool observe = mipsolver.options_mip_->log_dev_level >= 2;
++  if (observe) ++separation_work_.calls;
++  SeparationWallClock clock(observe ? &separation_work_.seconds : nullptr);
+   fractionalints.clear();
+ 
+   bool solveagain;
+diff --git a/highs/mip/HighsLpRelaxation.h b/highs/mip/HighsLpRelaxation.h
+index 0a4c2f20a6..5fa06a4247 100644
+--- a/highs/mip/HighsLpRelaxation.h
++++ b/highs/mip/HighsLpRelaxation.h
+@@ -21,6 +21,7 @@ class HighsPseudocost;
+ class HighsMipWorker;
+ 
+ class HighsLpRelaxation {
++  friend struct HighsStagedRootTestAccess;
+  public:
+   enum class Status {
+     kNotSet,
+@@ -33,6 +34,17 @@ class HighsLpRelaxation {
+     kError,
+   };
+ 
++  // Observational only: never used for limits or algorithm decisions.
++  struct SeparationWork {
++    int64_t calls = 0;
++    double seconds = 0;
++    int64_t lp0_calls = 0;
++    int64_t lp0_iterations = 0;
++    double lp0_seconds = 0;
++    int64_t aging_calls = 0;
++    int64_t rows_removed = 0;
++  };
++
+  private:
+   struct LpRow {
+     enum Origin {
+@@ -88,6 +100,7 @@ class HighsLpRelaxation {
+   bool adjustSymBranchingCol;
+   bool solved_first_lp;
+   HighsMipWorker* worker_;
++  SeparationWork separation_work_;
+ 
+   void storeDualInfProof();
+ 
+@@ -238,6 +251,8 @@ class HighsLpRelaxation {
+ 
+   int64_t getNumLpIterations() const { return numlpiters; }
+ 
++  const SeparationWork& getSeparationWork() const { return separation_work_; }
++
+   bool integerFeasible() const {
+     if ((status == Status::kOptimal ||
+          status == Status::kUnscaledPrimalFeasible) &&
+diff --git a/highs/mip/HighsMipSolverData.cpp b/highs/mip/HighsMipSolverData.cpp
+index 0fee183b9d..79ce92e7ad 100644
+--- a/highs/mip/HighsMipSolverData.cpp
++++ b/highs/mip/HighsMipSolverData.cpp
+@@ -1856,18 +1856,110 @@ void HighsMipSolverData::printDisplayLine(const int solution_source) {
+   assert(!interrupt);
+ }
+ 
++HighsModelStatus HighsMipSolverData::stagedRootFailureStatus(
++    HighsLpRelaxation::Status status, HighsModelStatus lp_status,
++    bool have_solution) {
++  if (status == HighsLpRelaxation::Status::kUnbounded)
++    return have_solution ? HighsModelStatus::kUnbounded
++                         : HighsModelStatus::kUnboundedOrInfeasible;
++  if (status != HighsLpRelaxation::Status::kError &&
++      status != HighsLpRelaxation::Status::kNotSet)
++    return HighsModelStatus::kNotset;
++  switch (lp_status) {
++    case HighsModelStatus::kTimeLimit:
++    case HighsModelStatus::kIterationLimit:
++    case HighsModelStatus::kInterrupt:
++    case HighsModelStatus::kHighsInterrupt:
++    case HighsModelStatus::kMemoryLimit:
++      return lp_status;
++    default:
++      return HighsModelStatus::kSolveError;
++  }
++}
++
+ bool HighsMipSolverData::rootSeparationRound(
+     HighsMipWorker& worker, HighsSeparation& sepa, HighsInt& ncuts,
+     HighsLpRelaxation::Status& status) {
++  const auto work_before = getLp().getSeparationWork();
++  const int64_t iterations_before = getLp().getNumLpIterations();
++  HighsSeparation::RootStats stats;
+   int64_t tmpLpIters = -getLp().getNumLpIterations();
+-  ncuts = sepa.separationRound(getDomain(), status);
++  ncuts = sepa.separationRoundAtRoot(getDomain(), status, stats);
++  const auto separation_status = status;
+   tmpLpIters += getLp().getNumLpIterations();
+   avgrootlpiters = getLp().getAvgSolveIters();
+   total_lp_iterations += tmpLpIters;
+   sepa_lp_iterations += tmpLpIters;
+ 
+-  status = evaluateRootLp(worker);
+-  if (status == HighsLpRelaxation::Status::kInfeasible) return true;
++  auto finish = [&](bool stop) {
++    if (mipsolver.options_mip_->log_dev_level >= 2) {
++      const auto& work = getLp().getSeparationWork();
++      // Use printf for these explicitly requested diagnostics: sub-MIP
++      // output_flag is false even when the parent's log_dev_level is two.
++      printf("STAGED_SEPA active=%d eligible=%d submip=%d depth=%d "
++             "cheap_cuts=%d cheap_nnz=%d cheap_lp_calls=%lld "
++             "cheap_lp_iterations=%lld cheap_lp_seconds=%.17g "
++             "path_calls=%d path_seconds=%.17g lp_calls=%lld "
++             "lp_iterations=%lld lp_seconds=%.17g lp0_calls=%lld "
++             "lp0_iterations=%lld lp0_seconds=%.17g rebuilds=%d "
++             "rebuild_seconds=%.17g pool_seconds=%.17g "
++             "pool_age_passes=%d lp_age_passes=%lld rows_removed=%lld "
++             "domain_changes=%d fractional=%d skip=%s status=%d "
++             "eval_status=%d closed=%d model_status=%d lp_model_status=%d "
++             "lower=%.17g upper=%.17g limit=%.17g\n",
++             int(stats.active), int(stats.eligible), int(mipsolver.submip),
++             int(mipsolver.submip_level), int(stats.cheap_cuts),
++             int(stats.cheap_nnz), (long long)stats.cheap_lp_calls,
++             (long long)stats.cheap_lp_iterations, stats.cheap_lp_seconds,
++             int(stats.path_calls), stats.path_seconds,
++             (long long)(work.calls - work_before.calls),
++             (long long)(getLp().getNumLpIterations() - iterations_before),
++             work.seconds - work_before.seconds,
++             (long long)(work.lp0_calls - work_before.lp0_calls),
++             (long long)(work.lp0_iterations - work_before.lp0_iterations),
++             work.lp0_seconds - work_before.lp0_seconds, int(stats.rebuilds),
++             stats.rebuild_seconds, stats.pool_seconds,
++             int(stats.pool_age_passes),
++             (long long)(work.aging_calls - work_before.aging_calls),
++             (long long)(work.rows_removed - work_before.rows_removed),
++             int(stats.domain_changes), int(getLp().getFractionalIntegers().size()),
++             HighsSeparation::rootStopName(stats.skip), int(separation_status),
++             int(status), int(status == HighsLpRelaxation::Status::kInfeasible),
++             int(mipsolver.modelstatus_),
++             int(getLp().getLpSolver().getModelStatus()), lower_bound,
++             upper_bound, optimality_limit);
++    }
++    return stop;
++  };
++  auto stagedFailure = [&]() {
++    if (!stats.active) return false;
++    const HighsModelStatus failure = stagedRootFailureStatus(
++        status, getLp().getLpSolver().getModelStatus(),
++        !mipsolver.solution_.empty());
++    if (failure == HighsModelStatus::kNotset) return false;
++    // Never return an empty root queue with kNotset after an LP error:
++    // cleanupSolve would infer Optimal/Infeasible. Preserve limit/interrupt
++    // state first; otherwise report the native failure without a proof update.
++    if (mipsolver.modelstatus_ == HighsModelStatus::kNotset) {
++      checkLimits();
++      if (mipsolver.terminate())
++        mipsolver.modelstatus_ = mipsolver.terminationStatus();
++      if (mipsolver.modelstatus_ == HighsModelStatus::kNotset)
++        mipsolver.modelstatus_ = failure;
++    }
++    return true;
++  };
++
++  // An active staged error must not become another solve merely because the
++  // failed LP cleared its native model status. Preserve it before evaluation.
++  // Unboundedness still goes through evaluateRootLp's ordinary fresh branch.
++  if (stats.active &&
++      (status == HighsLpRelaxation::Status::kError ||
++       status == HighsLpRelaxation::Status::kNotSet) && stagedFailure())
++    return finish(true);
++  status = evaluateRootLp(worker, stats.fresh_solve);
++  if (status == HighsLpRelaxation::Status::kInfeasible) return finish(true);
++  if (stagedFailure()) return finish(true);
+ 
+   const std::vector<double>& solvals =
+       getLp().getLpSolver().getSolution().col_value;
+@@ -1878,14 +1970,15 @@ bool HighsMipSolverData::rootSeparationRound(
+       heuristics.shifting(worker, solvals);
+     heuristics.flushStatistics(mipsolver, worker);
+     status = evaluateRootLp(worker);
+-    if (status == HighsLpRelaxation::Status::kInfeasible) return true;
++    if (status == HighsLpRelaxation::Status::kInfeasible) return finish(true);
++    if (stagedFailure()) return finish(true);
+   }
+ 
+-  return false;
++  return finish(false);
+ }
+ 
+ HighsLpRelaxation::Status HighsMipSolverData::evaluateRootLp(
+-    HighsMipWorker& worker) {
++    HighsMipWorker& worker, bool freshly_resolved) {
+   do {
+     getDomain().propagate();
+ 
+@@ -1917,7 +2010,15 @@ HighsLpRelaxation::Status HighsMipSolverData::evaluateRootLp(
+       total_lp_iterations += lpIters;
+       avgrootlpiters = getLp().getAvgSolveIters();
+       lpWasSolved = true;
++    } else {
++      status = getLp().getStatus();
++      // Staged separation already charged this solve in rootSeparationRound.
++      // Consume its post-solve handling once, without solving/counting again.
++      lpWasSolved = freshly_resolved;
++    }
++    freshly_resolved = false;
+ 
++    if (lpWasSolved) {
+       if (status == HighsLpRelaxation::Status::kUnbounded) {
+         if (mipsolver.solution_.empty())
+           mipsolver.modelstatus_ = HighsModelStatus::kUnboundedOrInfeasible;
+@@ -1947,8 +2048,7 @@ HighsLpRelaxation::Status HighsMipSolverData::evaluateRootLp(
+         heuristics.ziRound(worker,
+                            getLp().getLpSolver().getSolution().col_value);
+ 
+-    } else
+-      status = getLp().getStatus();
++    }
+ 
+     if (status == HighsLpRelaxation::Status::kInfeasible) {
+       updateLowerBound(std::min(kHighsInf, upper_bound));
+diff --git a/highs/mip/HighsMipSolverData.h b/highs/mip/HighsMipSolverData.h
+index e9f19b9a40..2845ace55f 100644
+--- a/highs/mip/HighsMipSolverData.h
++++ b/highs/mip/HighsMipSolverData.h
+@@ -216,7 +216,12 @@ struct HighsMipSolverData {
+                    const int solution_source = kSolutionSourceNone);
+   bool rootSeparationRound(HighsMipWorker& worker, HighsSeparation& sepa,
+                            HighsInt& ncuts, HighsLpRelaxation::Status& status);
+-  HighsLpRelaxation::Status evaluateRootLp(HighsMipWorker& worker);
++  HighsLpRelaxation::Status evaluateRootLp(HighsMipWorker& worker,
++                                         bool freshly_resolved = false);
++  // Classification only; it does not update a bound or assert infeasibility.
++  static HighsModelStatus stagedRootFailureStatus(
++      HighsLpRelaxation::Status status, HighsModelStatus lp_status,
++      bool have_solution);
+ 
+   void evaluateRootNode(HighsMipWorker& worker);
+ 
+diff --git a/highs/mip/HighsSeparation.cpp b/highs/mip/HighsSeparation.cpp
+index 87e72b6dde..ff13599846 100644
+--- a/highs/mip/HighsSeparation.cpp
++++ b/highs/mip/HighsSeparation.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <chrono>
+ #include <queue>
+ 
+ #include "mip/HighsCliqueTable.h"
+@@ -23,6 +24,13 @@
+ #include "mip/HighsTableauSeparator.h"
+ #include "mip/HighsTransformedLp.h"
+ 
++namespace {
++using SepaClock = std::chrono::steady_clock;
++double sepaElapsed(SepaClock::time_point start) {
++  return std::chrono::duration<double>(SepaClock::now() - start).count();
++}
++}  // namespace
++
+ HighsSeparation::HighsSeparation(HighsMipWorker& mipworker)
+     : mipworker_(mipworker) {
+   /*
+@@ -42,6 +50,240 @@ HighsSeparation::HighsSeparation(HighsMipWorker& mipworker)
+   separators.emplace_back(new HighsMachineSchedSeparator(mipsolver));
+ }
+ 
++const char* HighsSeparation::rootStopName(RootStop reason) {
++  switch (reason) {
++    case RootStop::kDomainInfeasible: return "domain_infeasible";
++    case RootStop::kLpInfeasible: return "lp_infeasible";
++    case RootStop::kNonoptimal: return "nonoptimal";
++    case RootStop::kIntegralHint: return "integral_hint";
++    case RootStop::kCutoffHint: return "cutoff_hint";
++    default: return "none";
++  }
++}
++
++HighsSeparation::RootStop HighsSeparation::rootStop(
++    const HighsDomain& domain, HighsLpRelaxation::Status status) const {
++  const HighsMipSolverData& data = *lp->getMipSolver().mipdata_;
++  if (domain.infeasible() || mipworker_.getGlobalDomain().infeasible())
++    return RootStop::kDomainInfeasible;
++  if (status == HighsLpRelaxation::Status::kInfeasible)
++    return RootStop::kLpInfeasible;
++  // resolveLp clears fractionalints even on error, limit and unbounded exits.
++  if (!lp->scaledOptimal(status)) return RootStop::kNonoptimal;
++  if (lp->integerFeasible()) return RootStop::kIntegralHint;
++  if (lp->unscaledDualFeasible(status) &&
++      std::max(data.lower_bound, lp->getObjective()) > data.optimality_limit)
++    return RootStop::kCutoffHint;
++  return RootStop::kNone;
++}
++
++bool HighsSeparation::rootStagingEligible(const HighsDomain& propdomain) const {
++  const HighsMipSolver& solver = lp->getMipSolver();
++  const HighsMipSolverData& data = *solver.mipdata_;
++  return solver.options_mip_->parallel == kHighsOffString &&
++         !data.parallelLockActive() && solver.getMaxNumWorkers() == 1 &&
++         &propdomain == &data.getDomain() && lp == &data.getLp();
++}
++
++HighsInt HighsSeparation::separationRoundAtRoot(
++    HighsDomain& propdomain, HighsLpRelaxation::Status& status,
++    RootStats& stats) {
++  const HighsMipSolver& solver = lp->getMipSolver();
++  stats = RootStats();
++  stats.eligible = rootStagingEligible(propdomain);
++  stats.active = stats.eligible &&
++                 solver.options_mip_->mip_staged_root_separation;
++  const bool observe = solver.options_mip_->log_dev_level >= 2;
++  const HighsInt path_calls = separators[1]->getNumCalls();
++  const double path_seconds = separators[1]->getElapsedSeconds();
++  struct RestoreObserver {
++    RootStats*& pointer;
++    RootStats* previous;
++    ~RestoreObserver() { pointer = previous; }
++  } restore{observing_root_, observing_root_};
++  observing_root_ = observe ? &stats : nullptr;
++  HighsInt ncuts = stats.active ? stagedRootRound(propdomain, status, stats)
++                               : separationRound(propdomain, status);
++  stats.path_calls = separators[1]->getNumCalls() - path_calls;
++  stats.path_seconds = separators[1]->getElapsedSeconds() - path_seconds;
++  return ncuts;
++}
++
++HighsInt HighsSeparation::stagedRootRound(
++    HighsDomain& domain, HighsLpRelaxation::Status& status, RootStats& stats) {
++  HighsMipSolverData& data = *lp->getMipSolver().mipdata_;
++  const bool observe = observing_root_ != nullptr;
++  HighsInt ncuts = 0;
++  bool added_batch = false;
++  bool aged = false;
++
++  auto resolve = [&]() {
++    lp->setObjectiveLimit(mipworker_.upper_limit);
++    status = lp->resolveLp(&domain);
++    stats.fresh_solve = true;
++  };
++  auto redcost = [&]() {
++    if (lp->unscaledDualFeasible(status)) {
++      data.redcostfixing.addRootRedcost(
++          data.mipsolver, lp->getSolution().col_dual, lp->getObjective());
++      if (mipworker_.upper_limit != kHighsInf)
++        data.redcostfixing.propagateRootRedcost(data.mipsolver);
++    }
++  };
++  auto propagate = [&]() -> bool {
++    if (domain.infeasible() || mipworker_.getGlobalDomain().infeasible()) {
++      status = HighsLpRelaxation::Status::kInfeasible;
++      domain.clearChangedCols();
++      return false;
++    }
++    domain.propagate();
++    if (domain.infeasible()) {
++      status = HighsLpRelaxation::Status::kInfeasible;
++      domain.clearChangedCols();
++      return false;
++    }
++    data.cliquetable.cleanupFixed(data.getDomain());
++    if (mipworker_.getGlobalDomain().infeasible()) {
++      status = HighsLpRelaxation::Status::kInfeasible;
++      domain.clearChangedCols();
++      return false;
++    }
++    ncuts += static_cast<HighsInt>(domain.getChangedCols().size());
++    while (!domain.getChangedCols().empty()) {
++      stats.domain_changes += static_cast<HighsInt>(domain.getChangedCols().size());
++      resolve();
++      if (!lp->scaledOptimal(status)) return false;
++      redcost();
++    }
++    return true;
++  };
++  auto settle = [&]() -> bool {
++    if (!lp->scaledOptimal(status)) return false;
++    redcost();
++    return propagate();
++  };
++  auto ageAndRefresh = [&]() {
++    if (!added_batch || aged) return;
++    aged = true;
++    const HighsInt before = lp->numRows();
++    lp->performAging(true);
++    // removeCuts performs a raw LP0 solve, which does not refresh the
++    // relaxation's status, objective or fractional list. Reacquire all three.
++    if (lp->numRows() != before) {
++      resolve();
++      settle();
++    }
++  };
++  auto selectAndSolve = [&](bool age_unviolated, bool cheap) {
++    SepaClock::time_point start;
++    if (observe) start = SepaClock::now();
++    mipworker_.getCutPool().separate(
++        lp->getSolution().col_value, domain, cutset, data.feastol,
++        data.cutpools, false, age_unviolated);
++    if (age_unviolated) ++stats.pool_age_passes;
++    if (&mipworker_.getCutPool() != &data.getCutPool()) {
++      data.getCutPool().separate(lp->getSolution().col_value, domain, cutset,
++                                data.feastol, data.cutpools, true,
++                                age_unviolated);
++    }
++    if (observe) stats.pool_seconds += sepaElapsed(start);
++    const HighsInt selected = cutset.numCuts();
++    if (cheap) {
++      stats.cheap_cuts = selected;
++      stats.cheap_nnz = static_cast<HighsInt>(cutset.ARindex_.size());
++    }
++    if (selected == 0) return;
++    ncuts += selected;
++    added_batch = true;
++    lp->addCuts(cutset);
++    resolve();
++    settle();
++  };
++
++  // Do not inspect solution arrays on exceptional entry, even though the
++  // ordinary root loop normally calls us only for a fractional optimal LP.
++  if (domain.infeasible() || !lp->scaledOptimal(status)) {
++    stats.skip = rootStop(domain, status);
++    return 0;
++  }
++  data.implications.separateImpliedBounds(
++      *lp, lp->getSolution().col_value, mipworker_.getCutPool(), data.feastol,
++      mipworker_.getGlobalDomain(), false);
++  if (!propagate()) {
++    stats.skip = rootStop(domain, status);
++    return ncuts;
++  }
++  data.cliquetable.separateCliques(
++      lp->getMipSolver(), lp->getSolution().col_value, mipworker_.getCutPool(),
++      data.feastol, data.cliquetable.getRandgen(),
++      data.cliquetable.getNumNeighbourhoodQueries());
++  if (!propagate()) {
++    stats.skip = rootStop(domain, status);
++    return ncuts;
++  }
++
++  {
++    SepaClock::time_point start;
++    if (observe) start = SepaClock::now();
++    HighsTransformedLp trans(*lp, data.implications,
++                            mipworker_.getGlobalDomain());
++    if (mipworker_.getGlobalDomain().infeasible()) {
++      status = HighsLpRelaxation::Status::kInfeasible;
++      stats.skip = RootStop::kDomainInfeasible;
++      return ncuts;
++    }
++    HighsLpAggregator aggregator(*lp);
++    ++stats.rebuilds;
++    if (observe) stats.rebuild_seconds += sepaElapsed(start);
++    separators[0]->run(*lp, aggregator, trans, mipworker_.getCutPool());
++  }
++  // No transformed row/column/basis state survives this boundary.
++  if (!propagate()) {
++    stats.skip = rootStop(domain, status);
++    return ncuts;
++  }
++  const auto cheap_before = lp->getSeparationWork();
++  const int64_t cheap_iterations = lp->getNumLpIterations();
++  auto recordCheap = [&]() {
++    const auto& work = lp->getSeparationWork();
++    stats.cheap_lp_calls = work.calls - cheap_before.calls;
++    stats.cheap_lp_seconds = work.seconds - cheap_before.seconds;
++    stats.cheap_lp_iterations = lp->getNumLpIterations() - cheap_iterations;
++  };
++  selectAndSolve(false, true);
++  RootStop stop = rootStop(domain, status);
++  if (stop != RootStop::kNone) {
++    ageAndRefresh();
++    stop = rootStop(domain, status);
++    if (stop != RootStop::kNone) {
++      stats.skip = stop;
++      recordCheap();
++      return ncuts;
++    }
++  }
++  recordCheap();
++
++  // Settling after the cheap solve is complete before rebuilding snapshots.
++  {
++    SepaClock::time_point start;
++    if (observe) start = SepaClock::now();
++    HighsTransformedLp trans(*lp, data.implications,
++                            mipworker_.getGlobalDomain());
++    if (!mipworker_.getGlobalDomain().infeasible()) {
++      HighsLpAggregator aggregator(*lp);
++      ++stats.rebuilds;
++      if (observe) stats.rebuild_seconds += sepaElapsed(start);
++      for (size_t i = 1; i < separators.size(); ++i) {
++        separators[i]->run(*lp, aggregator, trans, mipworker_.getCutPool());
++        if (mipworker_.getGlobalDomain().infeasible()) break;
++      }
++    }
++  }
++  if (propagate()) selectAndSolve(true, false);
++  ageAndRefresh();
++  return ncuts;
++}
++
+ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+                                           HighsLpRelaxation::Status& status) {
+   const HighsSolution& sol = lp->getLpSolver().getSolution();
+@@ -73,6 +315,7 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+     }
+ 
+     int numBoundChgs = (int)propdomain.getChangedCols().size();
++    if (observing_root_) observing_root_->domain_changes += numBoundChgs;
+ 
+     while (!propdomain.getChangedCols().empty()) {
+       lp->setObjectiveLimit(mipworker_.upper_limit);
+@@ -131,6 +374,8 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+         mipdata.feastol, propdomain, mipworker_.getGlobalDomain(),
+         mipworker_.getConflictPool(), mipworker_.getPseudocost(), true);
+ 
++  SepaClock::time_point transform_start;
++  if (observing_root_) transform_start = SepaClock::now();
+   HighsTransformedLp transLp(*lp, mipdata.implications,
+                              mipworker_.getGlobalDomain());
+   if (mipworker_.getGlobalDomain().infeasible()) {
+@@ -138,6 +383,10 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+     return 0;
+   }
+   HighsLpAggregator lpAggregator(*lp);
++  if (observing_root_) {
++    ++observing_root_->rebuilds;
++    observing_root_->rebuild_seconds += sepaElapsed(transform_start);
++  }
+ 
+   for (const std::unique_ptr<HighsSeparator>& separator : separators) {
+     separator->run(*lp, lpAggregator, transLp, mipworker_.getCutPool());
+@@ -153,6 +402,8 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+   else
+     ncuts += numboundchgs;
+ 
++  SepaClock::time_point pool_start;
++  if (observing_root_) pool_start = SepaClock::now();
+   mipworker_.getCutPool().separate(sol.col_value, propdomain, cutset,
+                                    mipdata.feastol, mipdata.cutpools);
+   // Also separate the global cut pool
+@@ -160,6 +411,10 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+     mipdata.getCutPool().separate(sol.col_value, propdomain, cutset,
+                                   mipdata.feastol, mipdata.cutpools, true);
+   }
++  if (observing_root_) {
++    ++observing_root_->pool_age_passes;
++    observing_root_->pool_seconds += sepaElapsed(pool_start);
++  }
+ 
+   if (cutset.numCuts() > 0) {
+     ncuts += cutset.numCuts();
+diff --git a/highs/mip/HighsSeparation.h b/highs/mip/HighsSeparation.h
+index cb79d11227..943a0d081e 100644
+--- a/highs/mip/HighsSeparation.h
++++ b/highs/mip/HighsSeparation.h
+@@ -21,7 +21,37 @@ class HighsImplications;
+ class HighsCliqueTable;
+ 
+ class HighsSeparation {
++  friend struct HighsStagedRootTestAccess;
+  public:
++  enum class RootStop {
++    kNone, kDomainInfeasible, kLpInfeasible, kNonoptimal,
++    kIntegralHint, kCutoffHint
++  };
++  struct RootStats {
++    bool eligible = false;
++    bool active = false;
++    bool fresh_solve = false;
++    HighsInt cheap_cuts = 0;
++    HighsInt cheap_nnz = 0;
++    int64_t cheap_lp_calls = 0;
++    int64_t cheap_lp_iterations = 0;
++    double cheap_lp_seconds = 0;
++    HighsInt path_calls = 0;
++    double path_seconds = 0;
++    HighsInt rebuilds = 0;
++    double rebuild_seconds = 0;
++    double pool_seconds = 0;
++    HighsInt pool_age_passes = 0;
++    HighsInt domain_changes = 0;
++    RootStop skip = RootStop::kNone;
++  };
++
++  // Explicit root provenance: node separation never calls this entry point.
++  HighsInt separationRoundAtRoot(HighsDomain& propdomain,
++                                HighsLpRelaxation::Status& status,
++                                RootStats& stats);
++  static const char* rootStopName(RootStop reason);
++
+   HighsInt separationRound(HighsDomain& propdomain,
+                            HighsLpRelaxation::Status& status);
+ 
+@@ -32,6 +62,12 @@ class HighsSeparation {
+   HighsSeparation(HighsMipWorker& mipworker);
+ 
+  private:
++  bool rootStagingEligible(const HighsDomain& domain) const;
++  HighsInt stagedRootRound(HighsDomain& propdomain,
++                          HighsLpRelaxation::Status& status, RootStats& stats);
++  RootStop rootStop(const HighsDomain& domain,
++                   HighsLpRelaxation::Status status) const;
++  RootStats* observing_root_ = nullptr;
+   HighsMipWorker& mipworker_;
+   HighsInt implBoundClock;
+   HighsInt cliqueClock;
+diff --git a/highs/mip/HighsSeparator.cpp b/highs/mip/HighsSeparator.cpp
+index a4675a33de..ee754343bb 100644
+--- a/highs/mip/HighsSeparator.cpp
++++ b/highs/mip/HighsSeparator.cpp
+@@ -8,6 +8,7 @@
+ #include "mip/HighsSeparator.h"
+ 
+ #include <string>
++#include <chrono>
+ 
+ #include "HighsMipSolverData.h"
+ #include "mip/HighsCutPool.h"
+@@ -37,7 +38,14 @@ void HighsSeparator::run(HighsLpRelaxation& lpRelaxation,
+ 
+   if (!lpRelaxation.getMipSolver().mipdata_->parallelLockActive())
+     lpRelaxation.getMipSolver().profiling_->start(clockIndex);
++  const bool observe =
++      lpRelaxation.getMipSolver().options_mip_->log_dev_level >= 2;
++  std::chrono::steady_clock::time_point start;
++  if (observe) start = std::chrono::steady_clock::now();
+   separateLpSolution(lpRelaxation, lpAggregator, transLp, cutpool);
++  if (observe)
++    elapsedSeconds += std::chrono::duration<double>(
++        std::chrono::steady_clock::now() - start).count();
+   if (!lpRelaxation.getMipSolver().mipdata_->parallelLockActive())
+     lpRelaxation.getMipSolver().profiling_->stop(clockIndex);
+ 
+diff --git a/highs/mip/HighsSeparator.h b/highs/mip/HighsSeparator.h
+index 89367f51d1..28728ef60c 100644
+--- a/highs/mip/HighsSeparator.h
++++ b/highs/mip/HighsSeparator.h
+@@ -38,6 +38,7 @@ class HighsSeparator {
+   HighsInt numCutsFound;
+   HighsInt numCalls;
+   int clockIndex;
++  double elapsedSeconds = 0;
+ 
+  public:
+   HighsSeparator(const HighsMipSolver& mipsolver, const std::string& name);
+@@ -54,6 +55,8 @@ class HighsSeparator {
+ 
+   HighsInt getNumCalls() const { return numCalls; }
+ 
++  double getElapsedSeconds() const { return elapsedSeconds; }
++
+   HighsInt getClockIndex() const { return clockIndex; }
+ 
+   virtual ~HighsSeparator() {}
