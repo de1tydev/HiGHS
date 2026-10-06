@@ -42,8 +42,10 @@ SCUC datasets are not committed.
 | 2017-04-15 | proxy denied CONNECT, HTTP 403 | 0 | unavailable |
 | 2017-07-15 | proxy denied CONNECT, HTTP 403 | 0 | unavailable |
 
-Exact URLs and final permitted retry errors are in
-[download-receipts.json](evidence/download-receipts.json). Initial urllib reads,
+Exact URLs and the saved urllib attempt errors are in
+[download-receipts.json](evidence/download-receipts.json). The download script
+reused one output file; separate per-attempt receipts for later checks/retries
+were not retained, so that file is not a complete retry history. Initial urllib reads,
 a direct curl check, a www-host check and an approved network retry all received
 403; none obtained data. The approved retry did not change access. No access
 restriction was bypassed. Official UC.jl v0.3 repository inspection found no
