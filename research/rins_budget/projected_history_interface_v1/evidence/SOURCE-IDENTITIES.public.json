@@ -1,0 +1,36 @@
+{
+  "adapter_sha256": "64fc588e461c918ead65bd55c9c0dbaa9667f3047d0ba95734e41ea9b48944ca",
+  "base_source_manifest_sha256": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+  "executed_plan_sha256": "348728306944eb3ce1d4337bf7390d37e13aff73530984b9dc85aec701e7f7d0",
+  "executed_staged_source_manifest_sha256": "1b7c96e77b0d58e82bb473fc8fb3418c9ab452961c8f0ca5239a30cf520c1826",
+  "native_artifacts": {
+    "binary": {
+      "bytes": 571368,
+      "sha256": "a8546ca386821b0953df9c466439191d021d17bdb7965cf115aa6e2bc0da7ab2"
+    },
+    "extras": {
+      "bytes": 15496,
+      "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+    },
+    "library": {
+      "bytes": 6829536,
+      "sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8"
+    },
+    "native_assess": {
+      "bytes": 53992,
+      "sha256": "2a1e3cbf237218463f68edb6879c8b85443840139c87878e6dc4d50b25d0f35e"
+    }
+  },
+  "native_runtime_manifest_sha256": "688b50a8a1da8f5747eb0404def80dd7729cac2a6b4a4446c5a54be22b552e00",
+  "native_source_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "overlay_sha256": {
+    "carry.py": "e825a4a14378f0a7a4fcebd10a953ebc50b92d357f16afe87c9ccb983a6e2a9d",
+    "history_scuc.py": "11d00e1b07551ab40abec1461e290e3d3b2b0c24dc2ba07bc658b1a0d268d392",
+    "phase.py": "76a9e95b64498a58502e8ec7b33cbcb88fc84c1750b6fdb77f8dea899c75561e",
+    "receipts.py": "bfd6f1dd78b5ca210ddaa0ade075acec8d78524415a07302519b0f42ed14b6ac"
+  },
+  "portability": "Exact qualified adapter binary, supported native build, clean Python runtime, authenticated June archive and October source are required; this source publication supplies none of those private/raw input payloads.",
+  "qualified_importer_review_sha256": "d3f28f71864a303c616d1c84e1d41952b966c2f72f0f5c0616d7643bfa70cc9e",
+  "schema": "projected-history-source-identities-public/v1",
+  "staged_manifest_is_location_bound": true
+}

@@ -1,0 +1,90 @@
+{
+  "all_existing_runtime_test_stage_protocol_files_unchanged": true,
+  "files": {
+    "PROTOCOL_AMENDMENT.md": {
+      "bytes": 4670,
+      "sha256": "e16bdf4412992dbc6478830c39b68b6a954fa3e10bcd5cebafc0c787153a33fd"
+    },
+    "README.md": {
+      "bytes": 7670,
+      "sha256": "a9fd11cadd03f61e51d2a1c94b61f02ac57042e5aa7c55bac3434ccd075ca2be"
+    },
+    "REPLAY.md": {
+      "bytes": 5395,
+      "sha256": "8e090f41148159e11cb9bd053e1989f1a5049fd0198bd3ed74fbfd061b688256"
+    },
+    "SOURCE_DELTA_v3.patch": {
+      "bytes": 71143,
+      "sha256": "588e30a508de9502f19883e74953eeb02b6d49daafafcff427f1a479f39ea96a"
+    },
+    "evidence/CHRONOLOGY.public.json": {
+      "bytes": 1264,
+      "sha256": "603b7f34062c87f5abc58db8eafcd9418f2f97cf16d84f7e6733a7e455b330d8"
+    },
+    "evidence/INITIAL-STATE-DIAGNOSIS.public.json": {
+      "bytes": 6804,
+      "sha256": "adffbe967f987a67b20a3debafa4e34dae2feac4782e4b69aa6929f5f5b42084"
+    },
+    "evidence/PAIR-SUMMARY.public.json": {
+      "bytes": 3517,
+      "sha256": "8d9f8872a7c2a6621dc7c350595aac06c8bab99bfe9bdee0172eee9b49de5f0f"
+    },
+    "evidence/QUALIFICATION.public.json": {
+      "bytes": 4244,
+      "sha256": "4f1d4625b836cce3e46b154759805c3554ae494c837e9fcbd168528df3c2914a"
+    },
+    "evidence/SOURCE-IDENTITIES.public.json": {
+      "bytes": 1940,
+      "sha256": "57655b01edc6158c19d845083e13ada109f1d09ebd6a166457a3f6b74d495db0"
+    },
+    "evidence/STAGE-COSTS.public.json": {
+      "bytes": 1529,
+      "sha256": "3e32065053acb90885dbeb2a43837e6a5933120ec367672070e52aeb04659f62"
+    },
+    "evidence/TERMINAL-AUDITS.public.json": {
+      "bytes": 3913,
+      "sha256": "c66052638732cc95cb3f8e8c17c0aa23d8ce326b5c44396bff09e5a6bfd7263c"
+    },
+    "overlay/current_scuc/carry.py": {
+      "bytes": 42110,
+      "sha256": "e825a4a14378f0a7a4fcebd10a953ebc50b92d357f16afe87c9ccb983a6e2a9d"
+    },
+    "overlay/current_scuc/history_scuc.py": {
+      "bytes": 20130,
+      "sha256": "11d00e1b07551ab40abec1461e290e3d3b2b0c24dc2ba07bc658b1a0d268d392"
+    },
+    "overlay/current_scuc/phase.py": {
+      "bytes": 45804,
+      "sha256": "76a9e95b64498a58502e8ec7b33cbcb88fc84c1750b6fdb77f8dea899c75561e"
+    },
+    "overlay/current_scuc/receipts.py": {
+      "bytes": 27547,
+      "sha256": "bfd6f1dd78b5ca210ddaa0ade075acec8d78524415a07302519b0f42ed14b6ac"
+    },
+    "stage.py": {
+      "bytes": 4357,
+      "sha256": "0aa02216826b5336b060a6b2578d25bfbe70e18ab65334f67552e82c227aa82b"
+    },
+    "test_seams.py": {
+      "bytes": 14483,
+      "sha256": "868d62d577cb343f97f1e619eb7806e46b39c7f62582fb176ad387015ab96921"
+    },
+    "tiny_pair.py": {
+      "bytes": 47913,
+      "sha256": "5259dfeae5fbc250d0649aebb4b676936b0d1940b9ad381269d7eb3a88372ee5"
+    }
+  },
+  "manifest_self_excluded": true,
+  "omitted_private_or_superseded_files": [
+    "SOURCE_CANDIDATE_v1.json",
+    "SOURCE_CANDIDATE_v2.json",
+    "SOURCE_CANDIDATE_v3.json",
+    "SOURCE_DELTA.patch"
+  ],
+  "publication_validation": "Static path screening, artifact hashes, Python syntax parsing and executed-stage byte comparison only; no tests/builds/native API/optimizer/checker reruns",
+  "purpose": "Fixed exposed October negative-pair result; inspectable qualified v3 overlay and compact evidence",
+  "raw_datasets_binaries_archives_included": false,
+  "runtime_overlay_bytes_identical_to_executed_stage": true,
+  "schema": "projected-history-publication-manifest/v1",
+  "tiny_runner_and_patch_match_completed_tiny_audit": true
+}

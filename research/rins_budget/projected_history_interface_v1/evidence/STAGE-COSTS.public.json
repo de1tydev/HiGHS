@@ -1,0 +1,30 @@
+{
+  "arms": {
+    "cold": {
+      "MIP_process": 13.464550565000536,
+      "candidate_process": 364.94911147400126,
+      "cli_spawn_through_reap": 425.15758231600194,
+      "physical_process_receipt_sha256": "4c2a1103195ede627b8f291e942f0218a977623c567ed72cf86ac4113948ab68",
+      "physical_process_seconds": 171.54285975899984,
+      "preparation": 57.51874078800029,
+      "seed_process": 101.7359273530019,
+      "solver_related_ledger": 115.20047791800243,
+      "terminal_audit_sha256": "e6456c5a578e308221651c5c46417ce96ed14cca1b338ce19eb05f0c039fe55c"
+    },
+    "history": {
+      "MIP_process": 12.307768126000155,
+      "candidate_process": 389.3914630139989,
+      "cli_spawn_through_reap": 448.143773202999,
+      "physical_process_receipt_sha256": "79c5083e071e3a87dde687e8146cc80c7ce26a8c5db6a34e46332c4de94a5f89",
+      "physical_process_seconds": 170.8612632910008,
+      "preparation": 56.26071273299749,
+      "seed_process": 98.2661655539996,
+      "solver_related_ledger": 141.32714041699728,
+      "terminal_audit_sha256": "7f043df60d77656ca35ddb600f759e3899ac5c95578866f83b789e75decee790"
+    }
+  },
+  "clock_scope": "All source clocks preserved. Stage and candidate clocks nest inside CLI spawn-through-reap; do not add them. Owner preflight/receipt publication and post-exit archives are separate.",
+  "no_scientific_reexecution": true,
+  "original_pair_summary_sha256": "8d9f8872a7c2a6621dc7c350595aac06c8bab99bfe9bdee0172eee9b49de5f0f",
+  "schema": "projected-history-pair-stage-cost-projection/v1"
+}

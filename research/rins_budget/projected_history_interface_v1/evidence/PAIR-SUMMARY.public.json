@@ -1,0 +1,79 @@
+{
+  "arms": {
+    "cold": {
+      "actual_integer_processes": 1,
+      "charged_ledger_seconds": 115.20047791800243,
+      "cli_spawn_through_reap_seconds": 425.15758231600194,
+      "ordinary_MIP_process_seconds": 13.464550565000536,
+      "ordinary_logical_calls_executed": 1,
+      "seed_LP_calls": 2,
+      "seed_process_seconds": 101.7359273530019
+    },
+    "history": {
+      "actual_integer_processes": 2,
+      "charged_ledger_seconds": 141.32714041699728,
+      "cli_spawn_through_reap_seconds": 448.143773202999,
+      "history_admission_seconds": 1.7270444509995286,
+      "ordinary_MIP_process_seconds": 12.307768126000155,
+      "ordinary_logical_call_limit": 2,
+      "ordinary_logical_calls_executed": 1,
+      "post_reap_history_check_seconds": 0.0021754720000899397,
+      "probe_process_seconds": 29.023986813997908,
+      "seed_LP_calls": 2,
+      "seed_process_seconds": 98.2661655539996
+    }
+  },
+  "coverage": {
+    "direct_violated_pairs": 0,
+    "hours": 36,
+    "listed_outages": 1288,
+    "pair_hours": 66360168
+  },
+  "difference_history_minus_cold": {
+    "charged_ledger_seconds": 26.126662498994847,
+    "cli_seconds": 22.986190886997065
+  },
+  "evidence_sha256": {
+    "cold_candidate": "7f8280a5847d0bf47d68c7425e128fcb5d332958e670992bdf2f716e717a2e31",
+    "cold_owner": "f7cd5d1069eb90e22241dd7545058cd807e70856b63b5caa53abbc7dda34d384",
+    "history_candidate": "83c441c3b904f4129b7e68b4935f4aac07cdf733ba6295776efce5c1408bf121",
+    "history_owner": "26ae44814436441ff9617d6facac7b3e6dd091981b621c3afd26776525ceef99",
+    "probe_log": "d5d0fba3a35494d342d409a19a1f559347dd2ddc6715394c5e1a5cbaeb61d674",
+    "probe_request": "a950938a9454c26975da9459815593758393a04a5ebbf1e494e2ce1823a9cbf2",
+    "proposal": "4efcf1dc3c51a7eb196d444e1bcb6d876dfe2089db9abe5506a05a4110a56f79"
+  },
+  "history_outcome": "clean_probe_timeout_cold_fallback",
+  "history_probe_outputs": {
+    "complete_point_bytes": 0,
+    "promoted_lower_or_upper_bound": false,
+    "promoted_point": false,
+    "terminal_API_metadata_bytes": 0
+  },
+  "interpretation": [
+    "One fixed exposed June-to-October copy, same runtime, cold then history, one seed; no seed campaign or general speed claim",
+    "The completion subproblem was infeasible in the logged 0.13 seconds; the public API subsequently ran ordinary search until its supervised process was killed and reaped",
+    "Internal solver log incumbent and bound observations were never admitted as probe output",
+    "The preserved cold fallback returned the identical final original lift with additional observed cost",
+    "Owner preflight and receipt publication are outside CLI spawn-through-reap; nested clocks are not additive",
+    "The lower domain is the declared hard-zero literal-security subset; no physical DC lower certificate"
+  ],
+  "same_full_original_lift_sha256": "5e5eac7dfcd8161f9cf5bf37294c6182237f7e1ea20807ea75cf184b8e82b3b9",
+  "same_interval": {
+    "gap": 0.0005353720226588228,
+    "lower": 11732175.309109934,
+    "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+    "passed": true,
+    "physical_dc_lower_bound_certified": false,
+    "qualified": true,
+    "target": 0.01,
+    "upper": 11738459.752050288
+  },
+  "same_slack_totals_MWh": {
+    "load_shedding": 0.0,
+    "reserve_shortfall": 0.0,
+    "shared_overflow": 1.6539866010134577e-07
+  },
+  "schema": "fixed-october-history-pair-summary/v1",
+  "seed": 1,
+  "status": "functional PASS; history method negative on this exposed fixed case"
+}

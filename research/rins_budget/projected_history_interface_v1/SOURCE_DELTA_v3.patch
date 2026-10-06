@@ -1,0 +1,978 @@
+--- published/current_scuc/carry.py
++++ overlay/current_scuc/carry.py
+@@ -33,6 +33,10 @@
+     for row in state['trace']:
+         require(validate_solver_random_seed(row['solver_random_seed'])==selected,
+             'carry trace solver seed mismatch')
++        if row.get('role')=='history_probe':
++            from current_scuc.history_scuc import verify_api_evidence
++            verify_api_evidence(row,expected_seed=selected)
++            continue
+         command=row['command']
+         require(command.count('--random_seed')==1 and
+             parse_solver_random_seed(command[command.index('--random_seed')+1])==selected,
+@@ -61,21 +65,28 @@
+     import current_scuc.options as options; import current_scuc.process_runner as process_runner; import current_scuc.no_shedding as no_shedding
+     solver_random_seed=checked_solver_random_seed(state)
+     run=Path(state['run_directory']).resolve();row=state['trace'][0];rd=run/'mip-01'
++    history=row.get('role')=='history_probe'
+     require(state.get('quality_failed') is False and state.get('mechanism_failed') is False,
+         'transition after quality/mechanism failure')
+-    require(row['call']==1 and type(row['call']) is int and row['role']=='discovery' and
+-        row.get('incumbent_input') is None and row.get('no_basis_or_search_state_input') is True and
+-        'inserted_batch_artifact' not in row,'transition requires cold uninserted call-1 discovery')
++    if history:
++        require(row['call']==1 and type(row['call']) is int and
++            row.get('no_basis_or_search_state_input') is True and
++            'inserted_batch_artifact' not in row,'transition requires uninserted call-1 history probe')
++    else:
++        require(row['call']==1 and type(row['call']) is int and row['role']=='discovery' and
++            row.get('incumbent_input') is None and row.get('no_basis_or_search_state_input') is True and
++            'inserted_batch_artifact' not in row,'transition requires cold uninserted call-1 discovery')
+     process_runner.require_clean(row['process'])
+     require(finite(row['native_limit_seconds']) and 0<row['native_limit_seconds']<=120. and
+         finite(row['allocation_seconds']) and row['allocation_seconds']<=180.,'transition source allocation changed')
+-    report=row['report']
+-    require(report.get('role')=='discovery' and report.get('status')=='Solution limit reached' and
+-        report.get('discovery_stop_activated') is True and report.get('model_definition_diagnostics')==[] and
+-        all(report.get(k) is True for k in ('clean_return','loaded_library_identity_valid',
+-            'identities_valid','parent_report_identity_valid')),'transition requires clean SolutionLimit discovery')
+-    require(report.get('bound_status_valid') is False and report.get('certificate_bound_eligible') is False and
+-        report.get('global_lower') is None,'discovery bound must remain diagnostic')
++    if not history:
++        report=row['report']
++        require(report.get('role')=='discovery' and report.get('status')=='Solution limit reached' and
++            report.get('discovery_stop_activated') is True and report.get('model_definition_diagnostics')==[] and
++            all(report.get(k) is True for k in ('clean_return','loaded_library_identity_valid',
++                'identities_valid','parent_report_identity_valid')),'transition requires clean SolutionLimit discovery')
++        require(report.get('bound_status_valid') is False and report.get('certificate_bound_eligible') is False and
++            report.get('global_lower') is None,'discovery bound must remain diagnostic')
+     require(row['master_quality'].get('passed') is True and row['master_quality'].get('point_rounded') is False,
+         'transition missing unrounded current-master check')
+     select_point({'trace':[row]},2)
+@@ -102,22 +113,29 @@
+     for key in ('model','expected','api_report','row_sidecar'):
+         read(identity[key+'_path'],identity[key+'_sha256'])
+     require(Path(identity['model_path']).resolve()==rd/'master.mps','transition foreign source master')
+-    binding=row['options_artifacts']
+-    opt=read(binding['options_path'],binding['options_sha256'])
+-    readback=read(binding['readback_path'],binding['readback_sha256'])
+-    require(opt==rd/'solver.options' and readback==rd/'options-readback.json' and
+-        opt.read_text()==options.option_text('discovery'),'transition source option path/bytes')
+-    probe=g.strict(readback)
+-    expected=options.expected_options('discovery',row['native_limit_seconds'],start=None,solver_random_seed=solver_random_seed)
+-    from current_scuc.native_exec import validate_solver_random_seed
+-    require(validate_solver_random_seed(probe['solver_random_seed'])==solver_random_seed and
+-        validate_solver_random_seed(probe['options']['random_seed'])==solver_random_seed and
+-        probe.get('passed') is True and probe.get('role')=='discovery' and
+-        probe['options_sha256']==binding['options_sha256'] and
+-        probe['options']=={k:v for values in expected.values() for k,v in values.items()},'transition discovery readback changed')
+-    native_path=rd/'native-exec.json';read(native_path,g.sha(native_path))
+-    require(native_limits().verify_receipt(native_path,row['native_limit_request'],process_receipt=row['process'])==
+-        row['native_limit_receipt'],'transition native receipt changed')
++    if history:
++        from current_scuc.history_scuc import verify_api_evidence
++        api=verify_api_evidence(row,expected_seed=solver_random_seed,checked=checked)
++        for path,digest in api['files_sha256'].items():read(path,digest)
++        source_binding=dict(source_api_evidence=copy.deepcopy(row['api_evidence']))
++    else:
++        binding=row['options_artifacts']
++        opt=read(binding['options_path'],binding['options_sha256'])
++        readback=read(binding['readback_path'],binding['readback_sha256'])
++        require(opt==rd/'solver.options' and readback==rd/'options-readback.json' and
++            opt.read_text()==options.option_text('discovery'),'transition source option path/bytes')
++        probe=g.strict(readback)
++        expected=options.expected_options('discovery',row['native_limit_seconds'],start=None,solver_random_seed=solver_random_seed)
++        from current_scuc.native_exec import validate_solver_random_seed
++        require(validate_solver_random_seed(probe['solver_random_seed'])==solver_random_seed and
++            validate_solver_random_seed(probe['options']['random_seed'])==solver_random_seed and
++            probe.get('passed') is True and probe.get('role')=='discovery' and
++            probe['options_sha256']==binding['options_sha256'] and
++            probe['options']=={k:v for values in expected.values() for k,v in values.items()},'transition discovery readback changed')
++        native_path=rd/'native-exec.json';read(native_path,g.sha(native_path))
++        require(native_limits().verify_receipt(native_path,row['native_limit_request'],process_receipt=row['process'])==
++            row['native_limit_receipt'],'transition native receipt changed')
++        source_binding=dict(source_options_artifacts=copy.deepcopy(binding))
+     for artifact in (state['seed']['batches_artifact'],):
+         for key in ('document','arrays'):
+             if key in artifact:read(run/'seed'/artifact[key]['path'],artifact[key]['sha256'])
+@@ -134,13 +152,13 @@
+         require(Path(stage['path']).resolve()==rd/'tiny-point-check.json' and
+             Path(row['checked_archive']).resolve()==Path(stage['path']).resolve(),'transition tiny checked-point path')
+         read(stage['path'],stage['sha256'])
+-    return dict(source_call=1,destination_call=2,source_role='discovery',destination_role='proof',
++    return dict(source_call=1,destination_call=2,source_role=row['role'],destination_role='proof',
+         solver_random_seed=solver_random_seed,
+         source_manifest_sha256=state['source_manifest_sha256'],arm_manifest_sha256=state['arm_manifest_sha256'],
+         source_row_sha256=no_shedding.digest(row),source_master_identity=copy.deepcopy(identity),
+         installed_cut_prefix=[dict(source='seed',artifact=copy.deepcopy(state['seed']['batches_artifact']))],
+         evaluated_support_artifact=copy.deepcopy(ev['adaptive_support_artifact']),
+-        source_options_artifacts=copy.deepcopy(binding),checked_stage_binding=copy.deepcopy(stage),files_sha256=files)
++        **source_binding,checked_stage_binding=copy.deepcopy(stage),files_sha256=files)
+ 
+ 
+ def schedule_transition(state, cut_prefix, *, carry_allocation, proof_allocation, production=True):
+@@ -157,6 +175,33 @@
+             ledger['remaining']>=carry_allocation+proof_allocation and
+             [r['stage'] for r in ledger['calls']]==['seed','mip'] and
+             all(r['within_allocation'] is True for r in ledger['calls']),'transition ledger chronology')
++        if 'auxiliary' in ledger:
++            auxiliary=ledger['auxiliary'];count=ledger['actual_integer_process_count']
++            require(type(count) is int and 1<=count<3 and
++                type(ledger['logical_call_limit']) is int and ledger['logical_call_limit'] in (2,3),
++                'transition integer-process/call allowance')
++            require(isinstance(auxiliary,list) and all(r['stage'] in
++                ('history_admission','history_probe','history_check') for r in auxiliary),
++                'transition unknown auxiliary stage')
++            charged=ledger['calls']+auxiliary
++            require(all(finite(r['actual']) and r['actual']>=0 and finite(r['allocation']) and
++                r['allocation']>0 and r['actual']<=r['allocation'] and r['within_allocation'] is True
++                for r in charged) and finite(ledger['solver_process_wall_seconds']) and
++                math.isclose(sum(r['actual'] for r in charged),ledger['solver_process_wall_seconds'],
++                    rel_tol=0.,abs_tol=1e-9) and
++                math.isclose(ledger['remaining'],max(0.,600.-ledger['solver_process_wall_seconds']),
++                    rel_tol=0.,abs_tol=1e-9),'transition auxiliary wall debit changed')
++            if evidence['source_role']=='history_probe':
++                probes=[(index,r) for index,r in enumerate(auxiliary) if r['stage']=='history_probe']
++                require(len(probes)==1,'transition history probe process count')
++                index,probe=probes[0];logical=ledger['calls'][1]
++                require(count==1 and ledger['logical_call_limit']==3 and probe.get('logical_call')==1 and
++                    logical['actual']==0 and logical.get('charged_via_auxiliary')==index and
++                    logical.get('optimizer_process_wall_seconds')==probe['actual']==
++                        state['trace'][0]['process']['process_wall_seconds'],
++                    'transition history logical/actual charge binding')
++        else:
++            require(evidence['source_role']!='history_probe','transition history auxiliary ledger missing')
+     record=dict(schema='discovery-proof-transition/v1',consumed=True,outcome='scheduled',
+         carry_allocation_at_schedule=carry_allocation,proof_allocation_at_schedule=proof_allocation,evidence=evidence)
+     state['discovery_proof_transition']=record
+@@ -170,6 +215,11 @@
+     require(type(target_call) is int and target_call in (2,3) and
+         all(type(r['call']) is int for r in state['trace']) and
+         [r['call'] for r in state['trace']]==list(range(1,target_call)), 'transition malformed call chronology')
++    ledger=state.get('ledger',{})
++    if 'auxiliary' in ledger:
++        count=ledger['actual_integer_process_count'];limit=ledger['logical_call_limit']
++        require(type(count) is int and 1<=count<=3 and type(limit) is int and
++            limit in (2,3) and target_call<=limit,'transition integer-process/call limit changed')
+     require(record['evidence']==transition_evidence(state,production=production,checked=checked),
+         'transition source evidence changed')
+     preparations=state['carry_preparations']
+--- /dev/null
++++ overlay/current_scuc/history_scuc.py
+@@ -0,0 +1,300 @@
++"""One explicit exposed June-to-October proposal and public-API probe.
++
++No changes to ordinary CLI report parsing, original physics, or bound admission.
++This module belongs only to the separately sealed experimental package.
++"""
++from __future__ import annotations
++import argparse
++import copy
++import hashlib
++import importlib
++import itertools
++import json
++import math
++import os
++from pathlib import Path
++import resource
++import sys
++import time
++
++from current_scuc._paths import ROOT, source_sha
++from current_scuc import binding as b, process_runner as process
++
++ROLE = 'history_probe'
++API_SCHEMA = 'projected-history-api-evidence/v1'
++ADAPTER_SHA = '64fc588e461c918ead65bd55c9c0dbaa9667f3047d0ba95734e41ea9b48944ca'
++PROBE_SECONDS = 30.
++NATIVE_SECONDS = 25.
++CHECK_SECONDS = 60.
++ADMISSION_SECONDS = 30.
++ORDINARY_RESERVE = 180.
++NATIVE_FILE_BYTES = 16 * 1024**2
++METADATA_BYTES = 1024**2
++PRODUCTION_PROFILE = dict(admission=30., probe_process=30., probe_native=25., check=60., ordinary_reserve=180., final_reserve=360.)
++TINY_PROFILE = dict(admission=2., probe_process=30., probe_native=25., check=5., ordinary_reserve=80., final_reserve=20.)
++
++
++def record(path):
++    return dict(path=str(Path(path).resolve()), sha256=b.sha(path))
++
++
++def identity(value):
++    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
++
++
++def write(path, value):
++    payload = (json.dumps(value, sort_keys=True, indent=2, allow_nan=False) + '\n').encode()
++    b.require(len(payload) <= METADATA_BYTES, 'Historical metadata exceeds 1 MiB')
++    with Path(path).open('xb') as stream:
++        stream.write(payload)
++
++
++def load_plan():
++    path = ROOT / 'history_plan.json'
++    digest = source_sha('history_plan.json')
++    plan = b.read(path)
++    b.require(plan['schema'] == 'projected-history-fixed-plan/v1' and plan['mode'] in ('history', 'tiny_history'), 'Unknown frozen historical plan')
++    b.require(plan['adapter']['sha256'] == ADAPTER_SHA and b.sha(plan['adapter']['path']) == ADAPTER_SHA, 'Qualified API adapter changed')
++    b.require(plan['simulated_chronology'] is True and plan['solver_random_seed'] == 1, 'Fixed retrospective development policy')
++    b.require(plan['profile'] == (PRODUCTION_PROFILE if plan['mode']=='history' else TINY_PROFILE), 'Frozen history timing profile changed')
++    return plan, digest
++
++
++def _june(plan):
++    """Call the qualified data-only importer without leaving sys.path changes."""
++    support = Path(plan['qualified_interface']).resolve()
++    for relative, digest in plan['qualified_source_pins'].items():
++        b.require(b.sha(support / relative) == digest, 'Qualified historical admission source changed')
++    names = ('common', 'history', 'history_start', 'june_label')
++    b.require(not any(name in sys.modules for name in names), 'Historical helper module collision')
++    previous = list(sys.path)
++    try:
++        sys.path.insert(0, str(support))
++        module = importlib.import_module('june_label')
++        label = module.admit_june(plan['recovery_root'], seconds=ADMISSION_SECONDS)
++        b.require(module.digest(label.record) == label.record_digest, 'Historical label mutated after admission')
++        return copy.deepcopy(label.record)
++    finally:
++        sys.path[:] = previous
++        for name in names:
++            sys.modules.pop(name, None)
++
++
++def propose(plan, original_data, restored):
++    inventory = restored['source_binary_inventory']
++    u = [entry for entry in inventory if entry['name'].startswith('u_')]
++    if plan['mode'] == 'history':
++        cfg = b.config()
++        b.require(cfg['inputs']['current']['sha256'] == plan['target_raw_source_sha256'], 'Fixed October source changed')
++        label = _june(plan)
++        b.require(label['scope'] == 'scuc_checked' and label['case'] == 'case1354pegase'
++                  and label['start'] == '2017-06-01T00:00:00+00:00'
++                  and label['end'] == '2017-06-02T12:00:00+00:00'
++                  and plan['target_scenario_start'] == '2017-10-01T00:00:00+00:00', 'Fixed nonoverlapping simulated pair changed')
++        # Same exact static projection used by the qualified June importer.
++        def safe(value):
++            if isinstance(value, float) and not math.isfinite(value): return '+inf' if value > 0 else '-inf'
++            if isinstance(value, dict): return {key: safe(item) for key, item in value.items()}
++            if isinstance(value, (list, tuple)): return [safe(item) for item in value]
++            return value
++        topology = identity(safe(dict(buses=list(original_data['Buses']), generators=list(original_data['Generators']),
++            lines=list(original_data['Transmission lines'].items()), contingencies=list(original_data['Contingencies'].items()), hours=36)))
++        b.require(topology == label['topology'], 'Historical/current topology incompatibility')
++    else:
++        # A fixed synthetic mechanism fixture, not a SCUC training label.
++        b.require(list(original_data['Generators']) == ['g0', 'g1'] and len(u) == 4, 'Tiny fixed fixture changed')
++        schedules = list(itertools.product((0, 1), repeat=4))
++        label = dict(scope='synthetic_mechanism_only', columns=[entry['name'] for entry in u], u=list(schedules[-1]),
++                     enumerated_commitment_assignments=len(schedules), selection='fixed all-on member of enumeration',
++                     historical_feasibility_claimed=False)
++    b.require(label['columns'] == [entry['name'] for entry in u] and len(label['u']) == len(u), 'Exact historical/current commitment names differ')
++    mapped, fixed = [], []
++    for entry, value in zip(u, label['u']):
++        b.require(type(value) is int and value in (0, 1) and entry['integrality'] == 1, 'Nonliteral historical binary')
++        bounds = (entry['lower'], entry['upper'])
++        if bounds in ((0., 0.), (1., 1.)):
++            fixed.append([entry['name'], value, entry['lower']])
++            continue  # Current source-fixed values always prevail, including conflicts.
++        b.require(bounds == (0., 1.), 'Unsupported current commitment bounds')
++        mapped.append([entry['name'], entry['original_column'], entry['projected_column'], value])
++    b.require(len({row[0] for row in mapped}) == len(mapped), 'Duplicate projected proposal')
++    return dict(schema='projected-history-proposal/v1', simulated_chronology=True, trained_model=False,
++                historical_record=label, mapped_current_commitments=mapped, omitted_current_fixed=fixed,
++                target_identity_sha256=restored['identity']['integer_target_identity_sha256'],
++                adaptive_map_hash=restored['identity']['adaptive_map_hash'])
++
++
++def _options():
++    return dict(threads=2, parallel='off', random_seed=1, time_limit=NATIVE_SECONDS, mip_rel_gap=0, mip_abs_gap=0)
++
++
++def _artifact(item, *, inside=None, checked=None):
++    path = Path(item['path']).resolve()
++    b.require(path.is_file() and not path.is_symlink() and b.sha(path) == item['sha256'], 'Historical API artifact changed')
++    if inside is not None: b.require(path.is_relative_to(inside), 'Foreign historical API artifact')
++    if checked is not None: checked(path, item['sha256'], inside=inside is not None)
++    return path
++
++
++def verify_api_evidence(row, *, expected_seed, checked=None):
++    b.require(row['role'] == ROLE and row['call'] == 1 and expected_seed == row['solver_random_seed'] == 1, 'Historical API role/seed changed')
++    ev = row['api_evidence']
++    b.require(ev['schema'] == API_SCHEMA, 'Historical API evidence schema')
++    rd = Path(row['master_identity']['model_path']).resolve().parent / 'history-probe'
++    files = {}
++    for key in ('proposal', 'suggestions', 'request', 'metadata', 'point'):
++        path = _artifact(ev[key], inside=rd, checked=checked)
++        files[str(path)] = ev[key]['sha256']
++    adapter = _artifact(ev['adapter'], checked=checked)
++    library = _artifact(ev['library'], checked=checked)
++    plan, plan_sha = load_plan()
++    b.require(ev['plan_sha256'] == plan_sha and record(adapter) == plan['adapter'], 'History plan/adapter changed')
++    request = b.read(ev['request']['path']); meta = b.read(ev['metadata']['path'])
++    cfg = b.config()
++    b.require(request['master_identity_sha256'] == identity(row['master_identity']) and
++              request['model'] == dict(path=row['master_identity']['model_path'], sha256=row['master_identity']['model_sha256']), 'Historical current master changed')
++    b.require(request['command'] == [str(adapter), row['master_identity']['model_path'], ev['suggestions']['path'],
++              ev['point']['path'], ev['metadata']['path'], '25', 'probe'], 'Historical actual API argv changed')
++    wanted_command=[cfg['python'],'-B','-s','-m','current_scuc.history_scuc','--exec-adapter',ev['request']['path'],ev['request']['sha256']]
++    b.require(row['command'] == row['process']['command'] == wanted_command, 'Historical supervised argv/request changed')
++    process.require_clean(row['process'])
++    b.require(meta['mode'] == 'probe' and meta['outcome'] == 'point' and meta['run_api_status'] in (0, 1)
++              and meta['native_model_status'] in (7, 13) and meta['complete_primal_present'] is True
++              and meta['model_fields_verified'] is True and meta['options_verified'] is True
++              and meta['options'] == _options(), 'Unaccepted historical API metadata')
++    b.require(Path(meta['loaded_library_path']).resolve() == library == Path(cfg['library']).resolve()
++              and record(library) == request['library'], 'Historical library mismatch')
++    b.require(row['native_limit_seconds'] == NATIVE_SECONDS and row['allocation_seconds'] == PROBE_SECONDS, 'Historical fixed process/native cap changed')
++    return dict(files_sha256=files, options=meta['options'])
++
++
++def _clean_probe(receipt):
++    if not receipt['hard_watchdog_killed']:
++        process.require_clean(receipt, allowed_returns=(0, 2))
++        return True
++    b.require(receipt['cleanup_verified'] is True and receipt['resource_accounting_complete'] is True
++              and receipt['wait4_echild'] is True and not receipt['remaining_owned_pids']
++              and not receipt['interrupted'] and not receipt['error'] and not receipt['health_check_error']
++              and receipt['actual_within_allocation'] is True, 'Unclean probe timeout is terminal')
++    return False
++
++
++def attempt(plan, plan_sha, cfg, data, restored, exported, state, ledger, out, deadline, *, master):
++    """Return a checked projected point or a clean pre-evaluation abstention.
++
++    This never calls the mutable full oracle. Its caller owns that terminal
++    boundary and finishes the charged history_check phase after full evaluation.
++    """
++    from current_scuc.common import start_output_phase, storage
++    budget = storage(); rd = Path(exported['identity']['model_path']).parent
++    probe = rd / 'history-probe'; probe.mkdir()
++    profile=plan['profile']
++    state['history'] = dict(plan_sha256=plan_sha, simulated_chronology=True, policy='one previous-window commitment copy',
++                           trained_model=False, lower_bound=None, upper_bound=None,
++                           admission_cap_seconds=profile['admission'],check_cap_seconds=profile['check'])
++    reserve = profile['admission'] + PROBE_SECONDS + profile['check'] + profile['ordinary_reserve']
++    if ledger.spent + reserve > 600 or deadline - time.monotonic() < reserve + profile['final_reserve']:
++        state['history']['outcome'] = 'abstained_before_admission_insufficient_reserve'
++        return None
++    tick = time.monotonic()
++    admission_remaining=profile['admission']-sum(item['actual'] for item in ledger.auxiliary if item['stage']=='history_admission')
++    b.require(admission_remaining>0,'No historical admission allowance remains')
++    try:
++        start_output_phase(rd, 'historical proposal files', [budget.WriteBound(probe/name, METADATA_BYTES,
++            'historical proposal metadata', 'maximum1MiB metadata') for name in ('proposal.json','request.json','process.json')]
++            + [budget.WriteBound(probe/'suggestions.txt', NATIVE_FILE_BYTES, 'named binary suggestions', 'maximum16MiB')])
++        proposal = propose(plan, data, restored)
++        write(probe / 'proposal.json', proposal)
++        with (probe / 'suggestions.txt').open('x') as stream:
++            for name, _, _, value in proposal['mapped_current_commitments']: stream.write(f'{name} {value}\n')
++    finally:
++        b.require(ledger.debit_auxiliary('history_admission', admission_remaining, time.monotonic()-tick), 'Historical admission/600 ledger exceeded')
++    if not proposal['mapped_current_commitments']:
++        state['history']['outcome'] = 'abstained_no_free_commitments'
++        return None
++    b.require(ledger.spent + PROBE_SECONDS + profile['check'] + profile['ordinary_reserve'] <= 600
++              and deadline-time.monotonic() >= PROBE_SECONDS+profile['check']+profile['ordinary_reserve']+profile['final_reserve'], 'Historical probe reserve lost')
++    point, metadata = probe / 'complete.point', probe / 'api.json'
++    api_command = [plan['adapter']['path'], exported['identity']['model_path'], str(probe/'suggestions.txt'), str(point), str(metadata), '25', 'probe']
++    request = dict(schema='projected-history-api-exec/v1', command=api_command, adapter=plan['adapter'], library=record(cfg['library']),
++                   model=dict(path=exported['identity']['model_path'], sha256=exported['identity']['model_sha256']),
++                   suggestions=record(probe/'suggestions.txt'), master_identity_sha256=identity(exported['identity']), plan_sha256=plan_sha)
++    write(probe/'request.json', request); req = record(probe/'request.json')
++    command = [cfg['python'], '-B', '-s', '-m', 'current_scuc.history_scuc', '--exec-adapter', req['path'], req['sha256']]
++    start_output_phase(rd, 'historical API probe', [budget.WriteBound(probe/name, NATIVE_FILE_BYTES,
++        'historical adapter output', 'tested16MiB native file cap') for name in ('solver.log','complete.point')]
++        + [budget.WriteBound(metadata, NATIVE_FILE_BYTES, 'API metadata', 'enforced16MiB native file cap; accepted metadata at most1MiB')])
++    receipt = process.run(command, probe/'solver.log', out, PROBE_SECONDS)
++    index = len(ledger.auxiliary)
++    debit_ok = ledger.debit_auxiliary('history_probe', PROBE_SECONDS, receipt['process_wall_seconds'], process_receipt=receipt)
++    state['history']['pending_check_started'] = time.monotonic()
++    write(probe/'process.json', receipt)
++    b.require(debit_ok, 'Historical process/600 ledger exceeded')
++    ordinary_exit = _clean_probe(receipt)
++    # Descriptive raw telemetry, never used to admit a point or a bound.
++    text = (probe/'solver.log').read_text()
++    state['history']['mechanism_log'] = dict(path=str(probe/'solver.log'), sha256=b.sha(probe/'solver.log'),
++        completion_lines=[line for line in text.splitlines() if 'user-supplied' in line.lower() or 'User-supplied' in line][:20],
++        interpretation='Public run may continue ordinary search after completion; endpoint alone does not prove assignment completion')
++    if not ordinary_exit:
++        ledger.reject_probe(index); state['history']['outcome'] = 'clean_probe_timeout_cold_fallback'; return None
++    meta = b.read(metadata)
++    b.require(metadata.stat().st_size <= METADATA_BYTES, 'Historical API metadata exceeds cap')
++    b.require(meta['model_fields_verified'] is True and meta['options_verified'] is True and meta['options'] == _options()
++              and Path(meta['loaded_library_path']).resolve() == Path(cfg['library']).resolve(), 'Historical probe identity/options failed')
++    b.require(b.sha(cfg['library']) == request['library']['sha256'] and b.sha(plan['adapter']['path']) == ADAPTER_SHA
++              and b.sha(exported['identity']['model_path']) == exported['identity']['model_sha256'], 'Historical live input changed')
++    if meta['outcome'] == 'no_point' and meta['complete_primal_present'] is False:
++        ledger.reject_probe(index); state['history']['outcome'] = 'no_point_cold_fallback'; return None
++    b.require(meta['outcome'] == 'point' and meta['complete_primal_present'] is True and meta['run_api_status'] in (0, 1)
++              and meta['native_model_status'] in (7, 13), 'Historical API status failed')
++    check_started = state['history']['pending_check_started']
++    values = {}
++    for line in point.read_text().splitlines():
++        words = line.split()
++        b.require(len(words) == 2 and words[0] not in values, 'Malformed historical complete point')
++        value = float(words[1]); b.require(math.isfinite(value), 'Nonfinite historical complete point'); values[words[0]] = value
++    # Structural/checker exceptions and objective disagreement are terminal.
++    checked = master.check_integer_values(exported['expected'], values)
++    b.require(type(checked['passed']) is bool and type(checked['linear_objective']) in (int,float)
++              and math.isfinite(checked['linear_objective']), 'Malformed historical checker result')
++    for name in ('point_objective', 'solver_reported_objective'):
++        objective = meta[name]
++        b.require(type(objective) in (int,float) and math.isfinite(objective) and
++            abs(objective-checked['linear_objective']) <= max(1e-5, abs(objective)*1e-10), 'Historical objective mismatch')
++    if checked['passed'] is False:
++        failures=checked['failures']
++        b.require(isinstance(failures,list) and failures and set(failures)<={
++            'independent row infeasibility','independent bound infeasibility','independent binary integrality infeasibility'},
++            'Historical checker failure is not ordinary numerical infeasibility')
++        check_ok=ledger.debit_auxiliary('history_check', profile['check'], time.monotonic()-check_started)
++        state['history'].pop('pending_check_started')
++        b.require(check_ok, 'Rejected history check exceeded ledger')
++        ledger.reject_probe(index); state['history'].update(outcome='projected_point_rejected_cold_fallback', rejection=failures); return None
++    api = dict(schema=API_SCHEMA, plan_sha256=plan_sha, proposal=record(probe/'proposal.json'), suggestions=record(probe/'suggestions.txt'),
++               request=req, metadata=record(metadata), point=record(point), adapter=plan['adapter'], library=request['library'])
++    row = dict(call=1, role=ROLE, solver_random_seed=1, cut_batches=state['cut_batches'], native_limit_seconds=NATIVE_SECONDS,
++               allocation_seconds=PROBE_SECONDS, incumbent_input=str(probe/'suggestions.txt'), no_basis_or_search_state_input=True,
++               master_identity=exported['identity'], command=command, process=receipt, api_evidence=api)
++    verify_api_evidence(row, expected_seed=1)
++    ledger.accept_probe(index); state['history']['outcome'] = 'accepted_projected_point_pending_full_evaluation'
++    return dict(row=row, check=checked, check_started=check_started, check_cap_seconds=profile['check'],
++                check_deadline=min(check_started+profile['check'], deadline-profile['final_reserve']))
++
++
++def main():
++    parser = argparse.ArgumentParser(description='Contained execution of the frozen API probe request')
++    parser.add_argument('--exec-adapter', nargs=2, required=True)
++    args = parser.parse_args(); path, wanted = args.exec_adapter
++    b.require(b.sha(path) == wanted, 'API exec request changed')
++    request = b.read(path); plan, plan_sha = load_plan()
++    b.require(request['schema'] == 'projected-history-api-exec/v1' and request['plan_sha256'] == plan_sha, 'API exec scope changed')
++    for key in ('adapter', 'library', 'model', 'suggestions'): _artifact(request[key])
++    b.require(request['adapter'] == plan['adapter'] and request['command'][0] == plan['adapter']['path']
++              and request['command'][1] == request['model']['path'] and request['command'][2] == request['suggestions']['path']
++              and request['command'][-2:] == ['25', 'probe'], 'API exec argv changed')
++    resource.setrlimit(resource.RLIMIT_CORE, (0, 0)); resource.setrlimit(resource.RLIMIT_FSIZE, (NATIVE_FILE_BYTES,)*2)
++    os.execv(request['command'][0], request['command'])
++
++
++if __name__ == '__main__': main()
+--- published/current_scuc/phase.py
++++ overlay/current_scuc/phase.py
+@@ -18,6 +18,7 @@
+ import current_scuc.adaptive as adaptive
+ import current_scuc.common as common
+ import current_scuc.no_shedding as no_shedding
++import current_scuc.history_scuc as history_scuc
+ 
+ WHOLE_CAP = 1800.
+ SOLVER_CAP = 600.
+@@ -32,10 +33,14 @@
+     def __init__(self):
+         self.spent = 0.
+         self.calls = []
++        self.auxiliary = []
++        self.actual_integer_process_count = 0
++        self.logical_call_limit = 3
+ 
+     def allocation(self, stage, index, whole_remaining):
+         require(finite(whole_remaining), 'Nonfinite whole window')
+         require(stage in ('seed','mip','carry'), 'Unknown charged stage')
++        if stage == 'mip' and (index > self.logical_call_limit or self.actual_integer_process_count >= 3): return 0.
+         if stage == 'seed':
+             require(index == 0 and not self.calls, 'Seed can run only once first')
+             return max(0., min(180., SOLVER_CAP-self.spent, whole_remaining-FINAL_RESERVE))
+@@ -53,13 +58,97 @@
+         actual = receipt.get('process_wall_seconds')
+         require(finite(actual) and actual >= 0 and finite(allocation) and allocation > 0, 'Invalid process wall debit')
+         self.spent += actual  # Including overruns, before clean-process admission.
++        if stage == 'mip' and receipt.get('runner_launched', True): self.actual_integer_process_count += 1
+         self.calls.append(dict(stage=stage, allocation=allocation, actual=actual,
+             overrun=max(0., actual-allocation), within_allocation=actual <= allocation))
+-        return self.spent <= SOLVER_CAP and actual <= allocation
++        return self.spent <= SOLVER_CAP and actual <= allocation and self.actual_integer_process_count <= 3
++
++    def debit_auxiliary(self, stage, allocation, actual, *, process_receipt=None):
++        require(stage in ('history_admission','history_probe','history_check') and finite(actual) and actual>=0,
++            'Invalid historical auxiliary debit')
++        self.spent += actual
++        row=dict(stage=stage,allocation=allocation,actual=actual,overrun=max(0.,actual-allocation),within_allocation=actual<=allocation)
++        if process_receipt is not None:
++            row['process']=process_receipt
++            if stage=='history_probe' and process_receipt.get('runner_launched') is True:self.actual_integer_process_count+=1
++        self.auxiliary.append(row)
++        return self.spent<=SOLVER_CAP and actual<=allocation and self.actual_integer_process_count<=3
++
++    def reject_probe(self, index):
++        row=self.auxiliary[index]
++        require(row['stage']=='history_probe' and 'logical_call' not in row,'Duplicate probe classification')
++        row['classification']='rejected_auxiliary_attempt'
++        if row['process']['runner_launched']:self.logical_call_limit=2
++
++    def accept_probe(self, index):
++        row=self.auxiliary[index]
++        require(row['stage']=='history_probe' and 'logical_call' not in row and
++            [item['stage'] for item in self.calls]==['seed'],'Probe must occupy logical first MIP')
++        row.update(logical_call=1,classification='accepted_logical_mip')
++        self.calls.append(dict(stage='mip',allocation=row['allocation'],actual=0.,
++            optimizer_process_wall_seconds=row['actual'],charged_via_auxiliary=index,
++            overrun=row['overrun'],within_allocation=row['within_allocation']))
+ 
+     def record(self):
+         return dict(solver_process_wall_seconds=self.spent, remaining=max(0., SOLVER_CAP-self.spent),
+-            ceiling_seconds=SOLVER_CAP, in_budget=self.spent <= SOLVER_CAP, calls=list(self.calls))
++            combined_solver_related_wall_seconds=self.spent, solver_process_wall_seconds_is_legacy_name=True,
++            ceiling_seconds=SOLVER_CAP, in_budget=self.spent <= SOLVER_CAP and self.actual_integer_process_count<=3, calls=list(self.calls),
++            auxiliary=list(self.auxiliary), actual_integer_process_count=self.actual_integer_process_count,
++            logical_call_limit=self.logical_call_limit, charging_scope='seed/MIP/carry plus all historical admission, mapping, probe and checks; each debit once')
++
++
++def load_history_plan(state, ledger):
++    tick=time.monotonic();plan=None
++    try:
++        plan,plan_sha=history_scuc.load_plan()
++        state['history_plan_sha256']=plan_sha
++        return plan,plan_sha
++    finally:
++        cap=plan['profile']['admission'] if plan is not None else history_scuc.ADMISSION_SECONDS
++        require(ledger.debit_auxiliary('history_admission',cap,time.monotonic()-tick),'Initial history plan binding exceeded admission ledger')
++
++
++def charged_parent_history_check(state, ledger, operation):
++    """Only parent-side API-history evidence checks; carry workers charge themselves."""
++    if not state['trace'] or state['trace'][0]['role']!=history_scuc.ROLE:
++        return operation()
++    cap=state['history']['check_cap_seconds']-sum(item['actual'] for item in ledger.auxiliary if item['stage']=='history_check')
++    require(cap>0,'No historical evidence-readback allowance remains')
++    tick=time.monotonic()
++    try:
++        return operation()
++    finally:
++        require(ledger.debit_auxiliary('history_check',cap,time.monotonic()-tick),'Parent historical evidence check exceeded ledger')
++
++
++def charged_history_attempt(state, ledger, operation):
++    """Charge setup and every pre-evaluation exit without counting process wall twice."""
++    historical_tick=time.monotonic();charged_before=ledger.spent;candidate=None
++    try:
++        candidate=operation()
++        return candidate
++    finally:
++        now=time.monotonic();pending=state.get('history',{}).get('pending_check_started')
++        pending_seconds=(now-pending) if pending is not None else 0.
++        other=max(0.,now-historical_tick-(ledger.spent-charged_before)-pending_seconds)
++        admission_cap=state.get('history',{}).get('admission_cap_seconds',history_scuc.ADMISSION_SECONDS)
++        check_cap=state.get('history',{}).get('check_cap_seconds',history_scuc.CHECK_SECONDS)
++        remaining_admission=max(0.,admission_cap-sum(item['actual'] for item in ledger.auxiliary if item['stage']=='history_admission'))
++        if other>0:
++            require(ledger.debit_auxiliary('history_admission',remaining_admission,other),'Historical request/metadata overhead exceeded admission ledger')
++        if candidate is None and pending is not None:
++            ok=ledger.debit_auxiliary('history_check',check_cap,pending_seconds)
++            state['history'].pop('pending_check_started')
++            require(ok,'Historical rejected/failed check exceeded ledger')
++
++
++def evaluate_history(candidate, evaluator, ledger):
++    """Full evaluation is a terminal boundary; never roll back mutated state."""
++    try:
++        return evaluator(candidate['check_deadline'])
++    finally:
++        require(ledger.debit_auxiliary('history_check',candidate.get('check_cap_seconds',history_scuc.CHECK_SECONDS),
++            time.monotonic()-candidate['check_started']),'Historical full-check/600 ledger exceeded')
+ 
+ 
+ def seed_eligible(result):
+@@ -186,6 +275,8 @@
+     try:
+         with Path(cfg['numerical_lock']).open('a+') as lock:
+             fcntl.flock(lock.fileno(), fcntl.LOCK_EX|fcntl.LOCK_NB)
++            history_plan,history_plan_sha=load_history_plan(state,ledger)
++            require(history_plan['solver_random_seed']==solver_random_seed,'Historical API seed must match both LPs and ordinary calls')
+             manifest,paths,identities = verify_manifest(a.arm_manifest,a.arm_manifest_sha256,deadline)
+             require(validate_solver_random_seed(manifest['solver_random_seed']) == solver_random_seed,
+                 'Arm solver seed changed')
+@@ -250,6 +341,7 @@
+             cut_prefix=[dict(source='seed',artifact=seed['batches_artifact'])]
+             previous_matrix = None
+             for call in range(1,MAX_CALLS+1):
++                if call > ledger.logical_call_limit: break
+                 alloc = ledger.allocation('mip',call,deadline-time.monotonic())
+                 if alloc <= PROCESS_RESERVE:
+                     state['outcome'] = 'fixed_budget_stop'; break
+@@ -259,131 +351,153 @@
+                 current_hash = model.model_hashes(restored['expected'])
+                 if current_hash == previous_matrix:
+                     require(call==2 and 'discovery_proof_transition' in state,'Unchanged master rerun forbidden')
+-                    carry.validate_transition(state,call,stage='scheduled')
++                    charged_parent_history_check(state,ledger,lambda:carry.validate_transition(state,call,stage='scheduled'))
+                 exported = master.export_master(restored,rd/'master.mps',paths['library'])
+                 if call==2 and 'discovery_proof_transition' in state:
+                     carry.same_transition_master(state['trace'][0]['master_identity'],exported['identity'])
+-                start = None; prepared = None; request_path = None; request_sha = None
+-                if call > 1:
+-                    state['pending_master']=dict(call=call,identity=exported['identity'],
+-                        cut_batches=state['cut_batches'],cut_prefix=list(cut_prefix))
+-                    prep_alloc=ledger.allocation('carry',call,deadline-time.monotonic())
+-                    if prep_alloc <= 1.:
+-                        state['outcome']='carry_resource_stop_before_preparation';break
+-                    prep_record=dict(target_call=call,allocation_seconds=prep_alloc)
+-                    state['carry_preparations'].append(prep_record)
++                history_candidate = None
++                if call == 1:
++                    history_candidate = charged_history_attempt(state,ledger,lambda:
++                        history_scuc.attempt(history_plan,history_plan_sha,cfg,data,restored,exported,
++                            state,ledger,out,deadline,master=master))
+                     save()
+-                    snapshot=rd/'carry-state.json';b.write(snapshot,state,fresh=True)
+-                    request=dict(schema=carry.SCHEMA,run_directory=str(out),state_path=str(snapshot),
+-                        state_sha256=f.sha256(snapshot),source_manifest_path=str(freeze),
+-                        source_manifest_sha256=a.source_manifest_sha256,arm_manifest_path=str(Path(a.arm_manifest).resolve()),
+-                        arm_manifest_sha256=a.arm_manifest_sha256,target_call=call,pending_master=state['pending_master'],
+-                        seed_result_path=str(seedout/'result.json'),seed_result_sha256=f.sha256(seedout/'result.json'))
+-                    request_path=rd/'carry-request.json';b.write(request_path,request,fresh=True);request_sha=f.sha256(request_path)
+-                    prep_record.update(request_path=str(request_path),request_sha256=request_sha)
++                if history_candidate is not None:
++                    row=history_candidate['row'];check=history_candidate['check'];report=None
++                    last_receipt=row['process'];state['trace'].append(row)
++                    row['native_archive']=archive('mip-01','post_native_solve')
++                    x=check.pop('x');row['master_quality']=check
++                else:
++                    start = None; prepared = None; request_path = None; request_sha = None
++                    if call > 1:
++                        state['pending_master']=dict(call=call,identity=exported['identity'],
++                            cut_batches=state['cut_batches'],cut_prefix=list(cut_prefix))
++                        prep_alloc=ledger.allocation('carry',call,deadline-time.monotonic())
++                        if prep_alloc <= 1.:
++                            state['outcome']='carry_resource_stop_before_preparation';break
++                        prep_record=dict(target_call=call,allocation_seconds=prep_alloc)
++                        state['carry_preparations'].append(prep_record)
++                        save()
++                        snapshot=rd/'carry-state.json';b.write(snapshot,state,fresh=True)
++                        request=dict(schema=carry.SCHEMA,run_directory=str(out),state_path=str(snapshot),
++                            state_sha256=f.sha256(snapshot),source_manifest_path=str(freeze),
++                            source_manifest_sha256=a.source_manifest_sha256,arm_manifest_path=str(Path(a.arm_manifest).resolve()),
++                            arm_manifest_sha256=a.arm_manifest_sha256,target_call=call,pending_master=state['pending_master'],
++                            seed_result_path=str(seedout/'result.json'),seed_result_sha256=f.sha256(seedout/'result.json'))
++                        request_path=rd/'carry-request.json';b.write(request_path,request,fresh=True);request_sha=f.sha256(request_path)
++                        prep_record.update(request_path=str(request_path),request_sha256=request_sha)
++                        try:
++                            prep_out=rd/'carry'
++                            command=[cfg['python'],'-B','-s','-m','current_scuc.carry',
++                                '--request',str(request_path),'--request-sha256',request_sha,'--out',str(prep_out),
++                                '--deadline',str(time.monotonic()+prep_alloc-1.)]
++                            start_output_phase(rd,'carry Python worker launch',[budget.WriteBound(rd/'carry.log',512*1024**2,
++                                'Python carry stdout','prospective512MiB process file limit')])
++                            last_receipt=process.run(command,rd/'carry.log',out,prep_alloc)
++                            debit_ok=ledger.debit('carry',prep_alloc,last_receipt)
++                            prep_record['process']=last_receipt;b.write(rd/'carry.process.json',last_receipt,fresh=True)
++                            process.require_clean(last_receipt);require(debit_ok,'carry process/600 ledger exceeded')
++                            prepared=read_complete(prep_out);prep_record['preparation']=prepared
++                            start=carry.verify_prepared(prepared,request_path,request_sha,exported['identity'])
++                        except BaseException as exc:
++                            prep_record['error']=type(exc).__name__+': '+str(exc)
++                            prep_record['storage_admission_failure']=getattr(exc,'receipt',{})
++                            state.update(quality_failed=True,mechanism_failed=True,outcome='carry_preparation_failed')
++                            break
++                    role = options.role_for_call(call)
++                    optpath = rd/'solver.options'; optpath.write_text(options.option_text(role))
++                    common.verify_source_freeze(freeze,a.source_manifest_sha256)
++                    # Take the final allocation after export; probe overhead remains
++                    # whole-arm charged. Stop if it consumes the reserved window.
++                    alloc = ledger.allocation('mip',call,deadline-time.monotonic())
++                    if alloc <= PROCESS_RESERVE:
++                        state['outcome'] = 'window_exhausted_after_export'; break
++                    native = alloc-PROCESS_RESERVE
++                    probe = options.probe(cfg,optpath,native,start=start,role=role,solver_random_seed=solver_random_seed)
++                    if ledger.allocation('mip',call,deadline-time.monotonic()) < alloc:
++                        state['outcome'] = 'window_exhausted_after_options'; break
++                    b.write(rd/'options-readback.json',probe,fresh=True)
++                    if call==2 and 'discovery_proof_transition' in state:
++                        charged_parent_history_check(state,ledger,lambda:carry.verify_transition_proof(state,exported['identity'],probe,start))
++                    solution = rd/'solution.sol'
++                    command = options.command(cfg,rd/'master.mps',optpath,solution,native,start=start,role=role,solver_random_seed=solver_random_seed)
++                    row = dict(call=call,role=role,solver_random_seed=solver_random_seed,cut_batches=state['cut_batches'],native_limit_seconds=native,
++                        allocation_seconds=alloc,incumbent_input=(str(start) if start else None),no_basis_or_search_state_input=True,master_identity=exported['identity'],command=command,
++                        options_artifacts=dict(options_path=str(optpath),options_sha256=f.sha256(optpath),
++                            readback_path=str(rd/'options-readback.json'),readback_sha256=f.sha256(rd/'options-readback.json')))
++                    state['trace'].append(row); save()
++                    verify_export(exported['identity'])
++                    require(f.sha256(optpath) == probe['options_sha256'],'Changed proof options')
++                    if start is not None:
++                        carry.verify_prepared(prepared,request_path,request_sha,exported['identity'])
++                    if ledger.allocation('mip',call,deadline-time.monotonic()) < alloc:
++                        row['launch_outcome'] = 'reserved_window_exhausted_before_launch'
++                        state['outcome'] = 'window_exhausted_before_launch'
++                        break
++                    row['native_output_shape']=native_shape_guard(exported['expected'],production=True)
++                    if call==2 and 'discovery_proof_transition' in state:
++                        state['discovery_proof_transition']['outcome']='proof_attempted'
++                    wrapped,limit_evidence=native_command(command,rd,cfg,solver=True)
++                    row['native_limit_request']=limit_evidence
++                    start_output_phase(rd,'native MIP CLI',[budget.WriteBound(rd/name,budget.NATIVE_FILE_LIMIT,
++                        'three fixed native CLI outputs','native exec64MiB file limit') for name in ('solver.log','Highs.log','solution.sol')])
++                    last_receipt = process.run(wrapped,rd/'solver.log',out,alloc,solver=False)
++                    last_receipt['native_limit_request']=limit_evidence
++                    debit_ok = ledger.debit('mip',alloc,last_receipt)
++                    b.write(rd/'solver.process.json',last_receipt,fresh=True)
++                    row['process'] = last_receipt
++                    row['native_archive'] = archive(f'mip-{call:02d}','post_native_solve')
++                    process.require_clean(last_receipt)
++                    row['native_limit_receipt']=native_receipt(rd,limit_evidence,last_receipt)
++                    last_receipt['native_limit_receipt']=row['native_limit_receipt']
++                    require(debit_ok,'MIP process/600 ledger exceeded')
++                    verify_export(exported['identity'])
++                    require(f.sha256(optpath) == probe['options_sha256'],'Changed proof options after native process')
++                    common.verify_source_freeze(freeze,a.source_manifest_sha256)
++                    if start is not None:
++                        try:
++                            carry.verify_prepared(prepared,request_path,request_sha,exported['identity'])
++                            row['start_admission']=admission.check_admission((rd/'solver.log').read_text(),
++                                carry.g.unrat(prepared['exact_check']['projected_objective_exact']))
++                            state['mechanism_tested']=True
++                        except BaseException as exc:
++                            row['start_admission_error']=type(exc).__name__+': '+str(exc)
++                            row['start_admission_failure_evidence']=getattr(exc,'evidence',None)
++                            state.update(quality_failed=True,mechanism_failed=True,outcome='carry_initial_admission_failed')
++                            break
++                    io = module('_integer_frozen_io',b.CORE/'canonical_mps_export/io_announcements.py')
++                    clean,row['io_filter'] = io.filter_known_io((rd/'solver.log').read_text(),rd/'master.mps',solution,solver=True)
++                    from current_scuc.core.driver.primal_and_bound import solver_report
++                    from current_scuc.contracts import LIBRARY
++                    preliminary_report = solver_report(clean,last_receipt,'mip',rd/'master.mps',LIBRARY,identities_valid=True)
++                    clean,row['advisory_filter'] = filter_scaling_advisories(clean, mip_report=preliminary_report,
++                        measurement=last_receipt, model_path=rd/'master.mps', role=role)
++                    require(len(re.findall(r'^Solving report[ \t]*$',clean,re.M)) == 1,'Ambiguous top-level MIP reports')
++                    report = solver_report(clean,last_receipt,'mip',rd/'master.mps',LIBRARY,identities_valid=True)
++                    report = admit_report(report, role=role)
++                    row['report'] = report
++                    if report.get('bound_status_valid') is True:
++                        state['lower_records'].append(lower_record(report,exported['identity'],state['cut_batches'],target_identity=target))
++                    require(solution.is_file(),'Missing native solution output is not explicit no-primal')
++                    parsed = master.parse_solution(solution,exported['expected'],role=role)
++                    if parsed is None:
++                        state['outcome'] = 'no_usable_incumbent'; break
++                    require(parsed['status'] == report['status'],'Native report/point status mismatch')
++                    check = master.check_integer_point(exported['expected'],parsed,role=role)
++                    require(check['passed'] is True,'Current integer master QA failed')
++                    x = check.pop('x'); row['master_quality'] = check
++                start_output_phase(rd,'full original oracle/lift evaluation')
++                # Full evaluation mutates support/cache accounting: every exception here is terminal.
++                if history_candidate is not None:
+                     try:
+-                        prep_out=rd/'carry'
+-                        command=[cfg['python'],'-B','-s','-m','current_scuc.carry',
+-                            '--request',str(request_path),'--request-sha256',request_sha,'--out',str(prep_out),
+-                            '--deadline',str(time.monotonic()+prep_alloc-1.)]
+-                        start_output_phase(rd,'carry Python worker launch',[budget.WriteBound(rd/'carry.log',512*1024**2,
+-                            'Python carry stdout','prospective512MiB process file limit')])
+-                        last_receipt=process.run(command,rd/'carry.log',out,prep_alloc)
+-                        debit_ok=ledger.debit('carry',prep_alloc,last_receipt)
+-                        prep_record['process']=last_receipt;b.write(rd/'carry.process.json',last_receipt,fresh=True)
+-                        process.require_clean(last_receipt);require(debit_ok,'carry process/600 ledger exceeded')
+-                        prepared=read_complete(prep_out);prep_record['preparation']=prepared
+-                        start=carry.verify_prepared(prepared,request_path,request_sha,exported['identity'])
+-                    except BaseException as exc:
+-                        prep_record['error']=type(exc).__name__+': '+str(exc)
+-                        prep_record['storage_admission_failure']=getattr(exc,'receipt',{})
+-                        state.update(quality_failed=True,mechanism_failed=True,outcome='carry_preparation_failed')
+-                        break
+-                role = options.role_for_call(call)
+-                optpath = rd/'solver.options'; optpath.write_text(options.option_text(role))
+-                common.verify_source_freeze(freeze,a.source_manifest_sha256)
+-                # Take the final allocation after export; probe overhead remains
+-                # whole-arm charged. Stop if it consumes the reserved window.
+-                alloc = ledger.allocation('mip',call,deadline-time.monotonic())
+-                if alloc <= PROCESS_RESERVE:
+-                    state['outcome'] = 'window_exhausted_after_export'; break
+-                native = alloc-PROCESS_RESERVE
+-                probe = options.probe(cfg,optpath,native,start=start,role=role,solver_random_seed=solver_random_seed)
+-                if ledger.allocation('mip',call,deadline-time.monotonic()) < alloc:
+-                    state['outcome'] = 'window_exhausted_after_options'; break
+-                b.write(rd/'options-readback.json',probe,fresh=True)
+-                if call==2 and 'discovery_proof_transition' in state:
+-                    carry.verify_transition_proof(state,exported['identity'],probe,start)
+-                solution = rd/'solution.sol'
+-                command = options.command(cfg,rd/'master.mps',optpath,solution,native,start=start,role=role,solver_random_seed=solver_random_seed)
+-                row = dict(call=call,role=role,solver_random_seed=solver_random_seed,cut_batches=state['cut_batches'],native_limit_seconds=native,
+-                    allocation_seconds=alloc,incumbent_input=(str(start) if start else None),no_basis_or_search_state_input=True,master_identity=exported['identity'],command=command,
+-                    options_artifacts=dict(options_path=str(optpath),options_sha256=f.sha256(optpath),
+-                        readback_path=str(rd/'options-readback.json'),readback_sha256=f.sha256(rd/'options-readback.json')))
+-                state['trace'].append(row); save()
+-                verify_export(exported['identity'])
+-                require(f.sha256(optpath) == probe['options_sha256'],'Changed proof options')
+-                if start is not None:
+-                    carry.verify_prepared(prepared,request_path,request_sha,exported['identity'])
+-                if ledger.allocation('mip',call,deadline-time.monotonic()) < alloc:
+-                    row['launch_outcome'] = 'reserved_window_exhausted_before_launch'
+-                    state['outcome'] = 'window_exhausted_before_launch'
+-                    break
+-                row['native_output_shape']=native_shape_guard(exported['expected'],production=True)
+-                if call==2 and 'discovery_proof_transition' in state:
+-                    state['discovery_proof_transition']['outcome']='proof_attempted'
+-                wrapped,limit_evidence=native_command(command,rd,cfg,solver=True)
+-                row['native_limit_request']=limit_evidence
+-                start_output_phase(rd,'native MIP CLI',[budget.WriteBound(rd/name,budget.NATIVE_FILE_LIMIT,
+-                    'three fixed native CLI outputs','native exec64MiB file limit') for name in ('solver.log','Highs.log','solution.sol')])
+-                last_receipt = process.run(wrapped,rd/'solver.log',out,alloc,solver=False)
+-                last_receipt['native_limit_request']=limit_evidence
+-                debit_ok = ledger.debit('mip',alloc,last_receipt)
+-                b.write(rd/'solver.process.json',last_receipt,fresh=True)
+-                row['process'] = last_receipt
+-                row['native_archive'] = archive(f'mip-{call:02d}','post_native_solve')
+-                process.require_clean(last_receipt)
+-                row['native_limit_receipt']=native_receipt(rd,limit_evidence,last_receipt)
+-                last_receipt['native_limit_receipt']=row['native_limit_receipt']
+-                require(debit_ok,'MIP process/600 ledger exceeded')
+-                verify_export(exported['identity'])
+-                require(f.sha256(optpath) == probe['options_sha256'],'Changed proof options after native process')
+-                common.verify_source_freeze(freeze,a.source_manifest_sha256)
+-                if start is not None:
+-                    try:
+-                        carry.verify_prepared(prepared,request_path,request_sha,exported['identity'])
+-                        row['start_admission']=admission.check_admission((rd/'solver.log').read_text(),
+-                            carry.g.unrat(prepared['exact_check']['projected_objective_exact']))
+-                        state['mechanism_tested']=True
+-                    except BaseException as exc:
+-                        row['start_admission_error']=type(exc).__name__+': '+str(exc)
+-                        row['start_admission_failure_evidence']=getattr(exc,'evidence',None)
+-                        state.update(quality_failed=True,mechanism_failed=True,outcome='carry_initial_admission_failed')
+-                        break
+-                io = module('_integer_frozen_io',b.CORE/'canonical_mps_export/io_announcements.py')
+-                clean,row['io_filter'] = io.filter_known_io((rd/'solver.log').read_text(),rd/'master.mps',solution,solver=True)
+-                from current_scuc.core.driver.primal_and_bound import solver_report
+-                from current_scuc.contracts import LIBRARY
+-                preliminary_report = solver_report(clean,last_receipt,'mip',rd/'master.mps',LIBRARY,identities_valid=True)
+-                clean,row['advisory_filter'] = filter_scaling_advisories(clean, mip_report=preliminary_report,
+-                    measurement=last_receipt, model_path=rd/'master.mps', role=role)
+-                require(len(re.findall(r'^Solving report[ \t]*$',clean,re.M)) == 1,'Ambiguous top-level MIP reports')
+-                report = solver_report(clean,last_receipt,'mip',rd/'master.mps',LIBRARY,identities_valid=True)
+-                report = admit_report(report, role=role)
+-                row['report'] = report
+-                if report.get('bound_status_valid') is True:
+-                    state['lower_records'].append(lower_record(report,exported['identity'],state['cut_batches'],target_identity=target))
+-                require(solution.is_file(),'Missing native solution output is not explicit no-primal')
+-                parsed = master.parse_solution(solution,exported['expected'],role=role)
+-                if parsed is None:
+-                    state['outcome'] = 'no_usable_incumbent'; break
+-                require(parsed['status'] == report['status'],'Native report/point status mismatch')
+-                check = master.check_integer_point(exported['expected'],parsed,role=role)
+-                require(check['passed'] is True,'Current integer master QA failed')
+-                x = check.pop('x'); row['master_quality'] = check
+-                start_output_phase(rd,'full original oracle/lift evaluation')
+-                batch,evaluated = evaluate_point(x,original,metadata,oracle,rd,call+1,deadline-FINAL_RESERVE,
+-                    projection=projection,qa=qa,integer=True,master=master,persist_batch=False)
++                        batch,evaluated = evaluate_history(history_candidate,lambda check_deadline:
++                            evaluate_point(x,original,metadata,oracle,rd,call+1,check_deadline,
++                                projection=projection,qa=qa,integer=True,master=master,persist_batch=False),ledger)
++                    finally:
++                        state['history'].pop('pending_check_started',None)
++                    state['history']['outcome']='accepted_full_original_checked_endpoint'
++                else:
++                    batch,evaluated = evaluate_point(x,original,metadata,oracle,rd,call+1,deadline-FINAL_RESERVE,
++                        projection=projection,qa=qa,integer=True,master=master,persist_batch=False)
+                 row['evaluation'] = evaluated
+                 selected = best_lower(state['lower_records'],target)
+                 provisional = interval(selected['lower'],evaluated['provisional_upper'])
+@@ -395,26 +509,32 @@
+                 row['selected_endpoint_interval'] = interval(selected['lower'],best['evaluation']['provisional_upper'])
+                 require(row['selected_endpoint_interval']['passed'],'Invalid selected endpoint interval')
+                 row['selected_endpoint_call'] = best['call']
+-                row['checked_archive'] = archive(f'mip-{call:02d}','post_full_check',True)
+-                row['checked_stage_binding']=carry.bind_checked_stage(row['checked_archive'],out,call,a.source_manifest_sha256,expected_row=row)
++                if row['role']==history_scuc.ROLE:
++                    row['checked_archive'] = charged_parent_history_check(state,ledger,lambda:archive(f'mip-{call:02d}','post_full_check',True))
++                    row['checked_stage_binding']=charged_parent_history_check(state,ledger,lambda:
++                        carry.bind_checked_stage(row['checked_archive'],out,call,a.source_manifest_sha256,expected_row=row))
++                else:
++                    row['checked_archive'] = archive(f'mip-{call:02d}','post_full_check',True)
++                    row['checked_stage_binding']=carry.bind_checked_stage(row['checked_archive'],out,call,a.source_manifest_sha256,expected_row=row)
+                 if call==2 and 'discovery_proof_transition' in state:
+                     state['discovery_proof_transition']['outcome']='proof_checked'
+                 previous_matrix = current_hash
+                 if no_shedding.stop_eligible(best['evaluation'], row['selected_endpoint_interval']):
+                     metadata=adaptive.terminal(projected,metadata,batch)
+                     state['outcome'] = 'provisional_target_met'; break
+-                if call == MAX_CALLS:
++                if call == ledger.logical_call_limit:
+                     metadata=adaptive.terminal(projected,metadata,batch)
+                     state['outcome'] = 'fixed_call_stop'; break
+                 row['continuation_support'] = no_shedding.excluding_support(batch, metadata, x, runtime.bank)
+                 if not row['continuation_support']['passed']:
+-                    if call==1 and report['discovery_stop_activated'] and row['selected_endpoint_interval']['gap']>.01:
++                    if call==1 and (row['role']==history_scuc.ROLE or report['discovery_stop_activated']) and row['selected_endpoint_interval']['gap']>.01:
+                         prep_alloc=ledger.allocation('carry',2,deadline-time.monotonic())
+                         proof_alloc=max(0.,min(180.,SOLVER_CAP-ledger.spent-prep_alloc,
+                             deadline-time.monotonic()-FINAL_RESERVE-prep_alloc))
+                         if prep_alloc>1. and proof_alloc>PROCESS_RESERVE:
+                             state['ledger']=ledger.record()
+-                            carry.schedule_transition(state,cut_prefix,carry_allocation=prep_alloc,proof_allocation=proof_alloc)
++                            charged_parent_history_check(state,ledger,lambda:
++                                carry.schedule_transition(state,cut_prefix,carry_allocation=prep_alloc,proof_allocation=proof_alloc))
+                             metadata=adaptive.terminal(projected,metadata,batch)
+                             save()
+                             continue
+@@ -483,6 +603,10 @@
+             state['failure_archive_error'] = type(sub).__name__+': '+str(sub)
+             state['failure_archive_admission'] = getattr(sub,'receipt',{})
+     finally:
++        pending=state.get('history',{}).pop('pending_check_started',None)
++        if pending is not None:
++            # An earlier checkpoint/save failure still debits work already done.
++            ledger.debit_auxiliary('history_check',state['history']['check_cap_seconds'],time.monotonic()-pending)
+         state['ledger'] = ledger.record()
+         state['whole_phase_seconds'] = time.monotonic()-START
+         state['passed'] = terminal_gate(state,whole_seconds=state['whole_phase_seconds'])
+--- published/current_scuc/receipts.py
++++ overlay/current_scuc/receipts.py
+@@ -37,6 +37,10 @@
+ }
+ _CHECKED_ROW_KEYS = ('call', 'role', 'master_identity', 'options_artifacts', 'process',
+                      'native_limit_receipt', 'master_quality', 'evaluation', 'report')
++_HISTORY_CHECKED_ROW_KEYS = ('call', 'role', 'master_identity', 'process', 'master_quality',
++                           'evaluation', 'api_evidence', 'solver_random_seed', 'command',
++                           'native_limit_seconds', 'allocation_seconds', 'cut_batches',
++                           'incumbent_input', 'no_basis_or_search_state_input')
+ 
+ 
+ @dataclass(frozen=True)
+@@ -458,7 +462,9 @@
+     rows = [row for row in state['trace'] if row.get('call') == call]
+     require(len(rows) == 1 and expected_row.get('call') == call, 'checked row identity')
+     row = rows[0]
+-    require(all(key in row and row[key] == expected_row.get(key) for key in _CHECKED_ROW_KEYS),
++    history = row.get('role') == 'history_probe'
++    checked_row_keys = _HISTORY_CHECKED_ROW_KEYS if history else _CHECKED_ROW_KEYS
++    require(all(key in row and row[key] == expected_row.get(key) for key in checked_row_keys),
+             'selected point differs from checked STATE snapshot')
+     rd, bound = run/f'mip-{call:02d}', {}
+ 
+@@ -475,9 +481,15 @@
+     require(Path(identity['model_path']).absolute() == rd/'master.mps', 'wrong checked master path')
+     for prefix in ('model', 'expected', 'api_report', 'row_sidecar'):
+         member(identity[prefix+'_path'], identity[prefix+'_sha256'])
+-    member(rd/'solution.sol')
+-    for prefix in ('options', 'readback'):
+-        member(row['options_artifacts'][prefix+'_path'], row['options_artifacts'][prefix+'_sha256'])
++    if history:
++        from current_scuc.history_scuc import verify_api_evidence
++        api = verify_api_evidence(row, expected_seed=state['solver_random_seed'])
++        for path, digest_value in api['files_sha256'].items():
++            member(path, digest_value)
++    else:
++        member(rd/'solution.sol')
++        for prefix in ('options', 'readback'):
++            member(row['options_artifacts'][prefix+'_path'], row['options_artifacts'][prefix+'_sha256'])
+     for name in ('adaptive_support_artifact', 'stored_lift_artifact', 'oracle_artifact',
+                  'full_source_quality_artifact', 'source_quality_artifact'):
+         artifact = row['evaluation'][name]
+@@ -491,5 +503,5 @@
+                 nonce=receipt['nonce'], receipt_sha256=files[str(Path(receipt_path).absolute())],
+                 content_sha256=receipt['content_sha256'], source_manifest_sha256=source_sha256,
+                 call=call, metadata_files_sha256=files, checked_point_files_sha256=bound,
+-                checked_row_sha256=digest({key: row[key] for key in _CHECKED_ROW_KEYS}),
++                checked_row_sha256=digest({key: row[key] for key in checked_row_keys}),
+                 durability='LOCAL_FSYNC_HASH', bytes_reread=True, new_checkpoint_created=False)

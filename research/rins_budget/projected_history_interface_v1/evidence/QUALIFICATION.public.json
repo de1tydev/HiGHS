@@ -1,0 +1,102 @@
+{
+  "interpretation": "Tiny mechanism prerequisite passed. Both tiny scientific candidates remained quality NONPASS. Actual cold and history arms naturally exercised their respective carry/proof paths.",
+  "publication_reexecution": false,
+  "pure_tests": {
+    "exit_code": 0,
+    "methods": 13,
+    "scope": "Mocks only; no native API/readback/build/optimizer invocation",
+    "stdout": ".............\n----------------------------------------------------------------------\nRan 13 tests in 0.034s\n\nOK\n",
+    "tool_wall_time_seconds": 0.287537875,
+    "unittest_reported_seconds": 0.034
+  },
+  "schema": "projected-history-qualified-prerequisites-public-projection/v1",
+  "source_candidate_original_sha256": "b7289606bef390d0283fb269e3b9c3f9a2c5288112fe1b01ad089bbbfe1585c4",
+  "tiny": {
+    "arms": {
+      "cold": {
+        "assessment_helpers": 1,
+        "candidate_passed": false,
+        "combined_charged_seconds": 2.9006731060035236,
+        "final_interval": {
+          "gap": 8.889111296598134e-10,
+          "lower": 11305.99998995,
+          "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+          "passed": true,
+          "physical_dc_lower_bound_certified": false,
+          "qualified": true,
+          "target": 0.01,
+          "upper": 11306.00000000003
+        },
+        "first_interval": {
+          "gap": 0.5980053191489388,
+          "lower": 7557.499999999971,
+          "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+          "passed": true,
+          "physical_dc_lower_bound_certified": false,
+          "qualified": false,
+          "target": 0.01,
+          "upper": 18800.00000000005
+        },
+        "integer_processes": 2,
+        "natural_carry_proof": true,
+        "roles": [
+          "discovery",
+          "proof"
+        ],
+        "seed_lower": 7557.499999999971,
+        "seed_lp_calls": 2,
+        "shared_overflow_MWh": 2.2500000000000058,
+        "worker_seconds": 11.544973414002015
+      },
+      "history": {
+        "assessment_helpers": 1,
+        "candidate_passed": false,
+        "combined_charged_seconds": 3.9747433620032098,
+        "final_interval": {
+          "gap": 8.889111296598134e-10,
+          "lower": 11305.99998995,
+          "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+          "passed": true,
+          "physical_dc_lower_bound_certified": false,
+          "qualified": true,
+          "target": 0.01,
+          "upper": 11306.00000000003
+        },
+        "first_interval": {
+          "gap": 0.33154961967097546,
+          "lower": 7557.499999999971,
+          "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+          "passed": true,
+          "physical_dc_lower_bound_certified": false,
+          "qualified": false,
+          "target": 0.01,
+          "upper": 11306.00000000003
+        },
+        "integer_processes": 2,
+        "natural_carry_proof": true,
+        "roles": [
+          "history_probe",
+          "proof"
+        ],
+        "seed_lower": 7557.499999999971,
+        "seed_lp_calls": 2,
+        "shared_overflow_MWh": 2.2500000000000058,
+        "worker_seconds": 9.143693898000492
+      }
+    },
+    "checks": 288,
+    "limitations": [
+      "Synthetic fixed all-on history proposal only in tiny; genuine June admission remains separately qualified",
+      "Both scientific candidates remain NONPASS for 2.25 MWh shared overflow",
+      "No performance gate, speed claim, production quality advancement or physical DC lower certificate",
+      "Probe endpoint alone does not establish how much came from completion versus subsequent ordinary search"
+    ],
+    "owner_receipt_sha256": "1d199f55f641fdee9421b2f8ddd33e199236ea34e93040718e200c686b3bffd9",
+    "pair_result_sha256": "b2f55573ee1e82a8028d489abf019c40b3f3ed14031eac501488a8e3a152dd45",
+    "source_delta_sha256": "588e30a508de9502f19883e74953eeb02b6d49daafafcff427f1a479f39ea96a",
+    "status": "PASS",
+    "tiny_runner_sha256": "5259dfeae5fbc250d0649aebb4b676936b0d1940b9ad381269d7eb3a88372ee5",
+    "whole_owner_seconds": 21.568027994999284
+  },
+  "tiny_original_audit_sha256": "ab78c85a4913f3f99ca7c92f3a1078854412ad2e383a286f6456b8188423c964"
+}

@@ -1,0 +1,254 @@
+{
+  "affected_units": [
+    "g11",
+    "g46",
+    "g53",
+    "g79",
+    "g230"
+  ],
+  "by_kind": {
+    "minimum_up": 9
+  },
+  "diagnostic_scope": "Saved current-master row/bound and source-parameter arithmetic only",
+  "examples": [
+    {
+      "copied_first_four_u": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "direct_linear_contradiction": "At t=0: u0=1 and initial_on=0 imply y0-z0=1, hence y0>=1 since z0>=0. At t=1: sum(y in minimum-up window)<=u1=0 and all y>=0 imply y0<=0. No alternative y/z or dispatch values can satisfy both.",
+      "initial_transition_row": {
+        "index": 6110,
+        "name": "R6110",
+        "rhs": 0.0,
+        "terms": [
+          [
+            "u_g11_0",
+            1.0
+          ],
+          [
+            "y_g11_0",
+            -1.0
+          ],
+          [
+            "z_g11_0",
+            1.0
+          ]
+        ]
+      },
+      "june_initial_status_hours": 24,
+      "minimum_up_hours": 2,
+      "october_initial_status_hours": -24,
+      "unit": "g11",
+      "violated_minimum_up_rows": [
+        "R6129"
+      ]
+    },
+    {
+      "copied_first_four_u": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "direct_linear_contradiction": "At t=0: u0=1 and initial_on=0 imply y0-z0=1, hence y0>=1 since z0>=0. At t=1: sum(y in minimum-up window)<=u1=0 and all y>=0 imply y0<=0. No alternative y/z or dispatch values can satisfy both.",
+      "initial_transition_row": {
+        "index": 27495,
+        "name": "R27495",
+        "rhs": 0.0,
+        "terms": [
+          [
+            "u_g46_0",
+            1.0
+          ],
+          [
+            "y_g46_0",
+            -1.0
+          ],
+          [
+            "z_g46_0",
+            1.0
+          ]
+        ]
+      },
+      "june_initial_status_hours": 24,
+      "minimum_up_hours": 4,
+      "october_initial_status_hours": -24,
+      "unit": "g46",
+      "violated_minimum_up_rows": [
+        "R27512",
+        "R27527",
+        "R27542"
+      ]
+    }
+  ],
+  "initial_conditions": [
+    {
+      "june": 24,
+      "october": -24,
+      "unit": "g11"
+    },
+    {
+      "june": 24,
+      "october": -24,
+      "unit": "g46"
+    },
+    {
+      "june": 24,
+      "october": -24,
+      "unit": "g53"
+    },
+    {
+      "june": 24,
+      "october": -24,
+      "unit": "g79"
+    },
+    {
+      "june": 24,
+      "october": -24,
+      "unit": "g230"
+    }
+  ],
+  "input_sha256": {
+    "expected_model": "95fdb9ed2f0cf3c63a8892237e468c2ba474be3bac225139b608324731273c55",
+    "generator": "d6dccd18b30b18f94736b03e7bcf1a619f4d5bcbdb6ad51cef297512a5bdac65",
+    "june_source": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+    "model": "9df870d2d292739306c678667416dbc807de66d3701989eb7597d3d821c3dfa6",
+    "model_metadata": "da874fe87b7c15122e076298b04d2f4b16b316b7835dd424d02653dc72559779",
+    "native_readback": "8d819985864ac2eda3e316ab25bcb3186cf2cea25e793d3384ab3dcf72bd8c01",
+    "october_source": "b64be5dcaec762356291b8ee353ee242869e2a8a0c68859aa477a4431dc1d9d6",
+    "probe_log": "d5d0fba3a35494d342d409a19a1f559347dd2ddc6715394c5e1a5cbaeb61d674",
+    "proposal": "4efcf1dc3c51a7eb196d444e1bcb6d876dfe2089db9abe5506a05a4110a56f79",
+    "request": "a950938a9454c26975da9459815593758393a04a5ebbf1e494e2ce1823a9cbf2",
+    "suggestions": "319d8148c9ab40bf26a18cd55487a68fe6aef5dc75eca39e5d08c00cdab21d2c"
+  },
+  "no_alternative_yz_proof": "All 9360 transition equations and 9360 exclusivity inequalities were matched exactly in the saved master, and all 28080 u/y/z domains were checked as [0,1] binary. More strongly, each displayed t0/t1 contradiction needs only the transition, minimum-up row and nonnegative y/z bounds; it does not rely on a discretionary canonical y/z assignment.",
+  "no_new_method_or_unit_filter": true,
+  "optimization_called": false,
+  "original_diagnosis_sha256": "bb8db76a4e4aa27e8f05008b3b744cd75fb725a70c92b3053331faa0d929e621",
+  "physics_rerun": false,
+  "projection": "Selected original diagnosis fields with machine-local paths removed; no solver or checker rerun during publication",
+  "proof_scope": "The fixed u assignment is infeasible already in the existing initial-transition/minimum-up rows. This is a sufficient contradiction, not an exhaustive diagnosis of every possible network/ramp/capacity conflict.",
+  "representative_minimum_up_row": {
+    "activity": 1.0,
+    "hour_index_zero_based": 1,
+    "kind": "minimum_up",
+    "minimum_hours": 2,
+    "row_index": 6129,
+    "row_name": "R6129",
+    "terms": [
+      [
+        "y_g11_0",
+        1.0,
+        1
+      ],
+      [
+        "u_g11_1",
+        -1.0,
+        0
+      ],
+      [
+        "y_g11_1",
+        1.0,
+        0
+      ]
+    ],
+    "unit": "g11",
+    "upper": 0.0
+  },
+  "schema": "saved-proposed-commitment-infeasibility/v1",
+  "source_or_policy_modified": false,
+  "specified_u_count": 9360,
+  "verified_rows": {
+    "exclusive_rows_verified": 9360,
+    "minimum_down_rows_verified": 9360,
+    "minimum_up_rows_verified": 9360,
+    "transition_rows_verified": 9360
+  },
+  "violation_count": 9,
+  "violations": [
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 1,
+      "kind": "minimum_up",
+      "minimum_hours": 2,
+      "row_name": "R6129",
+      "unit": "g11",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 1,
+      "kind": "minimum_up",
+      "minimum_hours": 4,
+      "row_name": "R27512",
+      "unit": "g46",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 2,
+      "kind": "minimum_up",
+      "minimum_hours": 4,
+      "row_name": "R27527",
+      "unit": "g46",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 3,
+      "kind": "minimum_up",
+      "minimum_hours": 4,
+      "row_name": "R27542",
+      "unit": "g46",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 1,
+      "kind": "minimum_up",
+      "minimum_hours": 2,
+      "row_name": "R31647",
+      "unit": "g53",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 1,
+      "kind": "minimum_up",
+      "minimum_hours": 4,
+      "row_name": "R47533",
+      "unit": "g79",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 2,
+      "kind": "minimum_up",
+      "minimum_hours": 4,
+      "row_name": "R47550",
+      "unit": "g79",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 3,
+      "kind": "minimum_up",
+      "minimum_hours": 4,
+      "row_name": "R47567",
+      "unit": "g79",
+      "upper": 0.0
+    },
+    {
+      "activity": 1.0,
+      "hour_index_zero_based": 1,
+      "kind": "minimum_up",
+      "minimum_hours": 2,
+      "row_name": "R138570",
+      "unit": "g230",
+      "upper": 0.0
+    }
+  ]
+}

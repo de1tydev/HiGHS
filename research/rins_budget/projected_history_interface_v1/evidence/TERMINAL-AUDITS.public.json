@@ -1,0 +1,101 @@
+{
+  "arms": {
+    "cold": {
+      "candidate_result_sha256": "7f8280a5847d0bf47d68c7425e128fcb5d332958e670992bdf2f716e717a2e31",
+      "checks": 392,
+      "counts": {
+        "carry_preparations": 0,
+        "full_physical_passes": 1,
+        "integer_processes": 1,
+        "seed_LP_calls": 2
+      },
+      "coverage": {
+        "direct_violated_pairs": 0,
+        "hours": 36,
+        "outages": 1288,
+        "pair_hours": 66360168
+      },
+      "files_hashed": 107,
+      "interval": {
+        "gap": 0.0005353720226588228,
+        "lower": 11732175.309109934,
+        "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": true,
+        "target": 0.01,
+        "upper": 11738459.752050288
+      },
+      "original_audit_sha256": "e6456c5a578e308221651c5c46417ce96ed14cca1b338ce19eb05f0c039fe55c",
+      "owner_receipt_sha256": "f7cd5d1069eb90e22241dd7545058cd807e70856b63b5caa53abbc7dda34d384",
+      "positive_slack_totals_MWh": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 1.6539866010134577e-07
+      },
+      "result_sha256": "9211a16e7ad7e2ded733c31dc9089106bbf2eee2b2a869d3d4df3af6dccab3a8",
+      "schema": "projected-history-october-cold-terminal-audit/v3",
+      "seconds": {
+        "MIP_process": 13.464550565000536,
+        "candidate_process": 364.94911147400126,
+        "cli_spawn_through_reap": 425.15758231600194,
+        "preparation": 57.51874078800029,
+        "seed_process": 101.7359273530019,
+        "solver_related_ledger": 115.20047791800243
+      },
+      "source_manifest_sha256": "97a94cbd0ef8e3289bf584c9c5edac8bb65c304c1a9fca5a6163c2597d67efd5",
+      "status": "PASS"
+    },
+    "history": {
+      "candidate_result_sha256": "83c441c3b904f4129b7e68b4935f4aac07cdf733ba6295776efce5c1408bf121",
+      "checks": 467,
+      "counts": {
+        "carry_preparations": 0,
+        "full_physical_passes": 1,
+        "integer_processes": 2,
+        "ordinary_logical_call_limit": 2,
+        "ordinary_logical_calls_executed": 1,
+        "seed_LP_calls": 2
+      },
+      "coverage": {
+        "direct_violated_pairs": 0,
+        "hours": 36,
+        "outages": 1288,
+        "pair_hours": 66360168
+      },
+      "files_hashed": 124,
+      "interval": {
+        "gap": 0.0005353720226588228,
+        "lower": 11732175.309109934,
+        "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": true,
+        "target": 0.01,
+        "upper": 11738459.752050288
+      },
+      "original_audit_sha256": "7f043df60d77656ca35ddb600f759e3899ac5c95578866f83b789e75decee790",
+      "owner_receipt_sha256": "26ae44814436441ff9617d6facac7b3e6dd091981b621c3afd26776525ceef99",
+      "positive_slack_totals_MWh": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 1.6539866010134577e-07
+      },
+      "result_sha256": "da4031e26a8c27f4993e1dabff9261e065a90f6454b6caa155954125c72bca8e",
+      "schema": "projected-history-october-history-terminal-audit/v3",
+      "seconds": {
+        "MIP_process": 12.307768126000155,
+        "candidate_process": 389.3914630139989,
+        "cli_spawn_through_reap": 448.143773202999,
+        "preparation": 56.26071273299749,
+        "seed_process": 98.2661655539996,
+        "solver_related_ledger": 141.32714041699728
+      },
+      "source_manifest_sha256": "1b7c96e77b0d58e82bb473fc8fb3418c9ab452961c8f0ca5239a30cf520c1826",
+      "status": "PASS"
+    }
+  },
+  "projection": "Selected fields from completed read-only terminal audits. Machine-local verified-hash inventories omitted; original audit hashes retained.",
+  "publication_reexecution": false,
+  "schema": "projected-history-terminal-audits-public-projection/v1"
+}
