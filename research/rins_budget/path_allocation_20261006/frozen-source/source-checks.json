@@ -1,0 +1,12 @@
+{
+  "path-allocation-probe.patch": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "combined-diagnostic.patch": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

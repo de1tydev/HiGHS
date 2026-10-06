@@ -1,0 +1,119 @@
+{
+  "schema": "path-allocation-public-provenance/v1",
+  "projection": true,
+  "intended_repository_path": "research/rins_budget/path_allocation_20261006",
+  "environment_scope": "Newly rebuilt own-cloud runtime; no previous saved-cloud timing reused",
+  "official_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "official_tree": "788b41e141fa455509c71593e1718b7b71168320",
+  "research_commit": "2d8e65ca069f90b75c4ae38a6115b5ac7c40132c",
+  "research_tree": "f2346116c1a25b3a3f4fafb8d32befbba57a6278",
+  "unpublished_commit_not_recovered_or_reused": "0f17aaa0f48b8b0d461c2684326cfbb3c6e5f474",
+  "prior_cmir_versions": {
+    "v1": "rejected, not rerun",
+    "v2": "rejected, not rerun"
+  },
+  "frozen_source_manifest_sha256": "7031f650b51a4eb4fbf042b87022694067466e0d221dd9335eb35b7eb7f9466a",
+  "combined_patch_sha256": "ebf898a0f1b18e956121eedd325352350f57af3e067bde42545b504e1b7151c2",
+  "source_file_hashes": {
+    "highs/mip/HighsPathSeparator.cpp": {
+      "official_sha256": "2bf0b367972563bc4f21c5bf6297c99658d033826facea36afd474d514d29ec4",
+      "candidate_sha256": "f6c6d6b16b3d8d3ff3817747a409eefc7b8f5ff07ee123c425d8399cd3301613"
+    },
+    "highs/mip/HighsSeparation.cpp": {
+      "official_sha256": "db6f4e77d8e883a57f24b721a951618e836328bcd24318bf3b9f2b1a521e17b7",
+      "candidate_sha256": "07c187b6425076cef39e0a26857c05f3d234239779ce37a18f6c49a13c46e5cc"
+    }
+  },
+  "builds": {
+    "official": {
+      "bin/highs": "a8546ca386821b0953df9c466439191d021d17bdb7965cf115aa6e2bc0da7ab2",
+      "lib/libhighs.so.1.15.1": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+      "lib/libhighs_extras.so": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+      "HConfig.h": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf",
+      "CMakeCache.txt": "af845adcc01235f0caf1febe6ec7c626cc9446e5945a088ca6727b53d82c3cdd"
+    },
+    "candidate": {
+      "bin/highs": "c7ac94c21556205c36cd93d5e6444c6d7e5fd7e77e1beffa22730b7578b27e8f",
+      "lib/libhighs.so.1.15.1": "a93a54368d6018f79c6e81a96bc282df9385db704221df40b447a02a104c7d5d",
+      "lib/libhighs_extras.so": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+      "HConfig.h": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf",
+      "CMakeCache.txt": "0187f178f3e6d7a2e9cb05b99df8c1b38959198734a88f5400ac5c17880d6e45"
+    }
+  },
+  "exporter_binary_sha256": "e8f7c514813eba5d0f225e4b5d8d0788532ca59dc99e59252e3b1bb59a52b708",
+  "model_hashes": {
+    "dcmulti": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+    "gesa2": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3"
+  },
+  "external_replay_dependencies": {
+    "cmir_cache_20261006/check_primal.py": {
+      "sha256": "a1f3a15050e7b1b9440d1ac2da9e3396f4172b43117df03e49d407253ae1f66f",
+      "bytes": 1974
+    },
+    "cmir_cache_20261006/export_model.cpp": {
+      "sha256": "04b704bf7758e7e99b68b74cabb43f09c814575864b0788830c79c5d254b37d2",
+      "bytes": 1281
+    },
+    "current_scuc/current_scuc/slot_envelope.py": {
+      "sha256": "a93287d63f1d9fdda0076088f5994feca97a2195aa794c5d5104c12a41faa89b",
+      "bytes": 6109
+    },
+    "current_scuc/current_scuc/contracts.py": {
+      "sha256": "77105b974441a6ea25676a62ec45d0271d2d9f4eddd1ac078f0ebe46717d922b",
+      "bytes": 2331
+    },
+    "current_scuc/current_scuc/__init__.py": {
+      "sha256": "4ad997068f107e60df2d7362ff8c689856dcfe6c077d66f6f81805741fab45a6",
+      "bytes": 92
+    },
+    "current_scuc/current_scuc/binding.py": {
+      "sha256": "681ceaab212f555c18e258fefc943d03905f0ff06b40e0791abbc7651c2a23fe",
+      "bytes": 9360
+    },
+    "current_scuc/current_scuc/case_binding.py": {
+      "sha256": "c9e048e5ca624bff6ad1342dce4fa1a702ce6dab0bafad9b29982bc31ee49672",
+      "bytes": 16746
+    },
+    "current_scuc/current_scuc/_paths.py": {
+      "sha256": "eff9a527531b63d9dec9547b37e2be1f425e493de73760a0efe9babd4105b348",
+      "bytes": 2559
+    }
+  },
+  "native_raw_results_sha256": "8da80aa1fbf51478eed5ab93372c81d25e10eabf668f15454c68476a3ce56928",
+  "native_raw_diagnostic_summary_sha256": "d275e759778771f6c11e871adb3b721cfa615a40cbb099d992e8e0c564db822b",
+  "native_raw_outer_receipt_sha256": "9369c8e90f4f1339429ef08529213e1c66875c330b12a6f3c3fd475dda585d94",
+  "raw_capsules": [
+    {
+      "name": "highs-observer-release-checkpoint-20261006T1536Z.tar.gz",
+      "sha256": "9924506ab595f6765bf3589bd6bee8d24169632476707a224a7b10e7e6c4c18a",
+      "bytes": 217720,
+      "verification_receipt_sha256": "10d3f8bfcde4a2d3f068b361cdd698d54763024a6fe7d40143dfc0dbc2a5352b"
+    },
+    {
+      "name": "highs-observer-terminal-checkpoint-20261006T1543Z.tar.gz",
+      "sha256": "343897289677465cf4e2cec3111a0a99a74d867fb502ff553c930c74efaf59d3",
+      "bytes": 425970,
+      "verification_receipt_sha256": "d9fbf57655d52142910c46d8fe4d9667ff7dbe9d8c9c3bc8a2a6a21d33ed54d6"
+    },
+    {
+      "name": "highs-own-cloud-recovery-checkpoint-20261006T1513Z.tar.gz",
+      "sha256": "8dce500a8c37bf5d6d6cc85269eadfceefb38765eee1a4b6ce4db13dfc667862",
+      "bytes": 6219,
+      "verification_receipt_sha256": "cfba58f9b58f54dd2fb4b0dc09afd6537baf5e6b4350edb865b40d87d26310c7"
+    },
+    {
+      "name": "highs-own-cloud-runtime-checkpoint-20261006T1523Z.tar.gz",
+      "sha256": "784eeb5e652c1709956479cf4cb58a7f9bb0466e82b2e9731701e515bca6d815",
+      "bytes": 3064336,
+      "verification_receipt_sha256": "7d411f34ba818a16a0ca3eaf61771877a1efc900272db9e8e2255843060694e0"
+    },
+    {
+      "name": "highs-tiny-observer-checkpoint-20261006T1529Z.tar.gz",
+      "sha256": "f68b2a6ad237ba562cc44e74e9438dedadc5223413e6de136abedb62d529869a",
+      "bytes": 525447,
+      "verification_receipt_sha256": "9462b962b5607b161bf7adf4e9ff4a1af286ea0d99b7df8a73f283d53b0bd46e"
+    }
+  ],
+  "capsule_note": "Raw source, setup, run and terminal evidence remain in verified private capsules; hashes identify artifacts without account IDs. Capsules are not included in this public projection.",
+  "binary_hash_note": "These identify recorded native artifacts, not promised byte-for-byte reproducible binaries. Fresh caller builds must record their own identities."
+}

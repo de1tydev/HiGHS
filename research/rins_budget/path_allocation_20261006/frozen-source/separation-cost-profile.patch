@@ -1,0 +1,104 @@
+diff --git a/highs/mip/HighsSeparation.cpp b/highs/mip/HighsSeparation.cpp
+index 87e72b6dde..7c8726c207 100644
+--- a/highs/mip/HighsSeparation.cpp
++++ b/highs/mip/HighsSeparation.cpp
+@@ -9,6 +9,9 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <chrono>
++#include <cstdio>
++#include <functional>
+ #include <queue>
+ 
+ #include "mip/HighsCliqueTable.h"
+@@ -48,6 +51,22 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+ 
+   HighsMipSolverData& mipdata = *lp->getMipSolver().mipdata_;
+ 
++  const bool traceCost = lp->getMipSolver().options_mip_->log_dev_level >= 2;
++  auto timed = [&](const char* name, const std::function<void()>& operation) {
++    if (!traceCost) { operation(); return; }
++    const auto started = std::chrono::steady_clock::now();
++    const HighsInt cutsBefore = mipworker_.getCutPool().getNumCuts();
++    const int64_t iterationsBefore = lp->getNumLpIterations();
++    operation();
++    const double elapsed = std::chrono::duration<double>(
++        std::chrono::steady_clock::now() - started).count();
++    printf("SEP_COST name=%s submip=%d depth=%d seconds=%.17g pool_delta=%d lp_iterations=%lld\n",
++           name, int(lp->getMipSolver().submip),
++           int(lp->getMipSolver().submip_level), elapsed,
++           int(mipworker_.getCutPool().getNumCuts() - cutsBefore),
++           static_cast<long long>(lp->getNumLpIterations() - iterationsBefore));
++  };
++
+   auto propagateAndResolve = [&]() {
+     if (propdomain.infeasible() || mipworker_.getGlobalDomain().infeasible()) {
+       status = HighsLpRelaxation::Status::kInfeasible;
+@@ -76,7 +95,7 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+ 
+     while (!propdomain.getChangedCols().empty()) {
+       lp->setObjectiveLimit(mipworker_.upper_limit);
+-      status = lp->resolveLp(&propdomain);
++      timed("lp_resolve", [&]() { status = lp->resolveLp(&propdomain); });
+       if (!lp->scaledOptimal(status)) return -1;
+ 
+       if (&propdomain == &mipdata.getDomain() &&
+@@ -93,10 +112,12 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+ 
+   if (!mipdata.parallelLockActive())
+     lp->getMipSolver().profiling_->start(implBoundClock);
++  timed("implied", [&]() {
+   mipdata.implications.separateImpliedBounds(
+       *lp, lp->getSolution().col_value, mipworker_.getCutPool(),
+       mipdata.feastol, mipworker_.getGlobalDomain(),
+       mipdata.parallelLockActive());
++  });
+   if (!mipdata.parallelLockActive())
+     lp->getMipSolver().profiling_->stop(implBoundClock);
+ 
+@@ -109,6 +130,7 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+ 
+   if (!mipdata.parallelLockActive())
+     lp->getMipSolver().profiling_->start(cliqueClock);
++  timed("clique", [&]() {
+   mipdata.cliquetable.separateCliques(
+       lp->getMipSolver(), sol.col_value, mipworker_.getCutPool(),
+       mipdata.feastol,
+@@ -117,6 +139,7 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+       mipdata.parallelLockActive()
+           ? mipworker_.getNumNeighbourhoodQueries()
+           : mipdata.cliquetable.getNumNeighbourhoodQueries());
++  });
+   if (!mipdata.parallelLockActive())
+     lp->getMipSolver().profiling_->stop(cliqueClock);
+ 
+@@ -139,8 +162,13 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+   }
+   HighsLpAggregator lpAggregator(*lp);
+ 
++  const char* separatorNames[] = {"tableau", "path", "modk", "machine"};
++  size_t separatorIndex = 0;
+   for (const std::unique_ptr<HighsSeparator>& separator : separators) {
+-    separator->run(*lp, lpAggregator, transLp, mipworker_.getCutPool());
++    assert(separatorIndex < 4);
++    timed(separatorNames[separatorIndex++], [&]() {
++      separator->run(*lp, lpAggregator, transLp, mipworker_.getCutPool());
++    });
+     if (mipworker_.getGlobalDomain().infeasible()) {
+       status = HighsLpRelaxation::Status::kInfeasible;
+       return 0;
+@@ -163,8 +191,12 @@ HighsInt HighsSeparation::separationRound(HighsDomain& propdomain,
+ 
+   if (cutset.numCuts() > 0) {
+     ncuts += cutset.numCuts();
++    if (traceCost)
++      printf("SEP_SELECTED submip=%d depth=%d count=%d\n",
++             int(lp->getMipSolver().submip), int(lp->getMipSolver().submip_level),
++             int(cutset.numCuts()));
+     lp->addCuts(cutset);
+-    status = lp->resolveLp(&propdomain);
++    timed("lp_resolve", [&]() { status = lp->resolveLp(&propdomain); });
+     lp->performAging(true);
+ 
+     // only for the master domain.

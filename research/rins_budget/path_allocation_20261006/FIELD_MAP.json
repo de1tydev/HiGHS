@@ -1,0 +1,168 @@
+{
+  "schema": "path-allocation-field-map/v1",
+  "purpose": "Explicit public projection of frozen retained artifacts; no numerical rerun",
+  "results_source": {
+    "logical_path": "path-allocation-probe-runs-v1/results.json",
+    "sha256": "8da80aa1fbf51478eed5ab93372c81d25e10eabf668f15454c68476a3ce56928"
+  },
+  "mapping": {
+    "RESULTS.json.calls[i]": "results.json.schedule[i], all fields copied except directory omitted, process.command replaced by command_roles, diagnostics replaced by diagnostics_model_key",
+    "RESULTS.json.models[m].summary": "results.json.materiality.models[m].summary, exact JSON values",
+    "RESULTS.json.models[m].scopes": "terminal audit receipt.models[m], independent raw-line reductions including all/main/submip/by_scope_depth and every failed screen",
+    "RESULTS.json.models[m].accounting_valid,highsint_bytes,element_width_bytes,materiality_pass": "results.json.materiality.models[m], exact values",
+    "RESULTS.json.gate": "results.json.materiality excluding models; no gate values suppressed",
+    "RESULTS.json.exports": "results.json.exports, exact values",
+    "RESULTS.json.time_accounting": "results.json.elapsed_total_seconds, terminal audit totals, and path-allocation-probe-outer-v1/receipt.json excluding absolute command",
+    "RESULTS.json.limits": "Frozen DIAGNOSTIC_GATE.md, QUALIFICATION_ADDENDUM.md, MANIFEST.json and run_probe.py; outer 600-second guard from launch receipt",
+    "PROVENANCE.json.builds": "PROBE_BUILD_PROVENANCE.json.builds; filenames and hashes retained, roots labeled official/candidate",
+    "SETUP.json.receipts": "Named raw process receipts with command omitted; every recorded return code, error, interruption, timeout and cleanup value retained"
+  },
+  "omissions": [
+    "Private absolute paths and account identifiers",
+    "Large per-invocation raw logs, repeated embedded diagnostics, model matrices and point files; retained in hash-bound private terminal capsule",
+    "Per-depth vector/counter duplication: complete per-model totals are public; complete per-invocation and per-scope records remain in raw capsules"
+  ],
+  "failure_preservation": "Every six-slot outcome and process/check/parity failure field is retained. All negative materiality screens and the closed decision are retained. Setup failures are separately retained in SETUP.json.",
+  "raw_slot_artifact_bindings": {
+    "1": {
+      "options.txt": {
+        "sha256": "6e338a343b19e8a4bc11c07f42303f884e88c304aa66f97a0e9a56536b77d782",
+        "bytes": 282
+      },
+      "point.sol": {
+        "sha256": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a",
+        "bytes": 6306
+      },
+      "primal-check.json": {
+        "sha256": "d51ae21a8e6682e32e8da454b63e61f69a0cfad7ac78621aaba9744e3eb71864",
+        "bytes": 234
+      },
+      "process-receipt.json": {
+        "sha256": "82a048dbee9ca1324417cab44d79a9788169c09ef9f779b195debad31292ae91",
+        "bytes": 973
+      },
+      "stdout.log": {
+        "sha256": "6589db807022f3184b788c6cb66f526fe6b8638756949fafdfd18f52cdf42f8c",
+        "bytes": 3966
+      }
+    },
+    "2": {
+      "options.txt": {
+        "sha256": "8e8212d38928e4944e15eb6a9a8827bf724981ad5720a8224296e010e645938c",
+        "bytes": 283
+      },
+      "point.sol": {
+        "sha256": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a",
+        "bytes": 6306
+      },
+      "primal-check.json": {
+        "sha256": "d51ae21a8e6682e32e8da454b63e61f69a0cfad7ac78621aaba9744e3eb71864",
+        "bytes": 234
+      },
+      "process-receipt.json": {
+        "sha256": "46c9d39a44786e47a0d8dd1778f41c0ebe6f78feb0ae139abbc46760987d1858",
+        "bytes": 976
+      },
+      "stdout.log": {
+        "sha256": "32ac82d6dffe66867873f15635592ca8299880072451c4ab7cace505ccffdf2c",
+        "bytes": 3968
+      }
+    },
+    "3": {
+      "options.txt": {
+        "sha256": "62f96774d8d82b40f6ab26f8b4f8d6021203984d8af5623736d818c0f62c5d82",
+        "bytes": 280
+      },
+      "point.sol": {
+        "sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+        "bytes": 33477
+      },
+      "primal-check.json": {
+        "sha256": "37c421544ee60e5721b80f7e08f7ac2cb7c3a4b5fa06917cfb5859e161a3f127",
+        "bytes": 283
+      },
+      "process-receipt.json": {
+        "sha256": "58e2283d15a88c1cf389b1731e50c4cececc756503fcb87767e2a6ddc1dabb72",
+        "bytes": 969
+      },
+      "stdout.log": {
+        "sha256": "fc91ffa1bc249652ba22e2331fe83d89c23954c3bd9dfd727e55bba87792430a",
+        "bytes": 3997
+      }
+    },
+    "4": {
+      "options.txt": {
+        "sha256": "e088adf300cf303448654089938fee5833a1b3b333b3bfb7233e65a155cfd53e",
+        "bytes": 281
+      },
+      "point.sol": {
+        "sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+        "bytes": 33477
+      },
+      "primal-check.json": {
+        "sha256": "37c421544ee60e5721b80f7e08f7ac2cb7c3a4b5fa06917cfb5859e161a3f127",
+        "bytes": 283
+      },
+      "process-receipt.json": {
+        "sha256": "77dfcbe8cc6930b2323267b88042ffc3491da7f30294a42ae773949755721931",
+        "bytes": 973
+      },
+      "stdout.log": {
+        "sha256": "78ae27863fd0ec6d8a214974d4f78cd29d4bb837feb4621d2cca4d7699fdb256",
+        "bytes": 3999
+      }
+    },
+    "5": {
+      "diagnostics.json": {
+        "sha256": "3d7ed0b330b0809b98ba9776f10b7d47cf8b638730d3c2037bb285f97ebb9855",
+        "bytes": 1184327
+      },
+      "options.txt": {
+        "sha256": "5b04087480d16ab15ffcc85de9bff1beab89541f2c22d44668c9a26faa20cfa1",
+        "bytes": 278
+      },
+      "point.sol": {
+        "sha256": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a",
+        "bytes": 6306
+      },
+      "primal-check.json": {
+        "sha256": "d51ae21a8e6682e32e8da454b63e61f69a0cfad7ac78621aaba9744e3eb71864",
+        "bytes": 234
+      },
+      "process-receipt.json": {
+        "sha256": "efd886ab46a46317a2ee3963d87c674bee1b78241dba8eac62d6db3388bf56bb",
+        "bytes": 972
+      },
+      "stdout.log": {
+        "sha256": "ffbb6655e1057cae8bb1d9c6ae3e818a9ae0addcd3ae7e58030b6aa0df7a27e2",
+        "bytes": 410028
+      }
+    },
+    "6": {
+      "diagnostics.json": {
+        "sha256": "8e4aa5c6cda93393d361d6bfd1be008e5425fabc7f958dde5035877260fd0e9b",
+        "bytes": 313478
+      },
+      "options.txt": {
+        "sha256": "3ba5f53b7f9e646c57f068fb6b4c375c0180933d49f37025b0a62602924077d8",
+        "bytes": 276
+      },
+      "point.sol": {
+        "sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+        "bytes": 33477
+      },
+      "primal-check.json": {
+        "sha256": "37c421544ee60e5721b80f7e08f7ac2cb7c3a4b5fa06917cfb5859e161a3f127",
+        "bytes": 283
+      },
+      "process-receipt.json": {
+        "sha256": "3ddae4d6e4ae0c511e38d919768887930b097388d3df092583cedcdb153a0a7b",
+        "bytes": 968
+      },
+      "stdout.log": {
+        "sha256": "20864cf22b863f340494feb58637bf8ad90bcd27e9b3e3ea036479d469e97ca1",
+        "bytes": 105023
+      }
+    }
+  }
+}

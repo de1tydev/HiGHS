@@ -1,0 +1,154 @@
+{
+  "base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "original_path_source_sha256": "2bf0b367972563bc4f21c5bf6297c99658d033826facea36afd474d514d29ec4",
+  "provenance": "Independent reconstruction from published proposal; unpublished 0f17aaa and uncommitted path work unavailable, not recovered",
+  "companion_choice": "Fixed: include unchanged published separation-cost-profile.patch via combined-diagnostic.patch",
+  "new_behavior": "Diagnostic only; no workspace reuse or CMIR cache",
+  "enable": "Existing log_dev_level >= 2; default 0",
+  "verification": {
+    "patch_apply_checks": {
+      "path-allocation-probe.patch": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "combined-diagnostic.patch": {
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "independent_source_review": "No actionable source issues reported; C++11 plausible by inspection",
+    "compiled": false,
+    "solver_calls": 0,
+    "tests_run": true,
+    "numerical_execution_owner": "Parent task",
+    "test_scope": "13 synthetic pure-Python parser/status/parity fixture methods; no native/exporter/solver calls",
+    "test_command": "python3 -B -m unittest -v test_parse_probe test_run_probe",
+    "test_result": "Passed; full output in pure-python-tests.log",
+    "frozen_existing_artifacts": "All eight original artifact hashes verified unchanged before this single addendum update"
+  },
+  "files": {
+    "DIAGNOSTIC_GATE.md": {
+      "sha256": "c779300aff82a87901ac2d776467f3414cb0841f00c72caf55d33d7ff5f8e845",
+      "bytes": 6791
+    },
+    "QUALIFICATION_ADDENDUM.md": {
+      "sha256": "1c54a6e024dbc313b2d39e31242e01686e37e068c9b4bfcb3b40d2bee31e4c03",
+      "bytes": 3966
+    },
+    "README.md": {
+      "sha256": "b0d593524f8c38839101a8c1c4a30903e73975050b2cb7e2cc299ba7d6745a65",
+      "bytes": 4832
+    },
+    "SOURCE_PROOF.md": {
+      "sha256": "a6545709ac643b330183b7488f08f28c7bbf6ff949185a80fe5d66b2eaa98c1d",
+      "bytes": 7873
+    },
+    "combined-diagnostic.patch": {
+      "sha256": "ebf898a0f1b18e956121eedd325352350f57af3e067bde42545b504e1b7151c2",
+      "bytes": 15580
+    },
+    "parse_probe.py": {
+      "sha256": "d5b3d0d825045ebb0f03c8073fea6372cc951b96187169d8f30ac1576cb75df2",
+      "bytes": 17647
+    },
+    "path-allocation-probe.patch": {
+      "sha256": "9b8d359c43a1ce740cf2342d54cd141008e8dd07f58adedabed753515f519be3",
+      "bytes": 11116
+    },
+    "pure-python-tests.log": {
+      "sha256": "27027dbdce46a6143a7f6d7a763701cc03c852d1d12587c9ab5fee238c36b9da",
+      "bytes": 1661
+    },
+    "run_probe.py": {
+      "sha256": "4c9913fb66098a8f84f5fde72b2127cb76ab6158ed8fe711ab1a10a06d8a11f6",
+      "bytes": 14684
+    },
+    "separation-cost-profile.patch": {
+      "sha256": "d4ee9f215c21127e3ba3711925014e08d0987c15e7eab82b2c42893aa8ec299f",
+      "bytes": 4464
+    },
+    "source/highs/mip/HighsPathSeparator.cpp": {
+      "sha256": "f6c6d6b16b3d8d3ff3817747a409eefc7b8f5ff07ee123c425d8399cd3301613",
+      "bytes": 28096
+    },
+    "source-checks.json": {
+      "sha256": "7307f5efb94fda9559855cbf1e89a6092908c04d16178aedaa497b80732a4f12",
+      "bytes": 193
+    },
+    "test_parse_probe.py": {
+      "sha256": "45d864c38967bf5934b687d92cc2694e5a972f8833c103de59c776fb36f896cb",
+      "bytes": 9856
+    },
+    "test_run_probe.py": {
+      "sha256": "2aa6c658cd0b759758940e52efa77db573efa79b52736adb56520b909d9f6048",
+      "bytes": 1755
+    }
+  },
+  "previous_manifest_sha256": "4cd05338a73ae6f18fc18b82e398d7a31e9b5f3c892a71fe2aad5de34f18b8be",
+  "prospective_addendum": "QUALIFICATION_ADDENDUM.md",
+  "qualification_budget": {
+    "qualification_calls": 4,
+    "observer_calls": 2,
+    "maximum_optimization_calls": 6,
+    "native_seconds_per_call": 60,
+    "watchdog_seconds_per_call": 74,
+    "outer_seconds_per_call": 75,
+    "maximum_native_seconds": 360,
+    "maximum_outer_solver_slot_seconds": 450,
+    "repeat_policy": "No repeats, replacement seeds, extra models or cache experiments",
+    "schedule": [
+      {
+        "slot": 1,
+        "model": "dcmulti",
+        "seed": 1,
+        "arm": "official",
+        "log_dev_level": 0
+      },
+      {
+        "slot": 2,
+        "model": "dcmulti",
+        "seed": 1,
+        "arm": "candidate",
+        "log_dev_level": 0
+      },
+      {
+        "slot": 3,
+        "model": "gesa2",
+        "seed": 1,
+        "arm": "official",
+        "log_dev_level": 0
+      },
+      {
+        "slot": 4,
+        "model": "gesa2",
+        "seed": 1,
+        "arm": "candidate",
+        "log_dev_level": 0
+      },
+      {
+        "slot": 5,
+        "model": "dcmulti",
+        "seed": 1,
+        "arm": "candidate",
+        "log_dev_level": 2
+      },
+      {
+        "slot": 6,
+        "model": "gesa2",
+        "seed": 1,
+        "arm": "candidate",
+        "log_dev_level": 2
+      }
+    ]
+  },
+  "runner_contract": {
+    "native_returncode_required": 0,
+    "status_required": "Optimal",
+    "checker": "Unchanged published cmir_cache_20261006/check_primal.py",
+    "guard": "Existing current_scuc/slot_envelope.py",
+    "matrix_loader": "Published export_model.cpp compiled against official library only",
+    "full_gate_result": "Runner combines all six process/primal/parity checks with both-model parser materiality; invalid records stop subsequent slots"
+  }
+}

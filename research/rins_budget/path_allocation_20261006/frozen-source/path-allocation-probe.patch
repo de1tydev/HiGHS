@@ -1,0 +1,259 @@
+diff --git a/highs/mip/HighsPathSeparator.cpp b/highs/mip/HighsPathSeparator.cpp
+--- a/highs/mip/HighsPathSeparator.cpp
++++ b/highs/mip/HighsPathSeparator.cpp
+@@ -10,6 +10,9 @@
+ 
+ #include "mip/HighsPathSeparator.h"
+ 
++#include <chrono>
++#include <cstdio>
++
+ #include "mip/HighsCutGeneration.h"
+ #include "mip/HighsLpAggregator.h"
+ #include "mip/HighsLpRelaxation.h"
+@@ -22,6 +25,53 @@
+   kEq = 0,
+   kLeq = 1,
+ };
++
++namespace {
++using PathMixClock = std::chrono::steady_clock;
++
++// Diagnostic payload estimates, not malloc/new instrumentation. For the two
++// transform outputs there is at most one resize per transform call. The other
++// five vectors have only their initial capacity request in the supported path;
++// unexpected capacity changes invalidate that accounting and are reported.
++struct PathMixVectorCost {
++  unsigned long long growthRequests = 0;
++  unsigned long long requestedBytes = 0;
++  unsigned long long capacityBytes = 0;
++  unsigned long long finalCapacityBytes = 0;
++  unsigned long long maxCapacityBytes = 0;
++
++  void growth(size_t before, size_t after, size_t requested, size_t width) {
++    if (after <= before) return;
++    ++growthRequests;
++    requestedBytes += static_cast<unsigned long long>(requested) * width;
++    // Sum the complete new capacities, not just the increases. A reallocation
++    // requests a new buffer while the previous buffer may still be live.
++    capacityBytes += static_cast<unsigned long long>(after) * width;
++    maxCapacityBytes = std::max(
++        maxCapacityBytes, static_cast<unsigned long long>(after) * width);
++  }
++
++  void finish(size_t capacity, size_t width) {
++    finalCapacityBytes += static_cast<unsigned long long>(capacity) * width;
++  }
++};
++
++// Declared after indexPos but before the seven original scratch vectors. Its
++// destructor runs after those vectors, before indexPos. It is armed only on
++// the normal exit from the original block; no allocation or clearing is added.
++struct PathMixDestroyTimer {
++  double& seconds;
++  bool armed = false;
++  PathMixClock::time_point started;
++
++  explicit PathMixDestroyTimer(double& seconds_) : seconds(seconds_) {}
++  ~PathMixDestroyTimer() {
++    if (armed)
++      seconds += std::chrono::duration<double>(PathMixClock::now() - started)
++                     .count();
++  }
++};
++}  // namespace
+ 
+ void HighsPathSeparator::separateLpSolution(HighsLpRelaxation& lpRelaxation,
+                                             HighsLpAggregator& lpAggregator,
+@@ -30,6 +80,16 @@
+   const HighsMipSolver& mip = lpRelaxation.getMipSolver();
+   const HighsLp& lp = lpRelaxation.getLp();
+   const HighsSolution& lpSolution = lpRelaxation.getSolution();
++
++  const bool tracePathMix = mip.options_mip_->log_dev_level >= 2;
++  PathMixVectorCost scratchCost[7];
++  unsigned long long eligible = 0, transformCalls = 0, transformFailed = 0;
++  unsigned long long firstTransformFailed = 0, rhsFirstRejected = 0;
++  unsigned long long rhsOrderRejected = 0, mixingReady = 0, truncated = 0;
++  unsigned long long requestedRows = 0, usableRows = 0, capacityAnomalies = 0;
++  double scratchInitSeconds = 0.0, scratchDestroySeconds = 0.0;
++  PathMixClock::time_point pathBodyStarted;
++  if (tracePathMix) pathBodyStarted = PathMixClock::now();
+ 
+   std::vector<RowType> rowtype;
+   rowtype.resize(lp.num_row_);
+@@ -397,6 +457,15 @@
+         // generate path mixing cut
+         HighsHashTable<HighsInt, HighsInt> indexPos;
+ 
++        PathMixDestroyTimer scratchDestroy(scratchDestroySeconds);
++        PathMixClock::time_point scratchInitStarted;
++        size_t initialCapacity[5] = {};
++        if (tracePathMix) {
++          ++eligible;
++          requestedRows += pathLen;
++          scratchInitStarted = PathMixClock::now();
++        }
++
+         std::vector<HighsInt> inds;
+         std::vector<double> solval;
+         std::vector<double> upper;
+@@ -410,6 +479,24 @@
+         std::vector<double> tmpUpper;
+         std::vector<double> tmpSolval;
+ 
++        if (tracePathMix) {
++          // Stop before diagnostic bookkeeping or any transform/cut arithmetic.
++          scratchInitSeconds += std::chrono::duration<double>(
++              PathMixClock::now() - scratchInitStarted).count();
++          initialCapacity[0] = inds.capacity();
++          initialCapacity[1] = solval.capacity();
++          initialCapacity[2] = upper.capacity();
++          initialCapacity[3] = isIntegral.capacity();
++          initialCapacity[4] = rhs.capacity();
++          const size_t reserveSize = lp.num_col_ + lp.num_row_;
++          scratchCost[0].growth(0, inds.capacity(), reserveSize, sizeof(HighsInt));
++          scratchCost[1].growth(0, solval.capacity(), reserveSize, sizeof(double));
++          scratchCost[2].growth(0, upper.capacity(), reserveSize, sizeof(double));
++          scratchCost[3].growth(0, isIntegral.capacity(), reserveSize,
++                                sizeof(HighsBool));
++          scratchCost[4].growth(0, rhs.capacity(), pathLen, sizeof(double));
++        }
++
+         double delta = 1.0;
+ 
+         transLp.initMultiRowTransform();
+@@ -417,20 +504,41 @@
+         for (HighsInt k = 0; k < pathLen; ++k) {
+           bool integralPositive = false;
+ 
+-          if (!transLp.transform(aggregatedPath[k].second, tmpUpper, tmpSolval,
+-                                 aggregatedPath[k].first, rhs[k],
+-                                 integralPositive, false, true)) {
++          size_t upperCapacityBefore = 0, solvalCapacityBefore = 0;
++          if (tracePathMix) {
++            ++transformCalls;
++            upperCapacityBefore = tmpUpper.capacity();
++            solvalCapacityBefore = tmpSolval.capacity();
++          }
++          const bool transformed = transLp.transform(
++              aggregatedPath[k].second, tmpUpper, tmpSolval,
++              aggregatedPath[k].first, rhs[k], integralPositive, false, true);
++          if (tracePathMix) {
++            // Inspect on both success and failure: a late failure can occur
++            // after resizing, while an early failure can leave prior outputs.
++            scratchCost[5].growth(upperCapacityBefore, tmpUpper.capacity(),
++                                  tmpUpper.size(), sizeof(double));
++            scratchCost[6].growth(solvalCapacityBefore, tmpSolval.capacity(),
++                                  tmpSolval.size(), sizeof(double));
++            if (!transformed) {
++              ++transformFailed;
++              firstTransformFailed += (k == 0);
++            }
++          }
++          if (!transformed) {
+             pathLen = k;
+             break;
+           }
+ 
+           if (k == 0) {
+             if (rhs[k] > kHighsTiny) {
++              if (tracePathMix) ++rhsFirstRejected;
+               pathLen = k;
+               break;
+             }
+             if (rhs[k] >= -mip.mipdata_->feastol) rhs[k] = 0;
+           } else if (rhs[k] >= rhs[k - 1] - mip.mipdata_->feastol) {
++            if (tracePathMix) ++rhsOrderRejected;
+             pathLen = k;
+             break;
+           }
+@@ -459,6 +567,12 @@
+           }
+         }
+ 
++        if (tracePathMix) {
++          truncated += (static_cast<size_t>(pathLen) < aggregatedPath.size());
++          usableRows += pathLen;
++          mixingReady += (pathLen > 1);
++        }
++
+         if (pathLen > 1) {
+           delta = std::exp2(std::ceil(std::log2(delta + 1.0)));
+ 
+@@ -542,6 +656,27 @@
+             fLast = f;
+           }
+         }
++
++        if (tracePathMix) {
++          // Unique indices are bounded by num_col + num_row. Untransform
++          // produces original column indices and finalization only shrinks.
++          // A violation means these coarse observations are insufficient;
++          // report it instead of claiming to count unseen reallocations.
++          capacityAnomalies += (inds.capacity() != initialCapacity[0]);
++          capacityAnomalies += (solval.capacity() != initialCapacity[1]);
++          capacityAnomalies += (upper.capacity() != initialCapacity[2]);
++          capacityAnomalies += (isIntegral.capacity() != initialCapacity[3]);
++          capacityAnomalies += (rhs.capacity() != initialCapacity[4]);
++          scratchCost[0].finish(inds.capacity(), sizeof(HighsInt));
++          scratchCost[1].finish(solval.capacity(), sizeof(double));
++          scratchCost[2].finish(upper.capacity(), sizeof(double));
++          scratchCost[3].finish(isIntegral.capacity(), sizeof(HighsBool));
++          scratchCost[4].finish(rhs.capacity(), sizeof(double));
++          scratchCost[5].finish(tmpUpper.capacity(), sizeof(double));
++          scratchCost[6].finish(tmpSolval.capacity(), sizeof(double));
++          scratchDestroy.armed = true;
++          scratchDestroy.started = PathMixClock::now();
++        }
+       }
+ 
+       lpAggregator.clear();
+@@ -549,4 +684,47 @@
+       if (!tryNegatedScale) break;
+     }
+   }
++
++  if (tracePathMix) {
++    const double pathBodySeconds = std::chrono::duration<double>(
++        PathMixClock::now() - pathBodyStarted).count();
++    // Empty-pair elapsed time is only a clock-overhead/resolution proxy. Keep
++    // it separate; it is not a calibrated subtraction or kernel work.
++    double clockPairSeconds = 0.0;
++    const int clockPairSamples = 32;
++    for (int sample = 0; sample < clockPairSamples; ++sample) {
++      const auto before = PathMixClock::now();
++      clockPairSeconds += std::chrono::duration<double>(
++          PathMixClock::now() - before).count();
++    }
++    std::printf(
++        "PATH_MIX_COST submip=%d depth=%d num_col=%lld num_row=%lld "
++        "eligible=%llu transform_calls=%llu "
++        "transform_failed=%llu first_transform_failed=%llu "
++        "rhs_first_rejected=%llu rhs_order_rejected=%llu truncated=%llu "
++        "mixing_ready=%llu requested_rows=%llu usable_rows=%llu "
++        "capacity_anomalies=%llu scratch_init_seconds=%.17g "
++        "scratch_destroy_seconds=%.17g path_body_seconds=%.17g "
++        "clock_pair_samples=%d clock_pair_seconds=%.17g\n",
++        int(mip.submip), int(mip.submip_level),
++        static_cast<long long>(lp.num_col_), static_cast<long long>(lp.num_row_),
++        eligible, transformCalls,
++        transformFailed, firstTransformFailed, rhsFirstRejected,
++        rhsOrderRejected, truncated, mixingReady, requestedRows, usableRows,
++        capacityAnomalies, scratchInitSeconds, scratchDestroySeconds,
++        pathBodySeconds, clockPairSamples, clockPairSeconds);
++    const char* names[] = {"inds", "solval", "upper", "isIntegral", "rhs",
++                           "tmpUpper", "tmpSolval"};
++    for (int v = 0; v < 7; ++v) {
++      const PathMixVectorCost& cost = scratchCost[v];
++      std::printf(
++          "PATH_MIX_VECTOR submip=%d depth=%d name=%s "
++          "inferred_growth_requests=%llu requested_payload_bytes=%llu "
++          "new_capacity_payload_bytes=%llu final_capacity_payload_bytes=%llu "
++          "max_capacity_payload_bytes=%llu\n",
++          int(mip.submip), int(mip.submip_level), names[v], cost.growthRequests,
++          cost.requestedBytes, cost.capacityBytes, cost.finalCapacityBytes,
++          cost.maxCapacityBytes);
++    }
++  }
+ }

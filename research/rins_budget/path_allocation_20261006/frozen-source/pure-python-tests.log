@@ -1,0 +1,18 @@
+test_companion_fields_and_placement (test_parse_probe.ProbeParserTests.test_companion_fields_and_placement) ... ok
+test_every_predeclared_accounting_identity (test_parse_probe.ProbeParserTests.test_every_predeclared_accounting_identity) ... ok
+test_highsint_widths (test_parse_probe.ProbeParserTests.test_highsint_widths) ... ok
+test_malformed_and_duplicate_fields (test_parse_probe.ProbeParserTests.test_malformed_and_duplicate_fields) ... ok
+test_missing_duplicate_reordered_and_interrupted_records (test_parse_probe.ProbeParserTests.test_missing_duplicate_reordered_and_interrupted_records) ... ok
+test_numeric_and_scope_domains (test_parse_probe.ProbeParserTests.test_numeric_and_scope_domains) ... ok
+test_signal_screens_and_exact_model_pair (test_parse_probe.ProbeParserTests.test_signal_screens_and_exact_model_pair) ... ok
+test_signed_companion_and_unrelated_separator_deltas (test_parse_probe.ProbeParserTests.test_signed_companion_and_unrelated_separator_deltas) ... ok
+test_sum_tolerance_and_nonfinite_aggregate (test_parse_probe.ProbeParserTests.test_sum_tolerance_and_nonfinite_aggregate) ... ok
+test_valid_scopes_zero_attempts_and_raw_records (test_parse_probe.ProbeParserTests.test_valid_scopes_zero_attempts_and_raw_records) ... ok
+test_exact_parity_includes_point_and_trajectory (test_run_probe.RunnerTextTests.test_exact_parity_includes_point_and_trajectory) ... ok
+test_invalid_status_and_fields (test_run_probe.RunnerTextTests.test_invalid_status_and_fields) ... ok
+test_valid_status (test_run_probe.RunnerTextTests.test_valid_status) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.013s
+
+OK

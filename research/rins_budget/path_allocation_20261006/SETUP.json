@@ -1,0 +1,251 @@
+{
+  "schema": "path-allocation-setup-context/v1",
+  "projection": true,
+  "timing_use": "Build/setup and restored component observations are separate from the six-call probe; no benchmark-improvement inference",
+  "environment": {
+    "observed_utc": "2026-10-06T15:09:06Z",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python": "3.12.14",
+    "cpus": 9,
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0"
+  },
+  "receipts": {
+    "configure-receipt": {
+      "raw_sha256": "5e6304abacd2aaeaba0983ae82d0b5849bff1a8ca5724ec2d5e061f74d5362e4",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 2.747190389000025,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "build-receipt": {
+      "raw_sha256": "16fc18037ad491d063a6f445f13d82a35011a6f13d2033c8adcb78e712599845",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 172.58399927199935,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "helper-build-receipt": {
+      "raw_sha256": "d5bfa6aebff8db491d0ce9e528c4215c457c1d3ccd0f9a0e83c1928d23d6ecd8",
+      "runner_returncode": 1,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.04713373899903672,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "configure-hash-width-receipt": {
+      "raw_sha256": "97241a855ce9abe293ed24a048cfbc3552a72989ee093961e2beb868aa4dadc3",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 0.43391765799970017,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "build-hash-width-receipt": {
+      "raw_sha256": "cd8356589a2b544297d730f7dfbdd6c4628f8c9e43c07a6f977603d4537aad32",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 186.84824064599889,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "helper-build-hash-width-receipt": {
+      "raw_sha256": "28586ca7c1294ddae092b83edb68026fd701f1e122afb9f8bd761458d374555d",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 1.583843035999962,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "probe-configure-receipt": {
+      "raw_sha256": "5158322b17eff9082bf6b9f68b6e23bb9740cf5d9609c5cba12101c796666596",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 2.400033517000338,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "probe-build-receipt": {
+      "raw_sha256": "8f6ad28ada613a0ae25a59786cc959d7c2dfe1328fbc566956ce9d9a4e8c85b7",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 177.793555182001,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "exporter-build-receipt": {
+      "raw_sha256": "78354ddf210c3348a1be10c285e493c9101b00ccf487ac248d1b72ed76939c57",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 1.6621105009999155,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "transition-tiny-outer": {
+      "raw_sha256": "b861389fa95e37781f82e9c2212b255697664bdcaf035fb48233e00ac74dfff2",
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 13.957982890000494,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    }
+  },
+  "metadata_width_correction": {
+    "issue": "Shallow clone default abbreviated Git hash had seven characters while the published runtime requires ten; exact full commit/tree already matched",
+    "before": "d547a3a",
+    "after": "d547a3ad8a",
+    "action": "Set core.abbrev=10 only in this new official source repository; rerun unchanged CMake configuration and rebuild",
+    "source_code_changed": false,
+    "prior_failed_helper_receipt": "helper-build-receipt/receipt.json",
+    "original_build_receipt": "build-receipt/receipt.json",
+    "old_binaries": {
+      "official-build/bin/highs": "973ea4ca9bf4eff2690da8cfeb1eb07a4ed7659f8f29f612a458db375d220002",
+      "official-build/lib/libhighs.so.1.15.1": "c6e9fd7f01f9f0143c3c267c809219d5c2b8693dd4ead39c9ca7323f2bcf8181"
+    }
+  },
+  "restoration_tests": {
+    "initial_attempt": {
+      "import_only_methods": 1,
+      "outcome": "failed",
+      "reason": "Wrong working directory: current_scuc import unavailable",
+      "guarded_methods": 89,
+      "skipped": 2,
+      "guarded_outcome": "passed with skips",
+      "raw_log_sha256": "d56cfceb5d869244288b4b305e1d850c58911809965309ee5eebc43ee91b8eff"
+    },
+    "corrected_package_working_directory": {
+      "import_only_methods": 1,
+      "import_outcome": "passed",
+      "guarded_methods": 89,
+      "skipped": 2,
+      "guarded_outcome": "passed with skips",
+      "raw_log_sha256": "0dcb3bb1a28db3eeb1a734a3d81aa383b93ab4d24f6c711b9cd07b8fad1137ab"
+    },
+    "runtime_fixture_completions": {
+      "methods": 2,
+      "outcome": "passed",
+      "raw_log_sha256": "c9424325a1acc8ec622c82cafdf31f19890b83a3192deaccfd6b794c1fbefe8d"
+    },
+    "counting": "1 import-only + 89 guarded methods (2 initially skipped), then 2 runtime-fixture completions; do not combine these into an undifferentiated all-tests count"
+  },
+  "observer_source_tests": {
+    "methods": 13,
+    "scope": "Synthetic pure-Python parser/status/parity fixtures, no native calls",
+    "outcome": "passed before launch",
+    "log_sha256": "27027dbdce46a6143a7f6d7a763701cc03c852d1d12587c9ab5fee238c36b9da",
+    "not_rerun_for_public_projection": true
+  },
+  "restored_fixed_tiny": {
+    "raw_test_result_sha256": "4eaf652da5c471742a7a2be53af22fd754621ee8e96aacddc198ca805463a508",
+    "test_passed": true,
+    "candidate_passed": false,
+    "candidate_expected_nonpass_verified": true,
+    "candidate_outcome": "material_shared_overflow",
+    "expected_shared_overflow_MWh": 2.25,
+    "production_result": false,
+    "full_test_elapsed_seconds": 13.91557187500075,
+    "result_sha256": "d621e318f8fe65fadfc22fa53e30c61cd96dd0e1d6ccef36253e87016926c7e3",
+    "outer_elapsed_seconds": 13.957982890000494,
+    "interpretation": "Component PASS with expected quality NONPASS: 2.25 MWh shared overflow; no full-SCUC quality success"
+  },
+  "build_configure_arguments": [
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DFAST_BUILD=ON",
+    "-DBUILD_SHARED_LIBS=ON",
+    "-DBUILD_SHARED_EXTRAS_LIB=ON",
+    "-DHIPO=OFF",
+    "-DHIGHSINT64=OFF",
+    "-DDEBUGSOL=OFF",
+    "-DZLIB=ON",
+    "-DCUPDLP_GPU=OFF",
+    "-DHIPDLP_HIP=OFF",
+    "-DBUILD_TESTING=ON",
+    "-DALL_TESTS=ON",
+    "-DCMAKE_C_COMPILER=gcc",
+    "-DCMAKE_CXX_COMPILER=g++",
+    "-DCMAKE_C_FLAGS=",
+    "-DCMAKE_CXX_FLAGS=",
+    "-DCMAKE_C_FLAGS_RELEASE=-O3 -DNDEBUG",
+    "-DCMAKE_CXX_FLAGS_RELEASE=-O3 -DNDEBUG",
+    "-DCMAKE_EXE_LINKER_FLAGS=-flto=2",
+    "-DCMAKE_SHARED_LINKER_FLAGS=-flto=2",
+    "-DCMAKE_BUILD_RPATH_USE_ORIGIN=ON"
+  ]
+}

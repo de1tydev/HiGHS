@@ -1,0 +1,23 @@
+{
+  "LICENSE.txt": {
+    "source_repository_commit": "2d8e65ca069f90b75c4ae38a6115b5ac7c40132c",
+    "source_repository_path": "research/rins_budget/current_scuc/LICENSE.txt",
+    "sha256": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7",
+    "bytes": 1062,
+    "byte_identical": true
+  },
+  "licenses/HiGHS_LICENSE.txt": {
+    "source_repository_commit": "2d8e65ca069f90b75c4ae38a6115b5ac7c40132c",
+    "source_repository_path": "research/rins_budget/current_scuc/licenses/HiGHS_LICENSE.txt",
+    "sha256": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7",
+    "bytes": 1062,
+    "byte_identical": true
+  },
+  "licenses/HiGHS_THIRD_PARTY_NOTICES.md": {
+    "source_repository_commit": "2d8e65ca069f90b75c4ae38a6115b5ac7c40132c",
+    "source_repository_path": "research/rins_budget/current_scuc/licenses/HiGHS_THIRD_PARTY_NOTICES.md",
+    "sha256": "a93082ab82d5f0a01c86b48a142ccea2ed2175f7dccb9e95a04770f4e2ae39a2",
+    "bytes": 2522,
+    "byte_identical": true
+  }
+}

@@ -1,0 +1,980 @@
+{
+  "schema": "path-allocation-public-results/v1",
+  "projection": true,
+  "source_results_sha256": "8da80aa1fbf51478eed5ab93372c81d25e10eabf668f15454c68476a3ce56928",
+  "outcome": "completed",
+  "scientific_decision": "materiality_screen_failed; v1 route closed",
+  "solver_calls_launched": 6,
+  "qualification_passed": true,
+  "all_process_primal_parity_accounting_checks_passed": true,
+  "gate": {
+    "schema_version": 1,
+    "both_models_accounting_valid": true,
+    "both_models_materiality_pass": false,
+    "gate_pass": false,
+    "gate_status": "materiality_screen_failed",
+    "external_checks_required": [
+      "process_guard_and_resource_bounds",
+      "independent_original_matrix_primal_objective",
+      "fresh_same_seed_reference_comparison",
+      "required_evidence_and_schedule"
+    ],
+    "external_checks_passed": true
+  },
+  "limits": {
+    "native_seconds_per_call": 60,
+    "outer_seconds_per_call": 75,
+    "maximum_calls": 6,
+    "total_native_seconds": 360,
+    "total_outer_seconds": 450,
+    "watchdog_seconds_per_call": 74,
+    "cleanup_allowance_seconds_per_call": 1,
+    "observer_native_seconds": 120,
+    "observer_outer_solver_slot_seconds": 150,
+    "outer_administrative_guard_seconds": 600,
+    "outer_guard_extends_solver_caps": false,
+    "address_space_bytes": 7516192768,
+    "sampled_process_tree_rss_bytes": 6442450944,
+    "output_file_bytes": 67108864,
+    "core_dump_bytes": 0,
+    "minimum_available_memory_bytes": 2147483648,
+    "minimum_free_disk_bytes": 2147483648,
+    "external_blas_openmp_threads": 1,
+    "serial_solver_slots": true,
+    "repeat_policy": "No repeats, replacement seeds, extra models, threshold changes, retiming, cache runs, or workspace-reuse implementation under v1",
+    "immediate_stops": [
+      "timeout or cleanup beyond cap",
+      "missing or changed input",
+      "nonzero native return code",
+      "process/guard/health error or interruption",
+      "incomplete log or missing point",
+      "failed original-matrix primal/objective check",
+      "fresh reference parity mismatch",
+      "invalid or absent diagnostic accounting"
+    ],
+    "materiality_failure": "Evaluate after both valid observer slots; close v1 without repetition"
+  },
+  "calls": [
+    {
+      "slot": 1,
+      "model": "dcmulti",
+      "seed": 1,
+      "stage": "qualification",
+      "arm": "official",
+      "log_dev_level": 0,
+      "outcome": "completed",
+      "model_sha256": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+      "matrix_sha256": "e513ec38a35c7384cd834f3d4ec1bba6f1b81db56999e806603fc213b9e96d72",
+      "options_sha256": "6e338a343b19e8a4bc11c07f42303f884e88c304aa66f97a0e9a56536b77d782",
+      "binary_sha256": "a8546ca386821b0953df9c466439191d021d17bdb7965cf115aa6e2bc0da7ab2",
+      "library_sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+      "log_sha256": "6589db807022f3184b788c6cb66f526fe6b8638756949fafdfd18f52cdf42f8c",
+      "status": "Optimal",
+      "primal": "188182",
+      "dual": "188165.733226",
+      "gap": "0.00864% (tolerance: 0.01%)",
+      "nodes": "3",
+      "iterations": "11461",
+      "solution_sha256": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a",
+      "check": {
+        "passed": true,
+        "cost": 188182.0,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 0.0,
+        "objective_error": 0.0,
+        "primal_tolerance": 1e-06,
+        "columns": 548,
+        "rows": 290,
+        "dual_proof": false
+      },
+      "whole_arm_seconds": 2.6808930990009685,
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 2.674430757999289,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "command_roles": [
+        "<official-build>/bin/highs",
+        "<official-source>/check/instances/dcmulti.mps",
+        "--options_file",
+        "<slot-output>/options.txt"
+      ]
+    },
+    {
+      "slot": 2,
+      "model": "dcmulti",
+      "seed": 1,
+      "stage": "qualification",
+      "arm": "candidate",
+      "log_dev_level": 0,
+      "outcome": "completed",
+      "model_sha256": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+      "matrix_sha256": "e513ec38a35c7384cd834f3d4ec1bba6f1b81db56999e806603fc213b9e96d72",
+      "options_sha256": "8e8212d38928e4944e15eb6a9a8827bf724981ad5720a8224296e010e645938c",
+      "binary_sha256": "c7ac94c21556205c36cd93d5e6444c6d7e5fd7e77e1beffa22730b7578b27e8f",
+      "library_sha256": "a93a54368d6018f79c6e81a96bc282df9385db704221df40b447a02a104c7d5d",
+      "log_sha256": "32ac82d6dffe66867873f15635592ca8299880072451c4ab7cace505ccffdf2c",
+      "status": "Optimal",
+      "primal": "188182",
+      "dual": "188165.733226",
+      "gap": "0.00864% (tolerance: 0.01%)",
+      "nodes": "3",
+      "iterations": "11461",
+      "solution_sha256": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a",
+      "check": {
+        "passed": true,
+        "cost": 188182.0,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 0.0,
+        "objective_error": 0.0,
+        "primal_tolerance": 1e-06,
+        "columns": 548,
+        "rows": 290,
+        "dual_proof": false
+      },
+      "parity": {
+        "passed": true,
+        "differences": {}
+      },
+      "whole_arm_seconds": 2.7717627349993563,
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 2.767182560999572,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "command_roles": [
+        "<candidate-build>/bin/highs",
+        "<official-source>/check/instances/dcmulti.mps",
+        "--options_file",
+        "<slot-output>/options.txt"
+      ]
+    },
+    {
+      "slot": 3,
+      "model": "gesa2",
+      "seed": 1,
+      "stage": "qualification",
+      "arm": "official",
+      "log_dev_level": 0,
+      "outcome": "completed",
+      "model_sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+      "matrix_sha256": "e3a21f05939b4189025a7dfef13862c84ec06a96395d0caf0bb7c31d0e678628",
+      "options_sha256": "62f96774d8d82b40f6ab26f8b4f8d6021203984d8af5623736d818c0f62c5d82",
+      "binary_sha256": "a8546ca386821b0953df9c466439191d021d17bdb7965cf115aa6e2bc0da7ab2",
+      "library_sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+      "log_sha256": "fc91ffa1bc249652ba22e2331fe83d89c23954c3bd9dfd727e55bba87792430a",
+      "status": "Optimal",
+      "primal": "25779856.3717",
+      "dual": "25778989.9633",
+      "gap": "0.00336% (tolerance: 0.01%)",
+      "nodes": "1",
+      "iterations": "1954",
+      "solution_sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+      "check": {
+        "passed": true,
+        "cost": 25779856.371697918,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 1.1368683772161603e-13,
+        "objective_error": 3.725290298461914e-09,
+        "primal_tolerance": 1e-06,
+        "columns": 1224,
+        "rows": 1392,
+        "dual_proof": false
+      },
+      "whole_arm_seconds": 0.6328001660003792,
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 0.626087043001462,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "command_roles": [
+        "<official-build>/bin/highs",
+        "<official-source>/check/instances/gesa2.mps",
+        "--options_file",
+        "<slot-output>/options.txt"
+      ]
+    },
+    {
+      "slot": 4,
+      "model": "gesa2",
+      "seed": 1,
+      "stage": "qualification",
+      "arm": "candidate",
+      "log_dev_level": 0,
+      "outcome": "completed",
+      "model_sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+      "matrix_sha256": "e3a21f05939b4189025a7dfef13862c84ec06a96395d0caf0bb7c31d0e678628",
+      "options_sha256": "e088adf300cf303448654089938fee5833a1b3b333b3bfb7233e65a155cfd53e",
+      "binary_sha256": "c7ac94c21556205c36cd93d5e6444c6d7e5fd7e77e1beffa22730b7578b27e8f",
+      "library_sha256": "a93a54368d6018f79c6e81a96bc282df9385db704221df40b447a02a104c7d5d",
+      "log_sha256": "78ae27863fd0ec6d8a214974d4f78cd29d4bb837feb4621d2cca4d7699fdb256",
+      "status": "Optimal",
+      "primal": "25779856.3717",
+      "dual": "25778989.9633",
+      "gap": "0.00336% (tolerance: 0.01%)",
+      "nodes": "1",
+      "iterations": "1954",
+      "solution_sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+      "check": {
+        "passed": true,
+        "cost": 25779856.371697918,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 1.1368683772161603e-13,
+        "objective_error": 3.725290298461914e-09,
+        "primal_tolerance": 1e-06,
+        "columns": 1224,
+        "rows": 1392,
+        "dual_proof": false
+      },
+      "parity": {
+        "passed": true,
+        "differences": {}
+      },
+      "whole_arm_seconds": 0.6514542500008247,
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 0.6350535099991248,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "command_roles": [
+        "<candidate-build>/bin/highs",
+        "<official-source>/check/instances/gesa2.mps",
+        "--options_file",
+        "<slot-output>/options.txt"
+      ]
+    },
+    {
+      "slot": 5,
+      "model": "dcmulti",
+      "seed": 1,
+      "stage": "observer",
+      "arm": "candidate",
+      "log_dev_level": 2,
+      "outcome": "completed",
+      "model_sha256": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+      "matrix_sha256": "e513ec38a35c7384cd834f3d4ec1bba6f1b81db56999e806603fc213b9e96d72",
+      "options_sha256": "5b04087480d16ab15ffcc85de9bff1beab89541f2c22d44668c9a26faa20cfa1",
+      "binary_sha256": "c7ac94c21556205c36cd93d5e6444c6d7e5fd7e77e1beffa22730b7578b27e8f",
+      "library_sha256": "a93a54368d6018f79c6e81a96bc282df9385db704221df40b447a02a104c7d5d",
+      "log_sha256": "ffbb6655e1057cae8bb1d9c6ae3e818a9ae0addcd3ae7e58030b6aa0df7a27e2",
+      "status": "Optimal",
+      "primal": "188182",
+      "dual": "188165.733226",
+      "gap": "0.00864% (tolerance: 0.01%)",
+      "nodes": "3",
+      "iterations": "11461",
+      "solution_sha256": "96e7ee99a0e6c4e4b1dd1e1c4252b5c8d859f08928821bcb00d4acdd9b7a7c7a",
+      "check": {
+        "passed": true,
+        "cost": 188182.0,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 0.0,
+        "objective_error": 0.0,
+        "primal_tolerance": 1e-06,
+        "columns": 548,
+        "rows": 290,
+        "dual_proof": false
+      },
+      "parity": {
+        "passed": true,
+        "differences": {}
+      },
+      "whole_arm_seconds": 3.179441551999844,
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 3.0687346419999812,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "command_roles": [
+        "<candidate-build>/bin/highs",
+        "<official-source>/check/instances/dcmulti.mps",
+        "--options_file",
+        "<slot-output>/options.txt"
+      ],
+      "diagnostics_model_key": "dcmulti"
+    },
+    {
+      "slot": 6,
+      "model": "gesa2",
+      "seed": 1,
+      "stage": "observer",
+      "arm": "candidate",
+      "log_dev_level": 2,
+      "outcome": "completed",
+      "model_sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+      "matrix_sha256": "e3a21f05939b4189025a7dfef13862c84ec06a96395d0caf0bb7c31d0e678628",
+      "options_sha256": "3ba5f53b7f9e646c57f068fb6b4c375c0180933d49f37025b0a62602924077d8",
+      "binary_sha256": "c7ac94c21556205c36cd93d5e6444c6d7e5fd7e77e1beffa22730b7578b27e8f",
+      "library_sha256": "a93a54368d6018f79c6e81a96bc282df9385db704221df40b447a02a104c7d5d",
+      "log_sha256": "20864cf22b863f340494feb58637bf8ad90bcd27e9b3e3ea036479d469e97ca1",
+      "status": "Optimal",
+      "primal": "25779856.3717",
+      "dual": "25778989.9633",
+      "gap": "0.00336% (tolerance: 0.01%)",
+      "nodes": "1",
+      "iterations": "1954",
+      "solution_sha256": "38ecfacd49ae0d6e2000902a1b1a86dcc8f9c6cfda601f5c93034c79fe962f3f",
+      "check": {
+        "passed": true,
+        "cost": 25779856.371697918,
+        "bound_violation": 0.0,
+        "integrality_violation": 0.0,
+        "row_violation": 1.1368683772161603e-13,
+        "objective_error": 3.725290298461914e-09,
+        "primal_tolerance": 1e-06,
+        "columns": 1224,
+        "rows": 1392,
+        "dual_proof": false
+      },
+      "parity": {
+        "passed": true,
+        "differences": {}
+      },
+      "whole_arm_seconds": 0.624546637000094,
+      "process": {
+        "runner_returncode": 0,
+        "runner_launched": true,
+        "total_slot_elapsed_seconds": 0.5988219769988063,
+        "total_slot_within_timeout": true,
+        "health_check_error": null,
+        "hard_watchdog_killed": false,
+        "interruption": null,
+        "error": null,
+        "adopted_checks_killed_and_reaped": [],
+        "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+        "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+      },
+      "command_roles": [
+        "<candidate-build>/bin/highs",
+        "<official-source>/check/instances/gesa2.mps",
+        "--options_file",
+        "<slot-output>/options.txt"
+      ],
+      "diagnostics_model_key": "gesa2"
+    }
+  ],
+  "models": {
+    "dcmulti": {
+      "accounting_valid": true,
+      "highsint_bytes": 4,
+      "element_width_bytes": {
+        "inds": 4,
+        "solval": 8,
+        "upper": 8,
+        "isIntegral": 1,
+        "rhs": 8,
+        "tmpUpper": 8,
+        "tmpSolval": 8
+      },
+      "summary": {
+        "invocation_count": 152,
+        "A": 45418,
+        "S": 0.015508885999999993,
+        "P": 1.118601341,
+        "O": 0.0023781913125000007,
+        "S_over_P": 0.013864533709690943,
+        "counters": {
+          "eligible": 45418,
+          "transform_calls": 79669,
+          "transform_failed": 97,
+          "first_transform_failed": 97,
+          "rhs_first_rejected": 17229,
+          "rhs_order_rejected": 27769,
+          "truncated": 45095,
+          "mixing_ready": 4921,
+          "requested_rows": 211341,
+          "usable_rows": 34574,
+          "capacity_anomalies": 0
+        },
+        "times": {
+          "scratch_init_seconds": 0.010035537999999993,
+          "scratch_destroy_seconds": 0.0054733479999999985,
+          "path_body_seconds": 1.118601341,
+          "clock_pair_seconds": 0.00012919700000000003
+        },
+        "vectors": {
+          "inds": {
+            "inferred_growth_requests": 45418,
+            "requested_payload_bytes": 107275532,
+            "new_capacity_payload_bytes": 107275532,
+            "final_capacity_payload_bytes": 107275532,
+            "max_capacity_payload_bytes": 3560
+          },
+          "solval": {
+            "inferred_growth_requests": 45418,
+            "requested_payload_bytes": 214551064,
+            "new_capacity_payload_bytes": 214551064,
+            "final_capacity_payload_bytes": 214551064,
+            "max_capacity_payload_bytes": 7120
+          },
+          "upper": {
+            "inferred_growth_requests": 45418,
+            "requested_payload_bytes": 214551064,
+            "new_capacity_payload_bytes": 214551064,
+            "final_capacity_payload_bytes": 214551064,
+            "max_capacity_payload_bytes": 7120
+          },
+          "isIntegral": {
+            "inferred_growth_requests": 45418,
+            "requested_payload_bytes": 26818883,
+            "new_capacity_payload_bytes": 26818883,
+            "final_capacity_payload_bytes": 26818883,
+            "max_capacity_payload_bytes": 890
+          },
+          "rhs": {
+            "inferred_growth_requests": 45418,
+            "requested_payload_bytes": 1690728,
+            "new_capacity_payload_bytes": 1690728,
+            "final_capacity_payload_bytes": 1690728,
+            "max_capacity_payload_bytes": 40
+          },
+          "tmpUpper": {
+            "inferred_growth_requests": 70785,
+            "requested_payload_bytes": 6556112,
+            "new_capacity_payload_bytes": 8074488,
+            "final_capacity_payload_bytes": 5899272,
+            "max_capacity_payload_bytes": 5376
+          },
+          "tmpSolval": {
+            "inferred_growth_requests": 70785,
+            "requested_payload_bytes": 6556112,
+            "new_capacity_payload_bytes": 8074488,
+            "final_capacity_payload_bytes": 5899272,
+            "max_capacity_payload_bytes": 5376
+          }
+        },
+        "separator_path_seconds": 1.125181264,
+        "clock_pair_samples": 4864,
+        "materiality_checks": {
+          "eligible_at_least_32": true,
+          "setup_destroy_at_least_5ms": true,
+          "setup_destroy_at_least_10_clock_proxy": false,
+          "setup_destroy_fraction_at_least_5pct": false,
+          "first_five_requests_valid": true
+        },
+        "materiality_pass": false
+      },
+      "scopes": {
+        "all": {
+          "invocations": 152,
+          "A": 45418,
+          "S": 0.015508885999999993,
+          "P": 1.118601341,
+          "O": 0.0023781913125000007,
+          "S/P": 0.013864533709690943,
+          "S/O": 6.521294531051311,
+          "screens": {
+            "A>=32": true,
+            "S>=0.005": true,
+            "S>=10O": false,
+            "S/P>=0.05": false
+          },
+          "failed_screens": [
+            "S>=10O",
+            "S/P>=0.05"
+          ]
+        },
+        "main": {
+          "invocations": 33,
+          "A": 12142,
+          "S": 0.004035436999999999,
+          "P": 0.404209812,
+          "O": 0.0005658733750000002,
+          "S/P": 0.009983520637544542,
+          "S/O": 7.1313427672754495,
+          "screens": {
+            "A>=32": true,
+            "S>=0.005": false,
+            "S>=10O": false,
+            "S/P>=0.05": false
+          },
+          "failed_screens": [
+            "S>=0.005",
+            "S>=10O",
+            "S/P>=0.05"
+          ]
+        },
+        "submip": {
+          "invocations": 119,
+          "A": 33276,
+          "S": 0.011473448999999993,
+          "P": 0.714391529,
+          "O": 0.0018123179375000005,
+          "S/P": 0.016060449395390287,
+          "S/O": 6.3308146780398955,
+          "screens": {
+            "A>=32": true,
+            "S>=0.005": true,
+            "S>=10O": false,
+            "S/P>=0.05": false
+          },
+          "failed_screens": [
+            "S>=10O",
+            "S/P>=0.05"
+          ]
+        },
+        "by_scope_depth": {
+          "0:0": {
+            "invocations": 33,
+            "A": 12142,
+            "S": 0.004035436999999999,
+            "P": 0.404209812,
+            "O": 0.0005658733750000002,
+            "S/P": 0.009983520637544542,
+            "S/O": 7.1313427672754495,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:1": {
+            "invocations": 25,
+            "A": 7857,
+            "S": 0.0031448029999999977,
+            "P": 0.25279319,
+            "O": 0.00036793412500000014,
+            "S/P": 0.012440220403089172,
+            "S/O": 8.547190342836497,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:2": {
+            "invocations": 40,
+            "A": 12206,
+            "S": 0.004123776999999996,
+            "P": 0.292375896,
+            "O": 0.0005778812500000002,
+            "S/P": 0.014104367208164095,
+            "S/O": 7.136028379532982,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:3": {
+            "invocations": 44,
+            "A": 10880,
+            "S": 0.003366121999999999,
+            "P": 0.139713157,
+            "O": 0.0007548488750000001,
+            "S/P": 0.02409309239215029,
+            "S/O": 4.459332339867366,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:4": {
+            "invocations": 10,
+            "A": 2333,
+            "S": 0.0008387469999999999,
+            "P": 0.029509286,
+            "O": 0.00011165368750000004,
+            "S/P": 0.02842315466392511,
+            "S/O": 7.512040298713821,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          }
+        }
+      },
+      "materiality_pass": false,
+      "failed_screens": [
+        "S>=10O",
+        "S/P>=0.05"
+      ]
+    },
+    "gesa2": {
+      "accounting_valid": true,
+      "highsint_bytes": 4,
+      "element_width_bytes": {
+        "inds": 4,
+        "solval": 8,
+        "upper": 8,
+        "isIntegral": 1,
+        "rhs": 8,
+        "tmpUpper": 8,
+        "tmpSolval": 8
+      },
+      "summary": {
+        "invocation_count": 37,
+        "A": 5368,
+        "S": 0.0019680130000000007,
+        "P": 0.156819036,
+        "O": 0.0002492666250000001,
+        "S_over_P": 0.01254957975892672,
+        "counters": {
+          "eligible": 5368,
+          "transform_calls": 9543,
+          "transform_failed": 4,
+          "first_transform_failed": 0,
+          "rhs_first_rejected": 2264,
+          "rhs_order_rejected": 2648,
+          "truncated": 4916,
+          "mixing_ready": 1214,
+          "requested_rows": 16927,
+          "usable_rows": 4627,
+          "capacity_anomalies": 0
+        },
+        "times": {
+          "scratch_init_seconds": 0.0012837710000000002,
+          "scratch_destroy_seconds": 0.0006842420000000004,
+          "path_body_seconds": 0.156819036,
+          "clock_pair_seconds": 2.7471000000000012e-05
+        },
+        "vectors": {
+          "inds": {
+            "inferred_growth_requests": 5368,
+            "requested_payload_bytes": 40654892,
+            "new_capacity_payload_bytes": 40654892,
+            "final_capacity_payload_bytes": 40654892,
+            "max_capacity_payload_bytes": 10780
+          },
+          "solval": {
+            "inferred_growth_requests": 5368,
+            "requested_payload_bytes": 81309784,
+            "new_capacity_payload_bytes": 81309784,
+            "final_capacity_payload_bytes": 81309784,
+            "max_capacity_payload_bytes": 21560
+          },
+          "upper": {
+            "inferred_growth_requests": 5368,
+            "requested_payload_bytes": 81309784,
+            "new_capacity_payload_bytes": 81309784,
+            "final_capacity_payload_bytes": 81309784,
+            "max_capacity_payload_bytes": 21560
+          },
+          "isIntegral": {
+            "inferred_growth_requests": 5368,
+            "requested_payload_bytes": 10163723,
+            "new_capacity_payload_bytes": 10163723,
+            "final_capacity_payload_bytes": 10163723,
+            "max_capacity_payload_bytes": 2695
+          },
+          "rhs": {
+            "inferred_growth_requests": 5368,
+            "requested_payload_bytes": 135416,
+            "new_capacity_payload_bytes": 135416,
+            "final_capacity_payload_bytes": 135416,
+            "max_capacity_payload_bytes": 40
+          },
+          "tmpUpper": {
+            "inferred_growth_requests": 8473,
+            "requested_payload_bytes": 604536,
+            "new_capacity_payload_bytes": 679240,
+            "final_capacity_payload_bytes": 516992,
+            "max_capacity_payload_bytes": 720
+          },
+          "tmpSolval": {
+            "inferred_growth_requests": 8473,
+            "requested_payload_bytes": 604536,
+            "new_capacity_payload_bytes": 679240,
+            "final_capacity_payload_bytes": 516992,
+            "max_capacity_payload_bytes": 720
+          }
+        },
+        "separator_path_seconds": 0.15799504,
+        "clock_pair_samples": 1184,
+        "materiality_checks": {
+          "eligible_at_least_32": true,
+          "setup_destroy_at_least_5ms": false,
+          "setup_destroy_at_least_10_clock_proxy": false,
+          "setup_destroy_fraction_at_least_5pct": false,
+          "first_five_requests_valid": true
+        },
+        "materiality_pass": false
+      },
+      "scopes": {
+        "all": {
+          "invocations": 37,
+          "A": 5368,
+          "S": 0.0019680130000000007,
+          "P": 0.156819036,
+          "O": 0.0002492666250000001,
+          "S/P": 0.01254957975892672,
+          "S/O": 7.8952126061802295,
+          "screens": {
+            "A>=32": true,
+            "S>=0.005": false,
+            "S>=10O": false,
+            "S/P>=0.05": false
+          },
+          "failed_screens": [
+            "S>=0.005",
+            "S>=10O",
+            "S/P>=0.05"
+          ]
+        },
+        "main": {
+          "invocations": 19,
+          "A": 3223,
+          "S": 0.0013289150000000002,
+          "P": 0.128567483,
+          "O": 0.00014977075000000006,
+          "S/P": 0.01033632275433128,
+          "S/O": 8.872994226175669,
+          "screens": {
+            "A>=32": true,
+            "S>=0.005": false,
+            "S>=10O": false,
+            "S/P>=0.05": false
+          },
+          "failed_screens": [
+            "S>=0.005",
+            "S>=10O",
+            "S/P>=0.05"
+          ]
+        },
+        "submip": {
+          "invocations": 18,
+          "A": 2145,
+          "S": 0.0006390980000000003,
+          "P": 0.028251553,
+          "O": 9.949587500000004e-05,
+          "S/P": 0.02262169446047799,
+          "S/O": 6.423361772535796,
+          "screens": {
+            "A>=32": true,
+            "S>=0.005": false,
+            "S>=10O": false,
+            "S/P>=0.05": false
+          },
+          "failed_screens": [
+            "S>=0.005",
+            "S>=10O",
+            "S/P>=0.05"
+          ]
+        },
+        "by_scope_depth": {
+          "0:0": {
+            "invocations": 19,
+            "A": 3223,
+            "S": 0.0013289150000000002,
+            "P": 0.128567483,
+            "O": 0.00014977075000000006,
+            "S/P": 0.01033632275433128,
+            "S/O": 8.872994226175669,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:1": {
+            "invocations": 6,
+            "A": 952,
+            "S": 0.00029335700000000017,
+            "P": 0.013719948999999999,
+            "O": 4.4141750000000015e-05,
+            "S/P": 0.021381785019754827,
+            "S/O": 6.6457945142637085,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:2": {
+            "invocations": 7,
+            "A": 859,
+            "S": 0.0002531170000000001,
+            "P": 0.011113658,
+            "O": 3.992818750000002e-05,
+            "S/P": 0.022775309443569352,
+            "S/O": 6.339306035366619,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          },
+          "1:3": {
+            "invocations": 5,
+            "A": 334,
+            "S": 9.2624e-05,
+            "P": 0.003417946,
+            "O": 1.5425937500000007e-05,
+            "S/P": 0.02709931637304978,
+            "S/O": 6.00443246966351,
+            "screens": {
+              "A>=32": true,
+              "S>=0.005": false,
+              "S>=10O": false,
+              "S/P>=0.05": false
+            },
+            "failed_screens": [
+              "S>=0.005",
+              "S>=10O",
+              "S/P>=0.05"
+            ]
+          }
+        }
+      },
+      "materiality_pass": false,
+      "failed_screens": [
+        "S>=0.005",
+        "S>=10O",
+        "S/P>=0.05"
+      ]
+    }
+  },
+  "exports": {
+    "dcmulti": {
+      "model_sha256": "a9552af8f0fd228851352ba60b62a64639f8ffd4a01f217afc095eaac4c29a75",
+      "outcome": "completed",
+      "returncode": 0,
+      "seconds": 0.007984116000443464,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matrix_sha256": "e513ec38a35c7384cd834f3d4ec1bba6f1b81db56999e806603fc213b9e96d72"
+    },
+    "gesa2": {
+      "model_sha256": "fe43df9f95b79fbceae3b4c5f8a152e9498facf5adf750f6255fe4c693af02c3",
+      "outcome": "completed",
+      "returncode": 0,
+      "seconds": 0.016296248000799096,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matrix_sha256": "e3a21f05939b4189025a7dfef13862c84ec06a96395d0caf0bb7c31d0e678628"
+    }
+  },
+  "time_accounting": {
+    "solver_slots_total_seconds": 10.370310490998236,
+    "observer_slots_total_seconds": 3.6675566189987876,
+    "runner_elapsed_seconds": 10.665720954999415,
+    "outer_campaign": {
+      "runner_returncode": 0,
+      "runner_launched": true,
+      "total_slot_elapsed_seconds": 10.77282221600035,
+      "total_slot_within_timeout": true,
+      "health_check_error": null,
+      "hard_watchdog_killed": false,
+      "interruption": null,
+      "error": null,
+      "adopted_checks_killed_and_reaped": [],
+      "boundary": "Immediately before runner Popen through exact wait4 reap, including all campaign writes/fsync, shutdown, and any orphan cleanup",
+      "outer_receipt_publication": "Observation-only receipt is published after the measured endpoint; no campaign work occurs after that endpoint"
+    },
+    "nested_times_must_not_be_added": true,
+    "export_time": "Separately recorded above; included in runner and outer elapsed times; not optimization calls",
+    "checker_time": "No isolated checker timer was retained; whole_arm_seconds includes checking and evidence writes and nests inside runner/outer elapsed time"
+  },
+  "recorded_options": {
+    "time_limit": 60,
+    "threads": 2,
+    "parallel": "off",
+    "random_seed": 1,
+    "mip_rel_gap": 0.0001,
+    "write_solution_to_file": true,
+    "log_dev_level": "0 for slots 1-4; 2 for slots 5-6"
+  },
+  "interpretation": {
+    "S": "Initial seven-vector setup plus normal-scope destruction only, including unavoidable initialization/ordinary work and observer effects",
+    "P": "Instrumented path-body time before diagnostics printing; distinct from inclusive SEP_COST path time",
+    "O": "Sum over invocations of 2 * eligible * (clock_pair_seconds / clock_pair_samples); an empty-clock proxy, not total observer overhead",
+    "untimed_growth": "tmpUpper/tmpSolval growth during transformation is counted but not separately timed",
+    "limit": "S/P is not a rigorous upper bound on every possible workspace-reuse benefit; closure is the prespecified v1 materiality decision",
+    "capacity": "Inferred vector capacity-growth requests and payloads are not malloc counts, allocation bytes, or resident/peak memory",
+    "parity": "Reported trajectory fields and point bytes agree; this is not cut-by-cut identity or an independent dual proof",
+    "claims": "No speed ratio, statistical-reliability, allocation-dominance, optimization-promotion, or SCUC-transfer claim"
+  }
+}

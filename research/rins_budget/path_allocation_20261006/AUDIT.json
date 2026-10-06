@@ -1,0 +1,34 @@
+{
+  "schema": "path-allocation-public-audit/v1",
+  "projection": true,
+  "native_audit_manifest_sha256": "e6e6c9a0d2f9159587bf49e2960a2b1981588a54029191014aaf258ae63c9e0b",
+  "native_audit_receipt_sha256": "42daf760608793ce66bb739ec5e718fd99ace3b242afcd11a960f9728347c94a",
+  "native_verified_hashes_sha256": "0d6ea3a0f4c721896f79b352eb1d5c75673fdc85f9e0486a06731e48b2f1ac6d",
+  "audit_passed": true,
+  "failures": [],
+  "checks_executed": 3573,
+  "hashed_local_files": 2121,
+  "source_files_checked": {
+    "official": 1006,
+    "candidate": 1006
+  },
+  "source_state": {
+    "official-source": {
+      "head": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+      "status": "",
+      "changed_files": []
+    },
+    "path-probe-source": {
+      "head": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+      "status": "M highs/mip/HighsPathSeparator.cpp\n M highs/mip/HighsSeparation.cpp",
+      "changed_files": [
+        "highs/mip/HighsPathSeparator.cpp",
+        "highs/mip/HighsSeparation.cpp"
+      ]
+    }
+  },
+  "leftover_matching_processes": [],
+  "audit_execution": "Only file/archive reads, hashes, read-only git status, process observation, raw diagnostic reduction, and frozen text parser replay. No native, exporter, primal/scientific check, build or optimizer rerun.",
+  "restoration_test_context": "Retained corrected run: 1 import test plus 89 guarded methods (2 skipped), followed by 2 fixture completions. Initial incorrect-working-directory import failure remains retained. Not rerun in this audit.",
+  "scope": "Independent raw diagnostic reduction and frozen text-parser replay; retained original-matrix reports checked for artifact concordance and tolerances without rerunning the scientific checker"
+}
