@@ -1,0 +1,100 @@
+{
+  "approved_four_file_patch_sha256": "cd5fc24522a156f1a9841b942489bb3a42ee056e8f9f9290f0967c81d50bd1bb",
+  "approved_proposal_sha256": "27a414f489d4b3eb9eca08887243824756f0c166df02fe2eb771f9f4265e40aa",
+  "base_publication_commit": "cf0fc39cf63bf382f91e0ac0530e512b32223df5",
+  "base_source_manifest_sha256": "b2bcc4dc84d77eb1e5f5491bfbc1e15947f886720c439ee7595ec0ba0b6aa164",
+  "candidate_gate_bytes": 11811160064,
+  "changed_package_files": [
+    {
+      "after_sha256": "eafa69970257ef2c581f0c1bb8473b12235d279d50b46f02cb7a14c1e6ef59e2",
+      "before_sha256": "61b68ef10e55d17a293d9cb422db2a9f612ee9ba53d7f7fe7c40c03d2651be0a",
+      "path": "current_scuc/PROTOCOL.json"
+    },
+    {
+      "after_sha256": "727dee98bbfe3cfc057f824ae4b8e4858a22ec56abfa9b2b8651837e11f3ff70",
+      "before_sha256": "7251f950bec3de4a2c641f2571ee86d5cfc904070f958c86e6c680d8dcfa00dc",
+      "path": "current_scuc/__main__.py"
+    },
+    {
+      "after_sha256": "a2e7f14749459839b15fe11dbd7c44c3b59482e7a9380e982cd9ea557189789e",
+      "before_sha256": "f9a75e636f350fdb88a90ea0952309b6a2bbe24810caece28b1c278341a3923c",
+      "path": "current_scuc/core/driver/witness_store.py"
+    },
+    {
+      "after_sha256": "5a08505896c9a00a028134e4017fac29964e87293149e39543d592814359fd57",
+      "before_sha256": "1a6ce46dcdd5283a5ffc07784f754c20d914f96f42c1d45496d39608dbe7c944",
+      "path": "current_scuc/phase.py"
+    },
+    {
+      "after_sha256": "b1558c24137f9553aa821931b75f4d4ad3c3627f39bcd09289afd3691ab9b986",
+      "before_sha256": "c6057c4420e1279153e36c131eac5440dd3de53eba0c2fb199d6f86d0e86ed55",
+      "path": "current_scuc/process_runner.py"
+    },
+    {
+      "after_sha256": "9e1efb4614ecc539143c3bbeb426353de70a9116ad8a780cbe32af2288867711",
+      "before_sha256": "668df170b7a8c54611f28f20eccfec7870ac5c99c3b04209d03e201f23eace3c",
+      "path": "current_scuc/receipts.py"
+    }
+  ],
+  "cli_gate_before_preparation_bytes": 17179869184,
+  "clocks_seconds": {
+    "actual_seed_mip_carry": 600,
+    "candidate": 1800,
+    "outer": 2460,
+    "preparation": 600,
+    "preparation_worker": 300
+  },
+  "free_floor_bytes": 2147483648,
+  "historical_attribution_files_unchanged": [
+    "SOURCE_PROVENANCE.json",
+    "BINDING_REVIEW.md",
+    "PUBLICATION_PROJECTION.json"
+  ],
+  "historical_validation_copy": "provenance/BASE_VALIDATION.md",
+  "launch_margin_bytes": 1073741824,
+  "mathematical_scientific_functions_and_native_options_pins_unchanged": true,
+  "proved_candidate_maximum_MiB": 10995,
+  "proved_complete_cli_maximum_MiB": 16243,
+  "publication_projection": {
+    "original_record": {
+      "bytes": 3924,
+      "sha256": "19c4c12dc22339bff17240f85be34b8335f3b53e81584e5aa982de0e9fc13f57"
+    },
+    "public_evidence_index": "evidence/prelaunch-validation-summary.json",
+    "transformation": "Private receipt locations replaced by receipt names; original receipt sizes and SHA256 hashes preserved. Record scope and this projection annotation added. All other original fields unchanged."
+  },
+  "published": false,
+  "record_scope": "Historical prelaunch resource-revision record. Published/full-CLI/validation flags describe that record, not the later execution or repository status.",
+  "schema": "current-scuc-portable-resource-revision/v2",
+  "source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "unchanged_package_entries": 64,
+  "validation": {
+    "full_cli_launched": false,
+    "numerical_revalidation_performed": false,
+    "pure_tests_passed": 62,
+    "resource_inheritance_smoke_passed": true,
+    "sqlite_checks_passed": 71
+  },
+  "validation_receipts": [
+    {
+      "bytes": 6261,
+      "receipt_name": "source-delta-verification.json",
+      "sha256": "588bda069fdc12618b7aef98a6b1c91fdbea6cbc323a42d14c9975d6b2f4bd03"
+    },
+    {
+      "bytes": 8909,
+      "receipt_name": "pure-tests-from-source.log",
+      "sha256": "191c9886d335df676bff2700d8e3e0fdec95af4975c39e8525b2ad33db0dc916"
+    },
+    {
+      "bytes": 34547,
+      "receipt_name": "sqlite-test-results.json",
+      "sha256": "7a0ca33e877df83d5fec67e0c00c146b5c66fcc4df252de0d4ed10b849c2e723"
+    },
+    {
+      "bytes": 3370,
+      "receipt_name": "receipt.json",
+      "sha256": "84124caeb1a8b1044bde59e2d2380d1c748bdb7770df376304509e74a1e59c8a"
+    }
+  ]
+}

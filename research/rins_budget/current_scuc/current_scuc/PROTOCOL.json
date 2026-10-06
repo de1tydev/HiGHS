@@ -9,7 +9,7 @@
   "preparation_worker_seconds": 300,
   "candidate_seconds": 1800,
   "solver_process_seconds": 600,
-  "whole_storage_required_bytes": 26974885888,
+  "whole_storage_required_bytes": 11811160064,
   "seed_lp_calls": 2,
   "seed_native_seconds": 60,
   "mip_calls_at_most": 3,
@@ -17,5 +17,9 @@
   "exact_certificate_attempt_seconds": 20,
   "exact_certificate_total_seconds": 120,
   "physical_dc_lower_bound_certified": false,
-  "archive_required": false
+  "archive_required": false,
+  "cli_storage_required_bytes": 17179869184,
+  "resource_revision": "portable-resource-v2",
+  "sqlite_temporary_storage": "MEMORY, qualified TEMP_STORE=1",
+  "rlimit_core_bytes": 0
 }

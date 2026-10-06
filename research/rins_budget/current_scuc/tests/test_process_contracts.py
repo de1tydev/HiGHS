@@ -10,12 +10,21 @@ from current_scuc import process_runner
 
 class ProcessContractsTest(unittest.TestCase):
     def test_fixed_address_space_is_independent_of_rss(self):
-        with patch.object(process_runner.resource, 'setrlimit') as applied:
+        expected = {resource.RLIMIT_CORE: (0,0), resource.RLIMIT_AS: (7*1024**3,)*2,
+                    resource.RLIMIT_FSIZE: (512*1024**2,)*2}
+        with patch.object(process_runner.resource, 'setrlimit') as applied, \
+                patch.object(process_runner.resource, 'getrlimit', side_effect=expected.__getitem__):
             process_runner.apply_limits()
-        self.assertEqual(applied.call_args_list[0].args, (resource.RLIMIT_AS, (7*1024**3,)*2))
-        self.assertEqual(applied.call_args_list[1].args, (resource.RLIMIT_FSIZE, (512*1024**2,)*2))
+        self.assertEqual([call.args for call in applied.call_args_list], list(expected.items()))
         self.assertEqual(process_runner.MEMORY_BYTES, 6*1024**3)
         self.assertEqual(process_runner.HEADROOM_BYTES, 2*1024**3)
+
+    def test_core_limit_readback_failure_blocks_other_limits(self):
+        with patch.object(process_runner.resource, 'setrlimit') as applied, \
+                patch.object(process_runner.resource, 'getrlimit', return_value=(1,1)):
+            with self.assertRaises(ValueError):
+                process_runner.apply_limits()
+        self.assertEqual([call.args for call in applied.call_args_list], [(resource.RLIMIT_CORE,(0,0))])
 
     def test_wait_observer_records_only_exact_reaps(self):
         usage = SimpleNamespace(ru_utime=1.25, ru_stime=.5, ru_maxrss=42)

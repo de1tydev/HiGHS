@@ -155,13 +155,13 @@ class LocalReceiptsTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'not this call'):
             receipts.bind_checked_stage(path, self.run, 2, self.source, row)
 
-    def test_whole_storage_threshold_is_preserved(self):
+    def test_whole_storage_threshold_is_fixed(self):
         value = {'path': str(self.run), 'device': 1, 'block_bytes': 4096,
                  'available_bytes': receipts.WHOLE_STORAGE_REQUIRED-1}
         with patch.object(receipts.budget, 'filesystem', return_value=value):
             with self.assertRaises(receipts.budget.StorageAdmissionError):
                 receipts.admit_whole(self.run)
-        self.assertEqual(receipts.WHOLE_STORAGE_REQUIRED, 26974885888)
+        self.assertEqual(receipts.WHOLE_STORAGE_REQUIRED, 11 * 1024**3)
 
 
 if __name__ == '__main__':

@@ -28,6 +28,8 @@ MAX_PAIR_BYTES = 32 * 1024**2
 MAX_RECORD_BYTES = 64 * 1024
 SQLITE_CACHE_KIB = 4096
 SQLITE_PAGE_BYTES = 4096
+# Only this compile choice has been qualified for the portable resource proof.
+SQLITE_TEMP_STORE_COMPILE = "TEMP_STORE=1"
 FAILURE_RESERVE_BYTES = 4096
 _NUMERIC_FIELDS = ("worst_excess_MW", "flow_MW", "rating_MW",
                    "shared_overflow_MW", "unrelaxed_overload_MW")
@@ -178,6 +180,29 @@ def _open_regular(path):
         raise WitnessStoreError("Missing or unreadable witness sidecar") from exc
 
 
+def _require_sqlite_storage(connection, pages):
+    """Fail closed if the connection does not enforce the proved storage mode.
+
+    temp_store readback alone is insufficient: TEMP_STORE=0 can override it.
+    No witness data, SQL ordering, schema, or frozen cap is changed here.
+    """
+    compile_rows = connection.execute("PRAGMA compile_options").fetchall()
+    if (not compile_rows or any(type(row) is not tuple or len(row) != 1
+            or type(row[0]) is not str for row in compile_rows)):
+        raise WitnessStoreError("Unqualified SQLite compile-options readback")
+    choices = [row[0] for row in compile_rows if row[0].startswith("TEMP_STORE")]
+    if choices != [SQLITE_TEMP_STORE_COMPILE]:
+        raise WitnessStoreError("Unqualified SQLite temporary-storage compile choice")
+    expected = {"temp_store": 2, "journal_mode": "off", "auto_vacuum": 0,
+                "page_size": SQLITE_PAGE_BYTES, "cache_size": -SQLITE_CACHE_KIB,
+                "mmap_size": 0, "synchronous": 2, "max_page_count": pages}
+    for pragma, value in expected.items():
+        rows = connection.execute("PRAGMA " + pragma).fetchall()
+        if (len(rows) != 1 or type(rows[0]) is not tuple or len(rows[0]) != 1
+                or type(rows[0][0]) is not type(value) or rows[0][0] != value):
+            raise WitnessStoreError("SQLite storage readback mismatch: " + pragma)
+
+
 class WitnessSink:
     """Exclusive spill writer. Any failure permanently poisons this sink.
 
@@ -217,8 +242,9 @@ class WitnessSink:
             self._connection.execute("PRAGMA synchronous=FULL")
             self._connection.execute("PRAGMA mmap_size=0")
             self._connection.execute(f"PRAGMA cache_size=-{SQLITE_CACHE_KIB}")
-            self._connection.execute("PRAGMA temp_store=FILE")
+            self._connection.execute("PRAGMA temp_store=MEMORY")
             self._connection.execute(f"PRAGMA max_page_count={pages}")
+            _require_sqlite_storage(self._connection, pages)
             self._connection.execute("CREATE TABLE witnesses (q INTEGER PRIMARY KEY, payload BLOB NOT NULL)")
             self._check_storage()
         except Exception as exc:

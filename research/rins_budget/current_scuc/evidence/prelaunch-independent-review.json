@@ -1,0 +1,26 @@
+{
+  "artifact_entries_verified": 115,
+  "artifact_manifest_sha256": "1b093e8fca61726e9469895b765e35eb0e64269e3b8522928390dd3d31421607",
+  "decision": "clear_with_existing_launch_prerequisites",
+  "implementation_blockers": [],
+  "implementer_final_identity_sha256": "65e5ee46cadb6a63c9e6f5287a01e13469185bdc47e9093d190bd1e2e92b5c4c",
+  "independent_tests": {
+    "admission": 9,
+    "all_passed": true,
+    "process_contracts": 4
+  },
+  "launch_manifest_sha256": "d548774867511fa72855fa309b4bf44b4d5c548cdb7251205db7be95fbfb33f7",
+  "review_sha256": "a0c4a681ba6f4d89a12261b0ae7bd842474fb3c5809a86faf428a3a5ab939112",
+  "schema": "current-scuc-resource-v2-focused-review/v1",
+  "solver_or_full_cli_executed": false,
+  "source_ack_and_current_disk_recheck_required": true,
+  "source_entries_verified_each": 70,
+  "source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "unchanged_source_entries": 64,
+  "verified_existing_tests": {
+    "import_only": 1,
+    "pure_in_process": 61,
+    "resource_inheritance_smoke": true,
+    "sqlite": 71
+  }
+}

@@ -1,0 +1,1197 @@
+{
+  "independent_review": {
+    "decision": "clear_with_existing_launch_prerequisites",
+    "focused_tests": {
+      "admission": 9,
+      "all_passed": true,
+      "process_contracts": 4
+    },
+    "implementation_blockers": [],
+    "receipt": "prelaunch-independent-review.json",
+    "solver_or_full_cli_executed": false
+  },
+  "omitted_content": [
+    "Private filesystem locations",
+    "Launch commands and startup directory locations",
+    "Raw datasets",
+    "Native binaries",
+    "SQLite spill files and binary witness outputs"
+  ],
+  "original_receipts": {
+    "final_prelaunch_identity": {
+      "bytes": 17639,
+      "sha256": "65e5ee46cadb6a63c9e6f5287a01e13469185bdc47e9093d190bd1e2e92b5c4c"
+    },
+    "independent_review": {
+      "bytes": 1083,
+      "sha256": "63cd1248cd53b52a27de4a07fbbc6e9eea2b2c4fe2f134dfb5498e5e6d3782f5"
+    },
+    "initial_pure_tests": {
+      "bytes": 9568,
+      "sha256": "f987345fb80f735c73c874ba3cc70c9c942ba1c36affeeca385cd995dd67c988"
+    },
+    "resource_inheritance_smoke": {
+      "bytes": 3370,
+      "sha256": "84124caeb1a8b1044bde59e2d2380d1c748bdb7770df376304509e74a1e59c8a"
+    },
+    "source_delta": {
+      "bytes": 6261,
+      "sha256": "588bda069fdc12618b7aef98a6b1c91fdbea6cbc323a42d14c9975d6b2f4bd03"
+    },
+    "sqlite_equivalence": {
+      "bytes": 34547,
+      "sha256": "7a0ca33e877df83d5fec67e0c00c146b5c66fcc4df252de0d4ed10b849c2e723"
+    },
+    "successful_pure_tests": {
+      "bytes": 8909,
+      "sha256": "191c9886d335df676bff2700d8e3e0fdec95af4975c39e8525b2ad33db0dc916"
+    }
+  },
+  "pure_tests": {
+    "import_only_passed": 1,
+    "in_process_passed": 61,
+    "initial_invocation": {
+      "import_only": "failed with ModuleNotFoundError",
+      "in_process_passed": 61,
+      "rerun_required_code_change": false,
+      "working_directory": "outside source package"
+    },
+    "source_directory_required": true,
+    "successful_log": "prelaunch-pure-tests.log",
+    "total_passed": 62
+  },
+  "resource_inheritance_smoke": {
+    "full_cli_launched": false,
+    "hard_watchdog_killed": false,
+    "health_check_error": null,
+    "interruption": null,
+    "limits": {
+      "RLIMIT_AS": [
+        7516192768,
+        7516192768
+      ],
+      "RLIMIT_CORE": [
+        0,
+        0
+      ],
+      "RLIMIT_FSIZE": [
+        536870912,
+        536870912
+      ]
+    },
+    "model_or_highs_executed": false,
+    "passed": true,
+    "resource_only_child": true,
+    "runner_returncode": 0
+  },
+  "schema": "current-scuc-resource-prelaunch-validation-summary/v1",
+  "scope": "Curated historical prelaunch evidence. This is a public summary, not a replacement for the original receipts and not full-CLI numerical validation.",
+  "source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "sqlite_equivalence": {
+    "all_passed": true,
+    "checks_passed": 71,
+    "negative_readbacks": [
+      {
+        "pragma": "compile_options",
+        "value": []
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=0"
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=2"
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=3"
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=unknown"
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=1"
+          ],
+          [
+            "TEMP_STORE=1"
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=1"
+          ],
+          [
+            "TEMP_STORE_OMIT"
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            1
+          ]
+        ]
+      },
+      {
+        "pragma": "compile_options",
+        "value": [
+          [
+            "TEMP_STORE=1",
+            "extra"
+          ]
+        ]
+      },
+      {
+        "pragma": "temp_store",
+        "value": []
+      },
+      {
+        "pragma": "temp_store",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "temp_store",
+        "value": [
+          [
+            2
+          ],
+          [
+            2
+          ]
+        ]
+      },
+      {
+        "pragma": "temp_store",
+        "value": [
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "journal_mode",
+        "value": []
+      },
+      {
+        "pragma": "journal_mode",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "journal_mode",
+        "value": [
+          [
+            "off"
+          ],
+          [
+            "off"
+          ]
+        ]
+      },
+      {
+        "pragma": "journal_mode",
+        "value": [
+          [
+            "off",
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "auto_vacuum",
+        "value": []
+      },
+      {
+        "pragma": "auto_vacuum",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "auto_vacuum",
+        "value": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "auto_vacuum",
+        "value": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "page_size",
+        "value": []
+      },
+      {
+        "pragma": "page_size",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "page_size",
+        "value": [
+          [
+            4096
+          ],
+          [
+            4096
+          ]
+        ]
+      },
+      {
+        "pragma": "page_size",
+        "value": [
+          [
+            4096,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "cache_size",
+        "value": []
+      },
+      {
+        "pragma": "cache_size",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "cache_size",
+        "value": [
+          [
+            -4096
+          ],
+          [
+            -4096
+          ]
+        ]
+      },
+      {
+        "pragma": "cache_size",
+        "value": [
+          [
+            -4096,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "mmap_size",
+        "value": []
+      },
+      {
+        "pragma": "mmap_size",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "mmap_size",
+        "value": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "mmap_size",
+        "value": [
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "synchronous",
+        "value": []
+      },
+      {
+        "pragma": "synchronous",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "synchronous",
+        "value": [
+          [
+            2
+          ],
+          [
+            2
+          ]
+        ]
+      },
+      {
+        "pragma": "synchronous",
+        "value": [
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "max_page_count",
+        "value": []
+      },
+      {
+        "pragma": "max_page_count",
+        "value": [
+          [
+            null
+          ]
+        ]
+      },
+      {
+        "pragma": "max_page_count",
+        "value": [
+          [
+            1048575
+          ],
+          [
+            1048575
+          ]
+        ]
+      },
+      {
+        "pragma": "max_page_count",
+        "value": [
+          [
+            1048575,
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "temp_store",
+        "value": [
+          [
+            1
+          ]
+        ]
+      },
+      {
+        "pragma": "journal_mode",
+        "value": [
+          [
+            "wal"
+          ]
+        ]
+      },
+      {
+        "pragma": "auto_vacuum",
+        "value": [
+          [
+            1
+          ]
+        ]
+      },
+      {
+        "pragma": "temp_store",
+        "value": [
+          [
+            true
+          ]
+        ]
+      },
+      {
+        "pragma": "page_size",
+        "value": [
+          [
+            8192
+          ]
+        ]
+      },
+      {
+        "pragma": "mmap_size",
+        "value": [
+          [
+            4096
+          ]
+        ]
+      },
+      {
+        "pragma": "cache_size",
+        "value": [
+          [
+            -8192
+          ]
+        ]
+      },
+      {
+        "pragma": "synchronous",
+        "value": [
+          [
+            0
+          ]
+        ]
+      },
+      {
+        "pragma": "max_page_count",
+        "value": [
+          [
+            1048576
+          ]
+        ]
+      }
+    ],
+    "physical_or_optimizer_executed": false,
+    "runtime": {
+      "compile_options": [
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=clang-22.1.3",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=2",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "ENABLE_DBSTAT_VTAB",
+        "ENABLE_FTS3",
+        "ENABLE_FTS3_PARENTHESIS",
+        "ENABLE_FTS4",
+        "ENABLE_FTS5",
+        "ENABLE_GEOPOLY",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PERCENTILE",
+        "ENABLE_RTREE",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=0x7fff0000",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=32766",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1"
+      ],
+      "limits": {
+        "1": [
+          536870912,
+          536870912
+        ],
+        "4": [
+          0,
+          0
+        ],
+        "9": [
+          7516192768,
+          7516192768
+        ]
+      },
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "sqlite_source_id": "2026-05-05 10:34:17 c88b22011a54b4f6fbd149e9f8e4de77658ce58143a1af0e3785e4e6475127e9",
+      "sqlite_version": "3.53.1"
+    },
+    "saved_case": {
+      "count": 0,
+      "coverage": "Retained empty December physical witness dataset only"
+    },
+    "tests": [
+      {
+        "name": "empty file mode",
+        "passed": true
+      },
+      {
+        "name": "empty memory mode",
+        "passed": true
+      },
+      {
+        "name": "empty exact two SQL query results",
+        "passed": true
+      },
+      {
+        "name": "empty complete manifest equality except exclusive path",
+        "passed": true
+      },
+      {
+        "name": "empty exact witnesses.jsonl",
+        "passed": true
+      },
+      {
+        "name": "empty exact violated_pairs.bin",
+        "passed": true
+      },
+      {
+        "name": "empty exact original values and canonical order",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major file mode",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major memory mode",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major exact two SQL query results",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major complete manifest equality except exclusive path",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major exact witnesses.jsonl",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major exact violated_pairs.bin",
+        "passed": true
+      },
+      {
+        "name": "complete_outage_major exact original values and canonical order",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse file mode",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse memory mode",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse exact two SQL query results",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse complete manifest equality except exclusive path",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse exact witnesses.jsonl",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse exact violated_pairs.bin",
+        "passed": true
+      },
+      {
+        "name": "complete_reverse exact original values and canonical order",
+        "passed": true
+      },
+      {
+        "name": "subset file mode",
+        "passed": true
+      },
+      {
+        "name": "subset memory mode",
+        "passed": true
+      },
+      {
+        "name": "subset exact two SQL query results",
+        "passed": true
+      },
+      {
+        "name": "subset complete manifest equality except exclusive path",
+        "passed": true
+      },
+      {
+        "name": "subset exact witnesses.jsonl",
+        "passed": true
+      },
+      {
+        "name": "subset exact violated_pairs.bin",
+        "passed": true
+      },
+      {
+        "name": "subset exact original values and canonical order",
+        "passed": true
+      },
+      {
+        "name": "saved witnesses.jsonl receipt hash/count",
+        "passed": true
+      },
+      {
+        "name": "saved violated_pairs.bin receipt hash/count",
+        "passed": true
+      },
+      {
+        "name": "saved exact row count",
+        "passed": true
+      },
+      {
+        "name": "saved exact schema",
+        "passed": true
+      },
+      {
+        "name": "saved exact FILE and MEMORY queries",
+        "passed": true
+      },
+      {
+        "name": "all 50 qualification/readback faults rejected",
+        "passed": true
+      },
+      {
+        "name": "initialize OperationalError retained failure",
+        "passed": true
+      },
+      {
+        "name": "initialize MemoryError retained failure",
+        "passed": true
+      },
+      {
+        "name": "add OperationalError poisoned",
+        "passed": true
+      },
+      {
+        "name": "add OperationalError retained failure",
+        "passed": true
+      },
+      {
+        "name": "add MemoryError poisoned",
+        "passed": true
+      },
+      {
+        "name": "add MemoryError retained failure",
+        "passed": true
+      },
+      {
+        "name": "finalize OperationalError poisoned",
+        "passed": true
+      },
+      {
+        "name": "finalize OperationalError retained failure",
+        "passed": true
+      },
+      {
+        "name": "finalize MemoryError poisoned",
+        "passed": true
+      },
+      {
+        "name": "finalize MemoryError retained failure",
+        "passed": true
+      },
+      {
+        "name": "duplicate file fail closed",
+        "passed": true
+      },
+      {
+        "name": "witness_cap file fail closed",
+        "passed": true
+      },
+      {
+        "name": "duplicate memory fail closed",
+        "passed": true
+      },
+      {
+        "name": "witness_cap memory fail closed",
+        "passed": true
+      },
+      {
+        "name": "all original helper ASTs unchanged",
+        "passed": true
+      },
+      {
+        "name": "unchanged method _require_open",
+        "passed": true
+      },
+      {
+        "name": "unchanged method _disk_bytes",
+        "passed": true
+      },
+      {
+        "name": "unchanged method _check_storage",
+        "passed": true
+      },
+      {
+        "name": "unchanged method _fail",
+        "passed": true
+      },
+      {
+        "name": "unchanged method add",
+        "passed": true
+      },
+      {
+        "name": "unchanged method _pairs",
+        "passed": true
+      },
+      {
+        "name": "unchanged method finalize",
+        "passed": true
+      },
+      {
+        "name": "unchanged method close",
+        "passed": true
+      },
+      {
+        "name": "unchanged method __enter__",
+        "passed": true
+      },
+      {
+        "name": "unchanged method __exit__",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap MAX_WITNESS_BYTES",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap MAX_INTERMEDIATE_BYTES",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap MAX_PAIR_BYTES",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap MAX_RECORD_BYTES",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap SQLITE_CACHE_KIB",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap SQLITE_PAGE_BYTES",
+        "passed": true
+      },
+      {
+        "name": "unchanged cap FAILURE_RESERVE_BYTES",
+        "passed": true
+      },
+      {
+        "name": "unchanged SQL CREATE TABLE witnesses (q INTEGER PRIMARY KEY, payload BLOB NOT NULL)",
+        "passed": true
+      },
+      {
+        "name": "unchanged SQL INSERT INTO witnesses (q, payload) VALUES (?, ?)",
+        "passed": true
+      },
+      {
+        "name": "unchanged SQL SELECT q FROM witnesses ORDER BY q",
+        "passed": true
+      },
+      {
+        "name": "unchanged SQL SELECT q, payload FROM witnesses ORDER BY q",
+        "passed": true
+      },
+      {
+        "name": "no numerical/model/physical/native modules imported",
+        "passed": true
+      }
+    ],
+    "tiny_input_nature": "Fixed serialization records, not numerical physical results",
+    "tiny_readbacks": {
+      "complete_outage_major-file": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            1
+          ]
+        ]
+      },
+      "complete_outage_major-memory": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            2
+          ]
+        ]
+      },
+      "complete_reverse-file": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            1
+          ]
+        ]
+      },
+      "complete_reverse-memory": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            2
+          ]
+        ]
+      },
+      "empty-file": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            1
+          ]
+        ]
+      },
+      "empty-memory": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            2
+          ]
+        ]
+      },
+      "subset-file": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            1
+          ]
+        ]
+      },
+      "subset-memory": {
+        "auto_vacuum": [
+          [
+            0
+          ]
+        ],
+        "cache_size": [
+          [
+            -4096
+          ]
+        ],
+        "journal_mode": [
+          [
+            "off"
+          ]
+        ],
+        "max_page_count": [
+          [
+            1048575
+          ]
+        ],
+        "mmap_size": [
+          [
+            0
+          ]
+        ],
+        "page_size": [
+          [
+            4096
+          ]
+        ],
+        "synchronous": [
+          [
+            2
+          ]
+        ],
+        "temp_store": [
+          [
+            2
+          ]
+        ]
+      }
+    }
+  },
+  "subsequent_full_cli_evidence": "june-cli-result.json"
+}

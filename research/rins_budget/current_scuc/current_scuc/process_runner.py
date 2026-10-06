@@ -16,8 +16,14 @@ HEADROOM_BYTES=2*1024**3
 PYTHON_FILE_LIMIT=512*1024**2
 
 def apply_limits():
+    # Process-local hard zero is inherited by every later exec/fork child.
+    resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+    b.require(resource.getrlimit(resource.RLIMIT_CORE)==(0,0),'Core-file limit was not disabled')
     resource.setrlimit(resource.RLIMIT_AS,(ADDRESS_SPACE_BYTES,ADDRESS_SPACE_BYTES))
     resource.setrlimit(resource.RLIMIT_FSIZE,(PYTHON_FILE_LIMIT,PYTHON_FILE_LIMIT))
+    b.require(resource.getrlimit(resource.RLIMIT_AS)==(ADDRESS_SPACE_BYTES,ADDRESS_SPACE_BYTES)
+        and resource.getrlimit(resource.RLIMIT_FSIZE)==(PYTHON_FILE_LIMIT,PYTHON_FILE_LIMIT),
+        'Process resource limit readback failed')
 
 class WaitObserver:
     """Observe the public owner's exact wait4 calls, without changing cleanup."""

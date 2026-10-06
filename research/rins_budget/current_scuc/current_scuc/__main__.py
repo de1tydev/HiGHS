@@ -11,6 +11,8 @@ import time
 
 def main(argv=None):
     started = time.monotonic()
+    from . import process_runner
+    process_runner.apply_limits()
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     run = commands.add_parser('run', help='Prepare and run one candidate; no data downloads')
@@ -26,7 +28,7 @@ def main(argv=None):
     for key in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS',
                 'PYTHONDONTWRITEBYTECODE', 'PYTHONNOUSERSITE'):
         os.environ[key] = '1'
-    from . import binding, case, case_binding, preparation, process_runner, runtime
+    from . import binding, case, case_binding, preparation, process_runner, receipts, runtime
     work = binding.fresh_directory(args.workdir)
     summary = dict(schema='current-scuc-cli-result/v1', passed=False, result_complete=False,
         work_directory=str(work), production_result=False, performance_comparison_claim=False,
@@ -34,6 +36,7 @@ def main(argv=None):
     exit_code = 2
     try:
         binding.verify_package_source(binding.FREEZE, binding.sha(binding.FREEZE))
+        summary['whole_cli_storage_admission'] = receipts.admit_cli(work)
         installed = runtime.discover_runtime(args.highs, args.runtime_manifest)
         manifest_path = installed.manifest_path
         preparation_started = time.monotonic()

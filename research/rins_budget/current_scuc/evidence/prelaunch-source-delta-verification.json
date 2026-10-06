@@ -1,0 +1,230 @@
+{
+  "base_source_manifest_sha256": "b2bcc4dc84d77eb1e5f5491bfbc1e15947f886720c439ee7595ec0ba0b6aa164",
+  "changed_package_files": [
+    {
+      "after_sha256": "eafa69970257ef2c581f0c1bb8473b12235d279d50b46f02cb7a14c1e6ef59e2",
+      "before_sha256": "61b68ef10e55d17a293d9cb422db2a9f612ee9ba53d7f7fe7c40c03d2651be0a",
+      "path": "current_scuc/PROTOCOL.json"
+    },
+    {
+      "after_sha256": "727dee98bbfe3cfc057f824ae4b8e4858a22ec56abfa9b2b8651837e11f3ff70",
+      "before_sha256": "7251f950bec3de4a2c641f2571ee86d5cfc904070f958c86e6c680d8dcfa00dc",
+      "path": "current_scuc/__main__.py"
+    },
+    {
+      "after_sha256": "a2e7f14749459839b15fe11dbd7c44c3b59482e7a9380e982cd9ea557189789e",
+      "before_sha256": "f9a75e636f350fdb88a90ea0952309b6a2bbe24810caece28b1c278341a3923c",
+      "path": "current_scuc/core/driver/witness_store.py"
+    },
+    {
+      "after_sha256": "5a08505896c9a00a028134e4017fac29964e87293149e39543d592814359fd57",
+      "before_sha256": "1a6ce46dcdd5283a5ffc07784f754c20d914f96f42c1d45496d39608dbe7c944",
+      "path": "current_scuc/phase.py"
+    },
+    {
+      "after_sha256": "b1558c24137f9553aa821931b75f4d4ad3c3627f39bcd09289afd3691ab9b986",
+      "before_sha256": "c6057c4420e1279153e36c131eac5440dd3de53eba0c2fb199d6f86d0e86ed55",
+      "path": "current_scuc/process_runner.py"
+    },
+    {
+      "after_sha256": "9e1efb4614ecc539143c3bbeb426353de70a9116ad8a780cbe32af2288867711",
+      "before_sha256": "668df170b7a8c54611f28f20eccfec7870ac5c99c3b04209d03e201f23eace3c",
+      "path": "current_scuc/receipts.py"
+    }
+  ],
+  "checks": [
+    {
+      "name": "exact reviewed patch file core/driver/witness_store.py",
+      "passed": true
+    },
+    {
+      "name": "exact reviewed patch file process_runner.py",
+      "passed": true
+    },
+    {
+      "name": "exact reviewed test_process_contracts",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged Ledger",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged seed_eligible",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged read_complete",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged physical_worker_allowed",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged terminal_gate",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged verify_export",
+      "passed": true
+    },
+    {
+      "name": "phase.py unchanged main",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged Artifact",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged require",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _deadline",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged clock",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _sha",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _json_bytes",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged digest",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _unique",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _decode",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _identity",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged inside",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _fsync_dir",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged read",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _hash_file",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged sha",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged validate_source_reference",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged _records",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged verify_receipt",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged metadata_bytes",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged verify_run",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged failure_metadata",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged Checkpoints",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged admit_whole",
+      "passed": true
+    },
+    {
+      "name": "receipts.py unchanged bind_checked_stage",
+      "passed": true
+    },
+    {
+      "name": "process_runner.py unchanged WaitObserver",
+      "passed": true
+    },
+    {
+      "name": "process_runner.py unchanged run",
+      "passed": true
+    },
+    {
+      "name": "process_runner.py unchanged require_clean",
+      "passed": true
+    },
+    {
+      "name": "phase entire AST unchanged except fixed resource metadata",
+      "passed": true
+    },
+    {
+      "name": "all original protocol policy values except storage unchanged",
+      "passed": true
+    },
+    {
+      "name": "no bytecode/symlinks in revision",
+      "passed": true
+    },
+    {
+      "name": "all 71 SQLite checks passed",
+      "passed": true
+    },
+    {
+      "name": "all 62 pure tests passed including native source fixture",
+      "passed": true
+    },
+    {
+      "name": "resource-only inheritance and startup smoke",
+      "passed": true
+    },
+    {
+      "name": "prospective output still absent highs-current-scuc-june-cli-v2-20261006-run01",
+      "passed": true
+    },
+    {
+      "name": "prospective output still absent highs-current-scuc-june-cli-v2-20261006-owner-run01",
+      "passed": true
+    }
+  ],
+  "full_june_cli_launched": false,
+  "native_manifest_sha256": "f1fb247d5bde3b6795096448601893ab85f3435e607a089736f752548cb7b361",
+  "original_published_artifact_entries_verified": 108,
+  "original_published_source_unchanged": true,
+  "passed": true,
+  "pure_tests": 62,
+  "raw_source_sha256": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c",
+  "schema": "current-scuc-resource-v2-delta-verification/v1",
+  "scientific_policy_options_and_native_pins_unchanged": true,
+  "source_entries_verified": 70,
+  "source_manifest_sha256": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0",
+  "sqlite_checks": 71,
+  "unchanged_package_entries": 64
+}

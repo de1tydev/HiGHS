@@ -1,0 +1,562 @@
+{
+  "coverage_limits": [
+    "Best 0.270916 percent interval uses a numerical MIP lower bound, not an exact rational MIP certificate.",
+    "The second seed exact LP lower is separate and supports a 0.310133 percent interval for its literal projected-matrix/hard-zero integer domain.",
+    "Neither lower is a certificate for the physical DC optimum or original soft optimum.",
+    "Actual carry and proof-start admission occurred on an unchanged master. Production new-line/changed-master carry was not exercised.",
+    "This exposed-case usability result is not an independent holdout, performance comparison, timing ratio, general MILP result, multi-platform result, reproducibility study or production-readiness claim.",
+    "Local fsync/hash checkpoints were verified; optional external archival lies outside measured execution.",
+    "Peak tree RSS is sampled, not a certified instantaneous process-tree maximum.",
+    "Nested timing scopes overlap and must not be summed. Source and direct physical checks are included in physical-worker and whole-run times."
+  ],
+  "derived_observations": {
+    "gap_using_second_seed_exact_lp_lower_percent": {
+      "expression": "100 * (candidate#/interval/upper - candidate#/lower_records/1/lower) / candidate#/interval/upper",
+      "value": 0.3101328348856978
+    },
+    "local_checkpoint_count": {
+      "expression": "len(candidate#/local_checkpoints)",
+      "value": 7
+    },
+    "reported_numerical_mip_gap_percent": {
+      "expression": "100 * candidate#/interval/gap",
+      "value": 0.2709163576083193
+    },
+    "unchanged_master_carry_observed": {
+      "expression": "carry#/source_master_identity/model_sha256 == carry#/target_master_identity/model_sha256",
+      "value": true
+    }
+  },
+  "independent_terminal_audit": {
+    "fields": {
+      "audit_passed": {
+        "json_pointer": "/audit_passed",
+        "value": true
+      },
+      "audited_at_utc": {
+        "json_pointer": "/audited_at_utc",
+        "value": "2026-10-06T02:28:01.284597+00:00"
+      },
+      "checks_passed": {
+        "json_pointer": "/checks_passed",
+        "value": [
+          "full CLI, candidate, seed, carry, and physical result/completion byte bindings",
+          "70 frozen source files, launch files, native artifact pins, runtime pins, fresh case/preparation bindings",
+          "all seven local checkpoint chains, inventories, source identities, immutable file identities, and byte hashes",
+          "persisted original full matrix, all 28080 binary, all 1288 listed outage, direct DC, independent source, hard-zero, and negligible-slack QA scope",
+          "master/API/options/native command, checked point/lift, exact-LP certificate artifacts, and selected allowance-adjusted numerical-MIP bound bindings",
+          "actual unchanged-master carry preparation, exact point checks, feasible CLI start admission, and consumed discovery-to-proof transition",
+          "all process cleanup/zero returns, exact four-entry 600-second ledger, preparation/worker/candidate/outer clocks, resource limits, and output size budgets"
+        ]
+      },
+      "mechanism": {
+        "json_pointer": "/mechanism",
+        "value": {
+          "changed_master_or_new_line_carry_tested": false,
+          "discovery_proof_transition_tested": true,
+          "feasible_initial_cli_start_admitted": true,
+          "mip_calls": 2,
+          "third_mip_call_exercised": false,
+          "two_lp_seed_solves": true,
+          "unchanged_master_carry_tested": true
+        }
+      },
+      "method": {
+        "json_pointer": "/method",
+        "value": "Read persisted receipts, inspect pinned source, recompute file hashes and receipt metadata/bindings only; no optimizer, rebuild, scientific checker rerun, extra tests, source edits, or external writes."
+      },
+      "native_artifacts_verified": {
+        "json_pointer": "/native_artifacts_verified",
+        "value": 10
+      },
+      "runtime_pins_verified": {
+        "json_pointer": "/runtime_pins_verified",
+        "value": 2361
+      },
+      "source_files_verified": {
+        "json_pointer": "/source_files_verified",
+        "value": 70
+      },
+      "source_manifest_sha256": {
+        "json_pointer": "/source_manifest_sha256",
+        "value": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0"
+      },
+      "unique_checkpoint_artifacts_verified": {
+        "json_pointer": "/unique_checkpoint_artifacts_verified",
+        "value": 107
+      }
+    },
+    "original_record": {
+      "bytes": 8572,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "AUDIT.json",
+      "sha256": "0990ae3fe0320e2070adb6d003f6fc446ea24675def5f15284526aae14261e53"
+    },
+    "scope": "Saved QA evidence and byte bindings were verified; no fresh scientific recomputation, solve, build or extra test."
+  },
+  "observations": {
+    "all_original_binary_check": {
+      "json_pointer": "/binary_check",
+      "record": "physical",
+      "value": {
+        "all_original_types_and_bounds_verified": true,
+        "authority_sha256": "953789350e2fd684d0962e13b2c0f1711c643abaf713dc20d5c299018e9053ec",
+        "count": 28080,
+        "counts_by_kind": {
+          "u": 9360,
+          "y": 9360,
+          "z": 9360
+        },
+        "fixed_binaries_included": true,
+        "maximum_residual": 0.0,
+        "passed": true,
+        "rounding_performed": false,
+        "tolerance": 1e-06
+      }
+    },
+    "best_mip_lower_allowance": {
+      "json_pointer": "/lower_records/2/allowance",
+      "record": "candidate",
+      "value": 0.000187416899735
+    },
+    "best_mip_lower_exact_certificate": {
+      "json_pointer": "/lower_records/2/exact_certificate",
+      "record": "candidate",
+      "value": false
+    },
+    "best_mip_lower_kind": {
+      "json_pointer": "/lower_records/2/kind",
+      "record": "candidate",
+      "value": "numericalMIP"
+    },
+    "best_mip_lower_raw_token": {
+      "json_pointer": "/lower_records/2/raw_token",
+      "record": "candidate",
+      "value": "13741689.9735"
+    },
+    "candidate_budget_seconds": {
+      "json_pointer": "/candidate_budget_seconds",
+      "record": "cli",
+      "value": 1800
+    },
+    "candidate_internal_seconds": {
+      "json_pointer": "/candidate_whole_seconds",
+      "record": "cli",
+      "value": 443.75673583200114
+    },
+    "candidate_process_seconds": {
+      "json_pointer": "/candidate_process_wall_seconds",
+      "record": "cli",
+      "value": 448.7702826079985
+    },
+    "carry_exact_check_passed": {
+      "json_pointer": "/exact_check/passed",
+      "record": "carry",
+      "value": true
+    },
+    "carry_native_feasible": {
+      "json_pointer": "/native/feasible",
+      "record": "carry",
+      "value": true
+    },
+    "carry_native_integral": {
+      "json_pointer": "/native/integral",
+      "record": "carry",
+      "value": true
+    },
+    "carry_passed": {
+      "json_pointer": "/passed",
+      "record": "carry",
+      "value": true
+    },
+    "carry_source_call": {
+      "json_pointer": "/source_call",
+      "record": "carry",
+      "value": 1
+    },
+    "carry_source_master_sha256": {
+      "json_pointer": "/source_master_identity/model_sha256",
+      "record": "carry",
+      "value": "0d39d42d98ab46ff072e35afdd53936b3ff0b9a8fc18b1f661a3a386d7f3e83a"
+    },
+    "carry_start_columns": {
+      "json_pointer": "/start/columns",
+      "record": "carry",
+      "value": 141878
+    },
+    "carry_start_complete": {
+      "json_pointer": "/start/complete",
+      "record": "carry",
+      "value": true
+    },
+    "carry_target_call": {
+      "json_pointer": "/target_call",
+      "record": "carry",
+      "value": 2
+    },
+    "carry_target_master_sha256": {
+      "json_pointer": "/target_master_identity/model_sha256",
+      "record": "carry",
+      "value": "0d39d42d98ab46ff072e35afdd53936b3ff0b9a8fc18b1f661a3a386d7f3e83a"
+    },
+    "case": {
+      "json_pointer": "/case",
+      "record": "case",
+      "value": {
+        "hours": 36,
+        "seed": 0,
+        "system": "case1354pegase"
+      }
+    },
+    "case_scope": {
+      "json_pointer": "/scope",
+      "record": "case",
+      "value": {
+        "allowed_pairs_per_hour": 1843338,
+        "buses": 1354,
+        "distinct_listed_single_line_outages": 1288,
+        "finite_rated_lines": 1432,
+        "generators": 260,
+        "hours": 36,
+        "lines": 1991,
+        "rated_outage_intersection": 1078,
+        "signed_normal_rows": 103104,
+        "signed_security_rows": 132720336,
+        "signed_soft_rows": 132823440,
+        "unsigned_security_pair_hours": 66360168,
+        "virtual_full_rows": 133101604
+      }
+    },
+    "cli_elapsed_seconds": {
+      "json_pointer": "/full_cli_elapsed_seconds",
+      "record": "cli",
+      "value": 502.87312598300196
+    },
+    "cli_outcome": {
+      "json_pointer": "/outcome",
+      "record": "cli",
+      "value": "checked_one_percent_integer_interval"
+    },
+    "cli_passed": {
+      "json_pointer": "/passed",
+      "record": "cli",
+      "value": true
+    },
+    "cli_result_complete": {
+      "json_pointer": "/result_complete",
+      "record": "cli",
+      "value": true
+    },
+    "direct_dc_check_passed": {
+      "json_pointer": "/direct_dc_check_passed",
+      "record": "physical",
+      "value": true
+    },
+    "direct_outages_checked": {
+      "json_pointer": "/separation/outages_checked",
+      "record": "physical",
+      "value": 1288
+    },
+    "direct_pair_hours_checked": {
+      "json_pointer": "/separation/checked_pair_hours",
+      "record": "physical",
+      "value": 66360168
+    },
+    "direct_separator_seconds": {
+      "json_pointer": "/direct_separator_seconds",
+      "record": "physical",
+      "value": 88.2330842750016
+    },
+    "exact_lp_lower_domain": {
+      "json_pointer": "/lower_records/1/lower_domain",
+      "record": "candidate",
+      "value": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset"
+    },
+    "interval": {
+      "json_pointer": "/interval",
+      "record": "candidate",
+      "value": {
+        "gap": 0.0027091635760831925,
+        "lower": 13741689.973312583,
+        "lower_domain": "hard_zero_shedding_reserve_integer_full_literal_lodf_subset",
+        "passed": true,
+        "physical_dc_lower_bound_certified": false,
+        "qualified": true,
+        "target": 0.01,
+        "upper": 13779019.591303479
+      }
+    },
+    "literal_row_check_passed": {
+      "json_pointer": "/literal_row_check_passed",
+      "record": "physical",
+      "value": true
+    },
+    "native_runtime_manifest_sha256": {
+      "json_pointer": "/qualification/native_runtime_manifest_sha256",
+      "record": "owner",
+      "value": "f1fb247d5bde3b6795096448601893ab85f3435e607a089736f752548cb7b361"
+    },
+    "negligible_shedding_domain_lower_valid": {
+      "json_pointer": "/integer_target/hard_zero_subset/lower_valid_for_negligible_shedding_domain",
+      "record": "candidate",
+      "value": false
+    },
+    "original_soft_optimum_lower_valid": {
+      "json_pointer": "/integer_target/hard_zero_subset/lower_valid_for_original_soft_optimum",
+      "record": "candidate",
+      "value": false
+    },
+    "owner_budget_seconds": {
+      "json_pointer": "/allocation_seconds",
+      "record": "owner",
+      "value": 2460.0
+    },
+    "owner_cleanup_verified": {
+      "json_pointer": "/cleanup_verified",
+      "record": "owner",
+      "value": true
+    },
+    "owner_exact_child_reaped": {
+      "json_pointer": "/exact_child_reaped",
+      "record": "owner",
+      "value": true
+    },
+    "owner_health_error": {
+      "json_pointer": "/health_check_error",
+      "record": "owner",
+      "value": null
+    },
+    "owner_process_seconds": {
+      "json_pointer": "/process_wall_seconds",
+      "record": "owner",
+      "value": 502.937512081
+    },
+    "owner_remaining_owned_pids": {
+      "json_pointer": "/remaining_owned_pids",
+      "record": "owner",
+      "value": []
+    },
+    "owner_resource_accounting_complete": {
+      "json_pointer": "/resource_accounting_complete",
+      "record": "owner",
+      "value": true
+    },
+    "owner_returncode": {
+      "json_pointer": "/runner_returncode",
+      "record": "owner",
+      "value": 0
+    },
+    "owner_wait4_echild": {
+      "json_pointer": "/wait4_echild",
+      "record": "owner",
+      "value": true
+    },
+    "owner_watchdog_killed": {
+      "json_pointer": "/hard_watchdog_killed",
+      "record": "owner",
+      "value": false
+    },
+    "peak_sampled_tree_rss_bytes": {
+      "json_pointer": "/peak_sampled_tree_rss_bytes",
+      "record": "owner",
+      "value": 1721798656
+    },
+    "physical_lower_bound_certified": {
+      "json_pointer": "/physical_dc_lower_bound_certified",
+      "record": "physical",
+      "value": false
+    },
+    "physical_passed": {
+      "json_pointer": "/passed",
+      "record": "physical",
+      "value": true
+    },
+    "physical_worker_seconds": {
+      "json_pointer": "/physical_worker_seconds",
+      "record": "physical",
+      "value": 156.39971917300136
+    },
+    "positive_slack_totals_MWh": {
+      "json_pointer": "/positive_slack_totals_MWh",
+      "record": "candidate",
+      "value": {
+        "load_shedding": 0.0,
+        "reserve_shortfall": 0.0,
+        "shared_overflow": 9.483655958320015e-07
+      }
+    },
+    "preparation_budget_seconds": {
+      "json_pointer": "/preparation_budget_seconds",
+      "record": "cli",
+      "value": 600
+    },
+    "preparation_elapsed_seconds": {
+      "json_pointer": "/preparation_elapsed_seconds",
+      "record": "cli",
+      "value": 51.463910113001475
+    },
+    "proof_start_admission_passed": {
+      "json_pointer": "/trace/1/start_admission/passed",
+      "record": "candidate",
+      "value": true
+    },
+    "proof_start_admitted_feasible": {
+      "json_pointer": "/trace/1/start_admission/admission/feasible",
+      "record": "candidate",
+      "value": true
+    },
+    "second_seed_exact_lp_lower": {
+      "json_pointer": "/lower_records/1/lower",
+      "record": "candidate",
+      "value": 13736286.327225514
+    },
+    "second_seed_lower_kind": {
+      "json_pointer": "/lower_records/1/kind",
+      "record": "candidate",
+      "value": "exactLP"
+    },
+    "selected_final_call": {
+      "json_pointer": "/selected_final_call",
+      "record": "candidate",
+      "value": 2
+    },
+    "shared_overflow_cost": {
+      "json_pointer": "/slack_metrics/shared_overflow/cost",
+      "record": "physical",
+      "value": 0.004741827979160008
+    },
+    "solver_process_ledger": {
+      "json_pointer": "/ledger",
+      "record": "candidate",
+      "value": {
+        "calls": [
+          {
+            "actual": 74.79242738600442,
+            "allocation": 180.0,
+            "overrun": 0.0,
+            "stage": "seed",
+            "within_allocation": true
+          },
+          {
+            "actual": 10.33871221300069,
+            "allocation": 180.0,
+            "overrun": 0.0,
+            "stage": "mip",
+            "within_allocation": true
+          },
+          {
+            "actual": 19.556663975003175,
+            "allocation": 30.0,
+            "overrun": 0.0,
+            "stage": "carry",
+            "within_allocation": true
+          },
+          {
+            "actual": 43.10731010299787,
+            "allocation": 180.0,
+            "overrun": 0.0,
+            "stage": "mip",
+            "within_allocation": true
+          }
+        ],
+        "ceiling_seconds": 600.0,
+        "in_budget": true,
+        "remaining": 452.20488632299384,
+        "solver_process_wall_seconds": 147.79511367700616
+      }
+    },
+    "source_checker_passed": {
+      "json_pointer": "/source_check/pass_primal",
+      "record": "physical",
+      "value": true
+    },
+    "source_checker_seconds": {
+      "json_pointer": "/independent_source_checker_seconds",
+      "record": "physical",
+      "value": 59.992785210000875
+    },
+    "source_manifest_sha256": {
+      "json_pointer": "/qualification/source_manifest_sha256",
+      "record": "owner",
+      "value": "3465ac32efaf90225a34178593ea7748a04f4becb2af85e4fddfb74e375c63c0"
+    },
+    "source_outages_checked": {
+      "json_pointer": "/source_checker_coverage/reported_outages_checked",
+      "record": "physical",
+      "value": 1288
+    },
+    "source_pair_hours_checked": {
+      "json_pointer": "/source_checker_coverage/checked_pair_hours",
+      "record": "physical",
+      "value": 66360168
+    },
+    "source_sha256": {
+      "json_pointer": "/qualification/raw_source_sha256",
+      "record": "owner",
+      "value": "75619cc70715027e9802adca41641c37c5bce65c2a9837cc7885376614a8809c"
+    },
+    "terminal_local_checkpoint_verified": {
+      "json_pointer": "/terminal_local_checkpoint_verified",
+      "record": "candidate",
+      "value": true
+    },
+    "transition_outcome": {
+      "json_pointer": "/discovery_proof_transition/outcome",
+      "record": "candidate",
+      "value": "proof_checked"
+    }
+  },
+  "schema": "current-scuc-june-cli-public-result/v1",
+  "scope": "One completed full CLI invocation on the already exposed 36-hour June PEGASE1354 case. Selected saved receipt fields; no execution was repeated for this projection.",
+  "source_records": {
+    "candidate": {
+      "bytes": 55132164,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "candidate/result.json",
+      "sha256": "7b1ce06ab77e08c84a4929693cf139d3842c5d556d93bdaf2a3454bab3c38cbc"
+    },
+    "candidate_process": {
+      "bytes": 2563,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "candidate-process.json",
+      "sha256": "9892af757ea6e4dc03c9d17ff8d2ce94565d40318fa421ef205cbfc3e5e55312"
+    },
+    "carry": {
+      "bytes": 10601029,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "candidate/mip-02/carry/result.json",
+      "sha256": "76e5ed272ae5244a0910d72c05496e5e5da4337a457d1ce09a03316772753975"
+    },
+    "case": {
+      "bytes": 308758,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "preparation/CASE.json",
+      "sha256": "6f36f8c44bd39b72757787c6c28054779efd1ed793397c68d6598b7516ea752c"
+    },
+    "cli": {
+      "bytes": 4405,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "RESULT.json",
+      "sha256": "23057b06e4b5b3756d991dea9e98b7e80251149805c6caed10913c7f38023d25"
+    },
+    "owner": {
+      "bytes": 4831,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "owner/envelope-receipt.json",
+      "sha256": "4186d2168af63083d5457ae84cde0408972c393f2b4cc57cfaec4ae2fd862dee"
+    },
+    "physical": {
+      "bytes": 363988,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "candidate/physical/result.json",
+      "sha256": "d5e06c972a78c9c693c60cd4098bd666aea201dc364566b417872dafb9dfed8f"
+    },
+    "preparation": {
+      "bytes": 981,
+      "distribution": "hash and selected fields only; full original retained separately",
+      "name": "preparation/COMPLETE.json",
+      "sha256": "cdb6c3e1d156916d900f832920761280c001184ce03add4aedd2b6c50e05016b"
+    }
+  },
+  "terminal_audit_status": "passed read-only independent terminal audit"
+}

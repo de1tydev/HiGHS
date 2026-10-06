@@ -1,26 +1,3 @@
-# Extraction and binding review scope
-
-This is the original baseline extraction review, retained below for attribution.
-Its source-segment/AST counts and original portable hashes describe the baseline
-identified by source manifest
-`b2bcc4dc84d77eb1e5f5491bfbc1e15947f886720c439ee7595ec0ba0b6aa164`.
-They apply to the resource revision only where the relevant bytes remain
-unchanged; they do not assert that the six edited resource files retain their
-baseline hashes. The original file is preserved byte-for-byte at
-[provenance/BASE_BINDING_REVIEW.md](provenance/BASE_BINDING_REVIEW.md).
-
-The current delta and identities are documented in
-[RESOURCE_REVISION.md](RESOURCE_REVISION.md),
-[RESOURCE_REVISION.json](RESOURCE_REVISION.json), and the historical
-[prelaunch source-delta receipt](evidence/prelaunch-source-delta-verification.json).
-The runtime source manifest verifies all 70 current entries, 64 identical to
-baseline. Publication itself makes no executable or test changes.
-
-The following review is historical and does not establish later execution
-coverage or production readiness.
-
----
-
 # Extraction and binding changes
 
 This port preserves the current candidate mathematics and numerical policy.

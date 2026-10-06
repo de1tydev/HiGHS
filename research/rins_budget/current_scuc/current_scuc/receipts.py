@@ -24,7 +24,8 @@ SCHEMA = 'current-scuc-local-stage-receipt/v1'
 MANIFEST_SCHEMA = 'current-scuc-local-stage-manifest/v1'
 SOURCE_SCHEMA = 'current-scuc-local-source-reference/v1'
 MAX_CHECKPOINTS = 9
-WHOLE_STORAGE_REQUIRED = 26974885888
+WHOLE_STORAGE_REQUIRED = 11 * 1024**3
+CLI_STORAGE_REQUIRED = 16 * 1024**3
 RAW_ALLOCATION_CAP = 1077935104
 METADATA_CAP = 65536
 NEW_STAGE_METADATA_RESERVE = budget.MANIFEST_LIMIT + budget.STATE_LIMIT + METADATA_CAP + 2 * 4096
@@ -411,6 +412,19 @@ class Checkpoints:
             except BaseException:
                 pass
             raise
+
+
+def admit_cli(run_parent):
+    """Fixed complete-CLI bound, checked before any preparation work."""
+    actual = budget.filesystem(run_parent)
+    require(actual['block_bytes'] == 4096, 'CLI storage requires reviewed 4 KiB allocation')
+    if actual['available_bytes'] < CLI_STORAGE_REQUIRED:
+        raise budget.StorageAdmissionError('complete CLI retention plus launch margin does not fit',
+            dict(**actual, required_available_bytes=CLI_STORAGE_REQUIRED, admitted=False))
+    admission = budget.require_free(run_parent, CLI_STORAGE_REQUIRED-budget.FREE_FLOOR,
+        purpose='complete CLI retention including launch margin')
+    admission['absolute_launch_threshold_bytes'] = CLI_STORAGE_REQUIRED
+    return admission
 
 
 def admit_whole(run_parent):
