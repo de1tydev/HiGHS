@@ -1,0 +1,39 @@
+--- a/highs/mip/HighsMipSolverData.cpp
++++ b/highs/mip/HighsMipSolverData.cpp
+@@ -7,6 +7,7 @@
+ /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ #include "mip/HighsMipSolverData.h"
+ 
++#include <cmath>
+ #include <random>
+ #include <sstream>
+ 
+@@ -2800,7 +2801,7 @@
+       // c1^Tx1 = s*(f0 + c0^Tx0) - f1
+       //
+       // (reduced_c)^T(reduced_x) = original_sense*[original_offset +
+-      // (original_c)^T(original_x) - reduced_offset]
++      // (original_c)^T(original_x)] - reduced_offset
+       const auto& user_solution = callback->data_in.user_solution;
+       MipViolation violation;
+       HighsCDouble user_solution_quad_objective_value = 0;
+@@ -2818,12 +2819,18 @@
+                       user_solution_objective_value, "User-supplied solution");
+         return;
+       }
++      const double reduced_user_solution_objective_value = static_cast<double>(
++          static_cast<HighsInt>(mipsolver.orig_model_->sense_) *
++              user_solution_quad_objective_value -
++          mipsolver.model_->offset_);
++      // A non-finite candidate objective cannot define an incumbent cutoff.
++      if (!std::isfinite(reduced_user_solution_objective_value)) return;
+       std::vector<double> reduced_user_solution;
+       reduced_user_solution =
+           postSolveStack.getReducedPrimalSolution(user_solution);
+       const bool print_display_line = true;
+       const bool is_user_solution = true;
+-      addIncumbent(reduced_user_solution, user_solution_objective_value,
++      addIncumbent(reduced_user_solution, reduced_user_solution_objective_value,
+                    kSolutionSourceUserSolution, print_display_line,
+                    is_user_solution);
+     }

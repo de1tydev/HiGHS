@@ -1,0 +1,41 @@
+{
+  "all_tests_passed": false,
+  "files": {
+    "LICENSE.txt": {
+      "bytes": 1062,
+      "sha256": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7"
+    },
+    "README.md": {
+      "bytes": 9582,
+      "sha256": "79db7257512a22b0651c10a90147859246b238c474fbfed3736cdefff1e73dfd"
+    },
+    "callback_admission_followup.cpp": {
+      "bytes": 11726,
+      "sha256": "aea0aeb6d14665737c26d344813804bff6555672bebd5a0111531879105a5239"
+    },
+    "callback_admission_regression.cpp": {
+      "bytes": 10473,
+      "sha256": "3a95c8369e096a6e0908852f73e2770d96cbba19f379c8d03f8471b67285e243"
+    },
+    "callback_objective_mapping.patch": {
+      "bytes": 1709,
+      "sha256": "dfdd9b75b76e4190f958de71fe0cd77bdceeb4509457f4adff730a5c4caa5056"
+    },
+    "evidence/IDENTITIES.public.json": {
+      "bytes": 7546,
+      "sha256": "82f35b7b8d69090a9c0f9f202b25ea9e32023c45163ace2f49662dab7170fa9a"
+    },
+    "evidence/RESULTS.public.json": {
+      "bytes": 19897,
+      "sha256": "66fb6adcb68f6f3aaeb8d584e8d3593dacac5f18952bf1c3f31f954803cadae5"
+    }
+  },
+  "independent_terminal_audit_sha256": "edeb91dc64097e3d7ff764be5d5abe40617700161b1818fe4b7502accbc84363",
+  "manifest_self_excluded": true,
+  "publication_validation": "Source/hash/privacy inspection only; no compilation, native API, tests or optimizer calls",
+  "qualification_summary_sha256": "a696231b48560370560f0fa805e0161ea0268cd278800a6b0b47867110b2369d",
+  "repository_directory": "research/rins_budget/callback_admission_fix_20261006",
+  "schema": "callback-admission-fix-publication-manifest/v1",
+  "scope": "Isolated patch artifact; default user and SCUC/history runtimes unchanged",
+  "source_fixtures_patch_unchanged": true
+}

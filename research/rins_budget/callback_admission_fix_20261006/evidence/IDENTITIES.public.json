@@ -1,0 +1,199 @@
+{
+  "base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "candidate_source_delta": "highs/mip/HighsMipSolverData.cpp only",
+  "default_pipeline_changed": false,
+  "driver_source_bytes_preserved": true,
+  "frozen_artifacts": {
+    "callback-admission-fix-v1/callback_admission_followup.cpp": {
+      "bytes": 11726,
+      "sha256": "aea0aeb6d14665737c26d344813804bff6555672bebd5a0111531879105a5239"
+    },
+    "callback-admission-fix-v1/callback_objective_mapping.patch": {
+      "bytes": 1709,
+      "sha256": "dfdd9b75b76e4190f958de71fe0cd77bdceeb4509457f4adff730a5c4caa5056"
+    },
+    "callback-admission-regression-v1/callback_admission_regression.cpp": {
+      "bytes": 10473,
+      "sha256": "3a95c8369e096a6e0908852f73e2770d96cbba19f379c8d03f8471b67285e243"
+    },
+    "callback-fix-build-owner-v1/receipt.json": {
+      "bytes": 895,
+      "sha256": "80cccc09338e9d9fc1447d483e24fda4f2d9fe2e03b300fa399666b555ceca33"
+    },
+    "callback-fix-build/CMakeCache.txt": {
+      "bytes": 26538,
+      "sha256": "33035e064f3c5266d3deea232ca862552b1396e7cbc3b9ba8287d50f70a564d2"
+    },
+    "callback-fix-build/HConfig.h": {
+      "bytes": 522,
+      "sha256": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf"
+    },
+    "callback-fix-build/bin/highs": {
+      "bytes": 571368,
+      "sha256": "501d77d8e2e8b78c8dbbdec2271dd88e55df0aa72a1b270353864ddafc8dea4e"
+    },
+    "callback-fix-build/bin/unit_tests": {
+      "bytes": 3711376,
+      "sha256": "f253d116efdb1e7549e421a89951d5180dff592739b4127d16d1cc9e3a31bf4b"
+    },
+    "callback-fix-build/build.ninja": {
+      "bytes": 937556,
+      "sha256": "1e74d39532f23a1d091fc71c4254912f03d53ae8ad5339f3106cfff4c769896d"
+    },
+    "callback-fix-build/lib/libhighs.so.1.15.1": {
+      "bytes": 6829536,
+      "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+    },
+    "callback-fix-build/lib/libhighs_extras.so": {
+      "bytes": 15496,
+      "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+    },
+    "callback-fix-source-review-v1.json": {
+      "bytes": 2172,
+      "sha256": "ef5556ecac5c7a2d856f04dc0a1da1905667bd5cdf9d6920436c478129309c51"
+    },
+    "callback-fix-source/highs/mip/HighsMipSolverData.cpp": {
+      "bytes": 119759,
+      "sha256": "c31ef24f3215ff609b1b8ef7d84d8c3031810e53357704935721e139b1dc46f5"
+    },
+    "official-build/HConfig.h": {
+      "bytes": 522,
+      "sha256": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf"
+    },
+    "official-build/bin/highs": {
+      "bytes": 571368,
+      "sha256": "a8546ca386821b0953df9c466439191d021d17bdb7965cf115aa6e2bc0da7ab2"
+    },
+    "official-build/lib/libhighs.so.1.15.1": {
+      "bytes": 6829536,
+      "sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8"
+    },
+    "official-build/lib/libhighs_extras.so": {
+      "bytes": 15496,
+      "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+    },
+    "official-source/highs/mip/HighsMipSolverData.cpp": {
+      "bytes": 119350,
+      "sha256": "eaafcf91b4653c17807b171720f66828dd6b18737dbf8b9b213cc58c8e022f33"
+    },
+    "research-fork/research/rins_budget/generalization_20261006/bounded.py": {
+      "bytes": 1879,
+      "sha256": "736ddef31d389caa14de7051f666af5c5d2e2b74a09afcf50359921f8f116f30"
+    }
+  },
+  "frozen_input_record_sha256": "8b125aa95179c71871418551f360f76b6cbc86e1fc6a1d21ff3a4ba040f98d3f",
+  "patch_bytes_preserved": true,
+  "patch_sha256": "dfdd9b75b76e4190f958de71fe0cd77bdceeb4509457f4adff730a5c4caa5056",
+  "reference_affinity_symbol_binding": {
+    "loader_trace_sha256": "79db9df08679c007c99e7d4f7a0762a08a679ad37d3dd0929397a157eb732e5e",
+    "receipt_sha256": "26e9c1c354e762fd88a1da9867880ddbd7a575ce5b246a6af29116d85604691d",
+    "reference_library_sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+    "symbol": "_ZN5highs8parallel20available_core_countEv",
+    "unit_executable_sha256": "f253d116efdb1e7549e421a89951d5180dff592739b4127d16d1cc9e3a31bf4b"
+  },
+  "reference_source_clean": true,
+  "runtime_bindings": {
+    "affinity-reference-owner": {
+      "actual_initialized_libraries": {
+        "libhighs": {
+          "role": "reference",
+          "sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8"
+        }
+      },
+      "loader_trace_files": 1
+    },
+    "ctest-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "patched_candidate",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "patched_candidate",
+          "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+        }
+      },
+      "loader_trace_files": 168
+    },
+    "followup-patched-run-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "patched_candidate",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "patched_candidate",
+          "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+        }
+      },
+      "loader_trace_files": 1
+    },
+    "followup-reference-run-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "reference",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "reference",
+          "sha256": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8"
+        }
+      },
+      "loader_trace_files": 1
+    },
+    "native-callbacks-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "patched_candidate",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "patched_candidate",
+          "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+        }
+      },
+      "loader_trace_files": 1
+    },
+    "native-full-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "patched_candidate",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "patched_candidate",
+          "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+        }
+      },
+      "loader_trace_files": 1
+    },
+    "native-targeted-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "patched_candidate",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "patched_candidate",
+          "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+        }
+      },
+      "loader_trace_files": 1
+    },
+    "original4-patched-run-owner": {
+      "actual_initialized_libraries": {
+        "extras": {
+          "role": "patched_candidate",
+          "sha256": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d"
+        },
+        "libhighs": {
+          "role": "patched_candidate",
+          "sha256": "58e919c75bfc760fe5f821bfb2d9cf9fac5b20e68041c9f172bd1609cdb4a823"
+        }
+      },
+      "loader_trace_files": 1
+    }
+  },
+  "schema": "callback-admission-fix-public-identities/v1",
+  "source_review_sha256": "ef5556ecac5c7a2d856f04dc0a1da1905667bd5cdf9d6920436c478129309c51"
+}
