@@ -1,0 +1,103 @@
+{
+  "schema": "source-result-publication-manifest-v1",
+  "research_source_commit": "40d8240a7e834fe86e39509dbf0c91dd69af79d4",
+  "files": {
+    "README.md": "e0707cb711ed77cf2c10d1ac23635bc43b7f2cf5cc4b55d5cfcd4f98393037c3",
+    "RESULTS.json": "a3091c533aa374d629a0b8be422f06eb535c7c5a3a31a9c29fcaf99622c2c097",
+    "REPLAY_INDEX.md": "69908ac54217c15ba4c84bb0680df0200436dc42e82d2a5c62d8ac1f0e1d4452"
+  },
+  "public_source_inputs_and_components": [
+    {
+      "path": "research/rins_budget/correctness_3357_3367_20261007/combined-minimal-correctness.patch",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/correctness_3357_3367_20261007/combined-minimal-correctness.patch",
+      "sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0"
+    },
+    {
+      "path": "research/rins_budget/correctness_3357_3367_20261007/domain_stack_fixture.cpp",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/correctness_3357_3367_20261007/domain_stack_fixture.cpp",
+      "sha256": "20158d17453dc2f6f755c7ee144438ff14ea90f09f63894e75cf597c6e10515f"
+    },
+    {
+      "path": "research/rins_budget/correctness_3357_3367_20261007/pr3367_regression.cpp",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/correctness_3357_3367_20261007/pr3367_regression.cpp",
+      "sha256": "0254322c7e581677b90fcce3eca18d1ef9e734201bcccbfb809bebc1172324c2"
+    },
+    {
+      "path": "research/rins_budget/correctness_3357_3367_20261007/3359.mps",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/correctness_3357_3367_20261007/3359.mps",
+      "sha256": "403c72defdc2a3ac365841711353d0a4842ef70a6cf6bfcf1dea6aaa2535178d"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/tiny_triangle.json",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/tiny_triangle.json",
+      "sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/scuc/generate.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/scuc/generate.py",
+      "sha256": "ef326c80ea99d2f6dd7ee7da1ed8938444b66579a879d0bf04bc06c282f8ada3"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/scuc/check_solution.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/scuc/check_solution.py",
+      "sha256": "77ccd22d490282709bb66f38566b571518cf8f2e5bc4478dcd3a548fcb7af024"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/canonical_mps_export/readback.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/canonical_mps_export/readback.py",
+      "sha256": "0721722b090506be5c349d1fc9e4ec3493ef49db5f0fe04bc3e08d64998a169a"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/trial_policy.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/trial_policy.py",
+      "sha256": "813106d37b2b56e01cb71b11d3d719ef155d64fe496934dd427e77a4db5805b5"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/cold_screen_pair.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/cold_screen_pair.py",
+      "sha256": "471a9411b7d1c09f3d845f9b722def0b7eb1b5b9f94cb3a1e6fd084ddf12fc07"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/verify_run.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/payload/combined_screening_driver/verify_run.py",
+      "sha256": "29e0f23ea435464f6d6edbeb683245a3ab91f5da631c4e791400f38757cacde2"
+    },
+    {
+      "path": "research/rins_budget/portable_pristine_reference_replay_v3/replay/prepare_replay.py",
+      "url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/portable_pristine_reference_replay_v3/replay/prepare_replay.py",
+      "sha256": "6eff9fb80e103922bcf414eeff0f6da3a7baf54390c87bb9285e456336f857ff"
+    }
+  ],
+  "PG89_input": {
+    "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-05-01.json.gz",
+    "compressed_sha256": "a13b8da591278afec5d14ef7c787bfd7c0c6a3f91c526511bfee051294c9be4c",
+    "decompressed_sha256": "1b00f8b3efd27e777e6cf888690ffcc0e9d28f2a6559699b82b3822c890c61eb"
+  },
+  "retained_evidence_sha256": {
+    "correctness_gate_report": "c7d05721b10fca588edca9475b81964a804e054110d1a737a52629c799b1df1f",
+    "correctness_independent_review": "59daca0c2a60bc71a316c28625eb1ca621f58fb25fe40257a48969047ce94cc7",
+    "clean_aggregate_independent_review": "3da6f951a4cad3a9ea46a319f4b49e02fdbd58b280f193d41d74fb57273f16fa",
+    "original_CTest_terminal_result": "a7d5ff300a064ae423468428d39f7981bb708eb980d3e74b2b70e65ca64c5118",
+    "separate_clean_aggregate_result": "7ea38d50768bfca323de6ebf00490b777576102128fb5987ce455073b947b24c",
+    "recorded_release_binary_identities": "1c4b58c40795a3e2a2bd0964a4dcc22dce4c33afb287df50d87c9ff3a2ad3ea9",
+    "3359_exact_oracle_result": "2da4d820106df287bde6505e6cbd468b0011451c0b76db2d7ca36eac6e7b7f30",
+    "3359_exact_oracle_tests": "ccc6c5f55867c98d38756c0ba8c84cfaed81a61bfe4327c792490875a3c7149f",
+    "baseline_1006_file_inventory": "e6d6c990615ef0a64cd0945c6e1908042a09962c570f98b78e59d6f12d6bb667",
+    "candidate_1006_file_inventory": "0b24375103837f77cd775ac27a4219fa2f3e76c30d9e659c58e0e047f0413e6e",
+    "tiny_terminal_result": "e037928ba6f87b126b8793ce45ba74d898a0be0bee76ab96409b444f7a479259",
+    "tiny_API_readback": "4b59b385d34f497c69e89541618f5f464091db1ef0e9d352ec74de33011edfd2",
+    "tiny_original_checks": "d5a273a09f24ee81ed8a042d33104f9705b83c75469ca67740b9d8ae1ca96aa2",
+    "tiny_independent_review": "59aa41222cdb7500d83a90f27278302fc32cbeba25eaa948fc74262fd8e49411",
+    "tiny_option_coverage_correction": "ff24ba7b74c328665d08016a901b7f440a55b959a9d73f14f8840f481c684848",
+    "tiny_postrun_161_option_readback": "22443fe4669def0d3a504e36a383829dd2a4a9313bf4a4d7a1e157fd13d72dca",
+    "PG89_recorded_summary": "32a610bd27ccc9b15750b003827e37d55f669cce498960f500addd184b256a41",
+    "PG89_terminal_audit": "abab7029f5174af9d9b70b4b84c9fde87974ed26adef3b1949dd0008825c3c98",
+    "PG89_independent_review": "572b985fe88f6670e05b336d2b61ffb82e8430799f34045e3b0c3081c5537556",
+    "PG89_protocol": "2e16fb6ac5eb86d954e7355c2b20bf2167eca8d4f0f0ac3fe4e1d91feded330a",
+    "PG89_native_work": "a204f1c8a56d71bd6413a6335ad1ede2c1db98671a3cf6ffcd4a54a091d7f4ee",
+    "PG89_code_equivalence": "ec7c9b0a90bb85ca3c8e374a9007a8e1bb80788ff5c96029047b452e06dec650",
+    "PG89_prerun_161_option_readback": "e2f36631eabbfc29a95bc428168361a42bc4c39abfb091999de934f7af3fd71e"
+  },
+  "evidence_availability": "Digests identify retained evidence used for this summary. Raw evidence and qualification-specific execution harnesses are not bundled or exposed by this index.",
+  "no_numerical_execution_during_publication_preparation": true
+}

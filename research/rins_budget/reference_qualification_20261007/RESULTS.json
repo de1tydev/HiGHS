@@ -1,0 +1,320 @@
+{
+  "schema": "highs-reference-qualification-summary-v1",
+  "recorded_date_utc": "2026-10-07",
+  "classification": "bounded experimental-reference qualification with retained affinity exception",
+  "publication_scope": "sanitized source/result summary and replay index; no executable patched replay adapter or complete raw evidence bundle",
+  "reference": {
+    "official_base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+    "research_source_commit": "40d8240a7e834fe86e39509dbf0c91dd69af79d4",
+    "patch_sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0",
+    "patch_url": "https://github.com/de1tydev/HiGHS/blob/40d8240a7e834fe86e39509dbf0c91dd69af79d4/research/rins_budget/correctness_3357_3367_20261007/combined-minimal-correctness.patch",
+    "source_file_count": 1006,
+    "changed_files": {
+      "highs/presolve/HPresolve.cpp": {
+        "baseline_sha256": "af7f7d30f23276816f551718c98c10faa5da22535b03ebf1617890f66332f782",
+        "candidate_sha256": "b2f7d7deabdbf54e38144ae0e6ce7c96c07312761c81b8bd9a837b70966c6536"
+      },
+      "highs/mip/HighsDomain.cpp": {
+        "baseline_sha256": "320e97507bb5faf7b7c379456993da38d7e6f966ad10b4954a5df758b01251fb",
+        "candidate_sha256": "8f6bde12c69f493e56dfb489aa401e573a610571d92ede67349a03664dd399d1"
+      }
+    },
+    "release_sha256": {
+      "CLI": "8c5e774e72ef259e183b7b2339ee9332010611f9035b3c543a9dcb50aa49daea",
+      "main_DSO": "5cf57054b20fdc2dd137dee356f5b184064493f46deb31015d25de713a4544ce",
+      "extras_DSO": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+      "unit_tests": "073b03d6ac08d29f635dc2a12a3b0e4b2783d4067c3b7aec1d2cd56933f95645"
+    },
+    "recorded_binary_hashes_are_portable_rebuild_expectations": false,
+    "source_and_loaded_library_identities_checked": true
+  },
+  "assertions_enabled_gate": {
+    "matched_compile_commands_per_arm": 285,
+    "compiler_flags": [
+      "-O1",
+      "-g1"
+    ],
+    "NDEBUG_defined": false,
+    "regressions": {
+      "3357": {
+        "pristine_symmetry_on": "2 failures",
+        "pristine_symmetry_off": "2 passes",
+        "candidate": "all 4 pass",
+        "bounds_unchanged": true
+      },
+      "3364_rule_only_LP": {
+        "pristine": "internal assertion abort",
+        "candidate": "valid CSC: 4 rows, 7 columns, 9 nonzeros"
+      },
+      "3359_ordered_MPS": {
+        "pristine": "internal assertion abort",
+        "candidate": "Optimal 25; original primal checks pass"
+      }
+    },
+    "native_focused_each_arm": {
+      "cases": 118,
+      "assertion_bearing_cases": 117,
+      "existing_empty_cases": 1,
+      "catch_assertions": 904,
+      "passed": true,
+      "timeouts": 0,
+      "native_symmetry_and_orbital_fixing_coverage": true
+    },
+    "independent_3359_exact_answer": {
+      "integer_optimum": 25,
+      "LP_relaxation_optimum": 25,
+      "equality_rows": 69,
+      "nonnegative_integer_columns": 88,
+      "exact_primal_and_row_multiplier_certificate": true,
+      "enumerated_paths": 630,
+      "optimal_paths": 8,
+      "rejection_and_metamorphic_checks": 13,
+      "scope": "only the preserved fixture; not general solver correctness"
+    }
+  },
+  "release_gate": {
+    "original_CTest": {
+      "configured": 169,
+      "executed": 169,
+      "passed": 168,
+      "failed": 1,
+      "failed_entry": "unit_tests_all",
+      "all_passed": false,
+      "timeouts": 0,
+      "skipped": 0,
+      "aggregate_cases_passed": 399,
+      "aggregate_cases_total": 400,
+      "aggregate_assertions_passed": 1260048,
+      "aggregate_assertions_total": 1260049
+    },
+    "affinity_exception": {
+      "case": "AffinityReducedCoreCount",
+      "expected_cores": 1,
+      "observed_cores": 5,
+      "identical_pristine_and_candidate_failure": true,
+      "environment": "9 logical CPUs; topology files unavailable; unchanged fallback gives 5",
+      "unresolved": true,
+      "automatic_thread_and_affinity_correctness_qualified": false
+    },
+    "separate_clean_aggregate": {
+      "fresh_process": true,
+      "excluded_exactly": [
+        "AffinityReducedCoreCount"
+      ],
+      "cases_passed": 399,
+      "assertions_passed": 1260048,
+      "exit_code": 0,
+      "timeouts": 0,
+      "original_CTest_result_unchanged": true,
+      "global_HiGHS_thread_pin": false,
+      "thread_policy": "unchanged native per-test settings"
+    },
+    "candidate_dedicated_release_fixtures_and_known_LP_passed": true
+  },
+  "tiny_full_source_smoke": {
+    "passed": true,
+    "source_sha256": "dbcc5bc8901542c795dec194d0bb38d63f331c72bfcac75fd93ce64706206f48",
+    "cold_native_calls": 1,
+    "threads": 1,
+    "parallel": "off",
+    "random_seed": 1,
+    "presolve": "on",
+    "dimensions": {
+      "columns": 48,
+      "rows": 78,
+      "nonzeros": 192,
+      "binaries": 12
+    },
+    "api_fidelity_passed": true,
+    "objective": 660,
+    "independent_exact_source_lower_bound": 660,
+    "matrix_bound_integrality_and_physical_residuals": 0,
+    "listed_outages": 1,
+    "eligible_pairs": 2,
+    "pair_hours_checked": 4,
+    "slack_values": 12,
+    "all_slacks_exactly_zero": true,
+    "reserve_products": 0,
+    "historical_option_records_checked": 114,
+    "postrun_no_model_configuration_records_checked": 161,
+    "postrun_audit_is_historical_full_option_proof": false,
+    "presolved_to_empty": true,
+    "top_level_nodes": 0,
+    "root_LP_iterations": 0,
+    "root_branching_or_cut_coverage": false,
+    "outer_wall_seconds_observation": 4.374876,
+    "performance_claim": false
+  },
+  "PG89_exposed_cold_control": {
+    "passed_original_acceptance": true,
+    "date": "2017-05-01",
+    "random_seed": 211,
+    "arm": "A",
+    "arms": 1,
+    "previously_exposed": true,
+    "threads": 2,
+    "parallel": "off",
+    "presolve": "on",
+    "mip_rel_gap": 0.01,
+    "mip_abs_gap": 1e-06,
+    "prerun_option_records_checked": 161,
+    "option_audit_scope": "separate no-model handle with exact proof option text; actual per-solve CLI overrides and loader identities also retained",
+    "source": {
+      "url": "https://axavier.org/UnitCommitment.jl/0.3/instances/matpower/case89pegase/2017-05-01.json.gz",
+      "compressed_sha256": "a13b8da591278afec5d14ef7c787bfd7c0c6a3f91c526511bfee051294c9be4c",
+      "decompressed_sha256": "1b00f8b3efd27e777e6cf888690ffcc0e9d28f2a6559699b82b3822c890c61eb"
+    },
+    "scope": {
+      "hours": 36,
+      "buses": 89,
+      "units": 12,
+      "lines": 210,
+      "finite_rated_lines": 77,
+      "listed_outages": 192,
+      "eligible_pairs": 14721,
+      "pair_hours_checked_each_stage": 529956,
+      "source_omitted_line_outage_scenarios": 18,
+      "AC_security_claim": false
+    },
+    "cold_proof_solves": 3,
+    "discovery_solves": 0,
+    "selected_pair_counts": [
+      0,
+      11,
+      12
+    ],
+    "new_violated_pair_counts": [
+      11,
+      1,
+      0
+    ],
+    "carried_between_solves": "only newly violated original security rows; no incumbent, basis, native state or historical advice",
+    "api_fidelity_fields_passed_each_stage": 16,
+    "original_checks_passed_final": true,
+    "primal_source_tolerance": 1e-05,
+    "max_final_source_residual": 7.751e-10,
+    "endpoint": {
+      "checked_upper": 2678903.091965961,
+      "adjusted_HiGHS_numerical_lower": 2652648.747188473,
+      "relative_gap": 0.009800408553868392,
+      "relative_gap_percent": 0.9800408553868392,
+      "fixed_target_percent": 1.0,
+      "independent_exact_dual_certificate": false,
+      "exact_optimality_claim": false,
+      "native_Optimal_status_uses_1_percent_tolerance": true
+    },
+    "diagnostic_only_quality": {
+      "shedding_values": {
+        "count": 3204,
+        "exact_nonzero_count": 0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "signed_sum": 0.0,
+        "absolute_sum": 0.0,
+        "exactly_zero": true
+      },
+      "shared_overflow_values": {
+        "count": 2772,
+        "exact_nonzero_count": 0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "signed_sum": 0.0,
+        "absolute_sum": 0.0,
+        "exactly_zero": true
+      },
+      "reserve_shortfall_values": {
+        "count": 36,
+        "exact_nonzero_count": 0,
+        "minimum": 0.0,
+        "maximum": 0.0,
+        "signed_sum": 0.0,
+        "absolute_sum": 0.0,
+        "exactly_zero": true
+      },
+      "reserve_requirements_checked": 36,
+      "all_reserve_deficits_zero": true,
+      "raw_unrelaxed_outage_overload_MW": 6.821210263296962e-13,
+      "source_objective_discrepancies": {
+        "source_linear_minus_true": 8.381903171539307e-09,
+        "matrix_linear_minus_source_true": -1.3969838619232178e-09,
+        "printed_minus_source_true": -4.656612873077393e-10
+      },
+      "all_supplemental_flags_passed": true,
+      "changes_acceptance": false
+    },
+    "timing_seconds": {
+      "solver_process_debit": 109.737106087,
+      "solver_budget": 600.0,
+      "original_contained_arm": 150.133613374,
+      "arm_cap": 1800.0,
+      "additional_outer_monitor": 151.852677099,
+      "outer_cap": 1860.0,
+      "per_MIP_watchdog_grace": 60.0,
+      "grace_actual_time_charged": true,
+      "distinct_scopes_not_summed": true,
+      "observation_only_no_comparator": true
+    },
+    "stages": [
+      {
+        "stage": 1,
+        "selected_pairs": 0,
+        "original_columns": 21096,
+        "original_rows": 23676,
+        "original_nonzeros": 80103,
+        "original_binaries": 1296,
+        "top_level_nodes": 1,
+        "LP_iterations": 26832,
+        "max_internal_sub_MIP_depth": 8,
+        "solver_process_wall_seconds": 28.522424998999668,
+        "MPS_sha256": "dd35554cdaa113295e4c0c692ef7c99d202df88c16e1cb774721bf787bb76133"
+      },
+      {
+        "stage": 2,
+        "selected_pairs": 11,
+        "original_columns": 21096,
+        "original_rows": 24468,
+        "original_nonzeros": 82479,
+        "original_binaries": 1296,
+        "top_level_nodes": 1,
+        "LP_iterations": 25817,
+        "max_internal_sub_MIP_depth": 12,
+        "solver_process_wall_seconds": 51.41795564400036,
+        "MPS_sha256": "ea6eeedba6c1929ef66148f4f92d1ed70124f406f5e365afcbf9646350af8717"
+      },
+      {
+        "stage": 3,
+        "selected_pairs": 12,
+        "original_columns": 21096,
+        "original_rows": 24540,
+        "original_nonzeros": 82695,
+        "original_binaries": 1296,
+        "top_level_nodes": 1,
+        "LP_iterations": 23546,
+        "max_internal_sub_MIP_depth": 6,
+        "solver_process_wall_seconds": 29.796725444000003,
+        "MPS_sha256": "e384bce156d6242ff0bb9db467faae1f827dd98e4b3a218ac13261dfd6316041"
+      }
+    ],
+    "native_coverage": "nonempty root separation and internal MIP search; no extended top-level branch-and-bound tree established",
+    "numerical_retries": 0,
+    "timeouts": 0,
+    "interruptions": 0,
+    "cleanup_failures": 0,
+    "remaining_experiment_processes": 0,
+    "offline_verifier_exit": 0,
+    "independent_terminal_review": "pass"
+  },
+  "not_established": [
+    "speedup or acceleration comparison",
+    "historical SCUC correctness or restored historical speed claims",
+    "other dates, seeds, networks or held-out transfer",
+    "automatic-thread/affinity correctness",
+    "universal solver correctness or production readiness",
+    "a self-contained portable replay of this patched run"
+  ],
+  "publication_preparation": {
+    "new_solver_builds": 0,
+    "new_numerical_runs": 0,
+    "existing_reports_overwritten": false
+  }
+}

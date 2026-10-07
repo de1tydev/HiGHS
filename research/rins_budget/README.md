@@ -1,5 +1,14 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Bounded reference qualification — 2026-10-07:** The isolated d547 plus
+#3357/#3367 candidate passed matched assertions-enabled regressions and two
+full-source SCUC checks. Original Release CTest remains **168/169 passing**
+with a retained affinity exception; a separate clean aggregate passes 399 cases.
+The tiny case presolved empty. One exposed May PG89 cold-control arm reached a
+checked-primal/solver-bound gap of 0.9800408554%, with zero raw slacks and
+substantial root/internal-MIP work. This is no speed comparison or exact dual
+proof. [Qualification, option-audit correction and replay limits](reference_qualification_20261007/README.md).
+
 **Correctness checkpoint — 2026-10-07:** Pristine d547 reproduces narrow
 branch-marker/stabilizer and presolve-structure failures that an isolated
 official-patch candidate fixes. Both Release 3359 arms pass at objective 25.
