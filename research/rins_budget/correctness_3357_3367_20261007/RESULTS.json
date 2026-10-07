@@ -1,0 +1,174 @@
+{
+  "schema": "highs-minimal-correctness-public-results/v1",
+  "observed_utc": "2026-10-07T08:34:17.601993+00:00",
+  "baseline_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "candidate": "Baseline plus the supplied isolated cumulative #3357 and two-call #3367 patch",
+  "patch_sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0",
+  "configuration": {
+    "build_type": "Release",
+    "NDEBUG": true,
+    "explicit_fixture_checks_active": true,
+    "HighsInt_bits": 32
+  },
+  "audit": {
+    "verdict": "PASS_BOUNDED_RELEASE_REGRESSION_GATE",
+    "utc": "2026-10-07T08:36:00.831214+00:00",
+    "blocking_findings": [],
+    "source_files_changed": [
+      "highs/mip/HighsDomain.cpp",
+      "highs/presolve/HPresolve.cpp"
+    ],
+    "patch_additions": 17,
+    "patch_deletions": 19,
+    "source_and_runtime_identities_verified": true,
+    "six_recorded_exits_verified": true
+  },
+  "runs": {
+    "baseline-3357": {
+      "exit_code": 1,
+      "expected_outcome_observed": true,
+      "observations": [
+        {
+          "bounds_unchanged": true,
+          "branch_count": 0,
+          "case": "lower_symmetry_on",
+          "passed": false,
+          "retained_x": false,
+          "stabilized_x": false
+        },
+        {
+          "bounds_unchanged": true,
+          "branch_count": 0,
+          "case": "lower_symmetry_off",
+          "passed": true,
+          "retained_x": false,
+          "stabilized_x": false
+        },
+        {
+          "bounds_unchanged": true,
+          "branch_count": 0,
+          "case": "upper_symmetry_on",
+          "passed": false,
+          "retained_x": false,
+          "stabilized_x": false
+        },
+        {
+          "bounds_unchanged": true,
+          "branch_count": 0,
+          "case": "upper_symmetry_off",
+          "passed": true,
+          "retained_x": false,
+          "stabilized_x": false
+        }
+      ]
+    },
+    "baseline-3359": {
+      "exit_code": 0,
+      "expected_outcome_observed": true,
+      "observations": {
+        "loaded_original_model_primal_check": true,
+        "objective": 25,
+        "optimal": true
+      }
+    },
+    "baseline-3364": {
+      "exit_code": 1,
+      "expected_outcome_observed": true,
+      "observations": {
+        "columns": null,
+        "nonzeros": null,
+        "old_invalid_row": -1,
+        "rows": 4,
+        "valid_output_CSC": false
+      }
+    },
+    "candidate-3357": {
+      "exit_code": 0,
+      "expected_outcome_observed": true,
+      "observations": [
+        {
+          "bounds_unchanged": true,
+          "branch_count": 1,
+          "case": "lower_symmetry_on",
+          "passed": true,
+          "retained_x": true,
+          "stabilized_x": true
+        },
+        {
+          "bounds_unchanged": true,
+          "branch_count": 0,
+          "case": "lower_symmetry_off",
+          "passed": true,
+          "retained_x": false,
+          "stabilized_x": false
+        },
+        {
+          "bounds_unchanged": true,
+          "branch_count": 1,
+          "case": "upper_symmetry_on",
+          "passed": true,
+          "retained_x": true,
+          "stabilized_x": true
+        },
+        {
+          "bounds_unchanged": true,
+          "branch_count": 0,
+          "case": "upper_symmetry_off",
+          "passed": true,
+          "retained_x": false,
+          "stabilized_x": false
+        }
+      ]
+    },
+    "candidate-3359": {
+      "exit_code": 0,
+      "expected_outcome_observed": true,
+      "observations": {
+        "loaded_original_model_primal_check": true,
+        "objective": 25,
+        "optimal": true
+      }
+    },
+    "candidate-3364": {
+      "exit_code": 0,
+      "expected_outcome_observed": true,
+      "observations": {
+        "columns": 7,
+        "nonzeros": 9,
+        "old_invalid_row": null,
+        "rows": 4,
+        "valid_output_CSC": true
+      }
+    }
+  },
+  "recorded_runtime_sha256": {
+    "baseline": {
+      "library": "79b1a12b57066b10494525d15ce7568059ca31d48b8bf6b403f5bf1f31e21ce8",
+      "HConfig": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf",
+      "driver_3357": "6beb94bca0fb3bb23c41bb3921feda0ceaf444e451c7196b4e0cc57918233cdf",
+      "driver_3367": "d8f5e295692ce10b2ab348ed25a7ca777830a6de64d0c9e9daf72449050fb99f"
+    },
+    "candidate": {
+      "library": "4eaa29e452061f83d9a96c290c94e3d84f608869e27cb35258e0c602d1652ea8",
+      "HConfig": "f764fdbb5ddb7f8a9f9b8d3824438f3f3ba5a5552d08d21db163cf5dff1fcbcf",
+      "driver_3357": "49637ee0a07a9e603b9c296d9c2f5ffb04bf396338709489509700367f11726a",
+      "driver_3367": "66e03aff1b41cf7bbfca0ec30ae0bd880e647336b573b47844170a5596abf5dd"
+    }
+  },
+  "coverage": {
+    "regression_processes": 6,
+    "domain_cases": 8,
+    "rule_only_LP_presolve_calls": 2,
+    "3359_MIP_solves": 2,
+    "Debug_library": false,
+    "full_suite": false,
+    "single_fix_ablation": false,
+    "neos_911970": false,
+    "SCUC_runs": 0,
+    "full_MIP_wrong_optimum_trigger_established": false,
+    "historical_SCUC_trigger_established": false,
+    "performance_claim": false,
+    "global_reference_promoted": false
+  },
+  "interpretation": "The baseline marker/stabilizer and invalid-CSC counterexamples disappear with the combined candidate. Both 3359 Release arms pass at objective 25; this case does not discriminate the equation-size repair. Primal recomputation is not an independent optimality certificate."
+}

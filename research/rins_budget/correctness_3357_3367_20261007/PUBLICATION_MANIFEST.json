@@ -1,0 +1,108 @@
+{
+  "schema": "highs-correctness-publication-manifest/v1",
+  "checkpoint_date": "2026-10-07",
+  "package": "research/rins_budget/correctness_3357_3367_20261007",
+  "baseline": {
+    "repository": "https://github.com/ERGO-Code/HiGHS",
+    "commit": "d547a3ad8af5399651187fb0e133cf0e42615b82"
+  },
+  "candidate": {
+    "patch": "combined-minimal-correctness.patch",
+    "sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0",
+    "additions": 17,
+    "deletions": 19,
+    "whole_PR_heads_included": false,
+    "promoted_global_reference": false
+  },
+  "source_files": {
+    "highs/mip/HighsDomain.cpp": {
+      "baseline_sha256": "320e97507bb5faf7b7c379456993da38d7e6f966ad10b4954a5df758b01251fb",
+      "candidate_sha256": "8f6bde12c69f493e56dfb489aa401e573a610571d92ede67349a03664dd399d1"
+    },
+    "highs/presolve/HPresolve.cpp": {
+      "baseline_sha256": "af7f7d30f23276816f551718c98c10faa5da22535b03ebf1617890f66332f782",
+      "candidate_sha256": "b2f7d7deabdbf54e38144ae0e6ce7c96c07312761c81b8bd9a837b70966c6536"
+    }
+  },
+  "official_provenance": {
+    "3357": {
+      "url": "https://github.com/ERGO-Code/HiGHS/pull/3357",
+      "snapshot_head": "1309ab32179eebc624d077afb02e7066d0fe0eed",
+      "fix_commits": [
+        "7a50c326ca6f93d98479ebce1909f503f22e759a",
+        "1309ab32179eebc624d077afb02e7066d0fe0eed"
+      ],
+      "adaptation": "Official cumulative hunk content unchanged; hunk offsets and source/index metadata adapted to d547"
+    },
+    "3367": {
+      "url": "https://github.com/ERGO-Code/HiGHS/pull/3367",
+      "snapshot_head": "b116e43c9dfce28217cee376d8a207dcf0aaf13c",
+      "fix_commits": [
+        "340f76fafea1b8256bc7610154e291d442b2fd66"
+      ],
+      "adaptation": "Only the net storeRow(i) and reinsertEquation(removerow) executable additions"
+    },
+    "PR_status_snapshot": {
+      "utc": "2026-10-07T08:40:59Z",
+      "3357": "open/unmerged",
+      "3367": "open/unmerged"
+    },
+    "3364_numeric_fixture": {
+      "url": "https://github.com/ERGO-Code/HiGHS/blob/b116e43c9dfce28217cee376d8a207dcf0aaf13c/check/TestPresolveRules.cpp#L1225",
+      "adaptation": "Standalone driver with explicit runtime checks; row labels corrected to numeric A/B/i/D/E order; direct input path is LP presolve"
+    },
+    "3359.mps": {
+      "url": "https://github.com/ERGO-Code/HiGHS/blob/b116e43c9dfce28217cee376d8a207dcf0aaf13c/check/instances/3359.mps",
+      "git_blob": "969b6207a2ac07975de1ed84ae4ecdddf6055145",
+      "bytes_unchanged": true
+    }
+  },
+  "fixture_provenance": {
+    "domain_stack_fixture.cpp": "Locally authored standalone fixture using public HiGHS internal classes; unchanged from reviewed and executed source",
+    "pr3367_regression.cpp": "Standalone driver adapted from official MIT-licensed test/data; unchanged from reviewed and executed source"
+  },
+  "preparation": {
+    "original_artifacts_modified": false,
+    "builds_or_solver_runs": 0,
+    "remote_writes": 0,
+    "commands_in_README": "Manual reproduction recipe based on the recorded compile flags; not separately executed during publication preparation"
+  },
+  "files": [
+    {
+      "path": "3359.mps",
+      "bytes": 7195,
+      "sha256": "403c72defdc2a3ac365841711353d0a4842ef70a6cf6bfcf1dea6aaa2535178d"
+    },
+    {
+      "path": "HiGHS-LICENSE.txt",
+      "bytes": 1062,
+      "sha256": "795e6090936bcf2e1a0bfb339053de0c5bb6f3102035ead0ecc0ed4a7c41f1b7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9768,
+      "sha256": "025ca74174d28f948bcaa8e9ea983d3dd5eea97beaefcf95ffa965c4a5243aed"
+    },
+    {
+      "path": "RESULTS.json",
+      "bytes": 5383,
+      "sha256": "97fa6d8271027282cf5fad45e5b2685b37a8a9a204b6ae51fc87486e662a5de8"
+    },
+    {
+      "path": "combined-minimal-correctness.patch",
+      "bytes": 3440,
+      "sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0"
+    },
+    {
+      "path": "domain_stack_fixture.cpp",
+      "bytes": 5432,
+      "sha256": "20158d17453dc2f6f755c7ee144438ff14ea90f09f63894e75cf597c6e10515f"
+    },
+    {
+      "path": "pr3367_regression.cpp",
+      "bytes": 6543,
+      "sha256": "0254322c7e581677b90fcce3eca18d1ef9e734201bcccbfb809bebc1172324c2"
+    }
+  ],
+  "manifest_hash_scope": "The file list covers every other package file; this manifest excludes its own hash."
+}

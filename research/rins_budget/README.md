@@ -1,5 +1,13 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Correctness checkpoint — 2026-10-07:** Pristine d547 reproduces narrow
+branch-marker/stabilizer and presolve-structure failures that an isolated
+official-patch candidate fixes. Both Release 3359 arms pass at objective 25.
+[Results, reproduction instructions and limits](correctness_3357_3367_20261007/README.md).
+This does not establish historical SCUC impact, promote a global reference, or
+add a performance claim. Solver-reported MIP bounds and independently recomputed
+LP certificates have different qualifications, described in that checkpoint.
+
 **Historical-advice qualification — 2026-10-07:** A fixed May-to-June
 commitment repair failed. Exact current-model row arithmetic independently
 identified a capacity-plus-hard-reserve deficit, and a standalone pure-Python
