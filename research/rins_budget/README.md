@@ -1,5 +1,13 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Historical-advice qualification — 2026-10-07:** A fixed May-to-June
+commitment repair failed. Exact current-model row arithmetic independently
+identified a capacity-plus-hard-reserve deficit, and a standalone pure-Python
+[advice abstention check with tests](history_adequacy_20261007/README.md)
+now rejects such necessarily infeasible hint blocks. Passing does not establish
+dispatch or network feasibility. This adds no solver-speed or learned-generalization
+claim and does not change the current SCUC pipeline.
+
 **Network-projection checkpoint — 2026-10-05:** The June PEGASE1354
 continuous relaxation covering all source-listed outages closed to $0.006292
 in 59.249878 charged seconds, but retained 601 fractional binary values.

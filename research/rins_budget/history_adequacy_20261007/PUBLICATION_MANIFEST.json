@@ -1,0 +1,29 @@
+{
+  "files": {
+    "DATA_REQUIREMENTS.md": {
+      "bytes": 3251,
+      "sha256": "322cb3e7bc1eb4eeec25a5a4c373cb6cacb62d164b13236f5732dfbb32d74194"
+    },
+    "EVIDENCE.json": {
+      "bytes": 17339,
+      "sha256": "b9352d3dbd1e8c69ac78a54485de5e6243e090437299c18aa931905119543681"
+    },
+    "README.md": {
+      "bytes": 6426,
+      "sha256": "23dc1ce67936580f101d4d520ba82d462092966658392755ef980097966fdee8"
+    },
+    "capacity_abstention.py": {
+      "bytes": 6790,
+      "sha256": "2d22f3103c87cb838bfba6c3398a4ee8d1f6fdb0800d97cd3b56c007673dfe45"
+    },
+    "test_capacity_abstention.py": {
+      "bytes": 8057,
+      "sha256": "448d7da8a088c195ed79295850c4417d11675e47fe1132e14b9b6c1a78449513"
+    }
+  },
+  "official_solver_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "production_scuc_source_changed": false,
+  "schema": "history-adequacy-publication/v1",
+  "solver_source_changed": false,
+  "source_base_commit": "8276c90841d4f1aeee5a042e11c2e626f34c6e07"
+}
