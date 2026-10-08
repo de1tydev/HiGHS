@@ -1,0 +1,51 @@
+{
+  "focused": {
+    "listed_cases": 119,
+    "executed": 119,
+    "assertion_count": 918,
+    "no_assertion_cases": [
+      "get-integrality"
+    ],
+    "all_passed": true
+  },
+  "release_ctest": {
+    "configured": 169,
+    "executed": 169,
+    "passed": 168,
+    "failed": [
+      "unit_tests_all"
+    ],
+    "full_pass": false,
+    "timeouts": 0,
+    "unit_cases": 401,
+    "unit_cases_passed": 400,
+    "assertions": 1260063,
+    "assertions_passed": 1260062,
+    "failure": "AffinityReducedCoreCount: cores == 1, expansion 5 == 1"
+  },
+  "clean_aggregate": {
+    "included_cases": 400,
+    "assertions": 1260062,
+    "passed": true,
+    "excluded_exactly": [
+      "AffinityReducedCoreCount"
+    ],
+    "fresh_process": true,
+    "original_result_unchanged": true
+  },
+  "same_DSOs_as_narrow_AB": true,
+  "source_unchanged": true,
+  "global_native_thread_pin": false,
+  "SCUC_or_performance": false,
+  "reference_promoted": false,
+  "independent_audit": "completed; known affinity exception retained; no additional scope blocker",
+  "conditional_experimental_reference_admitted": true,
+  "admission_limits": [
+    "future explicitly scoped work only",
+    "explicit native solver threads",
+    "retain literal affinity failure",
+    "no blanket correctness guarantee",
+    "historical baseline receipts unchanged",
+    "no SCUC or performance campaign implied"
+  ]
+}

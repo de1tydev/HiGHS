@@ -1,0 +1,86 @@
+{
+  "schema": "highs-conditional-research-reference/v1",
+  "status": "conditionally_admitted_for_future_explicitly_scoped_research",
+  "source_base_commit": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "patches_in_order": [
+    {
+      "path": "reference-3357-3367.patch",
+      "sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0",
+      "published_commit": "15245e434f07e0974d0406606457fbe3a9e196d6"
+    },
+    {
+      "path": "upstream3332.patch",
+      "sha256": "781d089d76a97da1351a3b0f1bf38ebc7a4158dbe1146952598490c91754247a",
+      "upstream_merge_commit": "4591d1de08ed2e3bed529ec2c35220a80c4cb9db",
+      "published_commit": "15245e434f07e0974d0406606457fbe3a9e196d6"
+    }
+  ],
+  "source_file_count": 1006,
+  "source_manifest": "REFERENCE_SOURCE_HASHES.json",
+  "source_manifest_sha256": "a3499c422f9802f2d1e31104caa6b9fbf8bb3d32774a625f45b4891ecf189ed8",
+  "DSOs": {
+    "assert": {
+      "file": "libhighs.so.1.15.1",
+      "sha256": "1cd1ee2a86caf402e3d4a97fef182feccd07fbeed62387c9b32f8b6babc12651"
+    },
+    "release": {
+      "file": "libhighs.so.1.15.1",
+      "sha256": "b2c073c6c16f6af5e8c73b232a01fcf230ca0773e1d199c6423c4e7a1dec1aac"
+    }
+  },
+  "native_test_binaries": {
+    "assert": {
+      "file": "unit_tests",
+      "sha256": "18532697eb123a71f4b63ad3f4264c56b0981310b32b3a08dfe1d40ce97e424c",
+      "HConfig_sha256": "6f920ad10609b937bca8b9543a987f2d5133bf1d72664a66441b5a087af25b73",
+      "highs_export_sha256": "c34561fcbdc448c85ff4cdf6738519c942ef7609bcf8ebf32ad795d7fef69605"
+    },
+    "release": {
+      "file": "unit_tests",
+      "sha256": "919677b804f3aea65a540c9060bc7a8ecff72bdb00f2c93e67e2e1fc56248e1f",
+      "HConfig_sha256": "296eeb6ebae54415b3aa546302c3b88ad3cf5992fafbbc223e70d7d3bef9c650",
+      "highs_export_sha256": "c34561fcbdc448c85ff4cdf6738519c942ef7609bcf8ebf32ad795d7fef69605"
+    }
+  },
+  "compile_configuration": {
+    "generator": "Ninja",
+    "C_COMPILER": "gcc",
+    "CXX_COMPILER": "g++",
+    "HIGHSINT64": false,
+    "BUILD_SHARED_LIBS": true,
+    "BUILD_SHARED_EXTRAS_LIB": true,
+    "BUILD_TESTING": true,
+    "ALL_TESTS": true,
+    "FAST_BUILD": true,
+    "ZLIB": true,
+    "HIPO": false,
+    "CUPDLP_GPU": false,
+    "HIPDLP_HIP": false,
+    "DEBUGSOL": false,
+    "assertions": "Debug; C/CXX debug flags -O1 -g1; no NDEBUG",
+    "release": "Release with NDEBUG; executable/shared linker flags -flto=2"
+  },
+  "conditions": [
+    "Use only for future explicitly scoped work",
+    "Set explicit native HiGHS solver thread count in each research invocation",
+    "Retain original CTest affinity failure and exact-exclusion aggregate separately",
+    "Do not claim automatic-thread or affinity correctness",
+    "Do not relabel historical baseline/runtime receipts",
+    "No blanket correctness or production-readiness guarantee",
+    "No child analytic-center omission experiment enabled",
+    "No SCUC/performance result or campaign authorization implied"
+  ],
+  "qualification": {
+    "focused_cases_passed": 119,
+    "focused_assertions_passed": 918,
+    "CTest_entries": 169,
+    "CTest_passed": 168,
+    "CTest_failed": "unit_tests_all: AffinityReducedCoreCount, cores==1 expands to5==1",
+    "fresh_aggregate_excluded_exactly": [
+      "AffinityReducedCoreCount"
+    ],
+    "fresh_aggregate_cases_passed": 400,
+    "fresh_aggregate_assertions_passed": 1260062,
+    "independent_review": "completed"
+  }
+}
