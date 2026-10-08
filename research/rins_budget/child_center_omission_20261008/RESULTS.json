@@ -1,0 +1,258 @@
+{
+  "decision": "NO-GO; not recommended; route closed without retuning",
+  "research_parent": "a675b112c04196d70951c711c7c596f61b9d2f00",
+  "official_base": "d547a3ad8af5399651187fb0e133cf0e42615b82",
+  "minimal_correctness_patch_sha256": "bdba43930c63ad8c7e86215cf91e745e7fd67a7fcf7787bb9f52dc62a95912a0",
+  "ablation_patch_sha256": "2accff0ed5c7f3ae4b4995ebc09cbe45de250ac6f9799cf29a0f280fd5cb3299",
+  "source_files": {
+    "highs/mip/HighsMipSolverData.cpp": "164611734ab9d30e3181b5fa67234a681c16e38c4627d8a8300d6ee1b879dbc6",
+    "highs/lp_data/HighsOptions.h": "5cf6b4638508ca5d16d62ad52a612f89f6ab416df8c79af1b16a5f79e98af086"
+  },
+  "release_binaries": {
+    "lib/libhighs.so.1.15.1": "41c987895af197ceea1446f85a4a8011f2b17b5d498b3f9b2a20c2e7b4410607",
+    "lib/libhighs_extras.so": "add1358fa82827a3ead2137b8483956fb8f38ff86f2b0ada974125dcb58b7e0d",
+    "bin/highs": "fa51b77d91db2379fb8bffa97712c760fc28c59a5a2c51f78b3cb51f0e0d1e51",
+    "bin/unit_tests": "dc91156cf7e5f81ad8e2bdc76d7d5066bee1c6ae644e200fa7da54f405411fd2",
+    "bin/capi_unit_tests": "9a29fd97b8d0f29d5a9c2e4b959a1a03f0adb783bc1241da3d1316ee22a8d569",
+    "HConfig.h": "296eeb6ebae54415b3aa546302c3b88ad3cf5992fafbbc223e70d7d3bef9c650",
+    "CMakeCache.txt": "3b8e7749012c22e295d08e2badff03170011ac4fac8b66c65c31e3e086e25886",
+    "compile_commands.json": "7f3f7e85250e4747f969a4fb503943d876f3bf3457dafeed84fcade455a968e3"
+  },
+  "input": {
+    "scope": "exposed May-2017 PG89 stage-2 incomplete-security integer master",
+    "sha256": "ea6eeedba6c1929ef66148f4f92d1ed70124f406f5e365afcbf9646350af8717",
+    "expected_sha256": "4c58400ffb5abae0710ac61bedfed56674c68a9691f1b8b871896164a70cb457",
+    "columns": 21096,
+    "rows": 24468,
+    "nonzeros": 82479,
+    "integer_columns": 1296,
+    "source_expected_exact_binary64_match": true
+  },
+  "fixed_options": {
+    "order": [
+      "OFF",
+      "ON",
+      "ON",
+      "OFF"
+    ],
+    "random_seed": 211,
+    "threads": 2,
+    "parallel": "off",
+    "presolve": "on",
+    "mip_rel_gap": 0.01,
+    "time_limit": 90,
+    "mip_analytic_center_diagnostics": true,
+    "other_native_options": "unchanged prior qualified defaults; each complete option snapshot retained"
+  },
+  "caps": {
+    "calls": 4,
+    "native_seconds_each": 90,
+    "process_seconds_each": 150,
+    "aggregate_process_seconds": 600,
+    "whole_cohort_seconds": 900
+  },
+  "gate": {
+    "paired_comparisons": [
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "maximum_wall_ratio_each": 0.85,
+    "maximum_cpu_ratio_each": 1.05,
+    "all_correctness_mechanism_resource_checks_required": true
+  },
+  "runs": [
+    {
+      "run": 1,
+      "omission": "OFF",
+      "wall_seconds": 49.176316579999366,
+      "cpu_seconds": 66.94643199999999,
+      "native_reported_seconds": 48.98,
+      "objective": 2654109.36241149,
+      "printed_lower": 2627716.0632,
+      "conservative_gap": 0.009944314886401826,
+      "main_launch": 1,
+      "child_launch": 33,
+      "child_skip": 0,
+      "child_calls": 29,
+      "native_nodes": 1,
+      "native_lp_iterations": 25817,
+      "ipx_native_rows": [
+        "IPX (AC)                     34  1.8225e+01  5.3604e-01      37.2"
+      ],
+      "max_row_violation": 7.524079137510853e-10,
+      "max_integrality_violation": 0.0,
+      "measurement_sha256": "036772bf422db2385215735035201693002762880fc03db5341b86be209663b4",
+      "solution_sha256": "34af6aff9858ed7c285de9f7e70b286265753d155e2081983795664d108d27fe",
+      "log_sha256": "62dd12c4e96b15df6da01fe9a93bcb1e064c8922c45eaf01e62ee148b9cd20d7",
+      "options_sha256": "4a521ae91f007368d4a995ebbb1361afeff3f18d27cad45ebb70727a1baefdc6",
+      "options_readback_sha256": "5eacd0f0826ff17ee5a4eb3c5db9bb0f93b806feb20beb419788ed276f6fad9e",
+      "independent_decimal": "2654109.3624114901308653237379601546",
+      "independent_max_row_residual": "7.5401267770808425E-10"
+    },
+    {
+      "run": 2,
+      "omission": "ON",
+      "wall_seconds": 77.64773511899966,
+      "cpu_seconds": 77.570328,
+      "native_reported_seconds": 77.44,
+      "objective": 2654109.36241149,
+      "printed_lower": 2627716.0632,
+      "conservative_gap": 0.009944314886401826,
+      "main_launch": 1,
+      "child_launch": 0,
+      "child_skip": 33,
+      "child_calls": 29,
+      "native_nodes": 1,
+      "native_lp_iterations": 25817,
+      "ipx_native_rows": [
+        "IPX (AC)                      1  1.6173e+00  1.6173e+00       2.1"
+      ],
+      "max_row_violation": 7.524079137510853e-10,
+      "max_integrality_violation": 0.0,
+      "measurement_sha256": "8003f7877a04168de585ad65b9ee8d74870380de68c4dc7164c8719117bec5eb",
+      "solution_sha256": "34af6aff9858ed7c285de9f7e70b286265753d155e2081983795664d108d27fe",
+      "log_sha256": "7b4a2901f2db8736c0c8a2eaffcad824592ef2770f62d15d4b4a8e4d36289fd4",
+      "options_sha256": "7643e458a8e4968134e3b856f92e13ad5fa243675cff682da19dca702f65cc95",
+      "options_readback_sha256": "282989c11485bb26d0ec61da5e5c67bf54fe5feb33fb85e86b96939164c321c4",
+      "independent_decimal": "2654109.3624114901308653237379601546",
+      "independent_max_row_residual": "7.5401267770808425E-10"
+    },
+    {
+      "run": 3,
+      "omission": "ON",
+      "wall_seconds": 43.30325326300044,
+      "cpu_seconds": 45.014192,
+      "native_reported_seconds": 43.13,
+      "objective": 2654109.36241149,
+      "printed_lower": 2627716.0632,
+      "conservative_gap": 0.009944314886401826,
+      "main_launch": 1,
+      "child_launch": 0,
+      "child_skip": 33,
+      "child_calls": 29,
+      "native_nodes": 1,
+      "native_lp_iterations": 25817,
+      "ipx_native_rows": [
+        "IPX (AC)                      1  1.7191e+00  1.7191e+00       4.0"
+      ],
+      "max_row_violation": 7.524079137510853e-10,
+      "max_integrality_violation": 0.0,
+      "measurement_sha256": "2398bc59dcb1dabeb789fc764fa792783adf1aa88994be3787f1666e415a647a",
+      "solution_sha256": "34af6aff9858ed7c285de9f7e70b286265753d155e2081983795664d108d27fe",
+      "log_sha256": "5f47bbc10dff251e98c5dc4f8be6e840bbb89c3adc63fcbc379c36a2962312fb",
+      "options_sha256": "64627a0a5f48d5fd9022010e466ee2637f1521c65429a3cfe17e2f7ae5985feb",
+      "options_readback_sha256": "e32a8ececc65a9de92144805115d99e597fe0bd19b518029c077cdb09cd0a231",
+      "independent_decimal": "2654109.3624114901308653237379601546",
+      "independent_max_row_residual": "7.5401267770808425E-10"
+    },
+    {
+      "run": 4,
+      "omission": "OFF",
+      "wall_seconds": 45.24837550600023,
+      "cpu_seconds": 62.975597,
+      "native_reported_seconds": 45.05,
+      "objective": 2654109.36241149,
+      "printed_lower": 2627716.0632,
+      "conservative_gap": 0.009944314886401826,
+      "main_launch": 1,
+      "child_launch": 33,
+      "child_skip": 0,
+      "child_calls": 29,
+      "native_nodes": 1,
+      "native_lp_iterations": 25817,
+      "ipx_native_rows": [
+        "IPX (AC)                     34  1.8221e+01  5.3592e-01      40.4"
+      ],
+      "max_row_violation": 7.524079137510853e-10,
+      "max_integrality_violation": 0.0,
+      "measurement_sha256": "612716d1603e1de681a936aefb0fbaf5c4d32f204ef01cea7ccb83133d01c949",
+      "solution_sha256": "34af6aff9858ed7c285de9f7e70b286265753d155e2081983795664d108d27fe",
+      "log_sha256": "ee53bc6ed8a5e6df7a2ac3d0e1c984833627cfa4f9e309b9cf3f9702eab1233e",
+      "options_sha256": "12dc5f9fdc7015eeffd4885e6dabedbf08c5b91e63f8a643eec63af259640e36",
+      "options_readback_sha256": "3dcbccf3193881a42ef2e218c7a5cadda0a661614b6869081157fd243f37e0d8",
+      "independent_decimal": "2654109.3624114901308653237379601546",
+      "independent_max_row_residual": "7.5401267770808425E-10"
+    }
+  ],
+  "outcome": {
+    "completed_calls": 4,
+    "process_aggregate_seconds": 215.3756804679997,
+    "experiment_elapsed_seconds": 216.9536504029993,
+    "all_correctness_resource_mechanism_gates": true,
+    "paired_comparisons": [
+      {
+        "on": 2,
+        "off": 1,
+        "wall_ratio": 1.5789660657622329,
+        "wall_improvement_fraction": -0.5789660657622329,
+        "cpu_ratio": 1.158692490138982,
+        "wall_gate": false,
+        "cpu_gate": false
+      },
+      {
+        "on": 3,
+        "off": 4,
+        "wall_ratio": 0.9570123298074679,
+        "wall_improvement_fraction": 0.042987670192532135,
+        "cpu_ratio": 0.7147878566359601,
+        "wall_gate": false,
+        "cpu_gate": true
+      }
+    ],
+    "advance": false,
+    "decision": "NO-GO: close route without retuning",
+    "performance_generalization": false,
+    "full_scuc_success": false,
+    "same_boot_verified": true
+  },
+  "qualification": {
+    "assertion_focused_per_arm": {
+      "cases": 118,
+      "assertions": 904
+    },
+    "custom_cases_per_build": 38,
+    "native_candidate_processes_per_build": 8,
+    "native_repetitions": 2,
+    "transformed_public_processes_per_build": 4,
+    "public_repetitions": 2,
+    "ctest": {
+      "passed": 168,
+      "executed": 169,
+      "all_passed": false,
+      "failed": [
+        "unit_tests_all: AffinityReducedCoreCount 5 == 1"
+      ],
+      "timeouts": 0,
+      "aggregate_cases": 400,
+      "aggregate_passed": 399,
+      "aggregate_assertions": 1260055,
+      "aggregate_passed_assertions": 1260054
+    },
+    "clean_aggregate": {
+      "passed_cases": 399,
+      "assertions": 1260054,
+      "returncode": 0
+    },
+    "affinity_controls": "reference and candidate own compatible executable/DSO both fail 5==1; no cross-ABI mixing",
+    "all_source_and_binary_hashes_unchanged": true
+  },
+  "limitations": [
+    "No dynamically observed internal restart",
+    "No active-AC terminator interruption or nonzero timeout demonstrated",
+    "No successful deliberately injected stale-center test",
+    "Depth3 direct construction, not organic recursion",
+    "No universal solver correctness or performance claim",
+    "No host-wide load control established",
+    "No root cause established for ON timing variation",
+    "No exact dual certificate",
+    "No full-SCUC feasibility or speedup claim",
+    "No fresh input or held-out generalization"
+  ],
+  "publication_scope": "documentation, default-off patch artifact and compact offline replay/fixture support only; no change to active solver core and no additional solves"
+}

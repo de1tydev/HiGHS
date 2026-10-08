@@ -1,0 +1,113 @@
+--- a/highs/lp_data/HighsOptions.h
++++ b/highs/lp_data/HighsOptions.h
+@@ -495,6 +495,8 @@
+ 
+   // Options for MIP solver
+   bool mip_detect_symmetry;
++  bool mip_omit_child_analytic_center;
++  bool mip_analytic_center_diagnostics;
+   bool mip_allow_restart;
+   HighsInt mip_max_nodes;
+   HighsInt mip_max_stall_nodes;
+@@ -667,6 +669,8 @@
+         icrash_exact(false),
+         icrash_breakpoints(false),
+         mip_detect_symmetry(false),
++        mip_omit_child_analytic_center(false),
++        mip_analytic_center_diagnostics(false),
+         mip_allow_restart(false),
+         mip_max_nodes(0),
+         mip_max_stall_nodes(0),
+@@ -1119,6 +1123,20 @@
+         advanced, &mip_detect_symmetry, true);
+     records.push_back(record_bool);
+ 
++    record_bool = new OptionRecordBool(
++        "mip_omit_child_analytic_center",
++        "Experimental: omit optional analytic center in heuristic sub-MIPs "
++        "only when parallel is explicitly off",
++        now_advanced, &mip_omit_child_analytic_center, false);
++    records.push_back(record_bool);
++
++    record_bool = new OptionRecordBool(
++        "mip_analytic_center_diagnostics",
++        "Experimental: print one analytic-center launch/skip event per root "
++        "to stdout, including otherwise silent heuristic sub-MIPs",
++        now_advanced, &mip_analytic_center_diagnostics, false);
++    records.push_back(record_bool);
++
+     record_bool = new OptionRecordBool("mip_allow_restart",
+                                        "Whether MIP restart is permitted",
+                                        advanced, &mip_allow_restart, true);
+--- a/highs/mip/HighsMipSolverData.cpp
++++ b/highs/mip/HighsMipSolverData.cpp
+@@ -2002,8 +2002,20 @@
+ }
+ 
+ void HighsMipSolverData::evaluateRootNode(HighsMipWorker& worker) {
+-  const bool compute_analytic_centre = true;
+-  if (!compute_analytic_centre) printf("NOT COMPUTING ANALYTIC CENTRE!\n");
++  // The parallel option is inherited unchanged by heuristic sub-MIPs. Require
++  // explicit serial MIP configuration; scheduler threads may still run the
++  // retained main-root AC and symmetry work. Do not alter parallel/choose runs.
++  const bool compute_analytic_centre =
++      !(mipsolver.submip &&
++        mipsolver.options_mip_->mip_omit_child_analytic_center &&
++        mipsolver.options_mip_->parallel == kHighsOffString);
++  if (!compute_analytic_centre) {
++    // No parent/presolved-model center may survive a skipped child root. In
++    // particular, omission must never manufacture a computed or Optimal center.
++    analyticCenter.clear();
++    analyticCenterStatus = HighsModelStatus::kNotset;
++    analyticCenterComputed = false;
++  }
+   HighsInt maxSepaRounds = mipsolver.submip ? 5 : kHighsIInf;
+   if (numRestarts == 0)
+     maxSepaRounds =
+@@ -2012,6 +2024,13 @@
+   highs::parallel::TaskGroup tg;
+   HighsProfiling* profiling = mipsolver.profiling_;
+ restart:
++  if (mipsolver.options_mip_->mip_analytic_center_diagnostics &&
++      !analyticCenterComputed) {
++    printf("MIP-AC decision=%s submip=%d depth=%d\n",
++           compute_analytic_centre ? "launch" : "skip", int(mipsolver.submip),
++           int(mipsolver.submip_level));
++    fflush(stdout);
++  }
+   profiling->start(kMipClockEvaluateRootNode0);
+ 
+   if (detectSymmetries) {
+@@ -2326,18 +2345,22 @@
+     heuristics.flushStatistics(mipsolver, worker);
+   }
+ 
+-  if (!analyticCenterComputed && compute_analytic_centre) {
++  if (!analyticCenterComputed) {
+     if (checkLimits()) return clockOff(profiling);
+ 
+-    profiling->start(kMipClockFinishAnalyticCentreComputation);
+-    finishAnalyticCenterComputation(tg);
+-    profiling->stop(kMipClockFinishAnalyticCentreComputation);
+-
+-    profiling->start(kMipClockRootCentralRounding);
+-    heuristics.centralRounding(worker);
+-    profiling->stop(kMipClockRootCentralRounding);
+-
+-    heuristics.flushStatistics(mipsolver, worker);
++    if (compute_analytic_centre) {
++      profiling->start(kMipClockFinishAnalyticCentreComputation);
++      finishAnalyticCenterComputation(tg);
++      profiling->stop(kMipClockFinishAnalyticCentreComputation);
++
++      profiling->start(kMipClockRootCentralRounding);
++      heuristics.centralRounding(worker);
++      profiling->stop(kMipClockRootCentralRounding);
++
++      heuristics.flushStatistics(mipsolver, worker);
++    }
++    // Retain the ordinary LP re-evaluation/separation even without a center:
++    // earlier heuristics (for example shifting) may have changed the domain.
+ 
+     // if there are new global bound changes we re-evaluate the LP and do one
+     // more separation round

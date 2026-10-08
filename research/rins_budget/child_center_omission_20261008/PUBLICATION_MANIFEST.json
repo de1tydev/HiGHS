@@ -1,0 +1,21 @@
+{
+  "schema": "child-center-no-go-publication-v1",
+  "exact_research_parent": "a675b112c04196d70951c711c7c596f61b9d2f00",
+  "files": {
+    "child-center-omission.patch": "2accff0ed5c7f3ae4b4995ebc09cbe45de250ac6f9799cf29a0f280fd5cb3299",
+    "RESULTS.json": "64ee9bbd1ddad9bffe23ff82434418a8d75b472de892ccc387d4432b0b1c99dd",
+    "replay_audit.py": "5fe17cddceb2dcb0dc35263b4947dfd2e107a801459aad24b88d58e5692b8f3f",
+    "REPLAY_INDEX.md": "efd4381ebd5bf2e857ffe0bcb2e9e7739a135794004667ff00ff287f306f2af6",
+    "README.md": "b5ff483a7d4381af033e1909ae442e6200043a2e6fa68a6e830ff5f6602594d3",
+    "fixtures/ac_fixture.cpp": "b21c1c46cad2b793312fd75d338bcdb9949b966029cdb0b0d5070a13aebbb497",
+    "fixtures/transformed_ac_fixture.cpp": "94a34aeb47b4ebd702a291a564b121dc3184824aa26ad10467c1907aa79943ab",
+    "fixtures/native_ac_fixture.cpp": "a6c1a43a9f60d7de3e466b496fc4233b99a82c8d59fed4f33c3c1f4538c04f4d"
+  },
+  "patch_is_default_off": true,
+  "patch_only_not_active_core_change": true,
+  "additional_solver_runs_or_builds_for_publication": 0,
+  "offline_replay_validation": "Passed all four retained samples; Python optimized mode explicitly rejected",
+  "complete_raw_bundle_publicly_included": false,
+  "retained_qualification_capsule_sha256": "382a37db4fbee3cd37c6b0ed0b7251332e9600d47d4cda78025e7713249aa75a",
+  "retained_pilot_capsule_sha256": "2a0a90cfe2bc6b13a6542aba43ae90b34bfb7df8842c118ece3c809882a4c598"
+}

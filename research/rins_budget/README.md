@@ -1,5 +1,12 @@
 # HiGHS MILP and SCUC acceleration research
 
+**Child analytic-center ablation — 2026-10-08: NO-GO.** A default-OFF,
+serial-child-only omission retained checked outcomes but failed both frozen
+15% paired wall-improvement gates; the first pair also exceeded the CPU limit.
+All four samples and timing variation are retained. The route is closed without
+retuning; the experimental patch is not recommended or enabled.
+[Audited negative result, patch and compact replay support](child_center_omission_20261008/README.md).
+
 **Bounded reference qualification — 2026-10-07:** The isolated d547 plus
 #3357/#3367 candidate passed matched assertions-enabled regressions and two
 full-source SCUC checks. Original Release CTest remains **168/169 passing**
