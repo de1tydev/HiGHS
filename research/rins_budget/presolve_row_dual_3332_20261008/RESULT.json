@@ -1,0 +1,42 @@
+{
+  "utc_completed_tests": "2026-10-08T07:54:29.805138+00:00",
+  "upstream_merge": "4591d1de08ed2e3bed529ec2c35220a80c4cb9db",
+  "reference": "d547 + archived3357/3367 minimal patch",
+  "before": {
+    "assert": {
+      "on": "Infeasible",
+      "off": "Optimal -4"
+    },
+    "release": {
+      "on": "Infeasible",
+      "off": "Optimal -4"
+    }
+  },
+  "after": {
+    "assert": {
+      "on": "Optimal -4",
+      "off": "Optimal -4"
+    },
+    "release": {
+      "on": "Optimal -4",
+      "off": "Optimal -4"
+    }
+  },
+  "independent_optimum": -4,
+  "direct_original_model_primal_checks": true,
+  "fresh_processes_and_models": true,
+  "solver_threads": 1,
+  "fixed_libraries": {
+    "assert": "1cd1ee2a86caf402e3d4a97fef182feccd07fbeed62387c9b32f8b6babc12651",
+    "release": "b2c073c6c16f6af5e8c73b232a01fcf230ca0773e1d199c6423c4e7a1dec1aac"
+  },
+  "existing_regressions": {
+    "assert": "3357/3364/3359 pass",
+    "release": "3357/3364/3359 pass"
+  },
+  "native_Catch_or_full_suite_run": false,
+  "SCUC_or_performance_run": false,
+  "reference_promotion": false,
+  "publication": "This report and replay support only; no source-root modification or reference promotion",
+  "terminal_audit": "passed narrow scope; no promotion eligibility claim"
+}
