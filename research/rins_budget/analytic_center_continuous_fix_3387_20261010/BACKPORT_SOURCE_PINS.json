@@ -1,0 +1,10 @@
+{
+  "repository": "de1tydev/HiGHS",
+  "commit": "79aa986648e100d2c8c981bbd8da31ba84c9593b",
+  "directory": "research/rins_budget/correctness_3357_3367_20261007",
+  "git_blobs": {
+    "domain_stack_fixture.cpp": "d0693ee46d9f1008454927fd4094b90ad9b0b0ec",
+    "pr3367_regression.cpp": "7e5284d74a7a8be7e74ab532f1ff35abf97922e5",
+    "3359.mps": "969b6207a2ac07975de1ed84ae4ecdddf6055145"
+  }
+}

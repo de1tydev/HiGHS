@@ -1,0 +1,39 @@
+{
+  "kind": "release",
+  "presolve": "off",
+  "options": {
+    "presolve": "off",
+    "threads": 1,
+    "random_seed": 0,
+    "time_limit": 10.0,
+    "log_dev_level": 1,
+    "highs_analysis_level": 128
+  },
+  "dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+  "loaded_maps": [
+    "7f51c403f000-7f51c40a6000 r--p 00000000 00:1b 1460701                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1.15.1",
+    "7f51c40a6000-7f51c4519000 r-xp 00067000 00:1b 1460701                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1.15.1",
+    "7f51c4519000-7f51c45b6000 r--p 004da000 00:1b 1460701                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1.15.1",
+    "7f51c45b6000-7f51c45b9000 r--p 00577000 00:1b 1460701                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1.15.1",
+    "7f51c45b9000-7f51c45c0000 rw-p 0057a000 00:1b 1460701                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1.15.1"
+  ],
+  "run_status": 0,
+  "model_status": 7,
+  "objective": 1.0,
+  "solution": [
+    1.0,
+    0.0,
+    2e-06,
+    2e-06,
+    1.0,
+    -0.0,
+    1.0,
+    1.0,
+    -0.0,
+    1.0,
+    -0.0
+  ],
+  "sense": "max",
+  "expected_objective": 1,
+  "objective_correct": true
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "name": "candidate-assert-off-max",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "assert",
+      "off",
+      "max"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.08309721946716309,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "26426ce5003b0cd05f986175e25fcea4f7e9fe0c15878167bf05c6ff2545c1b5",
+    "objective_correct": true,
+    "analytic_center_sync_observed": true
+  },
+  {
+    "name": "candidate-assert-off-min",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "assert",
+      "off",
+      "min"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.0894920825958252,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "b403015bddad77ebf089d578055856dd82764eea3724ac4297035f49b10e5676",
+    "objective_correct": true,
+    "analytic_center_sync_observed": true
+  },
+  {
+    "name": "candidate-assert-on-max",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "assert",
+      "on",
+      "max"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.08244037628173828,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "aff0029b65bc575a7de879689ec216ce71269eb928c6f0dab899d3a7d7d62ee7",
+    "objective_correct": true,
+    "analytic_center_sync_observed": false
+  },
+  {
+    "name": "candidate-assert-on-min",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "assert",
+      "on",
+      "min"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.0890500545501709,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "d8fa91ff6f02c0e05709337fe893bf314e1b9c9bdd8ff9728a9fdfa49cf16232",
+    "objective_correct": true,
+    "analytic_center_sync_observed": false
+  },
+  {
+    "name": "focused-assert-issue-2173",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/assert/bin/unit_tests",
+      "issue-2173"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.2995789051055908,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib",
+    "stdout_sha256": "704e39d5e3743976aa62a241cb577b1a1c4f6c6de7f8a708b35379b2539c6edd",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "18532697eb123a71f4b63ad3f4264c56b0981310b32b3a08dfe1d40ce97e424c",
+    "candidate_dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-assert-MIP-maximize",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/assert/bin/unit_tests",
+      "MIP-maximize"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.04308366775512695,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib",
+    "stdout_sha256": "98a89fa6430a879e50ccc2cdb3ae15e3e62ce4f5705ad6f0a2dc51bd947f5ffd",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "18532697eb123a71f4b63ad3f4264c56b0981310b32b3a08dfe1d40ce97e424c",
+    "candidate_dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-assert-MIP-infeasible-start",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/assert/bin/unit_tests",
+      "MIP-infeasible-start"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.16315579414367676,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib",
+    "stdout_sha256": "06f6f255d34281fbaf5656a1729d3f18de1da578f8b4eb1b543eb3c59da75147",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "18532697eb123a71f4b63ad3f4264c56b0981310b32b3a08dfe1d40ce97e424c",
+    "candidate_dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-assert-get-fixed-lp-semi",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/assert/bin/unit_tests",
+      "get-fixed-lp-semi"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.021540164947509766,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib",
+    "stdout_sha256": "83259c568f473bbcbcc8bd2eb80e74200c691d1e07bb8fd4c04e6248c4646972",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "18532697eb123a71f4b63ad3f4264c56b0981310b32b3a08dfe1d40ce97e424c",
+    "candidate_dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-assert-implied-row-dual-bound-invalidation",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/assert/bin/unit_tests",
+      "implied-row-dual-bound-invalidation"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.02689194679260254,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib",
+    "stdout_sha256": "e4b103d0dce2ec6be51d68ce11df0b03ca627d9c3f396229b83aac2039fa780e",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "18532697eb123a71f4b63ad3f4264c56b0981310b32b3a08dfe1d40ce97e424c",
+    "candidate_dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "loader_verified": true,
+    "passed": true
+  }
+]

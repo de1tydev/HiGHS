@@ -1,0 +1,164 @@
+[
+  {
+    "name": "candidate-release-off-max",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "release",
+      "off",
+      "max"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.08543157577514648,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "a9712c6d61f7eadddc47f66eeb121ec36ecb5696aa9d217fd5c4ddc4d19ec928",
+    "objective_correct": true,
+    "analytic_center_sync_observed": true
+  },
+  {
+    "name": "candidate-release-off-min",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "release",
+      "off",
+      "min"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.06299614906311035,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "b00c37e61844094fc69fff88b6bccb4f005343f38b9624c6ff5cb233fd9ecff0",
+    "objective_correct": true,
+    "analytic_center_sync_observed": true
+  },
+  {
+    "name": "candidate-release-on-max",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "release",
+      "on",
+      "max"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.04704761505126953,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "b6c55f850d3134b79a6e4fafb9cf5d3aff880a836c2567a9fe09c4226e54eab7",
+    "objective_correct": true,
+    "analytic_center_sync_observed": false
+  },
+  {
+    "name": "candidate-release-on-min",
+    "command": [
+      "python3",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/run_candidate.py",
+      "release",
+      "on",
+      "min"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 30,
+    "elapsed_observation_only": 0.05563807487487793,
+    "LD_LIBRARY_PATH": null,
+    "stdout_sha256": "07097e91ebd129a2f6cd1dbd768739252f44e424411792c1921ba18af3e04900",
+    "objective_correct": true,
+    "analytic_center_sync_observed": false
+  },
+  {
+    "name": "focused-release-issue-2173",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests",
+      "issue-2173"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.15743398666381836,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib",
+    "stdout_sha256": "10fa25fe60ccd1a69ebc84081cac039fe7f417d13837415b8737adfdc181e107",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "919677b804f3aea65a540c9060bc7a8ecff72bdb00f2c93e67e2e1fc56248e1f",
+    "candidate_dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-release-MIP-maximize",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests",
+      "MIP-maximize"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.04504871368408203,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib",
+    "stdout_sha256": "9147f1ed088ddfd800d13dcf52b4ff140f3ab7805c10e113b2121bfffb6538cd",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "919677b804f3aea65a540c9060bc7a8ecff72bdb00f2c93e67e2e1fc56248e1f",
+    "candidate_dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-release-MIP-infeasible-start",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests",
+      "MIP-infeasible-start"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.13117051124572754,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib",
+    "stdout_sha256": "fc99a828232d0a645f1cfb8e1858c915607ab3f05faeb3a8f334461d5d465b0d",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "919677b804f3aea65a540c9060bc7a8ecff72bdb00f2c93e67e2e1fc56248e1f",
+    "candidate_dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-release-get-fixed-lp-semi",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests",
+      "get-fixed-lp-semi"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.016553163528442383,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib",
+    "stdout_sha256": "6297e4ccf02fef30fa8d6af50b8a4147652ae6e9f8d431a155274c31efb67f9a",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "919677b804f3aea65a540c9060bc7a8ecff72bdb00f2c93e67e2e1fc56248e1f",
+    "candidate_dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "loader_verified": true,
+    "passed": true
+  },
+  {
+    "name": "focused-release-implied-row-dual-bound-invalidation",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests",
+      "implied-row-dual-bound-invalidation"
+    ],
+    "exit_code": 0,
+    "timeout": false,
+    "outer_timeout_seconds": 120,
+    "elapsed_observation_only": 0.022605419158935547,
+    "LD_LIBRARY_PATH": "/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib",
+    "stdout_sha256": "ea53945f647e5127223d1c9abd5ba23ae42940789d8822cfd2a797f6c7afd181",
+    "native_thread_policy": "Unchanged native per-test settings; not globally pinned",
+    "runner_sha256": "919677b804f3aea65a540c9060bc7a8ecff72bdb00f2c93e67e2e1fc56248e1f",
+    "candidate_dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "loader_verified": true,
+    "passed": true
+  }
+]

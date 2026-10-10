@@ -1,0 +1,47 @@
+{
+  "status": "candidate_passes_narrow_gate_not_fully_qualified_reference",
+  "main_candidate_solves": 8,
+  "main_candidate_solves_passed": 8,
+  "additional_replay_smoke_solves": 1,
+  "native_test_cases": 10,
+  "native_test_assertions": 88,
+  "prior_backport_processes": 6,
+  "all_prior_backport_processes_passed": true,
+  "analytic_center_directly_observed": "all four presolve-off main candidate arms; calculation, synchronization and IPX(AC) call",
+  "not_claimed": [
+    "full suite",
+    "production readiness",
+    "integer fixing safety",
+    "SCUC performance",
+    "reference promotion"
+  ],
+  "candidate_runtime_identity": {
+    "release": {
+      "lib/libhighs.so.1.15.1": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+      "HConfig.h": "296eeb6ebae54415b3aa546302c3b88ad3cf5992fafbbc223e70d7d3bef9c650",
+      "highs_export.h": "c34561fcbdc448c85ff4cdf6738519c942ef7609bcf8ebf32ad795d7fef69605",
+      "CMakeCache.txt": "4b6f09c8f7867e66d37d95f16b2f4c292ac4836d6be14664d9962fd1b387d81f",
+      "compile_commands.json": "6b6c0c7792cd665a044f15609bc9ca7f9f65b1d6d392af3d77f01f705ea9c7f9",
+      "build_exit_code": 0
+    },
+    "assert": {
+      "lib/libhighs.so.1.15.1": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+      "HConfig.h": "6f920ad10609b937bca8b9543a987f2d5133bf1d72664a66441b5a087af25b73",
+      "highs_export.h": "c34561fcbdc448c85ff4cdf6738519c942ef7609bcf8ebf32ad795d7fef69605",
+      "CMakeCache.txt": "366d99dfa6b744bbf718c0a3969923f879c62e1f3915c6ab569e66c95f4634c4",
+      "compile_commands.json": "8e39feae5995fb0518997487d018a09f20c7e5e4dbe0b71e586dfafbd4a59be5",
+      "build_exit_code": 0
+    }
+  },
+  "source_integrity": {
+    "verified_files": 1006,
+    "changed_files": [
+      {
+        "path": "highs/mip/HighsMipSolverData.cpp",
+        "base_sha256": "eaafcf91b4653c17807b171720f66828dd6b18737dbf8b9b213cc58c8e022f33",
+        "candidate_sha256": "0cf1c60765074326b929e213cb0ba97b1b4d0a594010e84838afc7d97ec70712"
+      }
+    ],
+    "patch_sha256": "9815fb51d9c931a7b1a87ef6d372a97d1df3eb587a57051f4cf7e2eda895fe28"
+  }
+}

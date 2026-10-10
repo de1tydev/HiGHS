@@ -1,0 +1,133 @@
+        30:	find library=libhighs.so.1 [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/glibc-hwcaps/x86-64-v4:/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/glibc-hwcaps/x86-64-v3:/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/glibc-hwcaps/x86-64-v2:/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/glibc-hwcaps/x86-64-v4/libhighs.so.1
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/glibc-hwcaps/x86-64-v3/libhighs.so.1
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/glibc-hwcaps/x86-64-v2/libhighs.so.1
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1
+        30:	
+        30:	find library=libstdc++.so.6 [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libstdc++.so.6
+        30:	 search path=/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/glibc-hwcaps/x86-64-v4:/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/glibc-hwcaps/x86-64-v3:/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/glibc-hwcaps/x86-64-v2:/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib		(RUNPATH from file /workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/glibc-hwcaps/x86-64-v4/libstdc++.so.6
+        30:	  trying file=/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/glibc-hwcaps/x86-64-v3/libstdc++.so.6
+        30:	  trying file=/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/glibc-hwcaps/x86-64-v2/libstdc++.so.6
+        30:	  trying file=/workspace/scratch/aacb49f958f5/presolve3332_work/fixed-release-build/lib/libstdc++.so.6
+        30:	 search cache=/etc/ld.so.cache
+        30:	  trying file=/lib/x86_64-linux-gnu/libstdc++.so.6
+        30:	
+        30:	find library=libm.so.6 [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libm.so.6
+        30:	 search cache=/etc/ld.so.cache
+        30:	  trying file=/lib/x86_64-linux-gnu/libm.so.6
+        30:	
+        30:	find library=libgcc_s.so.1 [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libgcc_s.so.1
+        30:	 search cache=/etc/ld.so.cache
+        30:	  trying file=/lib/x86_64-linux-gnu/libgcc_s.so.1
+        30:	
+        30:	find library=libc.so.6 [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libc.so.6
+        30:	 search cache=/etc/ld.so.cache
+        30:	  trying file=/lib/x86_64-linux-gnu/libc.so.6
+        30:	
+        30:	find library=libz.so.1 [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libz.so.1
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libz.so.1
+        30:	 search path=glibc-hwcaps/x86-64-v4:glibc-hwcaps/x86-64-v3:glibc-hwcaps/x86-64-v2:		(RUNPATH from file /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1)
+        30:	  trying file=glibc-hwcaps/x86-64-v4/libz.so.1
+        30:	  trying file=glibc-hwcaps/x86-64-v3/libz.so.1
+        30:	  trying file=glibc-hwcaps/x86-64-v2/libz.so.1
+        30:	  trying file=libz.so.1
+        30:	 search cache=/etc/ld.so.cache
+        30:	  trying file=/lib/x86_64-linux-gnu/libz.so.1
+        30:	
+        30:	
+        30:	calling init: /lib64/ld-linux-x86-64.so.2
+        30:	
+        30:	
+        30:	calling init: /lib/x86_64-linux-gnu/libc.so.6
+        30:	
+        30:	
+        30:	calling init: /lib/x86_64-linux-gnu/libz.so.1
+        30:	
+        30:	
+        30:	calling init: /lib/x86_64-linux-gnu/libgcc_s.so.1
+        30:	
+        30:	
+        30:	calling init: /lib/x86_64-linux-gnu/libm.so.6
+        30:	
+        30:	
+        30:	calling init: /lib/x86_64-linux-gnu/libstdc++.so.6
+        30:	
+        30:	
+        30:	calling init: /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1
+        30:	
+        30:	
+        30:	initialize program: /workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests
+        30:	
+        30:	
+        30:	transferring control: /workspace/scratch/aacb49f958f5/issue3387_repro/qualified-full/native/release/bin/unit_tests
+        30:	
+        30:	find library=libhighs_extras.so [0]; searching
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs_extras.so
+        30:	 search path=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib		(LD_LIBRARY_PATH)
+        30:	  trying file=/workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs_extras.so
+        30:	 search path=glibc-hwcaps/x86-64-v4:glibc-hwcaps/x86-64-v3:glibc-hwcaps/x86-64-v2:		(RUNPATH from file /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1)
+        30:	  trying file=glibc-hwcaps/x86-64-v4/libhighs_extras.so
+        30:	  trying file=glibc-hwcaps/x86-64-v3/libhighs_extras.so
+        30:	  trying file=glibc-hwcaps/x86-64-v2/libhighs_extras.so
+        30:	  trying file=libhighs_extras.so
+        30:	 search cache=/etc/ld.so.cache
+        30:	 search path=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4:/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/usr/lib/x86_64-linux-gnu:/lib/glibc-hwcaps/x86-64-v4:/lib/glibc-hwcaps/x86-64-v3:/lib/glibc-hwcaps/x86-64-v2:/lib:/usr/lib/glibc-hwcaps/x86-64-v4:/usr/lib/glibc-hwcaps/x86-64-v3:/usr/lib/glibc-hwcaps/x86-64-v2:/usr/lib		(system search path)
+        30:	  trying file=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libhighs_extras.so
+        30:	  trying file=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libhighs_extras.so
+        30:	  trying file=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libhighs_extras.so
+        30:	  trying file=/lib/x86_64-linux-gnu/libhighs_extras.so
+        30:	  trying file=/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v4/libhighs_extras.so
+        30:	  trying file=/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libhighs_extras.so
+        30:	  trying file=/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libhighs_extras.so
+        30:	  trying file=/usr/lib/x86_64-linux-gnu/libhighs_extras.so
+        30:	  trying file=/lib/glibc-hwcaps/x86-64-v4/libhighs_extras.so
+        30:	  trying file=/lib/glibc-hwcaps/x86-64-v3/libhighs_extras.so
+        30:	  trying file=/lib/glibc-hwcaps/x86-64-v2/libhighs_extras.so
+        30:	  trying file=/lib/libhighs_extras.so
+        30:	  trying file=/usr/lib/glibc-hwcaps/x86-64-v4/libhighs_extras.so
+        30:	  trying file=/usr/lib/glibc-hwcaps/x86-64-v3/libhighs_extras.so
+        30:	  trying file=/usr/lib/glibc-hwcaps/x86-64-v2/libhighs_extras.so
+        30:	  trying file=/usr/lib/libhighs_extras.so
+        30:	
+Filters: implied-row-dual-bound-invalidation
+===============================================================================
+All tests passed (14 assertions in 1 test case)
+
+        30:	
+        30:	calling fini:  [0]
+        30:	
+        30:	
+        30:	calling fini: /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-release-build/lib/libhighs.so.1 [0]
+        30:	
+        30:	
+        30:	calling fini: /lib/x86_64-linux-gnu/libstdc++.so.6 [0]
+        30:	
+        30:	
+        30:	calling fini: /lib/x86_64-linux-gnu/libm.so.6 [0]
+        30:	
+        30:	
+        30:	calling fini: /lib/x86_64-linux-gnu/libgcc_s.so.1 [0]
+        30:	
+        30:	
+        30:	calling fini: /lib/x86_64-linux-gnu/libz.so.1 [0]
+        30:	
+        30:	
+        30:	calling fini: /lib/x86_64-linux-gnu/libc.so.6 [0]
+        30:	
+        30:	
+        30:	calling fini: /lib64/ld-linux-x86-64.so.2 [0]
+        30:	

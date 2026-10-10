@@ -1,0 +1,25 @@
+{
+  "input_git_blob": "22afeec6fe42d56c1cd924a7b76d06601a5f77bc",
+  "input_sha256": "cdbc30399ee1aa994b18f50c676164cbe495dc5d0247341741efac04a1d561d0",
+  "exact_binary64_k": "4722366482869645/2361183241434822606848",
+  "witness": {
+    "g": "1",
+    "f": "0",
+    "r": "4722366482869645/2361183241434822606848",
+    "y": "4722366482869645/2361183241434822606848",
+    "v": "1",
+    "z0": "0",
+    "z1": "1",
+    "z2": "1",
+    "z3": "0",
+    "z4": "1",
+    "z5": "0"
+  },
+  "exact_row_residuals": {
+    "k_balance": "0",
+    "y_balance": "0",
+    "gate": "0",
+    "subset": "0"
+  },
+  "proof": "Witness is feasible and g=1, attaining explicit upper bound g<=1; exact optimum=1."
+}

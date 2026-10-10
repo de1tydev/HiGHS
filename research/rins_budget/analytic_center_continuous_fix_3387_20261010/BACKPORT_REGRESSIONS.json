@@ -1,0 +1,112 @@
+[
+  {
+    "kind": "release",
+    "case": "3357",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/release-domain_stack_fixture"
+    ],
+    "exit_code": 0,
+    "outer_cap_seconds": 15,
+    "loader_verified": true,
+    "binary_sha256": "8aab24b15770b620d7f6a9139130ea6d57f7720a264bf4382caba16d75f819cf",
+    "dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "passed": true,
+    "summary": [
+      "{\"case\":\"lower_symmetry_on\",\"retained_x\":true,\"branch_count\":1,\"stabilized_x\":true,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"case\":\"lower_symmetry_off\",\"retained_x\":false,\"branch_count\":0,\"stabilized_x\":false,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"case\":\"upper_symmetry_on\",\"retained_x\":true,\"branch_count\":1,\"stabilized_x\":true,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"case\":\"upper_symmetry_off\",\"retained_x\":false,\"branch_count\":0,\"stabilized_x\":false,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"cases\":4,\"failures\":0}"
+    ]
+  },
+  {
+    "kind": "release",
+    "case": "3364",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/release-pr3367_regression",
+      "3364"
+    ],
+    "exit_code": 0,
+    "outer_cap_seconds": 15,
+    "loader_verified": true,
+    "binary_sha256": "5d84352bb7d76b428e06f994af571f210b7742e953a1787b13e4d2d8139f4de5",
+    "dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "passed": true,
+    "summary": [
+      "PASS 3364 rows=4 cols=7 nnz=9"
+    ]
+  },
+  {
+    "kind": "release",
+    "case": "3359",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/release-pr3367_regression",
+      "3359",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/3359.mps"
+    ],
+    "exit_code": 0,
+    "outer_cap_seconds": 45,
+    "loader_verified": true,
+    "binary_sha256": "5d84352bb7d76b428e06f994af571f210b7742e953a1787b13e4d2d8139f4de5",
+    "dso_sha256": "12e11b36c5162e6bc0cc0357b5a5a9e69305e6cca8956951e497b71a8643edcb",
+    "passed": true,
+    "summary": [
+      "PASS 3359 objective=25 original_model_feasible=true"
+    ]
+  },
+  {
+    "kind": "assert",
+    "case": "3357",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/assert-domain_stack_fixture"
+    ],
+    "exit_code": 0,
+    "outer_cap_seconds": 15,
+    "loader_verified": true,
+    "binary_sha256": "f06aff48e60fbcc12f05a60562d49894cfee9502bf003ad251abb4397b64edbf",
+    "dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "passed": true,
+    "summary": [
+      "{\"case\":\"lower_symmetry_on\",\"retained_x\":true,\"branch_count\":1,\"stabilized_x\":true,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"case\":\"lower_symmetry_off\",\"retained_x\":false,\"branch_count\":0,\"stabilized_x\":false,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"case\":\"upper_symmetry_on\",\"retained_x\":true,\"branch_count\":1,\"stabilized_x\":true,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"case\":\"upper_symmetry_off\",\"retained_x\":false,\"branch_count\":0,\"stabilized_x\":false,\"bounds_unchanged\":true,\"passed\":true}",
+      "{\"cases\":4,\"failures\":0}"
+    ]
+  },
+  {
+    "kind": "assert",
+    "case": "3364",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/assert-pr3367_regression",
+      "3364"
+    ],
+    "exit_code": 0,
+    "outer_cap_seconds": 15,
+    "loader_verified": true,
+    "binary_sha256": "424d7aad0b64c05b768e9cb90e53f11fadf3ad5f4b4cfad2b1b31a23cdf33de4",
+    "dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "passed": true,
+    "summary": [
+      "PASS 3364 rows=4 cols=7 nnz=9"
+    ]
+  },
+  {
+    "kind": "assert",
+    "case": "3359",
+    "command": [
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/assert-pr3367_regression",
+      "3359",
+      "/workspace/scratch/aacb49f958f5/issue3387_repro/prior-regressions/3359.mps"
+    ],
+    "exit_code": 0,
+    "outer_cap_seconds": 45,
+    "loader_verified": true,
+    "binary_sha256": "424d7aad0b64c05b768e9cb90e53f11fadf3ad5f4b4cfad2b1b31a23cdf33de4",
+    "dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+    "passed": true,
+    "summary": [
+      "PASS 3359 objective=25 original_model_feasible=true"
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "kind": "assert",
+  "presolve": "on",
+  "options": {
+    "presolve": "on",
+    "threads": 1,
+    "random_seed": 0,
+    "time_limit": 10.0,
+    "log_dev_level": 1,
+    "highs_analysis_level": 128
+  },
+  "dso_sha256": "7eeb2ec9d64af48ae0833df4e1a2c104d974e123aaec32d3463976513db54f7e",
+  "loaded_maps": [
+    "7fa7ecc30000-7fa7eccd2000 r--p 00000000 00:1b 1461175                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib/libhighs.so.1.15.1",
+    "7fa7eccd2000-7fa7ed0e4000 r-xp 000a2000 00:1b 1461175                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib/libhighs.so.1.15.1",
+    "7fa7ed0e4000-7fa7ed1a9000 r--p 004b4000 00:1b 1461175                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib/libhighs.so.1.15.1",
+    "7fa7ed1a9000-7fa7ed1ac000 r--p 00579000 00:1b 1461175                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib/libhighs.so.1.15.1",
+    "7fa7ed1ac000-7fa7ed1b5000 rw-p 0057c000 00:1b 1461175                    /workspace/scratch/aacb49f958f5/issue3387_repro/candidate-assert-build/lib/libhighs.so.1.15.1"
+  ],
+  "run_status": 0,
+  "model_status": 7,
+  "objective": 1.0,
+  "solution": [
+    1.0,
+    999.999998,
+    1000.0,
+    1.9999999949504854e-06,
+    1.0,
+    -0.0,
+    1.0,
+    1.0,
+    -0.0,
+    1.0,
+    -0.0
+  ],
+  "sense": "max",
+  "expected_objective": 1,
+  "objective_correct": true
+}

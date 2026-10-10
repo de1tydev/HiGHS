@@ -1,0 +1,12 @@
+--- a/highs/mip/HighsMipSolverData.cpp
++++ b/highs/mip/HighsMipSolverData.cpp
+@@ -510,6 +510,9 @@
+     HighsInt nfixed = 0;
+     HighsInt nintfixed = 0;
+     for (HighsInt i = 0; i != mipsolver.numCol(); ++i) {
++      // Proximity to a bound at the analytic center does not prove that
++      // a continuous column is fixed throughout the feasible region.
++      if (mipsolver.isColContinuous(i)) continue;
+       double boundRange = mipsolver.mipdata_->getDomain().col_upper_[i] -
+                           mipsolver.mipdata_->getDomain().col_lower_[i];
+       if (boundRange == 0.0) continue;
